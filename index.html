@@ -3,262 +3,812 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MakeField AI - Nick Choi</title>
-    <meta name="description" content="AI x Industrial Engineering. 현장에 AI를 만든다.">
+    <title>MakeField AI - 현장에 AI를 만든다</title>
+    <meta name="description" content="AI x Industrial Engineering. PLC, 펌웨어, 도면에서 AI를 실전 활용하는 방법을 만들고 가르칩니다.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #fafafa;
-            --text: #2a2a2a;
-            --accent: #2B579A;
-            --muted: #666;
-            --border: #e0e0e0;
-            --card-bg: #fff;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Malgun Gothic', sans-serif;
-            color: var(--text);
-            background: var(--bg);
-            line-height: 1.7;
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 40px 24px;
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a25;
+            --bg-card-hover: #222233;
+            --text-primary: #e8e8ef;
+            --text-secondary: #8888a0;
+            --text-muted: #55556a;
+            --accent: #4f8fff;
+            --accent-glow: rgba(79, 143, 255, 0.15);
+            --accent2: #7c5cff;
+            --accent3: #00d4aa;
+            --gradient: linear-gradient(135deg, #4f8fff 0%, #7c5cff 50%, #00d4aa 100%);
+            --border: rgba(255,255,255,0.06);
+            --nav-bg: rgba(10, 10, 15, 0.85);
         }
 
-        /* Header */
-        header { margin-bottom: 48px; }
-        h1 {
-            font-size: 2em;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 4px;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
-        h1 span { font-weight: 300; color: var(--muted); font-size: 0.6em; }
-        .tagline {
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-weight: 800;
             font-size: 1.1em;
-            color: var(--muted);
-            margin-bottom: 16px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .intro {
-            font-size: 0.95em;
-            color: var(--text);
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: color 0.3s;
+            letter-spacing: 0.02em;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(79,143,255,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(124,92,255,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 30% at 20% 90%, rgba(0,212,170,0.06) 0%, transparent 50%);
+        }
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; }
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.78em;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            background: var(--accent-glow);
+        }
+        .hero h1 {
+            font-size: clamp(2.5em, 6vw, 4.2em);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+        }
+        .hero h1 .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-desc {
+            font-size: clamp(1em, 2vw, 1.2em);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 20px rgba(79,143,255,0.3);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 6px 30px rgba(79,143,255,0.5);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ===== STATS BAR ===== */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            padding: 48px 24px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--border);
+        }
+        .stat-item { text-align: center; }
+        .stat-num {
+            font-size: 2em;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label {
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 100px 24px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.75em;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
             margin-bottom: 12px;
         }
-
-        /* Links */
-        .links {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-top: 16px;
-        }
-        .links a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9em;
-            border-bottom: 1px solid transparent;
-        }
-        .links a:hover { border-bottom-color: var(--accent); }
-
-        /* Sections */
-        h2 {
-            font-size: 1.2em;
-            font-weight: 600;
-            margin-top: 48px;
+        .section-title {
+            font-size: clamp(1.8em, 4vw, 2.5em);
+            font-weight: 800;
             margin-bottom: 16px;
-            color: var(--accent);
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 4px;
-            display: inline-block;
+            letter-spacing: -0.02em;
+        }
+        .section-desc {
+            font-size: 1.05em;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 48px;
+            line-height: 1.8;
         }
 
-        /* Timeline */
-        .timeline { list-style: none; }
-        .timeline li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            gap: 16px;
-        }
-        .timeline li:last-child { border-bottom: none; }
-        .year {
-            font-weight: 600;
-            color: var(--accent);
-            min-width: 90px;
-            font-size: 0.9em;
-        }
-        .desc { font-size: 0.9em; }
-        .desc strong { font-weight: 600; }
-
-        /* Cards */
-        .card-grid {
+        /* ===== AI CARDS ===== */
+        .ai-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 8px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
         }
-        .card {
-            background: var(--card-bg);
+        .ai-card {
+            background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
+            border-radius: 16px;
+            padding: 32px 24px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .card h3 {
-            font-size: 0.95em;
-            font-weight: 600;
+        .ai-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .ai-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(79,143,255,0.3);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+        .ai-card:hover::before { opacity: 1; }
+        .ai-icon {
+            font-size: 2em;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .ai-card h3 {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .ai-card p {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .ai-tag {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.72em;
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--accent-glow);
+            color: var(--accent);
+            border: 1px solid rgba(79,143,255,0.2);
+        }
+
+        /* ===== CAREER TIMELINE ===== */
+        .timeline { position: relative; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--accent2), var(--accent3));
+            opacity: 0.3;
+        }
+        .tl-item {
+            display: flex;
+            gap: 32px;
+            padding: 24px 0;
+            position: relative;
+        }
+        .tl-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin-top: 6px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 12px rgba(79,143,255,0.4);
+            margin-left: 15px;
+        }
+        .tl-content { flex: 1; }
+        .tl-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82em;
+            color: var(--accent);
             margin-bottom: 4px;
         }
-        .card p {
-            font-size: 0.82em;
-            color: var(--muted);
+        .tl-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .tl-desc {
+            font-size: 0.88em;
+            color: var(--text-secondary);
         }
 
-        /* Education */
-        .edu-list { list-style: none; }
-        .edu-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.9em;
+        /* ===== EDUCATION ===== */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
         }
-        .edu-list li:last-child { border-bottom: none; }
-        .edu-tag {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            font-size: 0.75em;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-right: 8px;
-        }
-
-        /* Contact */
-        .contact-box {
-            background: var(--card-bg);
+        .edu-card {
+            background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 24px;
-            margin-top: 12px;
-            font-size: 0.9em;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            transition: all 0.3s ease;
         }
-        .contact-box a { color: var(--accent); }
+        .edu-card:hover {
+            border-color: rgba(79,143,255,0.3);
+            transform: translateX(6px);
+        }
+        .edu-type {
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.7em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .edu-type.workshop { background: rgba(79,143,255,0.15); color: var(--accent); }
+        .edu-type.lecture { background: rgba(0,212,170,0.15); color: var(--accent3); }
+        .edu-info h3 { font-size: 0.95em; font-weight: 600; margin-bottom: 4px; }
+        .edu-info p { font-size: 0.82em; color: var(--text-secondary); }
 
-        /* Footer */
-        footer {
-            margin-top: 64px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border);
-            font-size: 0.8em;
-            color: var(--muted);
+        /* ===== ACHIEVEMENTS ===== */
+        .achv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .achv-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+        .achv-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+        .achv-num {
+            font-size: 2em;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .achv-label {
+            font-size: 0.82em;
+            color: var(--text-secondary);
+            margin-top: 4px;
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .card-grid { grid-template-columns: 1fr; }
-            .timeline li { flex-direction: column; gap: 4px; }
-            h1 { font-size: 1.6em; }
+        /* ===== CONTACT ===== */
+        .contact-section {
+            text-align: center;
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 64px 32px;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(79,143,255,0.08) 0%, transparent 60%);
+        }
+        .contact-section > * { position: relative; z-index: 2; }
+        .contact-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .contact-link:hover {
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 32px 24px;
+            color: var(--text-muted);
+            font-size: 0.8em;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 12px rgba(79,143,255,0.4); }
+            50% { box-shadow: 0 0 24px rgba(79,143,255,0.7); }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--nav-bg);
+                backdrop-filter: blur(20px);
+                padding: 20px 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--border);
+            }
+            .nav-toggle { display: block; }
+            .stats-bar { gap: 24px; }
+            .stat-num { font-size: 1.5em; }
+            .timeline::before { left: 10px; }
+            .tl-dot { margin-left: 5px; }
+            .ai-grid { grid-template-columns: 1fr; }
+            .hero { padding-top: 100px; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>MakeField AI <span>makefield.ai</span></h1>
-    <p class="tagline">AI x Industrial Engineering &mdash; 현장에 AI를 만든다.</p>
-    <p class="intro">
-        15년차 산업 엔지니어. 선박, IoT, 수소 에너지까지 &mdash; 설계부터 시운전까지 직접 해본 사람.<br>
-        지금은 AI가 지원하지 않는 산업용 도구(PLC, 펌웨어, 도면)에서 AI를 실전 활용하는 방법을 만들고 가르칩니다.
-    </p>
-    <div class="links">
-        <a href="https://www.linkedin.com/in/" target="_blank">LinkedIn</a>
-        <a href="https://www.youtube.com/" target="_blank">YouTube</a>
-        <a href="https://brunch.co.kr/" target="_blank">Brunch</a>
-        <a href="https://github.com/MongoosDay" target="_blank">GitHub</a>
-        <a href="mailto:djcbs84@outlook.com">Contact</a>
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logo">MakeField AI</div>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#ai">AI Skills</a>
+            <a href="#career">Career</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </div>
     </div>
-</header>
+</nav>
 
-<h2>About</h2>
-<p class="intro">
-    저는 "복잡한 것을 질서로 바꾸는 사람"입니다.<br><br>
-    12명 팀을 이끌며 매출을 3배로 키웠고, 국책과제 3건을 총괄했고, 특허 6건을 만들었습니다.
-    지금은 수전해(그린수소) 제어 시스템을 설계합니다.<br><br>
-    AI를 단순히 채팅 도구로 쓰지 않습니다. PLC 로직을 짜고, 펌웨어를 개발하고, 도면을 읽고,
-    기술 문서를 교차검증하는 데 매일 사용합니다. 이 경험을 나누는 것이 MakeField AI입니다.
-</p>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+        <div class="hero-badge">AI x Industrial Engineering</div>
+        <h1>
+            <span class="gradient-text">현장에 AI를</span><br>
+            만든다.
+        </h1>
+        <p class="hero-desc">
+            AI가 지원하지 않는 산업용 도구 &mdash; PLC, 펌웨어, 도면 &mdash; 에서<br>
+            AI를 실전 활용하는 방법을 만들고 가르칩니다.
+        </p>
+        <div class="hero-buttons">
+            <a href="#education" class="btn btn-primary">Education & Workshop</a>
+            <a href="#contact" class="btn btn-secondary">Contact</a>
+        </div>
+    </div>
+</section>
 
-<h2>Career</h2>
-<ul class="timeline">
-    <li>
-        <span class="year">2024 &mdash; Now</span>
-        <div class="desc"><strong>Techcross</strong> &mdash; 책임연구원. 수전해(AWE/PEM) 제어판넬 설계, PLC/HMI 개발. AI Agent 에코시스템 구축.</div>
-    </li>
-    <li>
-        <span class="year">2020 &mdash; 2024</span>
-        <div class="desc"><strong>KMCP</strong> &mdash; 연구소장(부서장). 해양 IoT 플랫폼, 수소 안전 모니터링, 수중익 제어(미국 공동연구). 국책과제 3건 총괄.</div>
-    </li>
-    <li>
-        <span class="year">2016 &mdash; 2020</span>
-        <div class="desc"><strong>Geumyang Industry</strong> &mdash; 부서장. 선박 엔진 전장설계 양산. 매출 10억&rarr;30억. DNV/GL TAC 획득. 기업부설연구소 설립.</div>
-    </li>
-    <li>
-        <span class="year">2013 &mdash; 2016</span>
-        <div class="desc"><strong>Hohyun</strong> &mdash; 전임연구원. 선박 엔진 전장설계, 센서 개발. 조선해양 도메인 확립.</div>
-    </li>
-    <li>
-        <span class="year">2011 &mdash; 2013</span>
-        <div class="desc"><strong>Physiolab / Teleworks</strong> &mdash; 의공학 + 모바일 SW. Android 앱 개발.</div>
-    </li>
-</ul>
-
-<h2>What I Do with AI</h2>
-<div class="card-grid">
-    <div class="card">
-        <h3>PLC Logic</h3>
-        <p>Codesys / ABB AC500 프로젝트에서 AI로 PLC 로직 개발. EXP 텍스트 추출 &rarr; AI 분석 &rarr; 수정 &rarr; Import.</p>
+<!-- STATS -->
+<div class="stats-bar">
+    <div class="stat-item reveal">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Years Experience</div>
     </div>
-    <div class="card">
-        <h3>Firmware</h3>
-        <p>VSCode + PlatformIO에서 STM32/ESP32 펌웨어를 AI와 실시간 개발. IoT, CAN, Modbus.</p>
+    <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Patents</div>
     </div>
-    <div class="card">
-        <h3>Drawings</h3>
-        <p>DXF/P&ID 도면을 AI로 파싱, 분석, 교차검증. 심볼 인식, IO Map 자동 추출.</p>
+    <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num">3</div>
+        <div class="stat-label">National R&D</div>
     </div>
-    <div class="card">
-        <h3>Documents</h3>
-        <p>기술 문서를 AI로 작성하되, PDCA 교차검증으로 할루시네이션을 통제. 정확도 99.6%.</p>
+    <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-num">3x</div>
+        <div class="stat-label">Revenue Growth</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-4">
+        <div class="stat-num">400+</div>
+        <div class="stat-label">AI Knowledge Base</div>
     </div>
 </div>
 
-<h2>Education & Workshop</h2>
-<ul class="edu-list">
-    <li><span class="edu-tag">Workshop</span> <strong>AI로 PLC 로직 개발하기</strong> &mdash; PLC 엔지니어 대상, 실습형 4~8시간</li>
-    <li><span class="edu-tag">Workshop</span> <strong>AI로 펌웨어 개발하기</strong> &mdash; 임베디드 개발자 대상, 실습형 4~8시간</li>
-    <li><span class="edu-tag">Workshop</span> <strong>AI로 기술문서 작성하기</strong> &mdash; 설계/품질 엔지니어 대상, 2~4시간</li>
-    <li><span class="edu-tag">Lecture</span> <strong>산업 엔지니어의 AI 생존 전략</strong> &mdash; 엔지니어 전체(경영진 포함), 1~2시간</li>
-</ul>
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+        <div class="section-label reveal">About</div>
+        <h2 class="section-title reveal">"복잡한 것을 질서로 바꾸는 사람"</h2>
+        <div class="section-desc reveal">
+            15년간 선박, IoT, 수소 에너지까지 &mdash; 설계부터 시운전까지 직접 해봤습니다.
+            12명 팀을 이끌며 매출을 3배로 키웠고, 국책과제 3건을 총괄했고, 특허 6건을 만들었습니다.<br><br>
+            AI를 단순히 채팅 도구로 쓰지 않습니다.
+            PLC 로직을 짜고, 펌웨어를 개발하고, 도면을 읽고, 기술 문서를 교차검증하는 데 매일 사용합니다.
+            이 경험을 체계화하여 산업 현장의 엔지니어들에게 전달하는 것이 MakeField AI의 미션입니다.
+        </div>
+    </div>
+</section>
 
-<h2>Achievements</h2>
-<ul class="edu-list">
-    <li><strong>Patents</strong> &mdash; 6건 (등록 3 + 출원 3), SW 저작권 2건</li>
-    <li><strong>National R&D</strong> &mdash; 총괄책임 3건 (ATC+, 국제공동연구 포함)</li>
-    <li><strong>Certification</strong> &mdash; DNV/GL Type Approval Certificate</li>
-    <li><strong>Revenue Growth</strong> &mdash; 부서장으로서 매출 10억 &rarr; 30억 (3년)</li>
-    <li><strong>AI Agent System</strong> &mdash; 400+ KB / 210,000줄 지식 베이스 구축</li>
-</ul>
+<!-- AI SKILLS -->
+<section id="ai" style="background: var(--bg-secondary);">
+    <div class="container">
+        <div class="section-label reveal">What I Do with AI</div>
+        <h2 class="section-title reveal">AI가 지원 안 하는 곳에서<br>AI를 씁니다.</h2>
+        <p class="section-desc reveal">Copilot이나 Cursor가 없는 세계. 그곳이 제 무대입니다.</p>
+        <div class="ai-grid">
+            <div class="ai-card reveal">
+                <span class="ai-icon">&#9881;</span>
+                <h3>PLC Logic</h3>
+                <p>Codesys / ABB AC500에서 AI로 PLC 로직 개발. EXP 추출 &rarr; AI 분석 &rarr; 수정 &rarr; Import.</p>
+                <span class="ai-tag">IEC 61131-3 / ST</span>
+            </div>
+            <div class="ai-card reveal reveal-delay-1">
+                <span class="ai-icon">&#9889;</span>
+                <h3>Firmware</h3>
+                <p>VSCode + PlatformIO에서 STM32/ESP32 펌웨어를 AI와 실시간 개발.</p>
+                <span class="ai-tag">CAN / Modbus / RTOS</span>
+            </div>
+            <div class="ai-card reveal reveal-delay-2">
+                <span class="ai-icon">&#9638;</span>
+                <h3>Drawings</h3>
+                <p>DXF/P&ID 도면을 AI로 파싱, 분석, 교차검증. 심볼 인식, IO Map 자동 추출.</p>
+                <span class="ai-tag">DXF / P&ID / SLD</span>
+            </div>
+            <div class="ai-card reveal reveal-delay-3">
+                <span class="ai-icon">&#9998;</span>
+                <h3>Documents</h3>
+                <p>PDCA 교차검증으로 할루시네이션을 통제하며 기술 문서를 작성합니다.</p>
+                <span class="ai-tag">Cross-Verification</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-<h2>Contact</h2>
-<div class="contact-box">
-    교육, 컨설팅, 협업 문의는 아래로 연락주세요.<br><br>
-    <a href="mailto:djcbs84@outlook.com">djcbs84@outlook.com</a><br>
-    <a href="https://www.linkedin.com/in/" target="_blank">LinkedIn</a>
-</div>
+<!-- CAREER -->
+<section id="career">
+    <div class="container">
+        <div class="section-label reveal">Career</div>
+        <h2 class="section-title reveal">현장에서 쌓은 15년</h2>
+        <p class="section-desc reveal">선박에서 시작해, IoT를 거쳐, 수소 에너지까지.</p>
+        <div class="timeline">
+            <div class="tl-item reveal">
+                <div class="tl-dot" style="background: var(--accent);"></div>
+                <div class="tl-content">
+                    <div class="tl-year">2024 &mdash; Present</div>
+                    <div class="tl-title">Techcross &mdash; 책임연구원</div>
+                    <div class="tl-desc">수전해(AWE/PEM) 제어판넬 설계/제작. PLC/HMI 로직 개발. AI Agent 에코시스템 구축 (KB 400+/21만줄).</div>
+                </div>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-dot" style="background: var(--accent2);"></div>
+                <div class="tl-content">
+                    <div class="tl-year">2020 &mdash; 2024</div>
+                    <div class="tl-title">KMCP &mdash; 연구소장 (부서장)</div>
+                    <div class="tl-desc">해양 IoT 플랫폼 (데이터 30만건+). 수소 안전 모니터링. 미국 국제공동연구. 국책과제 3건 총괄. 8명 팀 관리.</div>
+                </div>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-dot" style="background: var(--accent3);"></div>
+                <div class="tl-content">
+                    <div class="tl-year">2016 &mdash; 2020</div>
+                    <div class="tl-title">Geumyang Industry &mdash; 부서장</div>
+                    <div class="tl-desc">선박 엔진 전장설계 양산. 매출 10억&rarr;30억 (3배 성장). DNV/GL TAC 획득. 기업부설연구소 설립. 12명 총괄.</div>
+                </div>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-dot" style="background: var(--text-muted);"></div>
+                <div class="tl-content">
+                    <div class="tl-year">2011 &mdash; 2016</div>
+                    <div class="tl-title">Hohyun / Physiolab / Teleworks</div>
+                    <div class="tl-desc">선박 엔진 전장설계, 센서 개발. 의공학 + Android 모바일 개발. 조선해양 도메인 확립.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background: var(--bg-secondary);">
+    <div class="container">
+        <div class="section-label reveal">Education & Workshop</div>
+        <h2 class="section-title reveal">산업 현장의 AI 실전 교육</h2>
+        <p class="section-desc reveal">이론이 아닌, 내일 당장 업무에 적용할 수 있는 실전 교육.</p>
+        <div class="edu-grid">
+            <div class="edu-card reveal">
+                <span class="edu-type workshop">Workshop</span>
+                <div class="edu-info">
+                    <h3>AI로 PLC 로직 개발하기</h3>
+                    <p>PLC 엔지니어 / 자동화 담당 &mdash; 실습형 4~8시간</p>
+                </div>
+            </div>
+            <div class="edu-card reveal reveal-delay-1">
+                <span class="edu-type workshop">Workshop</span>
+                <div class="edu-info">
+                    <h3>AI로 펌웨어 개발하기</h3>
+                    <p>임베디드 개발자 / IoT 담당 &mdash; 실습형 4~8시간</p>
+                </div>
+            </div>
+            <div class="edu-card reveal reveal-delay-2">
+                <span class="edu-type workshop">Workshop</span>
+                <div class="edu-info">
+                    <h3>AI로 기술문서 작성하기</h3>
+                    <p>설계 / 품질 / 관리 엔지니어 &mdash; 2~4시간</p>
+                </div>
+            </div>
+            <div class="edu-card reveal reveal-delay-3">
+                <span class="edu-type workshop">Workshop</span>
+                <div class="edu-info">
+                    <h3>AI로 도면 읽고 검증하기</h3>
+                    <p>설계 / 시공 / 감리 엔지니어 &mdash; 2~4시간</p>
+                </div>
+            </div>
+            <div class="edu-card reveal reveal-delay-2">
+                <span class="edu-type lecture">Lecture</span>
+                <div class="edu-info">
+                    <h3>산업 엔지니어의 AI 생존 전략</h3>
+                    <p>엔지니어 전체 (경영진 포함) &mdash; 강연 1~2시간</p>
+                </div>
+            </div>
+            <div class="edu-card reveal reveal-delay-3">
+                <span class="edu-type workshop">Hands-on</span>
+                <div class="edu-info">
+                    <h3>Claude Code 실전 마스터</h3>
+                    <p>개발자 / 엔지니어 &mdash; 핸즈온 8시간</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section>
+    <div class="container">
+        <div class="section-label reveal">Achievements</div>
+        <h2 class="section-title reveal">숫자로 증명합니다</h2>
+        <div class="achv-grid" style="margin-top: 40px;">
+            <div class="achv-card reveal">
+                <div class="achv-num">6</div>
+                <div class="achv-label">Patents<br>(등록 3 + 출원 3)</div>
+            </div>
+            <div class="achv-card reveal reveal-delay-1">
+                <div class="achv-num">3</div>
+                <div class="achv-label">National R&D<br>총괄책임</div>
+            </div>
+            <div class="achv-card reveal reveal-delay-2">
+                <div class="achv-num">30억</div>
+                <div class="achv-label">Revenue<br>10억에서 3배 성장</div>
+            </div>
+            <div class="achv-card reveal reveal-delay-3">
+                <div class="achv-num">DNV</div>
+                <div class="achv-label">Type Approval<br>Certificate</div>
+            </div>
+            <div class="achv-card reveal reveal-delay-4">
+                <div class="achv-num">99.6%</div>
+                <div class="achv-label">AI Accuracy<br>교차검증 기반</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-section reveal">
+            <div class="section-label">Contact</div>
+            <h2 class="section-title">함께 만들어갑시다</h2>
+            <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;">
+                교육, 컨설팅, 협업, 또는 그냥 AI 이야기가 하고 싶으시다면 연락주세요.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:djcbs84@outlook.com" class="contact-link">Email</a>
+                <a href="https://github.com/MongoosDay" target="_blank" class="contact-link">GitHub</a>
+                <a href="#" class="contact-link">LinkedIn</a>
+                <a href="#" class="contact-link">YouTube</a>
+                <a href="#" class="contact-link">Brunch</a>
+            </div>
+        </div>
+    </div>
+</section>
 
 <footer>
-    &copy; 2026 MakeField AI (MFAI) &mdash; Nick Choi (Bongsil Choi)<br>
+    &copy; 2026 MakeField AI (MFAI) &mdash; Nick Choi<br>
     "작은 곳에서도 큰 결과를 만드는 사람"
 </footer>
+
+<!-- SCROLL ANIMATIONS -->
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Nav scroll effect
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    const scrollY = window.scrollY;
+    if (scrollY > 100) {
+        nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
+    } else {
+        nav.style.boxShadow = 'none';
+    }
+    lastScroll = scrollY;
+});
+
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('active');
+    });
+});
+</script>
 
 </body>
 </html>
