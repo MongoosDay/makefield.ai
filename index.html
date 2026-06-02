@@ -3,859 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MakeField AI - 현장에 AI를 만든다</title>
-    <meta name="description" content="AI x Industrial Engineering. PLC, 펌웨어, 도면, 제어시스템에서 AI를 실전 활용하는 방법을 만들고 가르칩니다.">
+    <title>MakeField AI - &#xD604;&#xC7A5;&#xC5D0; AI&#xB97C; &#xB9CC;&#xB4E0;&#xB2E4;</title>
+    <meta name="description" content="95%&#xC758; &#xAE30;&#xC5C5;&#xC774; AI &#xB3C4;&#xC785;&#xC5D0; &#xC2E4;&#xD328;&#xD569;&#xB2C8;&#xB2E4;. MakeField AI&#xB294; &#xB3C4;&#xAD6C;&#xAC00; &#xC544;&#xB2CC; &#xC804;&#xD658;&#xC744; &#xC124;&#xACC4;&#xD569;&#xB2C8;&#xB2E4;.">
+    <meta property="og:title" content="MakeField AI - &#xD604;&#xC7A5;&#xC5D0; AI&#xB97C; &#xB9CC;&#xB4E0;&#xB2E4;">
+    <meta property="og:description" content="95%&#xC758; &#xAE30;&#xC5C5;&#xC774; AI &#xB3C4;&#xC785;&#xC5D0; &#xC2E4;&#xD328;&#xD569;&#xB2C8;&#xB2E4;. &#xB3C4;&#xAD6C;&#xB97C; &#xAC00;&#xB974;&#xCE58;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC804;&#xD658;&#xC744; &#xC124;&#xACC4;&#xD569;&#xB2C8;&#xB2E4;.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://makefield.ai">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-primary: #06060b;
-            --bg-secondary: #0d0d14;
-            --bg-card: #13131d;
-            --bg-card-hover: #1a1a28;
-            --text-primary: #e8e8f0;
-            --text-secondary: #8585a0;
-            --text-muted: #4a4a60;
-            --accent: #4f8fff;
-            --accent-glow: rgba(79, 143, 255, 0.12);
-            --accent2: #7c5cff;
-            --accent3: #00d4aa;
-            --accent4: #ff6b6b;
-            --gradient: linear-gradient(135deg, #4f8fff 0%, #7c5cff 50%, #00d4aa 100%);
-            --gradient2: linear-gradient(135deg, #ff6b6b 0%, #7c5cff 100%);
-            --border: rgba(255,255,255,0.05);
-            --border-hover: rgba(79,143,255,0.3);
-            --nav-bg: rgba(6, 6, 11, 0.9);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            color: var(--text-primary);
-            background: var(--bg-primary);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        /* NAV */
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: var(--nav-bg);
-            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--border);
-            transition: all 0.3s;
-        }
-        .nav-inner {
-            max-width: 1200px; margin: 0 auto; padding: 14px 32px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .nav-logo {
-            font-weight: 800; font-size: 1.15em;
-            background: var(--gradient); -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .nav-links { display: flex; gap: 32px; }
-        .nav-links a {
-            color: var(--text-secondary); text-decoration: none;
-            font-size: 0.82em; font-weight: 500; transition: color 0.3s;
-            letter-spacing: 0.03em; text-transform: uppercase;
-        }
-        .nav-links a:hover { color: var(--accent); }
-        .nav-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.5em; cursor: pointer; }
-
-        /* HERO */
-        .hero {
-            position: relative; min-height: 100vh;
-            display: flex; align-items: center; justify-content: center;
-            text-align: center; padding: 140px 24px 100px; overflow: hidden;
-        }
-        .hero-bg {
-            position: absolute; inset: 0;
-            background:
-                radial-gradient(ellipse 90% 60% at 50% -10%, rgba(79,143,255,0.15) 0%, transparent 50%),
-                radial-gradient(ellipse 70% 50% at 85% 85%, rgba(124,92,255,0.1) 0%, transparent 40%),
-                radial-gradient(ellipse 60% 40% at 10% 80%, rgba(0,212,170,0.08) 0%, transparent 40%),
-                radial-gradient(ellipse 40% 30% at 50% 50%, rgba(255,107,107,0.04) 0%, transparent 40%);
-        }
-        .hero-grid {
-            position: absolute; inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-            background-size: 50px 50px;
-            mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 10%, transparent 70%);
-            -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 10%, transparent 70%);
-            animation: grid-drift 20s linear infinite;
-        }
-        @keyframes grid-drift {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-        .hero-particles {
-            position: absolute; inset: 0; overflow: hidden;
-        }
-        .particle {
-            position: absolute; width: 3px; height: 3px; border-radius: 50%;
-            background: var(--accent); opacity: 0;
-            animation: particle-float 6s ease-in-out infinite;
-        }
-        @keyframes particle-float {
-            0% { opacity: 0; transform: translateY(100vh) scale(0); }
-            20% { opacity: 0.6; }
-            80% { opacity: 0.3; }
-            100% { opacity: 0; transform: translateY(-10vh) scale(1.5); }
-        }
-        .hero-content { position: relative; z-index: 2; max-width: 900px; }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 8px 20px; border: 1px solid rgba(79,143,255,0.3);
-            border-radius: 50px; font-size: 0.75em; font-weight: 600;
-            color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase;
-            margin-bottom: 32px; background: var(--accent-glow);
-            animation: badge-pulse 3s ease-in-out infinite;
-        }
-        @keyframes badge-pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(79,143,255,0.2); }
-            50% { box-shadow: 0 0 20px 4px rgba(79,143,255,0.15); }
-        }
-        .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent3); animation: dot-blink 2s ease-in-out infinite; }
-        @keyframes dot-blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
-        .hero h1 {
-            font-size: clamp(2.8em, 7vw, 5em); font-weight: 900;
-            line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.04em;
-        }
-        .hero h1 .gradient-text {
-            background: var(--gradient); -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .hero-sub {
-            font-size: clamp(1.1em, 2.5vw, 1.4em); color: var(--text-primary);
-            font-weight: 300; margin-bottom: 12px; letter-spacing: -0.01em;
-        }
-        .hero-desc {
-            font-size: clamp(0.9em, 1.8vw, 1.05em); color: var(--text-secondary);
-            max-width: 650px; margin: 0 auto 44px; font-weight: 400; line-height: 1.9;
-        }
-        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 16px 32px; border-radius: 14px; font-size: 0.9em;
-            font-weight: 600; text-decoration: none; transition: all 0.3s; cursor: pointer; border: none;
-        }
-        .btn-primary {
-            background: var(--gradient); color: white;
-            box-shadow: 0 4px 24px rgba(79,143,255,0.35);
-        }
-        .btn-primary:hover { box-shadow: 0 8px 40px rgba(79,143,255,0.5); transform: translateY(-3px); }
-        .btn-secondary {
-            background: rgba(255,255,255,0.04); color: var(--text-primary);
-            border: 1px solid var(--border); backdrop-filter: blur(10px);
-        }
-        .btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: var(--accent); transform: translateY(-3px); }
-        .btn-arrow { transition: transform 0.3s; }
-        .btn:hover .btn-arrow { transform: translateX(4px); }
-
-        /* MARQUEE */
-        .marquee-wrap {
-            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-            padding: 20px 0; overflow: hidden; white-space: nowrap;
-        }
-        .marquee {
-            display: inline-block; animation: marquee 30s linear infinite;
-            font-family: 'JetBrains Mono', monospace; font-size: 0.8em;
-            color: var(--text-muted); letter-spacing: 0.05em;
-        }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .marquee span { margin: 0 32px; }
-        .marquee .highlight { color: var(--accent); font-weight: 500; }
-
-        /* STATS */
-        .stats-bar {
-            display: grid; grid-template-columns: repeat(6, 1fr);
-            gap: 1px; background: var(--border); margin: 0;
-        }
-        .stat-item {
-            text-align: center; padding: 40px 16px; background: var(--bg-primary);
-            transition: all 0.3s;
-        }
-        .stat-item:hover { background: var(--bg-card); }
-        .stat-num {
-            font-size: 2.2em; font-weight: 900;
-            background: var(--gradient); -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .stat-label { font-size: 0.72em; color: var(--text-muted); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.12em; }
-
-        /* SECTIONS */
-        section { padding: 120px 24px; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .section-label {
-            font-size: 0.72em; font-weight: 700; color: var(--accent);
-            text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 12px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .section-title {
-            font-size: clamp(2em, 4.5vw, 3em); font-weight: 900;
-            margin-bottom: 16px; letter-spacing: -0.03em; line-height: 1.15;
-        }
-        .section-desc {
-            font-size: 1.05em; color: var(--text-secondary); max-width: 640px;
-            margin-bottom: 56px; line-height: 1.9;
-        }
-
-        /* ABOUT - SPLIT */
-        .about-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
-        .about-text { font-size: 0.95em; color: var(--text-secondary); line-height: 2; }
-        .about-text strong { color: var(--text-primary); font-weight: 600; }
-        .about-highlight {
-            background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
-            padding: 32px; margin-top: 24px;
-        }
-        .about-highlight h4 { font-size: 0.85em; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
-        .about-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-        .about-tag {
-            padding: 6px 14px; border-radius: 8px; font-size: 0.75em; font-weight: 500;
-            background: rgba(79,143,255,0.08); color: var(--accent); border: 1px solid rgba(79,143,255,0.15);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* AI PLATFORM SECTION */
-        .platform-hero {
-            background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px;
-            padding: 48px; margin-bottom: 40px; position: relative; overflow: hidden;
-        }
-        .platform-hero::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-            background: var(--gradient);
-        }
-        .platform-hero h3 { font-size: 1.3em; font-weight: 700; margin-bottom: 12px; }
-        .platform-hero p { color: var(--text-secondary); font-size: 0.95em; line-height: 1.8; max-width: 700px; }
-        .platform-stats {
-            display: flex; gap: 40px; margin-top: 24px; flex-wrap: wrap;
-        }
-        .ps-item { }
-        .ps-num { font-size: 1.4em; font-weight: 800; color: var(--accent); font-family: 'JetBrains Mono', monospace; }
-        .ps-label { font-size: 0.75em; color: var(--text-muted); }
-
-        .ai-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .ai-card {
-            background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
-            padding: 36px 28px; transition: all 0.4s; position: relative; overflow: hidden;
-        }
-        .ai-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: var(--gradient); opacity: 0; transition: opacity 0.3s;
-        }
-        .ai-card:hover { transform: translateY(-8px); border-color: var(--border-hover); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
-        .ai-card:hover::before { opacity: 1; }
-        .ai-icon { font-size: 2.2em; margin-bottom: 20px; display: block; }
-        .ai-card h3 { font-size: 1.05em; font-weight: 700; margin-bottom: 10px; }
-        .ai-card p { font-size: 0.83em; color: var(--text-secondary); line-height: 1.8; }
-        .ai-card ul { list-style: none; margin-top: 14px; }
-        .ai-card ul li {
-            font-size: 0.78em; color: var(--text-muted); padding: 3px 0;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .ai-card ul li::before { content: '> '; color: var(--accent); }
-
-        /* CAREER */
-        .timeline { position: relative; padding-left: 40px; }
-        .timeline::before {
-            content: ''; position: absolute; left: 16px; top: 0; bottom: 0; width: 2px;
-            background: linear-gradient(to bottom, var(--accent), var(--accent2), var(--accent3), var(--text-muted));
-        }
-        .tl-item { padding: 32px 0; position: relative; }
-        .tl-dot {
-            position: absolute; left: -32px; top: 38px;
-            width: 14px; height: 14px; border-radius: 50%; z-index: 2;
-            box-shadow: 0 0 16px rgba(79,143,255,0.5);
-        }
-        .tl-year { font-family: 'JetBrains Mono', monospace; font-size: 0.8em; color: var(--accent); margin-bottom: 6px; letter-spacing: 0.05em; }
-        .tl-title { font-size: 1.2em; font-weight: 800; margin-bottom: 8px; }
-        .tl-role { font-size: 0.85em; color: var(--accent3); font-weight: 600; margin-bottom: 8px; }
-        .tl-desc { font-size: 0.88em; color: var(--text-secondary); line-height: 1.8; }
-        .tl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-        .tl-tag {
-            padding: 3px 10px; border-radius: 6px; font-size: 0.7em;
-            background: rgba(255,255,255,0.04); color: var(--text-muted); border: 1px solid var(--border);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* EDUCATION */
-        .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
-        .edu-card {
-            background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
-            padding: 28px; display: flex; gap: 18px; align-items: flex-start; transition: all 0.3s;
-        }
-        .edu-card:hover { border-color: var(--border-hover); transform: translateX(8px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
-        .edu-type {
-            padding: 8px 14px; border-radius: 10px; font-size: 0.68em; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.08em; flex-shrink: 0; margin-top: 2px;
-        }
-        .edu-type.workshop { background: rgba(79,143,255,0.12); color: var(--accent); }
-        .edu-type.lecture { background: rgba(0,212,170,0.12); color: var(--accent3); }
-        .edu-type.handson { background: rgba(124,92,255,0.12); color: var(--accent2); }
-        .edu-info h3 { font-size: 0.95em; font-weight: 700; margin-bottom: 6px; }
-        .edu-info p { font-size: 0.8em; color: var(--text-secondary); }
-
-        /* PHILOSOPHY */
-        .phil-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .phil-card {
-            background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
-            padding: 36px 28px; transition: all 0.4s; text-align: center;
-        }
-        .phil-card:hover { transform: translateY(-6px); border-color: var(--border-hover); }
-        .phil-num { font-size: 3em; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 16px; }
-        .phil-card h3 { font-size: 1em; font-weight: 700; margin-bottom: 8px; }
-        .phil-card p { font-size: 0.83em; color: var(--text-secondary); line-height: 1.7; }
-
-        /* CONTACT */
-        .contact-section {
-            text-align: center; background: var(--bg-secondary); border-radius: 28px;
-            padding: 80px 40px; border: 1px solid var(--border); position: relative; overflow: hidden;
-        }
-        .contact-section::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 50% 0%, rgba(79,143,255,0.1) 0%, transparent 50%),
-                        radial-gradient(ellipse at 50% 100%, rgba(0,212,170,0.05) 0%, transparent 50%);
-        }
-        .contact-section > * { position: relative; z-index: 2; }
-        .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
-        .contact-link {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 14px 28px; border-radius: 14px; background: var(--bg-card);
-            border: 1px solid var(--border); color: var(--text-primary); text-decoration: none;
-            font-size: 0.88em; font-weight: 500; transition: all 0.3s;
-        }
-        .contact-link:hover { border-color: var(--accent); background: var(--bg-card-hover); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-
-        /* FOOTER */
-        footer { text-align: center; padding: 40px 24px; color: var(--text-muted); font-size: 0.78em; border-top: 1px solid var(--border); }
-        footer .gradient-text { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; }
-
-        /* ANIMATIONS */
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        .reveal-left { opacity: 0; transform: translateX(-50px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal-left.visible { opacity: 1; transform: translateX(0); }
-        .reveal-right { opacity: 0; transform: translateX(50px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal-right.visible { opacity: 1; transform: translateX(0); }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
-        .reveal-delay-5 { transition-delay: 0.5s; }
-
-        /* RESPONSIVE */
-        @media (max-width: 900px) {
-            .ai-grid { grid-template-columns: 1fr; }
-            .phil-grid { grid-template-columns: 1fr; }
-            .about-split { grid-template-columns: 1fr; gap: 32px; }
-            .stats-bar { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--nav-bg); backdrop-filter: blur(20px); padding: 20px 24px; gap: 16px; border-bottom: 1px solid var(--border); }
-            .nav-toggle { display: block; }
-            .stats-bar { grid-template-columns: repeat(2, 1fr); }
-            .hero { padding-top: 100px; }
-            .edu-grid { grid-template-columns: 1fr; }
-            .platform-hero { padding: 28px; }
-        }
+        :root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--bg-card-hover:#1a1a28;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent2:#7c5cff;--accent3:#00d4aa;--accent4:#ff6b6b;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--gradient2:linear-gradient(135deg,#ff6b6b 0%,#7c5cff 100%);--border:rgba(255,255,255,0.05);--border-hover:rgba(79,143,255,0.3);--nav-bg:rgba(6,6,11,0.9)}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',-apple-system,sans-serif;color:var(--text-primary);background:var(--bg-primary);line-height:1.7;overflow-x:hidden}
+        nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:all .3s}
+        .nav-inner{max-width:1200px;margin:0 auto;padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
+        .nav-logo{font-weight:800;font-size:1.15em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .nav-links{display:flex;gap:28px}.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:.8em;font-weight:500;transition:color .3s;letter-spacing:.03em;text-transform:uppercase}.nav-links a:hover{color:var(--accent)}
+        .nav-toggle{display:none;background:none;border:none;color:var(--text-primary);font-size:1.5em;cursor:pointer}
+        .container{max-width:1100px;margin:0 auto;padding:0 24px}section{padding:100px 0}
+        .section-label{font-size:.72em;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:12px}
+        .section-title{font-size:clamp(1.8em,4vw,2.6em);font-weight:800;line-height:1.3;margin-bottom:20px;letter-spacing:-.02em}
+        .section-desc{font-size:1em;color:var(--text-secondary);max-width:700px;line-height:1.9;margin-bottom:48px}
+        .gradient-text{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .btn{display:inline-block;padding:14px 32px;border-radius:8px;font-weight:600;font-size:.9em;text-decoration:none;transition:all .3s;letter-spacing:.02em}
+        .btn-primary{background:var(--gradient);color:#fff;box-shadow:0 4px 20px rgba(79,143,255,.3)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(79,143,255,.45)}
+        .btn-secondary{background:transparent;color:var(--text-primary);border:1px solid rgba(255,255,255,.15)}.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+        .btn-survey{background:linear-gradient(135deg,#00d4aa 0%,#4f8fff 100%);color:#fff;box-shadow:0 4px 20px rgba(0,212,170,.3);font-size:1.05em;padding:16px 40px}.btn-survey:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(0,212,170,.45)}
+        .reveal,.reveal-left,.reveal-right{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.16,1,.3,1)}.reveal-left{transform:translateX(-40px)}.reveal-right{transform:translateX(40px)}
+        .reveal.visible,.reveal-left.visible,.reveal-right.visible{opacity:1;transform:none}.reveal-delay-1{transition-delay:.12s}.reveal-delay-2{transition-delay:.24s}.reveal-delay-3{transition-delay:.36s}
+        .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 24px 100px;overflow:hidden}
+        .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 60% at 50% -10%,rgba(79,143,255,.15) 0%,transparent 50%),radial-gradient(ellipse 70% 50% at 85% 85%,rgba(124,92,255,.1) 0%,transparent 40%),radial-gradient(ellipse 60% 40% at 10% 80%,rgba(0,212,170,.08) 0%,transparent 40%)}
+        .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 10%,transparent 70%);animation:gd 20s linear infinite}
+        @keyframes gd{0%{transform:translate(0,0)}100%{transform:translate(50px,50px)}}
+        .hero-particles{position:absolute;inset:0;overflow:hidden}.particle{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--accent);opacity:0;animation:pf 6s ease-in-out infinite}
+        @keyframes pf{0%{opacity:0;transform:translateY(100vh)}20%{opacity:.6}80%{opacity:.3}100%{opacity:0;transform:translateY(-20vh)}}
+        .hero-content{position:relative;z-index:2;max-width:800px}
+        .hero-badge{display:inline-block;padding:6px 18px;border-radius:20px;background:rgba(255,107,107,.12);border:1px solid rgba(255,107,107,.25);color:var(--accent4);font-size:.78em;font-weight:600;margin-bottom:28px;letter-spacing:.03em}
+        .hero h1{font-size:clamp(2.2em,5.5vw,3.6em);font-weight:900;line-height:1.15;margin-bottom:24px;letter-spacing:-.03em}
+        .hero-sub{font-size:clamp(1em,2vw,1.2em);color:var(--text-secondary);line-height:1.8;margin-bottom:40px;max-width:620px;margin-left:auto;margin-right:auto}
+        .hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+        .problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px}
+        .problem-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;transition:all .3s}.problem-card:hover{border-color:var(--border-hover);background:var(--bg-card-hover)}
+        .problem-num{font-family:'JetBrains Mono',monospace;font-size:2.4em;font-weight:700;background:var(--gradient2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+        .problem-card h3{font-size:1.05em;margin-bottom:10px;font-weight:700}.problem-card p{color:var(--text-secondary);font-size:.88em;line-height:1.7}.problem-source{font-size:.72em;color:var(--text-muted);margin-top:10px}
+        .phase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:40px}
+        .phase-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all .3s}.phase-card:hover{border-color:var(--border-hover);transform:translateY(-4px)}
+        .phase-num{font-family:'JetBrains Mono',monospace;font-size:.75em;font-weight:700;color:var(--accent);margin-bottom:12px;letter-spacing:.1em}
+        .phase-card h3{font-size:1.1em;margin-bottom:10px;font-weight:700}.phase-card p{color:var(--text-secondary);font-size:.85em;line-height:1.7}
+        .proof-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;margin:40px 0}
+        .proof-stat{text-align:center;padding:24px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+        .proof-stat .num{font-family:'JetBrains Mono',monospace;font-size:2em;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .proof-stat .label{color:var(--text-secondary);font-size:.78em;margin-top:4px}
+        .proof-quote{text-align:center;font-size:1.1em;font-style:italic;color:var(--text-secondary);max-width:700px;margin:40px auto 0;line-height:1.8;padding:32px;border-left:3px solid var(--accent);background:var(--bg-card);border-radius:0 12px 12px 0}
+        .edu-track{margin-bottom:48px}.edu-track-label{display:inline-block;padding:6px 16px;border-radius:6px;font-size:.75em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}
+        .track-a{background:rgba(79,143,255,.15);color:var(--accent);border:1px solid rgba(79,143,255,.3)}.track-b{background:rgba(124,92,255,.15);color:var(--accent2);border:1px solid rgba(124,92,255,.3)}
+        .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+        .edu-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px;transition:all .3s;display:flex;flex-direction:column;gap:12px}.edu-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
+        .edu-type{display:inline-block;padding:4px 12px;border-radius:6px;font-size:.7em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;width:fit-content}
+        .edu-type.core{background:rgba(0,212,170,.15);color:var(--accent3)}.edu-type.workshop{background:rgba(124,92,255,.15);color:var(--accent2)}.edu-type.keynote{background:rgba(79,143,255,.15);color:var(--accent)}.edu-type.master{background:rgba(255,107,107,.15);color:var(--accent4)}
+        .edu-card h3{font-size:1.05em;font-weight:700}.edu-card p{color:var(--text-secondary);font-size:.85em;line-height:1.7}.edu-card .edu-meta{font-size:.75em;color:var(--text-muted);margin-top:auto}
+        .sample-badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:.65em;font-weight:600;background:rgba(124,92,255,.1);color:var(--accent2);border:1px solid rgba(124,92,255,.2);margin-left:8px;vertical-align:middle}
+        .survey-section{text-align:center;padding:80px 24px;background:linear-gradient(180deg,var(--bg-secondary) 0%,var(--bg-primary) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+        .survey-section h2{font-size:clamp(1.6em,3.5vw,2.2em);font-weight:800;margin-bottom:16px}.survey-section p{color:var(--text-secondary);max-width:600px;margin:0 auto 32px;line-height:1.8}
+        .survey-features{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}.survey-feature{display:flex;align-items:center;gap:8px;font-size:.85em;color:var(--text-secondary)}.survey-feature .check{color:var(--accent3);font-size:1.1em}
+        .about-compact{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}.about-text{color:var(--text-secondary);line-height:1.9;font-size:.92em}.about-text strong{color:var(--text-primary)}
+        .about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.about-tag{padding:5px 14px;border-radius:6px;font-size:.72em;font-weight:500;background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary)}
+        .tl-compact{display:flex;flex-direction:column;gap:20px}.tl-item-c{padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+        .tl-item-c .year{font-family:'JetBrains Mono',monospace;font-size:.72em;color:var(--accent);margin-bottom:4px}.tl-item-c .title{font-weight:700;font-size:.95em}.tl-item-c .desc{color:var(--text-secondary);font-size:.82em;margin-top:4px}
+        .contact-section{text-align:center}.contact-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+        .contact-link{padding:12px 28px;border:1px solid var(--border);border-radius:8px;color:var(--text-secondary);text-decoration:none;font-size:.88em;font-weight:500;transition:all .3s}.contact-link:hover{border-color:var(--accent);color:var(--accent)}
+        footer{padding:40px 24px;text-align:center;color:var(--text-muted);font-size:.78em;border-top:1px solid var(--border)}
+        @media(max-width:768px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--nav-bg);padding:20px;gap:16px;border-bottom:1px solid var(--border)}.nav-links.active{display:flex}.nav-toggle{display:block}.hero h1{font-size:2em}.about-compact{grid-template-columns:1fr}.hero-btns{flex-direction:column;align-items:center}.survey-features{flex-direction:column;align-items:center}}
     </style>
 </head>
 <body>
-
-<nav>
-    <div class="nav-inner">
-        <div class="nav-logo">MakeField AI</div>
-        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#platform">AI Platform</a>
-            <a href="#career">Career</a>
-            <a href="#education">Education</a>
-            <a href="#philosophy">Approach</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </div>
-</nav>
+<nav><div class="nav-inner"><div class="nav-logo">MakeField AI</div><button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button><div class="nav-links"><a href="#problem">Why</a><a href="#solution">Solution</a><a href="#proof">Proof</a><a href="#education">Programs</a><a href="#survey">Survey</a><a href="#about">About</a><a href="#contact">Contact</a></div></div></nav>
 
 <!-- HERO -->
-<section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-particles" id="particles"></div>
-    <div class="hero-content">
-        <div class="hero-badge"><div class="badge-dot"></div> AI x Industrial Engineering</div>
-        <h1><span class="gradient-text">현장에 AI를</span><br>만든다.</h1>
-        <p class="hero-sub">Industrial AI Architect &amp; Educator</p>
-        <p class="hero-desc">
-            Copilot이 없는 세계 &mdash; PLC, 펌웨어, 산업용 도면, 제어 시스템.<br>
-            그곳에서 AI를 실전 활용하는 프레임워크를 설계하고,<br>
-            멀티 에이전트 오케스트레이션 시스템을 직접 구축합니다.
-        </p>
-        <div class="hero-buttons">
-            <a href="#platform" class="btn btn-primary">AI Platform <span class="btn-arrow">&rarr;</span></a>
-            <a href="#education" class="btn btn-secondary">Education &amp; Workshop</a>
-            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-        </div>
+<section class="hero"><div class="hero-bg"></div><div class="hero-grid"></div><div class="hero-particles" id="particles"></div>
+<div class="hero-content">
+    <div class="hero-badge">95%의 기업이 AI 도입에 실패합니다</div>
+    <h1>도구를 가르치지 않습니다.<br><span class="gradient-text">전환을 설계합니다.</span></h1>
+    <p class="hero-sub">ChatGPT 사용법을 가르치는 시대는 끝났습니다.<br>15년 현장 경험에서 검증된 AI 전환 방법론으로,<br>산업 현장의 실질적인 변화를 만듭니다.</p>
+    <div class="hero-btns">
+        <a href="#solution" class="btn btn-primary">AI 전환 방법론 보기</a>
+        <a href="#survey" class="btn btn-survey">우리 회사 AI 진단 &rarr;</a>
+        <a href="#contact" class="btn btn-secondary">문의하기</a>
     </div>
-</section>
+</div></section>
 
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-    <div class="marquee">
-        <span class="highlight">PLC LOGIC</span><span>&#x2022;</span>
-        <span>EMBEDDED FIRMWARE</span><span>&#x2022;</span>
-        <span class="highlight">P&amp;ID DRAWINGS</span><span>&#x2022;</span>
-        <span>MULTI-AGENT ORCHESTRATION</span><span>&#x2022;</span>
-        <span class="highlight">CONTROL SYSTEMS</span><span>&#x2022;</span>
-        <span>HYDROGEN ENERGY</span><span>&#x2022;</span>
-        <span class="highlight">INDUSTRIAL IoT</span><span>&#x2022;</span>
-        <span>MODBUS / CAN / J1939</span><span>&#x2022;</span>
-        <span class="highlight">DNV TYPE APPROVAL</span><span>&#x2022;</span>
-        <span>FUNCTIONAL SAFETY</span><span>&#x2022;</span>
-        <span class="highlight">PLC LOGIC</span><span>&#x2022;</span>
-        <span>EMBEDDED FIRMWARE</span><span>&#x2022;</span>
-        <span class="highlight">P&amp;ID DRAWINGS</span><span>&#x2022;</span>
-        <span>MULTI-AGENT ORCHESTRATION</span><span>&#x2022;</span>
-        <span class="highlight">CONTROL SYSTEMS</span><span>&#x2022;</span>
-        <span>HYDROGEN ENERGY</span><span>&#x2022;</span>
-        <span class="highlight">INDUSTRIAL IoT</span><span>&#x2022;</span>
-        <span>MODBUS / CAN / J1939</span><span>&#x2022;</span>
-        <span class="highlight">DNV TYPE APPROVAL</span><span>&#x2022;</span>
-        <span>FUNCTIONAL SAFETY</span><span>&#x2022;</span>
+<!-- PROBLEM -->
+<section id="problem" style="background:var(--bg-secondary)"><div class="container">
+    <div class="section-label reveal">The Problem</div>
+    <h2 class="section-title reveal">왜 대부분의 기업이<br>AI 도입에 실패하는가</h2>
+    <p class="section-desc reveal">AI 도구를 구매하고, 직원들에게 "알아서 써라"고 말합니다.<br>3개월 후, 대부분은 "우리 업무에는 안 맞아"라고 결론 내립니다.<br>문제는 AI가 아닙니다. <strong>접근 방식</strong>이 틀렸습니다.</p>
+    <div class="problem-grid">
+        <div class="problem-card reveal"><div class="problem-num">42%</div><h3>AI 프로젝트를 포기한 기업</h3><p>도입했지만 ROI를 달성하지 못해 프로젝트를 중단. 가장 큰 원인은 데이터 품질 문제(43%).</p><div class="problem-source">Deloitte State of AI 2026</div></div>
+        <div class="problem-card reveal reveal-delay-1"><div class="problem-num">82%</div><h3>"프롬프트만으로는 부족하다"</h3><p>IT 리더 82%가 프롬프트 엔지니어링만으로는 실질적 성과를 낼 수 없다고 응답. AI 성능은 도구가 아니라 데이터가 결정.</p><div class="problem-source">2026 Context Management Report</div></div>
+        <div class="problem-card reveal reveal-delay-2"><div class="problem-num">5.3%</div><h3>한국 중소기업 AI 도입률</h3><p>대기업(49.2%) 대비 극도로 낮은 도입률. 최대 장벽: "AI가 우리 사업에 어떤 도움이 되는가"에 대한 체감 부족.</p><div class="problem-source">대한상공회의소 2025</div></div>
     </div>
-</div>
+</div></section>
 
-<!-- STATS -->
-<div class="stats-bar">
-    <div class="stat-item reveal"><div class="stat-num" data-count="15">0</div><div class="stat-label">Years in Field</div></div>
-    <div class="stat-item reveal reveal-delay-1"><div class="stat-num" data-count="6">0</div><div class="stat-label">Patents Filed</div></div>
-    <div class="stat-item reveal reveal-delay-2"><div class="stat-num" data-count="3">0</div><div class="stat-label">National R&amp;D Led</div></div>
-    <div class="stat-item reveal reveal-delay-3"><div class="stat-num">3x</div><div class="stat-label">Revenue Growth</div></div>
-    <div class="stat-item reveal reveal-delay-4"><div class="stat-num">210K+</div><div class="stat-label">Lines of AI KB</div></div>
-    <div class="stat-item reveal reveal-delay-5"><div class="stat-num" data-count="9">0</div><div class="stat-label">AI Agents Built</div></div>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-    <div class="container">
-        <div class="about-split">
-            <div class="reveal-left">
-                <div class="section-label">About</div>
-                <h2 class="section-title">"복잡한 것을<br>질서로 바꾸는 사람"</h2>
-                <p class="about-text">
-                    15년간 <strong>선박 엔진 전장</strong>에서 시작해, <strong>해양 IoT 플랫폼</strong>을 거쳐,
-                    <strong>그린수소 제어 시스템</strong>까지 &mdash; 설계, 제작, 코딩, 시운전을 직접 수행해온
-                    산업 시스템 아키텍트입니다.<br><br>
-                    20명 규모의 엔지니어링 조직을 구축하고 이끌었으며,
-                    국책 R&amp;D 과제를 기획부터 완료까지 총괄했습니다.
-                    국제 선급(DNV/GL) 인증을 획득하고, 미국과의 국제공동연구를 수행했습니다.<br><br>
-                    현재는 <strong>AI를 산업 현장에 이식</strong>하는 데 집중하고 있습니다.
-                    단순 코딩 보조가 아닌, <strong>도면을 읽고, PLC 로직을 분석하고,
-                    멀티 에이전트 시스템으로 엔지니어링 워크플로 전체를 자동화</strong>하는
-                    프레임워크를 직접 설계하고 운영합니다.
-                </p>
-            </div>
-            <div class="reveal-right">
-                <div class="about-highlight">
-                    <h4>Core Expertise</h4>
-                    <div class="about-tags">
-                        <span class="about-tag">System Architecture</span>
-                        <span class="about-tag">PLC / IEC 61131-3</span>
-                        <span class="about-tag">Embedded (STM32/ESP32)</span>
-                        <span class="about-tag">Industrial Communication</span>
-                        <span class="about-tag">Hydrogen / ESS</span>
-                        <span class="about-tag">P&amp;ID / SLD / CRD</span>
-                        <span class="about-tag">Functional Safety</span>
-                        <span class="about-tag">DNV Type Approval</span>
-                    </div>
-                </div>
-                <div class="about-highlight" style="margin-top: 16px;">
-                    <h4>AI / Automation Stack</h4>
-                    <div class="about-tags">
-                        <span class="about-tag">Multi-Agent Orchestration</span>
-                        <span class="about-tag">AI Drawing Analysis</span>
-                        <span class="about-tag">Knowledge Base (400+ docs)</span>
-                        <span class="about-tag">PDCA Cross-Verification</span>
-                        <span class="about-tag">Claude Code / Agent SDK</span>
-                        <span class="about-tag">Automated QA Pipeline</span>
-                        <span class="about-tag">FTS5 Search Engine</span>
-                        <span class="about-tag">CI/CD for Documents</span>
-                    </div>
-                </div>
-                <div class="about-highlight" style="margin-top: 16px;">
-                    <h4>Communication Protocols</h4>
-                    <div class="about-tags">
-                        <span class="about-tag">Modbus TCP/RTU</span>
-                        <span class="about-tag">CAN 2.0B</span>
-                        <span class="about-tag">SAE J1939</span>
-                        <span class="about-tag">NMEA 0183/2000</span>
-                        <span class="about-tag">RS232/422/485</span>
-                        <span class="about-tag">BLE / LoRa / LTE</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- SOLUTION -->
+<section id="solution"><div class="container">
+    <div class="section-label reveal">The Solution</div>
+    <h2 class="section-title reveal">AI 증폭 전략<br><span class="gradient-text">4 Phase Framework</span></h2>
+    <p class="section-desc reveal">도구 사용법을 가르치는 대신, <strong>업무 지식을 AI가 활용할 수 있는 형태로 전환</strong>합니다.<br>직원을 대체하는 AI가 아니라, 직원을 <strong>10배로 증폭</strong>하는 AI.<br>100명이 10개씩 하던 일을 100개씩 하게 만드는 체계적 방법론입니다.</p>
+    <div class="phase-grid">
+        <div class="phase-card reveal"><div class="phase-num">PHASE 1</div><h3>지식 정형화</h3><p>직원들의 암묵지(경험, 노하우, 감)를 형식지(문서, 데이터, 규칙)로 전환합니다. AI 도구 사용법은 이 단계에서 가르치지 않습니다.</p></div>
+        <div class="phase-card reveal reveal-delay-1"><div class="phase-num">PHASE 2</div><h3>중앙 지식 DB</h3><p>정형화된 지식을 중앙 시스템에 통합합니다. 부서별 프로세스 맵, 의사결정 규칙, 트러블슈팅 DB가 하나로 연결됩니다.</p></div>
+        <div class="phase-card reveal reveal-delay-2"><div class="phase-num">PHASE 3</div><h3>AI 시스템 내재화</h3><p>축적된 지식 위에 AI 워크플로우를 구축합니다. 직원은 기술을 이해할 필요 없이 ERP처럼 사용합니다.</p></div>
+        <div class="phase-card reveal reveal-delay-3"><div class="phase-num">PHASE 4</div><h3>증폭 수확</h3><p>1인당 생산성 3~10배. 신규 채용 없이 사업을 확장하고, 핵심 인력 퇴사해도 지식은 시스템에 보존됩니다.</p></div>
     </div>
-</section>
+    <div class="proof-quote reveal" style="margin-top:48px">"덜 똑똑한 AI + 좋은 데이터가,<br>똑똑한 AI + 나쁜 데이터를 이깁니다.<br>직원들의 업무 지식을 정형화하는 것이 모든 AI 전략의 시작점입니다."</div>
+</div></section>
 
-<!-- AI PLATFORM -->
-<section id="platform" style="background: var(--bg-secondary);">
-    <div class="container">
-        <div class="section-label reveal">AI Platform</div>
-        <h2 class="section-title reveal">9개의 AI 에이전트.<br>21만 줄의 지식 베이스.<br>하나의 오케스트레이션.</h2>
-        <p class="section-desc reveal">
-            채팅창에 질문하는 수준이 아닙니다.<br>
-            설계, 로직, QA, 기획, 투자, 비서 &mdash; 각 전문 에이전트가 독립적으로 동작하고,<br>
-            오케스트레이터가 전체를 조율하는 멀티 에이전트 시스템을 직접 구축했습니다.
-        </p>
-
-        <div class="platform-hero reveal">
-            <h3>Multi-Agent Orchestration System</h3>
-            <p>
-                9개의 전문 에이전트(설계/로직/QA/비서/기획/투자 등)가 각자의 KB를 보유하고,
-                중앙 Brain DB(SQLite FTS5)를 통해 지식을 공유합니다.
-                PDCA 동적 모델로 품질을 보증하고, 에이전트 간 핸드오프 프로토콜로 협업합니다.
-            </p>
-            <div class="platform-stats">
-                <div class="ps-item"><div class="ps-num">9</div><div class="ps-label">Specialized Agents</div></div>
-                <div class="ps-item"><div class="ps-num">400+</div><div class="ps-label">Knowledge Base Files</div></div>
-                <div class="ps-item"><div class="ps-num">210,000+</div><div class="ps-label">Lines of Knowledge</div></div>
-                <div class="ps-item"><div class="ps-num">99.6%</div><div class="ps-label">Verification Accuracy</div></div>
-            </div>
-        </div>
-
-        <div class="ai-grid">
-            <div class="ai-card reveal">
-                <span class="ai-icon">&#9881;</span>
-                <h3>PLC Logic Engineering</h3>
-                <p>IEC 61131-3 구조화 텍스트를 AI로 분석, 생성, 검증합니다. EXP 파일을 추출하여 AI가 분석하고, 수정된 코드를 다시 Import하는 파이프라인을 구축했습니다.</p>
-                <ul>
-                    <li>ABB AC500 / Codesys</li>
-                    <li>61개 EXP 파일 자동 파싱</li>
-                    <li>시퀀스 로직 자동 검증</li>
-                    <li>변수 교차 참조 분석</li>
-                </ul>
-            </div>
-            <div class="ai-card reveal reveal-delay-1">
-                <span class="ai-icon">&#9889;</span>
-                <h3>Embedded Firmware</h3>
-                <p>VSCode + PlatformIO 환경에서 AI와 실시간으로 펌웨어를 개발합니다. MCU 선정부터 통신 프로토콜 구현, OTA 업데이트까지.</p>
-                <ul>
-                    <li>STM32 / ESP32 / AVR</li>
-                    <li>FreeRTOS / Bare-metal</li>
-                    <li>CAN / Modbus / J1939</li>
-                    <li>SPI / I2C / UART 드라이버</li>
-                </ul>
-            </div>
-            <div class="ai-card reveal reveal-delay-2">
-                <span class="ai-icon">&#9638;</span>
-                <h3>AI Drawing Analysis</h3>
-                <p>산업용 도면(P&amp;ID, SLD, 결선도)을 AI로 파싱하고 분석합니다. DXF 레이어를 분해하여 심볼을 인식하고, IO Map을 자동 추출합니다.</p>
-                <ul>
-                    <li>DXF 파싱 + 심볼 인식 117종</li>
-                    <li>P&amp;ID &rarr; IO Map 자동 생성</li>
-                    <li>도면 간 교차검증 자동화</li>
-                    <li>와이어 523개 트레이싱</li>
-                </ul>
-            </div>
-            <div class="ai-card reveal reveal-delay-1">
-                <span class="ai-icon">&#9998;</span>
-                <h3>Technical Documents</h3>
-                <p>기술 문서를 AI로 작성하되, PDCA 교차검증 프로세스로 할루시네이션을 체계적으로 통제합니다. 99.6%의 정확도를 달성했습니다.</p>
-                <ul>
-                    <li>코드 &harr; 문서 &harr; 도면 3중 검증</li>
-                    <li>할루시네이션 자동 탐지</li>
-                    <li>.docx 자동 생성 파이프라인</li>
-                    <li>Notion 미러링 자동화</li>
-                </ul>
-            </div>
-            <div class="ai-card reveal reveal-delay-2">
-                <span class="ai-icon">&#127891;</span>
-                <h3>Automated QA System</h3>
-                <p>AI가 생성한 모든 산출물을 자동으로 검수하는 QA 에이전트를 구축했습니다. 6차원 품질 매트릭스와 8개 검사기로 구성됩니다.</p>
-                <ul>
-                    <li>DQ 6차원 품질 평가</li>
-                    <li>8개 자동 검사기</li>
-                    <li>KB 품질 점수 자동 산출</li>
-                    <li>런타임 에러 자동 수집</li>
-                </ul>
-            </div>
-            <div class="ai-card reveal reveal-delay-3">
-                <span class="ai-icon">&#128302;</span>
-                <h3>Agent Orchestration</h3>
-                <p>설계, 로직, QA, 기획, 비서 등 9개 전문 에이전트를 중앙에서 조율하는 오케스트레이션 시스템. ISO 품질경영 원칙을 AI에 적용했습니다.</p>
-                <ul>
-                    <li>Level 0~2 자동 라우팅</li>
-                    <li>Agent Brain (FTS5 중앙 DB)</li>
-                    <li>핸드오프 프로토콜</li>
-                    <li>PDCA 동적 에스컬레이션</li>
-                </ul>
-            </div>
-        </div>
+<!-- PROOF (동적 수치) -->
+<section id="proof" style="background:var(--bg-secondary)"><div class="container">
+    <div class="section-label reveal">The Proof</div>
+    <h2 class="section-title reveal">직접 해봤습니다.<br><span class="gradient-text"><span id="days-count">0</span>일째 진행 중.</span></h2>
+    <p class="section-desc reveal">이론이 아닙니다. 15년차 산업 엔지니어가 현장 업무에서<br>AI 전환 방법론을 직접 적용하고, 측정하고, 검증하고 있는 현재 진행형 기록입니다.</p>
+    <div class="proof-stats">
+        <div class="proof-stat reveal"><div class="num" id="stat-agents">0</div><div class="label">AI 에이전트 구축</div></div>
+        <div class="proof-stat reveal reveal-delay-1"><div class="num" id="stat-kb">0</div><div class="label">지식 베이스 문서</div></div>
+        <div class="proof-stat reveal reveal-delay-2"><div class="num" id="stat-lines">0</div><div class="label">줄의 정형화된 지식</div></div>
+        <div class="proof-stat reveal reveal-delay-3"><div class="num" id="stat-accuracy">0</div><div class="label">교차검증 정확도</div></div>
+        <div class="proof-stat reveal reveal-delay-2"><div class="num" id="stat-years">0</div><div class="label">년 현장 경력</div></div>
+        <div class="proof-stat reveal reveal-delay-3"><div class="num" id="stat-days">0</div><div class="label">일째 실증 진행 중</div></div>
     </div>
-</section>
-
-<!-- CAREER -->
-<section id="career">
-    <div class="container">
-        <div class="section-label reveal">Career</div>
-        <h2 class="section-title reveal">선박에서 수소까지.<br>현장에서 쌓은 15년.</h2>
-        <p class="section-desc reveal">3개 산업, 5개 조직, 20명 팀 빌딩. 기술과 사업을 모두 경험한 드문 이력.</p>
-        <div class="timeline">
-            <div class="tl-item reveal">
-                <div class="tl-dot" style="background: var(--accent); animation: pulse-glow 2s ease-in-out infinite;"></div>
-                <div class="tl-year">2024 &mdash; PRESENT</div>
-                <div class="tl-title">에너지 시스템 &mdash; 제어 아키텍트</div>
-                <div class="tl-role">Senior Research Engineer / AI System Architect</div>
-                <div class="tl-desc">
-                    그린수소(수전해) 제어 시스템의 전 용량(10kW~250kW) 설계를 주도.
-                    P&amp;ID에서 IO Map, PLC 로직, HMI까지 풀스택 제어 엔지니어링을 수행합니다.
-                    동시에 9개 AI 에이전트로 구성된 멀티 에이전트 오케스트레이션 시스템을 독자 구축,
-                    21만 줄의 엔지니어링 지식 베이스를 운영하고 있습니다.
-                </div>
-                <div class="tl-tags">
-                    <span class="tl-tag">AWE / PEM</span>
-                    <span class="tl-tag">ABB AC500</span>
-                    <span class="tl-tag">Multi-Agent AI</span>
-                    <span class="tl-tag">Knowledge Engineering</span>
-                </div>
-            </div>
-            <div class="tl-item reveal">
-                <div class="tl-dot" style="background: var(--accent2);"></div>
-                <div class="tl-year">2020 &mdash; 2024</div>
-                <div class="tl-title">해양 IoT &mdash; 연구소장</div>
-                <div class="tl-role">R&D Director / Head of Research Lab (8 engineers)</div>
-                <div class="tl-desc">
-                    기업부설연구소를 이끌며 해양 IoT 플랫폼을 설계했습니다.
-                    NVIDIA AGX Orin 기반 엣지 AI 시스템으로 해상 데이터 30만 건 이상을 처리했고,
-                    수소 선박의 안전 모니터링(LEL/ESD) 시스템을 현대차와 협조제어로 구현했습니다.
-                    미국 BLT사와의 국제공동연구에서 수중익 PID/LQR 제어로 연료 50% 절감을 달성했습니다.
-                    국책 R&amp;D 3건을 기획부터 완료까지 총괄했습니다.
-                </div>
-                <div class="tl-tags">
-                    <span class="tl-tag">NVIDIA AGX Orin</span>
-                    <span class="tl-tag">Hydrogen Safety</span>
-                    <span class="tl-tag">PID / LQR Control</span>
-                    <span class="tl-tag">US Joint Research</span>
-                    <span class="tl-tag">National R&amp;D x3</span>
-                </div>
-            </div>
-            <div class="tl-item reveal">
-                <div class="tl-dot" style="background: var(--accent3);"></div>
-                <div class="tl-year">2016 &mdash; 2020</div>
-                <div class="tl-title">조선해양 전장 &mdash; 사업부장</div>
-                <div class="tl-role">Division Head / Business &amp; Engineering Lead (12 engineers)</div>
-                <div class="tl-desc">
-                    12명 규모의 전장설계 조직을 제로에서 구축하고, 매출을 3배(10억&rarr;30억)로 성장시켰습니다.
-                    현대중공업 2-Stroke 엔진 전장 양산 라인을 확립하고,
-                    4-Stroke Dual-Fuel 초도 개발을 주도했습니다.
-                    DNV/GL Type Approval Certificate를 획득하여 글로벌 선급 인증 역량을 확보했고,
-                    기업부설연구소를 직접 설립했습니다.
-                </div>
-                <div class="tl-tags">
-                    <span class="tl-tag">Revenue 3x Growth</span>
-                    <span class="tl-tag">DNV/GL TAC</span>
-                    <span class="tl-tag">HHI Mass Production</span>
-                    <span class="tl-tag">Dual-Fuel Engine</span>
-                    <span class="tl-tag">R&D Lab Setup</span>
-                </div>
-            </div>
-            <div class="tl-item reveal">
-                <div class="tl-dot" style="background: var(--text-muted);"></div>
-                <div class="tl-year">2011 &mdash; 2016</div>
-                <div class="tl-title">의공학 / 모바일 / 조선해양</div>
-                <div class="tl-role">Embedded Engineer &rarr; Marine ECS Developer</div>
-                <div class="tl-desc">
-                    의공학 분야에서 커리어를 시작하여 Android 모바일 앱 개발을 거쳐,
-                    선박 엔진 제어시스템(ECS) 전장설계로 도메인을 확립했습니다.
-                    산업용 센서 개발, EMC 시험(IEC 60533), Sea Trial 참여 등
-                    현장 중심의 경험을 축적한 시기입니다.
-                </div>
-                <div class="tl-tags">
-                    <span class="tl-tag">Android SDK</span>
-                    <span class="tl-tag">Marine ECS</span>
-                    <span class="tl-tag">Sensor Development</span>
-                    <span class="tl-tag">EMC / IEC 60533</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    <div class="proof-quote reveal">"수백 개의 산업용 소스코드 파일을 AI와 교차검증하고,<br>산업용 도면에서 데이터를 자동 추출하고,<br>대규모 플랜트 운전 데이터 수백만 행을 분석했습니다.<br><br>이 과정에서 도출한 방법론을 가르칩니다."</div>
+</div></section>
 
 <!-- EDUCATION -->
-<section id="education" style="background: var(--bg-secondary);">
-    <div class="container">
-        <div class="section-label reveal">Education &amp; Workshop</div>
-        <h2 class="section-title reveal">산업 현장의<br>AI 실전 교육</h2>
-        <p class="section-desc reveal">
-            이론이 아닌, 내일 당장 업무에 적용할 수 있는 실전 중심 커리큘럼.<br>
-            15년의 현장 경험에서 추출한 실제 워크플로를 가르칩니다.
-        </p>
+<section id="education"><div class="container">
+    <div class="section-label reveal">Programs</div>
+    <h2 class="section-title reveal">교육 프로그램</h2>
+    <p class="section-desc reveal">3계층 구조: 전 직원이 AI 전문가가 될 필요 없습니다.<br>90%는 데이터를 만들고, 8%가 시스템을 구축하고, 2%가 전략을 설계합니다.</p>
+    <div class="edu-track">
+        <div class="edu-track-label track-a reveal">Track A &mdash; AI 전환 방법론 (핵심)</div>
         <div class="edu-grid">
-            <div class="edu-card reveal">
-                <span class="edu-type workshop">Workshop</span>
-                <div class="edu-info">
-                    <h3>AI로 PLC 로직 개발하기</h3>
-                    <p>PLC 엔지니어 / 자동화 담당 &mdash; 실습형 4~8시간<br>EXP 추출, AI 분석, 코드 생성, Import까지 풀 파이프라인</p>
-                </div>
-            </div>
-            <div class="edu-card reveal reveal-delay-1">
-                <span class="edu-type workshop">Workshop</span>
-                <div class="edu-info">
-                    <h3>AI로 펌웨어 개발하기</h3>
-                    <p>임베디드 개발자 / IoT 담당 &mdash; 실습형 4~8시간<br>PlatformIO + AI 실시간 개발, 드라이버 자동 생성</p>
-                </div>
-            </div>
-            <div class="edu-card reveal reveal-delay-2">
-                <span class="edu-type workshop">Workshop</span>
-                <div class="edu-info">
-                    <h3>AI로 도면 읽고 검증하기</h3>
-                    <p>설계 / 시공 / 감리 &mdash; 실습형 4~8시간<br>DXF 파싱, 심볼 인식, P&amp;ID&rarr;IO Map 자동 추출</p>
-                </div>
-            </div>
-            <div class="edu-card reveal reveal-delay-3">
-                <span class="edu-type workshop">Workshop</span>
-                <div class="edu-info">
-                    <h3>AI로 기술문서 작성하기</h3>
-                    <p>설계 / 품질 / 관리 &mdash; 2~4시간<br>PDCA 교차검증, 할루시네이션 통제, .docx 자동 생성</p>
-                </div>
-            </div>
-            <div class="edu-card reveal reveal-delay-2">
-                <span class="edu-type lecture">Keynote</span>
-                <div class="edu-info">
-                    <h3>산업 엔지니어의 AI 생존 전략</h3>
-                    <p>엔지니어 전체 + 경영진 &mdash; 강연 1~2시간<br>AI가 대체할 수 없는 현장 엔지니어의 미래</p>
-                </div>
-            </div>
-            <div class="edu-card reveal reveal-delay-3">
-                <span class="edu-type handson">Hands-on</span>
-                <div class="edu-info">
-                    <h3>AI Agent 시스템 구축 마스터클래스</h3>
-                    <p>개발자 / 엔지니어 &mdash; 핸즈온 풀데이<br>CLAUDE.md, 메모리, KB, 오케스트레이션까지</p>
-                </div>
-            </div>
+            <div class="edu-card reveal"><span class="edu-type core">Core</span><h3>AI를 위한 업무 정형화</h3><p>자기 업무를 분석하고, AI가 활용할 수 있는 형태로 정리하는 법. AI 도구 사용법은 가르치지 않습니다. 이것이 먼저입니다.</p><div class="edu-meta">전 직원 (비개발자 포함) &bull; 4~8시간 &bull; 실습 중심</div></div>
+            <div class="edu-card reveal reveal-delay-1"><span class="edu-type core">Core</span><h3>AI 워크플로우 재설계</h3><p>업무를 마이크로태스크로 분해하고, AI가 할 것 / 사람이 할 것을 분류하여 새로운 워크플로우를 설계합니다.</p><div class="edu-meta">부서 빌더 후보 &bull; 8~16시간 &bull; 프로젝트 기반</div></div>
+            <div class="edu-card reveal reveal-delay-2"><span class="edu-type master">Master</span><h3>기업 AI 전환 컨설팅</h3><p>4Phase 프레임워크 전체를 적용하여 기업 맞춤 AI 전환 로드맵을 수립합니다. 3계층 조직 모델 + ROI 분석 포함.</p><div class="edu-meta">경영진 / CTO &bull; 2~3일 &bull; 전략 워크숍</div></div>
         </div>
     </div>
-</section>
+    <div class="edu-track">
+        <div class="edu-track-label track-b reveal">Track B &mdash; 도메인 AI 실전<span class="sample-badge">Sample</span></div>
+        <p style="color:var(--text-secondary);font-size:.85em;margin-bottom:20px;margin-top:-12px" class="reveal">귀사의 업종과 도메인에 맞춰 커스터마이징합니다. 아래는 적용 사례입니다.</p>
+        <div class="edu-grid">
+            <div class="edu-card reveal"><span class="edu-type workshop">Workshop</span><h3>AI로 산업용 제어 로직 개발하기</h3><p>제어 시스템 소스코드를 AI로 분석하고, 검증하고, 자동 생성하는 풀 파이프라인 실습.</p><div class="edu-meta">제어/자동화 엔지니어 &bull; 4~8시간 &bull; 실습형</div></div>
+            <div class="edu-card reveal reveal-delay-1"><span class="edu-type workshop">Workshop</span><h3>AI로 산업용 도면 읽고 검증하기</h3><p>도면 파싱, 심볼 인식, 데이터 자동 추출. 코드&harr;문서&harr;도면 3중 교차검증 실습.</p><div class="edu-meta">설계 / 시공 / 감리 &bull; 4~8시간 &bull; 실습형</div></div>
+            <div class="edu-card reveal reveal-delay-2"><span class="edu-type keynote">Keynote</span><h3>산업 엔지니어의 AI 생존 전략</h3><p>2023 프롬프트 &rarr; 2024 AI도구 &rarr; 2025 바이브코딩 &rarr; 2026 에이전트. AI 시대, 빠르게 변하는 흐름과 당신의 생존 전략.</p><div class="edu-meta">전체 대상 &bull; 1~2시간 &bull; 강연</div></div>
+        </div>
+    </div>
+</div></section>
 
-<!-- PHILOSOPHY -->
-<section id="philosophy">
-    <div class="container">
-        <div class="section-label reveal">Approach</div>
-        <h2 class="section-title reveal">세 가지 원칙</h2>
-        <p class="section-desc reveal">모든 프로젝트, 모든 교육, 모든 컨설팅에 적용하는 원칙입니다.</p>
-        <div class="phil-grid">
-            <div class="phil-card reveal">
-                <div class="phil-num">01</div>
-                <h3>Field First</h3>
-                <p>이론이 아닌 현장에서 시작합니다. 실제 프로젝트에서 검증된 것만 가르치고, 내일 당장 적용할 수 있는 것만 전달합니다.</p>
-            </div>
-            <div class="phil-card reveal reveal-delay-1">
-                <div class="phil-num">02</div>
-                <h3>Cross-Verify</h3>
-                <p>AI의 출력을 맹신하지 않습니다. 코드&harr;문서&harr;도면 3중 교차검증으로 할루시네이션을 체계적으로 통제하여 99.6%의 정확도를 달성합니다.</p>
-            </div>
-            <div class="phil-card reveal reveal-delay-2">
-                <div class="phil-num">03</div>
-                <h3>System Thinking</h3>
-                <p>개별 도구가 아닌 시스템을 설계합니다. 에이전트, 지식 베이스, 검증 파이프라인이 유기적으로 연결된 산업용 AI 프레임워크를 만듭니다.</p>
+<!-- SURVEY -->
+<div class="survey-section" id="survey"><div class="reveal">
+    <div class="section-label" style="text-align:center">3분 설문</div>
+    <h2>우리 회사에 맞는<br>AI 교육은 무엇일까요?</h2>
+    <p>3분이면 충분합니다. 귀사의 현재 AI 활용 수준과 니즈를 파악하여,<br>맞춤형 교육 방향을 제안해 드립니다.</p>
+    <div class="survey-features">
+        <div class="survey-feature"><span class="check">&#10003;</span> 익명 참여 가능</div>
+        <div class="survey-feature"><span class="check">&#10003;</span> 3분 소요</div>
+        <div class="survey-feature"><span class="check">&#10003;</span> 결과 요약 리포트 제공</div>
+    </div>
+    <a href="#" class="btn btn-survey" id="survey-btn">설문 참여하기 &rarr;</a>
+    <p style="font-size:.75em;color:var(--text-muted);margin-top:16px">설문 준비 중입니다. 곧 오픈됩니다.</p>
+</div></div>
+
+<!-- ABOUT (멋드러지게) -->
+<section id="about"><div class="container">
+    <div class="section-label reveal">About</div>
+    <h2 class="section-title reveal">만든 사람</h2>
+    <div class="about-compact">
+        <div class="reveal-left">
+            <p class="about-text">
+                <strong>대형 산업 시스템</strong>에서 커리어를 시작해, <strong>IoT 플랫폼</strong>과 <strong>AI 기반 엣지 컴퓨팅</strong>을 거쳐, <strong>그린 에너지 제어 솔루션</strong>까지 &mdash; 3개 산업을 관통하며 설계, 개발, 양산, 시운전을 직접 수행해온 <strong>풀스택 산업 아키텍트</strong>입니다.<br><br>
+                <strong>수십 명 규모의 기술 조직을 제로에서 구축</strong>하고, 사업을 <strong>3배 이상 스케일업</strong>시켰습니다. 다수의 <strong>국가 R&amp;D 프로젝트를 기획부터 완수</strong>까지 총괄했으며, <strong>글로벌 기술 인증</strong>을 획득하고, <strong>미국과의 국제 공동연구</strong>를 이끌었습니다.<br><br>
+                기술만 아는 엔지니어가 아니라, <strong>조직을 만들고, 사업을 키우고, 글로벌 무대에서 검증받은</strong> 경험을 가진 사람입니다.<br><br>
+                현재는 그 15년의 현장 경험 위에 <strong>AI 전환 방법론을 직접 실증</strong>하고 있으며, 이 과정에서 검증된 프레임워크를 교육과 컨설팅으로 전환하고 있습니다.<br><br>
+                <strong style="font-size:1.05em;">"이론이 아닌 경험을 가르칩니다.<br>해본 사람만이 가르칠 수 있습니다."</strong>
+            </p>
+            <div class="about-tags">
+                <span class="about-tag">Industrial System Architecture</span>
+                <span class="about-tag">Embedded &amp; IoT</span>
+                <span class="about-tag">Green Energy Control</span>
+                <span class="about-tag">Multi-Agent AI System</span>
+                <span class="about-tag">Knowledge Engineering</span>
+                <span class="about-tag">Organization Building</span>
             </div>
         </div>
+        <div class="reveal-right"><div class="tl-compact">
+            <div class="tl-item-c"><div class="year">2024 &mdash; PRESENT</div><div class="title">그린 에너지 &mdash; 시스템 아키텍트 &amp; AI 전환 실증</div><div class="desc">전 용량 에너지 제어 시스템 설계 + AI 에이전트 시스템 독자 구축 + 산업 AI 전환 방법론 실증</div></div>
+            <div class="tl-item-c"><div class="year">2020 &mdash; 2024</div><div class="title">IoT &amp; AI &mdash; R&amp;D 센터장</div><div class="desc">엣지 AI 플랫폼 설계, 다수 국가 R&amp;D 총괄, 미국 국제공동연구, 안전 모니터링 시스템 개발</div></div>
+            <div class="tl-item-c"><div class="year">2016 &mdash; 2020</div><div class="title">대형 산업 시스템 &mdash; 사업부 총괄</div><div class="desc">기술 조직 제로에서 구축, 매출 3배 스케일업, 글로벌 기술 인증 획득, 기업부설연구소 설립</div></div>
+            <div class="tl-item-c"><div class="year">2011 &mdash; 2016</div><div class="title">임베디드 &amp; 시스템 엔지니어</div><div class="desc">의공학 &rarr; 모바일 &rarr; 산업 시스템. 다중 도메인 전환을 통한 풀스택 역량 확립</div></div>
+        </div></div>
     </div>
-</section>
+</div></section>
 
 <!-- CONTACT -->
-<section id="contact">
-    <div class="container">
-        <div class="contact-section reveal">
-            <div class="section-label">Contact</div>
-            <h2 class="section-title">함께 만들어갑시다</h2>
-            <p style="color: var(--text-secondary); max-width: 520px; margin: 0 auto; line-height: 1.9;">
-                기업 교육, AI 도입 컨설팅, 기술 협업,<br>
-                또는 산업 AI에 대한 이야기가 하고 싶으시다면.
-            </p>
-            <div class="contact-links">
-                <a href="mailto:contact@makefield.ai" class="contact-link">Email</a>
-                <a href="#" class="contact-link">LinkedIn</a>
-                <a href="#" class="contact-link">YouTube</a>
-                <a href="#" class="contact-link">Brunch</a>
-            </div>
-        </div>
+<section id="contact" style="background:var(--bg-secondary)"><div class="container"><div class="contact-section reveal">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">함께 만들어갑시다</h2>
+    <p style="color:var(--text-secondary);max-width:520px;margin:0 auto;line-height:1.9">AI 전환 교육, 기업 컨설팅, 강연 의뢰,<br>또는 산업 AI에 대한 이야기가 하고 싶으시다면.</p>
+    <div class="contact-links">
+        <a href="mailto:contact@makefield.ai" class="contact-link">Email</a>
+        <a href="#" class="contact-link">LinkedIn</a>
+        <a href="#" class="contact-link">YouTube</a>
+        <a href="#" class="contact-link">Brunch</a>
     </div>
-</section>
+</div></div></section>
 
-<footer>
-    &copy; 2026 <span class="gradient-text">MakeField AI</span> &mdash; 현장에 AI를 만든다.
-    <p style="margin-top: 16px; font-size: 0.7em; color: rgba(255,255,255,0.25); letter-spacing: 0.05em;">
-        With love and grace &mdash; MSEO, JHOON, JWON, JNA
-    </p>
-</footer>
+<footer>&copy; 2026 <span class="gradient-text">MakeField AI</span> &mdash; 현장에 AI를 만든다.<p style="margin-top:16px;font-size:.7em;color:rgba(255,255,255,.25);letter-spacing:.05em">With love and grace &mdash; MSEO, JHOON, JWON, JNA</p></footer>
 
 <script>
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+/* ===== 동적 수치: stats.json 로드 + 자동 날짜 카운트 ===== */
+(async function(){
+    // 기본값 (stats.json 로드 실패 시 폴백)
+    let stats = {agents:9, kb_docs:436, kb_lines:214982, accuracy:99.6, start_date:'2026-04-01', years_exp:15};
+    try {
+        const r = await fetch('stats.json?t='+Date.now());
+        if(r.ok) stats = await r.json();
+    } catch(e){}
 
-// Animated counters
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const el = entry.target;
-            const target = parseInt(el.dataset.count);
-            if (!target || el.dataset.done) return;
-            el.dataset.done = '1';
-            let current = 0;
-            const step = Math.max(1, Math.floor(target / 40));
-            const timer = setInterval(() => {
-                current += step;
-                if (current >= target) { current = target; clearInterval(timer); }
-                el.textContent = current + (target === 15 ? '+' : '');
-            }, 30);
-        }
-    });
-}, { threshold: 0.5 });
-document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+    // 날짜 자동 계산 (매일 +1)
+    const start = new Date(stats.start_date);
+    const now = new Date();
+    const days = Math.floor((now - start) / 86400000);
 
-// Nav effect
-window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    nav.style.boxShadow = window.scrollY > 80 ? '0 4px 30px rgba(0,0,0,0.4)' : 'none';
-});
+    // 숫자 애니메이션 함수
+    function animateNum(el, target, suffix='') {
+        if(!el) return;
+        let current = 0;
+        const step = Math.max(1, Math.floor(target / 50));
+        const timer = setInterval(() => {
+            current += step;
+            if(current >= target) { current = target; clearInterval(timer); }
+            el.textContent = current.toLocaleString() + suffix;
+        }, 25);
+    }
 
-// Mobile nav
-document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('active'));
-});
+    // Intersection Observer로 보이면 시작
+    const proofObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if(e.isIntersecting && !e.target.dataset.done) {
+                e.target.dataset.done = '1';
+                animateNum(document.getElementById('stat-agents'), stats.agents);
+                animateNum(document.getElementById('stat-kb'), stats.kb_docs);
+                animateNum(document.getElementById('stat-lines'), Math.round(stats.kb_lines/1000), 'K+');
+                document.getElementById('stat-accuracy').textContent = stats.accuracy + '%';
+                animateNum(document.getElementById('stat-years'), stats.years_exp, '+');
+                animateNum(document.getElementById('stat-days'), days);
+                document.getElementById('days-count').textContent = days;
+            }
+        });
+    }, {threshold: 0.3});
+    const proofSection = document.getElementById('proof');
+    if(proofSection) proofObs.observe(proofSection);
 
-// Particles
-const pc = document.getElementById('particles');
-for (let i = 0; i < 20; i++) {
-    const p = document.createElement('div');
-    p.classList.add('particle');
-    p.style.left = Math.random() * 100 + '%';
-    p.style.animationDelay = Math.random() * 6 + 's';
-    p.style.animationDuration = (4 + Math.random() * 4) + 's';
-    const colors = ['#4f8fff', '#7c5cff', '#00d4aa'];
-    p.style.background = colors[Math.floor(Math.random() * 3)];
-    pc.appendChild(p);
-}
+    // 헤더의 일수도 즉시 표시
+    document.getElementById('days-count').textContent = days;
+})();
 
-// Pulse glow keyframe (used by timeline dot)
+/* ===== 기본 UI ===== */
+const o=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('visible')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(e=>o.observe(e));
+window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>80?'0 4px 30px rgba(0,0,0,.4)':'none'});
+document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('active'))});
+const pc=document.getElementById('particles');for(let i=0;i<20;i++){const d=document.createElement('div');d.classList.add('particle');d.style.left=Math.random()*100+'%';d.style.animationDelay=Math.random()*6+'s';d.style.animationDuration=(4+Math.random()*4)+'s';d.style.background=['#4f8fff','#7c5cff','#00d4aa'][Math.floor(Math.random()*3)];pc.appendChild(d)}
 </script>
-<style>
-@keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 12px rgba(79,143,255,0.4); }
-    50% { box-shadow: 0 0 28px rgba(79,143,255,0.8); }
-}
-</style>
-
-</body>
-</html>
+</body></html>

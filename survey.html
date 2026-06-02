@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 교육 니즈 설문 | MakeField AI</title>
+    <meta name="description" content="3분이면 충분합니다. 귀사에 맞는 AI 교육 방향을 진단해 드립니다.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#06060b;--bg2:#0d0d14;--card:#13131d;--text:#e8e8f0;--text2:#8585a0;--muted:#4a4a60;--accent:#4f8fff;--accent2:#7c5cff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff,#7c5cff,#00d4aa);--border:rgba(255,255,255,0.05)}
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh}
+        .survey-container{max-width:720px;margin:0 auto;padding:40px 24px 80px}
+        .survey-header{text-align:center;padding:100px 0 40px}
+        .survey-header h1{font-size:2em;font-weight:800;margin-bottom:12px;letter-spacing:-.02em}
+        .survey-header p{color:var(--text2);font-size:.95em;line-height:1.8}
+        .back-link{display:inline-block;color:var(--accent);text-decoration:none;font-size:.82em;margin-bottom:20px;font-weight:500}
+        .back-link:hover{text-decoration:underline}
+        .progress-bar{height:4px;background:var(--card);border-radius:2px;margin-bottom:40px;overflow:hidden}
+        .progress-fill{height:100%;background:var(--gradient);border-radius:2px;transition:width .4s;width:0%}
+        .form-section{margin-bottom:40px;padding:28px;background:var(--card);border:1px solid var(--border);border-radius:16px}
+        .form-section h3{font-size:.72em;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:20px}
+        .form-group{margin-bottom:24px}
+        .form-group label{display:block;font-weight:600;font-size:.92em;margin-bottom:10px}
+        .form-group .hint{font-size:.78em;color:var(--muted);margin-bottom:8px}
+        .radio-group,.check-group{display:flex;flex-direction:column;gap:8px}
+        .radio-option,.check-option{display:flex;align-items:center;gap:10px;padding:10px 16px;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all .2s;font-size:.88em}
+        .radio-option:hover,.check-option:hover{border-color:var(--accent);background:rgba(79,143,255,.05)}
+        .radio-option input,.check-option input{accent-color:var(--accent);width:16px;height:16px}
+        .radio-option.selected,.check-option.selected{border-color:var(--accent);background:rgba(79,143,255,.08)}
+        input[type=text],input[type=email],textarea{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:inherit;font-size:.88em;transition:border-color .2s}
+        input[type=text]:focus,input[type=email]:focus,textarea:focus{outline:none;border-color:var(--accent)}
+        textarea{resize:vertical;min-height:80px}
+        .submit-btn{width:100%;padding:16px;background:var(--gradient);color:#fff;border:none;border-radius:10px;font-size:1.05em;font-weight:700;cursor:pointer;transition:all .3s;letter-spacing:.02em}
+        .submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(79,143,255,.4)}
+        .submit-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+        .success-msg{text-align:center;padding:60px 24px;display:none}
+        .success-msg h2{font-size:1.8em;margin-bottom:16px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .success-msg p{color:var(--text2);line-height:1.8}
+        .step{display:none}.step.active{display:block}
+        .nav-btns{display:flex;gap:12px;margin-top:24px}
+        .nav-btns button{flex:1;padding:14px;border-radius:8px;font-weight:600;font-size:.9em;cursor:pointer;transition:all .2s}
+        .btn-prev{background:transparent;border:1px solid var(--border);color:var(--text2)}.btn-prev:hover{border-color:var(--accent);color:var(--accent)}
+        .btn-next{background:var(--accent);border:none;color:#fff}.btn-next:hover{background:#6ba0ff}
+        .step-indicator{text-align:center;margin-bottom:20px;font-size:.78em;color:var(--muted)}
+        @media(max-width:600px){.survey-header h1{font-size:1.5em}.form-section{padding:20px}}
+    </style>
+</head>
+<body>
+<div class="survey-container">
+    <div class="survey-header">
+        <a href="/" class="back-link">&larr; MakeField AI</a>
+        <h1>우리 회사에 맞는<br>AI 교육은 무엇일까요?</h1>
+        <p>3분이면 충분합니다. 17개 문항에 응답하시면,<br>귀사에 맞는 AI 교육 방향을 제안해 드립니다.</p>
+    </div>
+
+    <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+    <form id="survey-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="[MakeField AI] 설문 응답">
+        <input type="hidden" name="from_name" value="MakeField AI Survey">
+        <input type="hidden" name="redirect" value="https://makefield.ai/survey.html?success=1">
+
+        <!-- STEP 1: 기본 정보 -->
+        <div class="step active" data-step="1">
+            <div class="step-indicator">Step 1/4 &mdash; 기본 정보</div>
+            <div class="form-section">
+                <h3>Section 1 &mdash; 기본 정보</h3>
+                <div class="form-group">
+                    <label>Q1. 귀사의 업종은?</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="q1_industry" value="제조업" required>제조업 (기계/금속/전기/전자)</label>
+                        <label class="radio-option"><input type="radio" name="q1_industry" value="에너지">에너지 (발전/신재생/수소)</label>
+                        <label class="radio-option"><input type="radio" name="q1_industry" value="건설/플랜트">건설 / 플랜트 / 엔지니어링</label>
+                        <label class="radio-option"><input type="radio" name="q1_industry" value="IT/소프트웨어">IT / 소프트웨어</label>
+                        <label class="radio-option"><input type="radio" name="q1_industry" value="조선/해양">조선 / 해양</label>
+                        <label class="radio-option"><input type="radio" name="q1_industry" value="공공/연구">공공기관 / 연구소 / 대학</label>
+                        <label class="radio-option"><input type="radio" name="q1_industry" value="기타">기타</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Q2. 귀사의 규모는?</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="q2_size" value="10인 미만" required>10인 미만</label>
+                        <label class="radio-option"><input type="radio" name="q2_size" value="10~49인">10~49인</label>
+                        <label class="radio-option"><input type="radio" name="q2_size" value="50~99인">50~99인</label>
+                        <label class="radio-option"><input type="radio" name="q2_size" value="100~299인">100~299인</label>
+                        <label class="radio-option"><input type="radio" name="q2_size" value="300인 이상">300인 이상</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Q3. 응답자의 직무는?</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="q3_role" value="경영진" required>경영진 / 임원</label>
+                        <label class="radio-option"><input type="radio" name="q3_role" value="관리자">중간관리자 (팀장/부장)</label>
+                        <label class="radio-option"><input type="radio" name="q3_role" value="엔지니어">엔지니어 (설계/개발/시운전)</label>
+                        <label class="radio-option"><input type="radio" name="q3_role" value="연구원">연구원</label>
+                        <label class="radio-option"><input type="radio" name="q3_role" value="사무직">관리/사무직</label>
+                        <label class="radio-option"><input type="radio" name="q3_role" value="IT">IT / 전산</label>
+                        <label class="radio-option"><input type="radio" name="q3_role" value="기타">기타</label>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-btns"><button type="button" class="btn-next" onclick="nextStep()">다음 &rarr;</button></div>
+        </div>
+
+        <!-- STEP 2: AI 현황 -->
+        <div class="step" data-step="2">
+            <div class="step-indicator">Step 2/4 &mdash; AI 현황 진단</div>
+            <div class="form-section">
+                <h3>Section 2 &mdash; 현재 AI 활용 수준</h3>
+                <div class="form-group">
+                    <label>Q4. 귀사의 현재 AI 활용 단계는?</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="q4_level" value="미사용" required>아직 AI를 전혀 사용하지 않음</label>
+                        <label class="radio-option"><input type="radio" name="q4_level" value="개인적">개인적으로 ChatGPT 등을 가끔 사용하는 직원이 있음</label>
+                        <label class="radio-option"><input type="radio" name="q4_level" value="도입_저활용">회사 차원에서 도입했으나 활용도가 낮음</label>
+                        <label class="radio-option"><input type="radio" name="q4_level" value="부분_활용">특정 부서/업무에서 적극 활용 중</label>
+                        <label class="radio-option"><input type="radio" name="q4_level" value="전사_활용">전사적으로 AI 시스템이 운영 중</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Q5. AI 도입을 시도했다가 효과가 없었던 경험이 있습니까?</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="q5_failure" value="포기" required>예, 도입했다가 포기한 경험이 있음</label>
+                        <label class="radio-option"><input type="radio" name="q5_failure" value="효과미미">예, 도입은 했으나 효과가 미미함</label>
+                        <label class="radio-option"><input type="radio" name="q5_failure" value="미시도">아직 도입을 시도해본 적 없음</label>
+                        <label class="radio-option"><input type="radio" name="q5_failure" value="성공">아니요, 도입 후 효과를 보고 있음</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Q6. (실패/효과 미미 경험 시) 가장 큰 원인은?</label>
+                    <div class="hint">복수 선택 가능</div>
+                    <div class="check-group">
+                        <label class="check-option"><input type="checkbox" name="q6_reason" value="직원무관심">직원들이 사용하지 않음</label>
+                        <label class="check-option"><input type="checkbox" name="q6_reason" value="데이터문제">AI가 우리 업무 맥락을 모름 (데이터 문제)</label>
+                        <label class="check-option"><input type="checkbox" name="q6_reason" value="정확도">그럴듯한데 정확하지 않음 (할루시네이션)</label>
+                        <label class="check-option"><input type="checkbox" name="q6_reason" value="후속관리없음">도입 후 후속 관리/교육이 없었음</label>
+                        <label class="check-option"><input type="checkbox" name="q6_reason" value="적용처불명">어떤 업무에 적용해야 할지 모르겠음</label>
+                        <label class="check-option"><input type="checkbox" name="q6_reason" value="비용효과">비용 대비 효과를 체감하지 못함</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Q7. 귀사 업무 중 반복적이고 패턴이 있는 작업의 비중은?</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="q7_repetitive" value="10미만">10% 미만</label>
+                        <label class="radio-option"><input type="radio" name="q7_repetitive" value="10-30">10~30%</label>
+                        <label class="radio-option"><input type="radio" name="q7_repetitive" value="30-50">30~50%</label>
+                        <label class="radio-option"><input type="radio" name="q7_repetitive" value="50이상">50% 이상</label>
+                        <label class="radio-option"><input type="radio" name="q7_repetitive" value="모름">잘 모르겠음</label>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-btns"><button type="button" class="btn-prev" onclick="prevStep()">&larr; 이전</button><button type="button" class="btn-next" onclick="nextStep()">다음 &rarr;</button></div>
+        </div>
+
+        <!-- STEP 3: 교육 니즈 -->
+        <div class="step" data-step="3">
+            <div class="step-indicator">Step 3/4 &mdash; 교육 니즈</div>
+            <div class="form-section">
+                <h3>Section 3 &mdash; 원하는 교육</h3>
+                <div class="form-group">
+                    <label>Q8. AI 교육에서 가장 필요한 내용은? (최대 3개)</label>
+                    <div class="check-group">
+                        <label class="check-option"><input type="checkbox" name="q8_needs" value="트렌드">AI 기본 원리와 트렌드 이해</label>
+                        <label class="check-option"><input type="checkbox" name="q8_needs" value="도구사용법">AI 도구 실전 사용법</label>
+                        <label class="check-option"><input type="checkbox" name="q8_needs" value="데이터정형화">우리 업무 데이터를 AI용으로 정리하는 법</label>
+                        <label class="check-option"><input type="checkbox" name="q8_needs" value="자동화">AI로 반복 업무를 자동화하는 방법</label>
+                        <label class="check-option"><input type="checkbox" name="q8_needs" value="전략">AI 도입 전략 수립 (경영진 대상)</label>
+                        <label class="check-option"><input type="checkbox" name="q8_needs" value="업종특화">우리 업종에 특화된 AI 활용 사례</label>
+                        <label class="check-option"><input type="checkbox" name="q8_needs" value="커리어">AI 시대의 커리어/역할 변화 이해</label>
+                        <label class="check-option"><input type="checkbox" name="q8_needs" value="시스템구축">AI 시스템 구축 (개발자 대상)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Q9. 선호하는 교육 형태는?</label>
+                    <div class="check-group">
+                        <label class="check-option"><input type="checkbox" name="q9_format" value="오프라인워크숍">오프라인 워크숍 (실습, 4~8시간)</label>
+                        <label class="check-option"><input type="checkbox" name="q9_format" value="온라인강의">온라인 강의 (자율 학습형)</label>
+                        <label class="check-option"><input type="checkbox" name="q9_format" value="강연">오프라인 강연 (1~2시간, 인사이트)</label>
+                        <label class="check-option"><input type="checkbox" name="q9_format" value="방문맞춤">기업 방문 맞춤형 교육</label>
+                        <label class="check-option"><input type="checkbox" name="q9_format" value="컨설팅">컨설팅 (전사 AI 전환 로드맵)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Q10. 교육 1회에 투자 가능한 예산은?</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="q10_budget" value="무료">무료만 참여</label>
+                        <label class="radio-option"><input type="radio" name="q10_budget" value="인당15만이하">인당 15만원 이하</label>
+                        <label class="radio-option"><input type="radio" name="q10_budget" value="인당30만이하">인당 15~30만원</label>
+                        <label class="radio-option"><input type="radio" name="q10_budget" value="기업300만이하">기업 단위 100~300만원</label>
+                        <label class="radio-option"><input type="radio" name="q10_budget" value="기업300만이상">기업 단위 300만원 이상</label>
+                        <label class="radio-option"><input type="radio" name="q10_budget" value="유동적">예산은 효과에 따라 유동적</label>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-btns"><button type="button" class="btn-prev" onclick="prevStep()">&larr; 이전</button><button type="button" class="btn-next" onclick="nextStep()">다음 &rarr;</button></div>
+        </div>
+
+        <!-- STEP 4: 기대/우려 + 연락처 -->
+        <div class="step" data-step="4">
+            <div class="step-indicator">Step 4/4 &mdash; 기대와 연락처</div>
+            <div class="form-section">
+                <h3>Section 4 &mdash; 기대 / 우려 / 연락처</h3>
+                <div class="form-group">
+                    <label>Q11. AI 교육에 대한 가장 큰 기대는? (최대 2개)</label>
+                    <div class="check-group">
+                        <label class="check-option"><input type="checkbox" name="q11_expect" value="효율">직원 업무 효율 향상</label>
+                        <label class="check-option"><input type="checkbox" name="q11_expect" value="자동화">반복 업무 자동화</label>
+                        <label class="check-option"><input type="checkbox" name="q11_expect" value="경쟁력">경쟁사 대비 기술 우위</label>
+                        <label class="check-option"><input type="checkbox" name="q11_expect" value="사업기회">새로운 사업 기회 발굴</label>
+                        <label class="check-option"><input type="checkbox" name="q11_expect" value="불안해소">AI에 대한 막연한 불안 해소</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Q12. AI 교육에 대한 가장 큰 우려는? (최대 2개)</label>
+                    <div class="check-group">
+                        <label class="check-option"><input type="checkbox" name="q12_concern" value="적용안됨">교육 후 실제 적용이 안 될 것 같음</label>
+                        <label class="check-option"><input type="checkbox" name="q12_concern" value="비용불확실">비용 대비 효과 불확실</label>
+                        <label class="check-option"><input type="checkbox" name="q12_concern" value="보안">보안 / 데이터 유출 문제</label>
+                        <label class="check-option"><input type="checkbox" name="q12_concern" value="저항">직원들의 거부감</label>
+                        <label class="check-option"><input type="checkbox" name="q12_concern" value="기술변화빠름">AI가 너무 빠르게 변해서 금방 쓸모없어질 것 같음</label>
+                        <label class="check-option"><input type="checkbox" name="q12_concern" value="사례없음">우리 업종에 맞는 사례가 없을 것 같음</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Q13. 추가로 하고 싶은 말씀이 있으시다면? (선택)</label>
+                    <textarea name="q13_comment" placeholder="자유롭게 적어주세요..." rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Q14. 맞춤형 교육 리포트를 받아보시겠습니까?</label>
+                    <div class="hint">이메일을 입력하시면 2주 이내에 맞춤 리포트를 발송해 드립니다.</div>
+                    <input type="email" name="q14_email" placeholder="email@company.com (선택사항)">
+                </div>
+            </div>
+            <div class="nav-btns" style="margin-bottom:8px"><button type="button" class="btn-prev" onclick="prevStep()">&larr; 이전</button></div>
+            <button type="submit" class="submit-btn">설문 제출하기</button>
+        </div>
+    </form>
+
+    <!-- 완료 메시지 -->
+    <div class="success-msg" id="success">
+        <h2>감사합니다!</h2>
+        <p>소중한 응답이 기록되었습니다.<br><br>리포트를 요청하신 분께는 2주 이내에 이메일로 발송해 드립니다.<br><br>추가 문의: <a href="mailto:contact@makefield.ai" style="color:var(--accent)">contact@makefield.ai</a></p>
+        <br><a href="/" style="color:var(--accent);text-decoration:none;font-weight:600">&larr; 홈으로 돌아가기</a>
+    </div>
+</div>
+
+<script>
+let currentStep = 1;
+const totalSteps = 4;
+
+function updateProgress() {
+    document.getElementById('progress').style.width = ((currentStep/totalSteps)*100) + '%';
+}
+
+function nextStep() {
+    if(currentStep >= totalSteps) return;
+    document.querySelector('.step[data-step="'+currentStep+'"]').classList.remove('active');
+    currentStep++;
+    document.querySelector('.step[data-step="'+currentStep+'"]').classList.add('active');
+    updateProgress();
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function prevStep() {
+    if(currentStep <= 1) return;
+    document.querySelector('.step[data-step="'+currentStep+'"]').classList.remove('active');
+    currentStep--;
+    document.querySelector('.step[data-step="'+currentStep+'"]').classList.add('active');
+    updateProgress();
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// 라디오/체크 선택 시 시각 피드백
+document.querySelectorAll('.radio-option input,.check-option input').forEach(inp => {
+    inp.addEventListener('change', () => {
+        if(inp.type === 'radio') {
+            inp.closest('.radio-group,.check-group').querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
+        }
+        inp.closest('.radio-option,.check-option').classList.toggle('selected', inp.checked);
+    });
+});
+
+// 성공 파라미터 처리
+if(window.location.search.includes('success=1')) {
+    document.getElementById('survey-form').style.display = 'none';
+    document.querySelector('.progress-bar').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+}
+
+updateProgress();
+</script>
+</body></html>
