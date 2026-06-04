@@ -55,6 +55,11 @@
         .selected-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
         .tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.2);border-radius:20px;font-size:.74em;color:var(--accent)}
         .val-msg{font-size:.76em;color:var(--error);margin-top:6px;display:none}
+        .etc-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--border);border-radius:8px;margin-top:6px}
+        .etc-row input[type=checkbox],.etc-row input[type=radio]{accent-color:var(--accent);width:16px;height:16px;flex-shrink:0}
+        .etc-row input[type=text]{flex:1;padding:8px 10px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:inherit;font-size:.83em}
+        .etc-row input[type=text]:focus{border-color:var(--accent);outline:none}
+        .etc-row span{font-size:.85em;color:var(--text2);white-space:nowrap}
         .val-msg.show{display:block;animation:fadeIn .2s}
         @keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
         @media(max-width:600px){.header{padding:50px 0 20px}.header h1{font-size:1.45em}.section{padding:18px}}
@@ -181,6 +186,7 @@
                 <label class="c-opt"><input type="checkbox" name="barrier" value="ROI불확실">비용 대비 효과 입증 어려움</label>
                 <label class="c-opt"><input type="checkbox" name="barrier" value="보안">보안/유출 우려</label>
                 <label class="c-opt"><input type="checkbox" name="barrier" value="경영진지원부족">경영진 이해/지원 부족</label>
+                <div class="etc-row"><input type="checkbox" name="barrier" value="기타"><span>기타:</span><input type="text" name="barrier_etc" placeholder="직접 입력"></div>
             </div>
         </div>
     </div>
@@ -192,6 +198,7 @@
                 <label class="c-opt"><input type="checkbox" name="data_form" value="공유폴더">공유 폴더/NAS</label>
                 <label class="c-opt"><input type="checkbox" name="data_form" value="ERP등">ERP/MES/PLM 등 시스템</label>
                 <label class="c-opt"><input type="checkbox" name="data_form" value="DB">DB로 체계적 관리</label>
+                <div class="etc-row"><input type="checkbox" name="data_form" value="기타"><span>기타:</span><input type="text" name="data_form_etc" placeholder="직접 입력"></div>
             </div>
         </div>
         <div class="q"><label class="q-label">부서 간 데이터 연결 상태는?</label>
@@ -220,6 +227,7 @@
                 <label class="r-opt"><input type="radio" name="priority" value="즉시적용">즉시 적용 &mdash; 다음 날부터 활용</label>
                 <label class="r-opt"><input type="radio" name="priority" value="로드맵">체계적 로드맵 &mdash; 단계별 성장</label>
                 <label class="r-opt"><input type="radio" name="priority" value="변화관리">변화관리 &mdash; 조직 전환 포함</label>
+                <div class="etc-row"><input type="radio" name="priority" value="기타"><span>기타:</span><input type="text" name="priority_etc" placeholder="직접 입력"></div>
             </div>
         </div>
         <div class="q"><label class="q-label">선호하는 교육 형태는? (최대 2개)</label>
@@ -229,6 +237,7 @@
                 <label class="c-opt"><input type="checkbox" name="format" value="온라인라이브">온라인 라이브 (실시간)</label>
                 <label class="c-opt"><input type="checkbox" name="format" value="방문맞춤">기업 방문 맞춤형</label>
                 <label class="c-opt"><input type="checkbox" name="format" value="컨설팅">컨설팅 (전환 로드맵)</label>
+                <div class="etc-row"><input type="checkbox" name="format" value="기타"><span>기타:</span><input type="text" name="format_etc" placeholder="직접 입력"></div>
             </div>
         </div>
         <div class="q"><label class="q-label">AI 교육/도입의 긴급도는?</label>
@@ -256,6 +265,7 @@
                 <label class="c-opt"><input type="checkbox" name="expect" value="매출">새 사업/매출 창출</label>
                 <label class="c-opt"><input type="checkbox" name="expect" value="데이터의사결정">데이터 기반 의사결정</label>
                 <label class="c-opt"><input type="checkbox" name="expect" value="불안해소">AI 불안 해소</label>
+                <div class="etc-row"><input type="checkbox" name="expect" value="기타"><span>기타:</span><input type="text" name="expect_etc" placeholder="직접 입력"></div>
             </div>
         </div>
         <div class="q"><label class="q-label">가장 큰 우려는? (최대 2개)</label>
@@ -266,6 +276,7 @@
                 <label class="c-opt"><input type="checkbox" name="concern" value="저항">직원 거부감</label>
                 <label class="c-opt"><input type="checkbox" name="concern" value="기술변화">AI가 너무 빠르게 변함</label>
                 <label class="c-opt"><input type="checkbox" name="concern" value="사례없음">우리 업종 사례 없을 것 같음</label>
+                <div class="etc-row"><input type="checkbox" name="concern" value="기타"><span>기타:</span><input type="text" name="concern_etc" placeholder="직접 입력"></div>
             </div>
         </div>
         <div class="q"><label class="q-label">추가 의견 (선택)</label>
@@ -653,6 +664,11 @@ function renderIndustryNeeds() {
         lbl.innerHTML = '<input type="checkbox" name="ind_need" value="'+item.v+'">'+item.t;
         container.appendChild(lbl);
     });
+    // 기타 자유 서술란
+    const etcRow = document.createElement('div');
+    etcRow.className = 'etc-row';
+    etcRow.innerHTML = '<input type="checkbox" name="ind_need" value="기타"><span>기타:</span><input type="text" name="ind_need_etc" placeholder="위에 없는 고민이 있다면 적어주세요">';
+    container.appendChild(etcRow);
     bindCheckHighlight(container);
 }
 
@@ -688,6 +704,11 @@ function renderDeptTree() {
             nl.innerHTML = '<input type="checkbox" name="dept_need_'+dept.key+'" value="'+n.v+'">'+n.t;
             cg.appendChild(nl);
         });
+        // 부서별 기타 자유 서술란
+        const deptEtc = document.createElement('div');
+        deptEtc.className = 'etc-row';
+        deptEtc.innerHTML = '<input type="checkbox" name="dept_need_'+dept.key+'" value="기타"><span>기타:</span><input type="text" name="dept_need_'+dept.key+'_etc" placeholder="위에 없는 항목이 있다면">';
+        cg.appendChild(deptEtc);
         sub.appendChild(cg);
         wrapper.appendChild(sub);
         container.appendChild(wrapper);
@@ -749,6 +770,18 @@ document.querySelectorAll('.c-group[data-max]').forEach(grp => {
             });
         });
     });
+});
+
+/* ============================
+   ETC ROW: 텍스트 입력 시 체크 자동 선택
+   ============================ */
+document.addEventListener('input', e => {
+    if (e.target.matches('.etc-row input[type=text]')) {
+        const row = e.target.closest('.etc-row');
+        const cb = row.querySelector('input[type=checkbox], input[type=radio]');
+        if (cb && e.target.value.trim()) cb.checked = true;
+        else if (cb && !e.target.value.trim()) cb.checked = false;
+    }
 });
 
 /* ============================
