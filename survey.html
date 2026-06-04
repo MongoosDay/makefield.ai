@@ -82,6 +82,12 @@
 <div class="step active" data-step="1">
     <div class="step-ind">Step 1/6 &mdash; 기본 정보</div>
     <div class="section"><h3>귀사와 귀하에 대해</h3>
+        <div class="q"><label class="q-label">기업명</label>
+            <input type="text" name="기업명" placeholder="예: 테크로스" required>
+        </div>
+        <div class="q"><label class="q-label">응답자 성함</label>
+            <input type="text" name="응답자" placeholder="예: 홍길동" required>
+        </div>
         <div class="q"><label class="q-label">귀사의 업종은?</label>
             <div class="r-group" id="rg-ind">
                 <label class="r-opt"><input type="radio" name="업종" value="IT" required>IT / 소프트웨어</label>
@@ -283,7 +289,6 @@
             <label class="q-label">연락처</label>
             <div style="display:flex;flex-direction:column;gap:8px">
                 <input type="email" name="이메일" placeholder="이메일 (필수)">
-                <input type="text" name="기업명" placeholder="기업명 (선택)">
             </div>
             <div class="hint" style="margin-top:6px">2주 내 맞춤 리포트를 발송합니다. 리포트 발송 외 용도로 사용하지 않습니다.</div>
         </div>
