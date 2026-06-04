@@ -55,6 +55,28 @@
         .selected-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
         .tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.2);border-radius:20px;font-size:.74em;color:var(--accent)}
         .val-msg{font-size:.76em;color:var(--error);margin-top:6px;display:none}
+        .fb-banner{padding:14px 18px;border-radius:10px;margin-bottom:18px;font-size:.84em;line-height:1.7;animation:fadeIn .4s;display:none}
+        .fb-banner.show{display:block}
+        .fb-banner.info{background:rgba(79,143,255,.08);border:1px solid rgba(79,143,255,.15);color:var(--accent)}
+        .fb-banner.success{background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.15);color:var(--accent3)}
+        .fb-banner.warm{background:rgba(255,165,0,.08);border:1px solid rgba(255,165,0,.15);color:#ffa500}
+        .fb-banner strong{font-weight:700}
+        /* Phase 4: 진단 결과 */
+        .diag{display:none;padding:40px 0}
+        .diag.show{display:block}
+        .diag-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:16px}
+        .diag-card h3{font-size:.72em;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:12px;font-weight:600}
+        .diag-level{font-size:2.4em;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
+        .diag-label{font-size:1em;font-weight:600;margin-bottom:10px}
+        .diag-desc{color:var(--text2);font-size:.88em;line-height:1.8}
+        .meter{height:8px;background:var(--bg);border-radius:4px;overflow:hidden;margin:10px 0}
+        .meter-fill{height:100%;border-radius:4px;transition:width .8s}
+        .meter-fill.low{background:var(--error)}.meter-fill.mid{background:#ffa500}.meter-fill.high{background:var(--accent3)}
+        .diag-reco{display:flex;gap:8px;align-items:flex-start;padding:10px 14px;background:rgba(79,143,255,.05);border-radius:8px;margin-top:8px;font-size:.85em;line-height:1.7}
+        .diag-reco::before{content:">";color:var(--accent);font-weight:700;flex-shrink:0;margin-top:2px}
+        .diag-cta{text-align:center;margin-top:28px}
+        .diag-cta a{display:inline-block;padding:14px 32px;background:var(--gradient);color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:1em;transition:all .3s}
+        .diag-cta a:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(79,143,255,.4)}
         .etc-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--border);border-radius:8px;margin-top:6px}
         .etc-row input[type=checkbox],.etc-row input[type=radio]{accent-color:var(--accent);width:16px;height:16px;flex-shrink:0}
         .etc-row input[type=text]{flex:1;padding:8px 10px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:inherit;font-size:.83em}
@@ -310,10 +332,37 @@
 
     </form>
 
-    <div class="success-msg" id="success">
-        <h2>감사합니다!</h2>
-        <p>귀사에 맞는 AI 전환 방향을 설계하겠습니다.<br><br>리포트를 요청하신 분께는 <strong>7일 이내</strong>에 발송해 드립니다.<br><br><a href="mailto:contact@makefield.ai" style="color:var(--accent)">contact@makefield.ai</a></p>
-        <br><a href="/" style="color:var(--accent);text-decoration:none;font-weight:600">&larr; 홈으로</a>
+    <!-- Phase 4: 즉석 진단 결과 -->
+    <div class="diag" id="diag-result">
+        <div style="text-align:center;margin-bottom:28px">
+            <h2 style="font-size:1.6em;font-weight:800;margin-bottom:8px">귀사의 AI 전환 진단 결과</h2>
+            <p style="color:var(--text2);font-size:.88em">응답 내용을 기반으로 분석한 결과입니다</p>
+        </div>
+        <div class="diag-card">
+            <h3>AI 성숙도</h3>
+            <div class="diag-level" id="d-level">Level 0</div>
+            <div class="diag-label" id="d-level-label">AI 미도입</div>
+            <div class="meter"><div class="meter-fill low" id="d-level-meter" style="width:0%"></div></div>
+            <div class="diag-desc" id="d-level-desc"></div>
+        </div>
+        <div class="diag-card">
+            <h3>데이터 준비도</h3>
+            <div class="diag-level" id="d-data">낮음</div>
+            <div class="meter"><div class="meter-fill low" id="d-data-meter" style="width:0%"></div></div>
+            <div class="diag-desc" id="d-data-desc"></div>
+        </div>
+        <div class="diag-card">
+            <h3>AI 전환 처방</h3>
+            <div id="d-recos"></div>
+        </div>
+        <div class="diag-card" id="d-report-card" style="display:none">
+            <h3>맞춤 리포트</h3>
+            <div class="diag-desc">요청하신 리포트를 <strong>7일 이내</strong>에 발송해 드립니다.<br>업종별 사례 + 추천 교육 트랙 + 구체적 실행 방안이 포함됩니다.</div>
+        </div>
+        <div style="text-align:center;margin-top:20px;color:var(--text2);font-size:.82em">
+            문의: <a href="mailto:contact@makefield.ai" style="color:var(--accent)">contact@makefield.ai</a>
+        </div>
+        <div class="diag-cta"><a href="/">MakeField AI 홈으로</a></div>
     </div>
 </div>
 
@@ -623,9 +672,67 @@ function validateStep(step) {
     return true;
 }
 
+/* ============================
+   MICRO-COMMITMENT FEEDBACK (Phase 3)
+   ============================ */
+const INDUSTRY_NAMES = {"IT":"IT/소프트웨어","제조_기계":"제조업(기계/금속)","제조_전기전자":"제조업(전기/전자)","에너지":"에너지","건설플랜트":"건설/플랜트","조선해양":"조선/해양","화학소재":"화학/소재","공공연구":"공공/연구","유통서비스":"유통/서비스","기타":"해당 업종"};
+
+function getFeedback(step) {
+    if (step === 2) {
+        const ind = document.querySelector('input[name="industry"]:checked');
+        const role = document.querySelector('input[name="role"]:checked');
+        if (!ind) return null;
+        const name = INDUSTRY_NAMES[ind.value] || '해당 업종';
+        const msgs = [
+            name + ' 업종의 AI 전환율은 아직 30% 미만입니다. <strong>지금 시작하면 경쟁사보다 앞서갈 수 있습니다.</strong>',
+            name + ' 분야에서 AI를 도입한 기업의 업무 효율이 평균 <strong>40% 이상 향상</strong>된 사례가 보고되고 있습니다.',
+            '좋습니다! ' + name + ' 업종에 딱 맞는 AI 적용 영역을 선별했습니다. <strong>공감되는 항목을 골라주세요.</strong>'
+        ];
+        return {type:'info', text: msgs[Math.floor(Math.random()*msgs.length)]};
+    }
+    if (step === 3) {
+        const checked = document.querySelectorAll('input[name="ind_need"]:checked').length;
+        if (checked === 0) return {type:'info', text:'업종별 고민을 건너뛰셨네요. 괜찮습니다! 이번엔 <strong>부서별로 구체적인 니즈</strong>를 살펴보겠습니다.'};
+        if (checked <= 3) return {type:'success', text: checked + '개 영역을 선택하셨습니다. 이 정도면 <strong>핵심에 집중한 AI 도입</strong>이 가능합니다.'};
+        return {type:'warm', text: checked + '개나 선택하셨군요! 할 일이 많다는 뜻이기도 하지만, <strong>AI가 가장 큰 효과를 낼 곳부터 시작</strong>하면 됩니다.'};
+    }
+    if (step === 4) {
+        const depts = document.querySelectorAll('input[name="dept_sel"]:checked').length;
+        if (depts >= 3) return {type:'warm', text: depts + '개 부서에서 AI가 필요하다고 느끼셨습니다. <strong>조직 전체가 변할 준비가 되어 있다</strong>는 신호입니다.'};
+        if (depts >= 1) return {type:'success', text: '좋습니다! 선택하신 부서부터 <strong>작게 시작해서 성과를 보여주는 것</strong>이 가장 효과적입니다.'};
+        return null;
+    }
+    if (step === 5) {
+        const level = document.querySelector('input[name="ai_level"]:checked');
+        if (!level) return null;
+        const lv = level.value;
+        if (lv === 'L0') return {type:'info', text:'AI를 아직 사용하지 않고 계시군요. <strong>지금이 가장 좋은 시작 시점</strong>입니다. 같은 상황에서 시작한 기업들의 사례를 준비하겠습니다.'};
+        if (lv === 'L1') return {type:'info', text:'개인적으로 AI를 써보고 계시는 단계. <strong>회사 차원으로 확대하면 효과가 배가</strong>됩니다.'};
+        if (lv === 'L2') return {type:'warm', text:'도입은 했지만 활용도가 낮은 단계. <strong>가장 흔한 상황</strong>입니다. 원인과 해법을 진단해 드리겠습니다.'};
+        if (lv === 'L3') return {type:'success', text:'이미 부분적으로 AI를 활용 중이시군요! <strong>전사 확대를 위한 전략</strong>이 필요한 단계입니다.'};
+        if (lv === 'L4') return {type:'success', text:'전사적 AI 시스템을 운영 중이시군요. <strong>고도화와 신규 영역 확장</strong> 방향을 제안드리겠습니다.'};
+        return null;
+    }
+    if (step === 6) {
+        return {type:'success', text:'거의 다 왔습니다! 마지막으로 기대와 우려를 알려주시면 <strong>맞춤 진단 결과</strong>를 바로 보여드리겠습니다.'};
+    }
+    return null;
+}
+
+function showFeedback(step) {
+    // remove previous banners
+    document.querySelectorAll('.fb-banner').forEach(b => b.remove());
+    const fb = getFeedback(step);
+    if (!fb) return;
+    const stepEl = document.querySelector('.step[data-step="'+step+'"]');
+    const banner = document.createElement('div');
+    banner.className = 'fb-banner ' + fb.type + ' show';
+    banner.innerHTML = fb.text;
+    stepEl.insertBefore(banner, stepEl.querySelector('.section'));
+}
+
 function go(dir) {
     if (dir > 0 && !validateStep(cur)) {
-        // show gentle reminder
         const step = document.querySelector('.step[data-step="'+cur+'"]');
         let msg = step.querySelector('.val-msg');
         if (!msg) {
@@ -644,6 +751,8 @@ function go(dir) {
     cur = next;
     document.querySelector('.step[data-step="'+cur+'"]').classList.add('active');
     updateProg();
+    // Phase 3: show micro-commitment feedback
+    if (dir > 0) showFeedback(cur);
     window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -801,13 +910,129 @@ document.querySelectorAll('input[name="report"]').forEach(r => {
 });
 
 /* ============================
-   SUCCESS
+   PHASE 4: 즉석 진단 결과 계산
+   ============================ */
+function calcDiagnosis() {
+    // Web3Forms redirect doesn't pass form data, so read from localStorage
+    const ls = k => localStorage.getItem('mfai_'+k) || '';
+    const lsArr = k => { try { return JSON.parse(localStorage.getItem('mfai_'+k)||'[]'); } catch(e) { return []; } };
+    const level = ls('ai_level') || 'L0';
+    const levelMap = {
+        'L0': {score:0, pct:5,  label:'AI 미도입', cls:'low',
+            desc:'아직 AI를 도입하지 않은 상태입니다. 하지만 걱정하지 마세요. 한국 중소기업의 70% 이상이 같은 상황입니다. 지금 시작하면 경쟁사보다 한 발 앞서갈 수 있습니다.'},
+        'L1': {score:1, pct:25, label:'개인 활용 단계', cls:'low',
+            desc:'직원 개인이 AI를 써보는 단계입니다. 좋은 시작이지만, 개인 활용만으로는 조직 전체의 변화를 이끌기 어렵습니다. 회사 차원의 전략이 필요합니다.'},
+        'L2': {score:2, pct:45, label:'도입 초기 (활용 부진)', cls:'mid',
+            desc:'AI를 도입했지만 활용도가 낮은 상태입니다. 가장 흔한 패턴이며, 원인은 대부분 "데이터 미정비"와 "교육 부재"입니다. 방향만 잡으면 빠르게 성과를 낼 수 있습니다.'},
+        'L3': {score:3, pct:70, label:'부분 활용 단계', cls:'mid',
+            desc:'특정 부서에서 AI를 정기적으로 활용하고 있습니다. 이제 전사 확대를 위한 체계적 전략이 필요합니다. 성공 부서의 경험을 다른 부서로 전파하는 것이 핵심입니다.'},
+        'L4': {score:4, pct:95, label:'전사 운영 단계', cls:'high',
+            desc:'전사적으로 AI를 운영하고 계십니다. 고도화, 신규 영역 확장, AI 거버넌스 체계 수립이 다음 과제입니다.'}
+    };
+    const lv = levelMap[level] || levelMap['L0'];
+
+    // Data readiness
+    const dataForm = lsArr('data_form');
+    const dataSilo = ls('data_silo');
+    let dataScore = 0;
+    if (dataForm.includes('DB')) dataScore += 3;
+    else if (dataForm.includes('ERP등')) dataScore += 2;
+    else if (dataForm.includes('공유폴더')) dataScore += 1;
+    if (dataSilo === '통합') dataScore += 3;
+    else if (dataSilo === '일부자동') dataScore += 2;
+    else if (dataSilo === '수작업') dataScore += 1;
+
+    let dataLabel, dataPct, dataCls, dataDesc;
+    if (dataScore >= 5) {
+        dataLabel = '양호'; dataPct = 80; dataCls = 'high';
+        dataDesc = '데이터가 비교적 잘 정비되어 있습니다. AI 도입 시 빠르게 성과를 낼 수 있는 좋은 기반입니다.';
+    } else if (dataScore >= 3) {
+        dataLabel = '보통'; dataPct = 50; dataCls = 'mid';
+        dataDesc = '일부 데이터는 시스템화되어 있지만, AI가 제대로 활용하려면 데이터 정비가 병행되어야 합니다.';
+    } else {
+        dataLabel = '미흡'; dataPct = 20; dataCls = 'low';
+        dataDesc = '데이터가 종이나 개인 PC에 흩어져 있습니다. AI 도입 전에 데이터 정형화가 먼저 필요합니다. 하지만 이것도 AI가 도울 수 있습니다.';
+    }
+
+    // Recommendations
+    const recos = [];
+    const indNeeds = lsArr('ind_need').length;
+    const deptSel = lsArr('dept_sel').length;
+    const urgency = ls('urgency');
+    const failure = ls('failure');
+    const industry = ls('industry');
+    const indName = INDUSTRY_NAMES[industry] || '해당 업종';
+
+    if (lv.score <= 1 && dataScore < 3) {
+        recos.push('<strong>1단계: 데이터 정형화부터</strong> -- 종이/엑셀 데이터를 디지털화하고, AI가 읽을 수 있는 형태로 정비하세요. 이 과정 자체에 AI를 활용할 수 있습니다.');
+    }
+    if (lv.score <= 1) {
+        recos.push('<strong>AI 리터러시 교육</strong> -- 전 직원이 AI 기본 개념과 활용법을 이해하는 것이 첫걸음입니다. ' + indName + ' 업종 맞춤 사례로 교육하면 체감이 다릅니다.');
+    }
+    if (lv.score === 2 || failure === '효과미미' || failure === '포기') {
+        recos.push('<strong>AI 재도입 전략</strong> -- 이전 실패 원인을 분석하고, 가장 효과가 빠른 1개 업무부터 작게 시작하세요. "작은 성공"이 조직의 신뢰를 만듭니다.');
+    }
+    if (indNeeds >= 5 || deptSel >= 3) {
+        recos.push('<strong>우선순위 선정이 핵심</strong> -- 여러 영역에서 AI가 필요하다고 느끼셨습니다. 모두 한 번에 하면 실패합니다. ROI가 가장 높은 1~2개부터 집중하세요.');
+    }
+    if (lv.score >= 3) {
+        recos.push('<strong>전사 AI 전략 수립</strong> -- 성공 경험을 다른 부서로 확산하고, AI 거버넌스(보안/윤리/교육) 체계를 갖추세요.');
+    }
+    if (urgency === '즉시' || urgency === '단기') {
+        recos.push('<strong>빠른 실행이 가능합니다</strong> -- 긴급도가 높으시니, 2~4주 내 착수 가능한 Quick Win 과제를 먼저 선별해 드리겠습니다.');
+    }
+    // fallback
+    if (recos.length === 0) {
+        recos.push('<strong>맞춤 컨설팅</strong> -- 귀사의 상황에 맞는 AI 전환 로드맵을 설계해 드리겠습니다.');
+    }
+
+    // Render
+    document.getElementById('d-level').textContent = 'Level ' + lv.score;
+    document.getElementById('d-level-label').textContent = lv.label;
+    document.getElementById('d-level-meter').style.width = lv.pct + '%';
+    document.getElementById('d-level-meter').className = 'meter-fill ' + lv.cls;
+    document.getElementById('d-level-desc').innerHTML = lv.desc;
+
+    document.getElementById('d-data').textContent = dataLabel;
+    document.getElementById('d-data-meter').style.width = dataPct + '%';
+    document.getElementById('d-data-meter').className = 'meter-fill ' + dataCls;
+    document.getElementById('d-data-desc').innerHTML = dataDesc;
+
+    const recoEl = document.getElementById('d-recos');
+    recoEl.innerHTML = recos.map(r => '<div class="diag-reco">' + r + '</div>').join('');
+
+    // report card
+    const report = ls('report');
+    if (report === '예') {
+        document.getElementById('d-report-card').style.display = 'block';
+    }
+}
+
+/* ============================
+   SUCCESS → DIAGNOSIS
    ============================ */
 if (window.location.search.includes('success=1')) {
+    // Save form data to localStorage before redirect (backup)
     document.getElementById('sf').style.display = 'none';
     document.querySelector('.prog-wrap').style.display = 'none';
-    document.getElementById('success').style.display = 'block';
+    document.querySelector('.header .sub').style.display = 'none';
+    document.getElementById('diag-result').classList.add('show');
+    calcDiagnosis();
 }
+
+// Save key values to localStorage before form submit (for diagnosis after redirect)
+document.getElementById('sf').addEventListener('submit', function() {
+    const fields = ['ai_level','data_silo','failure','urgency','industry','report'];
+    fields.forEach(f => {
+        const el = document.querySelector('input[name="'+f+'"]:checked');
+        if (el) localStorage.setItem('mfai_'+f, el.value);
+    });
+    // checkboxes
+    ['data_form','ind_need','dept_sel'].forEach(f => {
+        const vals = Array.from(document.querySelectorAll('input[name="'+f+'"]:checked')).map(e=>e.value);
+        localStorage.setItem('mfai_'+f, JSON.stringify(vals));
+    });
+});
 
 updateProg();
 </script>
