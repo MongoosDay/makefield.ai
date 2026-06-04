@@ -3,268 +3,686 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 교육 니즈 설문 | MakeField AI</title>
-    <meta name="description" content="3분이면 충분합니다. 귀사에 맞는 AI 교육 방향을 진단해 드립니다.">
+    <title>AI 전환 진단 설문 | MakeField AI</title>
+    <meta name="description" content="귀사의 업종과 부서에 맞는 AI 전환 방향을 진단합니다.">
+    <meta property="og:title" content="우리 회사에 맞는 AI 전환은? - MakeField AI">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root{--bg:#06060b;--bg2:#0d0d14;--card:#13131d;--text:#e8e8f0;--text2:#8585a0;--muted:#4a4a60;--accent:#4f8fff;--accent2:#7c5cff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff,#7c5cff,#00d4aa);--border:rgba(255,255,255,0.05)}
-        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh}
-        .survey-container{max-width:720px;margin:0 auto;padding:40px 24px 80px}
-        .survey-header{text-align:center;padding:100px 0 40px}
-        .survey-header h1{font-size:2em;font-weight:800;margin-bottom:12px;letter-spacing:-.02em}
-        .survey-header p{color:var(--text2);font-size:.95em;line-height:1.8}
-        .back-link{display:inline-block;color:var(--accent);text-decoration:none;font-size:.82em;margin-bottom:20px;font-weight:500}.back-link:hover{text-decoration:underline}
-        .progress-bar{height:4px;background:var(--card);border-radius:2px;margin-bottom:40px;overflow:hidden}
-        .progress-fill{height:100%;background:var(--gradient);border-radius:2px;transition:width .4s;width:0%}
-        .form-section{margin-bottom:40px;padding:28px;background:var(--card);border:1px solid var(--border);border-radius:16px}
-        .form-section h3{font-size:.72em;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:20px}
-        .form-group{margin-bottom:24px}.form-group:last-child{margin-bottom:0}
-        .form-group>label:first-child{display:block;font-weight:600;font-size:.92em;margin-bottom:10px}
-        .form-group .hint{font-size:.78em;color:var(--muted);margin-bottom:8px}
-        .radio-group,.check-group{display:flex;flex-direction:column;gap:8px}
-        .radio-option,.check-option{display:flex;align-items:center;gap:10px;padding:10px 16px;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all .2s;font-size:.88em}
-        .radio-option:hover,.check-option:hover{border-color:var(--accent);background:rgba(79,143,255,.05)}
-        .radio-option input,.check-option input{accent-color:var(--accent);width:16px;height:16px}
-        .radio-option.selected,.check-option.selected{border-color:var(--accent);background:rgba(79,143,255,.08)}
-        input[type=email],textarea{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:inherit;font-size:.88em;transition:border-color .2s}
-        input[type=email]:focus,textarea:focus{outline:none;border-color:var(--accent)}
-        textarea{resize:vertical;min-height:80px}
+        :root{--bg:#06060b;--bg2:#0d0d14;--card:#13131d;--text:#e8e8f0;--text2:#8585a0;--muted:#4a4a60;--accent:#4f8fff;--accent2:#7c5cff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff,#7c5cff,#00d4aa);--border:rgba(255,255,255,0.05);--error:#ff5c5c;--success:#00d4aa}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh}
+        .container{max-width:720px;margin:0 auto;padding:40px 24px 80px}
+        .header{text-align:center;padding:70px 0 28px}
+        .header h1{font-size:2em;font-weight:800;margin-bottom:10px;letter-spacing:-.02em}
+        .header .sub{color:var(--text2);font-size:.9em;line-height:1.8}
+        .back-link{display:inline-block;color:var(--accent);text-decoration:none;font-size:.82em;margin-bottom:16px;font-weight:500}
+        .back-link:hover{text-decoration:underline}
+        .prog-wrap{margin-bottom:28px}
+        .prog-bar{height:4px;background:var(--card);border-radius:2px;overflow:hidden}
+        .prog-fill{height:100%;background:var(--gradient);border-radius:2px;transition:width .4s;width:0%}
+        .prog-label{display:flex;justify-content:space-between;font-size:.72em;color:var(--muted);margin-top:6px}
+        .section{margin-bottom:20px;padding:24px;background:var(--card);border:1px solid var(--border);border-radius:14px}
+        .section h3{font-size:.7em;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:14px}
+        .q{margin-bottom:20px}.q:last-child{margin-bottom:0}
+        .q-label{display:block;font-weight:600;font-size:.9em;margin-bottom:8px}
+        .hint{font-size:.76em;color:var(--muted);margin-bottom:8px}
+        .r-group,.c-group{display:flex;flex-direction:column;gap:6px}
+        .r-opt,.c-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all .2s;font-size:.85em}
+        .r-opt:hover,.c-opt:hover{border-color:var(--accent);background:rgba(79,143,255,.05)}
+        .r-opt input,.c-opt input{accent-color:var(--accent);width:16px;height:16px;flex-shrink:0}
+        .r-opt.sel,.c-opt.sel{border-color:var(--accent);background:rgba(79,143,255,.08)}
+        .c-opt.off{opacity:.35;pointer-events:none}
+        input[type=email],input[type=text],textarea{width:100%;padding:11px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:inherit;font-size:.85em;transition:border-color .2s}
+        input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+        textarea{resize:vertical;min-height:68px}
         .submit-btn{width:100%;padding:16px;background:var(--gradient);color:#fff;border:none;border-radius:10px;font-size:1.05em;font-weight:700;cursor:pointer;transition:all .3s}
         .submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(79,143,255,.4)}
         .success-msg{text-align:center;padding:60px 24px;display:none}
         .success-msg h2{font-size:1.8em;margin-bottom:16px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
         .success-msg p{color:var(--text2);line-height:1.8}
         .step{display:none}.step.active{display:block}
-        .nav-btns{display:flex;gap:12px;margin-top:24px}
-        .nav-btns button{flex:1;padding:14px;border-radius:8px;font-weight:600;font-size:.9em;cursor:pointer;transition:all .2s}
-        .btn-prev{background:transparent;border:1px solid var(--border);color:var(--text2)}.btn-prev:hover{border-color:var(--accent);color:var(--accent)}
-        .btn-next{background:var(--accent);border:none;color:#fff}.btn-next:hover{background:#6ba0ff}
-        .step-indicator{text-align:center;margin-bottom:20px;font-size:.78em;color:var(--muted)}
-        @media(max-width:600px){.survey-header h1{font-size:1.5em}.form-section{padding:20px}}
+        .nav{display:flex;gap:12px;margin-top:18px}
+        .nav button{flex:1;padding:13px;border-radius:8px;font-weight:600;font-size:.88em;cursor:pointer;transition:all .2s}
+        .btn-p{background:transparent;border:1px solid var(--border);color:var(--text2)}.btn-p:hover{border-color:var(--accent);color:var(--accent)}
+        .btn-n{background:var(--accent);border:none;color:#fff}.btn-n:hover{background:#6ba0ff}
+        .step-ind{text-align:center;margin-bottom:14px;font-size:.76em;color:var(--muted)}
+        /* dynamic tree sub-options */
+        .tree-sub{margin-top:12px;padding:16px;background:rgba(79,143,255,.03);border:1px solid rgba(79,143,255,.1);border-radius:10px;display:none}
+        .tree-sub.show{display:block;animation:fadeIn .3s}
+        .tree-sub h4{font-size:.78em;font-weight:600;color:var(--accent3);margin-bottom:10px;text-transform:uppercase;letter-spacing:.1em}
+        .tree-sub .c-group{gap:5px}
+        .tree-sub .c-opt{font-size:.82em;padding:8px 12px}
+        /* tag display for selected items */
+        .selected-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+        .tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.2);border-radius:20px;font-size:.74em;color:var(--accent)}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+        @media(max-width:600px){.header{padding:50px 0 20px}.header h1{font-size:1.45em}.section{padding:18px}}
     </style>
 </head>
 <body>
-<div class="survey-container">
-    <div class="survey-header">
+<div class="container">
+    <div class="header">
         <a href="/" class="back-link">&larr; MakeField AI</a>
-        <h1>우리 회사에 맞는<br>AI 교육은 무엇일까요?</h1>
-        <p>3분이면 충분합니다. <span id="q-count">-</span>개 문항에 응답하시면,<br>귀사에 맞는 AI 교육 방향을 제안해 드립니다.</p>
+        <h1>우리 회사에 맞는<br>AI 전환을 진단합니다</h1>
+        <p class="sub">업종과 부서에 따라 질문이 달라집니다.<br>귀사에 꼭 맞는 AI 전환 방향을 제안해 드립니다.</p>
     </div>
-    <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+    <div class="prog-wrap">
+        <div class="prog-bar"><div class="prog-fill" id="prog"></div></div>
+        <div class="prog-label"><span id="prog-step">Step 1 / 6</span><span id="prog-pct">0%</span></div>
+    </div>
 
-    <form id="survey-form" action="https://api.web3forms.com/submit" method="POST">
+    <form id="sf" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-        <input type="hidden" name="subject" value="[MakeField AI] 설문 응답">
+        <input type="hidden" name="subject" value="[MakeField AI] AI 전환 진단 설문">
         <input type="hidden" name="from_name" value="MakeField AI Survey">
         <input type="hidden" name="redirect" value="https://makefield.ai/survey.html?success=1">
 
-        <!-- STEP 1/4: 기본 정보 -->
-        <div class="step active" data-step="1">
-            <div class="step-indicator">Step 1/4 &mdash; 기본 정보</div>
-            <div class="form-section"><h3>Section 1 &mdash; 기본 정보</h3>
-                <div class="form-group"><label class="q-item">귀사의 업종은?</label>
-                    <div class="radio-group">
-                        <label class="radio-option"><input type="radio" name="q_industry" value="제조업" required>제조업 (기계/금속/전기/전자)</label>
-                        <label class="radio-option"><input type="radio" name="q_industry" value="에너지">에너지 (발전/신재생/수소)</label>
-                        <label class="radio-option"><input type="radio" name="q_industry" value="건설플랜트">건설 / 플랜트 / 엔지니어링</label>
-                        <label class="radio-option"><input type="radio" name="q_industry" value="IT">IT / 소프트웨어</label>
-                        <label class="radio-option"><input type="radio" name="q_industry" value="조선해양">조선 / 해양</label>
-                        <label class="radio-option"><input type="radio" name="q_industry" value="공공연구">공공기관 / 연구소 / 대학</label>
-                        <label class="radio-option"><input type="radio" name="q_industry" value="기타">기타</label>
-                    </div>
-                </div>
-                <div class="form-group"><label class="q-item">귀사의 규모는?</label>
-                    <div class="radio-group">
-                        <label class="radio-option"><input type="radio" name="q_size" value="10미만" required>10인 미만</label>
-                        <label class="radio-option"><input type="radio" name="q_size" value="10-49">10~49인</label>
-                        <label class="radio-option"><input type="radio" name="q_size" value="50-99">50~99인</label>
-                        <label class="radio-option"><input type="radio" name="q_size" value="100-299">100~299인</label>
-                        <label class="radio-option"><input type="radio" name="q_size" value="300이상">300인 이상</label>
-                    </div>
-                </div>
-                <div class="form-group"><label class="q-item">응답자의 직무는?</label>
-                    <div class="radio-group">
-                        <label class="radio-option"><input type="radio" name="q_role" value="경영진" required>경영진 / 임원</label>
-                        <label class="radio-option"><input type="radio" name="q_role" value="관리자">중간관리자 (팀장/부장)</label>
-                        <label class="radio-option"><input type="radio" name="q_role" value="엔지니어">엔지니어 (설계/개발/시운전)</label>
-                        <label class="radio-option"><input type="radio" name="q_role" value="연구원">연구원</label>
-                        <label class="radio-option"><input type="radio" name="q_role" value="사무직">관리 / 사무직</label>
-                        <label class="radio-option"><input type="radio" name="q_role" value="IT전산">IT / 전산</label>
-                        <label class="radio-option"><input type="radio" name="q_role" value="기타">기타</label>
-                    </div>
-                </div>
+<!-- ============ STEP 1: 기본 프로필 ============ -->
+<div class="step active" data-step="1">
+    <div class="step-ind">Step 1/6 &mdash; 기본 정보</div>
+    <div class="section"><h3>귀사와 귀하에 대해</h3>
+        <div class="q"><label class="q-label">귀사의 업종은?</label>
+            <div class="r-group" id="rg-ind">
+                <label class="r-opt"><input type="radio" name="industry" value="IT" required>IT / 소프트웨어</label>
+                <label class="r-opt"><input type="radio" name="industry" value="제조_기계">제조업 &mdash; 기계 / 금속 / 자동차</label>
+                <label class="r-opt"><input type="radio" name="industry" value="제조_전기전자">제조업 &mdash; 전기 / 전자 / 반도체</label>
+                <label class="r-opt"><input type="radio" name="industry" value="에너지">에너지 (발전 / 신재생 / 수소)</label>
+                <label class="r-opt"><input type="radio" name="industry" value="건설플랜트">건설 / 플랜트 / 엔지니어링</label>
+                <label class="r-opt"><input type="radio" name="industry" value="조선해양">조선 / 해양 / 중공업</label>
+                <label class="r-opt"><input type="radio" name="industry" value="화학소재">화학 / 소재 / 바이오</label>
+                <label class="r-opt"><input type="radio" name="industry" value="공공연구">공공기관 / 연구소</label>
+                <label class="r-opt"><input type="radio" name="industry" value="유통서비스">유통 / 서비스 / 물류</label>
+                <label class="r-opt"><input type="radio" name="industry" value="기타">기타</label>
             </div>
-            <div class="nav-btns"><button type="button" class="btn-next" onclick="nextStep()">다음 &rarr;</button></div>
         </div>
+        <div class="q"><label class="q-label">귀사의 규모는?</label>
+            <div class="r-group">
+                <label class="r-opt"><input type="radio" name="size" value="10미만" required>10인 미만</label>
+                <label class="r-opt"><input type="radio" name="size" value="10-49">10 ~ 49인</label>
+                <label class="r-opt"><input type="radio" name="size" value="50-149">50 ~ 149인</label>
+                <label class="r-opt"><input type="radio" name="size" value="150-299">150 ~ 299인</label>
+                <label class="r-opt"><input type="radio" name="size" value="300+">300인 이상</label>
+            </div>
+        </div>
+        <div class="q"><label class="q-label">귀하의 역할은?</label>
+            <div class="r-group">
+                <label class="r-opt"><input type="radio" name="role" value="경영진" required>경영진 / 임원</label>
+                <label class="r-opt"><input type="radio" name="role" value="관리자">중간관리자 (팀장/부장)</label>
+                <label class="r-opt"><input type="radio" name="role" value="실무자">실무 담당자 / 엔지니어</label>
+                <label class="r-opt"><input type="radio" name="role" value="IT전산">IT / 전산 / 데이터</label>
+                <label class="r-opt"><input type="radio" name="role" value="기타">기타</label>
+            </div>
+        </div>
+    </div>
+    <div class="nav"><button type="button" class="btn-n" onclick="go(1)">다음 &rarr;</button></div>
+</div>
 
-        <!-- STEP 2/4: AI 현황 -->
-        <div class="step" data-step="2">
-            <div class="step-indicator">Step 2/4 &mdash; AI 현황 진단</div>
-            <div class="form-section"><h3>Section 2 &mdash; 현재 AI 활용 수준</h3>
-                <div class="form-group"><label class="q-item">귀사의 현재 AI 활용 단계는?</label>
-                    <div class="radio-group">
-                        <label class="radio-option"><input type="radio" name="q_ai_level" value="미사용" required>아직 AI를 전혀 사용하지 않음</label>
-                        <label class="radio-option"><input type="radio" name="q_ai_level" value="개인적">개인적으로 ChatGPT 등을 가끔 사용하는 직원이 있음</label>
-                        <label class="radio-option"><input type="radio" name="q_ai_level" value="도입저활용">회사 차원에서 도입했으나 활용도가 낮음</label>
-                        <label class="radio-option"><input type="radio" name="q_ai_level" value="부분활용">특정 부서/업무에서 적극 활용 중</label>
-                        <label class="radio-option"><input type="radio" name="q_ai_level" value="전사활용">전사적으로 AI 시스템이 운영 중</label>
-                    </div>
-                </div>
-                <div class="form-group"><label class="q-item">AI 도입을 시도했다가 효과가 없었던 경험이 있습니까?</label>
-                    <div class="radio-group">
-                        <label class="radio-option"><input type="radio" name="q_failure" value="포기" required>예, 도입했다가 포기한 경험이 있음</label>
-                        <label class="radio-option"><input type="radio" name="q_failure" value="효과미미">예, 도입은 했으나 효과가 미미함</label>
-                        <label class="radio-option"><input type="radio" name="q_failure" value="미시도">아직 도입을 시도해본 적 없음</label>
-                        <label class="radio-option"><input type="radio" name="q_failure" value="성공">아니요, 도입 후 효과를 보고 있음</label>
-                    </div>
-                </div>
-                <div class="form-group"><label class="q-item">(실패/효과 미미 경험 시) 가장 큰 원인은?</label>
-                    <div class="hint">복수 선택 가능 &bull; 해당 없으면 건너뛰세요</div>
-                    <div class="check-group">
-                        <label class="check-option"><input type="checkbox" name="q_fail_reason" value="직원무관심">직원들이 사용하지 않음</label>
-                        <label class="check-option"><input type="checkbox" name="q_fail_reason" value="데이터문제">AI가 우리 업무 맥락을 모름 (데이터 문제)</label>
-                        <label class="check-option"><input type="checkbox" name="q_fail_reason" value="정확도">그럴듯한데 정확하지 않음 (할루시네이션)</label>
-                        <label class="check-option"><input type="checkbox" name="q_fail_reason" value="후속관리없음">도입 후 후속 관리/교육이 없었음</label>
-                        <label class="check-option"><input type="checkbox" name="q_fail_reason" value="적용처불명">어떤 업무에 적용해야 할지 모르겠음</label>
-                        <label class="check-option"><input type="checkbox" name="q_fail_reason" value="비용효과">비용 대비 효과를 체감하지 못함</label>
-                    </div>
-                </div>
-                <div class="form-group"><label class="q-item">귀사 업무 중 반복적이고 패턴이 있는 작업의 비중은?</label>
-                    <div class="radio-group">
-                        <label class="radio-option"><input type="radio" name="q_repetitive" value="10미만">10% 미만</label>
-                        <label class="radio-option"><input type="radio" name="q_repetitive" value="10-30">10~30%</label>
-                        <label class="radio-option"><input type="radio" name="q_repetitive" value="30-50">30~50%</label>
-                        <label class="radio-option"><input type="radio" name="q_repetitive" value="50이상">50% 이상</label>
-                        <label class="radio-option"><input type="radio" name="q_repetitive" value="모름">잘 모르겠음</label>
-                    </div>
-                </div>
-            </div>
-            <div class="nav-btns"><button type="button" class="btn-prev" onclick="prevStep()">&larr; 이전</button><button type="button" class="btn-next" onclick="nextStep()">다음 &rarr;</button></div>
+<!-- ============ STEP 2: 업종별 세부 영역 (동적 트리) ============ -->
+<div class="step" data-step="2">
+    <div class="step-ind">Step 2/6 &mdash; 업종별 AI 적용 영역</div>
+    <div class="section"><h3>귀사 업종에서 AI가 필요한 영역</h3>
+        <div class="q">
+            <label class="q-label" id="ind-q-label">아래에서 AI를 적용하고 싶은 영역을 선택하세요</label>
+            <div class="hint">복수 선택 가능 &bull; 해당하는 것을 모두 선택하세요</div>
+            <div class="c-group" id="ind-needs"></div>
         </div>
+    </div>
+    <div class="nav"><button type="button" class="btn-p" onclick="go(-1)">&larr; 이전</button><button type="button" class="btn-n" onclick="go(1)">다음 &rarr;</button></div>
+</div>
 
-        <!-- STEP 3/4: 교육 니즈 -->
-        <div class="step" data-step="3">
-            <div class="step-indicator">Step 3/4 &mdash; 교육 니즈</div>
-            <div class="form-section"><h3>Section 3 &mdash; 원하는 교육</h3>
-                <div class="form-group"><label class="q-item">AI 교육에서 가장 필요한 내용은? (최대 3개)</label>
-                    <div class="check-group">
-                        <label class="check-option"><input type="checkbox" name="q_needs" value="트렌드">AI 기본 원리와 트렌드 이해</label>
-                        <label class="check-option"><input type="checkbox" name="q_needs" value="도구사용법">AI 도구 실전 사용법</label>
-                        <label class="check-option"><input type="checkbox" name="q_needs" value="데이터정형화">우리 업무 데이터를 AI용으로 정리하는 법</label>
-                        <label class="check-option"><input type="checkbox" name="q_needs" value="자동화">AI로 반복 업무를 자동화하는 방법</label>
-                        <label class="check-option"><input type="checkbox" name="q_needs" value="전략">AI 도입 전략 수립 (경영진 대상)</label>
-                        <label class="check-option"><input type="checkbox" name="q_needs" value="업종특화">우리 업종에 특화된 AI 활용 사례</label>
-                        <label class="check-option"><input type="checkbox" name="q_needs" value="커리어">AI 시대의 커리어/역할 변화 이해</label>
-                        <label class="check-option"><input type="checkbox" name="q_needs" value="시스템구축">AI 시스템 구축 (개발자 대상)</label>
-                    </div>
-                </div>
-                <div class="form-group"><label class="q-item">선호하는 교육 형태는?</label>
-                    <div class="hint">복수 선택 가능</div>
-                    <div class="check-group">
-                        <label class="check-option"><input type="checkbox" name="q_format" value="오프라인워크숍">오프라인 워크숍 (실습 중심, 반나절~하루)</label>
-                        <label class="check-option"><input type="checkbox" name="q_format" value="온라인강의">온라인 강의 (자율 학습형)</label>
-                        <label class="check-option"><input type="checkbox" name="q_format" value="강연">오프라인 강연 (1~2시간, 인사이트)</label>
-                        <label class="check-option"><input type="checkbox" name="q_format" value="방문맞춤">기업 방문 맞춤형 교육</label>
-                        <label class="check-option"><input type="checkbox" name="q_format" value="컨설팅">컨설팅 (전사 AI 전환 로드맵)</label>
-                    </div>
-                </div>
-                <div class="form-group"><label class="q-item">1회 교육에 가장 적합한 시간은?</label>
-                    <div class="radio-group">
-                        <label class="radio-option"><input type="radio" name="q_duration" value="1-2시간">1~2시간 (강연/세미나)</label>
-                        <label class="radio-option"><input type="radio" name="q_duration" value="반나절">반나절 (3~4시간)</label>
-                        <label class="radio-option"><input type="radio" name="q_duration" value="하루">하루 (6~8시간)</label>
-                        <label class="radio-option"><input type="radio" name="q_duration" value="2-3일">2~3일 집중 과정</label>
-                        <label class="radio-option"><input type="radio" name="q_duration" value="업무외">업무 시간 외 (퇴근 후/주말)만 가능</label>
-                    </div>
-                </div>
-            </div>
-            <div class="nav-btns"><button type="button" class="btn-prev" onclick="prevStep()">&larr; 이전</button><button type="button" class="btn-next" onclick="nextStep()">다음 &rarr;</button></div>
+<!-- ============ STEP 3: 부서별 니즈 (동적 트리) ============ -->
+<div class="step" data-step="3">
+    <div class="step-ind">Step 3/6 &mdash; 부서별 구체 니즈</div>
+    <div class="section"><h3>부서/기능별 AI 활용 니즈</h3>
+        <div class="q">
+            <label class="q-label">AI를 활용하고 싶은 부서/기능을 선택하세요</label>
+            <div class="hint">선택하면 해당 부서의 구체적인 AI 활용 항목이 펼쳐집니다</div>
+            <div id="dept-tree"></div>
         </div>
+    </div>
+    <div class="nav"><button type="button" class="btn-p" onclick="go(-1)">&larr; 이전</button><button type="button" class="btn-n" onclick="go(1)">다음 &rarr;</button></div>
+</div>
 
-        <!-- STEP 4/4: 기대/우려 + 연락처 -->
-        <div class="step" data-step="4">
-            <div class="step-indicator">Step 4/4 &mdash; 기대와 연락처</div>
-            <div class="form-section"><h3>Section 4 &mdash; 기대 / 우려 / 연락처</h3>
-                <div class="form-group"><label class="q-item">AI 교육에 대한 가장 큰 기대는? (최대 2개)</label>
-                    <div class="check-group">
-                        <label class="check-option"><input type="checkbox" name="q_expect" value="효율">직원 업무 효율 향상</label>
-                        <label class="check-option"><input type="checkbox" name="q_expect" value="자동화">반복 업무 자동화</label>
-                        <label class="check-option"><input type="checkbox" name="q_expect" value="경쟁력">경쟁사 대비 기술 우위</label>
-                        <label class="check-option"><input type="checkbox" name="q_expect" value="사업기회">새로운 사업 기회 발굴</label>
-                        <label class="check-option"><input type="checkbox" name="q_expect" value="불안해소">AI에 대한 막연한 불안 해소</label>
-                    </div>
-                </div>
-                <div class="form-group"><label class="q-item">AI 교육에 대한 가장 큰 우려는? (최대 2개)</label>
-                    <div class="check-group">
-                        <label class="check-option"><input type="checkbox" name="q_concern" value="적용안됨">교육 후 실제 적용이 안 될 것 같음</label>
-                        <label class="check-option"><input type="checkbox" name="q_concern" value="비용불확실">비용 대비 효과 불확실</label>
-                        <label class="check-option"><input type="checkbox" name="q_concern" value="보안">보안 / 데이터 유출 문제</label>
-                        <label class="check-option"><input type="checkbox" name="q_concern" value="저항">직원들의 거부감</label>
-                        <label class="check-option"><input type="checkbox" name="q_concern" value="기술변화빠름">AI가 너무 빠르게 변해서 금방 쓸모없어질 것 같음</label>
-                        <label class="check-option"><input type="checkbox" name="q_concern" value="사례없음">우리 업종에 맞는 사례가 없을 것 같음</label>
-                    </div>
-                </div>
-                <div class="form-group"><label class="q-item">추가로 하고 싶은 말씀이 있으시다면? (선택)</label>
-                    <textarea name="q_comment" placeholder="자유롭게 적어주세요..." rows="3"></textarea>
-                </div>
-                <div class="form-group"><label class="q-item">맞춤형 교육 리포트를 받아보시겠습니까?</label>
-                    <div class="hint">이메일을 입력하시면 2주 이내에 맞춤 리포트를 발송해 드립니다.</div>
-                    <input type="email" name="q_email" placeholder="email@company.com (선택사항)">
-                </div>
+<!-- ============ STEP 4: AI 현황 + 데이터 성숙도 ============ -->
+<div class="step" data-step="4">
+    <div class="step-ind">Step 4/6 &mdash; AI 현황 &amp; 데이터</div>
+    <div class="section"><h3>현재 AI 활용 수준</h3>
+        <div class="q"><label class="q-label">귀사의 AI 활용 단계는?</label>
+            <div class="r-group">
+                <label class="r-opt"><input type="radio" name="ai_level" value="L0" required><strong>Level 0</strong> &mdash; AI를 전혀 사용하지 않음</label>
+                <label class="r-opt"><input type="radio" name="ai_level" value="L1"><strong>Level 1</strong> &mdash; 개인적으로 ChatGPT 등 가끔 사용</label>
+                <label class="r-opt"><input type="radio" name="ai_level" value="L2"><strong>Level 2</strong> &mdash; 회사 차원 도입했으나 활용도 낮음</label>
+                <label class="r-opt"><input type="radio" name="ai_level" value="L3"><strong>Level 3</strong> &mdash; 특정 부서에서 정기 활용 중</label>
+                <label class="r-opt"><input type="radio" name="ai_level" value="L4"><strong>Level 4</strong> &mdash; 전사적 AI 시스템 운영</label>
             </div>
-            <div class="nav-btns" style="margin-bottom:8px"><button type="button" class="btn-prev" onclick="prevStep()">&larr; 이전</button></div>
-            <button type="submit" class="submit-btn">설문 제출하기</button>
         </div>
+        <div class="q"><label class="q-label">AI 도입 시도 후 포기/효과 미미 경험?</label>
+            <div class="r-group" id="rg-fail">
+                <label class="r-opt"><input type="radio" name="failure" value="포기" required>포기한 경험 있음</label>
+                <label class="r-opt"><input type="radio" name="failure" value="효과미미">효과가 거의 없었음</label>
+                <label class="r-opt"><input type="radio" name="failure" value="검토중">현재 도입 검토 중</label>
+                <label class="r-opt"><input type="radio" name="failure" value="미시도">시도해본 적 없음</label>
+                <label class="r-opt"><input type="radio" name="failure" value="성공">효과를 보고 있음</label>
+            </div>
+        </div>
+        <div class="q" id="barrier-wrap" style="display:none"><label class="q-label">가장 큰 장벽은? (최대 3개)</label>
+            <div class="c-group" data-max="3">
+                <label class="c-opt"><input type="checkbox" name="barrier" value="직원무관심">직원들이 사용하지 않음</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="데이터미정리">데이터가 정리 안 됨 (종이/엑셀 난립)</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="맥락이해불가">AI가 업무 맥락을 이해 못함</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="적용처불명">어디에 적용할지 모르겠음</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="관리인력없음">관리/교육할 사람이 없음</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="ROI불확실">비용 대비 효과 입증 어려움</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="보안">보안/유출 우려</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="경영진지원부족">경영진 이해/지원 부족</label>
+            </div>
+        </div>
+    </div>
+    <div class="section"><h3>데이터 현황</h3>
+        <div class="q"><label class="q-label">업무 데이터는 주로 어떤 형태? (최대 2개)</label>
+            <div class="c-group" data-max="2">
+                <label class="c-opt"><input type="checkbox" name="data_form" value="종이">종이 / 수기 기록</label>
+                <label class="c-opt"><input type="checkbox" name="data_form" value="개인PC">개인 PC 엑셀/워드 (공유 안 됨)</label>
+                <label class="c-opt"><input type="checkbox" name="data_form" value="공유폴더">공유 폴더/NAS</label>
+                <label class="c-opt"><input type="checkbox" name="data_form" value="ERP등">ERP/MES/PLM 등 시스템</label>
+                <label class="c-opt"><input type="checkbox" name="data_form" value="DB">DB로 체계적 관리</label>
+            </div>
+        </div>
+        <div class="q"><label class="q-label">부서 간 데이터 연결 상태는?</label>
+            <div class="r-group">
+                <label class="r-opt"><input type="radio" name="data_silo" value="단절">완전히 단절 (부서별 따로)</label>
+                <label class="r-opt"><input type="radio" name="data_silo" value="수작업">일부 수작업으로 옮김</label>
+                <label class="r-opt"><input type="radio" name="data_silo" value="일부자동">일부 자동 연동</label>
+                <label class="r-opt"><input type="radio" name="data_silo" value="통합">대부분 통합 관리</label>
+            </div>
+        </div>
+    </div>
+    <div class="nav"><button type="button" class="btn-p" onclick="go(-1)">&larr; 이전</button><button type="button" class="btn-n" onclick="go(1)">다음 &rarr;</button></div>
+</div>
+
+<!-- ============ STEP 5: 교육 형태 + 긴급도 ============ -->
+<div class="step" data-step="5">
+    <div class="step-ind">Step 5/6 &mdash; 교육 선호</div>
+    <div class="section"><h3>교육 형태 &amp; 우선순위</h3>
+        <div class="q"><label class="q-label">가장 먼저 해결하고 싶은 문제는? (자유기술)</label>
+            <textarea name="painpoint" placeholder="예: 매주 같은 보고서를 수작업으로 3시간씩 만듭니다 / ISO 문서 갱신 때마다 전 부서가 멈춥니다" rows="3"></textarea>
+        </div>
+        <div class="q"><label class="q-label">교육에서 가장 중요한 것은? (택1)</label>
+            <div class="r-group">
+                <label class="r-opt"><input type="radio" name="priority" value="실습" required>실습 &mdash; 직접 해보는 것</label>
+                <label class="r-opt"><input type="radio" name="priority" value="업종맞춤">업종 맞춤 &mdash; 우리 업종 사례</label>
+                <label class="r-opt"><input type="radio" name="priority" value="즉시적용">즉시 적용 &mdash; 다음 날부터 활용</label>
+                <label class="r-opt"><input type="radio" name="priority" value="로드맵">체계적 로드맵 &mdash; 단계별 성장</label>
+                <label class="r-opt"><input type="radio" name="priority" value="변화관리">변화관리 &mdash; 조직 전환 포함</label>
+            </div>
+        </div>
+        <div class="q"><label class="q-label">선호하는 교육 형태는? (최대 2개)</label>
+            <div class="c-group" data-max="2">
+                <label class="c-opt"><input type="checkbox" name="format" value="워크숍">오프라인 워크숍 (실습)</label>
+                <label class="c-opt"><input type="checkbox" name="format" value="온라인자율">온라인 자율 학습</label>
+                <label class="c-opt"><input type="checkbox" name="format" value="온라인라이브">온라인 라이브 (실시간)</label>
+                <label class="c-opt"><input type="checkbox" name="format" value="방문맞춤">기업 방문 맞춤형</label>
+                <label class="c-opt"><input type="checkbox" name="format" value="컨설팅">컨설팅 (전환 로드맵)</label>
+            </div>
+        </div>
+        <div class="q"><label class="q-label">AI 교육/도입의 긴급도는?</label>
+            <div class="r-group">
+                <label class="r-opt"><input type="radio" name="urgency" value="즉시" required>즉시 (1개월 이내)</label>
+                <label class="r-opt"><input type="radio" name="urgency" value="단기">단기 (3개월 이내)</label>
+                <label class="r-opt"><input type="radio" name="urgency" value="중기">중기 (6개월 이내)</label>
+                <label class="r-opt"><input type="radio" name="urgency" value="올해안">올해 안에</label>
+                <label class="r-opt"><input type="radio" name="urgency" value="미정">관심은 있지만 시기 미정</label>
+            </div>
+        </div>
+    </div>
+    <div class="nav"><button type="button" class="btn-p" onclick="go(-1)">&larr; 이전</button><button type="button" class="btn-n" onclick="go(1)">다음 &rarr;</button></div>
+</div>
+
+<!-- ============ STEP 6: 기대/우려 + 리드 ============ -->
+<div class="step" data-step="6">
+    <div class="step-ind">Step 6/6 &mdash; 마무리</div>
+    <div class="section"><h3>기대 &amp; 우려</h3>
+        <div class="q"><label class="q-label">가장 큰 기대는? (최대 2개)</label>
+            <div class="c-group" data-max="2">
+                <label class="c-opt"><input type="checkbox" name="expect" value="효율">업무 효율 향상</label>
+                <label class="c-opt"><input type="checkbox" name="expect" value="자동화">반복 업무 자동화</label>
+                <label class="c-opt"><input type="checkbox" name="expect" value="경쟁력">기술 우위 확보</label>
+                <label class="c-opt"><input type="checkbox" name="expect" value="매출">새 사업/매출 창출</label>
+                <label class="c-opt"><input type="checkbox" name="expect" value="데이터의사결정">데이터 기반 의사결정</label>
+                <label class="c-opt"><input type="checkbox" name="expect" value="불안해소">AI 불안 해소</label>
+            </div>
+        </div>
+        <div class="q"><label class="q-label">가장 큰 우려는? (최대 2개)</label>
+            <div class="c-group" data-max="2">
+                <label class="c-opt"><input type="checkbox" name="concern" value="적용안됨">교육 후 적용 안 될 것 같음</label>
+                <label class="c-opt"><input type="checkbox" name="concern" value="비용">비용 대비 효과 불확실</label>
+                <label class="c-opt"><input type="checkbox" name="concern" value="보안">보안/유출 우려</label>
+                <label class="c-opt"><input type="checkbox" name="concern" value="저항">직원 거부감</label>
+                <label class="c-opt"><input type="checkbox" name="concern" value="기술변화">AI가 너무 빠르게 변함</label>
+                <label class="c-opt"><input type="checkbox" name="concern" value="사례없음">우리 업종 사례 없을 것 같음</label>
+            </div>
+        </div>
+        <div class="q"><label class="q-label">추가 의견 (선택)</label>
+            <textarea name="comment" placeholder="자유롭게 적어주세요..." rows="2"></textarea>
+        </div>
+        <div class="q"><label class="q-label">이 설문에 대한 개선점이 있다면? (선택)</label>
+            <div class="hint">빠진 항목, 불필요한 질문, 더 알고 싶은 것 등 자유롭게 적어주세요</div>
+            <textarea name="survey_feedback" placeholder="예: 우리 업종 관련 질문이 더 있으면 좋겠습니다 / 문항이 너무 많습니다 등" rows="2"></textarea>
+        </div>
+    </div>
+    <div class="section"><h3>맞춤형 진단 리포트</h3>
+        <div class="q">
+            <label class="q-label">AI 성숙도 Level + 추천 교육 트랙 + 업종 사례를 담은 리포트를 받으시겠습니까?</label>
+            <div class="r-group" id="rg-report">
+                <label class="r-opt"><input type="radio" name="report" value="예">예, 이메일로 받겠습니다</label>
+                <label class="r-opt"><input type="radio" name="report" value="아니요">아니요</label>
+            </div>
+        </div>
+        <div class="q" id="contact-wrap" style="display:none">
+            <label class="q-label">연락처</label>
+            <div style="display:flex;flex-direction:column;gap:8px">
+                <input type="email" name="email" placeholder="이메일 (필수)">
+                <input type="text" name="company" placeholder="기업명 (선택)">
+            </div>
+            <div class="hint" style="margin-top:6px">2주 내 맞춤 리포트를 발송합니다. 리포트 발송 외 용도로 사용하지 않습니다.</div>
+        </div>
+    </div>
+    <div class="nav" style="margin-bottom:10px"><button type="button" class="btn-p" onclick="go(-1)">&larr; 이전</button></div>
+    <button type="submit" class="submit-btn">설문 제출하기</button>
+</div>
+
     </form>
 
     <div class="success-msg" id="success">
         <h2>감사합니다!</h2>
-        <p>소중한 응답이 기록되었습니다.<br><br>리포트를 요청하신 분께는 2주 이내에 이메일로 발송해 드립니다.<br><br>추가 문의: <a href="mailto:contact@makefield.ai" style="color:var(--accent)">contact@makefield.ai</a></p>
-        <br><a href="/" style="color:var(--accent);text-decoration:none;font-weight:600">&larr; 홈으로 돌아가기</a>
+        <p>귀사에 맞는 AI 전환 방향을 설계하겠습니다.<br><br>리포트를 요청하신 분께는 <strong>2주 이내</strong>에 발송해 드립니다.<br><br><a href="mailto:contact@makefield.ai" style="color:var(--accent)">contact@makefield.ai</a></p>
+        <br><a href="/" style="color:var(--accent);text-decoration:none;font-weight:600">&larr; 홈으로</a>
     </div>
 </div>
 
 <script>
-let currentStep = 1;
-const totalSteps = 4;
+/* ============================
+   TREE DATA: 업종별 세부 영역
+   ============================ */
+const INDUSTRY_TREE = {
+    "IT": {
+        label: "IT / 소프트웨어 — AI 적용 영역",
+        items: [
+            {v:"fw_embedded", t:"펌웨어 / 임베디드 개발 (코드 생성, 디버깅, 코드 리뷰)"},
+            {v:"frontend",   t:"프론트엔드 개발 (UI 생성, 컴포넌트 자동화, 디자인→코드)"},
+            {v:"backend",    t:"백엔드 개발 (API 설계, DB 쿼리 최적화, 아키텍처 검토)"},
+            {v:"devops",     t:"DevOps / 인프라 (CI/CD 자동화, 모니터링, 장애 분석)"},
+            {v:"data_ml",    t:"데이터 / ML 엔지니어링 (모델 학습, 데이터 파이프라인)"},
+            {v:"qa_test",    t:"QA / 테스트 (테스트 케이스 자동 생성, 버그 탐지)"},
+            {v:"pm_plan",    t:"기획 / PM (요구사항 정리, 스펙 문서 자동화, 일정 관리)"},
+            {v:"security",   t:"보안 (취약점 스캔, 코드 보안 검토, 로그 분석)"},
+            {v:"doc_tech",   t:"기술 문서 자동화 (API 문서, 매뉴얼, 변경 이력)"}
+        ]
+    },
+    "제조_기계": {
+        label: "제조업(기계/금속) — AI 적용 영역",
+        items: [
+            {v:"prod_mgmt",  t:"생산 관리 (공정 최적화, 생산 스케줄링, 설비 가동률)"},
+            {v:"quality",    t:"품질 관리 (불량 예측, SPC 자동화, 검사 데이터 분석)"},
+            {v:"design_cad", t:"설계 / CAD (도면 검토, BOM 자동생성, 설계 변경 추적)"},
+            {v:"maint",      t:"설비 보전 (예지 보전, 고장 예측, 정비 이력 관리)"},
+            {v:"supply",     t:"구매 / 자재 (발주 자동화, 재고 최적화, 납기 예측)"},
+            {v:"safety",     t:"안전 관리 (위험성 평가, 아차사고 분석, 안전 교육)"},
+            {v:"logistics",  t:"물류 / 창고 (입출고 자동화, 동선 최적화)"},
+            {v:"doc_auto",   t:"문서 자동화 (작업 지시서, 성적서, 보고서 자동 생성)"}
+        ]
+    },
+    "제조_전기전자": {
+        label: "제조업(전기/전자) — AI 적용 영역",
+        items: [
+            {v:"prod_mgmt",  t:"생산 관리 (SMT 최적화, 리플로우 프로파일, 수율 예측)"},
+            {v:"quality",    t:"품질 관리 (비전 검사 AI, AOI 데이터 분석, 불량 패턴)"},
+            {v:"design_eda", t:"회로 설계 / EDA (시뮬레이션, PCB 레이아웃 검토)"},
+            {v:"test_val",   t:"시험 / 인증 (시험 데이터 자동 분석, 규격 적합성 판정)"},
+            {v:"fw_sw",      t:"펌웨어 / 소프트웨어 (코드 생성, 테스트 자동화)"},
+            {v:"supply",     t:"구매 / 자재 (부품 대체 검색, 리드타임 예측)"},
+            {v:"maint",      t:"설비 보전 (장비 예지 보전, 센서 데이터 분석)"},
+            {v:"doc_auto",   t:"문서 자동화 (성적서, 매뉴얼, 변경 이력)"}
+        ]
+    },
+    "에너지": {
+        label: "에너지 — AI 적용 영역",
+        items: [
+            {v:"plant_op",   t:"발전/플랜트 운영 (운전 최적화, 이상 감지, 효율 분석)"},
+            {v:"maint",      t:"설비 보전 (예지 보전, 진동/온도 분석, 정비 스케줄링)"},
+            {v:"safety",     t:"안전 관리 (위험성 평가, 가스 감지, 비상 대응)"},
+            {v:"env",        t:"환경 관리 (배출량 모니터링, 환경 보고서 자동화)"},
+            {v:"grid",       t:"전력 계통 (부하 예측, 수요 반응, 계통 안정성)"},
+            {v:"renew",      t:"신재생 (발전량 예측, 패널/터빈 성능 분석)"},
+            {v:"design_eng", t:"설계 / 엔지니어링 (P&ID 검토, IO Map, PLC 로직)"},
+            {v:"doc_reg",    t:"문서 / 규제 (인허가 서류, 기술 기준 대응)"}
+        ]
+    },
+    "건설플랜트": {
+        label: "건설/플랜트 — AI 적용 영역",
+        items: [
+            {v:"bim_design", t:"설계 / BIM (도면 자동 검토, 간섭 체크, 물량 산출)"},
+            {v:"cost_est",   t:"견적 / 원가 (공사비 추정, 실행 예산 분석)"},
+            {v:"schedule",   t:"공정 관리 (일정 최적화, 지연 예측, 자원 배분)"},
+            {v:"safety",     t:"안전 관리 (위험성 평가, 현장 모니터링)"},
+            {v:"quality",    t:"품질 관리 (시공 검사, 시험 데이터, NCR 분석)"},
+            {v:"procurement",t:"조달 / 구매 (자재 추적, 납기 관리, 업체 평가)"},
+            {v:"doc_auto",   t:"문서 자동화 (시방서, 준공 서류, 설계 변경)"}
+        ]
+    },
+    "조선해양": {
+        label: "조선/해양 — AI 적용 영역",
+        items: [
+            {v:"design_hull",t:"선체/구조 설계 (3D 모델링, 구조 해석, 생산 설계)"},
+            {v:"prod_plan",  t:"생산 계획 (블록 일정, 탑재 순서, 자원 최적화)"},
+            {v:"welding",    t:"용접 / 품질 (용접 데이터 분석, 비파괴 검사)"},
+            {v:"outfitting", t:"의장 / 전장 (케이블 루팅, 배관 간섭 체크)"},
+            {v:"safety",     t:"안전 / 환경 (밀폐공간, 도장 VOC, 환경 규제)"},
+            {v:"doc_auto",   t:"문서 자동화 (선급 서류, 인도 문서, 변경 관리)"}
+        ]
+    },
+    "화학소재": {
+        label: "화학/소재 — AI 적용 영역",
+        items: [
+            {v:"process_opt",t:"공정 최적화 (반응 조건, 수율 예측, 에너지 절감)"},
+            {v:"rd_formula", t:"R&D / 배합 (신소재 탐색, 배합 최적화, 물성 예측)"},
+            {v:"quality",    t:"품질 관리 (분석 데이터, LOT 추적, 이상 탐지)"},
+            {v:"safety_env", t:"안전 / 환경 (MSDS, 누출 감지, 환경 보고)"},
+            {v:"supply",     t:"원료 / 구매 (원자재 가격 예측, 재고 최적화)"},
+            {v:"doc_reg",    t:"문서 / 규제 (등록, 인증, 특허 분석)"}
+        ]
+    },
+    "공공연구": {
+        label: "공공/연구 — AI 적용 영역",
+        items: [
+            {v:"research",   t:"연구 지원 (논문 분석, 실험 설계, 데이터 처리)"},
+            {v:"admin",      t:"행정 업무 (공문 작성, 예산 관리, 보고서)"},
+            {v:"policy",     t:"정책 분석 (데이터 기반 정책 수립, 법령 검색)"},
+            {v:"citizen",    t:"대민 서비스 (민원 자동 응답, 문서 처리)"},
+            {v:"data_open",  t:"데이터 관리 (공공데이터 정제, 통계 자동화)"},
+            {v:"doc_auto",   t:"문서 자동화 (과제 보고서, 성과 분석, 감사 대응)"}
+        ]
+    },
+    "유통서비스": {
+        label: "유통/서비스 — AI 적용 영역",
+        items: [
+            {v:"demand",     t:"수요 예측 (판매 예측, 재고 최적화, 시즌 분석)"},
+            {v:"crm",        t:"고객 관리 (고객 세분화, 이탈 예측, 개인화 추천)"},
+            {v:"cs",         t:"고객 상담 (챗봇, 상담 이력 분석, 감성 분석)"},
+            {v:"logistics",  t:"물류 / 배송 (경로 최적화, 배송 예측)"},
+            {v:"marketing",  t:"마케팅 (콘텐츠 생성, 광고 최적화, SNS 분석)"},
+            {v:"doc_auto",   t:"문서 자동화 (계약서, 보고서, 정산)"}
+        ]
+    },
+    "기타": {
+        label: "AI 적용 영역",
+        items: [
+            {v:"doc_auto",   t:"문서 작성 / 보고서 자동화"},
+            {v:"data_anal",  t:"데이터 분석 / 시각화"},
+            {v:"customer",   t:"고객 대응 / 상담"},
+            {v:"process",    t:"업무 프로세스 자동화"},
+            {v:"knowledge",  t:"사내 지식 관리 / 검색"},
+            {v:"coding",     t:"코딩 / 개발"},
+            {v:"other",      t:"기타 (아래 자유기술란에 작성)"}
+        ]
+    }
+};
 
-/* 문항 수 자동 카운트: q-item 클래스를 가진 label 개수 */
-const qCount = document.querySelectorAll('.q-item').length;
-document.getElementById('q-count').textContent = qCount;
+/* ============================
+   TREE DATA: 부서별 구체 니즈
+   ============================ */
+const DEPT_TREE = [
+    {
+        dept: "경영지원 / 총무 / 인사",
+        key: "hr_admin",
+        needs: [
+            {v:"hr_recruit",    t:"채용 프로세스 자동화 (이력서 스크리닝, 면접 일정)"},
+            {v:"hr_onboard",    t:"신입 온보딩 자동화 (교육 자료, 체크리스트)"},
+            {v:"hr_eval",       t:"인사 평가 / 성과 관리 데이터 분석"},
+            {v:"payroll",       t:"급여 / 근태 관리 자동화"},
+            {v:"legal",         t:"법무 / 계약서 검토 (AI 법률 검토, 리스크 분석)"},
+            {v:"compliance",    t:"규제 / 컴플라이언스 (법령 변경 추적, 대응 자동화)"},
+            {v:"finance",       t:"재무 / 회계 (전표 자동 분류, 예산 분석, 결산 보조)"},
+            {v:"facilities",    t:"시설 / 자산 관리 (공간 최적화, 유지보수 일정)"},
+            {v:"internal_doc",  t:"사내 문서 자동화 (공문, 품의, 회의록)"}
+        ]
+    },
+    {
+        dept: "품질경영 / ISO",
+        key: "qms",
+        needs: [
+            {v:"iso_doc",       t:"ISO 문서 관리 (갱신 주기 자동 알림, 개정 이력)"},
+            {v:"audit_prep",    t:"심사 대응 자동화 (자료 수집, 부적합 추적)"},
+            {v:"corrective",    t:"시정/예방 조치 관리 (CAPA 추적, 효과성 분석)"},
+            {v:"spc",           t:"통계적 공정 관리 (SPC 자동화, 트렌드 분석)"},
+            {v:"supplier_qa",   t:"협력사 품질 관리 (입고 검사, 업체 평가)"},
+            {v:"qms_chatbot",   t:"품질 규정 검색 챗봇 (사내 규정/기준 즉시 조회)"},
+            {v:"qms_doc_auto",  t:"품질 문서 자동 생성 (성적서, 시험 보고서, COA)"}
+        ]
+    },
+    {
+        dept: "고객 대응 / CS / 고객만족",
+        key: "cs",
+        needs: [
+            {v:"cs_history",    t:"고객 상담 이력 자동 관리 (CRM 연동, 이력 검색)"},
+            {v:"cs_voice",      t:"유선 통화 녹음 → 자동 문서화 (STT + 요약)"},
+            {v:"cs_chatbot",    t:"고객 상담 챗봇 (FAQ, 기술 문의, 주문 조회)"},
+            {v:"voc_analysis",  t:"VOC 분석 (고객 불만 패턴, 감성 분석, 트렌드)"},
+            {v:"cs_ticket",     t:"티켓/민원 자동 분류 및 라우팅"},
+            {v:"cs_report",     t:"고객 만족도 보고서 자동 생성"}
+        ]
+    },
+    {
+        dept: "영업 / 마케팅",
+        key: "sales",
+        needs: [
+            {v:"proposal",      t:"제안서 / 견적서 자동 생성"},
+            {v:"lead_scoring",  t:"리드 스코어링 (잠재 고객 우선순위 판단)"},
+            {v:"market_intel",  t:"시장 분석 / 경쟁사 동향 자동 수집"},
+            {v:"content",       t:"마케팅 콘텐츠 생성 (SNS, 블로그, 뉴스레터)"},
+            {v:"sales_forecast",t:"매출 예측 / 파이프라인 분석"},
+            {v:"crm_auto",      t:"CRM 데이터 자동 입력 / 정리"}
+        ]
+    },
+    {
+        dept: "IT / 전산 / 정보보안",
+        key: "it",
+        needs: [
+            {v:"erp_auto",      t:"ERP 연계 데이터 자동화 (입력, 추출, 보고서)"},
+            {v:"system_monitor",t:"시스템 모니터링 / 이상 탐지"},
+            {v:"helpdesk",      t:"IT 헬프데스크 자동화 (FAQ 봇, 장애 접수)"},
+            {v:"data_pipeline", t:"데이터 파이프라인 구축 (ETL, 정제, 통합)"},
+            {v:"security",      t:"정보보안 (로그 분석, 이상 접근 탐지)"},
+            {v:"legacy_modern", t:"레거시 시스템 현대화 (코드 변환, 문서화)"},
+            {v:"rpa",           t:"RPA / 업무 자동화 (반복 작업 봇)"}
+        ]
+    },
+    {
+        dept: "연구개발 / R&D",
+        key: "rnd",
+        needs: [
+            {v:"paper_search",  t:"논문 / 특허 검색 및 분석 자동화"},
+            {v:"experiment",    t:"실험 설계 / 데이터 분석 (DOE, 통계)"},
+            {v:"simulation",    t:"시뮬레이션 / 최적화"},
+            {v:"tech_doc",      t:"기술 문서 작성 (보고서, 사양서, 매뉴얼)"},
+            {v:"knowledge_mgmt",t:"R&D 지식 관리 (선행 연구 DB, 인수인계)"},
+            {v:"ip_mgmt",       t:"지식재산 관리 (특허 맵, 선행기술 조사)"}
+        ]
+    }
+];
 
-function updateProgress() {
-    document.getElementById('progress').style.width = ((currentStep/totalSteps)*100) + '%';
+/* ============================
+   STEP NAVIGATION
+   ============================ */
+let cur = 1;
+const total = 6;
+
+function updateProg() {
+    const pct = Math.round((cur/total)*100);
+    document.getElementById('prog').style.width = pct + '%';
+    document.getElementById('prog-step').textContent = 'Step ' + cur + ' / ' + total;
+    document.getElementById('prog-pct').textContent = pct + '%';
 }
-function nextStep() {
-    if(currentStep >= totalSteps) return;
-    document.querySelector('.step[data-step="'+currentStep+'"]').classList.remove('active');
-    currentStep++;
-    document.querySelector('.step[data-step="'+currentStep+'"]').classList.add('active');
-    updateProgress();
+
+function go(dir) {
+    const next = cur + dir;
+    if (next < 1 || next > total) return;
+    document.querySelector('.step[data-step="'+cur+'"]').classList.remove('active');
+    cur = next;
+    document.querySelector('.step[data-step="'+cur+'"]').classList.add('active');
+    updateProg();
     window.scrollTo({top:0,behavior:'smooth'});
 }
-function prevStep() {
-    if(currentStep <= 1) return;
-    document.querySelector('.step[data-step="'+currentStep+'"]').classList.remove('active');
-    currentStep--;
-    document.querySelector('.step[data-step="'+currentStep+'"]').classList.add('active');
-    updateProgress();
-    window.scrollTo({top:0,behavior:'smooth'});
+
+/* ============================
+   STEP 2: 업종별 동적 렌더링
+   ============================ */
+function renderIndustryNeeds() {
+    const sel = document.querySelector('input[name="industry"]:checked');
+    if (!sel) return;
+    const key = sel.value;
+    const tree = INDUSTRY_TREE[key] || INDUSTRY_TREE["기타"];
+    const container = document.getElementById('ind-needs');
+    document.getElementById('ind-q-label').textContent = tree.label;
+    container.innerHTML = '';
+    tree.items.forEach(item => {
+        const lbl = document.createElement('label');
+        lbl.className = 'c-opt';
+        lbl.innerHTML = '<input type="checkbox" name="ind_need" value="'+item.v+'">'+item.t;
+        container.appendChild(lbl);
+    });
+    bindCheckHighlight(container);
 }
-document.querySelectorAll('.radio-option input,.check-option input').forEach(inp => {
+
+/* Listen to industry change */
+document.querySelectorAll('input[name="industry"]').forEach(r => {
+    r.addEventListener('change', renderIndustryNeeds);
+});
+
+/* ============================
+   STEP 3: 부서별 트리 렌더링
+   ============================ */
+function renderDeptTree() {
+    const container = document.getElementById('dept-tree');
+    container.innerHTML = '';
+    DEPT_TREE.forEach(dept => {
+        // department header checkbox
+        const wrapper = document.createElement('div');
+        wrapper.style.marginBottom = '10px';
+
+        const deptLabel = document.createElement('label');
+        deptLabel.className = 'c-opt';
+        deptLabel.style.fontWeight = '600';
+        deptLabel.innerHTML = '<input type="checkbox" name="dept_sel" value="'+dept.key+'" data-dept="'+dept.key+'">'+dept.dept;
+        wrapper.appendChild(deptLabel);
+
+        // sub-needs (hidden by default)
+        const sub = document.createElement('div');
+        sub.className = 'tree-sub';
+        sub.id = 'sub-' + dept.key;
+        sub.innerHTML = '<h4>' + dept.dept + ' &mdash; 구체적인 AI 활용 항목</h4>';
+        const cg = document.createElement('div');
+        cg.className = 'c-group';
+        dept.needs.forEach(n => {
+            const nl = document.createElement('label');
+            nl.className = 'c-opt';
+            nl.innerHTML = '<input type="checkbox" name="dept_need_'+dept.key+'" value="'+n.v+'">'+n.t;
+            cg.appendChild(nl);
+        });
+        sub.appendChild(cg);
+        wrapper.appendChild(sub);
+        container.appendChild(wrapper);
+
+        // toggle sub on dept check
+        const deptCheck = deptLabel.querySelector('input');
+        deptCheck.addEventListener('change', () => {
+            sub.classList.toggle('show', deptCheck.checked);
+            deptLabel.classList.toggle('sel', deptCheck.checked);
+            if (!deptCheck.checked) {
+                // uncheck all sub-items
+                sub.querySelectorAll('input[type=checkbox]').forEach(cb => {
+                    cb.checked = false;
+                    cb.closest('.c-opt').classList.remove('sel');
+                });
+            }
+        });
+
+        bindCheckHighlight(cg);
+    });
+}
+renderDeptTree();
+
+/* ============================
+   UTILITY: highlight + max limit
+   ============================ */
+function bindCheckHighlight(container) {
+    container.querySelectorAll('.c-opt input, .r-opt input').forEach(inp => {
+        inp.addEventListener('change', () => {
+            if (inp.type === 'radio') {
+                const grp = inp.closest('.r-group');
+                if (grp) grp.querySelectorAll('.r-opt').forEach(o => o.classList.remove('sel'));
+            }
+            inp.closest('.r-opt,.c-opt').classList.toggle('sel', inp.checked);
+        });
+    });
+}
+
+// Initial bind for all static elements
+document.querySelectorAll('.r-opt input, .c-opt input').forEach(inp => {
     inp.addEventListener('change', () => {
-        if(inp.type === 'radio') {
-            inp.closest('.radio-group,.check-group').querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
+        if (inp.type === 'radio') {
+            const grp = inp.closest('.r-group');
+            if (grp) grp.querySelectorAll('.r-opt').forEach(o => o.classList.remove('sel'));
         }
-        inp.closest('.radio-option,.check-option').classList.toggle('selected', inp.checked);
+        inp.closest('.r-opt,.c-opt').classList.toggle('sel', inp.checked);
     });
 });
-if(window.location.search.includes('success=1')) {
-    document.getElementById('survey-form').style.display = 'none';
-    document.querySelector('.progress-bar').style.display = 'none';
+
+// Checkbox max limit
+document.querySelectorAll('.c-group[data-max]').forEach(grp => {
+    const max = parseInt(grp.dataset.max);
+    const boxes = grp.querySelectorAll('input[type=checkbox]');
+    boxes.forEach(box => {
+        box.addEventListener('change', () => {
+            const cnt = grp.querySelectorAll('input:checked').length;
+            boxes.forEach(b => {
+                const opt = b.closest('.c-opt');
+                if (!b.checked && cnt >= max) { opt.classList.add('off'); b.disabled = true; }
+                else { opt.classList.remove('off'); b.disabled = false; }
+            });
+        });
+    });
+});
+
+/* ============================
+   SKIP LOGIC
+   ============================ */
+// failure -> barrier
+document.querySelectorAll('input[name="failure"]').forEach(r => {
+    r.addEventListener('change', () => {
+        const show = ['포기','효과미미','검토중'].includes(r.value);
+        document.getElementById('barrier-wrap').style.display = show ? 'block' : 'none';
+    });
+});
+
+// report -> contact
+document.querySelectorAll('input[name="report"]').forEach(r => {
+    r.addEventListener('change', () => {
+        document.getElementById('contact-wrap').style.display = r.value === '예' ? 'block' : 'none';
+    });
+});
+
+/* ============================
+   SUCCESS
+   ============================ */
+if (window.location.search.includes('success=1')) {
+    document.getElementById('sf').style.display = 'none';
+    document.querySelector('.prog-wrap').style.display = 'none';
     document.getElementById('success').style.display = 'block';
 }
-updateProgress();
+
+updateProg();
 </script>
-</body></html>
+</body>
+</html>
