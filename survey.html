@@ -111,10 +111,15 @@
         </div>
         <div class="q"><label class="q-label">귀하의 역할은?</label>
             <div class="r-group">
-                <label class="r-opt"><input type="radio" name="역할" value="경영진" required>경영진 / 임원</label>
-                <label class="r-opt"><input type="radio" name="역할" value="관리자">중간관리자 (팀장/부장)</label>
-                <label class="r-opt"><input type="radio" name="역할" value="실무자">실무 담당자 / 엔지니어</label>
-                <label class="r-opt"><input type="radio" name="역할" value="IT전산">IT / 전산 / 데이터</label>
+                <label class="r-opt"><input type="radio" name="역할" value="경영진/임원" required>경영진 / 임원</label>
+                <label class="r-opt"><input type="radio" name="역할" value="중간관리자 (팀장/부장)">중간관리자 (팀장/부장)</label>
+                <label class="r-opt"><input type="radio" name="역할" value="사무직/기획/관리">사무직 / 기획 / 관리</label>
+                <label class="r-opt"><input type="radio" name="역할" value="설계/개발 엔지니어">설계 / 개발 엔지니어</label>
+                <label class="r-opt"><input type="radio" name="역할" value="생산/제조/현장">생산 / 제조 / 현장 작업자</label>
+                <label class="r-opt"><input type="radio" name="역할" value="품질/검사/안전">품질 / 검사 / 안전 관리</label>
+                <label class="r-opt"><input type="radio" name="역할" value="영업/마케팅/고객대응">영업 / 마케팅 / 고객 대응</label>
+                <label class="r-opt"><input type="radio" name="역할" value="IT/전산/데이터">IT / 전산 / 데이터</label>
+                <label class="r-opt"><input type="radio" name="역할" value="R&D/연구">R&D / 연구</label>
                 <label class="r-opt"><input type="radio" name="역할" value="기타">기타</label>
             </div>
         </div>
@@ -528,9 +533,71 @@ function updateProg() {
     document.getElementById('prog-pct').textContent = pct + '%';
 }
 
+function validateStep(step) {
+    const el = document.querySelector('.step[data-step="'+step+'"]');
+    if (!el) return true;
+
+    // 필수 텍스트/이메일 입력 체크
+    const textInputs = el.querySelectorAll('input[type="text"][required], input[type="email"][required]');
+    for (const inp of textInputs) {
+        if (!inp.value.trim()) {
+            inp.style.borderColor = 'var(--error)';
+            inp.focus();
+            return false;
+        }
+        inp.style.borderColor = '';
+    }
+
+    // 필수 라디오 그룹 체크
+    const radioGroups = new Set();
+    el.querySelectorAll('input[type="radio"][required]').forEach(r => radioGroups.add(r.name));
+    for (const name of radioGroups) {
+        if (!el.querySelector('input[name="'+name+'"]:checked')) {
+            const group = el.querySelector('input[name="'+name+'"]').closest('.r-group');
+            if (group) {
+                group.style.outline = '2px solid var(--error)';
+                group.style.borderRadius = '8px';
+                group.scrollIntoView({behavior:'smooth', block:'center'});
+                setTimeout(() => { group.style.outline = ''; }, 2500);
+            }
+            return false;
+        }
+    }
+
+    // Step 2: 업종별 니즈 최소 1개
+    if (step === 2) {
+        const checks = el.querySelectorAll('input[name="업종별AI니즈"]:checked');
+        if (checks.length === 0) {
+            const container = document.getElementById('ind-needs');
+            container.style.outline = '2px solid var(--error)';
+            container.style.borderRadius = '8px';
+            container.scrollIntoView({behavior:'smooth', block:'center'});
+            setTimeout(() => { container.style.outline = ''; }, 2500);
+            return false;
+        }
+    }
+
+    // Step 3: 부서 최소 1개
+    if (step === 3) {
+        const checks = el.querySelectorAll('input[name="선택부서"]:checked');
+        if (checks.length === 0) {
+            const container = document.getElementById('dept-tree');
+            container.style.outline = '2px solid var(--error)';
+            container.style.borderRadius = '8px';
+            container.scrollIntoView({behavior:'smooth', block:'center'});
+            setTimeout(() => { container.style.outline = ''; }, 2500);
+            return false;
+        }
+    }
+
+    return true;
+}
+
 function go(dir) {
     const next = cur + dir;
     if (next < 1 || next > total) return;
+    // 앞으로 갈 때만 검증 (뒤로가기는 자유)
+    if (dir > 0 && !validateStep(cur)) return;
     document.querySelector('.step[data-step="'+cur+'"]').classList.remove('active');
     cur = next;
     document.querySelector('.step[data-step="'+cur+'"]').classList.add('active');
