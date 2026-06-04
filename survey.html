@@ -72,8 +72,12 @@
         .meter{height:8px;background:var(--bg);border-radius:4px;overflow:hidden;margin:10px 0}
         .meter-fill{height:100%;border-radius:4px;transition:width .8s}
         .meter-fill.low{background:var(--error)}.meter-fill.mid{background:#ffa500}.meter-fill.high{background:var(--accent3)}
-        .diag-reco{display:flex;gap:8px;align-items:flex-start;padding:10px 14px;background:rgba(79,143,255,.05);border-radius:8px;margin-top:8px;font-size:.85em;line-height:1.7}
-        .diag-reco::before{content:">";color:var(--accent);font-weight:700;flex-shrink:0;margin-top:2px}
+        .diag-reco{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:rgba(79,143,255,.04);border:1px solid rgba(79,143,255,.08);border-radius:10px;margin-top:10px;font-size:.86em;line-height:1.8;transition:border-color .2s}
+        .diag-reco:hover{border-color:rgba(79,143,255,.2)}
+        .diag-reco:first-child{margin-top:0}
+        .reco-num{display:flex;align-items:center;justify-content:center;width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--gradient);color:#fff;font-size:.72em;font-weight:800;margin-top:1px}
+        .reco-body{flex:1}
+        .reco-body strong{color:var(--accent);display:block;margin-bottom:3px}
         .diag-cta{text-align:center;margin-top:28px}
         .diag-cta a{display:inline-block;padding:14px 32px;background:var(--gradient);color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:1em;transition:all .3s}
         .diag-cta a:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(79,143,255,.4)}
@@ -999,7 +1003,7 @@ function calcDiagnosis() {
     document.getElementById('d-data-desc').innerHTML = dataDesc;
 
     const recoEl = document.getElementById('d-recos');
-    recoEl.innerHTML = recos.map(r => '<div class="diag-reco">' + r + '</div>').join('');
+    recoEl.innerHTML = recos.map((r, i) => '<div class="diag-reco"><div class="reco-num">' + (i+1) + '</div><div class="reco-body">' + r + '</div></div>').join('');
 
     // report card
     const report = ls('report');
