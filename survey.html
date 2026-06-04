@@ -47,15 +47,15 @@
         .btn-p{background:transparent;border:1px solid var(--border);color:var(--text2)}.btn-p:hover{border-color:var(--accent);color:var(--accent)}
         .btn-n{background:var(--accent);border:none;color:#fff}.btn-n:hover{background:#6ba0ff}
         .step-ind{text-align:center;margin-bottom:14px;font-size:.76em;color:var(--muted)}
-        /* dynamic tree sub-options */
         .tree-sub{margin-top:12px;padding:16px;background:rgba(79,143,255,.03);border:1px solid rgba(79,143,255,.1);border-radius:10px;display:none}
         .tree-sub.show{display:block;animation:fadeIn .3s}
         .tree-sub h4{font-size:.78em;font-weight:600;color:var(--accent3);margin-bottom:10px;text-transform:uppercase;letter-spacing:.1em}
         .tree-sub .c-group{gap:5px}
         .tree-sub .c-opt{font-size:.82em;padding:8px 12px}
-        /* tag display for selected items */
         .selected-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
         .tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.2);border-radius:20px;font-size:.74em;color:var(--accent)}
+        .val-msg{font-size:.76em;color:var(--error);margin-top:6px;display:none}
+        .val-msg.show{display:block;animation:fadeIn .2s}
         @keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
         @media(max-width:600px){.header{padding:50px 0 20px}.header h1{font-size:1.45em}.section{padding:18px}}
     </style>
@@ -64,9 +64,8 @@
 <div class="container">
     <div class="header">
         <a href="/" class="back-link">&larr; MakeField AI</a>
-        <h1>우리 회사 AI 준비도는<br>몇 점일까?</h1>
-        <p class="sub">3분이면 충분합니다. 업종과 부서에 맞춰 질문이 달라지고,<br>완료 즉시 <strong>AI 전환 진단 결과</strong>를 확인할 수 있습니다.</p>
-        <div style="margin-top:14px;font-size:.78em;color:var(--accent3)"><span id="survey-count">128</span>개 기업이 이미 진단을 완료했습니다</div>
+        <h1>우리 회사에 맞는<br>AI 전환을 진단합니다</h1>
+        <p class="sub">업종과 부서에 따라 질문이 달라집니다.<br>귀사에 꼭 맞는 AI 전환 방향을 제안해 드립니다.</p>
     </div>
     <div class="prog-wrap">
         <div class="prog-bar"><div class="prog-fill" id="prog"></div></div>
@@ -75,7 +74,7 @@
 
     <form id="sf" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="0b608661-409f-478a-910a-11c69da506f4">
-        <input type="hidden" name="subject" value="[MakeField AI] AI 전환 진단 설문">
+        <input type="hidden" name="subject" value="[MakeField AI] AI 전환 진단 설문 v5">
         <input type="hidden" name="from_name" value="MakeField AI Survey">
         <input type="hidden" name="redirect" value="https://makefield.ai/survey.html?success=1">
 
@@ -83,45 +82,41 @@
 <div class="step active" data-step="1">
     <div class="step-ind">Step 1/6 &mdash; 기본 정보</div>
     <div class="section"><h3>귀사와 귀하에 대해</h3>
-        <div class="q"><label class="q-label">소속 기업명</label>
-            <div class="hint">응답은 익명으로 처리되며, 소속 기업 기준으로만 분석됩니다.</div>
-            <input type="text" name="기업명" placeholder="예: (주)엠에프에이아이" required>
-        </div>
         <div class="q"><label class="q-label">귀사의 업종은?</label>
             <div class="r-group" id="rg-ind">
-                <label class="r-opt"><input type="radio" name="업종" value="IT" required>IT / 소프트웨어</label>
-                <label class="r-opt"><input type="radio" name="업종" value="제조_기계">제조업 &mdash; 기계 / 금속 / 자동차</label>
-                <label class="r-opt"><input type="radio" name="업종" value="제조_전기전자">제조업 &mdash; 전기 / 전자 / 반도체</label>
-                <label class="r-opt"><input type="radio" name="업종" value="에너지">에너지 (발전 / 신재생 / 수소)</label>
-                <label class="r-opt"><input type="radio" name="업종" value="건설플랜트">건설 / 플랜트 / 엔지니어링</label>
-                <label class="r-opt"><input type="radio" name="업종" value="조선해양">조선 / 해양 / 중공업</label>
-                <label class="r-opt"><input type="radio" name="업종" value="화학소재">화학 / 소재 / 바이오</label>
-                <label class="r-opt"><input type="radio" name="업종" value="공공연구">공공기관 / 연구소</label>
-                <label class="r-opt"><input type="radio" name="업종" value="유통서비스">유통 / 서비스 / 물류</label>
-                <label class="r-opt"><input type="radio" name="업종" value="기타">기타</label>
+                <label class="r-opt"><input type="radio" name="industry" value="IT" required>IT / 소프트웨어</label>
+                <label class="r-opt"><input type="radio" name="industry" value="제조_기계">제조업 &mdash; 기계 / 금속 / 자동차</label>
+                <label class="r-opt"><input type="radio" name="industry" value="제조_전기전자">제조업 &mdash; 전기 / 전자 / 반도체</label>
+                <label class="r-opt"><input type="radio" name="industry" value="에너지">에너지 (발전 / 신재생 / 수소)</label>
+                <label class="r-opt"><input type="radio" name="industry" value="건설플랜트">건설 / 플랜트 / 엔지니어링</label>
+                <label class="r-opt"><input type="radio" name="industry" value="조선해양">조선 / 해양 / 중공업</label>
+                <label class="r-opt"><input type="radio" name="industry" value="화학소재">화학 / 소재 / 바이오</label>
+                <label class="r-opt"><input type="radio" name="industry" value="공공연구">공공기관 / 연구소</label>
+                <label class="r-opt"><input type="radio" name="industry" value="유통서비스">유통 / 서비스 / 물류</label>
+                <label class="r-opt"><input type="radio" name="industry" value="기타">기타</label>
             </div>
         </div>
         <div class="q"><label class="q-label">귀사의 규모는?</label>
             <div class="r-group">
-                <label class="r-opt"><input type="radio" name="규모" value="10미만" required>10인 미만</label>
-                <label class="r-opt"><input type="radio" name="규모" value="10-49">10 ~ 49인</label>
-                <label class="r-opt"><input type="radio" name="규모" value="50-149">50 ~ 149인</label>
-                <label class="r-opt"><input type="radio" name="규모" value="150-299">150 ~ 299인</label>
-                <label class="r-opt"><input type="radio" name="규모" value="300+">300인 이상</label>
+                <label class="r-opt"><input type="radio" name="size" value="10미만" required>10인 미만</label>
+                <label class="r-opt"><input type="radio" name="size" value="10-49">10 ~ 49인</label>
+                <label class="r-opt"><input type="radio" name="size" value="50-149">50 ~ 149인</label>
+                <label class="r-opt"><input type="radio" name="size" value="150-299">150 ~ 299인</label>
+                <label class="r-opt"><input type="radio" name="size" value="300+">300인 이상</label>
             </div>
         </div>
         <div class="q"><label class="q-label">귀하의 역할은?</label>
             <div class="r-group">
-                <label class="r-opt"><input type="radio" name="역할" value="경영진/임원" required>경영진 / 임원</label>
-                <label class="r-opt"><input type="radio" name="역할" value="중간관리자 (팀장/부장)">중간관리자 (팀장/부장)</label>
-                <label class="r-opt"><input type="radio" name="역할" value="사무직/기획/관리">사무직 / 기획 / 관리</label>
-                <label class="r-opt"><input type="radio" name="역할" value="설계/개발 엔지니어">설계 / 개발 엔지니어</label>
-                <label class="r-opt"><input type="radio" name="역할" value="생산/제조/현장">생산 / 제조 / 현장 작업자</label>
-                <label class="r-opt"><input type="radio" name="역할" value="품질/검사/안전">품질 / 검사 / 안전 관리</label>
-                <label class="r-opt"><input type="radio" name="역할" value="영업/마케팅/고객대응">영업 / 마케팅 / 고객 대응</label>
-                <label class="r-opt"><input type="radio" name="역할" value="IT/전산/데이터">IT / 전산 / 데이터</label>
-                <label class="r-opt"><input type="radio" name="역할" value="R&D/연구">R&D / 연구</label>
-                <label class="r-opt"><input type="radio" name="역할" value="기타">기타</label>
+                <label class="r-opt"><input type="radio" name="role" value="경영진" required>경영진 / 임원</label>
+                <label class="r-opt"><input type="radio" name="role" value="관리자">중간관리자 (팀장/부장)</label>
+                <label class="r-opt"><input type="radio" name="role" value="사무직">사무직 (기획/행정/재무)</label>
+                <label class="r-opt"><input type="radio" name="role" value="엔지니어">엔지니어 / 설계 / 기술직</label>
+                <label class="r-opt"><input type="radio" name="role" value="생산현장">생산 / 현장 / 운전</label>
+                <label class="r-opt"><input type="radio" name="role" value="품질안전">품질 / 안전 / 환경</label>
+                <label class="r-opt"><input type="radio" name="role" value="영업구매">영업 / 마케팅 / 구매</label>
+                <label class="r-opt"><input type="radio" name="role" value="IT전산">IT / 전산 / 데이터</label>
+                <label class="r-opt"><input type="radio" name="role" value="R&D">R&D / 연구원</label>
+                <label class="r-opt"><input type="radio" name="role" value="기타">기타</label>
             </div>
         </div>
     </div>
@@ -133,8 +128,8 @@
     <div class="step-ind">Step 2/6 &mdash; 업종별 AI 적용 영역</div>
     <div class="section"><h3>귀사 업종에서 AI가 필요한 영역</h3>
         <div class="q">
-            <label class="q-label" id="ind-q-label">아래에서 AI를 적용하고 싶은 영역을 선택하세요</label>
-            <div class="hint">복수 선택 가능 &bull; 해당하는 것을 모두 선택하세요</div>
+            <label class="q-label" id="ind-q-label">아래에서 공감되는 항목을 선택하세요</label>
+            <div class="hint">복수 선택 가능 &bull; "아, 이거 우리 회사 얘기다" 싶은 것을 모두 선택하세요</div>
             <div class="c-group" id="ind-needs"></div>
         </div>
     </div>
@@ -160,51 +155,51 @@
     <div class="section"><h3>현재 AI 활용 수준</h3>
         <div class="q"><label class="q-label">귀사의 AI 활용 단계는?</label>
             <div class="r-group">
-                <label class="r-opt"><input type="radio" name="AI활용단계" value="L0" required><strong>Level 0</strong> &mdash; AI를 전혀 사용하지 않음</label>
-                <label class="r-opt"><input type="radio" name="AI활용단계" value="L1"><strong>Level 1</strong> &mdash; 개인적으로 ChatGPT 등 가끔 사용</label>
-                <label class="r-opt"><input type="radio" name="AI활용단계" value="L2"><strong>Level 2</strong> &mdash; 회사 차원 도입했으나 활용도 낮음</label>
-                <label class="r-opt"><input type="radio" name="AI활용단계" value="L3"><strong>Level 3</strong> &mdash; 특정 부서에서 정기 활용 중</label>
-                <label class="r-opt"><input type="radio" name="AI활용단계" value="L4"><strong>Level 4</strong> &mdash; 전사적 AI 시스템 운영</label>
+                <label class="r-opt"><input type="radio" name="ai_level" value="L0" required><strong>Level 0</strong> &mdash; AI를 전혀 사용하지 않음</label>
+                <label class="r-opt"><input type="radio" name="ai_level" value="L1"><strong>Level 1</strong> &mdash; 개인적으로 ChatGPT 등 가끔 사용</label>
+                <label class="r-opt"><input type="radio" name="ai_level" value="L2"><strong>Level 2</strong> &mdash; 회사 차원 도입했으나 활용도 낮음</label>
+                <label class="r-opt"><input type="radio" name="ai_level" value="L3"><strong>Level 3</strong> &mdash; 특정 부서에서 정기 활용 중</label>
+                <label class="r-opt"><input type="radio" name="ai_level" value="L4"><strong>Level 4</strong> &mdash; 전사적 AI 시스템 운영</label>
             </div>
         </div>
         <div class="q"><label class="q-label">AI 도입 시도 후 포기/효과 미미 경험?</label>
             <div class="r-group" id="rg-fail">
-                <label class="r-opt"><input type="radio" name="AI도입경험" value="포기" required>포기한 경험 있음</label>
-                <label class="r-opt"><input type="radio" name="AI도입경험" value="효과미미">효과가 거의 없었음</label>
-                <label class="r-opt"><input type="radio" name="AI도입경험" value="검토중">현재 도입 검토 중</label>
-                <label class="r-opt"><input type="radio" name="AI도입경험" value="미시도">시도해본 적 없음</label>
-                <label class="r-opt"><input type="radio" name="AI도입경험" value="성공">효과를 보고 있음</label>
+                <label class="r-opt"><input type="radio" name="failure" value="포기" required>포기한 경험 있음</label>
+                <label class="r-opt"><input type="radio" name="failure" value="효과미미">효과가 거의 없었음</label>
+                <label class="r-opt"><input type="radio" name="failure" value="검토중">현재 도입 검토 중</label>
+                <label class="r-opt"><input type="radio" name="failure" value="미시도">시도해본 적 없음</label>
+                <label class="r-opt"><input type="radio" name="failure" value="성공">효과를 보고 있음</label>
             </div>
         </div>
         <div class="q" id="barrier-wrap" style="display:none"><label class="q-label">가장 큰 장벽은? (최대 3개)</label>
             <div class="c-group" data-max="3">
-                <label class="c-opt"><input type="checkbox" name="도입장벽" value="직원들이 사용하지 않음">직원들이 사용하지 않음</label>
-                <label class="c-opt"><input type="checkbox" name="도입장벽" value="데이터가 정리 안 됨 (종이/엑셀 난립)">데이터가 정리 안 됨 (종이/엑셀 난립)</label>
-                <label class="c-opt"><input type="checkbox" name="도입장벽" value="AI가 업무 맥락을 이해 못함">AI가 업무 맥락을 이해 못함</label>
-                <label class="c-opt"><input type="checkbox" name="도입장벽" value="어디에 적용할지 모르겠음">어디에 적용할지 모르겠음</label>
-                <label class="c-opt"><input type="checkbox" name="도입장벽" value="관리/교육할 사람이 없음">관리/교육할 사람이 없음</label>
-                <label class="c-opt"><input type="checkbox" name="도입장벽" value="비용 대비 효과 입증 어려움">비용 대비 효과 입증 어려움</label>
-                <label class="c-opt"><input type="checkbox" name="도입장벽" value="보안/유출 우려">보안/유출 우려</label>
-                <label class="c-opt"><input type="checkbox" name="도입장벽" value="경영진 이해/지원 부족">경영진 이해/지원 부족</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="직원무관심">직원들이 사용하지 않음</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="데이터미정리">데이터가 정리 안 됨 (종이/엑셀 난립)</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="맥락이해불가">AI가 업무 맥락을 이해 못함</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="적용처불명">어디에 적용할지 모르겠음</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="관리인력없음">관리/교육할 사람이 없음</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="ROI불확실">비용 대비 효과 입증 어려움</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="보안">보안/유출 우려</label>
+                <label class="c-opt"><input type="checkbox" name="barrier" value="경영진지원부족">경영진 이해/지원 부족</label>
             </div>
         </div>
     </div>
     <div class="section"><h3>데이터 현황</h3>
         <div class="q"><label class="q-label">업무 데이터는 주로 어떤 형태? (최대 2개)</label>
             <div class="c-group" data-max="2">
-                <label class="c-opt"><input type="checkbox" name="데이터형태" value="종이/수기 기록">종이 / 수기 기록</label>
-                <label class="c-opt"><input type="checkbox" name="데이터형태" value="개인 PC 엑셀/워드 (공유 안 됨)">개인 PC 엑셀/워드 (공유 안 됨)</label>
-                <label class="c-opt"><input type="checkbox" name="데이터형태" value="공유 폴더/NAS">공유 폴더/NAS</label>
-                <label class="c-opt"><input type="checkbox" name="데이터형태" value="ERP/MES/PLM 등 시스템">ERP/MES/PLM 등 시스템</label>
-                <label class="c-opt"><input type="checkbox" name="데이터형태" value="DB로 체계적 관리">DB로 체계적 관리</label>
+                <label class="c-opt"><input type="checkbox" name="data_form" value="종이">종이 / 수기 기록</label>
+                <label class="c-opt"><input type="checkbox" name="data_form" value="개인PC">개인 PC 엑셀/워드 (공유 안 됨)</label>
+                <label class="c-opt"><input type="checkbox" name="data_form" value="공유폴더">공유 폴더/NAS</label>
+                <label class="c-opt"><input type="checkbox" name="data_form" value="ERP등">ERP/MES/PLM 등 시스템</label>
+                <label class="c-opt"><input type="checkbox" name="data_form" value="DB">DB로 체계적 관리</label>
             </div>
         </div>
         <div class="q"><label class="q-label">부서 간 데이터 연결 상태는?</label>
             <div class="r-group">
-                <label class="r-opt"><input type="radio" name="데이터연결" value="완전히 단절 (부서별 따로)">완전히 단절 (부서별 따로)</label>
-                <label class="r-opt"><input type="radio" name="데이터연결" value="일부 수작업으로 옮김">일부 수작업으로 옮김</label>
-                <label class="r-opt"><input type="radio" name="데이터연결" value="일부 자동 연동">일부 자동 연동</label>
-                <label class="r-opt"><input type="radio" name="데이터연결" value="대부분 통합 관리">대부분 통합 관리</label>
+                <label class="r-opt"><input type="radio" name="data_silo" value="단절">완전히 단절 (부서별 따로)</label>
+                <label class="r-opt"><input type="radio" name="data_silo" value="수작업">일부 수작업으로 옮김</label>
+                <label class="r-opt"><input type="radio" name="data_silo" value="일부자동">일부 자동 연동</label>
+                <label class="r-opt"><input type="radio" name="data_silo" value="통합">대부분 통합 관리</label>
             </div>
         </div>
     </div>
@@ -216,33 +211,33 @@
     <div class="step-ind">Step 5/6 &mdash; 교육 선호</div>
     <div class="section"><h3>교육 형태 &amp; 우선순위</h3>
         <div class="q"><label class="q-label">가장 먼저 해결하고 싶은 문제는? (자유기술)</label>
-            <textarea name="해결하고싶은문제" placeholder="예: 매주 같은 보고서를 수작업으로 3시간씩 만듭니다 / ISO 문서 갱신 때마다 전 부서가 멈춥니다" rows="3"></textarea>
+            <textarea name="painpoint" placeholder="예: 매주 같은 보고서를 수작업으로 3시간씩 만듭니다 / 설비 고장이 갑자기 터져서 라인이 멈춥니다 / 위험성평가서 쓰는 데만 일주일이 걸립니다" rows="3"></textarea>
         </div>
         <div class="q"><label class="q-label">교육에서 가장 중요한 것은? (택1)</label>
             <div class="r-group">
-                <label class="r-opt"><input type="radio" name="교육핵심가치" value="실습 — 직접 해보는 것" required>실습 &mdash; 직접 해보는 것</label>
-                <label class="r-opt"><input type="radio" name="교육핵심가치" value="업종 맞춤 — 우리 업종 사례">업종 맞춤 &mdash; 우리 업종 사례</label>
-                <label class="r-opt"><input type="radio" name="교육핵심가치" value="즉시 적용 — 다음 날부터 활용">즉시 적용 &mdash; 다음 날부터 활용</label>
-                <label class="r-opt"><input type="radio" name="교육핵심가치" value="체계적 로드맵 — 단계별 성장">체계적 로드맵 &mdash; 단계별 성장</label>
-                <label class="r-opt"><input type="radio" name="교육핵심가치" value="변화관리 — 조직 전환 포함">변화관리 &mdash; 조직 전환 포함</label>
+                <label class="r-opt"><input type="radio" name="priority" value="실습" required>실습 &mdash; 직접 해보는 것</label>
+                <label class="r-opt"><input type="radio" name="priority" value="업종맞춤">업종 맞춤 &mdash; 우리 업종 사례</label>
+                <label class="r-opt"><input type="radio" name="priority" value="즉시적용">즉시 적용 &mdash; 다음 날부터 활용</label>
+                <label class="r-opt"><input type="radio" name="priority" value="로드맵">체계적 로드맵 &mdash; 단계별 성장</label>
+                <label class="r-opt"><input type="radio" name="priority" value="변화관리">변화관리 &mdash; 조직 전환 포함</label>
             </div>
         </div>
         <div class="q"><label class="q-label">선호하는 교육 형태는? (최대 2개)</label>
             <div class="c-group" data-max="2">
-                <label class="c-opt"><input type="checkbox" name="교육형태" value="오프라인 워크숍 (실습)">오프라인 워크숍 (실습)</label>
-                <label class="c-opt"><input type="checkbox" name="교육형태" value="온라인 자율 학습">온라인 자율 학습</label>
-                <label class="c-opt"><input type="checkbox" name="교육형태" value="온라인 라이브 (실시간)">온라인 라이브 (실시간)</label>
-                <label class="c-opt"><input type="checkbox" name="교육형태" value="기업 방문 맞춤형">기업 방문 맞춤형</label>
-                <label class="c-opt"><input type="checkbox" name="교육형태" value="컨설팅 (전환 로드맵)">컨설팅 (전환 로드맵)</label>
+                <label class="c-opt"><input type="checkbox" name="format" value="워크숍">오프라인 워크숍 (실습)</label>
+                <label class="c-opt"><input type="checkbox" name="format" value="온라인자율">온라인 자율 학습</label>
+                <label class="c-opt"><input type="checkbox" name="format" value="온라인라이브">온라인 라이브 (실시간)</label>
+                <label class="c-opt"><input type="checkbox" name="format" value="방문맞춤">기업 방문 맞춤형</label>
+                <label class="c-opt"><input type="checkbox" name="format" value="컨설팅">컨설팅 (전환 로드맵)</label>
             </div>
         </div>
         <div class="q"><label class="q-label">AI 교육/도입의 긴급도는?</label>
             <div class="r-group">
-                <label class="r-opt"><input type="radio" name="긴급도" value="즉시 (1개월 이내)" required>즉시 (1개월 이내)</label>
-                <label class="r-opt"><input type="radio" name="긴급도" value="단기 (3개월 이내)">단기 (3개월 이내)</label>
-                <label class="r-opt"><input type="radio" name="긴급도" value="중기 (6개월 이내)">중기 (6개월 이내)</label>
-                <label class="r-opt"><input type="radio" name="긴급도" value="올해 안에">올해 안에</label>
-                <label class="r-opt"><input type="radio" name="긴급도" value="관심은 있지만 시기 미정">관심은 있지만 시기 미정</label>
+                <label class="r-opt"><input type="radio" name="urgency" value="즉시" required>즉시 (1개월 이내)</label>
+                <label class="r-opt"><input type="radio" name="urgency" value="단기">단기 (3개월 이내)</label>
+                <label class="r-opt"><input type="radio" name="urgency" value="중기">중기 (6개월 이내)</label>
+                <label class="r-opt"><input type="radio" name="urgency" value="올해안">올해 안에</label>
+                <label class="r-opt"><input type="radio" name="urgency" value="미정">관심은 있지만 시기 미정</label>
             </div>
         </div>
     </div>
@@ -255,280 +250,337 @@
     <div class="section"><h3>기대 &amp; 우려</h3>
         <div class="q"><label class="q-label">가장 큰 기대는? (최대 2개)</label>
             <div class="c-group" data-max="2">
-                <label class="c-opt"><input type="checkbox" name="기대" value="업무 효율 향상">업무 효율 향상</label>
-                <label class="c-opt"><input type="checkbox" name="기대" value="반복 업무 자동화">반복 업무 자동화</label>
-                <label class="c-opt"><input type="checkbox" name="기대" value="기술 우위 확보">기술 우위 확보</label>
-                <label class="c-opt"><input type="checkbox" name="기대" value="새 사업/매출 창출">새 사업/매출 창출</label>
-                <label class="c-opt"><input type="checkbox" name="기대" value="데이터 기반 의사결정">데이터 기반 의사결정</label>
-                <label class="c-opt"><input type="checkbox" name="기대" value="AI 불안 해소">AI 불안 해소</label>
+                <label class="c-opt"><input type="checkbox" name="expect" value="효율">업무 효율 향상</label>
+                <label class="c-opt"><input type="checkbox" name="expect" value="자동화">반복 업무 자동화</label>
+                <label class="c-opt"><input type="checkbox" name="expect" value="경쟁력">기술 우위 확보</label>
+                <label class="c-opt"><input type="checkbox" name="expect" value="매출">새 사업/매출 창출</label>
+                <label class="c-opt"><input type="checkbox" name="expect" value="데이터의사결정">데이터 기반 의사결정</label>
+                <label class="c-opt"><input type="checkbox" name="expect" value="불안해소">AI 불안 해소</label>
             </div>
         </div>
         <div class="q"><label class="q-label">가장 큰 우려는? (최대 2개)</label>
             <div class="c-group" data-max="2">
-                <label class="c-opt"><input type="checkbox" name="우려" value="교육 후 적용 안 될 것 같음">교육 후 적용 안 될 것 같음</label>
-                <label class="c-opt"><input type="checkbox" name="우려" value="비용 대비 효과 불확실">비용 대비 효과 불확실</label>
-                <label class="c-opt"><input type="checkbox" name="우려" value="보안/유출 우려">보안/유출 우려</label>
-                <label class="c-opt"><input type="checkbox" name="우려" value="직원 거부감">직원 거부감</label>
-                <label class="c-opt"><input type="checkbox" name="우려" value="AI가 너무 빠르게 변함">AI가 너무 빠르게 변함</label>
-                <label class="c-opt"><input type="checkbox" name="우려" value="우리 업종 사례 없을 것 같음">우리 업종 사례 없을 것 같음</label>
+                <label class="c-opt"><input type="checkbox" name="concern" value="적용안됨">교육 후 적용 안 될 것 같음</label>
+                <label class="c-opt"><input type="checkbox" name="concern" value="비용">비용 대비 효과 불확실</label>
+                <label class="c-opt"><input type="checkbox" name="concern" value="보안">보안/유출 우려</label>
+                <label class="c-opt"><input type="checkbox" name="concern" value="저항">직원 거부감</label>
+                <label class="c-opt"><input type="checkbox" name="concern" value="기술변화">AI가 너무 빠르게 변함</label>
+                <label class="c-opt"><input type="checkbox" name="concern" value="사례없음">우리 업종 사례 없을 것 같음</label>
             </div>
         </div>
         <div class="q"><label class="q-label">추가 의견 (선택)</label>
-            <textarea name="추가의견" placeholder="자유롭게 적어주세요..." rows="2"></textarea>
+            <textarea name="comment" placeholder="자유롭게 적어주세요..." rows="2"></textarea>
         </div>
         <div class="q"><label class="q-label">이 설문에 대한 개선점이 있다면? (선택)</label>
-            <div class="hint">빠진 항목, 불필요한 질문, 더 알고 싶은 것 등 자유롭게 적어주세요</div>
-            <textarea name="설문개선점" placeholder="예: 우리 업종 관련 질문이 더 있으면 좋겠습니다 / 문항이 너무 많습니다 등" rows="2"></textarea>
+            <div class="hint">빠진 항목, 불필요한 질문, 더 알고 싶은 것 등</div>
+            <textarea name="survey_feedback" placeholder="예: 우리 업종 관련 질문이 더 있으면 좋겠습니다" rows="2"></textarea>
         </div>
     </div>
-    <div class="section" style="border:1px solid rgba(79,143,255,.2);background:linear-gradient(135deg,rgba(79,143,255,.05),rgba(0,212,170,.05))">
-        <h3 style="color:var(--accent3)">무료 맞춤 진단 리포트</h3>
-        <div style="font-size:.85em;color:var(--text);line-height:1.8;margin-bottom:14px">
-            귀사의 응답을 기반으로 <strong>AI 성숙도 Level</strong>, <strong>추천 교육 트랙</strong>, <strong>같은 업종 사례</strong>를 담은 진단 리포트를 무료로 보내드립니다.
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;padding:10px 14px;background:rgba(255,92,92,.08);border:1px solid rgba(255,92,92,.15);border-radius:8px">
-            <span style="font-size:.78em;color:var(--error);font-weight:600">매월 선착순 30건 한정</span>
-            <span style="font-size:.72em;color:var(--muted)">&mdash; 이번 달 잔여 <strong style="color:var(--accent3)">12건</strong></span>
-        </div>
+    <div class="section"><h3>맞춤형 진단 리포트</h3>
         <div class="q">
+            <label class="q-label">AI 성숙도 Level + 추천 교육 트랙 + 업종 사례를 담은 리포트를 받으시겠습니까?</label>
             <div class="r-group" id="rg-report">
-                <label class="r-opt"><input type="radio" name="리포트수신" value="예">예, 무료 리포트를 받겠습니다</label>
-                <label class="r-opt"><input type="radio" name="리포트수신" value="아니요">괜찮습니다</label>
+                <label class="r-opt"><input type="radio" name="report" value="예">예, 이메일로 받겠습니다</label>
+                <label class="r-opt"><input type="radio" name="report" value="아니요">아니요</label>
             </div>
         </div>
         <div class="q" id="contact-wrap" style="display:none">
+            <label class="q-label">연락처</label>
             <div style="display:flex;flex-direction:column;gap:8px">
-                <input type="email" name="이메일" placeholder="업무용 이메일 주소">
+                <input type="email" name="email" placeholder="이메일 (필수)">
+                <input type="text" name="company" placeholder="기업명 (선택)">
             </div>
             <div class="hint" style="margin-top:6px">7일 내 맞춤 리포트를 발송합니다. 리포트 발송 외 용도로 사용하지 않습니다.</div>
         </div>
     </div>
     <div class="nav" style="margin-bottom:10px"><button type="button" class="btn-p" onclick="go(-1)">&larr; 이전</button></div>
-    <button type="submit" class="submit-btn">진단 결과 확인하기</button>
+    <button type="submit" class="submit-btn">설문 제출하기</button>
 </div>
 
     </form>
 
     <div class="success-msg" id="success">
         <h2>감사합니다!</h2>
-        <p>귀사에 맞는 AI 전환 방향을 설계하겠습니다.<br><br>리포트를 요청하신 분께는 <strong>2주 이내</strong>에 발송해 드립니다.<br><br><a href="mailto:contact@makefield.ai" style="color:var(--accent)">contact@makefield.ai</a></p>
+        <p>귀사에 맞는 AI 전환 방향을 설계하겠습니다.<br><br>리포트를 요청하신 분께는 <strong>7일 이내</strong>에 발송해 드립니다.<br><br><a href="mailto:contact@makefield.ai" style="color:var(--accent)">contact@makefield.ai</a></p>
         <br><a href="/" style="color:var(--accent);text-decoration:none;font-weight:600">&larr; 홈으로</a>
     </div>
 </div>
 
 <script>
 /* ============================
-   TREE DATA: 업종별 세부 영역
+   TREE DATA: 업종별 현장 페인포인트 (v5 전면 재설계)
    ============================ */
 const INDUSTRY_TREE = {
     "IT": {
-        label: "IT / 소프트웨어 — AI 적용 영역",
+        label: "IT / 소프트웨어 -- 우리 회사도 이런 고민?",
         items: [
-            {v:"fw_embedded", t:"펌웨어 / 임베디드 개발 (코드 생성, 디버깅, 코드 리뷰)"},
-            {v:"frontend",   t:"프론트엔드 개발 (UI 생성, 컴포넌트 자동화, 디자인→코드)"},
-            {v:"backend",    t:"백엔드 개발 (API 설계, DB 쿼리 최적화, 아키텍처 검토)"},
-            {v:"devops",     t:"DevOps / 인프라 (CI/CD 자동화, 모니터링, 장애 분석)"},
-            {v:"data_ml",    t:"데이터 / ML 엔지니어링 (모델 학습, 데이터 파이프라인)"},
-            {v:"qa_test",    t:"QA / 테스트 (테스트 케이스 자동 생성, 버그 탐지)"},
-            {v:"pm_plan",    t:"기획 / PM (요구사항 정리, 스펙 문서 자동화, 일정 관리)"},
-            {v:"security",   t:"보안 (취약점 스캔, 코드 보안 검토, 로그 분석)"},
-            {v:"doc_tech",   t:"기술 문서 자동화 (API 문서, 매뉴얼, 변경 이력)"}
+            {v:"boilerplate",  t:"반복 코드 작성(보일러플레이트)과 단위 테스트 생성에 시간을 너무 쓴다"},
+            {v:"code_review",  t:"코드리뷰 병목 -- PR 대기가 길고, 스타일 지적에 시간이 뺏긴다"},
+            {v:"legacy",       t:"레거시 코드 파악에 신규 인력이 수주~수개월 걸린다 (문서 없음)"},
+            {v:"tech_doc",     t:"기술 문서, API 명세, 매뉴얼 작성이 항상 밀린다"},
+            {v:"pm_plan",      t:"요구사항 정리, 스프린트 계획, 회의록 정리가 수작업이다"},
+            {v:"qa_test",      t:"QA 테스트 케이스 작성과 버그 리포트 정리에 공수가 많다"},
+            {v:"security",     t:"보안 취약점 탐지를 배포 직전에야 확인한다"},
+            {v:"devops",       t:"CI/CD 파이프라인 장애 분석과 모니터링이 수동이다"},
+            {v:"onboarding",   t:"신규 입사자 온보딩에 코드베이스 이해 시간이 너무 걸린다"}
         ]
     },
     "제조_기계": {
-        label: "제조업(기계/금속) — AI 적용 영역",
+        label: "제조업(기계/금속/자동차) -- 현장에서 겪는 문제",
         items: [
-            {v:"prod_mgmt",  t:"생산 관리 (공정 최적화, 생산 스케줄링, 설비 가동률)"},
-            {v:"quality",    t:"품질 관리 (불량 예측, SPC 자동화, 검사 데이터 분석)"},
-            {v:"design_cad", t:"설계 / CAD (도면 검토, BOM 자동생성, 설계 변경 추적)"},
-            {v:"maint",      t:"설비 보전 (예지 보전, 고장 예측, 정비 이력 관리)"},
-            {v:"supply",     t:"구매 / 자재 (발주 자동화, 재고 최적화, 납기 예측)"},
-            {v:"safety",     t:"안전 관리 (위험성 평가, 아차사고 분석, 안전 교육)"},
-            {v:"logistics",  t:"물류 / 창고 (입출고 자동화, 동선 최적화)"},
-            {v:"doc_auto",   t:"문서 자동화 (작업 지시서, 성적서, 보고서 자동 생성)"}
+            {v:"work_log",     t:"작업일보, 생산실적을 매일 수기/엑셀로 입력 -- 오류 많고 시간 낭비"},
+            {v:"visual_insp",  t:"육안 검사에 의존 -- 불량이 후공정에서야 발견되는 경우가 많다"},
+            {v:"prod_plan",    t:"생산계획이 담당자 경험에 의존 -- 돌발 상황 대응이 느리다"},
+            {v:"equip_down",   t:"설비 고장이 갑자기 발생해 라인이 멈추는 상황이 반복된다"},
+            {v:"drawing_bom",  t:"도면, BOM 작성/검토가 수작업이라 변경 시 연쇄 수정이 누락된다"},
+            {v:"safety_doc",   t:"위험성평가, 점검 기록이 종이/엑셀 -- 중대재해법 대응 부담"},
+            {v:"inventory",    t:"재고, 자재 발주 시점을 감으로 결정 -- 긴급 구매/과재고 반복"},
+            {v:"doc_repeat",   t:"성적서, 작업지시서, 보고서 작성이 매번 비슷한데 수작업이다"}
         ]
     },
     "제조_전기전자": {
-        label: "제조업(전기/전자) — AI 적용 영역",
+        label: "제조업(전기/전자/반도체) -- 현장에서 겪는 문제",
         items: [
-            {v:"prod_mgmt",  t:"생산 관리 (SMT 최적화, 리플로우 프로파일, 수율 예측)"},
-            {v:"quality",    t:"품질 관리 (비전 검사 AI, AOI 데이터 분석, 불량 패턴)"},
-            {v:"design_eda", t:"회로 설계 / EDA (시뮬레이션, PCB 레이아웃 검토)"},
-            {v:"test_val",   t:"시험 / 인증 (시험 데이터 자동 분석, 규격 적합성 판정)"},
-            {v:"fw_sw",      t:"펌웨어 / 소프트웨어 (코드 생성, 테스트 자동화)"},
-            {v:"supply",     t:"구매 / 자재 (부품 대체 검색, 리드타임 예측)"},
-            {v:"maint",      t:"설비 보전 (장비 예지 보전, 센서 데이터 분석)"},
-            {v:"doc_auto",   t:"문서 자동화 (성적서, 매뉴얼, 변경 이력)"}
+            {v:"aoi_data",     t:"AOI/비전 검사 데이터 분석이 수동 -- 불량 패턴 파악이 느리다"},
+            {v:"pcb_review",   t:"PCB 설계, 레이아웃 검토에서 간섭이나 오류 발견이 늦다"},
+            {v:"test_cert",    t:"시험, 인증 데이터를 수작업으로 분석하고 규격 적합성을 판정한다"},
+            {v:"fw_test",      t:"펌웨어/SW 코드 생성과 테스트 자동화가 안 되어 있다"},
+            {v:"parts_alt",    t:"부품 대체 검색, 리드타임 예측을 수작업으로 한다"},
+            {v:"equip_pdm",    t:"장비 센서 데이터가 있는데 예지보전 분석 체계가 없다"},
+            {v:"yield_anal",   t:"수율 예측이나 불량 패턴 분석을 엑셀로 한다"},
+            {v:"doc_cert",     t:"성적서, 매뉴얼, 변경 이력 문서 작성이 반복적이다"}
         ]
     },
     "에너지": {
-        label: "에너지 — AI 적용 영역",
+        label: "에너지(발전/신재생/수소) -- 현장에서 겪는 문제",
         items: [
-            {v:"plant_op",   t:"발전/플랜트 운영 (운전 최적화, 이상 감지, 효율 분석)"},
-            {v:"maint",      t:"설비 보전 (예지 보전, 진동/온도 분석, 정비 스케줄링)"},
-            {v:"safety",     t:"안전 관리 (위험성 평가, 가스 감지, 비상 대응)"},
-            {v:"env",        t:"환경 관리 (배출량 모니터링, 환경 보고서 자동화)"},
-            {v:"grid",       t:"전력 계통 (부하 예측, 수요 반응, 계통 안정성)"},
-            {v:"renew",      t:"신재생 (발전량 예측, 패널/터빈 성능 분석)"},
-            {v:"design_eng", t:"설계 / 엔지니어링 (P&ID 검토, IO Map, PLC 로직)"},
-            {v:"doc_reg",    t:"문서 / 규제 (인허가 서류, 기술 기준 대응)"}
+            {v:"shift_log",    t:"교대 인수인계 보고서를 매번 수기로 작성 -- 이상징후 연속성 파악 불가"},
+            {v:"anomaly",      t:"설비 이상을 숙련자 경험에 의존 -- 센서 데이터는 있는데 분석 못 함"},
+            {v:"pid_review",   t:"P&ID 도면 검토를 수백 장 직접 열람하며 오류를 찾는다"},
+            {v:"maint_doc",    t:"설비 정비 후 보고서, 이력카드를 이중 입력하는 행정 부담"},
+            {v:"safety_chk",   t:"위험성평가, 안전점검 체크리스트가 종이/엑셀 기반이다"},
+            {v:"env_report",   t:"환경 배출량 모니터링, 보고서 작성이 수작업이다"},
+            {v:"load_forecast", t:"전력 부하 예측, 수요 반응을 경험에 의존한다"},
+            {v:"renew_perf",   t:"신재생(태양광/풍력) 발전량 예측, 성능 분석이 체계적이지 않다"}
         ]
     },
     "건설플랜트": {
-        label: "건설/플랜트 — AI 적용 영역",
+        label: "건설/플랜트 -- 현장에서 겪는 문제",
         items: [
-            {v:"bim_design", t:"설계 / BIM (도면 자동 검토, 간섭 체크, 물량 산출)"},
-            {v:"cost_est",   t:"견적 / 원가 (공사비 추정, 실행 예산 분석)"},
-            {v:"schedule",   t:"공정 관리 (일정 최적화, 지연 예측, 자원 배분)"},
-            {v:"safety",     t:"안전 관리 (위험성 평가, 현장 모니터링)"},
-            {v:"quality",    t:"품질 관리 (시공 검사, 시험 데이터, NCR 분석)"},
-            {v:"procurement",t:"조달 / 구매 (자재 추적, 납기 관리, 업체 평가)"},
-            {v:"doc_auto",   t:"문서 자동화 (시방서, 준공 서류, 설계 변경)"}
+            {v:"photo_report", t:"시공 사진 촬영 후 보고서에 수동 삽입 -- 진행률도 엑셀 직접 입력"},
+            {v:"ppe_manual",   t:"안전모, 안전벨트 착용을 관리자가 육안 순찰 확인 -- 전수 확인 불가"},
+            {v:"risk_assess",  t:"위험성평가서를 공종마다 비슷한 내용으로 처음부터 반복 작성"},
+            {v:"safety_law",   t:"중대재해처벌법 대응 서류(점검기록, 교육이력)가 폭증했다"},
+            {v:"concrete_qa",  t:"콘크리트 품질(슬럼프, 균열)을 현장에서 수기 기록, 육안 확인"},
+            {v:"drawing_ver",  t:"도면 최신 버전 관리가 안 되어 현장에서 구버전 사용 사고 발생"},
+            {v:"bim_clash",    t:"BIM 간섭 체크, 물량 산출을 수작업으로 하고 있다"},
+            {v:"progress",     t:"공정 진행률을 실시간 파악 못하고 주 1회 수동 집계"}
         ]
     },
     "조선해양": {
-        label: "조선/해양 — AI 적용 영역",
+        label: "조선/해양/중공업 -- 현장에서 겪는 문제",
         items: [
-            {v:"design_hull",t:"선체/구조 설계 (3D 모델링, 구조 해석, 생산 설계)"},
-            {v:"prod_plan",  t:"생산 계획 (블록 일정, 탑재 순서, 자원 최적화)"},
-            {v:"welding",    t:"용접 / 품질 (용접 데이터 분석, 비파괴 검사)"},
-            {v:"outfitting", t:"의장 / 전장 (케이블 루팅, 배관 간섭 체크)"},
-            {v:"safety",     t:"안전 / 환경 (밀폐공간, 도장 VOC, 환경 규제)"},
-            {v:"doc_auto",   t:"문서 자동화 (선급 서류, 인도 문서, 변경 관리)"}
+            {v:"design_chain", t:"설계 변경 시 연관 도면(배관, 전장, 의장) 수만 장을 수동 연쇄 수정"},
+            {v:"block_sched",  t:"블록 조립, 탑재 순서, 크레인 배정을 경험에 의존해 수동 계획"},
+            {v:"weld_inspect",  t:"용접 품질을 숙련 검사원 육안에 의존 -- 편차 크고 전수 검사 불가"},
+            {v:"ndt_manual",   t:"비파괴검사(UT/RT) 신호를 전문가가 수동 판독 -- 인력 부족"},
+            {v:"cable_route",  t:"케이블 루팅, 배관 경로 최적화를 설계자가 수동 수행"},
+            {v:"paper_drawing",t:"종이 도면 의존 -- 최신 도면과 현장 작업 기준 불일치 반복"},
+            {v:"class_doc",    t:"선급 서류, 인도 문서 작성이 대량이고 반복적이다"},
+            {v:"foreign_lang", t:"외국인 근로자 언어 장벽 -- 도면 설명, 안전 지시 전달 어려움"}
         ]
     },
     "화학소재": {
-        label: "화학/소재 — AI 적용 영역",
+        label: "화학/소재/바이오 -- 현장에서 겪는 문제",
         items: [
-            {v:"process_opt",t:"공정 최적화 (반응 조건, 수율 예측, 에너지 절감)"},
-            {v:"rd_formula", t:"R&D / 배합 (신소재 탐색, 배합 최적화, 물성 예측)"},
-            {v:"quality",    t:"품질 관리 (분석 데이터, LOT 추적, 이상 탐지)"},
-            {v:"safety_env", t:"안전 / 환경 (MSDS, 누출 감지, 환경 보고)"},
-            {v:"supply",     t:"원료 / 구매 (원자재 가격 예측, 재고 최적화)"},
-            {v:"doc_reg",    t:"문서 / 규제 (등록, 인증, 특허 분석)"}
+            {v:"dcs_alarm",    t:"DCS 알람이 하루 수백 건 -- 대부분 오경보인데 일일이 확인해야 한다"},
+            {v:"formulation",  t:"신소재 배합 최적화를 시행착오 방식으로 수십~수백 회 반복 실험"},
+            {v:"knowledge_loss",t:"실험 데이터가 연구원 개인 PC/종이 노트 -- 이직 시 지식 소멸"},
+            {v:"msds",         t:"MSDS 작성, 갱신이 수동 -- 16개 섹션을 담당자가 직접 작성"},
+            {v:"psm_hazop",    t:"PSM 서류, HAZOP 기록, 감사 대응 문서를 수기/엑셀로 관리"},
+            {v:"shift_handover",t:"교대 조업일지, 배치기록, 인수인계가 수기 -- 연속성 파악 불가"},
+            {v:"data_silo",    t:"공정 센서 데이터가 DCS, MES, ERP에 분산 -- 통합 분석 불가"},
+            {v:"material_cost", t:"원자재 가격 변동을 제때 파악 못해 구매 비용 손해"}
         ]
     },
     "공공연구": {
-        label: "공공/연구 — AI 적용 영역",
+        label: "공공/연구 -- 현장에서 겪는 문제",
         items: [
-            {v:"research",   t:"연구 지원 (논문 분석, 실험 설계, 데이터 처리)"},
-            {v:"admin",      t:"행정 업무 (공문 작성, 예산 관리, 보고서)"},
-            {v:"policy",     t:"정책 분석 (데이터 기반 정책 수립, 법령 검색)"},
-            {v:"citizen",    t:"대민 서비스 (민원 자동 응답, 문서 처리)"},
-            {v:"data_open",  t:"데이터 관리 (공공데이터 정제, 통계 자동화)"},
-            {v:"doc_auto",   t:"문서 자동화 (과제 보고서, 성과 분석, 감사 대응)"}
+            {v:"doc_draft",    t:"공문, 보고서, 보도자료 초안을 매번 처음부터 수기 작성"},
+            {v:"civil_surge",  t:"민원 처리량이 폭증했는데 인력은 그대로 -- 분류, 답변이 수작업"},
+            {v:"project_doc",  t:"국책과제 제안서, 연구비 집행 보고, 연구노트 정리가 전부 수작업"},
+            {v:"lit_review",   t:"논문, 특허 선행조사를 키워드 검색 후 수동 분류, 요약"},
+            {v:"hwp_barrier",  t:"공공문서가 HWP/PDF 위주라 AI가 내용을 읽고 처리할 수 없다"},
+            {v:"budget_audit",  t:"예산 집행, 결산, 감사 대응 자료 취합이 수작업이다"},
+            {v:"law_tracking",  t:"법령 변경 추적, 정책 분석을 수동으로 하고 있다"},
+            {v:"exp_data",     t:"실험 데이터 분석, 통계 처리가 엑셀 수작업이다"}
         ]
     },
     "유통서비스": {
-        label: "유통/서비스 — AI 적용 영역",
+        label: "유통/서비스/물류 -- 현장에서 겪는 문제",
         items: [
-            {v:"demand",     t:"수요 예측 (판매 예측, 재고 최적화, 시즌 분석)"},
-            {v:"crm",        t:"고객 관리 (고객 세분화, 이탈 예측, 개인화 추천)"},
-            {v:"cs",         t:"고객 상담 (챗봇, 상담 이력 분석, 감성 분석)"},
-            {v:"logistics",  t:"물류 / 배송 (경로 최적화, 배송 예측)"},
-            {v:"marketing",  t:"마케팅 (콘텐츠 생성, 광고 최적화, SNS 분석)"},
-            {v:"doc_auto",   t:"문서 자동화 (계약서, 보고서, 정산)"}
+            {v:"demand_fcst",  t:"수요 예측을 담당자 경험에 의존 -- 과재고/품절이 반복된다"},
+            {v:"cs_repeat",    t:"콜센터 단순 반복 문의(배송, 반품)에 상담원 시간 대부분 소모"},
+            {v:"data_scatter",  t:"고객 데이터가 오프라인POS, 온라인몰, 앱에 분산 -- 통합 불가"},
+            {v:"picking",      t:"물류센터 피킹 작업이 사람 도보 의존 -- 주문 폭증 시 병목"},
+            {v:"delivery_route",t:"배송 경로, 차량 적재를 수작업/경험으로 계획한다"},
+            {v:"content_short", t:"마케팅 콘텐츠(SNS, 블로그)를 꾸준히 만들 인력이 부족하다"},
+            {v:"inspect_manual",t:"입고 검수가 육안, 수기 확인 -- 불일치를 나중에야 발견"},
+            {v:"churn_predict", t:"고객 이탈 예측, 개인화 추천이 수동 분류에 의존한다"}
         ]
     },
     "기타": {
-        label: "AI 적용 영역",
+        label: "이런 고민이 있으신가요?",
         items: [
-            {v:"doc_auto",   t:"문서 작성 / 보고서 자동화"},
-            {v:"data_anal",  t:"데이터 분석 / 시각화"},
-            {v:"customer",   t:"고객 대응 / 상담"},
-            {v:"process",    t:"업무 프로세스 자동화"},
-            {v:"knowledge",  t:"사내 지식 관리 / 검색"},
-            {v:"coding",     t:"코딩 / 개발"},
-            {v:"other",      t:"기타 (아래 자유기술란에 작성)"}
+            {v:"doc_repeat",   t:"보고서, 문서 작성이 매번 비슷한 내용인데 처음부터 수작업"},
+            {v:"excel_hell",   t:"엑셀 데이터 정리, 분석, 시각화에 시간을 너무 쓴다"},
+            {v:"where_start",  t:"반복 업무를 자동화하고 싶은데 어디서부터 시작할지 모르겠다"},
+            {v:"knowledge",    t:"사내 지식(매뉴얼, 규정)을 찾으려면 여러 곳을 뒤져야 한다"},
+            {v:"cs_inconsist", t:"고객, 민원 응대가 반복적이고 일관성이 없다"},
+            {v:"admin_heavy",  t:"회의록, 이메일, 일정 관리 등 행정 업무가 너무 많다"},
+            {v:"ai_howto",     t:"AI를 업무에 활용하고 싶은데 방법을 모르겠다"}
         ]
     }
 };
 
 /* ============================
-   TREE DATA: 부서별 구체 니즈
+   TREE DATA: 부서별 구체 니즈 (v5: 6→11개 부서 확장)
    ============================ */
 const DEPT_TREE = [
     {
-        dept: "경영지원 / 총무 / 인사",
-        key: "hr_admin",
+        dept: "생산 / 현장 / 제조",
+        key: "prod",
         needs: [
-            {v:"hr_recruit",    t:"채용 프로세스 자동화 (이력서 스크리닝, 면접 일정)"},
-            {v:"hr_onboard",    t:"신입 온보딩 자동화 (교육 자료, 체크리스트)"},
-            {v:"hr_eval",       t:"인사 평가 / 성과 관리 데이터 분석"},
-            {v:"payroll",       t:"급여 / 근태 관리 자동화"},
-            {v:"legal",         t:"법무 / 계약서 검토 (AI 법률 검토, 리스크 분석)"},
-            {v:"compliance",    t:"규제 / 컴플라이언스 (법령 변경 추적, 대응 자동화)"},
-            {v:"finance",       t:"재무 / 회계 (전표 자동 분류, 예산 분석, 결산 보조)"},
-            {v:"facilities",    t:"시설 / 자산 관리 (공간 최적화, 유지보수 일정)"},
-            {v:"internal_doc",  t:"사내 문서 자동화 (공문, 품의, 회의록)"}
+            {v:"prod_log",       t:"작업일보, 생산실적 자동 입력 (수기/엑셀 탈출)"},
+            {v:"prod_vision",    t:"육안 검사 → AI 비전 자동 불량 판별"},
+            {v:"prod_plan",      t:"AI 수요예측 기반 생산계획 자동 수립"},
+            {v:"prod_anomaly",   t:"공정 이상 실시간 감지, 원인 자동 분석"},
+            {v:"prod_oee",       t:"설비 가동률(OEE) 실시간 모니터링"},
+            {v:"prod_search",    t:"작업 표준서, 지시서를 현장에서 즉시 검색"}
+        ]
+    },
+    {
+        dept: "설비보전 / 유지보수",
+        key: "maint",
+        needs: [
+            {v:"maint_predict",  t:"설비 고장 예측 (진동, 온도, 전류 AI 분석)"},
+            {v:"maint_digital",  t:"점검 기록 디지털화 (종이 체크리스트 → 모바일+AI)"},
+            {v:"maint_history",  t:"정비 이력 관리, 고장 원인 자동 분석"},
+            {v:"maint_parts",    t:"부품 교체 시점 AI 예측"},
+            {v:"maint_schedule", t:"점검 스케줄 자동 관리, 우선순위 알림"}
+        ]
+    },
+    {
+        dept: "안전 / 환경",
+        key: "safety",
+        needs: [
+            {v:"safe_risk",      t:"위험성평가서 AI 자동 작성 (작업 유형 기반)"},
+            {v:"safe_cctv",      t:"CCTV AI 안전 모니터링 (PPE 미착용, 위험 행동 실시간 감지)"},
+            {v:"safe_law",       t:"중대재해처벌법 대응 서류 관리 자동화"},
+            {v:"safe_edu",       t:"안전교육 이수 현황 자동 추적, 미이수자 알림"},
+            {v:"safe_env",       t:"환경 법정 기록(폐수, 대기) 자동 집계, 기준 초과 알림"},
+            {v:"safe_near_miss", t:"아차사고 보고서 AI 작성, 유사 사고 사례 자동 검색"}
         ]
     },
     {
         dept: "품질경영 / ISO",
         key: "qms",
         needs: [
-            {v:"iso_doc",       t:"ISO 문서 관리 (갱신 주기 자동 알림, 개정 이력)"},
-            {v:"audit_prep",    t:"심사 대응 자동화 (자료 수집, 부적합 추적)"},
-            {v:"corrective",    t:"시정/예방 조치 관리 (CAPA 추적, 효과성 분석)"},
-            {v:"spc",           t:"통계적 공정 관리 (SPC 자동화, 트렌드 분석)"},
-            {v:"supplier_qa",   t:"협력사 품질 관리 (입고 검사, 업체 평가)"},
-            {v:"qms_chatbot",   t:"품질 규정 검색 챗봇 (사내 규정/기준 즉시 조회)"},
-            {v:"qms_doc_auto",  t:"품질 문서 자동 생성 (성적서, 시험 보고서, COA)"}
+            {v:"qms_iso",       t:"ISO 문서 갱신 주기 자동 알림, 개정 이력 관리"},
+            {v:"qms_ncr",       t:"부적합보고서(NCR) AI 초안 자동 생성"},
+            {v:"qms_defect",    t:"불량 데이터 패턴 자동 분류, 원인 추천"},
+            {v:"qms_audit",     t:"심사 대응 자료 자동 수집, 점검"},
+            {v:"qms_coa",       t:"검사 성적서, COA 자동 생성"},
+            {v:"qms_supplier",  t:"협력사 품질 관리 (입고 검사, 업체 평가)"}
         ]
     },
     {
-        dept: "고객 대응 / CS / 고객만족",
-        key: "cs",
+        dept: "설계 / 엔지니어링",
+        key: "design",
         needs: [
-            {v:"cs_history",    t:"고객 상담 이력 자동 관리 (CRM 연동, 이력 검색)"},
-            {v:"cs_voice",      t:"유선 통화 녹음 → 자동 문서화 (STT + 요약)"},
-            {v:"cs_chatbot",    t:"고객 상담 챗봇 (FAQ, 기술 문의, 주문 조회)"},
-            {v:"voc_analysis",  t:"VOC 분석 (고객 불만 패턴, 감성 분석, 트렌드)"},
-            {v:"cs_ticket",     t:"티켓/민원 자동 분류 및 라우팅"},
-            {v:"cs_report",     t:"고객 만족도 보고서 자동 생성"}
+            {v:"des_review",    t:"도면 검토, 오류 자동 탐지 (P&ID, 전기도면 등)"},
+            {v:"des_bom",       t:"BOM 자동 생성, 관리 (도면에서 품번/수량 자동 추출)"},
+            {v:"des_code",      t:"설계 규격, 법규 자동 대조, 적합성 체크"},
+            {v:"des_similar",   t:"과거 유사 설계 자료 AI 검색, 참조"},
+            {v:"des_cascade",   t:"설계 변경 시 관련 문서(BOM, 매뉴얼) 연쇄 수정 자동화"},
+            {v:"des_doc",       t:"기술 문서, 매뉴얼 AI 초안 생성"}
+        ]
+    },
+    {
+        dept: "구매 / 자재 / 물류",
+        key: "scm",
+        needs: [
+            {v:"scm_order",     t:"발주량, 발주 시점 AI 자동 산출"},
+            {v:"scm_quote",     t:"복수 업체 견적 자동 비교, 최적 업체 추천"},
+            {v:"scm_stock",     t:"재고 실시간 추적, 안전재고 미달 사전 알림"},
+            {v:"scm_inspect",   t:"입고 검수 자동화 (바코드/RFID + AI)"},
+            {v:"scm_route",     t:"배차, 배송 경로 AI 최적화"},
+            {v:"scm_price",     t:"자재 단가 시장 변동 모니터링"}
+        ]
+    },
+    {
+        dept: "경영지원 / 총무 / 인사",
+        key: "hr_admin",
+        needs: [
+            {v:"hr_faq",       t:"사내 규정, 복리후생 문의 AI 자동 응대"},
+            {v:"hr_recruit",   t:"채용 이력서 AI 1차 스크리닝"},
+            {v:"hr_doc",       t:"공문, 기안문, 회의록 AI 초안 생성"},
+            {v:"hr_payroll",   t:"급여, 근태 정산 자동화"},
+            {v:"hr_training",  t:"법정 의무교육 이수 현황 자동 추적"},
+            {v:"hr_contract",  t:"계약서 검토, 리스크 분석 AI 보조"}
         ]
     },
     {
         dept: "영업 / 마케팅",
         key: "sales",
         needs: [
-            {v:"proposal",      t:"제안서 / 견적서 자동 생성"},
-            {v:"lead_scoring",  t:"리드 스코어링 (잠재 고객 우선순위 판단)"},
-            {v:"market_intel",  t:"시장 분석 / 경쟁사 동향 자동 수집"},
-            {v:"content",       t:"마케팅 콘텐츠 생성 (SNS, 블로그, 뉴스레터)"},
-            {v:"sales_forecast",t:"매출 예측 / 파이프라인 분석"},
-            {v:"crm_auto",      t:"CRM 데이터 자동 입력 / 정리"}
+            {v:"sales_quote",    t:"견적서, 제안서 AI 자동 생성"},
+            {v:"sales_report",   t:"영업 실적 보고서 자동 취합, 요약"},
+            {v:"sales_content",  t:"마케팅 콘텐츠 생성 (SNS, 블로그, 뉴스레터)"},
+            {v:"sales_lead",     t:"가망 고객 발굴, 리드 스코어링"},
+            {v:"sales_forecast", t:"매출 예측, 파이프라인 분석"},
+            {v:"sales_competitor",t:"경쟁사 동향 자동 수집, 분석"}
         ]
     },
     {
         dept: "IT / 전산 / 정보보안",
         key: "it",
         needs: [
-            {v:"erp_auto",      t:"ERP 연계 데이터 자동화 (입력, 추출, 보고서)"},
-            {v:"system_monitor",t:"시스템 모니터링 / 이상 탐지"},
-            {v:"helpdesk",      t:"IT 헬프데스크 자동화 (FAQ 봇, 장애 접수)"},
-            {v:"data_pipeline", t:"데이터 파이프라인 구축 (ETL, 정제, 통합)"},
-            {v:"security",      t:"정보보안 (로그 분석, 이상 접근 탐지)"},
-            {v:"legacy_modern", t:"레거시 시스템 현대화 (코드 변환, 문서화)"},
-            {v:"rpa",           t:"RPA / 업무 자동화 (반복 작업 봇)"}
+            {v:"it_helpdesk",   t:"IT 헬프데스크 반복 문의 AI 자동 대응"},
+            {v:"it_security",   t:"보안 로그 이상 징후 자동 탐지"},
+            {v:"it_erp",        t:"ERP 연계 데이터 추출, 보고서 자동화"},
+            {v:"it_legacy",     t:"레거시 시스템 코드 변환, 문서화"},
+            {v:"it_rpa",        t:"RPA / 업무 자동화 봇 구축"},
+            {v:"it_monitor",    t:"시스템 모니터링, 장애 분석"}
+        ]
+    },
+    {
+        dept: "고객 대응 / CS",
+        key: "cs",
+        needs: [
+            {v:"cs_auto",      t:"반복 고객 문의 AI 자동 응대 (FAQ, 배송, 반품)"},
+            {v:"cs_voc",       t:"고객 불만(VOC) 자동 분류, 감성 분석"},
+            {v:"cs_history",   t:"상담 이력 자동 요약, 검색"},
+            {v:"cs_report",    t:"고객 만족도 보고서 자동 생성"},
+            {v:"cs_stt",       t:"통화 녹음 → 자동 문서화 (STT + 요약)"}
         ]
     },
     {
         dept: "연구개발 / R&D",
         key: "rnd",
         needs: [
-            {v:"paper_search",  t:"논문 / 특허 검색 및 분석 자동화"},
-            {v:"experiment",    t:"실험 설계 / 데이터 분석 (DOE, 통계)"},
-            {v:"simulation",    t:"시뮬레이션 / 최적화"},
-            {v:"tech_doc",      t:"기술 문서 작성 (보고서, 사양서, 매뉴얼)"},
-            {v:"knowledge_mgmt",t:"R&D 지식 관리 (선행 연구 DB, 인수인계)"},
-            {v:"ip_mgmt",       t:"지식재산 관리 (특허 맵, 선행기술 조사)"}
+            {v:"rnd_search",   t:"논문, 특허 검색 및 자동 분석, 요약"},
+            {v:"rnd_data",     t:"실험 데이터 패턴 분석, 이상치 탐지"},
+            {v:"rnd_doc",      t:"기술 보고서, 제안서 AI 초안 생성"},
+            {v:"rnd_project",  t:"과제 보고서, 연구노트 작성 보조"},
+            {v:"rnd_km",       t:"R&D 지식 관리 (선행 연구 DB, 인수인계)"},
+            {v:"rnd_sim",      t:"시뮬레이션, 최적화 보조"}
         ]
     }
 ];
 
 /* ============================
-   STEP NAVIGATION
+   STEP NAVIGATION + VALIDATION
    ============================ */
 let cur = 1;
 const total = 6;
@@ -541,70 +593,42 @@ function updateProg() {
 }
 
 function validateStep(step) {
-    const el = document.querySelector('.step[data-step="'+step+'"]');
-    if (!el) return true;
-
-    // 필수 텍스트/이메일 입력 체크
-    const textInputs = el.querySelectorAll('input[type="text"][required], input[type="email"][required]');
-    for (const inp of textInputs) {
-        if (!inp.value.trim()) {
-            inp.style.borderColor = 'var(--error)';
-            inp.focus();
-            return false;
-        }
-        inp.style.borderColor = '';
+    if (step === 1) {
+        const ind = document.querySelector('input[name="industry"]:checked');
+        const size = document.querySelector('input[name="size"]:checked');
+        const role = document.querySelector('input[name="role"]:checked');
+        if (!ind || !size || !role) return false;
     }
-
-    // 필수 라디오 그룹 체크
-    const radioGroups = new Set();
-    el.querySelectorAll('input[type="radio"][required]').forEach(r => radioGroups.add(r.name));
-    for (const name of radioGroups) {
-        if (!el.querySelector('input[name="'+name+'"]:checked')) {
-            const group = el.querySelector('input[name="'+name+'"]').closest('.r-group');
-            if (group) {
-                group.style.outline = '2px solid var(--error)';
-                group.style.borderRadius = '8px';
-                group.scrollIntoView({behavior:'smooth', block:'center'});
-                setTimeout(() => { group.style.outline = ''; }, 2500);
-            }
-            return false;
-        }
+    if (step === 4) {
+        const level = document.querySelector('input[name="ai_level"]:checked');
+        const fail = document.querySelector('input[name="failure"]:checked');
+        if (!level || !fail) return false;
     }
-
-    // Step 2: 업종별 니즈 최소 1개
-    if (step === 2) {
-        const checks = el.querySelectorAll('input[name="업종별AI니즈"]:checked');
-        if (checks.length === 0) {
-            const container = document.getElementById('ind-needs');
-            container.style.outline = '2px solid var(--error)';
-            container.style.borderRadius = '8px';
-            container.scrollIntoView({behavior:'smooth', block:'center'});
-            setTimeout(() => { container.style.outline = ''; }, 2500);
-            return false;
-        }
+    if (step === 5) {
+        const pri = document.querySelector('input[name="priority"]:checked');
+        const urg = document.querySelector('input[name="urgency"]:checked');
+        if (!pri || !urg) return false;
     }
-
-    // Step 3: 부서 최소 1개
-    if (step === 3) {
-        const checks = el.querySelectorAll('input[name="선택부서"]:checked');
-        if (checks.length === 0) {
-            const container = document.getElementById('dept-tree');
-            container.style.outline = '2px solid var(--error)';
-            container.style.borderRadius = '8px';
-            container.scrollIntoView({behavior:'smooth', block:'center'});
-            setTimeout(() => { container.style.outline = ''; }, 2500);
-            return false;
-        }
-    }
-
     return true;
 }
 
 function go(dir) {
+    if (dir > 0 && !validateStep(cur)) {
+        // show gentle reminder
+        const step = document.querySelector('.step[data-step="'+cur+'"]');
+        let msg = step.querySelector('.val-msg');
+        if (!msg) {
+            msg = document.createElement('div');
+            msg.className = 'val-msg';
+            msg.textContent = '필수 항목을 선택해 주세요';
+            step.querySelector('.nav').before(msg);
+        }
+        msg.classList.add('show');
+        setTimeout(() => msg.classList.remove('show'), 2000);
+        return;
+    }
     const next = cur + dir;
     if (next < 1 || next > total) return;
-    // 앞으로 갈 때만 검증 (뒤로가기는 자유)
-    if (dir > 0 && !validateStep(cur)) return;
     document.querySelector('.step[data-step="'+cur+'"]').classList.remove('active');
     cur = next;
     document.querySelector('.step[data-step="'+cur+'"]').classList.add('active');
@@ -616,7 +640,7 @@ function go(dir) {
    STEP 2: 업종별 동적 렌더링
    ============================ */
 function renderIndustryNeeds() {
-    const sel = document.querySelector('input[name="업종"]:checked');
+    const sel = document.querySelector('input[name="industry"]:checked');
     if (!sel) return;
     const key = sel.value;
     const tree = INDUSTRY_TREE[key] || INDUSTRY_TREE["기타"];
@@ -626,14 +650,13 @@ function renderIndustryNeeds() {
     tree.items.forEach(item => {
         const lbl = document.createElement('label');
         lbl.className = 'c-opt';
-        lbl.innerHTML = '<input type="checkbox" name="업종별AI니즈" value="'+item.t+'">'+item.t;
+        lbl.innerHTML = '<input type="checkbox" name="ind_need" value="'+item.v+'">'+item.t;
         container.appendChild(lbl);
     });
     bindCheckHighlight(container);
 }
 
-/* Listen to industry change */
-document.querySelectorAll('input[name="업종"]').forEach(r => {
+document.querySelectorAll('input[name="industry"]').forEach(r => {
     r.addEventListener('change', renderIndustryNeeds);
 });
 
@@ -644,17 +667,15 @@ function renderDeptTree() {
     const container = document.getElementById('dept-tree');
     container.innerHTML = '';
     DEPT_TREE.forEach(dept => {
-        // department header checkbox
         const wrapper = document.createElement('div');
         wrapper.style.marginBottom = '10px';
 
         const deptLabel = document.createElement('label');
         deptLabel.className = 'c-opt';
         deptLabel.style.fontWeight = '600';
-        deptLabel.innerHTML = '<input type="checkbox" name="선택부서" value="'+dept.dept+'" data-dept="'+dept.key+'">'+dept.dept;
+        deptLabel.innerHTML = '<input type="checkbox" name="dept_sel" value="'+dept.key+'" data-dept="'+dept.key+'">'+dept.dept;
         wrapper.appendChild(deptLabel);
 
-        // sub-needs (hidden by default)
         const sub = document.createElement('div');
         sub.className = 'tree-sub';
         sub.id = 'sub-' + dept.key;
@@ -664,20 +685,18 @@ function renderDeptTree() {
         dept.needs.forEach(n => {
             const nl = document.createElement('label');
             nl.className = 'c-opt';
-            nl.innerHTML = '<input type="checkbox" name="'+dept.dept+'_니즈" value="'+n.t+'">'+n.t;
+            nl.innerHTML = '<input type="checkbox" name="dept_need_'+dept.key+'" value="'+n.v+'">'+n.t;
             cg.appendChild(nl);
         });
         sub.appendChild(cg);
         wrapper.appendChild(sub);
         container.appendChild(wrapper);
 
-        // toggle sub on dept check
         const deptCheck = deptLabel.querySelector('input');
         deptCheck.addEventListener('change', () => {
             sub.classList.toggle('show', deptCheck.checked);
             deptLabel.classList.toggle('sel', deptCheck.checked);
             if (!deptCheck.checked) {
-                // uncheck all sub-items
                 sub.querySelectorAll('input[type=checkbox]').forEach(cb => {
                     cb.checked = false;
                     cb.closest('.c-opt').classList.remove('sel');
@@ -735,28 +754,18 @@ document.querySelectorAll('.c-group[data-max]').forEach(grp => {
 /* ============================
    SKIP LOGIC
    ============================ */
-// failure -> barrier
-document.querySelectorAll('input[name="AI도입경험"]').forEach(r => {
+document.querySelectorAll('input[name="failure"]').forEach(r => {
     r.addEventListener('change', () => {
         const show = ['포기','효과미미','검토중'].includes(r.value);
         document.getElementById('barrier-wrap').style.display = show ? 'block' : 'none';
     });
 });
 
-// report -> contact
-document.querySelectorAll('input[name="리포트수신"]').forEach(r => {
+document.querySelectorAll('input[name="report"]').forEach(r => {
     r.addEventListener('change', () => {
         document.getElementById('contact-wrap').style.display = r.value === '예' ? 'block' : 'none';
     });
 });
-
-/* ============================
-   SOCIAL PROOF: stats.json에서 설문 카운트 로드
-   ============================ */
-fetch('/stats.json?t='+Date.now()).then(r=>r.json()).then(d=>{
-    const el = document.getElementById('survey-count');
-    if(el && d.survey_count) el.textContent = d.survey_count;
-}).catch(()=>{});
 
 /* ============================
    SUCCESS
