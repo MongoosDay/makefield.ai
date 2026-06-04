@@ -113,9 +113,13 @@
 <div class="step active" data-step="1">
     <div class="step-ind">Step 1/6 &mdash; 기본 정보</div>
     <div class="section"><h3>귀사와 귀하에 대해</h3>
-        <div class="q"><label class="q-label">귀사(기업)명은? (선택)</label>
-            <div class="hint">익명 응답도 가능합니다</div>
-            <input type="text" name="company_name" placeholder="예: 주식회사 OO테크">
+        <div class="q"><label class="q-label">귀사 정보 (선택)</label>
+            <div class="hint">동일 기업의 복수 응답을 하나로 통합하여 더 정확한 진단 결과를 제공하기 위한 식별 정보입니다.<br>기업 식별 외 다른 용도로는 일체 사용하지 않으며, 미입력 시 익명으로 처리됩니다.</div>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+                <input type="text" name="company_name" placeholder="기업명 (선택) &mdash; 예: 주식회사 OO테크">
+                <input type="text" name="biz_no_main" placeholder="사업자등록번호 (선택) &mdash; 예: 123-45-67890">
+                <input type="text" name="address_main" placeholder="기업 소재지 (선택) &mdash; 시/도 구/군 수준이면 충분합니다">
+            </div>
         </div>
         <div class="q"><label class="q-label">귀사의 업종은?</label>
             <div class="r-group" id="rg-ind">
