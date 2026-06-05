@@ -126,7 +126,7 @@
         <div class="proof-stat reveal"><div class="num" id="stat-agents">0</div><div class="label">AI 에이전트 구축</div></div>
         <div class="proof-stat reveal reveal-delay-1"><div class="num" id="stat-kb">0</div><div class="label">지식 베이스 문서</div></div>
         <div class="proof-stat reveal reveal-delay-2"><div class="num" id="stat-lines">0</div><div class="label">줄의 정형화된 지식</div></div>
-        <div class="proof-stat reveal reveal-delay-3"><div class="num" id="stat-accuracy">0</div><div class="label">교차검증 정확도</div></div>
+        <div class="proof-stat reveal reveal-delay-3"><div class="num" id="stat-tokens">0</div><div class="label">누적 처리 토큰</div></div>
         <div class="proof-stat reveal reveal-delay-2"><div class="num" id="stat-years">0</div><div class="label">년 현장 경력</div></div>
         <div class="proof-stat reveal reveal-delay-3"><div class="num" id="stat-days">0</div><div class="label">일째 실증 진행 중</div></div>
     </div>
@@ -220,7 +220,7 @@
 /* ===== 동적 수치: stats.json 로드 + 자동 날짜 카운트 ===== */
 (async function(){
     // 기본값 (stats.json 로드 실패 시 폴백)
-    let stats = {agents:9, kb_docs:436, kb_lines:214982, accuracy:99.6, start_date:'2026-04-01', years_exp:15};
+    let stats = {agents:10, kb_docs:499, kb_lines:228988, total_tokens:4201782390, career_start:'2011-01-01', start_date:'2026-04-01'};
     try {
         const r = await fetch('stats.json?t='+Date.now());
         if(r.ok) stats = await r.json();
@@ -230,6 +230,11 @@
     const start = new Date(stats.start_date);
     const now = new Date();
     const days = Math.floor((now - start) / 86400000);
+    // 현장 경력 자동 계산 (해마다 +1)
+    const careerStart = new Date(stats.career_start || '2011-01-01');
+    const years = Math.floor((now - careerStart) / (365.25 * 86400000));
+    // 누적 처리 토큰 → 억 단위
+    const tokenEok = Math.round((stats.total_tokens || 0) / 1e8);
 
     // 숫자 애니메이션 함수
     function animateNum(el, target, suffix='') {
@@ -251,8 +256,8 @@
                 animateNum(document.getElementById('stat-agents'), stats.agents);
                 animateNum(document.getElementById('stat-kb'), stats.kb_docs);
                 animateNum(document.getElementById('stat-lines'), Math.round(stats.kb_lines/1000), 'K+');
-                document.getElementById('stat-accuracy').textContent = stats.accuracy + '%';
-                animateNum(document.getElementById('stat-years'), stats.years_exp, '+');
+                animateNum(document.getElementById('stat-tokens'), tokenEok, '억+');
+                animateNum(document.getElementById('stat-years'), years, '+');
                 animateNum(document.getElementById('stat-days'), days);
                 document.getElementById('days-count').textContent = days;
             }

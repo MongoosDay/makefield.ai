@@ -1,10 +1,12 @@
 {
-  "agents": 9,
-  "kb_docs": 436,
-  "kb_lines": 214982,
-  "accuracy": 99.6,
+  "agents": 10,
+  "kb_docs": 499,
+  "kb_lines": 228988,
+  "categories": 19,
+  "activity_count": 304,
+  "total_tokens": 4206016860,
+  "inference_count": 52001,
+  "career_start": "2011-01-01",
   "start_date": "2026-04-01",
-  "years_exp": 15,
-  "survey_count": 128,
-  "updated": "2026-06-04"
+  "updated": "2026-06-05"
 }
