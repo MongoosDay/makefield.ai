@@ -19,6 +19,14 @@
         .nav-logo{font-weight:800;font-size:1.15em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
         .nav-links{display:flex;gap:28px}.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:.8em;font-weight:500;transition:color .3s;letter-spacing:.03em;text-transform:uppercase}.nav-links a:hover{color:var(--accent)}
         .nav-toggle{display:none;background:none;border:none;color:var(--text-primary);font-size:1.5em;cursor:pointer}
+        .nav-right{display:flex;align-items:center;gap:8px}
+        .lang-switch{position:relative;margin-left:8px}
+        .lang-toggle{display:flex;align-items:center;gap:6px;background:none;border:1px solid var(--border);border-radius:6px;color:var(--text-secondary);font-size:.78em;font-weight:500;padding:6px 12px;cursor:pointer;transition:all .3s;font-family:inherit}
+        .lang-toggle:hover{border-color:var(--accent);color:var(--accent)}.lang-toggle svg{width:15px;height:15px;flex-shrink:0}
+        .lang-menu{position:absolute;top:calc(100% + 8px);right:0;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:6px;min-width:140px;flex-direction:column;gap:2px;display:none;box-shadow:0 8px 30px rgba(0,0,0,.5);z-index:200}
+        .lang-switch.open .lang-menu{display:flex}
+        .lang-opt{background:none;border:none;color:var(--text-secondary);font-size:.85em;text-align:left;padding:8px 12px;border-radius:6px;cursor:pointer;transition:all .2s;font-family:inherit}
+        .lang-opt:hover{background:var(--bg-card-hover);color:var(--text-primary)}.lang-opt.active{color:var(--accent);background:rgba(79,143,255,.1);font-weight:600}
         .container{max-width:1100px;margin:0 auto;padding:0 24px}section{padding:100px 0}
         .section-label{font-size:.72em;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:12px}
         .section-title{font-size:clamp(1.8em,4vw,2.6em);font-weight:800;line-height:1.3;margin-bottom:20px;letter-spacing:-.02em}
@@ -76,107 +84,107 @@
     </style>
 </head>
 <body>
-<nav><div class="nav-inner"><div class="nav-logo">MakeField AI</div><button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button><div class="nav-links"><a href="#problem">Why</a><a href="#solution">Solution</a><a href="#proof">Proof</a><a href="#education">Programs</a><a href="#survey">Survey</a><a href="#about">About</a><a href="#contact">Contact</a></div></div></nav>
+<nav><div class="nav-inner"><div class="nav-logo">MakeField AI</div><div class="nav-right"><div class="nav-links"><a href="#problem" data-i18n="nav.why">Why</a><a href="#solution" data-i18n="nav.solution">Solution</a><a href="#proof" data-i18n="nav.proof">Proof</a><a href="#education" data-i18n="nav.programs">Programs</a><a href="#survey" data-i18n="nav.survey">Survey</a><a href="#about" data-i18n="nav.about">About</a><a href="#contact" data-i18n="nav.contact">Contact</a></div><div class="lang-switch" id="lang-switch"><button class="lang-toggle" id="lang-toggle" type="button" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="lang-current">한국어</span></button><div class="lang-menu" id="lang-menu"></div></div><button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button></div></div></nav>
 
 <!-- HERO -->
 <section class="hero"><div class="hero-bg"></div><div class="hero-grid"></div><div class="hero-particles" id="particles"></div>
 <div class="hero-content">
-    <div class="hero-badge">95%의 기업이 AI 도입에 실패합니다</div>
-    <h1>도구를 가르치지 않습니다.<br><span class="gradient-text">전환을 설계합니다.</span></h1>
-    <p class="hero-sub">ChatGPT 사용법을 가르치는 시대는 끝났습니다.<br>15년 현장 경험에서 검증된 AI 전환 방법론으로,<br>산업 현장의 실질적인 변화를 만듭니다.</p>
+    <div class="hero-badge" data-i18n="hero.badge">95%의 기업이 AI 도입에 실패합니다</div>
+    <h1 data-i18n="hero.h1">도구를 가르치지 않습니다.<br><span class="gradient-text">전환을 설계합니다.</span></h1>
+    <p class="hero-sub" data-i18n="hero.sub">ChatGPT 사용법을 가르치는 시대는 끝났습니다.<br>15년 현장 경험에서 검증된 AI 전환 방법론으로,<br>산업 현장의 실질적인 변화를 만듭니다.</p>
     <div class="hero-btns">
-        <a href="#solution" class="btn btn-primary">AI 전환 방법론 보기</a>
-        <a href="#survey" class="btn btn-survey">우리 회사 AI 진단 &rarr;</a>
-        <a href="#contact" class="btn btn-secondary">문의하기</a>
+        <a href="#solution" class="btn btn-primary" data-i18n="hero.btn1">AI 전환 방법론 보기</a>
+        <a href="#survey" class="btn btn-survey" data-i18n="hero.btn2">우리 회사 AI 진단 &rarr;</a>
+        <a href="#contact" class="btn btn-secondary" data-i18n="hero.btn3">문의하기</a>
     </div>
 </div></section>
 
 <!-- PROBLEM -->
 <section id="problem" style="background:var(--bg-secondary)"><div class="container">
-    <div class="section-label reveal">The Problem</div>
-    <h2 class="section-title reveal">왜 대부분의 기업이<br>AI 도입에 실패하는가</h2>
-    <p class="section-desc reveal">AI 도구를 구매하고, 직원들에게 "알아서 써라"고 말합니다.<br>3개월 후, 대부분은 "우리 업무에는 안 맞아"라고 결론 내립니다.<br>문제는 AI가 아닙니다. <strong>접근 방식</strong>이 틀렸습니다.</p>
+    <div class="section-label reveal" data-i18n="problem.label">The Problem</div>
+    <h2 class="section-title reveal" data-i18n="problem.title">왜 대부분의 기업이<br>AI 도입에 실패하는가</h2>
+    <p class="section-desc reveal" data-i18n="problem.desc">AI 도구를 구매하고, 직원들에게 "알아서 써라"고 말합니다.<br>3개월 후, 대부분은 "우리 업무에는 안 맞아"라고 결론 내립니다.<br>문제는 AI가 아닙니다. <strong>접근 방식</strong>이 틀렸습니다.</p>
     <div class="problem-grid">
-        <div class="problem-card reveal"><div class="problem-num">42%</div><h3>AI 프로젝트를 포기한 기업</h3><p>도입했지만 ROI를 달성하지 못해 프로젝트를 중단. 가장 큰 원인은 데이터 품질 문제(43%).</p><div class="problem-source">Deloitte State of AI 2026</div></div>
-        <div class="problem-card reveal reveal-delay-1"><div class="problem-num">82%</div><h3>"프롬프트만으로는 부족하다"</h3><p>IT 리더 82%가 프롬프트 엔지니어링만으로는 실질적 성과를 낼 수 없다고 응답. AI 성능은 도구가 아니라 데이터가 결정.</p><div class="problem-source">2026 Context Management Report</div></div>
-        <div class="problem-card reveal reveal-delay-2"><div class="problem-num">5.3%</div><h3>한국 중소기업 AI 도입률</h3><p>대기업(49.2%) 대비 극도로 낮은 도입률. 최대 장벽: "AI가 우리 사업에 어떤 도움이 되는가"에 대한 체감 부족.</p><div class="problem-source">대한상공회의소 2025</div></div>
+        <div class="problem-card reveal"><div class="problem-num">42%</div><h3 data-i18n="problem.c1h">AI 프로젝트를 포기한 기업</h3><p data-i18n="problem.c1p">도입했지만 ROI를 달성하지 못해 프로젝트를 중단. 가장 큰 원인은 데이터 품질 문제(43%).</p><div class="problem-source" data-i18n="problem.c1s">Deloitte State of AI 2026</div></div>
+        <div class="problem-card reveal reveal-delay-1"><div class="problem-num">82%</div><h3 data-i18n="problem.c2h">"프롬프트만으로는 부족하다"</h3><p data-i18n="problem.c2p">IT 리더 82%가 프롬프트 엔지니어링만으로는 실질적 성과를 낼 수 없다고 응답. AI 성능은 도구가 아니라 데이터가 결정.</p><div class="problem-source" data-i18n="problem.c2s">2026 Context Management Report</div></div>
+        <div class="problem-card reveal reveal-delay-2"><div class="problem-num">5.3%</div><h3 data-i18n="problem.c3h">한국 중소기업 AI 도입률</h3><p data-i18n="problem.c3p">대기업(49.2%) 대비 극도로 낮은 도입률. 최대 장벽: "AI가 우리 사업에 어떤 도움이 되는가"에 대한 체감 부족.</p><div class="problem-source" data-i18n="problem.c3s">대한상공회의소 2025</div></div>
     </div>
 </div></section>
 
 <!-- SOLUTION -->
 <section id="solution"><div class="container">
-    <div class="section-label reveal">The Solution</div>
-    <h2 class="section-title reveal">AI 증폭 전략<br><span class="gradient-text">4 Phase Framework</span></h2>
-    <p class="section-desc reveal">도구 사용법을 가르치는 대신, <strong>업무 지식을 AI가 활용할 수 있는 형태로 전환</strong>합니다.<br>직원을 대체하는 AI가 아니라, 직원을 <strong>10배로 증폭</strong>하는 AI.<br>100명이 10개씩 하던 일을 100개씩 하게 만드는 체계적 방법론입니다.</p>
+    <div class="section-label reveal" data-i18n="solution.label">The Solution</div>
+    <h2 class="section-title reveal" data-i18n="solution.title">AI 증폭 전략<br><span class="gradient-text">4 Phase Framework</span></h2>
+    <p class="section-desc reveal" data-i18n="solution.desc">도구 사용법을 가르치는 대신, <strong>업무 지식을 AI가 활용할 수 있는 형태로 전환</strong>합니다.<br>직원을 대체하는 AI가 아니라, 직원을 <strong>10배로 증폭</strong>하는 AI.<br>100명이 10개씩 하던 일을 100개씩 하게 만드는 체계적 방법론입니다.</p>
     <div class="phase-grid">
-        <div class="phase-card reveal"><div class="phase-num">PHASE 1</div><h3>지식 정형화</h3><p>직원들의 암묵지(경험, 노하우, 감)를 형식지(문서, 데이터, 규칙)로 전환합니다. AI 도구 사용법은 이 단계에서 가르치지 않습니다.</p></div>
-        <div class="phase-card reveal reveal-delay-1"><div class="phase-num">PHASE 2</div><h3>중앙 지식 DB</h3><p>정형화된 지식을 중앙 시스템에 통합합니다. 부서별 프로세스 맵, 의사결정 규칙, 트러블슈팅 DB가 하나로 연결됩니다.</p></div>
-        <div class="phase-card reveal reveal-delay-2"><div class="phase-num">PHASE 3</div><h3>AI 시스템 내재화</h3><p>축적된 지식 위에 AI 워크플로우를 구축합니다. 직원은 기술을 이해할 필요 없이 ERP처럼 사용합니다.</p></div>
-        <div class="phase-card reveal reveal-delay-3"><div class="phase-num">PHASE 4</div><h3>증폭 수확</h3><p>1인당 생산성 3~10배. 신규 채용 없이 사업을 확장하고, 핵심 인력 퇴사해도 지식은 시스템에 보존됩니다.</p></div>
+        <div class="phase-card reveal"><div class="phase-num">PHASE 1</div><h3 data-i18n="solution.p1h">지식 정형화</h3><p data-i18n="solution.p1p">직원들의 암묵지(경험, 노하우, 감)를 형식지(문서, 데이터, 규칙)로 전환합니다. AI 도구 사용법은 이 단계에서 가르치지 않습니다.</p></div>
+        <div class="phase-card reveal reveal-delay-1"><div class="phase-num">PHASE 2</div><h3 data-i18n="solution.p2h">중앙 지식 DB</h3><p data-i18n="solution.p2p">정형화된 지식을 중앙 시스템에 통합합니다. 부서별 프로세스 맵, 의사결정 규칙, 트러블슈팅 DB가 하나로 연결됩니다.</p></div>
+        <div class="phase-card reveal reveal-delay-2"><div class="phase-num">PHASE 3</div><h3 data-i18n="solution.p3h">AI 시스템 내재화</h3><p data-i18n="solution.p3p">축적된 지식 위에 AI 워크플로우를 구축합니다. 직원은 기술을 이해할 필요 없이 ERP처럼 사용합니다.</p></div>
+        <div class="phase-card reveal reveal-delay-3"><div class="phase-num">PHASE 4</div><h3 data-i18n="solution.p4h">증폭 수확</h3><p data-i18n="solution.p4p">1인당 생산성 3~10배. 신규 채용 없이 사업을 확장하고, 핵심 인력 퇴사해도 지식은 시스템에 보존됩니다.</p></div>
     </div>
-    <div class="proof-quote reveal" style="margin-top:48px">"덜 똑똑한 AI + 좋은 데이터가,<br>똑똑한 AI + 나쁜 데이터를 이깁니다.<br>직원들의 업무 지식을 정형화하는 것이 모든 AI 전략의 시작점입니다."</div>
+    <div class="proof-quote reveal" style="margin-top:48px" data-i18n="solution.quote">"덜 똑똑한 AI + 좋은 데이터가,<br>똑똑한 AI + 나쁜 데이터를 이깁니다.<br>직원들의 업무 지식을 정형화하는 것이 모든 AI 전략의 시작점입니다."</div>
 </div></section>
 
 <!-- PROOF (동적 수치) -->
 <section id="proof" style="background:var(--bg-secondary)"><div class="container">
-    <div class="section-label reveal">The Proof</div>
-    <h2 class="section-title reveal">직접 해봤습니다.<br><span class="gradient-text"><span id="days-count">0</span>일째 진행 중.</span></h2>
-    <p class="section-desc reveal">이론이 아닙니다. 15년차 산업 엔지니어가 현장 업무에서<br>AI 전환 방법론을 직접 적용하고, 측정하고, 검증하고 있는 현재 진행형 기록입니다.</p>
+    <div class="section-label reveal" data-i18n="proof.label">The Proof</div>
+    <h2 class="section-title reveal" data-i18n="proof.title">직접 해봤습니다.<br><span class="gradient-text"><span id="days-count">0</span>일째 진행 중.</span></h2>
+    <p class="section-desc reveal" data-i18n="proof.desc">이론이 아닙니다. 15년차 산업 엔지니어가 현장 업무에서<br>AI 전환 방법론을 직접 적용하고, 측정하고, 검증하고 있는 현재 진행형 기록입니다.</p>
     <div class="proof-stats">
-        <div class="proof-stat reveal"><div class="num" id="stat-agents">0</div><div class="label">AI 에이전트 구축</div></div>
-        <div class="proof-stat reveal reveal-delay-1"><div class="num" id="stat-kb">0</div><div class="label">지식 베이스 문서</div></div>
-        <div class="proof-stat reveal reveal-delay-2"><div class="num" id="stat-lines">0</div><div class="label">줄의 정형화된 지식</div></div>
-        <div class="proof-stat reveal reveal-delay-3"><div class="num" id="stat-tokens">0</div><div class="label">누적 처리 토큰</div></div>
-        <div class="proof-stat reveal reveal-delay-2"><div class="num" id="stat-years">0</div><div class="label">년 현장 경력</div></div>
-        <div class="proof-stat reveal reveal-delay-3"><div class="num" id="stat-days">0</div><div class="label">일째 실증 진행 중</div></div>
+        <div class="proof-stat reveal"><div class="num" id="stat-agents">0</div><div class="label" data-i18n="proof.s1">AI 에이전트 구축</div></div>
+        <div class="proof-stat reveal reveal-delay-1"><div class="num" id="stat-kb">0</div><div class="label" data-i18n="proof.s2">지식 베이스 문서</div></div>
+        <div class="proof-stat reveal reveal-delay-2"><div class="num" id="stat-lines">0</div><div class="label" data-i18n="proof.s3">줄의 정형화된 지식</div></div>
+        <div class="proof-stat reveal reveal-delay-3"><div class="num" id="stat-tokens">0</div><div class="label" data-i18n="proof.s4">누적 처리 토큰</div></div>
+        <div class="proof-stat reveal reveal-delay-2"><div class="num" id="stat-years">0</div><div class="label" data-i18n="proof.s5">년 현장 경력</div></div>
+        <div class="proof-stat reveal reveal-delay-3"><div class="num" id="stat-days">0</div><div class="label" data-i18n="proof.s6">일째 실증 진행 중</div></div>
     </div>
-    <div class="proof-quote reveal">"수백 개의 산업용 소스코드 파일을 AI와 교차검증하고,<br>산업용 도면에서 데이터를 자동 추출하고,<br>대규모 플랜트 운전 데이터 수백만 행을 분석했습니다.<br><br>이 과정에서 도출한 방법론을 가르칩니다."</div>
+    <div class="proof-quote reveal" data-i18n="proof.quote">"수백 개의 산업용 소스코드 파일을 AI와 교차검증하고,<br>산업용 도면에서 데이터를 자동 추출하고,<br>대규모 플랜트 운전 데이터 수백만 행을 분석했습니다.<br><br>이 과정에서 도출한 방법론을 가르칩니다."</div>
 </div></section>
 
 <!-- EDUCATION -->
 <section id="education"><div class="container">
-    <div class="section-label reveal">Programs</div>
-    <h2 class="section-title reveal">교육 프로그램</h2>
-    <p class="section-desc reveal">3계층 구조: 전 직원이 AI 전문가가 될 필요 없습니다.<br>90%는 데이터를 만들고, 8%가 시스템을 구축하고, 2%가 전략을 설계합니다.</p>
+    <div class="section-label reveal" data-i18n="edu.label">Programs</div>
+    <h2 class="section-title reveal" data-i18n="edu.title">교육 프로그램</h2>
+    <p class="section-desc reveal" data-i18n="edu.desc">3계층 구조: 전 직원이 AI 전문가가 될 필요 없습니다.<br>90%는 데이터를 만들고, 8%가 시스템을 구축하고, 2%가 전략을 설계합니다.</p>
     <div class="edu-track">
-        <div class="edu-track-label track-a reveal">Track A &mdash; AI 전환 방법론 (핵심)</div>
+        <div class="edu-track-label track-a reveal" data-i18n="edu.trackA">Track A &mdash; AI 전환 방법론 (핵심)</div>
         <div class="edu-grid">
-            <div class="edu-card reveal"><span class="edu-type core">Core</span><h3>AI를 위한 업무 정형화</h3><p>자기 업무를 분석하고, AI가 활용할 수 있는 형태로 정리하는 법. AI 도구 사용법은 가르치지 않습니다. 이것이 먼저입니다.</p><div class="edu-meta">전 직원 (비개발자 포함) &bull; 4~8시간 &bull; 실습 중심</div></div>
-            <div class="edu-card reveal reveal-delay-1"><span class="edu-type core">Core</span><h3>AI 워크플로우 재설계</h3><p>업무를 마이크로태스크로 분해하고, AI가 할 것 / 사람이 할 것을 분류하여 새로운 워크플로우를 설계합니다.</p><div class="edu-meta">부서 빌더 후보 &bull; 8~16시간 &bull; 프로젝트 기반</div></div>
-            <div class="edu-card reveal reveal-delay-2"><span class="edu-type master">Master</span><h3>기업 AI 전환 컨설팅</h3><p>4Phase 프레임워크 전체를 적용하여 기업 맞춤 AI 전환 로드맵을 수립합니다. 3계층 조직 모델 + ROI 분석 포함.</p><div class="edu-meta">경영진 / CTO &bull; 2~3일 &bull; 전략 워크숍</div></div>
+            <div class="edu-card reveal"><span class="edu-type core">Core</span><h3 data-i18n="edu.a1h">AI를 위한 업무 정형화</h3><p data-i18n="edu.a1p">자기 업무를 분석하고, AI가 활용할 수 있는 형태로 정리하는 법. AI 도구 사용법은 가르치지 않습니다. 이것이 먼저입니다.</p><div class="edu-meta" data-i18n="edu.a1m">전 직원 (비개발자 포함) &bull; 4~8시간 &bull; 실습 중심</div></div>
+            <div class="edu-card reveal reveal-delay-1"><span class="edu-type core">Core</span><h3 data-i18n="edu.a2h">AI 워크플로우 재설계</h3><p data-i18n="edu.a2p">업무를 마이크로태스크로 분해하고, AI가 할 것 / 사람이 할 것을 분류하여 새로운 워크플로우를 설계합니다.</p><div class="edu-meta" data-i18n="edu.a2m">부서 빌더 후보 &bull; 8~16시간 &bull; 프로젝트 기반</div></div>
+            <div class="edu-card reveal reveal-delay-2"><span class="edu-type master">Master</span><h3 data-i18n="edu.a3h">기업 AI 전환 컨설팅</h3><p data-i18n="edu.a3p">4Phase 프레임워크 전체를 적용하여 기업 맞춤 AI 전환 로드맵을 수립합니다. 3계층 조직 모델 + ROI 분석 포함.</p><div class="edu-meta" data-i18n="edu.a3m">경영진 / CTO &bull; 2~3일 &bull; 전략 워크숍</div></div>
         </div>
     </div>
     <div class="edu-track">
-        <div class="edu-track-label track-b reveal">Track B &mdash; 도메인 AI 실전<span class="sample-badge">Sample</span></div>
-        <p style="color:var(--text-secondary);font-size:.85em;margin-bottom:20px;margin-top:-12px" class="reveal">귀사의 업종과 도메인에 맞춰 커스터마이징합니다. 아래는 적용 사례입니다.</p>
+        <div class="edu-track-label track-b reveal"><span data-i18n="edu.trackB">Track B &mdash; 도메인 AI 실전</span><span class="sample-badge">Sample</span></div>
+        <p style="color:var(--text-secondary);font-size:.85em;margin-bottom:20px;margin-top:-12px" class="reveal" data-i18n="edu.trackBnote">귀사의 업종과 도메인에 맞춰 커스터마이징합니다. 아래는 적용 사례입니다.</p>
         <div class="edu-grid">
-            <div class="edu-card reveal"><span class="edu-type workshop">Workshop</span><h3>AI로 산업용 제어 로직 개발하기</h3><p>제어 시스템 소스코드를 AI로 분석하고, 검증하고, 자동 생성하는 풀 파이프라인 실습.</p><div class="edu-meta">제어/자동화 엔지니어 &bull; 4~8시간 &bull; 실습형</div></div>
-            <div class="edu-card reveal reveal-delay-1"><span class="edu-type workshop">Workshop</span><h3>AI로 산업용 도면 읽고 검증하기</h3><p>도면 파싱, 심볼 인식, 데이터 자동 추출. 코드&harr;문서&harr;도면 3중 교차검증 실습.</p><div class="edu-meta">설계 / 시공 / 감리 &bull; 4~8시간 &bull; 실습형</div></div>
-            <div class="edu-card reveal reveal-delay-2"><span class="edu-type keynote">Keynote</span><h3>산업 엔지니어의 AI 생존 전략</h3><p>2023 프롬프트 &rarr; 2024 AI도구 &rarr; 2025 바이브코딩 &rarr; 2026 에이전트. AI 시대, 빠르게 변하는 흐름과 당신의 생존 전략.</p><div class="edu-meta">전체 대상 &bull; 1~2시간 &bull; 강연</div></div>
+            <div class="edu-card reveal"><span class="edu-type workshop">Workshop</span><h3 data-i18n="edu.b1h">AI로 산업용 제어 로직 개발하기</h3><p data-i18n="edu.b1p">제어 시스템 소스코드를 AI로 분석하고, 검증하고, 자동 생성하는 풀 파이프라인 실습.</p><div class="edu-meta" data-i18n="edu.b1m">제어/자동화 엔지니어 &bull; 4~8시간 &bull; 실습형</div></div>
+            <div class="edu-card reveal reveal-delay-1"><span class="edu-type workshop">Workshop</span><h3 data-i18n="edu.b2h">AI로 산업용 도면 읽고 검증하기</h3><p data-i18n="edu.b2p">도면 파싱, 심볼 인식, 데이터 자동 추출. 코드&harr;문서&harr;도면 3중 교차검증 실습.</p><div class="edu-meta" data-i18n="edu.b2m">설계 / 시공 / 감리 &bull; 4~8시간 &bull; 실습형</div></div>
+            <div class="edu-card reveal reveal-delay-2"><span class="edu-type keynote">Keynote</span><h3 data-i18n="edu.b3h">산업 엔지니어의 AI 생존 전략</h3><p data-i18n="edu.b3p">2023 프롬프트 &rarr; 2024 AI도구 &rarr; 2025 바이브코딩 &rarr; 2026 에이전트. AI 시대, 빠르게 변하는 흐름과 당신의 생존 전략.</p><div class="edu-meta" data-i18n="edu.b3m">전체 대상 &bull; 1~2시간 &bull; 강연</div></div>
         </div>
     </div>
 </div></section>
 
 <!-- SURVEY -->
 <div class="survey-section" id="survey"><div class="reveal">
-    <div class="section-label" style="text-align:center">3분 설문</div>
-    <h2>우리 회사에 맞는<br>AI 교육은 무엇일까요?</h2>
-    <p>3분이면 충분합니다. 귀사의 현재 AI 활용 수준과 니즈를 파악하여,<br>맞춤형 교육 방향을 제안해 드립니다.</p>
+    <div class="section-label" style="text-align:center" data-i18n="survey.label">3분 설문</div>
+    <h2 data-i18n="survey.title">우리 회사에 맞는<br>AI 교육은 무엇일까요?</h2>
+    <p data-i18n="survey.desc">3분이면 충분합니다. 귀사의 현재 AI 활용 수준과 니즈를 파악하여,<br>맞춤형 교육 방향을 제안해 드립니다.</p>
     <div class="survey-features">
-        <div class="survey-feature"><span class="check">&#10003;</span> 익명 참여 가능</div>
-        <div class="survey-feature"><span class="check">&#10003;</span> 3분 소요</div>
-        <div class="survey-feature"><span class="check">&#10003;</span> 결과 요약 리포트 제공</div>
+        <div class="survey-feature"><span class="check">&#10003;</span> <span data-i18n="survey.f1">익명 참여 가능</span></div>
+        <div class="survey-feature"><span class="check">&#10003;</span> <span data-i18n="survey.f2">3분 소요</span></div>
+        <div class="survey-feature"><span class="check">&#10003;</span> <span data-i18n="survey.f3">결과 요약 리포트 제공</span></div>
     </div>
-    <a href="/survey.html" class="btn btn-survey" id="survey-btn">설문 참여하기 &rarr;</a>
+    <a href="/survey.html" class="btn btn-survey" id="survey-btn" data-i18n="survey.btn">설문 참여하기 &rarr;</a>
 </div></div>
 
 <!-- ABOUT (멋드러지게) -->
 <section id="about"><div class="container">
-    <div class="section-label reveal">About</div>
-    <h2 class="section-title reveal">만든 사람</h2>
+    <div class="section-label reveal" data-i18n="about.label">About</div>
+    <h2 class="section-title reveal" data-i18n="about.title">만든 사람</h2>
     <div class="about-compact">
         <div class="reveal-left">
-            <p class="about-text">
+            <p class="about-text" data-i18n="about.text">
                 <strong>대형 산업 시스템</strong>에서 커리어를 시작해, <strong>IoT 플랫폼</strong>과 <strong>AI 기반 엣지 컴퓨팅</strong>을 거쳐, <strong>그린 에너지 제어 솔루션</strong>까지 &mdash; 3개 산업을 관통하며 설계, 개발, 양산, 시운전을 직접 수행해온 <strong>풀스택 산업 아키텍트</strong>입니다.<br><br>
                 <strong>수십 명 규모의 기술 조직을 제로에서 구축</strong>하고, 사업을 <strong>3배 이상 스케일업</strong>시켰습니다. 다수의 <strong>국가 R&amp;D 프로젝트를 기획부터 완수</strong>까지 총괄했으며, <strong>글로벌 기술 인증</strong>을 획득하고, <strong>미국과의 국제 공동연구</strong>를 이끌었습니다.<br><br>
                 기술만 아는 엔지니어가 아니라, <strong>조직을 만들고, 사업을 키우고, 글로벌 무대에서 검증받은</strong> 경험을 가진 사람입니다.<br><br>
@@ -193,48 +201,54 @@
             </div>
         </div>
         <div class="reveal-right"><div class="tl-compact">
-            <div class="tl-item-c"><div class="year">2024 &mdash; PRESENT</div><div class="title">그린 에너지 &mdash; 시스템 아키텍트 &amp; AI 전환 실증</div><div class="desc">전 용량 에너지 제어 시스템 설계 + AI 에이전트 시스템 독자 구축 + 산업 AI 전환 방법론 실증</div></div>
-            <div class="tl-item-c"><div class="year">2020 &mdash; 2024</div><div class="title">IoT &amp; AI &mdash; R&amp;D 센터장</div><div class="desc">엣지 AI 플랫폼 설계, 다수 국가 R&amp;D 총괄, 미국 국제공동연구, 안전 모니터링 시스템 개발</div></div>
-            <div class="tl-item-c"><div class="year">2016 &mdash; 2020</div><div class="title">대형 산업 시스템 &mdash; 사업부 총괄</div><div class="desc">기술 조직 제로에서 구축, 매출 3배 스케일업, 글로벌 기술 인증 획득, 기업부설연구소 설립</div></div>
-            <div class="tl-item-c"><div class="year">2011 &mdash; 2016</div><div class="title">임베디드 &amp; 시스템 엔지니어</div><div class="desc">의공학 &rarr; 모바일 &rarr; 산업 시스템. 다중 도메인 전환을 통한 풀스택 역량 확립</div></div>
+            <div class="tl-item-c"><div class="year" data-i18n="about.tl1y">2024 &mdash; PRESENT</div><div class="title" data-i18n="about.tl1t">그린 에너지 &mdash; 시스템 아키텍트 &amp; AI 전환 실증</div><div class="desc" data-i18n="about.tl1d">전 용량 에너지 제어 시스템 설계 + AI 에이전트 시스템 독자 구축 + 산업 AI 전환 방법론 실증</div></div>
+            <div class="tl-item-c"><div class="year" data-i18n="about.tl2y">2020 &mdash; 2024</div><div class="title" data-i18n="about.tl2t">IoT &amp; AI &mdash; R&amp;D 센터장</div><div class="desc" data-i18n="about.tl2d">엣지 AI 플랫폼 설계, 다수 국가 R&amp;D 총괄, 미국 국제공동연구, 안전 모니터링 시스템 개발</div></div>
+            <div class="tl-item-c"><div class="year" data-i18n="about.tl3y">2016 &mdash; 2020</div><div class="title" data-i18n="about.tl3t">대형 산업 시스템 &mdash; 사업부 총괄</div><div class="desc" data-i18n="about.tl3d">기술 조직 제로에서 구축, 매출 3배 스케일업, 글로벌 기술 인증 획득, 기업부설연구소 설립</div></div>
+            <div class="tl-item-c"><div class="year" data-i18n="about.tl4y">2011 &mdash; 2016</div><div class="title" data-i18n="about.tl4t">임베디드 &amp; 시스템 엔지니어</div><div class="desc" data-i18n="about.tl4d">의공학 &rarr; 모바일 &rarr; 산업 시스템. 다중 도메인 전환을 통한 풀스택 역량 확립</div></div>
         </div></div>
     </div>
 </div></section>
 
 <!-- CONTACT -->
 <section id="contact" style="background:var(--bg-secondary)"><div class="container"><div class="contact-section reveal">
-    <div class="section-label">Contact</div>
-    <h2 class="section-title">함께 만들어갑시다</h2>
-    <p style="color:var(--text-secondary);max-width:520px;margin:0 auto;line-height:1.9">AI 전환 교육, 기업 컨설팅, 강연 의뢰,<br>또는 산업 AI에 대한 이야기가 하고 싶으시다면.</p>
+    <div class="section-label" data-i18n="contact.label">Contact</div>
+    <h2 class="section-title" data-i18n="contact.title">함께 만들어갑시다</h2>
+    <p style="color:var(--text-secondary);max-width:520px;margin:0 auto;line-height:1.9" data-i18n="contact.desc">AI 전환 교육, 기업 컨설팅, 강연 의뢰,<br>또는 산업 AI에 대한 이야기가 하고 싶으시다면.</p>
     <div class="contact-links">
-        <a href="mailto:contact@makefield.ai" class="contact-link">Email</a>
+        <a href="mailto:contact@makefield.ai" class="contact-link" data-i18n="contact.email">Email</a>
         <a href="#" class="contact-link">LinkedIn</a>
         <a href="#" class="contact-link">YouTube</a>
         <a href="#" class="contact-link">Brunch</a>
     </div>
 </div></div></section>
 
-<footer>&copy; 2026 <span class="gradient-text">MakeField AI</span> &mdash; 현장에 AI를 만든다.<p style="margin-top:16px;font-size:.7em;color:rgba(255,255,255,.25);letter-spacing:.05em">With love and grace &mdash; MSEO, JHOON, JWON, JNA</p></footer>
+<footer>&copy; 2026 <span class="gradient-text">MakeField AI</span> &mdash; <span data-i18n="footer.slogan">현장에 AI를 만든다.</span><p style="margin-top:16px;font-size:.7em;color:rgba(255,255,255,.25);letter-spacing:.05em">With love and grace &mdash; MSEO, JHOON, JWON, JNA</p></footer>
 
 <script>
 /* ===== 동적 수치: stats.json 로드 + 자동 날짜 카운트 ===== */
+/* 기본값 (stats.json 로드 실패 시 폴백) */
+var STATS = {agents:10, kb_docs:499, kb_lines:228988, total_tokens:4201782390, career_start:'2011-01-01', start_date:'2026-04-01'};
+
+function mfaiDays(){
+    return Math.floor((new Date() - new Date(STATS.start_date)) / 86400000);
+}
+/* 언어 전환 시 innerHTML 교체로 days-count 엘리먼트가 새로 생성되므로 다시 채워주는 훅 (i18n.js가 호출) */
+window.refreshDynamicStats = function(){
+    var dc = document.getElementById('days-count');
+    if(dc) dc.textContent = mfaiDays();
+};
+
 (async function(){
-    // 기본값 (stats.json 로드 실패 시 폴백)
-    let stats = {agents:10, kb_docs:499, kb_lines:228988, total_tokens:4201782390, career_start:'2011-01-01', start_date:'2026-04-01'};
     try {
         const r = await fetch('stats.json?t='+Date.now());
-        if(r.ok) stats = await r.json();
+        if(r.ok) STATS = await r.json();
     } catch(e){}
 
-    // 날짜 자동 계산 (매일 +1)
-    const start = new Date(stats.start_date);
-    const now = new Date();
-    const days = Math.floor((now - start) / 86400000);
+    const days = mfaiDays();
     // 현장 경력 자동 계산 (해마다 +1)
-    const careerStart = new Date(stats.career_start || '2011-01-01');
-    const years = Math.floor((now - careerStart) / (365.25 * 86400000));
-    // 누적 처리 토큰 → 억 단위
-    const tokenEok = Math.round((stats.total_tokens || 0) / 1e8);
+    const years = Math.floor((new Date() - new Date(STATS.career_start || '2011-01-01')) / (365.25 * 86400000));
+    // 누적 처리 토큰 → 백만(M) 단위 (전 언어 공통 표기)
+    const tokenM = Math.round((STATS.total_tokens || 0) / 1e6);
 
     // 숫자 애니메이션 함수
     function animateNum(el, target, suffix='') {
@@ -253,13 +267,13 @@
         entries.forEach(e => {
             if(e.isIntersecting && !e.target.dataset.done) {
                 e.target.dataset.done = '1';
-                animateNum(document.getElementById('stat-agents'), stats.agents);
-                animateNum(document.getElementById('stat-kb'), stats.kb_docs);
-                animateNum(document.getElementById('stat-lines'), Math.round(stats.kb_lines/1000), 'K+');
-                animateNum(document.getElementById('stat-tokens'), tokenEok, '억+');
+                animateNum(document.getElementById('stat-agents'), STATS.agents);
+                animateNum(document.getElementById('stat-kb'), STATS.kb_docs);
+                animateNum(document.getElementById('stat-lines'), Math.round(STATS.kb_lines/1000), 'K+');
+                animateNum(document.getElementById('stat-tokens'), tokenM, 'M+');
                 animateNum(document.getElementById('stat-years'), years, '+');
                 animateNum(document.getElementById('stat-days'), days);
-                document.getElementById('days-count').textContent = days;
+                window.refreshDynamicStats();
             }
         });
     }, {threshold: 0.3});
@@ -267,7 +281,7 @@
     if(proofSection) proofObs.observe(proofSection);
 
     // 헤더의 일수도 즉시 표시
-    document.getElementById('days-count').textContent = days;
+    window.refreshDynamicStats();
 })();
 
 /* ===== 기본 UI ===== */
@@ -277,4 +291,5 @@ window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxSha
 document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('active'))});
 const pc=document.getElementById('particles');for(let i=0;i<20;i++){const d=document.createElement('div');d.classList.add('particle');d.style.left=Math.random()*100+'%';d.style.animationDelay=Math.random()*6+'s';d.style.animationDuration=(4+Math.random()*4)+'s';d.style.background=['#4f8fff','#7c5cff','#00d4aa'][Math.floor(Math.random()*3)];pc.appendChild(d)}
 </script>
+<script src="i18n.js?v=1"></script>
 </body></html>
