@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>업무 자동화 실패, 성공 로그만 믿다가 두 달을 속았습니다 | 도면 읽는 AI</title>
+<meta name="description" content="업무 자동화 실패라고 하면 보통 빨간 에러 창을 떠올리시죠? 저도 그런 줄 알았거든요. 근데 제일 질 나쁜 실패는 따로 있더라고요. 매일 &quot;성공&quot;이라고 보고하면서 실제로는 일을 안 하는 놈이요. 제 컴퓨터에 그런 자동화가 네 개나 숨어 있었어요. 어떤 놈은 3주, 어떤 놈은 두">
+<link rel="canonical" href="https://makefield.ai/blog/20260713-automation-fake-success/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="업무 자동화 실패, 성공 로그만 믿다가 두 달을 속았습니다 | 도면 읽는 AI">
+<meta property="og:description" content="업무 자동화 실패라고 하면 보통 빨간 에러 창을 떠올리시죠? 저도 그런 줄 알았거든요. 근데 제일 질 나쁜 실패는 따로 있더라고요. 매일 &quot;성공&quot;이라고 보고하면서 실제로는 일을 안 하는 놈이요. 제 컴퓨터에 그런 자동화가 네 개나 숨어 있었어요. 어떤 놈은 3주, 어떤 놈은 두">
+<meta property="og:url" content="https://makefield.ai/blog/20260713-automation-fake-success/">
+<meta property="og:image" content="https://makefield.ai/blog/20260713-automation-fake-success/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "업무 자동화 실패, 성공 로그만 믿다가 두 달을 속았습니다", "datePublished": "2026-07-13", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260713-automation-fake-success/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 검증 노트</span><span>2026-07-13</span></div>
+<h1>업무 자동화 실패, 성공 로그만 믿다가 두 달을 속았습니다</h1>
+<article>
+<p>업무 자동화 실패라고 하면 보통 빨간 에러 창을 떠올리시죠?<br>
+저도 그런 줄 알았거든요.<br>
+근데 제일 질 나쁜 실패는 따로 있더라고요.<br>
+매일 &quot;성공&quot;이라고 보고하면서 실제로는 일을 안 하는 놈이요.<br>
+제 컴퓨터에 그런 자동화가 네 개나 숨어 있었어요. 어떤 놈은 3주, 어떤 놈은 두 달 동안요..<br>
+지난 글에서 AI의 그럴듯한 거짓말 얘길 했는데, 오늘은 AI가 아니라 제가 만든 자동화한테 속은 이야기입니다.</p>
+<img src="img/01_title.png" alt="타이틀카드" loading="lazy">
+<p>저는 15년차 제어 엔지니어예요.<br>
+수소 설비 제어판넬 설계하고 PLC 코드 짜는 게 본업이고요.<br>
+개인적으로는 AI 비서 시스템을 만들어서 굴리고 있어요.<br>
+윈도우 작업 스케줄러에 자동화 작업이 스무 개 가까이 돌아가거든요.<br>
+새벽마다 브리핑 문서 만들고,<br>
+휴대폰으로 등록한 일정 동기화하고,<br>
+밀린 일에 리마인더 보내고.<br>
+매일매일 알아서 착착 돌아가는 줄 알았죠.</p>
+<h2>1. 대시보드는 온통 초록불이었어요</h2>
+<p>윈도우 작업 스케줄러에는 &quot;마지막 실행 결과&quot;라는 항목이 있어요.<br>
+0이면 성공이에요.<br>
+저는 매일 아침 이 값들을 확인했고, 전부 0이었어요.<br>
+리눅스든 윈도우든 종료코드 0은 성공이라는 게 상식이니까, 시스템이 건강하다고 믿었죠.</p>
+<p>그러다 시스템 전수검사를 한번 크게 돌렸어요.<br>
+이번엔 판정 기준을 바꿔봤거든요.<br>
+&quot;종료코드가 0인가&quot;가 아니라 &quot;산출물이 실제로 나왔는가&quot;로요.<br>
+그랬더니 결과가 뒤집혔어요.</p>
+<h2>2. 성공한 척, 네 가지 방식</h2>
+<p>첫 번째는 캘린더 동기화.<br>
+매일 아침 돌면서 종료코드 0을 찍었는데, 로그를 열어보니 API 400 에러가 누적 156회 쌓여 있더라고요.<br>
+코드 안에서 에러를 삼키고 정상 종료했던 거예요.<br>
+그 사이에 일정 7건이 영구 누락됐고요.<br>
+스케줄러 입장에선 &quot;프로그램이 죽지 않고 끝났다&quot;니까 성공이 맞아요.<br>
+일을 했는지는 아무도 안 물어본 거죠.</p>
+<p>두 번째는 리마인더.<br>
+조건문 하나가 잘못돼서 함수 초입에서 그냥 돌아 나가고 있었어요.<br>
+두 달 동안 발송 건수 0건.<br>
+물론 종료코드는 0이었어요.<br>
+아무것도 안 하고 끝나는 코드만큼 깔끔하게 성공하는 코드는 없거든요..</p>
+<p>세 번째는 공회전이에요.<br>
+프로세스는 매일 돌고 로그도 남는데, 정작 만들어야 할 결과 파일이 몇 주째 그대로였어요.<br>
+네 번째는 종료코드 미전파.<br>
+배치 파일이 내부 스크립트의 실패를 받아 올리지 않아서, 안에서 뭐가 죽든 배치는 0을 반환했어요.<br>
+심지어 이건 시스템 건강을 검사하는 헬스체크에서 나왔어요.<br>
+감시자까지 성공한 척을 하고 있었던 거죠.</p>
+<h2>3. RUN 램프만 보고 정상이라고 안 하잖아요</h2>
+<p>정리하다 보니 판넬 생각이 나더라고요.<br>
+제어판넬에는 RUN 램프가 있어요.<br>
+근데 현장에서 15년 일하면서 RUN 램프만 보고 설비가 정상이라고 판단한 적은 한 번도 없어요.<br>
+유량계 보고,<br>
+압력 보고,<br>
+실제로 생산물이 나오는지 보고.<br>
+램프는 &quot;전원이 들어와 있다&quot;는 뜻이지 &quot;일하고 있다&quot;는 뜻이 아니거든요.</p>
+<p>종료코드와 로그도 똑같아요.<br>
+그건 &quot;프로세스가 돌았다&quot;는 알리바이지 &quot;일이 됐다&quot;는 증거가 아니에요.<br>
+위장 실패 네 건이 최장 두 달 넘게 살아남은 이유가 정확히 그거였어요.<br>
+저는 매일 알리바이만 확인하고 있었던 거예요..</p>
+<h2>4. 그래서 질문을 바꿨습니다</h2>
+<p>지금은 검사 스크립트가 매일 세 가지를 물어요.</p>
+<p>첫째, 산출물 파일의 날짜가 오늘인가.<br>
+오늘 것이 없으면 종료코드가 뭐였든 실패로 칩니다.<br>
+둘째, 건수가 맞는가.<br>
+원본에 일정이 10건이면 캘린더에도 10건이 있어야죠.<br>
+셋째, 성공 메시지가 아니라 에러 카운트를 세는가.<br>
+&quot;완료되었습니다&quot; 한 줄 밑에 에러가 156줄 있을 수 있으니까요.</p>
+<p>이 세 개를 넣고 다시 돌리니까, 초록불이던 대시보드에서 위장 실패들이 줄줄이 걸려 나왔어요.<br>
+코드를 대단히 잘 고쳐서가 아니라 질문을 바꿨더니 보인 거예요.</p>
+<p>정리하면 자동화는 &quot;돌았다&quot;가 아니라 &quot;나왔다&quot;로 검증해야 합니다!<br>
+종료코드 0은 무죄 증명이 아니라 본인 진술일 뿐이에요.</p>
+<p>혹시 매일 도는 자동화를 갖고 계시면, 오늘 그 결과물 파일의 수정 시각을 한번 확인해보세요.<br>
+저처럼 두 달 묵은 &quot;성공&quot;을 발견하실지도 몰라요.<br>
+다음 글에선 AI가 만든 계산서를 부품 데이터시트 원문과 교차검증해서 형번 오류를 잡아낸 이야기를 써볼게요.<br>
+여러분의 초록불은 진짜인가요?</p>
+<p>---<br>
+현장 엔지니어를 위한 AI 도입·교육 문의: makefield.ai</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224344665354" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>

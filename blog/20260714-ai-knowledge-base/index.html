@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 지식베이스 구축, 한 번 만들면 끝인 줄 알았습니다 | 도면 읽는 AI</title>
+<meta name="description" content="사내 문서를 AI한테 학습시키는 AI 지식베이스 구축, 요즘 관심 많으시죠? 한번 잘 만들어두면 AI가 알아서 정확하게 일해주겠지, 다들 그렇게 생각하잖아요. 저도 그런 줄 알았거든요. 근데 얼마 전, 제가 직접 만든 지식베이스 두 개가 같은 부품을 두고 서로 다르게 틀려 있는">
+<link rel="canonical" href="https://makefield.ai/blog/20260714-ai-knowledge-base/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 지식베이스 구축, 한 번 만들면 끝인 줄 알았습니다 | 도면 읽는 AI">
+<meta property="og:description" content="사내 문서를 AI한테 학습시키는 AI 지식베이스 구축, 요즘 관심 많으시죠? 한번 잘 만들어두면 AI가 알아서 정확하게 일해주겠지, 다들 그렇게 생각하잖아요. 저도 그런 줄 알았거든요. 근데 얼마 전, 제가 직접 만든 지식베이스 두 개가 같은 부품을 두고 서로 다르게 틀려 있는">
+<meta property="og:url" content="https://makefield.ai/blog/20260714-ai-knowledge-base/">
+<meta property="og:image" content="https://makefield.ai/blog/20260714-ai-knowledge-base/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 지식베이스 구축, 한 번 만들면 끝인 줄 알았습니다", "datePublished": "2026-07-13", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260714-ai-knowledge-base/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 검증 노트</span><span>2026-07-13</span></div>
+<h1>AI 지식베이스 구축, 한 번 만들면 끝인 줄 알았습니다</h1>
+<article>
+<p>사내 문서를 AI한테 학습시키는 <strong>AI 지식베이스 구축</strong>, 요즘 관심 많으시죠?<br>
+한번 잘 만들어두면 AI가 알아서 정확하게 일해주겠지, 다들 그렇게 생각하잖아요.<br>
+저도 그런 줄 알았거든요.<br>
+근데 얼마 전, 제가 직접 만든 지식베이스 두 개가 <strong>같은 부품을 두고 서로 다르게 틀려 있는 걸</strong> 발견했습니다.</p>
+<p>지난 글에서 매일 &quot;성공&quot;이라고 보고하면서 실제로는 헛돌던 자동화 이야기를 했는데요.<br>
+오늘은 그 검증 시리즈 마지막 편이에요.<br>
+이번엔 AI도 자동화도 아니고, 제가 AI한테 먹인 데이터가 범인이었던 사건입니다.</p>
+<img src="img/01_title.png" alt="타이틀카드 — AI 지식베이스도 늙는다" loading="lazy">
+<p>저는 15년차 제어 엔지니어예요.<br>
+수소 설비 제어판넬 설계하고, PLC 코드 짜고, 현장 가서 결선 확인하는 게 일이에요.<br>
+그리고 지난 1년 동안 매뉴얼, 도면, 산정서 같은 자료를 지식 문서 500여 개로 정리해서 AI한테 쌓아왔어요.<br>
+이걸 지식베이스, 줄여서 KB라고 부르는데요.<br>
+AI가 이 KB를 검색해서 제 사양서 초안까지 만들어줍니다.</p>
+<h2>1. 발단은 UPS 용량 계산이었어요</h2>
+<p>수소 설비는 정전이 나도 제어시스템이 한동안 살아 있어야 해요.<br>
+밸브를 안전한 위치로 보내고, 데이터도 기록해야 하거든요.<br>
+그 비상 전원을 담당하는 장치가 UPS(무정전 전원장치)예요.</p>
+<p>마침 UPS 사양서랑 정전보상시간 계산서를 만들 일이 생겨서 AI한테 시켰어요.<br>
+AI는 바로 쓰지 않고 KB부터 뒤졌습니다.<br>
+두 달 전에 만든 소형 설비용 UPS 산정서,<br>
+제조사 매뉴얼을 학습시킨 기기 KB,<br>
+전장도면까지.<br>
+여기까지는 계획대로였죠.</p>
+<h2>2. 근데 KB 두 개가 서로 다른 말을 하더라고요</h2>
+<p>배터리 형번을 교차검증하는데 충돌이 났어요.<br>
+두 KB에 적힌 값이 이랬습니다.</p>
+<pre><code>[4월 KB] 배터리: QUINT-BAT/24DC/12AH        · 주문번호 1133819 · 24V / 12Ah
+[5월 KB] 배터리: QUINT-HP-BAT/PB/48DC/7.0AH · 주문번호 1133614 · 48V</code></pre>
+<p>같은 UPS의 배터리인데 전압이 24V와 48V로 갈려요.<br>
+백업시간 계산의 분모가 되는 에너지가 두 배 차이 납니다.<br>
+어느 쪽을 믿어도 계산서 전체가 흔들리는 상황..<br>
+도면도 뒤져봤는데 배터리 형번까지는 안 적혀 있더라고요.<br>
+사내 자료만으로는 판정이 안 됐어요.</p>
+<h2>3. 정본은 항상 원문이더라고요</h2>
+<p>결국 제조사(피닉스컨택트) 공식 데이터시트, 38페이지짜리 PDF를 웹에서 받아서 직접 판독했어요.<br>
+정답은 이랬습니다.</p>
+<pre><code>[데이터시트 원문] 주문번호 1133819 = QUINT-HP-BAT/PB/48DC/7.0AH/PT · 48V / 7.0Ah
+→ 4월 KB: 주문번호만 맞음 (모델명·전압·용량 전부 오기)
+→ 5월 KB: 모델명만 맞음 (주문번호 오기)</code></pre>
+<p>두 KB가 <strong class="u">서로 다른 부분을 틀리게</strong> 기록하고 있던 거예요.<br>
+덤으로 하나 더 나왔어요.<br>
+4월 KB의 UPS 출력 &quot;1.05kW(역률 0.7)&quot;도 오기였고, 원문은 1,350W(역률 0.9)였어요.</p>
+<img src="img/02_conflict.png" alt="KB 충돌 판정 흐름 — 4월 KB와 5월 KB가 다른 값 → 도면엔 형번 없음 → 제조사 데이터시트 원문으로 판정" loading="lazy">
+<p>여기서 소름 돋았던 게 뭐냐면요.<br>
+어느 KB 하나만 봤으면 그 오류가 그대로 사양서에 실렸을 거라는 점이에요.<br>
+두 개를 비교하지 않았으면 충돌 자체를 몰랐을 거고요.<br>
+KB 이중화가 비용인 줄 알았는데, 사실은 <strong class="u">오류 검출기</strong>였던 거죠.<br>
+여러분도 사내 지식베이스, 한 벌만 믿고 계시지 않나요?</p>
+<h2>4. 고치면서 지킨 게 세 가지 있어요</h2>
+<p>첫째, 틀린 KB를 고치되 &quot;무엇이 왜 틀렸었는지&quot; <strong>정정 이력</strong>을 KB 안에 같이 남겼어요.<br>
+조용히 고치면 다음에 같은 함정에 또 빠지거든요.<br>
+오답 노트가 정답보다 가치 있을 때가 있어요.</p>
+<p>둘째, 이미 발행된 산정서는 임의로 안 고치고 결정 대기로 올려뒀어요.</p>
+<p>셋째, 실측 못 한 부하값은 계산서에 &quot;미검증&quot;이라고 표기하고 시운전 때 확인하는 계획을 붙였어요.</p>
+<p>최종 계산은 배터리 3뱅크 1,008Wh에 고율방전 보정을 걸어서 백업 41분.<br>
+요구치 30분보다 여유 있게 나왔습니다!</p>
+<p>재밌는 건, 오류를 정정하니 뱅크당 에너지가 263Wh에서 336Wh로 오히려 커졌다는 거예요.<br>
+오류가 보수적인 방향으로 나서 다행이었지, 반대였으면 부족한 UPS를 &quot;적합&quot;이라고 써낼 뻔했어요.<br>
+이번엔 운이 좋았을 뿐이에요..</p>
+<h2>5. 그래서 믿는 순서를 정해뒀습니다</h2>
+<p><strong class="u">KB는 만든 순간의 스냅샷</strong>이에요.<br>
+만들 때의 실수를 영구 보존하고요.<br>
+시간이 지나면 &quot;AI가 자신 있게 말하는 틀린 값&quot;이 됩니다.</p>
+<p>그래서 제 원칙은 이래요.<br>
+값이 충돌하면 <strong>실물 코드 &gt; 도면 &gt; 제조사 원문 &gt; 사내 KB &gt; 기억</strong> 순으로 올라가서 판정한다.<br>
+KB는 캐시일 뿐, <strong class="u">정본은 항상 원문</strong>이다.<br>
+그리고 정정할 땐 이력까지 남긴다.</p>
+<img src="img/03_ladder.png" alt="신뢰 우선순위 사다리 — 실물 코드 &gt; 도면 &gt; 제조사 원문 &gt; 사내 KB &gt; 기억" loading="lazy">
+<p>&quot;KB에 있으니 맞겠지&quot;는 &quot;내 기억에 있으니 맞겠지&quot;랑 같은 급의 위험이더라고요..</p>
+<p>정리하면, AI 지식베이스는 구축이 끝이 아니라 관리의 시작이에요.<br>
+검증 시리즈 세 편을 관통하는 결론은 하나입니다.<br>
+AI의 말도, 자동화의 성공 로그도, 내가 만든 KB도 — 원문과 대조하기 전까지는 전부 &quot;주장&quot;일 뿐이라는 거요.</p>
+<p>혹시 여러분 회사 지식베이스에는 오답 노트가 있나요?<br>
+다음 글에선 같은 AI를 쓰는데 사람마다 결과가 몇 배씩 갈리는 이유, 모델이 아니라 그 주변 구조 이야기를 써볼게요.</p>
+<p>---<br>
+현장 엔지니어를 위한 AI 도입·교육 문의: makefield.ai</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224344789616" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>

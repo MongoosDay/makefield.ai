@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>15년차 제어 엔지니어, AI 이야기를 시작합니다 | 도면 읽는 AI</title>
+<meta name="description" content="AI 요즘 많이들 쓰시죠? 하다못해 초등학생도 숙제를 AI로 하는 시대잖아요. 근데 현장 엔지니어가 AI를 쓴다고 하면 다들 갸웃해요. 공장, 설비, 도면, PLC 그런 일이요. &quot;그건 사무직 얘기지, 우리 일엔 못 써요.&quot; 저도 그런 줄 알았거든요. 이 블로그는 그 생각이 틀">
+<link rel="canonical" href="https://makefield.ai/blog/20260711-intro/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="15년차 제어 엔지니어, AI 이야기를 시작합니다 | 도면 읽는 AI">
+<meta property="og:description" content="AI 요즘 많이들 쓰시죠? 하다못해 초등학생도 숙제를 AI로 하는 시대잖아요. 근데 현장 엔지니어가 AI를 쓴다고 하면 다들 갸웃해요. 공장, 설비, 도면, PLC 그런 일이요. &quot;그건 사무직 얘기지, 우리 일엔 못 써요.&quot; 저도 그런 줄 알았거든요. 이 블로그는 그 생각이 틀">
+<meta property="og:url" content="https://makefield.ai/blog/20260711-intro/">
+<meta property="og:image" content="https://makefield.ai/blog/20260711-intro/img/00_banner.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "15년차 제어 엔지니어, AI 이야기를 시작합니다", "datePublished": "2026-07-11", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260711-intro/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">시작하며</span><span>2026-07-11</span></div>
+<h1>15년차 제어 엔지니어, AI 이야기를 시작합니다</h1>
+<article>
+<p>AI 요즘 많이들 쓰시죠? 하다못해 초등학생도 숙제를 AI로 하는 시대잖아요.<br>
+근데 현장 엔지니어가 AI를 쓴다고 하면 다들 갸웃해요. 공장, 설비, 도면, PLC 그런 일이요.<br>
+&quot;그건 사무직 얘기지, 우리 일엔 못 써요.&quot;<br>
+저도 그런 줄 알았거든요.<br>
+이 블로그는 그 생각이 틀렸다는 걸 몸으로 확인해온 기록이에요. 현장 엔지니어의 AI 활용, 그 경험담과 시행착오를 기록하고 공유하고 싶습니다!</p>
+<img src="img/00_banner.png" alt="도면읽는AI 대표 배너" loading="lazy">
+<h2>1. 별걸 다 하면서 살아왔어요</h2>
+<p>저는 15년차 제어 엔지니어예요.<br>
+시작은 휴대폰 소프트웨어 개발이었어요.<br>
+그러다 선박 제어 시스템을 국산화하는 일로 옮겼고,<br>
+배를 타고 다니면서 시운전도 했고,<br>
+기술영업으로 고객 앞에도 서봤고,<br>
+국책과제 보고서도 써봤어요.<br>
+지금은 수소 설비의 제어판넬을 설계하고 PLC 코드를 짜는 게 일이에요.<br>
+참 별걸 다 하면서 살아왔네요..</p>
+<img src="img/career_timeline.png" alt="커리어 타임라인 — 15년, 도면과 코드 사이" loading="lazy">
+<p>근데 돌아보면 공통점이 하나 있어요.<br>
+도면과 코드 사이, 설계와 현장 사이 어딘가에 늘 서 있었다는 거예요.<br>
+그 자리에서 AI를 만났어요.</p>
+<h2>2. 어쩌다 AI를 &#x27;파트너&#x27;라고 부르게 됐냐면</h2>
+<p>처음엔 다들 하는 것처럼 문서 정리나 시켜봤어요.<br>
+근데 이게, 쓰면 쓸수록 물건이더라고요.<br>
+지금은 도면 검토를 시키고, IO 리스트를 대조시키고, 보고서 초안을 뽑고, 판넬 검수 시스템까지 같이 만들어요.<br>
+작업 이력과 피드백을 전부 파일로 쌓아놔서, 제 AI는 &#x27;아&#x27; 하면 &#x27;어&#x27; 하는 파트너거든요.</p>
+<p>근데 여기서 여과 없이 말할게요.<br>
+이 파트너, 그럴듯한 거짓말도 해요.<br>
+지난달엔 새로 나온 AI 모델이 뭔지 물었더니 &quot;그런 모델은 없습니다&quot;라고 단정하더라고요.<br>
+바로 전날 출시된 모델이었는데요.<br>
+따져 물으니 이번엔 있지도 않은 출처까지 붙여가며 우겼어요. 같은 질문에 세 번 연속으로 틀렸습니다.</p>
+<p>공들여 만든 자동화가 소리 없이 죽어 있던 적도 있어요.<br>
+매일 아침 돌아간다고 믿었던 스크립트가, 로그를 열어보니 몇 주째 에러를 내면서 겉으로만 &#x27;정상 완료&#x27; 도장을 찍고 있었거든요.<br>
+성공했다는 보고를 그대로 믿으면 안 되는 거였어요..<br>
+그래서 이 블로그엔 자랑만 쓰지 않을 거예요. 뭐가 됐고, 뭐가 안 됐고, 어디서 데었는지까지 그대로 쓸 겁니다.</p>
+<h2>3. 여기서 뭘 보실 수 있냐면</h2>
+<img src="img/topics.png" alt="블로그 3주제 다이어그램" loading="lazy">
+<p>세 가지예요.</p>
+<p>첫째, <strong>현장 실무에 AI를 굴린 실전기</strong>요.<br>
+성공한 것만큼 실패한 것도 그대로 쓸 거예요. 실패가 보통 더 배울 게 많더라고요.</p>
+<p>둘째, <strong>AI를 검증하는 법</strong>이에요.<br>
+AI가 내놓은 그럴듯한 답을 어떻게 의심하고, 어떻게 교차확인하는지.<br>
+제조 현장에서 품질을 검사 공정으로 잡듯이, AI 산출물도 공정으로 잡는 방법이요.</p>
+<p>셋째, <strong>도면·PLC 같은 현장 기술과 AI의 교차점</strong>이에요.<br>
+이 조합을 다루는 곳이 국내엔 거의 없더라고요. 그래서 제가 씁니다.</p>
+<h2>4. 누구한테 필요한 이야기냐면</h2>
+<p>저 같은 현장 엔지니어분들이요.<br>
+그리고 &quot;우리 회사도 AI 도입해야 하나&quot; 고민하는 제조업 분들이요.</p>
+<p>얼마 전에 AI 교육을 해달라는 요청을 받아서 두 시간 강의를 해봤어요.<br>
+그때 알았어요. 이게 생각보다 진입장벽이 높구나.<br>
+쓰는 사람과 못 쓰는 사람의 격차가 이미 벌어지고 있구나.<br>
+강의 끝나고 제일 많이 받은 질문이 &quot;그래서 뭐부터 하면 돼요?&quot;였거든요.<br>
+그 질문에 답하는 마음으로 쓸 겁니다.<br>
+제가 겪은 시행착오가 누군가한테는 지름길이 될 수 있을 테니까요.</p>
+<p>다음 글에선 AI가 그럴듯한 거짓말로 저를 세 번 연속 속인 날 이야기를 써볼게요.<br>
+규칙을 다섯 개나 넣어놨는데 왜 하나도 안 먹혔는지, 대신 뭘 바꿨더니 잡혔는지요.<br>
+여러분은 AI를 어디까지 써보셨나요?</p>
+<p>---<br>
+현장 엔지니어를 위한 AI 도입·교육 문의: makefield.ai</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224343518398" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
