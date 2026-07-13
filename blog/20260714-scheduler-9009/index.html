@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>작업 스케줄러 자동 실행, 9009 오류로 파이썬이 안 돌 때 잡는 법 | 도면 읽는 AI</title>
+<meta name="description" content="파이썬 스크립트는 손으로 돌리면 잘 되는데, 작업 스케줄러에 올리면 안 돈다는 분들 많죠? 저도 그런 줄 알았거든요. 등록만 해두면 알아서 도는 줄로요. 근데 &quot;등록 완료&quot;랑 &quot;실제로 돈다&quot;는 완전히 다른 물건이더라고요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260714-scheduler-9009/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="작업 스케줄러 자동 실행, 9009 오류로 파이썬이 안 돌 때 잡는 법 | 도면 읽는 AI">
+<meta property="og:description" content="파이썬 스크립트는 손으로 돌리면 잘 되는데, 작업 스케줄러에 올리면 안 돈다는 분들 많죠? 저도 그런 줄 알았거든요. 등록만 해두면 알아서 도는 줄로요. 근데 &quot;등록 완료&quot;랑 &quot;실제로 돈다&quot;는 완전히 다른 물건이더라고요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260714-scheduler-9009/">
+<meta property="og:image" content="https://makefield.ai/blog/20260714-scheduler-9009/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "작업 스케줄러 자동 실행, 9009 오류로 파이썬이 안 돌 때 잡는 법", "datePublished": "2026-07-14", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260714-scheduler-9009/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-07-14</span></div>
+<h1>작업 스케줄러 자동 실행, 9009 오류로 파이썬이 안 돌 때 잡는 법</h1>
+<article>
+<p>파이썬 스크립트는 손으로 돌리면 잘 되는데, 작업 스케줄러에 올리면 안 돈다는 분들 많죠?<br>
+저도 그런 줄 알았거든요. 등록만 해두면 알아서 도는 줄로요.<br>
+근데 &quot;등록 완료&quot;랑 &quot;실제로 돈다&quot;는 완전히 다른 물건이더라고요.</p>
+<p>먼저 결론부터 말씀드릴게요.<br>
+<strong class="u">작업 스케줄러 자동 실행이 9009 오류로 멈추는 건 십중팔구 .bat 파일 안에 들어간 한글 때문</strong>이에요.<br>
+해결은 두 가지입니다. bat에서 한글을 전부 빼거나, ASCII로만 된 런처를 하나 두고 거기서 파이썬을 부르는 거죠.<br>
+그리고 등록한 다음엔 반드시 <strong class="u">LastResult 값으로 진짜 돌았는지 눈으로 확인</strong>해야 해요. 이게 핵심입니다.</p>
+<img src="img/01_title.png" alt="타이틀카드" loading="lazy">
+<p>저는 수소 설비 제어판넬을 설계하고, PLC 코드를 짜고, 현장 가서 결선을 확인하는 15년차 제어 엔지니어예요.<br>
+요즘은 반복 업무를 파이썬이랑 AI한테 넘겨서 밤이고 주말이고 알아서 돌게 만들어두는데, 그 과정에서 이 9009한테 아주 제대로 데였습니다.<br>
+오늘은 그 삽질을 따라 하면 안 겪도록 정리해볼게요.</p>
+<h2>1. &quot;등록 완료&quot;는 완료가 아니었어요</h2>
+<p>처음엔 순서가 이랬어요.<br>
+파이썬 짜고, 손으로 한 번 돌려보고, 잘 되니까 스케줄러에 등록.<br>
+그리고 끝. 완료 표시.</p>
+<p>다음 날 결과물을 보러 갔더니 아무것도 안 생겨 있더라고요.<br>
+스케줄러는 분명 &quot;준비 완료&quot;라고 떠 있는데 산출물이 없어요.<br>
+그때 배운 게 이겁니다. <strong class="u">코드가 도는 것과, 스케줄러가 그 코드를 도는 건 별개</strong>예요.</p>
+<p>그래서 저는 자동 실행이 필요한 건 무조건 4단계로 나눠서 확인하기로 했어요.</p>
+<img src="img/02_gate.png" alt="배포 4단계 게이트 — ①코드 작성·수동실행 OK → ②스케줄러 등록(이름·경로 기록) → ③가동 확인(LastResult=0) → ④상태 기록. ①②에서 멈추고 &quot;완료&quot;라고 적는 게 착각 구간이라고 붉게 표시" loading="lazy">
+<p>3단계, 그러니까 LastResult로 실제 실행 결과를 확인하는 걸 건너뛰면 그냥 &quot;돌 거라 믿는&quot; 상태예요.<br>
+믿음은 자동화가 아니잖아요.</p>
+<h2>2. 범인은 한글 한 글자였어요</h2>
+<p>LastResult를 열어봤더니 <strong class="u">9009</strong>가 찍혀 있었어요.<br>
+9009는 윈도우가 &quot;명령이나 실행 파일을 못 찾겠다&quot;고 할 때 뱉는 코드예요.<br>
+근데 경로는 분명히 맞거든요. 손으로는 잘 돌고요. 그래서 한참 헤맸습니다..</p>
+<p>범인은 .bat 파일 안에 넣어둔 <strong class="u">한글 주석 한 줄</strong>이었어요.</p>
+<pre><code>@echo off
+REM 매일 아침 자동 실행 스크립트
+python daily_task.py</code></pre>
+<p>윈도우 CMD의 기본 인코딩은 CP949예요.<br>
+그런데 요즘 에디터는 파일을 UTF-8로 저장하죠.<br>
+그러면 UTF-8로 쓴 한글이 CP949로 읽히면서 깨지고, CMD가 그 <strong class="u">깨진 글자를 명령어로 해석</strong>하려다 &quot;그런 명령 없다&quot;며 9009를 던지는 거예요.<br>
+한글 한 글자가 배치 파일 전체를 무너뜨린 거죠.</p>
+<img src="img/03_9009.png" alt="9009 발생 경로 비교 — (위, X표시) .bat에 한글 REM → CMD가 CP949로 해석 → 깨진 문자열 → &quot;명령을 찾을 수 없음&quot; 9009 / (아래, 체크표시) ASCII 런처.py 경유 → python 정상 실행 → 산출물" loading="lazy">
+<p>해법은 세 가지예요. 셋 다 적용하는 걸 추천해요.</p>
+<pre><code>@echo off
+chcp 65001 &gt; nul
+python daily_task.py</code></pre>
+<p>- <strong class="u">bat 안에 한글 절대 금지</strong>. 주석(REM)까지 전부 영어로.<br>
+- 첫 줄에 <code>chcp 65001 &gt; nul</code>을 넣어서 파이썬이 한글을 출력해도 안 깨지게.<br>
+- bat은 파이썬 호출만 하는 <strong class="u">최소한의 껍데기</strong>로. 로직과 설명은 전부 .py 안에 두기.</p>
+<p>한글 경로가 꼭 필요하면 bat을 쓰지 말고, ASCII 이름의 런처 파이썬을 하나 만들어서 거기서 진짜 스크립트를 subprocess로 부르는 게 제일 깔끔했어요.</p>
+<h2>3. 따라 하면 되는 작업 스케줄러 자동 실행 4단계</h2>
+<p>여기서부터는 그대로 따라 하시면 됩니다. (2026-07 기준, 윈도우 10/11 + 파이썬 3.12)</p>
+<p><strong class="u">1) 등록</strong> — 관리자 파워셸이나 CMD에서:</p>
+<pre><code>schtasks /create /tn &quot;MyDailyTask&quot; /tr &quot;C:\auto\run.bat&quot; /sc daily /st 05:30</code></pre>
+<p><strong class="u">2) 등록 확인</strong> — 진짜 들어갔는지 봅니다:</p>
+<pre><code>schtasks /query /tn &quot;MyDailyTask&quot;</code></pre>
+<p><strong class="u">3) 가동 확인</strong> — 이게 제일 중요해요. 수동으로 한 번 트리거하고 결과 코드를 봅니다:</p>
+<pre><code>schtasks /run /tn &quot;MyDailyTask&quot;
+Get-ScheduledTaskInfo -TaskName &quot;MyDailyTask&quot;</code></pre>
+<p>여기서 <code>LastTaskResult</code> 값을 <strong class="u">반드시</strong> 확인하세요.</p>
+<p>| LastResult | 의미 | 대처 |<br>
+|---|---|---|<br>
+| 0 | 성공 | 통과 |<br>
+| 1 | 실행 중 에러 | 스크립트 로그 확인 |<br>
+| 9009 | 명령/파일 못 찾음 | bat 한글·경로 점검 |<br>
+| 267011 | 한 번도 실행 안 됨 | 등록 자체 문제 |</p>
+<p><strong class="u">4) 성공 판정</strong> — LastResult가 0이고, 결과물 파일이 실제로 생겼으면 그때 &quot;완료&quot;입니다.<br>
+저는 마지막에 상태 로그 파일 하나를 꼭 남겨요. 나중에 &quot;어제 돌긴 했나&quot;를 1초 만에 확인하려고요.</p>
+<pre><code>{ &quot;date&quot;: &quot;2026-07-13&quot;, &quot;time&quot;: &quot;19:40:00&quot;, &quot;status&quot;: &quot;SKIP&quot;, &quot;detail&quot;: &quot;일일 상한 도달 (2/2)&quot; }</code></pre>
+<p>이렇게 성공이든 스킵이든 이유까지 한 줄로 남겨두면, 무인으로 굴러도 뭐가 언제 왜 그랬는지 추적이 됩니다.</p>
+<h2>4. AI까지 무인으로 굴리는 한 줄</h2>
+<p>파이썬은 AI 모델을 직접 못 불러요. 그런데 방법이 있더라고요.<br>
+<code>claude -p</code> 같은 headless 모드를 <strong class="u">subprocess로 부르면</strong> 스케줄러 안에서 모델 작업도 무인으로 돌아가요.</p>
+<pre><code>subprocess.run(
+    [&quot;claude&quot;, &quot;-p&quot;, prompt,
+     &quot;--allowedTools&quot;, &quot;Read,Glob,Grep,Write&quot;,
+     &quot;--output-format&quot;, &quot;text&quot;],
+    capture_output=True, text=True, timeout=900)</code></pre>
+<p><code>--allowedTools</code>로 허용 도구만 미리 지정해두면 대화창 없이도 권한 승인 없이 돌아가요.<br>
+결과를 지정한 경로에 Write시키고, <strong class="u">그 파일이 생겼는지로 성공을 판정</strong>하면 됩니다.<br>
+이미 처리한 건 파일이 있으니 건너뛰게(멱등) 짜두면, 매일 돌아도 중복이 안 생기고요.</p>
+<img src="img/04_structure.png" alt="무인 AI 자동화 전체 구조 — 작업 스케줄러(05:30) → ASCII 런처.py → python 본체 → claude -p (allowedTools) → 산출물 Write → heartbeat 로그 기록" loading="lazy">
+<p>한 가지만 당부할게요.<br>
+<strong class="u">무인일수록 출력 검증을 더 세게</strong> 걸어야 해요.<br>
+사람이 안 보는 사이에 AI가 그럴듯한 오답을 내면, 그게 그대로 데이터에 쌓여서 나중에 정답인 척 굴거든요.<br>
+그래서 저는 산출물을 바로 안 믿고, 출처 없는 단정은 &quot;미검증&quot;으로 강등시키는 게이트를 하나 더 답니다.</p>
+<h2>자주 묻는 질문 (FAQ)</h2>
+<p><strong class="u">Q. 손으로는 되는데 스케줄러에서만 9009가 떠요.</strong><br>
+A. 거의 확정적으로 bat 인코딩입니다. bat 안 한글을 지우고 <code>chcp 65001</code>을 첫 줄에 넣어보세요. 그래도 안 되면 실행 계정 권한과 경로의 백슬래시를 확인하고요.</p>
+<p><strong class="u">Q. LastResult가 267011이에요.</strong><br>
+A. 한 번도 실행이 안 됐다는 뜻이라 등록 자체 문제예요. <code>schtasks /query</code>로 트리거 시각과 실행 경로가 맞는지부터 보세요.</p>
+<p><strong class="u">Q. 꼭 4단계까지 봐야 하나요? 등록되면 되는 거 아녜요?</strong><br>
+A. 저도 그렇게 믿다가 하루치 결과물을 통째로 날렸어요.. LastResult 0을 눈으로 본 순간까지가 완료입니다.</p>
+<h2>오늘의 체크리스트</h2>
+<p>- [ ] bat 안에 한글(주석 포함) 0건인가<br>
+- [ ] bat 첫 줄에 <code>chcp 65001 &gt; nul</code> 있는가<br>
+- [ ] <code>schtasks /run</code> 후 LastResult = 0 확인했는가<br>
+- [ ] 산출물 파일이 실제로 생겼는가<br>
+- [ ] 성공/스킵 이유를 로그 한 줄로 남겼는가</p>
+<p>정리하면 이래요.<br>
+작업 스케줄러 자동 실행이 안 도는 건 대개 코드가 아니라 <strong class="u">bat 한 글자와 확인 습관</strong> 문제예요.<br>
+한글을 빼고, LastResult를 눈으로 보고, 로그 한 줄을 남기면 무인 자동화가 비로소 믿을 만해집니다!</p>
+<p>다음 글에서는 이렇게 돌려둔 자동화가 <strong class="u">성공한 척 조용히 실패</strong>하던 이야기를 써볼게요.<br>
+여러분은 자동화를 등록한 뒤에, 진짜 돌았는지 뭘로 확인하고 계세요?</p>
+<p>더 깊은 현장 자동화 기록은 makefield.ai 에 모으고 있습니다.</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224345830006" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
