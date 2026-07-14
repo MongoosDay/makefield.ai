@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>같은 AI 쓰는데 왜 나만 결과가 별로일까 (모델 탓이 아니었어요) | 도면 읽는 AI</title>
+<meta name="description" content="같은 AI를 쓰는데 결과가 몇 배씩 갈려요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260715-ai-harness-result/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="같은 AI 쓰는데 왜 나만 결과가 별로일까 (모델 탓이 아니었어요) | 도면 읽는 AI">
+<meta property="og:description" content="같은 AI를 쓰는데 결과가 몇 배씩 갈려요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260715-ai-harness-result/">
+<meta property="og:image" content="https://makefield.ai/blog/20260715-ai-harness-result/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "같은 AI 쓰는데 왜 나만 결과가 별로일까 (모델 탓이 아니었어요)", "datePublished": "2026-07-15", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260715-ai-harness-result/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-07-15</span></div>
+<h1>같은 AI 쓰는데 왜 나만 결과가 별로일까 (모델 탓이 아니었어요)</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;같은 AI 쓰는데 왜 나만 결과가 별로일까 / 모델 탓이 아니었어요&quot;" loading="lazy">
+<p>같은 AI를 쓰는데 결과가 몇 배씩 갈려요.</p>
+<p>결론부터 말하면, <strong class="u">모델 차이가 아니라 모델을 감싼 &#x27;하네스&#x27; 차이</strong>예요.<br>
+오늘은 이 하네스가 뭔지, 뭘 손봐야 결과가 달라지는지 정리해볼게요.</p>
+<p>AI 결과물 차이는 결국 어떤 모델 쓰냐 문제라고들 하잖아요?<br>
+저도 그런 줄 알았거든요.<br>
+근데 같은 모델, 같은 요금제를 쓰는 사람들끼리도 결과가 몇 배씩 갈리는 걸 직접 보면서 생각이 완전히 바뀌었어요.</p>
+<p>먼저 짧게 소개하면, 저는 15년차 제어 엔지니어입니다.<br>
+수소 설비 제어판넬 설계하고, PLC 코드 짜고, 현장 가서 결선 확인하는 게 일이에요.<br>
+요즘은 이 일의 상당 부분을 AI랑 같이 하고 있고요.</p>
+<p>그 차이를 만드는 물건 이름이 좀 낯선데, <strong class="u">&#x27;하네스(Harness)&#x27;</strong>라고 불러요.<br>
+쉽게 말하면 <strong class="u">모델을 감싸서 실제로 일하게 만드는 둘레 전체</strong>예요.</p>
+<h2>1. 엔진만 사면 차가 굴러갈까요</h2>
+<p>모델은 엔진이에요.<br>
+아무리 좋은 엔진도 단품으로는 1미터도 못 가잖아요.<br>
+차체가 있어야 하고, 바퀴, 핸들, 계기판까지 있어야 완성차가 되죠.</p>
+<p>AI도 똑같더라고요.<br>
+모델을 감싸서 실제로 일하게 만드는 둘레 전체,<br>
+자료를 먹이는 통로,<br>
+도구를 쥐여주는 연결,<br>
+작업 순서를 도는 루프..<br>
+이걸 통틀어 하네스라고 불러요.<br>
+그 완성차가 목적지까지 주행한 결과가 산출물이고요.</p>
+<img src="img/02_engine.png" alt="모델(엔진) → 하네스(차체·바퀴·계기판·검증기)로 감싸기 → 완성차 → 주행 결과(산출물). 엔진 단품은 1미터도 못 간다" loading="lazy">
+<p>여기서 제일 의외였던 게 하나 있어요.<br>
+도착해서 차를 점검하는 것, 그러니까 <strong class="u">결과물 검수까지도 하네스</strong>라는 거예요.</p>
+<p>AI가 코드를 고치고, 빌드하고, 에러를 읽고, 다시 고치는 걸 사람 없이 반복하는 사례가 있거든요.<br>
+이게 되는 이유는 모델이 특별히 똑똑해서가 아니에요.<br>
+컴파일러라는, 거짓말 안 하는 채점기가 붙어 있어서예요.<br>
+맞고 틀림이 즉시 판정되는 환경만 만들어주면 AI는 알아서 굴러가요.<br>
+<strong class="u">검증 장치가 하네스의 심장</strong>인 셈이죠.</p>
+<h2>2. 검증기가 없으면 이렇게 멈춰요</h2>
+<p>제가 도면을 자동으로 다시 그리는 학습 루프를 돌린 적이 있어요.<br>
+AI가 그려보고, 채점기가 점수 매기고, 통과 못 하면 다시 그리고.. 이걸 사람 없이 반복하게 짜뒀거든요.<br>
+그런데 어느 날 이런 로그를 남기고 멈춰 있더라고요.</p>
+<pre><code>[자동 재작도 학습 알림] STOP_3FAIL
+3회 연속 비-PASS. 루프 중단 — 사람 호출.
+생성: 2026-07-01T14:00:03</code></pre>
+<p>처음엔 실패 로그라 좀 허탈했는데, 곱씹어보니 이게 <strong class="u">하네스가 제대로 일한 증거</strong>더라고요.<br>
+채점기가 없었으면 AI는 그럴듯하게 틀린 도면을 계속 뽑아냈을 거예요.<br>
+채점기가 붙어 있으니까 &quot;3번 연속 기준 미달&quot;을 스스로 알아채고, 헛돈 그만 태우고 사람을 부른 거죠.</p>
+<p>반대로 이 자동화가 언제 돌지 말지도 스스로 판단하게 해뒀어요.</p>
+<pre><code>{&quot;decision&quot;: &quot;GO&quot;,   &quot;reason&quot;: &quot;예산 여유 — 학습 1회 진행&quot;}
+{&quot;decision&quot;: &quot;SKIP&quot;, &quot;reason&quot;: &quot;지금 한창 사용중 — 충돌 회피&quot;}</code></pre>
+<p>여기까지가 하네스예요.<br>
+모델은 그림만 그리고, <strong class="u">언제 돌지·잘 됐는지·안 되면 어떻게 할지</strong>는 전부 그 둘레가 판단하는 거죠.</p>
+<h2>3. 결과는 곱셈이더라고요</h2>
+<p>그럼 하네스만 잘 만들면 모델은 아무거나 써도 될까요?<br>
+이것도 아니에요.</p>
+<p>결과물 품질은 <strong class="u">모델 역량 곱하기 하네스 품질, 곱셈</strong>이거든요.<br>
+곱셈이라 한쪽이 0이면 결과도 0이에요.<br>
+약한 모델에 최고의 하네스를 붙여도 복잡한 설계나 코딩은 천장이 낮고,<br>
+좋은 모델을 맨몸으로 쓰면 그 성능의 절반도 못 뽑아요.<br>
+하네스는 모델의 대체재가 아니라 <strong class="u">증폭기</strong>예요.</p>
+<img src="img/03_multiply.png" alt="산출물 = 모델 역량 × 하네스 품질. 한쪽이 0이면 결과도 0. 좋은 모델을 맨몸으로 쓰면 성능의 절반도 못 뽑는다" loading="lazy">
+<p>제 경우를 말씀드리면, 설비에 센서 10개를 추가하는 작업이 있었어요.<br>
+IO 리스트 수정하고,<br>
+제어 로직 반영하고,<br>
+화면 태그 만들고..<br>
+원래 3일짜리 일인데 반나절에 끝났습니다.</p>
+<p>모델이 좋아서가 아니에요.<br>
+몇 달 동안 쌓아둔 지식 문서, 그러니까 도면 정보, 신호 명명 규칙, 과거에 제가 반복한 실수 기록까지 먹이고,<br>
+결과를 기존 코드와 교차검증하는 절차를 붙여놨기 때문이에요.<br>
+같은 모델 쓰는 옆자리 동료와 결과가 갈리는 지점이 정확히 여기더라고요.<br>
+여러분 주변에도 이런 격차, 보이시나요?</p>
+<h2>4. 근데 ROI가 무한은 아니에요</h2>
+<p>솔직히 처음엔 저도 들떴어요.<br>
+이거 구축해두면 투자금을 무한정 뽑겠다 싶었거든요.<br>
+과장이었어요..</p>
+<p>하네스는 만드는 데 고정비가 들고, 돌릴 때마다 비용이 나가요.<br>
+그래서 아무 일에나 하네스를 붙이면 오히려 손해예요.<br>
+쓸수록 이득이 쌓이는 <strong class="u">복리가 되려면 세 가지 조건</strong>을 통과해야 하더라고요.</p>
+<p><strong class="u">하네스 ROI 3요건 체크리스트</strong></p>
+<p>- ☐ <strong>반복되는 일인가</strong> — 일회성이면 그냥 손으로 하는 게 빨라요<br>
+- ☐ <strong>결과를 채점할 방법이 있는가</strong> — 맞고 틀림을 판정할 장치(2번의 채점기)가 있어야 해요<br>
+- ☐ <strong>틀렸을 때 사람이 잡아줄 장치가 있는가</strong> — 앞의 STOP_3FAIL처럼 사람을 부르는 회로요</p>
+<p>이 셋을 통과하면 쓸수록 이득이 쌓여요.<br>
+반대로 부실한 하네스는 비용만 태우면서 그럴듯한 오답을 대량 생산해요. 마이너스 ROI도 얼마든지 나오는 거죠.<br>
+무한이 아니라 <strong class="u">조건부 복리</strong>예요.</p>
+<h2>5. 그럼 뭘 쌓아야 하냐면요</h2>
+<p>모델은 누구나 월 몇만 원에 빌려요.<br>
+하네스 만드는 방법도 이미 다 공개돼 있고, 프롬프트 기법은 평준화됐어요.<br>
+그러니까 이것들 자체는 경쟁력이 아니에요.</p>
+<p>남이 못 베끼는 건 두 가지더라고요.<br>
+하나는 <strong class="u">독점 데이터</strong>예요. 내 현장의 도면, 운전 기록, 실수 이력 같은 건 검색해도 안 나오니까요.<br>
+다른 하나는 <strong class="u">도메인 판단력</strong>이에요. 그 데이터 중에 뭘 골라 정제해서 먹일지 아는 안목이요.<br>
+이 둘이 합쳐진 게 나한테 최적화된 하네스고, 이건 <strong class="u">모델이 바뀌어도 그대로 남아요.</strong><br>
+엔진은 갈아끼워도 차는 계속 제 것인 거죠.</p>
+<img src="img/04_own.png" alt="모델은 빌리는 것(월 구독, 언제든 바뀜) vs 하네스는 소유하는 것(독점 데이터 + 도메인 안목). 엔진은 갈아껴도 차는 내 것" loading="lazy">
+<h2>자주 묻는 질문 (FAQ)</h2>
+<p><strong>Q. 하네스가 결국 프롬프트를 잘 쓰는 거랑 같은 말인가요?</strong><br>
+아니에요. 프롬프트는 그 순간 한 번 잘 물어보는 거고, 하네스는 자료를 먹이는 통로·도구 연결·검증 루프까지 <strong class="u">구조로 남겨두는</strong> 거예요. 프롬프트는 휘발되고, 하네스는 자산으로 쌓여요.</p>
+<p><strong>Q. 그럼 좋은 모델은 안 중요한가요?</strong><br>
+중요해요. 다만 <strong class="u">곱셈</strong>이라(3번) 모델만 좋고 하네스가 0이면 결과도 0이에요. 둘 다 있어야 해요. 저는 모델 뉴스보다 제 하네스 다듬는 데 시간을 더 씁니다.</p>
+<p><strong>Q. 저는 개발자가 아닌데 하네스를 만들 수 있나요?</strong><br>
+2번의 &quot;채점기&quot;가 꼭 컴파일러일 필요는 없어요. &quot;기존 파일과 대조&quot;, &quot;정해진 양식과 비교&quot; 같은 사람이 정한 규칙도 채점기예요. 반복되는 일이면 거기서부터 시작하면 돼요.</p>
+<h2>정리하면요</h2>
+<p>같은 AI를 쓰는데 결과가 다른 건 모델 차이가 아니라 그 주변 구조, <strong class="u">하네스 차이</strong>예요.<br>
+결과는 모델과 하네스의 곱셈이고, 검수 장치까지가 하네스고, 진짜 자산은 내 데이터와 안목이에요.</p>
+<p>그래서 저는 요즘 모델 뉴스보다 제 하네스 다듬는 데 시간을 씁니다!</p>
+<p>다음 글에서는 이 검수 루프를 실제로 어떻게 붙였는지, 앞에서 본 STOP_3FAIL처럼 실패했던 사례까지 포함해서 써볼게요.<br>
+여러분은 AI가 내놓은 결과물을 지금 뭘로 채점하고 계세요?</p>
+<p>현장에서 AI를 굴리다 깨지고 고친 기록은 makefield.ai 에 계속 쌓고 있어요.</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224346963927" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
