@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>invalid_grant 오류 해결, 잘 돌던 구글 연동이 딱 7일 만에 죽었어요 | 도면 읽는 AI</title>
+<meta name="description" content="매주 월요일 아침이면 구글 캘린더 자동화가 조용히 죽어 있었어요. 로그를 열면 늘 같은 단어 하나가 찍혀 있고요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260716-oauth-invalid-grant/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="invalid_grant 오류 해결, 잘 돌던 구글 연동이 딱 7일 만에 죽었어요 | 도면 읽는 AI">
+<meta property="og:description" content="매주 월요일 아침이면 구글 캘린더 자동화가 조용히 죽어 있었어요. 로그를 열면 늘 같은 단어 하나가 찍혀 있고요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260716-oauth-invalid-grant/">
+<meta property="og:image" content="https://makefield.ai/blog/20260716-oauth-invalid-grant/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "invalid_grant 오류 해결, 잘 돌던 구글 연동이 딱 7일 만에 죽었어요", "datePublished": "2026-07-16", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260716-oauth-invalid-grant/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-07-16</span></div>
+<h1>invalid_grant 오류 해결, 잘 돌던 구글 연동이 딱 7일 만에 죽었어요</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;invalid_grant 오류 해결 / 잘 돌던 구글 연동이 딱 7일 만에 죽었어요&quot;" loading="lazy">
+<p>매주 월요일 아침이면 구글 캘린더 자동화가 조용히 죽어 있었어요.<br>
+로그를 열면 늘 같은 단어 하나가 찍혀 있고요.</p>
+<pre><code>[token_refresh] ERROR: (&#x27;invalid_grant: Token has been expired or revoked.&#x27;)</code></pre>
+<p>결론부터 말씀드릴게요.<br>
+구글 연동이 <strong class="u">딱 7일 주기로 invalid_grant를 뱉는다면, 범인은 코드가 아니라 &#x27;Testing&#x27; 상태로 방치된 앱</strong>이에요.<br>
+개발용(Testing) 앱이 발급한 refresh 토큰은 7일이 지나면 구글이 강제로 폐기하거든요.<br>
+해결은 앱을 Production으로 게시하고, 그다음에 토큰을 새로 받는 순서예요. (2026-07 기준)</p>
+<p>제 본업은 수소 설비 제어예요. 판넬 설계하고, PLC 로직 짜고, 현장 나가서 커미셔닝하는 일이죠.<br>
+AI랑 파이썬은 그 일 바깥의 자잘한 살림을 무인으로 굴리는 도구로 씁니다.<br>
+그중 하나가 일정을 자동으로 정리해주는 캘린더 연동인데, 이 녀석이 7일마다 저를 골탕 먹였습니다.</p>
+<h2>1. 증상: 재인증하면 살아나는데, 딱 일주일 뒤 또 죽어요</h2>
+<p>처음엔 일회성 사고인 줄 알았어요.<br>
+토큰을 다시 받아오니(재인증) 멀쩡히 돌더라고요. 그래서 넘어갔죠.</p>
+<p>그런데 정확히 7일 뒤, 같은 자리에서 같은 에러가 또 났어요.<br>
+재인증하면 또 일주일 살고, 또 죽고. 이게 반복이었습니다.</p>
+<p>무인 자동화에서 제일 무서운 게 이거예요.<br>
+<strong class="u">사람이 안 볼 때 조용히 멈춰 있다가, 볼 때만 되살아나는 것.</strong><br>
+매주 손으로 토큰을 새로 받는 건 자동화가 아니라 주 1회 알람 노동이잖아요.</p>
+<img src="img/02_loop.png" alt="7일 주기 실패 루프 — 재인증(토큰 갱신) → 정상 작동 7일 → invalid_grant로 사망 → 다시 재인증. 이 원이 무한 반복되는 걸 붉은 화살표로, &quot;근본 원인 미해결&quot; 라벨" loading="lazy">
+<h2>2. 원인: &#x27;Testing&#x27; 앱의 refresh 토큰은 수명이 7일이에요</h2>
+<p>한참을 헤매다 원인을 찾았어요. 코드가 아니라 <strong>구글 클라우드 콘솔의 앱 상태</strong>였습니다.</p>
+<p>구글 OAuth 앱에는 &#x27;게시 상태&#x27;라는 게 있어요. 크게 Testing과 Production 두 가지죠.<br>
+그런데 앱이 Testing 상태이고 사용자 유형이 External이면, 구글이 그 앱에서 발급한 refresh 토큰을 7일 뒤에 자동으로 폐기해요.<br>
+개발 중인 앱이 오래된 권한을 계속 쥐고 있지 못하게 막는 안전장치인 거죠.</p>
+<p>그러니까 제 코드는 처음부터 멀쩡했어요.<br>
+매주 월요일 죽은 건 버그가 아니라, 구글이 설계대로 7일짜리 토큰을 회수해 간 결과였습니다.</p>
+<pre><code>publishing status : Testing      ← 여기가 원인
+user type         : External
+→ refresh token    : 발급 후 7일 뒤 자동 폐기 → invalid_grant</code></pre>
+<img src="img/03_lifetime.png" alt="Testing vs Production 토큰 수명 비교 — 왼쪽 Testing 박스(refresh 토큰 위에 &#x27;7일&#x27; 타이머, 빨강) / 오른쪽 Production 박스(토큰 위에 &#x27;무기한(조건부)&#x27;, 초록). 같은 코드인데 앱 상태만 다르다는 걸 대비" loading="lazy">
+<h2>3. 해결: Production으로 게시 (근데 함정이 하나 있어요)</h2>
+<p>진짜 해결은 앱을 Production으로 올리는 거예요.<br>
+구글 클라우드 콘솔 → OAuth 동의 화면 → <strong>앱 게시(PUBLISH APP)</strong> 버튼.<br>
+게시 상태가 Production으로 바뀌면, 그때부터 refresh 토큰의 7일 시한이 사라져요.</p>
+<p>본인만 쓰는 개인 자동화라면 게시할 때 &#x27;확인되지 않은 앱&#x27; 경고가 떠도 그냥 진행하면 됩니다.<br>
+캘린더나 메일처럼 민감한 권한을 쓰는 앱을 여러 사람에게 배포하려면 구글 검수가 필요하지만, 내 계정 하나로 돌리는 자동화는 검수 없이도 동작해요.</p>
+<p>그런데 여기 함정이 하나 있어요. 저도 여기서 한 번 더 데였습니다.<br>
+<strong class="u">Production으로 게시해도, Testing 시절에 이미 발급받은 토큰은 자동으로 안 고쳐져요.</strong><br>
+7일 시한은 토큰을 &#x27;발급받던 시점의 앱 상태&#x27;를 따라가거든요.<br>
+그래서 게시 직후 옛 토큰으로 그대로 돌리면, 그날 또 invalid_grant를 볼 수 있어요.</p>
+<p>정답 순서는 이래요.</p>
+<pre><code>1) 콘솔에서 앱을 Production으로 게시
+2) 기존 token.json 은 백업 (token.json.bak)
+3) 인증을 처음부터 다시 실행해 &#x27;새&#x27; 토큰 발급
+4) 새 토큰으로 리프레시 1회 테스트 → OK 확인</code></pre>
+<img src="img/04_reissue.png" alt="재발급 순서 4단계 — Production 게시 → 옛 토큰 백업 → 재인증(새 토큰) → 리프레시 검증. &#x27;게시만 하고 옛 토큰 그대로 쓰기&#x27;는 옆에 빨간 X표로 함정 표시" loading="lazy">
+<h2>4. 확인: &#x27;고쳤다&#x27;가 아니라 &#x27;다음 주에도 살아있다&#x27;까지가 완료</h2>
+<p>여기서 제 버릇 하나가 또 발동했어요.<br>
+재인증해서 &quot;OK&quot; 한 줄 보고 완료라고 적으려다, 멈칫했습니다.</p>
+<p>이 자동화, 지난 몇 주 동안 매번 &#x27;고친 그날&#x27;은 멀쩡했거든요.<br>
+문제는 늘 7일 뒤였고요.<br>
+그래서 이번엔 그날 성공을 완료로 치지 않고, <strong class="u">다음 자동 실행 주기까지 로그가 계속 초록인지</strong>를 확인 항목으로 남겨뒀어요.</p>
+<p>고쳤다는 느낌이랑 실제로 안 죽는다는 사실은 다른 물건이니까요.</p>
+<p>| 구분 | Testing 방치 | Production 전환 후 |<br>
+|---|---|---|<br>
+| refresh 토큰 수명 | 7일 | 무기한(조건부) |<br>
+| 증상 | 주 1회 invalid_grant | 정상 지속 |<br>
+| 사람 손 | 매주 재인증 | 최초 1회 |<br>
+| 완료 판정 | (착각) 고친 그날 | 다음 주기 로그 OK |</p>
+<p>무인 자동화는 이 마지막 칸이 핵심이에요.<br>
+등록하고 &quot;돌겠지&quot; 하는 순간이 사고의 시작이더라고요.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 그냥 7일마다 재인증하는 스크립트를 짜면 안 되나요?</strong><br>
+됩니다. 근데 그건 근본 해결이 아니라 문제를 매주 덮는 거예요. 재인증엔 대개 브라우저 승인이 한 번 끼어서 완전 무인이 안 되고요. Production 전환이 30분이면 끝나는 진짜 해결이라, 저는 우회로를 파느니 상태를 바꾸는 쪽을 권해요.</p>
+<p><strong>Q. Production으로 바꿨는데 그날 바로 또 invalid_grant가 떴어요.</strong><br>
+십중팔구 옛 토큰을 그대로 쓰고 있어서예요. 게시는 &#x27;앞으로 발급될 토큰&#x27;에만 적용되거든요. 기존 token 파일을 백업하고, 인증을 처음부터 다시 돌려 새 토큰을 받으면 풀립니다.</p>
+<h2>정리하면요</h2>
+<p>구글 연동이 딱 7일마다 죽는다면, 코드를 뜯기 전에 클라우드 콘솔의 앱 게시 상태부터 보세요.<br>
+Testing이면 그게 원인이고, Production 게시 + 토큰 재발급이면 대개 끝나요.<br>
+그리고 고친 그날이 아니라 다음 실행 주기까지 확인해야 진짜 완료입니다.</p>
+<p>다음 글에서는 이렇게 되살린 자동화가 &#x27;고쳤다고 믿었는데 대시보드에선 계속 빨간불&#x27;이던, 확인 지표가 따로 놀던 이야기를 풀어볼게요.</p>
+<p>무인으로 굴리다 이렇게 데인 기록들은 makefield.ai 에 하나씩 쌓는 중입니다.</p>
+<p>---<br>
+태그: #invalid_grant #구글OAuth #refresh토큰 #구글API자동화 #OAuth토큰만료 #구글캘린더자동화 #파이썬자동화 #토큰재발급 #GCP콘솔 #OAuth동의화면 #Production전환 #무인자동화 #업무자동화 #현장엔지니어 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224348056955" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
