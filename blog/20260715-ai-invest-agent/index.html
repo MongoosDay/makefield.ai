@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 투자 자동화, 맡겨두면 안 되는 이유 (계획에 없던 종목을 끼워넣더라고요) | 도면 읽는 AI</title>
+<meta name="description" content="AI한테 매달 투자를 대신 시키는 시스템을 굴리고 있어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260715-ai-invest-agent/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 투자 자동화, 맡겨두면 안 되는 이유 (계획에 없던 종목을 끼워넣더라고요) | 도면 읽는 AI">
+<meta property="og:description" content="AI한테 매달 투자를 대신 시키는 시스템을 굴리고 있어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260715-ai-invest-agent/">
+<meta property="og:image" content="https://makefield.ai/blog/20260715-ai-invest-agent/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 투자 자동화, 맡겨두면 안 되는 이유 (계획에 없던 종목을 끼워넣더라고요)", "datePublished": "2026-07-15", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260715-ai-invest-agent/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-07-15</span></div>
+<h1>AI 투자 자동화, 맡겨두면 안 되는 이유 (계획에 없던 종목을 끼워넣더라고요)</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 투자 자동화, 맡겨두면 안 되는 이유 / 계획에 없던 종목을 슬쩍 끼워넣더라고요&quot;" loading="lazy">
+<p>AI한테 매달 투자를 대신 시키는 시스템을 굴리고 있어요.</p>
+<p>결론부터 말하면, <strong class="u">AI 투자 자동화에서 사람이 할 일은 종목 고르기가 아니라 &#x27;절차 감사&#x27;</strong>더라고요.<br>
+이번 달엔 AI가 계획에 없던 종목을 매수 지시서에 슬쩍 끼워넣었는데, 그걸 잡아낸 건 질문 하나였어요.</p>
+<p>AI가 사람보다 투자 지식이 많으면 그냥 다 맡기면 되지 않냐고들 하잖아요.<br>
+몇 달 전 저한테 물었으면 저도 똑같이 답했을 거예요.<br>
+근데 이번 달 매수를 겪고 그 생각이 완전히 접혔습니다.</p>
+<p>짧게 소개하면, 저는 수소 플랜트 제어판넬을 15년째 만지는 사람입니다.<br>
+회사에선 수전해 설비 PLC를 짜고, 퇴근하면 AI한테 제 살림을 하나씩 맡겨보는 중이에요.<br>
+그중 하나가 투자 에이전트고요. 매달 소액을 규칙대로 ETF에 적립하는 시스템입니다.</p>
+<p>미리 말씀드릴게요.<br>
+이건 종목 이야기가 아니라 <strong class="u">절차 이야기</strong>라, 매수 추천으로 읽지 말아주세요.<br>
+포트폴리오도 삼백만 원대 소액이라 대단할 건 없어요. 오히려 소액이라 규칙을 실험하기엔 딱 좋더라고요.</p>
+<h2>1. AI가 계획에 없던 종목을 지시서에 끼워넣었어요</h2>
+<p>이번 달 적립일이 하필 일요일이었어요.<br>
+게다가 전날 국내 증시가 하루 만에 7.89% 폭락한 상황이었고요.</p>
+<p>그래서 AI한테 물었죠. &quot;그냥 금요일에 미리 사는 게 낫지 않아?&quot;</p>
+<p>답은 논리적이었어요.<br>
+미국 증시가 그날 대체휴장이라, 금요일에 사든 월요일에 사든 참조하는 종가가 똑같다.<br>
+그러니 기다려서 얻을 새 정보가 0이다.<br>
+여기까진 좋았어요.</p>
+<p>문제는 그다음이었어요.<br>
+매수 지시서를 열어보니 원래 계획에 없던 게 하나 껴 있더라고요.</p>
+<pre><code>[이번 달 매수 지시서]
+ S&amp;P500 ETF        9주    ← 원래 계획
+ 국내 가치주 ETF   2주    ← ???  &quot;급락으로 싸졌으니 소량 보강&quot;</code></pre>
+<p>그럴듯하죠. 근데 제 투자 규칙 어디에도 <strong class="u">&quot;싸지면 더 산다&quot;는 조항이 없어요.</strong><br>
+제 에이전트는 저를 잘 알아요. &#x27;아&#x27; 하면 &#x27;어&#x27; 하는 파트너거든요.<br>
+근데 파트너가 너무 알아서 해주면 이런 일도 생기더라고요..</p>
+<img src="img/02_ledger.png" alt="매수 지시서에 &#x27;규칙&#x27;과 &#x27;재량&#x27;이 겹쳐 들어온 구조 — 규칙 라인(S&amp;P500 9주, 초록)은 규칙 문서에서 나왔고, 재량 라인(가치주 2주, 빨강)은 규칙에 없는 즉흥 판단인데 같은 지시서에 섞여 겉으로는 구분이 안 됨" loading="lazy">
+<h2>2. 제가 한 건 반대가 아니라 질문 하나였어요</h2>
+<p>여기서 제가 &quot;가치주 사지 마&quot;라고 한 게 아니에요.<br>
+솔직히 저는 투자 지식이 거의 없어요. 그 2주가 좋은 판단인지 나쁜 판단인지 평가할 능력이 없거든요.</p>
+<p>대신 이렇게 물었어요.<br>
+<strong class="u">&quot;계획이 바뀐 이유가 뭐지?&quot;</strong><br>
+딱 이 한 줄이요.</p>
+<p>그랬더니 AI가 스스로 자기 규칙 문서를 다시 뒤졌어요. 결과가 재밌었습니다.</p>
+<pre><code>[규칙 재검토 결과]
+ 급락 매수 규칙  : S&amp;P500 기준 → 코스피 폭락은 발동 조건 아님
+ 가치주 비중     : 지난달 점검서 이미 &#x27;허용 범위&#x27; 판정
+ &quot;싸졌으니 사자&quot; : 이 시스템이 애초에 배제한 &#x27;타이밍 재량&#x27;
+ → AI 스스로 판단 철회, 원래 계획대로 정정</code></pre>
+<p>계획이 바뀐 게 아니라, <strong class="u">재량이 규칙처럼 포장돼서 들어온 거</strong>였어요.<br>
+좋은 아이디어처럼 보였지만, 규칙을 통과한 게 아니라 규칙을 우회한 거죠.</p>
+<h2>3. 근데 물러선 건지 검증한 건지, 한 번 더 물었어요</h2>
+<p>여기서 끝내면 안 되겠더라고요.<br>
+AI한테는 실패 모드가 두 개 있어요.<br>
+하나는 방금 본 것처럼 재량을 규칙인 척 포장하는 것,<br>
+다른 하나는 지적받으면 계산도 안 하고 <strong class="u">바로 승복</strong>하는 거예요.</p>
+<p>방금 그 철회가 진짜 검증한 결과인지, 그냥 제 눈치를 본 건지 알 수가 없었어요.<br>
+그래서 다시 요구했어요.<br>
+&quot;소극적으로 물러서지 말고, 정말 어느 쪽이 최선인지 끝까지 계산해서 답해.&quot;</p>
+<p>이번엔 숫자를 들고 왔어요.</p>
+<pre><code>[두 안의 실제 차이]
+ 배분 차이     : 약 4만 원
+ 기대수익 환산 : 연 400~800원
+ 결론          : 어느 쪽을 골라도 포트폴리오 운명엔 영향 없음</code></pre>
+<p>커피 한 잔 값도 안 되는 차이를 두고 저녁 내내 실랑이한 셈이더라고요..<br>
+그래도 이건 중요했어요.<br>
+결론은 똑같이 &quot;원래 계획이 맞다&quot;였지만, <strong class="u">승복과 검증은 완전히 다른 물건</strong>이거든요.<br>
+같은 답이라도 눈치로 물러선 답과 근거로 재확인한 답은 신뢰도가 다르니까요.</p>
+<img src="img/03_verify.png" alt="승복 vs 검증 비교 — 왼쪽 &#x27;승복&#x27;(지적받자 바로 철회, 근거 없음, 빨강) vs 오른쪽 &#x27;검증&#x27;(숫자로 재계산 후 같은 결론, 초록). 결론이 같아도 신뢰도가 다르다는 걸 대비" loading="lazy">
+<h2>4. 재량은 금지가 아니라 &#x27;절차&#x27;의 문제더라고요</h2>
+<p>오해하실까 봐 덧붙이면, 저는 AI가 계획 바꾸는 걸 막고 싶은 게 아니에요.<br>
+더 좋은 방안이 있으면 바꾸는 게 맞죠. 문제는 <strong class="u">바꾸는 방법</strong>이에요.</p>
+<p>좋은 아이디어라면 순서가 있어요.<br>
+규칙 개정안을 올리고,<br>
+사람이 승인하고,<br>
+다음 달부터 적용하고.<br>
+매수 지시서에 슬쩍 섞으면 안 되는 거고요.</p>
+<p>지시서에 재량이 섞이기 시작하면, 저같이 투자 지식 없는 사용자는 <strong class="u">어디까지가 규칙이고 어디부터가 AI 기분인지</strong> 구분할 수가 없거든요.</p>
+<img src="img/04_procedure.png" alt="재량 처리 정석 vs 반칙 — 정석 경로(아이디어 → 규칙 개정안 제출 → 사람 승인 → 다음 달 적용, 초록 화살표) vs 반칙 경로(아이디어 → 이번 달 지시서에 슬쩍 삽입, 빨강 X표)" loading="lazy">
+<p>실제로 이번에 &quot;급락 시 가치주 보강&quot; 규칙을 새로 만들까도 검토했어요.<br>
+근데 대상 축이 워낙 소액이라 효과가 연 수백 원이더라고요.<br>
+<strong class="u">규칙을 안 만드는 것도 결정</strong>이라, 대신 포트폴리오가 일정 규모를 넘으면 그때 재검토하자는 트리거만 남겨뒀습니다.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. AI가 알아서 더 좋은 판단을 한 걸 수도 있잖아요?</strong><br>
+그럴 수도 있어요. 근데 핵심은 그 판단의 옳고 그름이 아니라, <strong class="u">규칙을 통과했느냐 우회했느냐</strong>예요. 좋은 판단이라도 규칙 개정 절차를 밟아야 다음에도 검증이 되거든요. 지시서에 슬쩍 들어오면 이번 한 번만 운 좋게 맞고 끝이에요.</p>
+<p><strong>Q. 투자 지식이 없는데 AI를 감사할 수 있나요?</strong><br>
+저도 지식은 없어요. 근데 감사는 지식이 아니라 절차예요. &quot;계획과 실행이 다르면 이유를 묻는다&quot;, &quot;물러서면 근거를 요구한다&quot; — 이 둘은 투자를 몰라도 할 수 있어요. 오히려 제가 판단을 안 하니까 절차에만 집중하게 되더라고요.</p>
+<h2>정리하면요</h2>
+<p>AI에게 돈을 맡길 때 사람이 하는 일은 방향 지시가 아니라 <strong class="u">절차 감사</strong>였어요.<br>
+저는 종목을 고르지도, AI 판단에 반박하지도 않았어요.<br>
+&quot;계획이 바뀐 이유가 뭐지?&quot;, &quot;소극적으로 대응하지 마라.&quot;<br>
+질문 두 개 던졌을 뿐인데 재량 혼입이 적발되고 숫자 재검증까지 나왔거든요.</p>
+<p>그리고 이번 달 진짜 성과는 배분이 아니었어요.<br>
+폭락 주간에도 규칙대로 매수를 실행했다는 사실, 그 자체였습니다.</p>
+<p><strong class="u">AI한테 반복 작업 맡길 때 감사 3줄</strong></p>
+<p>- ☐ 계획과 실행이 다르면 &quot;왜 바뀌었지?&quot;를 먼저 묻는다<br>
+- ☐ 지적하자마자 물러서면 &quot;눈치냐 근거냐&quot;를 되묻는다<br>
+- ☐ 좋은 재량은 즉석 반영 말고 규칙 개정 절차로 넘긴다</p>
+<p>투자든 업무든, AI를 오래 굴릴수록 사람의 자리는 자꾸 이 &#x27;절차 감사&#x27; 쪽으로 밀리더라고요.<br>
+여러분은 AI가 내놓은 결과를 어디까지 되묻고 쓰시나요?</p>
+<p>이렇게 AI한테 살림 맡기다 데인 기록들, [makefield.ai](<a href="https://makefield.ai)" target="_blank" rel="noopener">https://makefield.ai)</a> 에 하나씩 정리해두고 있습니다.</p>
+<p>---<br>
+태그: #AI투자자동화 #AI투자에이전트 #AI한테투자맡기기 #AI자동화 #AI자동화검증 #ETF적립 #AI투자후기 #투자자동화 #AI실무 #현장엔지니어 #제어엔지니어 #AI거버넌스 #AI검증 #HITL #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224347760675" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
