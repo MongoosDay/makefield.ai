@@ -3,10 +3,10 @@
   "kb_docs": 512,
   "kb_lines": 231433,
   "categories": 20,
-  "activity_count": 505,
-  "total_tokens": 2975080462,
-  "inference_count": 15117,
+  "activity_count": 506,
+  "total_tokens": 2965322219,
+  "inference_count": 14755,
   "career_start": "2011-01-01",
   "start_date": "2026-04-01",
-  "updated": "2026-07-17"
+  "updated": "2026-07-18"
 }
