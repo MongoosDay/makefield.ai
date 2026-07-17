@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 지식관리, 문서 500개 쌓고 절반을 못 찾은 이유 | 도면 읽는 AI</title>
+<meta name="description" content="AI로 자료 만들기는 빨라졌는데, 정작 필요할 때 그 자료를 못 찾은 적 없으세요?">
+<link rel="canonical" href="https://makefield.ai/blog/20260719-ai-production-debt/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 지식관리, 문서 500개 쌓고 절반을 못 찾은 이유 | 도면 읽는 AI">
+<meta property="og:description" content="AI로 자료 만들기는 빨라졌는데, 정작 필요할 때 그 자료를 못 찾은 적 없으세요?">
+<meta property="og:url" content="https://makefield.ai/blog/20260719-ai-production-debt/">
+<meta property="og:image" content="https://makefield.ai/blog/20260719-ai-production-debt/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 지식관리, 문서 500개 쌓고 절반을 못 찾은 이유", "datePublished": "2026-07-18", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260719-ai-production-debt/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-07-18</span></div>
+<h1>AI 지식관리, 문서 500개 쌓고 절반을 못 찾은 이유</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 지식관리, 문서 500개 쌓고 절반을 못 찾은 이유 / 만드는 건 AI가, 못 찾는 건 내가&quot;" loading="lazy">
+<p>AI로 자료 만들기는 빨라졌는데, 정작 필요할 때 그 자료를 못 찾은 적 없으세요?</p>
+<p>결론부터 말씀드릴게요.<br>
+<strong>AI 지식관리의 진짜 병목은 &#x27;만들기&#x27;가 아니라 &#x27;꺼내기&#x27;였어요.</strong><br>
+저는 1년간 AI로 지식 문서를 500개 넘게 쌓았는데, 어느 날 검색 적중률을 재보니 41.9%더라고요.<br>
+절반 넘게, 필요할 때 못 꺼내고 있었던 거예요.</p>
+<p>저는 수소 설비 제어가 본업인 15년차 엔지니어입니다.<br>
+판넬 설계하고 PLC 짜는 사람인데, 지난 1년은 좀 특이했어요.<br>
+일하면서 나온 자료를 하나도 안 버리고 전부 AI한테 먹여 지식 문서로 쌓았거든요.<br>
+차단기 선정 근거, 배터리 사양, 법규 원문 같은 것들을요.<br>
+그렇게 쌓인 게 500개, 20만 줄이 넘습니다.</p>
+<h2>1. 문서를 만든 건 AI였고, 못 찾은 건 저였어요</h2>
+<p>AI랑 일하면 생산이 정말 빨라요.</p>
+<p>설비 하나 분석하면 결과를 문서로 박아두고,<br>
+규격 찾아보면 참조표로 만들어두고,<br>
+실수하면 재발 방지 규칙으로 남기고..</p>
+<p>예전 같았으면 이런 걸 정리할 시간이 어디 있었겠어요.<br>
+매번 머릿속 기억이랑 옛날 도면에 의존했죠.<br>
+근데 AI가 있으니 분석 끝나는 김에 문서까지 그냥 나와요.</p>
+<p>여기까지는 딱 성공담이죠.<br>
+근데 어느 날 배터리 사양이 궁금해서 &#x27;리튬 충전&#x27;으로 제 지식 베이스를 검색했는데,<br>
+1등으로 나온 게 엉뚱하게도 수소 저장·충전 설계 문서더라고요.<br>
+같은 &#x27;충전&#x27;이라는 단어 때문에 완전히 다른 게 걸린 거예요.</p>
+<h2>2. 적중률을 실제로 재봤더니 41.9%였어요</h2>
+<p>설마 싶어서 검색 적중률을 수치로 재봤습니다.<br>
+결과가 이랬어요.</p>
+<pre><code>[내 지식베이스 검색 적중률 추이]
+1차 측정  : 60.0%
+2차 측정  : 54.0%
+3차 측정  : 41.9%   ← 문서를 더 쌓을수록 더 떨어짐</code></pre>
+<p>문서를 더 부지런히 쌓을수록 오히려 적중률이 떨어졌어요.<br>
+500개 중 절반 넘게, 필요할 때 못 꺼내는 상태였던 거죠.</p>
+<p>문서 하나하나는 멀쩡해요. 열어보면 품질도 좋고요.<br>
+근데 <strong class="u">존재를 못 찾으면 그건 없는 거나 마찬가지예요.</strong></p>
+<p>원인은 의외로 단순했어요.<br>
+자재 정보, 분석 결과, 규격, 규칙이 아무 축 없이 한 폴더에 평면으로 뒤섞여 있었거든요.</p>
+<pre><code>[문제였던 구조 — 축 없는 평면 폴더]
+knowledge/
+ ├─ 배터리_충전사양.md
+ ├─ 수소저장_충전설계.md   ← &#x27;충전&#x27;만 겹쳐도 검색이 헷갈림
+ ├─ 차단기_선정근거.md
+ ├─ 법규_원문_인용.md
+ └─ ... (500개가 한 층에 평면으로)</code></pre>
+<p>쌓는 데만 정신이 팔려서, 꺼내는 구조를 아예 안 만든 거였어요.</p>
+<img src="img/02_hitrate.png" alt="검색 적중률 하락 그래프 — 가로축은 쌓인 문서 수(늘어남), 세로축은 검색 적중률. 60% → 54% → 41.9%로 우하향하는 빨간 꺾은선. &quot;많이 쌓을수록 못 찾는 역설&quot;이라는 라벨" loading="lazy">
+<h2>3. 병명을 붙이면, 생산이 소화를 추월한 거예요</h2>
+<p>글감도 똑같았어요.<br>
+AI랑 나눈 대화 기록이 200메가 넘게 쌓여 있는데,<br>
+그 안에 괜찮은 생각들이 분명히 지나갔거든요.<br>
+근데 나중에 실제로 글로 캐낸 건 고작 3건입니다.</p>
+<p>기록할까 말까 고민하다 안 적고,<br>
+안 적은 건 현장 한 번 다녀오면 그대로 휘발되고..<br>
+200메가 쌓는 건 AI 덕에 노력이 안 드는데, 거기서 건지는 건 여전히 제 손이 필요했던 거예요.</p>
+<p>그래서 이 상태에 이름을 붙여봤어요.<br>
+<strong class="u">AI 생산속도가 사람 소화속도를 추월하면, 그 차액이 부채로 쌓입니다.</strong><br>
+수입보다 지출이 빠르면 빚이 늘어나는 거랑 똑같은 구조예요.<br>
+검색 깨진 문서 500개, 휘발된 글감 200메가, 전부 같은 병의 증상이고요.</p>
+<img src="img/03_debt.png" alt="생산-소화 격차가 부채로 쌓이는 그림 — 시간축 위에 두 선이 올라간다. &#x27;AI 생산&#x27;선은 가파르게 치솟고, &#x27;사람 소화&#x27;선은 완만하게 오른다. 두 선 사이 벌어지는 간격을 빗금으로 칠하고 &quot;이 차액 = 부채(못 찾는 문서·휘발된 글감)&quot;라고 라벨" loading="lazy">
+<p>| 구분 | AI 쓰기 전 | AI 쓴 뒤 |<br>
+|---|---|---|<br>
+| 병목 | 만드는 것 (느림) | 소화하는 것 (못 따라감) |<br>
+| 문서 생산 | 손으로 겨우 | 분석 끝나면 자동으로 |<br>
+| 꺼내 쓰기 | 양이 적어 다 앎 | 500개 중 41.9%만 |<br>
+| 결과 | 만드는 족족 소화 | 차액이 부채로 축적 |</p>
+<p>AI 전에는 만드는 게 병목이라, 만드는 족족 소화가 됐거든요.<br>
+근데 AI가 그 병목을 없애버리니까, 이제 소화가 새 병목이 된 거예요.</p>
+<h2>4. 답은 덜 만드는 게 아니라, 소화도 AI한테 맡기는 거였어요</h2>
+<p>처음엔 좀 덜 만들까 싶었어요.<br>
+근데 그건 무기를 버리는 거잖아요.<br>
+답은 반대였어요. <strong class="u">던지는 건 사람, 엮는 건 AI.</strong></p>
+<p>지금 제가 하는 건 두 가지예요.</p>
+<p>하나, 인사이트가 스치면 분류 고민 없이 인박스 파일에 한 줄만 던져요.<br>
+정리하고 엮는 건 AI가 주기적으로 하고요.<br>
+지금 읽고 계신 이 글도, 그렇게 던져둔 한 줄에서 나왔습니다.</p>
+<p>둘, 깨진 검색은 제가 폴더를 다시 파는 게 아니라 AI한테 재분류 숙제로 냈어요.<br>
+자재·분석·규격·규칙을 축으로 나눠서 다시 꽂는 일을요.</p>
+<img src="img/04_flow.png" alt="소화도 AI에게 넘기기 — 왼쪽 &#x27;사람&#x27;(스치는 생각을 인박스에 한 줄 던지기, 파란 화살표) → 오른쪽 &#x27;AI&#x27;(주기적으로 분류·재배치·엮기, 초록 박스). 가운데에 &quot;던지는 건 사람, 엮는 건 AI&quot; 라벨" loading="lazy">
+<p>솔직히 아직 다 해결된 건 아니에요.<br>
+적중률은 여전히 절반 아래고, 재분류도 진행 중이에요.<br>
+그래도 방향은 확실해요.<br>
+사람이 정리 노동을 다시 통째로 짊어지는 순간, AI를 쓰는 의미가 없어지거든요.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 그냥 노션이나 옵시디언 같은 도구로 정리하면 되는 거 아닌가요?</strong><br>
+도구는 그릇이라 담는 걸 도와주지, 꺼내는 걸 대신 해주진 않아요.<br>
+제 문제도 폴더가 없어서가 아니라 &#x27;분류 기준(축)&#x27;이 없어서였어요.<br>
+축을 세워 다시 꽂는 반복 노동, 그걸 AI한테 넘기는 게 핵심이더라고요.</p>
+<p><strong>Q. 지식 문서를 아예 적게 만들면 이 병에 안 걸리지 않나요?</strong><br>
+그건 AI를 쓰는 이유를 버리는 거예요.<br>
+생산을 줄이는 게 아니라, 늘어난 생산을 감당할 소화 라인을 같이 자동화하는 게 맞아요.<br>
+안 걸리는 게 목표가 아니라, 걸린 걸 빨리 알아채고 소화를 자동화하는 거요.</p>
+<h2>정리하면요</h2>
+<p>AI를 제대로 쓰기 시작하면 생산이 소화를 추월하고, 그 차액은 반드시 부채로 쌓여요.<br>
+이건 저만 걸린 병이 아니라, AI를 진짜 업무에 굴리기 시작한 분들이라면 곧 겪을 병이에요.<br>
+걸리는 게 문제가 아니라, 모르고 계속 쌓기만 하는 게 문제고요.</p>
+<p>- ☐ 만든 자료의 검색 적중률을 재본 적 있는가 (감이 아니라 숫자로)<br>
+- ☐ 문서가 축 없이 한 폴더에 평면으로 쌓여 있지 않은가<br>
+- ☐ 정리·재분류를 사람이 다시 손으로 하고 있진 않은가 → AI 숙제로 넘기기</p>
+<p>혹시 여러분도 AI가 만들어준 결과물, 나중에 다시 찾아 써본 적 있으세요?<br>
+저처럼 &#x27;분명 만들어뒀는데 어디 갔지&#x27; 하셨다면, 그게 바로 이 부채의 신호예요.</p>
+<p>이 재분류가 어디까지 갔는지, 적중률이 얼마나 올라왔는지는 makefield.ai 에 계속 기록하는 중입니다.</p>
+<p>---<br>
+태그: #AI지식관리 #AI자료정리 #AI지식베이스 #AI문서관리 #AI세컨브레인 #지식관리방법 #AI검색 #RAG #노션정리 #옵시디언 #AI업무자동화 #제조업AI #현장엔지니어 #AI실무 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224349953770" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
