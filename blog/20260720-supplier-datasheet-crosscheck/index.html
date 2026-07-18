@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>납품업체 자료, AI로 5종 교차검증하니 안 맞는 곳 10군데 나왔어요 | 도면 읽는 AI</title>
+<meta name="description" content="납품업체가 자료를 보내오면, 보통 그걸 정답지처럼 여기잖아요. 근데 이번엔 그 정답지들끼리 서로 안 맞았습니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20260720-supplier-datasheet-crosscheck/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="납품업체 자료, AI로 5종 교차검증하니 안 맞는 곳 10군데 나왔어요 | 도면 읽는 AI">
+<meta property="og:description" content="납품업체가 자료를 보내오면, 보통 그걸 정답지처럼 여기잖아요. 근데 이번엔 그 정답지들끼리 서로 안 맞았습니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20260720-supplier-datasheet-crosscheck/">
+<meta property="og:image" content="https://makefield.ai/blog/20260720-supplier-datasheet-crosscheck/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "납품업체 자료, AI로 5종 교차검증하니 안 맞는 곳 10군데 나왔어요", "datePublished": "2026-07-18", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260720-supplier-datasheet-crosscheck/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-07-18</span></div>
+<h1>납품업체 자료, AI로 5종 교차검증하니 안 맞는 곳 10군데 나왔어요</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;납품업체 자료, AI로 5종 교차검증하니 안 맞는 곳 10군데 / 스펙시트는 정답지가 아니었어요&quot;" loading="lazy">
+<p>납품업체가 자료를 보내오면, 보통 그걸 정답지처럼 여기잖아요.<br>
+근데 이번엔 그 정답지들끼리 서로 안 맞았습니다.</p>
+<p>결론부터 말씀드릴게요.<br>
+<strong>공급자가 준 스펙시트는 &#x27;정본&#x27;이 아니에요.</strong><br>
+자료 5종을 통째로 AI에게 읽혀 납품 자료 교차검증을 돌렸더니, 사람이면 그냥 넘어갔을 모순이 10군데나 튀어나왔거든요.<br>
+그중엔 &quot;장비가 몇 대냐&quot;는 것조차 자료끼리 안 맞는 치명적인 것도 있었어요.</p>
+<p>제 본업은 수소 설비 제어예요 — 판넬 설계, PLC 로직, 현장 커미셔닝.<br>
+AI는 그 일을 굴리는 도구로 씁니다.<br>
+이번엔 새 전력변환 장비 하나를 기존 설비에 붙이는 일이었어요.</p>
+<h2>1. 자료는 다섯 종인데, 하나씩 대조가 벅찼어요</h2>
+<p>업체가 보내준 건 다섯 종이었어요.<br>
+단선도, 장비 사양서, 통신 매뉴얼, 장비 외형도, 판넬 외형도.</p>
+<p>문제는 이게 서로를 참조한다는 거예요.<br>
+단선도의 장비 수량이 사양서랑 맞아야 하고,<br>
+사양서의 전압이 통신 매뉴얼 설정이랑 맞아야 하고,<br>
+외형 치수가 판넬 도면이랑 맞아야 하고..<br>
+다섯 개를 머릿속에 동시에 띄워놓고 대조하려니 금방 벅차더라고요.</p>
+<p>예전 같으면 눈으로 몇 번 왕복하다 &quot;대충 맞겠지&quot; 하고 넘어갔을 거예요.<br>
+근데 이번엔 다섯 종을 전부 AI한테 먹이고 딱 한 문장을 시켰어요.<br>
+&quot;자료끼리 서로 안 맞는 데를 다 찾아봐.&quot;</p>
+<img src="img/02_cross.png" alt="자료 5종이 서로 참조하는 구조 — 단선도·사양서·통신매뉴얼·외형도·판넬도 5개 박스가 화살표로 얽혀 있고 몇몇 화살표에 빨간 X 표시, &quot;하나만 틀려도 줄줄이 어긋남&quot; 라벨" loading="lazy">
+<h2>2. 제일 먼저 걸린 건 &quot;장비 몇 대냐&quot;였어요</h2>
+<p>AI가 대조하면서 뱉은 목록이 꽤 길었는데, 압권은 수량이었어요.</p>
+<pre><code>[업체 자료 5종 교차대조 — 안 맞는 곳]
+단선도        : 변환장치 2대 병렬
+공급 목록     : 변환장치 1대          ← 여기서 이미 케이블이 통째로 바뀜
+통신(단선도)  : 표준 통신 방식
+통신(매뉴얼)  : 업체 독자 방식        ← PLC 드라이버 선정이 갈림
+매뉴얼 출처   : 다른 제품군(배터리 계열) 문서를 재활용
+전기 사양서   : 없음                  ← 스택 전류 매칭 검증 불가</code></pre>
+<p>도면엔 2대를 병렬로 붙이라고 그려져 있는데, 정작 공급 목록엔 1대만 적혀 있었어요.<br>
+이게 왜 치명적이냐면, 장비가 1대냐 2대냐에 따라 흐르는 전류가 반으로 갈리거든요.<br>
+그러면 케이블 굵기부터 차단기 용량까지 설계가 통째로 달라져요.<br>
+2대인 줄 알고 얇게 깔았는데 실제로 1대에 전류가 몰리면.. 그건 사고로 직결됩니다.</p>
+<p>통신도 재밌었어요.<br>
+단선도엔 표준 통신 방식이라고 적혀 있는데, 통신 매뉴얼을 열어보니 업체가 만든 독자 방식이더라고요.<br>
+게다가 그 매뉴얼은 이 장비용이 아니라 <strong class="u">다른 제품군</strong> 문서를 그대로 재활용한 거였어요.<br>
+용어가 우리 장비랑 안 맞아서, AI가 &quot;이건 배터리 계열 장비 문서 같다&quot;고 짚어줬죠.</p>
+<h2>3. AI 첫 답도 틀렸어요 — 판넬 깊이 이야기</h2>
+<p>여기서 하나 솔직하게 남길 게 있어요.<br>
+AI가 남의 자료만 잡은 게 아니라, 자기 첫 답도 틀렸거든요.</p>
+<p>판넬 함체 깊이를 정해야 했는데, 제가 먼저 &quot;800이면 되겠지&quot; 했고 AI도 처음엔 수긍했어요.<br>
+근데 외형도의 실제 치수를 손잡이 끝부터 후면 단자까지 다시 재보니 이야기가 달라졌어요.</p>
+<pre><code>[판넬 깊이 재계산]
+처음 가정   : 800mm 함체면 되겠지
+실측 반영   : 장비 외곽(손잡이~후면 단자) 약 769mm
+           + 전면 이격 50mm + 후면 결선 여유 150~200mm
+합계        : 약 970 ~ 1,020mm   → 800 함체 탈락, 1,000 이상 필요</code></pre>
+<p>굵은 케이블은 꺾이는 반경이 있고, 단자 조일 공구도 들어가야 해요.<br>
+그 여유까지 더하니 800짜리 함체는 그냥 탈락이더라고요.<br>
+처음의 &quot;800이면 되겠지&quot;를 그대로 믿었으면 함체를 새로 짤 뻔했어요.</p>
+<img src="img/03_depth.png" alt="판넬 깊이 800 가정 vs 실측 재계산 — 위쪽 800mm 박스는 장비가 안 들어가 삐져나온 빨간 그림, 아래쪽 1000mm 박스는 장비+전면이격+후면결선 여유가 들어간 초록 그림, &quot;첫 답을 계산으로 뒤집다&quot; 라벨" loading="lazy">
+<h2>그래서 얻은 결론</h2>
+<p>이번 일로 정리된 건 두 가지예요.</p>
+<p>하나, 공급자가 준 스펙시트는 정본이 아니에요.<br>
+여러 자료를 보내주지만 그것들끼리 안 맞는 경우가 생각보다 많아요.<br>
+AI 교차검증의 진짜 값은 없는 답을 지어내는 게 아니라, <strong class="u">안 맞는 걸</strong> 지치지 않고 대조하는 데 있더라고요.</p>
+<p>둘, AI의 첫 답도 검증으로 뒤집어야 해요.<br>
+특히 수량·치수·전류처럼 안전과 직결된 항목은요.<br>
+AI가 &quot;800이면 됨&quot;이라고 해도, 안전 직결 항목은 반드시 계산으로 한 번 뒤집어보는 게 맞아요.</p>
+<img src="img/04_roles.png" alt="역할 구분 — 왼쪽 &#x27;사람&#x27;(자료를 던지고 안전 직결 항목은 계산으로 재확인), 오른쪽 &#x27;AI&#x27;(5종을 지치지 않고 대조해 모순 목록화), 가운데 &quot;던지는 건 사람, 대조는 AI, 판정은 다시 사람&quot; 라벨" loading="lazy">
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 자료 대조는 사람이 눈으로 해도 되는 거 아닌가요?</strong><br>
+할 수는 있는데, 다섯 종을 서로 왕복하며 대조하는 건 금방 지쳐요.<br>
+사람은 &quot;아까 봤으니 맞겠지&quot; 하고 건너뛰는데, AI는 안 지치고 전부 대봐요.<br>
+대신 걸린 모순이 진짜인지 판정하는 건 사람 몫이고요.</p>
+<p><strong>Q. AI가 없는 사실을 지어내면 어쩌죠?</strong><br>
+그래서 &quot;답을 내라&quot;가 아니라 &quot;자료끼리 안 맞는 데를 찾아라&quot;로 시켜요.<br>
+자료 안에서 대조만 시키면 지어낼 여지가 줄어요.<br>
+그리고 걸린 건 원문에서 제 눈으로 다시 확인합니다.</p>
+<h2>정리하면요</h2>
+<p>납품 자료를 받으면 정답지처럼 믿기 쉬운데, 이번엔 다섯 종이 서로 열 군데나 어긋났어요.<br>
+수량 1 대 2, 재활용된 매뉴얼, 뒤집힌 판넬 깊이까지요.<br>
+AI를 쓴 값은 자료를 만들어준 게 아니라, 안 맞는 걸 끝까지 대조해준 데 있었습니다.</p>
+<p>- ☐ 납품 자료끼리 수량·전압·치수가 서로 맞는지 대조했는가<br>
+- ☐ 통신 방식이 도면과 매뉴얼에서 같게 적혀 있는가<br>
+- ☐ 안전·치수 직결 항목은 AI 첫 답을 계산으로 뒤집어봤는가</p>
+<p>여러분도 납품 자료 받아 검토하다가 &quot;어? 이거 앞뒤가 안 맞네&quot; 한 적 있으세요?</p>
+<p>AI한테 자료 교차검증을 시키는 더 구체적인 방법은 makefield.ai에 하나씩 정리해 두고 있습니다.</p>
+<p>---<br>
+태그: #납품자료검토 #스펙시트검증 #AI교차검증 #AI자료대조 #협력업체자료 #제어판넬설계 #PLC통신 #현장엔지니어 #제조업AI #AI실무 #도면검토 #설계검증 #AI문서검토 #케이블설계 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224350451809" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
