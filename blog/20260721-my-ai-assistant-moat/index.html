@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나만의 AI 비서 만들기, 토큰 40억 개를 갈아넣고 알게 된 것 | 도면 읽는 AI</title>
+<meta name="description" content="결론부터 말씀드릴게요. 나만의 AI 비서가 남들 것보다 나를 잘 아는 이유는, 똑똑한 모델이 아니라 쌓인 맥락이었어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260721-my-ai-assistant-moat/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="나만의 AI 비서 만들기, 토큰 40억 개를 갈아넣고 알게 된 것 | 도면 읽는 AI">
+<meta property="og:description" content="결론부터 말씀드릴게요. 나만의 AI 비서가 남들 것보다 나를 잘 아는 이유는, 똑똑한 모델이 아니라 쌓인 맥락이었어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260721-my-ai-assistant-moat/">
+<meta property="og:image" content="https://makefield.ai/blog/20260721-my-ai-assistant-moat/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "나만의 AI 비서 만들기, 토큰 40억 개를 갈아넣고 알게 된 것", "datePublished": "2026-07-19", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260721-my-ai-assistant-moat/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-07-19</span></div>
+<h1>나만의 AI 비서 만들기, 토큰 40억 개를 갈아넣고 알게 된 것</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;나만의 AI 비서 만들기, 토큰 40억 개를 갈아넣고 알게 된 것 / 복사해줘도 남 컴퓨터에선 그냥 챗봇이더라고요&quot;" loading="lazy">
+<p>결론부터 말씀드릴게요.<br>
+나만의 AI 비서가 남들 것보다 나를 잘 아는 이유는, 똑똑한 모델이 아니라 <strong>쌓인 맥락</strong>이었어요.</p>
+<p>저는 지난 1년간 AI랑 토큰을 40억 개쯤 주고받았는데, 그 40억 개가 그대로 나만의 AI 비서를 만든 재료였거든요.<br>
+근데 재밌는 건요, 그렇게 만든 걸 남한테 통째로 복사해주면 그 컴퓨터에선 그냥 평범한 챗봇이 돼요.<br>
+왜 그런지 파보다가, 제가 약점이라고 생각한 게 사실은 정반대라는 걸 알았습니다.</p>
+<p>저는 15년차 제어 엔지니어예요.<br>
+수소 설비 제어판넬 설계하고, PLC 코드 짜고, 현장 가서 결선 확인하는 게 일이죠.<br>
+AI를 뉴스로 아는 게 아니라 매일 실무에 굴리다 깨지고 고치는 사람이고요.</p>
+<h2>1. 토큰 40억 개, 책으로 4만 권이래요</h2>
+<p>어느 날 이 숫자를 직접 확인했어요.<br>
+토큰 40억 개. 책으로 치면 4만 권쯤 된다고 하더라고요.<br>
+처음엔 실감이 안 났고, 그다음엔 솔직히 좀 소름 돋았어요.<br>
+내가 AI랑 이만큼을 주고받았다고 싶었거든요.</p>
+<p>돌아보니 저는 제 모든 맥락을 AI한테 갈아넣고 있었어요.</p>
+<pre><code>[내가 AI한테 쌓아온 것]
+작업 이력   : 수백 건 (뭘 언제 왜 그렇게 결정했는지)
+지식 문서   : 500개 넘음 (차단기 선정 근거, 규격, 법규 원문)
+누적 분량   : 약 23만 줄
+합계        : 토큰 40억 개 ≒ 책 4만 권 분량</code></pre>
+<p>제가 누군지, 어떻게 일하는지, 무슨 실수를 반복하는지, 뭘 기준으로 판단하는지까지 전부 기록과 규칙으로 쌓았어요.<br>
+그래서 AI가 저처럼 일해요.<br>
+정확히는, 제 말투나 판단 방식을 잘 알아들어요. &#x27;아&#x27; 하면 &#x27;어&#x27; 하는 거죠.</p>
+<img src="img/02_context.png" alt="맥락 축적 구조 — 왼쪽에 &#x27;작업이력·지식문서·판단규칙&#x27; 세 박스가 화살표로 가운데 &#x27;AI&#x27;로 흘러 들어가고, 오른쪽에 &quot;나처럼 판단하는 AI&quot;라는 결과 박스. 아래에 &quot;똑똑한 모델이 아니라 쌓인 맥락이 만든 차이&quot;라는 라벨" loading="lazy">
+<h2>2. 자비스를 만들고 싶었는데, 상용화가 안 되더라고요</h2>
+<p>이쯤 되니 욕심이 났어요.<br>
+이걸 제품으로 만들고 싶었거든요.<br>
+다들 AI 하면 떠올리는 거 있잖아요, 아이언맨의 자비스 같은 개인 비서요.</p>
+<p>근데 파고들수록 결론은 하나였어요.<br>
+이건 상용화가 안 되겠더라고요.</p>
+<p>왜냐면 이 효율은 제가 토큰 40억 개를 직접 갈아넣어서 나온 거거든요.<br>
+남들은 그 노동을 안 해요. 못 하고요.<br>
+제 설정을 통째로 복사해서 옆자리 컴퓨터에 깔아줘도, 그 책상에선 그냥 빈 챗봇이에요.</p>
+<pre><code>[내 설정을 남한테 복사해주면?]
+넘어가는 것  : 프로그램·설정·규칙 파일
+안 넘어가는 것: 40억 토큰어치 쌓인 &#x27;내 맥락&#x27;
+결과         : 남의 컴퓨터에선 → 평범한 챗봇 (재현 안 됨)</code></pre>
+<p>좋은 걸 만들었는데 나눠줄 수가 없다는 게, 한동안은 그냥 안타까웠어요.</p>
+<img src="img/03_copy.png" alt="왜 복사가 안 되나 — 위쪽은 &#x27;내 컴퓨터&#x27;(설정+40억 토큰 맥락 = 나만의 AI 비서, 초록), 아래쪽은 &#x27;남의 컴퓨터&#x27;(설정만 복사됨, 맥락은 텅 빔 = 그냥 챗봇, 회색). 가운데에 &quot;설정은 복사돼도 맥락은 안 따라간다&quot; 라벨" loading="lazy">
+<h2>3. 근데 논리가 거꾸로였어요</h2>
+<p>곱씹어보니 이상했어요.<br>
+제가 약점이라고 생각한 그 &#x27;재현 불가능&#x27;이 사실은 정반대였던 거예요.<br>
+그게 바로 <strong class="u">해자</strong>거든요.</p>
+<p>해자가 뭐냐면, 성 둘레에 파놓은 물웅덩이예요. 적이 못 넘어오게 막는 거요.<br>
+사업에서는 경쟁자가 쉽게 못 따라오는 우위를 말해요.<br>
+돈 된다 싶으면 다 베끼는 세상에서, 못 베끼게 막아주는 벽이죠.</p>
+<p>제가 토큰 40억 개를 갈아넣어야 했다는 건, 뒤집으면 남이 하루아침에 못 쌓는다는 뜻이에요.<br>
+<strong>약점이 아니라 진입장벽이었던 거예요.</strong></p>
+<h2>4. 세컨브레인 도구가 실패하는 이유도 같았어요</h2>
+<p>여기서 세컨브레인 도구들이 왜 대부분의 사람한테 실패하는지도 보였어요.<br>
+세컨브레인이 뭐냐면, 말 그대로 &#x27;두 번째 뇌&#x27;예요.<br>
+메모든 자료든 머리 밖 한곳에 모아 서로 연결해뒀다가, 필요할 때 꺼내 쓰자는 개념이죠. 옵시디언이나 노션 같은 앱으로 만드는 게 한동안 유행이었고요.</p>
+<p>저도 메모 앱 몇 번 갈아탔거든요.<br>
+시스템 만들고, 폴더 다듬고, 태그 달다가 알았어요.<br>
+도구가 문제가 아니라 <strong>정리하는 노동 자체가 병목</strong>이더라고요.</p>
+<p>그 도구들은 맥락을 쌓고 연결하는 노동을 전부 사용자한테 떠넘겨요.<br>
+백링크 걸고, 태그 달고, 구조 잡고요.<br>
+사람들은 그 노동을 안 해요. 저도 매한가지였고요.</p>
+<p>정리하면 이래요.</p>
+<p>| 구분 | 세컨브레인 도구 | 제 40억 토큰 |<br>
+|---|---|---|<br>
+| 맥락 쌓는 노동 | 사용자에게 전가 | 제가 직접 갈아넣음 |<br>
+| 대부분의 결과 | 며칠 쓰다 방치 | 나처럼 일하는 AI |<br>
+| 그래서 | 실패 | 남이 못 베끼는 해자 |</p>
+<p>도구들이 실패한 건 노동을 전가해서고, 제가 된 건 그 노동을 40억 토큰어치 갈아넣어서예요.<br>
+그럼 진짜 제품의 답은 하나더라고요.<br>
+그 정리 노동을, 사람 대신 AI가 하게 만들면 되는 거예요.</p>
+<img src="img/04_labor.png" alt="노동을 누가 지느냐 — 왼쪽 &#x27;세컨브레인 도구&#x27;(정리 노동 화살표가 사람 쪽으로, 사람은 지쳐 방치, 빨강), 오른쪽 &#x27;지향점&#x27;(정리 노동 화살표가 AI 쪽으로, 사람은 던지기만, 초록). 가운데 &quot;던지는 건 사람, 엮는 건 AI&quot; 라벨" loading="lazy">
+<p>사실 여기서 병이 하나 더 보였어요.<br>
+만드는 건 빨라졌는데 정작 필요할 때 못 찾는 문제요. 그건 결이 달라서 따로 글로 풀어뒀어요.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 그냥 성능 좋은 AI 모델을 쓰면 되는 거 아닌가요?</strong><br>
+모델 성능은 요즘 다들 상향 평준화됐어요. 같은 모델을 써도 결과가 갈리는 건, 그 모델이 나에 대해 뭘 아느냐예요. 제 판단 기준과 반복 실수를 아는 AI랑, 저를 처음 보는 AI는 같은 질문에도 다른 답을 내놓거든요.</p>
+<p><strong>Q. 40억 토큰이나 쌓아야 한다니 부담스러운데요?</strong><br>
+처음부터 그 숫자를 목표로 한 게 아니에요. 매일 일하면서 나온 기록을 안 버리고 쌓았더니 1년 뒤에 그렇게 된 거죠. 중요한 건 총량이 아니라, 대화를 일회용으로 버리느냐 맥락으로 남기느냐예요.</p>
+<h2>정리하면요</h2>
+<p>나만의 AI 비서를 특별하게 만드는 건 모델이 아니라, 내가 갈아넣은 맥락이에요.<br>
+그 맥락은 남이 하루아침에 못 쌓으니까, 복사가 안 되는 게 약점이 아니라 오히려 나만의 벽이 되고요.</p>
+<p>- ☐ 내 판단 기준·반복 실수를 AI가 볼 수 있게 기록하고 있는가<br>
+- ☐ 대화를 일회용으로 버리는가, 맥락으로 쌓고 있는가<br>
+- ☐ 정리·연결하는 노동을 사람이 다 지고 있진 않은가 (그게 도구가 실패하는 지점)</p>
+<p>저는 아직 그 마지막 자동화를 못 풀었어요. 맥락 쌓는 노동을 AI한테 완전히 넘기는 일이요.<br>
+그 삽질 과정은 makefield.ai에 하나씩 남기는 중입니다.</p>
+<p>여러분의 AI는, 여러분을 얼마나 알고 있나요?</p>
+<p>---<br>
+태그: #나만의AI비서 #AI개인화 #AI비서만들기 #AI활용법 #AI맥락 #세컨브레인 #옵시디언 #노션정리 #AI업무자동화 #제조업AI #현장엔지니어 #AI실무 #챗봇활용 #AI개인비서 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224351230863" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
