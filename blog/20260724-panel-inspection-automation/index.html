@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제어판넬 검수 자동화, 도면으로 성적서까지 뽑고도 딱 한 칸은 못 넘겼어요 | 도면 읽는 AI</title>
+<meta name="description" content="먼저 결론부터 적을게요. 제어판넬 검수 자동화는 도면 한 장에서 검사 순서랑 성적서까지 저절로 뽑아낼 수 있어요. 근데 &#x27;합격이냐 불합격이냐&#x27;를 찍는 판정, 그 한 칸만은 끝내 기계한테 못 맡겼습니다. 그리고 그게 실패가 아니라, 오히려 이 시스템이 믿을 만해진 이유였어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260724-panel-inspection-automation/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="제어판넬 검수 자동화, 도면으로 성적서까지 뽑고도 딱 한 칸은 못 넘겼어요 | 도면 읽는 AI">
+<meta property="og:description" content="먼저 결론부터 적을게요. 제어판넬 검수 자동화는 도면 한 장에서 검사 순서랑 성적서까지 저절로 뽑아낼 수 있어요. 근데 &#x27;합격이냐 불합격이냐&#x27;를 찍는 판정, 그 한 칸만은 끝내 기계한테 못 맡겼습니다. 그리고 그게 실패가 아니라, 오히려 이 시스템이 믿을 만해진 이유였어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260724-panel-inspection-automation/">
+<meta property="og:image" content="https://makefield.ai/blog/20260724-panel-inspection-automation/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "제어판넬 검수 자동화, 도면으로 성적서까지 뽑고도 딱 한 칸은 못 넘겼어요", "datePublished": "2026-07-21", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260724-panel-inspection-automation/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-07-21</span></div>
+<h1>제어판넬 검수 자동화, 도면으로 성적서까지 뽑고도 딱 한 칸은 못 넘겼어요</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;제어판넬 검수 자동화, 도면으로 성적서까지 뽑고도 딱 한 칸은 못 넘겼어요 / 자동화의 끝은 &#x27;다 되게&#x27;가 아니라 &#x27;어디서 멈추나&#x27;였어요&quot;" loading="lazy">
+<p>먼저 결론부터 적을게요.<br>
+제어판넬 검수 자동화는 도면 한 장에서 검사 순서랑 성적서까지 저절로 뽑아낼 수 있어요.<br>
+근데 &#x27;합격이냐 불합격이냐&#x27;를 찍는 판정, 그 한 칸만은 끝내 기계한테 못 맡겼습니다.<br>
+그리고 그게 실패가 아니라, 오히려 이 시스템이 믿을 만해진 이유였어요.</p>
+<p>제 본업은 수소 설비 제어예요.<br>
+판넬 설계하고, PLC 로직 짜고, 현장 나가서 커미셔닝하는 일이요.<br>
+AI는 뉴스로 보는 게 아니라, 그 일을 매일 같이 굴리는 도구로 씁니다.</p>
+<h2>1. 판넬 검수, 이게 진짜 노가다였어요</h2>
+<p>제작한 제어판넬은 현장에 나가기 전에 한 번 다 뜯어봐요.<br>
+결선도 펼쳐놓고, 단자 하나하나 짚어가면서 선이 제대로 갔는지 확인하고,<br>
+신호를 넣어보고, 나오는 값을 읽고, 성적서에 손으로 옮겨 적고.</p>
+<pre><code>[예전 검수 방식 — 채널 하나당 반복]
+① 결선도에서 해당 채널 위치 찾기
+② 실제 단자에 신호 인가
+③ 나온 값 눈으로 확인
+④ 합격/불합격 손으로 기록
+→ 채널 200개 넘게, 하나씩 * 반복 반복 반복..</code></pre>
+<p>채널이 200개를 넘어가면 이게 온종일 걸려요.<br>
+게다가 사람이 하는 일이라, 지치면 한두 칸씩 빠뜨리거나 잘못 옮겨 적기도 하고요.<br>
+&quot;이걸 매번 손으로 하는 게 맞나&quot; 싶었던 게 시작이었어요.</p>
+<h2>2. 도면을 &#x27;성적서의 원본&#x27;으로 삼았어요</h2>
+<p>그래서 접근을 바꿨어요.<br>
+검사 항목을 사람이 일일이 타이핑하는 게 아니라, <strong>도면에서 기계가 뽑아내게</strong> 한 거예요.</p>
+<p>CAD 도면 안에는 이미 어느 단자에 무슨 선이 가는지가 다 그려져 있잖아요.<br>
+그걸 프로그램이 읽어서 결선 목록을 만들고,<br>
+그 목록에서 검사할 채널, 검사하는 순서, 성적서 양식까지 자동으로 만들어지게 엮었어요.<br>
+한마디로 <strong class="u">도면이 곧 스펙</strong>이 되는 구조예요.</p>
+<img src="img/02_dwg_ssot.png" alt="도면 하나에서 갈라지는 자동화 — 왼쪽 &#x27;CAD 도면(결선 정보)&#x27; 한 박스에서 화살표 세 갈래로 오른쪽 &#x27;검사 항목 목록&#x27;, &#x27;검사 순서(시퀀스)&#x27;, &#x27;성적서 양식&#x27;으로 뻗어나감. 아래 라벨 &quot;원본은 도면 하나, 나머지는 파생물&quot;" loading="lazy">
+<p>이렇게 해두면 좋은 게, 도면이 바뀌면 검사 항목도 성적서도 같이 바뀌어요.<br>
+사람이 세 군데를 따로 고칠 필요가 없어지는 거죠.<br>
+실제로 아침에 로직 개발을 시작해서, 그날 심야에 실제 판넬에 붙여 표본 채널을 검증하는 데까지 하루 만에 갔어요.<br>
+여기까진 계획대로 잘 굴러갔습니다.</p>
+<h2>3. 가상에선 되던 게, 실물 앞에서 안 됐어요</h2>
+<p>그런데 자동화라는 게 원래 매끄럽게만 안 가더라고요.</p>
+<p>컴퓨터 안에서 만든 &#x27;가상 판넬&#x27;로 돌릴 땐 전부 통과했어요.<br>
+문제는 진짜 쇳덩이 판넬에 물렸을 때였죠.</p>
+<pre><code>[가상에선 멀쩡, 실물에서만 터진 것들]
+· 읽기와 쓰기를 동시에 시켰더니 → 실물에서만 화면이 먹통
+· 멀티미터는 4mA인데 화면엔 7mA로 표시 (신호 눈금이 어긋남)
+· 신호 주소가 한 칸씩 밀려서 엉뚱한 채널을 검사</code></pre>
+<p>특히 첫 번째가 얄미웠어요.<br>
+가상 환경에선 반응이 워낙 빨라서 충돌할 틈이 안 생기는데,<br>
+실제 장비는 응답이 살짝 느리거든요. 그 미세한 지연 구간에서만 딱 터지는 결함이었어요.<br>
+<strong>가상에서 통과했다는 건 &quot;될 것 같다&quot;까지지, &quot;된다&quot;가 아니더라고요.</strong></p>
+<p>이런 건 로그를 붙잡고 실물 앞에서 하나씩 잡는 수밖에 없었어요.<br>
+자동화 코드의 진짜 시험장은 시뮬레이터가 아니라 현장이었던 거죠.</p>
+<h2>4. 그리고 현장에서 진짜로 막힌 지점</h2>
+<p>버그야 잡으면 됐는데, 잡아도 안 되는 벽이 하나 있었어요.<br>
+바로 <strong class="u">판정</strong>이었어요.</p>
+<p>현장 검수에선 실제 계기에 정확한 신호를 넣어보고, 나온 값이 맞는지를 봐야 해요.<br>
+그러려면 &#x27;교정된 계측기&#x27;가 필요하거든요. 눈금이 보증된 기준 장비요.<br>
+근데 같이 일하는 협력업체엔 그 교정 장비가 없었어요.<br>
+교정 안 된 장비로 찍은 값은, 합격 도장의 근거가 될 수가 없어요.</p>
+<img src="img/03_fat_sat.png" alt="신호를 누가 만드나 — 위쪽 &#x27;공장 검수(FAT): 판넬이 스스로 시험 신호 생성 → 자가 검사 가능&#x27;(초록). 아래쪽 &#x27;현장 검수(SAT): 외부 교정 계측기로 실제 계기에 신호 주입 필요 → 교정기 없으면 판정 불가&#x27;(빨강 강조). 가운데 라벨 &quot;신호원이 바뀌는 순간 자동 판정이 막힌다&quot;" loading="lazy">
+<p>결국 절충했어요.<br>
+값을 읽고 기록하고 성적서로 남기는 일은 전부 기계가,<br>
+&quot;이 값이 합격인가&quot;를 찍는 판정은 사람이.<br>
+완전자동이 아니라, <strong>사람이 판정, 기계가 증거 보관</strong>으로 내려앉은 거예요.</p>
+<h2>5. 근데 그게 오히려 정답이었어요</h2>
+<p>한동안은 이게 반쪽짜리 같아서 아쉬웠어요.<br>
+근데 곱씹어보니 정반대였습니다.</p>
+<p>자동화는 &quot;전부 다 되게&quot; 만드는 게 아니라,<br>
+어디까지가 기계 몫이고 어디부터가 사람 몫인지 <strong>선을 긋는 일</strong>이더라고요.</p>
+<p>| 구분 | 기계에 맡긴 것 | 사람이 쥔 것 |<br>
+|---|---|---|<br>
+| 검사 항목 만들기 | 도면에서 자동 추출 | — |<br>
+| 검사 순서·성적서 | 자동 생성 | — |<br>
+| 측정값 기록 | 자동 저장 | — |<br>
+| <strong>합격/불합격 판정</strong> | — | <strong>사람이 결정</strong> |</p>
+<p>도면을 단일 원본으로 삼으니 뒷단이 줄줄이 자동화됐지만,<br>
+물리 계측이랑 안전에 걸린 판정처럼 현실이 막는 지점은 솔직하게 사람에게 남겼어요.<br>
+그랬더니 오히려 이 시스템이 더 신뢰받았어요.<br>
+&quot;기계가 알아서 합격시켰다&quot;보다 &quot;사람이 판정하고 기계가 증거를 빠짐없이 남겼다&quot;가, 검수라는 일에는 훨씬 안심되는 구조니까요.</p>
+<img src="img/04_boundary.png" alt="자동화의 경계선 — 가로선 하나를 긋고 위쪽 &#x27;기계 몫: 반복·기록·집계(지치지 않고 빠뜨리지 않음)&#x27;(파랑), 아래쪽 &#x27;사람 몫: 판정·안전 책임(맥락과 책임이 필요)&#x27;(주황). 선 위에 &quot;자동화 설계 = 이 선을 어디에 긋느냐&quot; 라벨" loading="lazy">
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 판정까지 자동화하면 진짜 안 되나요?</strong><br>
+기술로는 언젠가 되겠죠. 근데 검수의 판정은 &#x27;틀리면 누가 책임지나&#x27;가 걸린 자리예요. 교정된 기준이 확보되고 책임 소재가 정리되기 전엔, 판정을 기계에 넘기는 게 오히려 위험해요. 그래서 지금은 기계가 증거를 완벽히 모으고, 도장은 사람이 찍는 선까지가 안전선이라고 봐요.</p>
+<p><strong>Q. 도면이 부실하면 이 방식은 무너지지 않나요?</strong><br>
+맞아요, 그게 이 구조의 급소예요. 도면이 원본이 되니까 도면이 틀리면 검사도 통째로 틀려요. 그래서 도면에서 뽑은 결선 목록을 실제 판넬이랑 한 번 대조하는 검증 단계를 꼭 앞에 둬요. 원본을 믿되, 원본을 한 번은 의심하는 거죠.</p>
+<p>돌아보면 이번에 제가 배운 건 기술보다 태도에 가까웠어요.<br>
+자동화를 잘한다는 건 다 되게 만드는 게 아니라, 어디서 멈춰야 하는지를 아는 거였거든요.</p>
+<p>지금 반복 작업 하나를 자동화한다고 치면, 여러분은 그 마지막 판단 한 칸을 기계에 넘기실 건가요, 사람이 쥐고 계실 건가요?</p>
+<p>이렇게 실무를 AI랑 자동화하다 깨지고 절충한 기록은 makefield.ai에 남겨두고 있어요.</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224352767109" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
