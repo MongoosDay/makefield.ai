@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 에이전트 여러 개로 복잡한 문제 푸는 법, 혼자 물으면 왜 틀릴까 | 도면 읽는 AI</title>
+<meta name="description" content="결론부터 적어둘게요. 틀리면 대가가 큰 판단 문제는, AI 하나한테 통째로 맡기면 그럴듯한 오답이 나와요. 문제를 여러 조각으로 쪼개서 각 조각을 전담 AI 에이전트한테 맡기고, 나온 답을 서로 반박시키면 그제야 처음의 틀린 방향이 드러납니다. 이걸 AI 에이전트 오케스트레이션">
+<link rel="canonical" href="https://makefield.ai/blog/20260725-ai-agent-orchestration/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 에이전트 여러 개로 복잡한 문제 푸는 법, 혼자 물으면 왜 틀릴까 | 도면 읽는 AI">
+<meta property="og:description" content="결론부터 적어둘게요. 틀리면 대가가 큰 판단 문제는, AI 하나한테 통째로 맡기면 그럴듯한 오답이 나와요. 문제를 여러 조각으로 쪼개서 각 조각을 전담 AI 에이전트한테 맡기고, 나온 답을 서로 반박시키면 그제야 처음의 틀린 방향이 드러납니다. 이걸 AI 에이전트 오케스트레이션">
+<meta property="og:url" content="https://makefield.ai/blog/20260725-ai-agent-orchestration/">
+<meta property="og:image" content="https://makefield.ai/blog/20260725-ai-agent-orchestration/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 에이전트 여러 개로 복잡한 문제 푸는 법, 혼자 물으면 왜 틀릴까", "datePublished": "2026-07-21", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260725-ai-agent-orchestration/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-07-21</span></div>
+<h1>AI 에이전트 여러 개로 복잡한 문제 푸는 법, 혼자 물으면 왜 틀릴까</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 에이전트 여러 개로 복잡한 문제 푸는 법 / 혼자 물으면 그럴듯한 오답이 오더라고요&quot;" loading="lazy">
+<p>결론부터 적어둘게요.<br>
+틀리면 대가가 큰 판단 문제는, AI 하나한테 통째로 맡기면 그럴듯한 오답이 나와요.<br>
+문제를 여러 조각으로 쪼개서 각 조각을 전담 AI 에이전트한테 맡기고, 나온 답을 서로 반박시키면 그제야 처음의 틀린 방향이 드러납니다.<br>
+이걸 <strong>AI 에이전트 오케스트레이션</strong>이라고 불러요. 이 글은 그걸 실제 업무에 써본 기록이에요.</p>
+<p>사실 얼마 전까지 저도 AI한테 큰 질문을 그냥 통째로 던졌어요.<br>
+답이 매끄럽게 나오면 &quot;오 되네&quot; 하고 넘어갔고요.<br>
+그러다 제 판단을 통째로 뒤집는 일을 한번 겪고 나서 방식을 바꿨습니다.</p>
+<p>저는 15년차 제어 엔지니어예요.<br>
+수소 설비 제어판넬 설계하고, PLC 코드 짜고, 현장서 결선 확인하는 게 일이죠.<br>
+요즘은 이렇게 판단이 걸린 무거운 일까지 AI를 붙여서 풉니다.</p>
+<h2>1. 큰 숙제를 통째로 물었더니 그럴듯한 오답이 왔어요</h2>
+<p>받은 숙제는 이거였어요.<br>
+대형 설비에 큰돈을 넣을지 말지, 그 설비가 만들어내는 제품 원가가 목표까지 내려가느냐.</p>
+<p>제 첫 접근은 단순했어요.<br>
+&quot;부품값(재료비)을 깎으면 원가가 내려가겠지.&quot;<br>
+제 본업이 원래 부품 고르고 판넬 꾸리는 일이다 보니, 자연스럽게 그쪽부터 손이 갔어요.<br>
+며칠을 부품 단가표랑 씨름하면서, 어디를 어떻게 깎으면 몇 퍼센트가 빠지는지 정리한 검토 의견서를 한 장 만들었어요. 나름 그럴듯했죠.</p>
+<p>근데 다 만들어놓고 뭔가 걸렸어요.<br>
+이게 정말 핵심 지렛대가 맞나. 내가 익숙하고 편한 자리만 파고 있는 건 아닌가.<br>
+그 찜찜함이 이번엔 그냥 안 넘어가지더라고요.</p>
+<h2>2. 그래서 AI 하나 대신 아홉을 붙였어요</h2>
+<p>이번엔 문제를 통째로 안 물었어요.<br>
+서로 안 겹치는 조각으로 먼저 쪼갰어요.</p>
+<p>- 이 원가는 실제로 뭘로 구성되나<br>
+- 조직에서 우리가 진짜 통제할 수 있는 건 뭔가<br>
+- 현장 실측 데이터는 뭐라고 말하나<br>
+- 내가 쓴 그 의견서를 적으로 놓고 공격하면 어디가 뚫리나</p>
+<p>그리고 각 조각에 전담 에이전트를 하나씩 붙여서 동시에 조사시켰어요.<br>
+핵심 주장 몇 개는 일부러 <strong class="u">반박 전담</strong> 에이전트한테 &quot;이거 틀렸다고 쳐봐&quot;로 공격시켰고요.</p>
+<pre><code>workflow: 문제 다시 정의 (에이전트 9)
+  ├ 병렬 리서치 5축
+  │   (원가구조 / 통제가능성 / 현장 실측 / 공개 문헌 / 기존안 감사)
+  ├ 적대적 교차검증 3건 (내 주장 → 반박 전담 에이전트)
+  └ 종합
+소요 약 16분 / 처리량 84만 토큰</code></pre>
+<img src="img/02_split.png" alt="혼자 묻기 vs 쪼개서 묻기 — 왼쪽 &#x27;AI 하나에 통째로 질문 → 그럴듯한 한 방향 답(내 프레임 강화)&#x27;(회색), 오른쪽 &#x27;AI 여러 개로 분해 → 축별 답 → 서로 반박 → 프레임 교정&#x27;(파랑 강조). 아래 라벨 &quot;질문을 쪼갠 만큼 사각지대가 줄어든다&quot;" loading="lazy">
+<h2>3. 결과: 내가 만든 의견서를 내가 반려했어요</h2>
+<p>분해해보니 숫자가 이렇게 나왔어요.</p>
+<pre><code>[같은 문제, 접근을 바꾸니]
+처음 프레임(부품값 깎기)  : 원가 효과 0.3% 미만   ← 헛다리
+다시 쪼갠 원가 구조
+   · 전력비    : 원가의 7~9할을 지배
+   · 설비 투자비 : 8% 안팎
+   · 부품값     : 30% 깎아도 원가엔 소수점 수준
+→ 지렛대가 처음부터 틀렸다</code></pre>
+<p>전력비가 이런 설비의 제품 원가를 지배한다는 건 공개된 산업 문헌에서도 확인되는 사실이에요(2026-07 기준).<br>
+제가 공들여 만든 부품 절감 의견서는, 방향 자체가 틀린 문서였던 거죠.<br>
+그래서 스스로 반려했습니다.</p>
+<p>아깝지 않았냐고요? 아까웠어요..<br>
+근데 틀린 방향으로 몇 주를 더 갔으면 그게 훨씬 아팠을 거예요.</p>
+<p>왜 이런 일이 생기냐면요.<br>
+통째로 물으면 AI는 내가 던진 프레임(부품값) 안에서 제일 그럴듯한 답을 골라줘요.<br>
+프레임 자체를 의심하진 않아요.<br>
+근데 &quot;원가가 실제로 뭘로 되어 있나&quot;를 딴 에이전트한테 따로 물으면, 내 프레임 밖의 사실(전력비)이 튀어나오는 거예요.</p>
+<img src="img/03_adversarial.png" alt="적대적 검증 — 가운데 &#x27;내 결론&#x27;을 두고, 왼쪽 &#x27;주장 에이전트: 이게 맞다&#x27;, 오른쪽 &#x27;반박 에이전트: 이래서 틀렸다&#x27;가 서로 화살표로 충돌. 아래 라벨 &quot;공격을 견딘 주장만 채택&quot;" loading="lazy">
+<h2>4. 그대로 따라 할 수 있게 4단계로 정리하면</h2>
+<p><strong>전제조건</strong>: 서브에이전트나 워크플로를 돌릴 수 있는 AI 도구(2026-07 기준 여러 종 나와 있어요), 그리고 문제를 글로 적어둔 자료 한 뭉치.</p>
+<p>1. <strong>분해</strong> — 큰 질문을 서로 안 겹치는 하위 질문 4~6개로 쪼갠다. &quot;원가 구조? 통제 범위? 현장 데이터? 내 기존안의 약점?&quot;<br>
+2. <strong>병렬 배정</strong> — 하위 질문마다 전담 에이전트 하나씩. 동시에 조사시킨다.<br>
+3. <strong>적대적 검증</strong> — 핵심 결론은 반드시 반박 전담 에이전트한테 공격시킨다. 견딘 것만 채택.<br>
+4. <strong>종합</strong> — 조각 답을 다시 하나로 모아 처음 프레임이 맞았는지 재판정한다.</p>
+<p><strong>확인 방법</strong>: 분해가 제대로 됐다면 종합 단계에서 <strong>처음 생각이 흔들립니다.</strong><br>
+처음 답이 그대로 확인만 되고 끝나면, 분해가 얕았던 거예요.<br>
+나를 전혀 안 불편하게 하는 오케스트레이션은 대개 혼자 물은 거랑 결과가 똑같아요.</p>
+<p>저는 3단계(적대 검증)를 처음엔 대충 했다가, 반박 에이전트가 슬쩍 물러서길래 다시 세게 붙였더니 그제야 프레임이 뒤집혔어요.</p>
+<img src="img/04_flow.png" alt="4단계 흐름 — &#x27;① 분해&#x27; → &#x27;② 병렬 배정&#x27; → &#x27;③ 적대적 검증&#x27; → &#x27;④ 종합&#x27; 가로 흐름. ③에서 위로 &#x27;반박 실패 시 폐기&#x27; 되돌림 화살표. 아래 라벨 &quot;핵심은 ③, 여기서 걸러야 오답이 안 남는다&quot;" loading="lazy">
+<p>| 방식 | AI 하나에 통째로 | 에이전트 여러 개로 분해 |<br>
+|---|---|---|<br>
+| 답 속도 | 빠름 | 느림(십수 분) |<br>
+| 답 모양 | 매끄러움 | 거칠지만 다층적 |<br>
+| 내 프레임 | 강화됨 | 의심·교정됨 |<br>
+| 틀린 방향 | 못 잡음 | 드러남 |</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 에이전트를 꼭 아홉 개나 써야 하나요?</strong><br>
+숫자가 핵심이 아니에요. 하위 질문 수만큼이면 돼요. 넷이면 넷, 여섯이면 여섯. 중요한 건 개수가 아니라 &quot;서로 안 겹치게 쪼갰나&quot;랑 &quot;반박을 붙였나&quot;예요. 저도 다음엔 더 적게 쓸 것 같아요.</p>
+<p><strong>Q. 매번 이렇게 오래 걸리게 하나요?</strong><br>
+아뇨. 단순한 질문은 그냥 하나한테 물어요. 이 방식은 틀리면 대가가 큰 판단에만 씁니다. 큰돈이 걸렸거나, 방향을 잘못 잡으면 몇 주가 날아가는 문제요. 비용이 아니라 보험이라고 생각하면 마음이 편해요.</p>
+<p>정리하면, AI를 잘 쓴다는 건 좋은 질문 하나를 던지는 게 아니라 하나의 큰 질문을 여러 조각으로 잘 쪼개는 일에 가까웠어요.<br>
+그리고 그 조각들끼리 싸움을 붙이는 거요.</p>
+<p>지금 AI한테 통째로 물어서 &quot;그럴듯한데 왠지 찜찜한&quot; 답을 받아둔 문제, 하나쯤 있지 않으세요?</p>
+<p>이렇게 AI를 실무 판단에 붙여보고 깨진 과정은 makefield.ai에 하나씩 옮겨 적고 있습니다.</p>
+<p>---<br>
+태그: #AI에이전트 #AI에이전트오케스트레이션 #멀티에이전트 #AI문제해결 #AI업무자동화 #AI실무 #AI협업 #서브에이전트 #AI워크플로 #의사결정AI #제조업AI #현장엔지니어 #AI활용법 #AI분석 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224353567511" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
