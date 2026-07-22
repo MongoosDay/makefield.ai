@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 서비스 만들기, 화려한 화면부터 베끼면 십중팔구 헛수고예요 | 도면 읽는 AI</title>
+<meta name="description" content="먼저 결론부터 말할게요. AI 서비스 만들기를 시작할 때, 유튜브에서 본 화려한 화면부터 따라 그리면 대개 시간을 버려요. 그 멋진 화면은 껍데기고, 진짜 훔쳐야 할 건 그 뒤에 숨은 방법이거든요. 저는 이걸 며칠 헤매고 나서야 알았어요. 손이 먼저 나갔다가 크게 돌아온 이야기">
+<link rel="canonical" href="https://makefield.ai/blog/20260728-ai-service-tool-vs-method/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 서비스 만들기, 화려한 화면부터 베끼면 십중팔구 헛수고예요 | 도면 읽는 AI">
+<meta property="og:description" content="먼저 결론부터 말할게요. AI 서비스 만들기를 시작할 때, 유튜브에서 본 화려한 화면부터 따라 그리면 대개 시간을 버려요. 그 멋진 화면은 껍데기고, 진짜 훔쳐야 할 건 그 뒤에 숨은 방법이거든요. 저는 이걸 며칠 헤매고 나서야 알았어요. 손이 먼저 나갔다가 크게 돌아온 이야기">
+<meta property="og:url" content="https://makefield.ai/blog/20260728-ai-service-tool-vs-method/">
+<meta property="og:image" content="https://makefield.ai/blog/20260728-ai-service-tool-vs-method/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 서비스 만들기, 화려한 화면부터 베끼면 십중팔구 헛수고예요", "datePublished": "2026-07-23", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260728-ai-service-tool-vs-method/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-07-23</span></div>
+<h1>AI 서비스 만들기, 화려한 화면부터 베끼면 십중팔구 헛수고예요</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 서비스 만들기, 화려한 화면부터 베끼면 십중팔구 헛수고예요 / 유튜브에서 본 그 멋진 화면, 사실 껍데기였어요&quot;" loading="lazy">
+<p>먼저 결론부터 말할게요.<br>
+<strong>AI 서비스 만들기</strong>를 시작할 때, 유튜브에서 본 화려한 화면부터 따라 그리면 대개 시간을 버려요.<br>
+그 멋진 화면은 껍데기고, 진짜 훔쳐야 할 건 그 뒤에 숨은 <strong class="u">방법</strong>이거든요.<br>
+저는 이걸 며칠 헤매고 나서야 알았어요. 손이 먼저 나갔다가 크게 돌아온 이야기예요.</p>
+<p>제조 현장에서 15년간 제어 설비를 만들어 온 엔지니어예요.<br>
+수소 설비 판넬 설계하고, PLC 로직 짜고, 현장 나가 결선 확인하는 게 주업이고요.<br>
+요즘은 그 일 상당 부분에 AI를 붙여 씁니다.</p>
+<h2>1. 유튜브에서 그 영상을 보고 손이 근질거렸어요</h2>
+<p>어느 날 밤에 화면 하나에 꽂혔어요.<br>
+AI가 일을 제대로 했는지 옆에서 감시하고, 잘했는지 못했는지 점수까지 매겨주는 플랫폼 영상이었어요.<br>
+버튼이며 그래프며 대시보드가 어찌나 그럴듯하던지, 딱 &quot;완성된 제품&quot; 느낌이었죠.</p>
+<p>마침 저는 회사에서 까다로운 원가 추정 과제를 하나 맡고 있었어요.<br>
+답이 딱 떨어지지 않고, 여러 가정을 놓고 이게 맞나 저게 맞나 계속 저울질해야 하는 일이요.<br>
+영상 속 그 화면을 보자마자 생각했어요.<br>
+&quot;저걸 만들어서 내 과제에 붙이면, AI가 뽑은 추정치를 자동으로 채점하고 검증해주겠는데?&quot;</p>
+<p>그날 저는 거의 만들 뻔했어요.<br>
+화면 레이아웃부터 머릿속에 그리고 있었거든요. 이게 바로 함정의 시작이었습니다.</p>
+<h2>2. 만들려고 뜯어보니, 화면은 껍데기더라고요</h2>
+<p>다행히 바로 손대진 않고, AI랑 같이 그 영상을 통째로 뜯어봤어요.<br>
+&quot;이 사람이 실제로 만든 게 뭐냐, 어디에 제일 공을 들였냐&quot;를 물으면서요.</p>
+<p>그랬더니 좀 허무한 답이 나왔어요.<br>
+제 눈을 사로잡았던 그 화면, 버튼, 그래프.. 그건 맨 마지막에 얹은 얇은 껍데기였어요.<br>
+그 사람이 시간을 쏟아부은 곳은 화면이 전혀 아니었거든요.</p>
+<img src="img/02_shell_vs_core.png" alt="화려한 데모의 겉과 속 — 위쪽 큰 박스 &quot;내 눈에 보인 것: 대시보드·버튼·그래프(껍데기)&quot;(회색), 그 아래 감춰진 박스 &quot;실제 만든 것: 문제를 어떻게 정의했나 + 뭘로 채점했나(알맹이)&quot;(초록 강조). 화살표 라벨 &quot;시간의 90%는 아래에 들어갔다&quot;" loading="lazy">
+<p>생각해보면 당연했어요.<br>
+설비도 그렇잖아요. 번쩍이는 HMI 터치스크린은 마지막에 그리는 거고,<br>
+진짜 어려운 건 그 밑에서 도는 제어 로직과 인터록 설계예요.<br>
+화면만 예쁘게 베낀 판넬은 버튼을 눌러도 아무 일도 안 일어나죠.</p>
+<h2>3. 진짜 판 건 &#x27;문제를 어떻게 정의했나&#x27;였어요</h2>
+<p>껍데기를 걷어내니 알맹이가 두 개 남았어요.</p>
+<p>하나는 <strong>문제 정의</strong>였어요.<br>
+&quot;AI가 잘했는지 판단한다&quot;는 두루뭉술한 말을, &quot;무엇을, 어떤 기준으로, 어디까지 맞으면 통과&quot;인지로 아주 잘게 쪼개 놓은 거예요.<br>
+다른 하나는 <strong>채점 기준</strong>이었어요.<br>
+사람이 매번 눈으로 보지 않아도 되게, 합격·불합격을 가르는 잣대를 미리 문장으로 박아둔 거죠.</p>
+<pre><code>[내가 베끼려던 것 vs 실제로 훔쳐야 했던 것]
+
+  베끼려던 것 :  대시보드 화면 · 버튼 · 점수 그래프   → 껍데기
+  훔쳤어야 할 것 :  ① 문제를 잘게 쪼갠 정의
+                   ② 합격/불합격을 가르는 채점 기준   → 알맹이
+
+  껍데기부터 지으면 → &quot;만드는 법&quot;은 배워도 &quot;왜 되는지&quot;는 못 배움</code></pre>
+<p>여기서 뒤통수를 맞았어요.<br>
+만약 제가 화면부터 만들었으면, 그 영상이 준 진짜 교훈을 <strong class="u">정반대</strong>로 실천할 뻔한 거예요.<br>
+그 사람이 &quot;화면 말고 문제정의에 시간을 쏟아라&quot;라고 온몸으로 보여줬는데,<br>
+저는 그걸 보고 &quot;오, 화면 멋지다, 화면부터 만들자&quot;로 알아들었던 거니까요.</p>
+<h2>4. 그래서 질문을 바꿨어요</h2>
+<p>그 뒤로 <strong>AI 서비스 만들기</strong>에 손이 근질거릴 때마다, 저는 저한테 이걸 먼저 물어요.<br>
+&quot;나 지금 저 도구를 갖고 싶은 거야, 아니면 저 방법을 쓰고 싶은 거야?&quot;</p>
+<p>이 둘은 완전히 다른 욕구예요.<br>
+도구를 갖고 싶은 건 소유욕에 가까워요. 내 화면, 내 대시보드, 남한테 보여줄 결과물이요.<br>
+방법을 쓰고 싶은 건 문제를 풀고 싶은 거고요.</p>
+<p>제 진짜 목적은 원가 추정 과제를 잘 끝내는 거였지, 대시보드를 갖는 게 아니었어요.<br>
+그래서 화면은 한 줄도 안 만들었어요.<br>
+대신 그 영상에서 뽑아낸 방법 두 개, 그러니까 문제를 잘게 쪼개는 법과 채점 기준을 세우는 법만 가져다가,<br>
+제 원가 추정 과정에 그대로 적용했어요. 화면 없이, 그냥 문서와 규칙으로요.</p>
+<img src="img/03_two_paths.png" alt="두 갈래 길 — 출발점 &quot;유튜브에서 멋진 AI를 봤다&quot;에서 두 화살표. 왼쪽 &quot;도구를 갖고 싶다 → 화면부터 따라 짓기 → 며칠 쓰고 반쯤 완성&quot;(빨강), 오른쪽 &quot;방법을 쓰고 싶다 → 문제정의·채점기준만 훔치기 → 내 과제에 바로 적용&quot;(초록 강조). 아래 라벨 &quot;목적이 화면이면 왼쪽, 목적이 문제풀이면 오른쪽&quot;" loading="lazy">
+<p>| 물어볼 것 | 도구를 갖고 싶다 | 방법을 쓰고 싶다 |<br>
+|---|---|---|<br>
+| 목적 | 결과물(화면) 소유 | 문제 해결 |<br>
+| 먼저 하는 일 | 화면부터 따라 그림 | 문제정의·채점기준 추출 |<br>
+| 결과 | 반쯤 만들다 지침 | 오늘 바로 써먹음 |</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 그래도 눈에 보이는 화면이 있어야 팀에 보여주고 설득하죠?</strong><br>
+맞아요, 보여줄 물건이 필요한 순간은 분명 있어요. 근데 순서가 중요해요. 방법으로 먼저 문제가 풀리는 걸 확인한 다음에 화면을 얹으면, 그 화면은 진짜 알맹이를 담는 그릇이 돼요. 반대로 화면부터 만들면, 정작 안에 담을 알맹이가 없어서 빈 껍데기를 붙들고 있게 되더라고요. 저는 &quot;먼저 풀고, 필요하면 나중에 보여준다&quot;로 순서를 고정했어요.</p>
+<p><strong>Q. 영상만 보고 그 안의 방법을 어떻게 뽑아내나요?</strong><br>
+저는 영상을 통째로 AI한테 먹였어요. 화면 설명 말고 &quot;이 사람이 시간을 어디에 쏟았고, 핵심 판단이 뭐였는지&quot;를 캐물었죠. 소비하듯 한 번 보고 넘기면 화면만 남는데, 이렇게 <strong class="u">역설계</strong>하듯 뜯으면 방법이 남아요. 영상 한 편을 소비가 아니라 자산으로 바꾸는 셈이에요.</p>
+<p>돌아보면 제가 배운 건 그 플랫폼 만드는 기술이 아니었어요.<br>
+&quot;멋진 걸 보면 그 겉이 아니라 속에서 뭘 했는지를 봐라&quot;는 눈이었죠.<br>
+현장에서 남의 설비를 벤치마킹할 때도 똑같아요. 겉모양 베끼면 흉내고, 설계 의도를 읽으면 내 것이 돼요.</p>
+<p>혹시 요즘 유튜브나 뉴스에서 멋진 AI를 보고 &quot;나도 저거 만들래&quot; 싶으셨다면, 딱 한 번만 자문해 보세요.<br>
+나는 저 화면을 갖고 싶은 걸까, 저 방법으로 내 문제를 풀고 싶은 걸까.<br>
+이렇게 만들다 돌아오고, 뜯어보고 훔친 기록들은 makefield.ai에 하나씩 남겨두고 있어요.</p>
+<p>---<br>
+태그: #AI서비스만들기 #AI프로젝트시작 #AI따라만들기 #AI만들고싶을때 #AI데모 #AI자동화 #현장엔지니어 #제조업AI #빌드과잉 #AI실무 #AI프롬프트 #문제정의 #AI활용법 #엔지니어AI #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224355035185" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
