@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 자료조사, 목록부터 뽑으라 하면 못 씁니다 (근거부터 시키세요) | 도면 읽는 AI</title>
+<meta name="description" content="제조업에서 만들던 시제품이 양산으로 넘어가는 순간, 난데없이 &#x27;검사장비&#x27;라는 숙제가 툭 떨어져요. 출하 전에 제품을 시험할 장비를 갖춰야 하는데, 뭘 사야 하는지부터 막막하더라고요. 그래서 저는 AI한테 물었습니다. &quot;제어판넬 출하검사 장비 목록 좀 뽑아줘.&quot; 답은 5초 만에 ">
+<link rel="canonical" href="https://makefield.ai/blog/20260727-ai-research-evidence-first/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 자료조사, 목록부터 뽑으라 하면 못 씁니다 (근거부터 시키세요) | 도면 읽는 AI">
+<meta property="og:description" content="제조업에서 만들던 시제품이 양산으로 넘어가는 순간, 난데없이 &#x27;검사장비&#x27;라는 숙제가 툭 떨어져요. 출하 전에 제품을 시험할 장비를 갖춰야 하는데, 뭘 사야 하는지부터 막막하더라고요. 그래서 저는 AI한테 물었습니다. &quot;제어판넬 출하검사 장비 목록 좀 뽑아줘.&quot; 답은 5초 만에 ">
+<meta property="og:url" content="https://makefield.ai/blog/20260727-ai-research-evidence-first/">
+<meta property="og:image" content="https://makefield.ai/blog/20260727-ai-research-evidence-first/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 자료조사, 목록부터 뽑으라 하면 못 씁니다 (근거부터 시키세요)", "datePublished": "2026-07-22", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260727-ai-research-evidence-first/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-07-22</span></div>
+<h1>AI 자료조사, 목록부터 뽑으라 하면 못 씁니다 (근거부터 시키세요)</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 자료조사, 목록부터 뽑으라 하면 못 씁니다 / 장비 목록만 달랬다가, 규격 조항부터 뒤지게 하니 달라졌어요&quot;" loading="lazy">
+<p>제조업에서 만들던 시제품이 양산으로 넘어가는 순간, 난데없이 &#x27;검사장비&#x27;라는 숙제가 툭 떨어져요.<br>
+출하 전에 제품을 시험할 장비를 갖춰야 하는데, 뭘 사야 하는지부터 막막하더라고요.<br>
+그래서 저는 AI한테 물었습니다. &quot;제어판넬 출하검사 장비 목록 좀 뽑아줘.&quot;<br>
+답은 5초 만에 나왔는데, 그 목록으론 결재 한 장 못 올렸어요.<br>
+<strong>AI 자료조사</strong>는 이렇게 &#x27;목록부터&#x27; 시키면 못 씁니다. 순서를 뒤집어 <strong class="u">근거부터</strong> 시켜야 실무에서 살아남더라고요.</p>
+<p>수소 플랜트 제어판넬을 15년째 만지는 사람입니다.<br>
+판넬 설계하고, PLC 로직 짜고, 현장 나가 결선 확인하는 게 일이고요.<br>
+요즘은 만들던 설비를 양산으로 넘기는 단계라, 그 잡일의 절반쯤을 AI랑 같이 하고 있어요.</p>
+<h2>1. &quot;장비 목록 뽑아줘&quot;가 왜 함정이었냐면</h2>
+<p>AI가 뽑아준 첫 목록은 그럴듯했어요.<br>
+내전압 시험기, 절연저항계, 접지저항계, 열화상 카메라..<br>
+검색만 해도 나올 법한, 딱 교과서적인 리스트였죠.</p>
+<p>문제는 그다음이었어요.<br>
+이걸 왜 사야 하냐고 물으면 답이 없는 거예요.<br>
+장비 이름만 있고 &quot;이게 어느 규격, 어느 조항 때문에 필요한지&quot;가 통째로 비어 있었거든요.</p>
+<p>양산 검사장비는 취향으로 사는 게 아니에요.<br>
+제품이 통과해야 하는 인증·규격이 &quot;이 시험을 하라&quot;고 정해두면, 그 시험을 하려고 사는 거죠.<br>
+그러니 근거 없는 장비 목록은 결재판 앞에서 그냥 종잇조각이었어요.</p>
+<h2>2. 그래서 순서를 통째로 뒤집었어요</h2>
+<p>이번엔 이렇게 다시 시켰습니다.<br>
+&quot;장비 말고, 이 제어판넬이 통과해야 하는 규격 조항부터 뒤져줘. 장비는 그다음이야.&quot;</p>
+<p>그러자 결과의 뼈대가 바뀌었어요.<br>
+수소 설비 쪽 시설 기준(KGS AH271)과 저압 판넬 어셈블리 국제규격(IEC 61439-2)을 근거로 깔고,<br>
+그 규격이 요구하는 시험이 먼저 나오고,<br>
+그 시험을 하려면 어떤 장비가 필요한지가 뒤따라 나오는 구조였어요.</p>
+<pre><code>[근거부터 시킨 결과 — 규격 → 시험 → 장비]
+규격 조항 (KGS AH271 / IEC 61439-2)
+   └ 요구 시험
+        ├ 내전압·절연내력    → 안전규격(내전압) 시험기
+        ├ 절연저항          → 고압 절연저항계(메거)
+        ├ 접지 연속성        → 접지저항계
+        ├ 계측 정확도 담보    → 정밀 캘리브레이터
+        ├ 부하·오동작 시험    → 가변 전원
+        └ 발열 점검          → 열화상 카메라</code></pre>
+<p>똑같은 AI인데, 물어보는 순서 하나 바꿨다고 쓸 수 있는 문서가 나온 거예요.</p>
+<img src="img/02_order.png" alt="결론부터 vs 근거부터 비교 — 왼쪽 &quot;장비 목록부터&quot; 물으면 근거 없는 나열(빨강), 오른쪽 &quot;규격 조항부터&quot; 물으면 조항→시험→장비로 정렬된 결과(초록)" loading="lazy">
+<h2>3. 근거가 붙으니 &#x27;살아있는 목록&#x27;이 됐어요</h2>
+<p>이제 장비 목록 옆에는 저마다 &quot;이건 이 시험 때문, 그 시험은 이 조항 때문&quot;이 딱 붙어 있었어요.<br>
+결재를 올리는 사람 입장에선 이게 전부예요.<br>
+&quot;왜 이 돈을 쓰냐&quot;에 규격 조항으로 답이 되니까요.</p>
+<p>여기서 멈추지 않고 딸려 나온 게 더 있었어요.<br>
+이 장비들을 놓고 시험할 공간(작은 시험실 하나, 3상 380V 전원),<br>
+그리고 처음 갖추는 데 드는 수천만 원대 1차 투자 규모까지요.<br>
+장비 목록 하나 물었을 뿐인데, 근거를 깔았더니 &#x27;검사 설비 구축 계획&#x27; 한 벌이 통째로 선 거죠.</p>
+<img src="img/03_mapping.png" alt="규격 조항 → 요구 시험 → 시험 장비 → 시험실·투자로 이어지는 매핑 흐름 (세로 단계 박스)" loading="lazy">
+<h2>4. 이게 검사장비만의 얘기가 아니더라고요</h2>
+<p>곱씹어보니 이건 장비 살 때만 쓰는 요령이 아니었어요.<br>
+AI 자료조사를 시키는 방식 자체의 문제였죠.</p>
+<p>AI는 &quot;결론을 만들어줘&quot;라고 하면 정말 그럴듯한 결론을 잘 만들어줘요.<br>
+근데 실무에서 그 <strong class="u">그럴듯함이 함정</strong>이에요.<br>
+현장에서 필요한 건 매끈한 결론이 아니라, &quot;왜 그런지 되짚을 수 있는 근거&quot;거든요.</p>
+<p>PLC 배울 때랑 똑같더라고요.<br>
+매뉴얼의 결론만 외운 사람은 현장에서 상황이 조금만 틀어져도 무너져요.<br>
+왜 그렇게 동작하는지 원리를 아는 사람은 안 무너지고요.<br>
+AI한테 일을 시킬 때도 그 원리 자리에 &#x27;근거&#x27;를 넣어주는 거예요.</p>
+<p>| 시키는 순서 | 나오는 것 | 실무에서 |<br>
+|---|---|---|<br>
+| 결론(목록)부터 | 그럴듯한 리스트 | 근거 없어 결재 반려 |<br>
+| 근거(규격)부터 | 조항 → 시험 → 장비 | 그대로 문서로 통과 |</p>
+<p>그래서 요즘 제 규칙은 하나예요.<br>
+결론을 먼저 시키지 않는다.<br>
+규격이든 데이터시트든 원문 근거부터 뒤지게 하고, 결론은 그 근거에서 스스로 따라 나오게 둔다.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 근거부터 시키면 시간이 더 걸리지 않나요?</strong><br>
+처음 몇 분은 더 걸려요. 근데 결론부터 받은 목록은 결국 &quot;이거 왜 필요해?&quot;에서 다시 처음으로 돌아가요. 그 왕복까지 치면 근거부터가 훨씬 빨라요. 저는 반나절 헤맬 걸 이 순서로 한 번에 끝냈어요.</p>
+<p><strong>Q. AI가 규격을 틀리게 인용하면요?</strong><br>
+그건 여전히 사람 몫이에요. AI가 뽑은 조항은 반드시 원문으로 한 번 확인해요. 근거부터 시키는 이유가 사실 이거예요. 결론만 받으면 뭘 검증해야 할지도 모르는데, 근거를 받으면 그 근거만 대조하면 되거든요.</p>
+<p>양산으로 넘어가는 길목마다 &quot;뭘 사야 하지, 근거는 뭐지&quot; 하는 숙제가 계속 떨어져요.<br>
+그때마다 AI 자료조사에 답부터 시키지 않고 근거부터 시키는 습관 하나가, 결재판 앞에서 저를 여러 번 살렸습니다.</p>
+<p>다음엔 이렇게 갖춘 시험 장비로 실제 출하검사 시퀀스를 어떻게 짰는지 풀어볼게요.<br>
+비슷하게 시제품을 양산으로 넘기는 중이시면, 제가 이 과정에서 헤맨 기록을 [makefield.ai](<a href="https://makefield.ai)에" target="_blank" rel="noopener">https://makefield.ai)에</a> 정리해두고 있으니 슬쩍 참고하셔도 좋아요.</p>
+<p>---<br>
+태그: #AI자료조사 #AI에게자료조사시키는법 #AI규격검토 #양산검사장비 #출하검사장비 #제어판넬검사 #AI활용법 #AI실무 #현장엔지니어 #제조업AI #AI프롬프트 #엔지니어AI #IEC61439 #검사설비구축 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224354670904" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
