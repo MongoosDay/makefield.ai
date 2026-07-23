@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>노션 자동화, 몇 달 만에 껐어요 — 성공률 100%인데 아무도 안 봐서요 | 도면 읽는 AI</title>
+<meta name="description" content="먼저 결론부터 말씀드릴게요. 잘 돌아가는 자동화라고 해서 다 살려둘 이유는 없더라고요. 저는 몇 달 동안 성공률 100%로 멀쩡히 돌던 노션 자동화를 얼마 전에 통째로 꺼버렸습니다. 이유가 좀 어이없어요. 잘 돌긴 하는데, 정작 그걸 만든 저조차 안 읽고 있었거든요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260729-notion-automation-off/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="노션 자동화, 몇 달 만에 껐어요 — 성공률 100%인데 아무도 안 봐서요 | 도면 읽는 AI">
+<meta property="og:description" content="먼저 결론부터 말씀드릴게요. 잘 돌아가는 자동화라고 해서 다 살려둘 이유는 없더라고요. 저는 몇 달 동안 성공률 100%로 멀쩡히 돌던 노션 자동화를 얼마 전에 통째로 꺼버렸습니다. 이유가 좀 어이없어요. 잘 돌긴 하는데, 정작 그걸 만든 저조차 안 읽고 있었거든요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260729-notion-automation-off/">
+<meta property="og:image" content="https://makefield.ai/blog/20260729-notion-automation-off/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "노션 자동화, 몇 달 만에 껐어요 — 성공률 100%인데 아무도 안 봐서요", "datePublished": "2026-07-23", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260729-notion-automation-off/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-07-23</span></div>
+<h1>노션 자동화, 몇 달 만에 껐어요 — 성공률 100%인데 아무도 안 봐서요</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;노션 자동화, 몇 달 만에 껐어요 / 성공률 100%인데 아무도 안 봐서요&quot;" loading="lazy">
+<p>먼저 결론부터 말씀드릴게요.<br>
+잘 돌아가는 자동화라고 해서 다 살려둘 이유는 없더라고요.<br>
+저는 몇 달 동안 성공률 100%로 멀쩡히 돌던 <strong>노션 자동화</strong>를 얼마 전에 통째로 꺼버렸습니다.<br>
+이유가 좀 어이없어요. 잘 돌긴 하는데, 정작 그걸 만든 저조차 안 읽고 있었거든요.</p>
+<p>제 본업은 수소 설비 제어예요 — 판넬 설계, PLC 로직, 현장 커미셔닝.<br>
+AI는 그 일을 굴리는 도구로 몇 년째 쓰고 있고요.<br>
+이번 이야기는 제가 만든 자동화 하나를 스스로 손절한 기록이에요.</p>
+<h2>1. 잘 돌아갔어요. 근데 아무도 안 봤어요</h2>
+<p>한동안 저는 업무 문서가 만들어질 때마다 노션에 자동으로 올라가게 해뒀어요.<br>
+보고서 쓰면 올라가고,<br>
+발표자료 만들면 올라가고,<br>
+분석 결과 정리하면 또 올라가고..<br>
+사람 손 하나 안 대도 수백 장이 차곡차곡 쌓였죠.</p>
+<p>처음엔 뿌듯했어요. &quot;이야, 내 지식 창고가 알아서 채워지네&quot; 싶었거든요.<br>
+근데 어느 날 문득 이런 생각이 들더라고요.<br>
+&#x27;이거 내가 마지막으로 열어본 게 언제였지?&#x27;</p>
+<p>세어보니 답이 나왔어요.<br>
+쌓인 페이지는 수백 장, 그중에 제가 다시 열어본 건 거의 없었어요.<br>
+남 주려고 만든 것도 아니고 저 보려고 채운 창곤데, 정작 주인이 안 들어가는 창고였던 거죠.</p>
+<h2>2. 성공률 100%가 오히려 함정이었어요</h2>
+<p>여기서 좀 무서운 걸 하나 깨달았어요.<br>
+이 자동화, 지표상으로는 완벽했거든요.</p>
+<pre><code>[노션 자동화 상태 — 몇 달 운영 후]
+동기화 성공률 : 100%   ← 올리라는 문서는 전부 올라감
+주인 열람률   :   0%   ← 정작 다시 열어본 페이지 거의 없음
+쌓인 페이지   : 수백 장</code></pre>
+<p>에러도 거의 없고, 올리라는 건 다 올라갔어요.<br>
+숫자만 보면 &quot;아주 잘 돌고 있는 시스템&quot;이었죠.<br>
+근데 그 숫자가 저를 속이고 있었어요.</p>
+<p>성공률은 &#x27;올리는 데 성공했나&#x27;만 재요.<br>
+&#x27;그게 쓸모가 있었나&#x27;는 아무도 안 재고 있었거든요.<br>
+그래서 성공 로그만 믿으면, 아무도 안 보는 창고를 완벽하게 채우면서 잘하고 있다고 착각하게 돼요.</p>
+<p>제조 현장으로 치면 이래요.<br>
+생산 라인 속도를 열 배로 올려놨는데, 검사는 여전히 사람이 눈으로 하나씩 보는 구조.<br>
+그러면 라인은 쌩쌩 도는데 검사대 앞에 재고만 산더미로 쌓이죠.<br>
+저한테는 노션이 그 검사대였어요.<br>
+AI가 문서를 뽑아내는 속도를, 그걸 읽는 제 눈이 도저히 못 따라간 거예요.</p>
+<img src="img/02_metric.png" alt="지표의 배신 — 왼쪽 큰 초록 박스 &quot;동기화 성공률 100%&quot;, 오른쪽 빨간 박스 &quot;열람률 0%&quot;. 가운데 화살표 라벨 &quot;성공 지표는 &#x27;올렸나&#x27;만 잰다, &#x27;읽혔나&#x27;는 안 잰다&quot;" loading="lazy">
+<h2>3. 그래서 그냥 껐습니다</h2>
+<p>보통 이런 상황에서 사람 마음은 &quot;더 잘 정리하면 읽겠지&quot;로 가요.<br>
+폴더 더 나누고, 태그 더 달고, 대시보드 더 예쁘게..<br>
+근데 그건 안 읽는 창고를 더 크게 짓는 일이더라고요.</p>
+<p>그래서 반대로 갔어요.<br>
+전량 동기화를 그냥 껐습니다. 스케줄러 내리고, 관련 규칙도 싹 정리했어요.</p>
+<p>대신 딱 하나만 남겼어요.<br>
+제가 진짜 매일 들여다보는 핵심 몇 개.. 그것만 모은 <strong class="u">미니멀 허브</strong> 하나로 재출발했어요.<br>
+수백 장을 전부 밀어 올리는 대신, 오늘 뭐가 돌아가는지 몇 줄만 적히는 공간이요.</p>
+<pre><code>[전량 동기화]  →  껐음
+  수백 페이지 자동 미러링, 열람률 0
+
+[미니멀 허브]  →  살림
+  핵심 기둥 몇 개 + 매일 몇 줄 기록
+  = 읽는 사람(나)이 실제로 존재하는 공간만 남김</code></pre>
+<img src="img/03_beforeafter.png" alt="Before/After 비교 — Before 회색 박스 &quot;전량 동기화: 수백 장 쌓임 → 읽는 사람 0&quot;, 오른쪽 화살표, After 초록 박스 &quot;미니멀 허브: 핵심 몇 개 → 매일 들여다봄&quot;. 아래 라벨 &quot;&#x27;많이 쌓기&#x27;에서 &#x27;읽히기&#x27;로&quot;" loading="lazy">
+<h2>4. 자동화의 가치 = 산출물 × 읽는 사람</h2>
+<p>이 일로 자동화를 판단하는 기준 하나가 바뀌었어요.</p>
+<p>예전엔 &quot;이게 잘 도는가&quot;만 봤어요.<br>
+지금은 &quot;이걸 읽는 사람이 있는가&quot;를 같이 봅니다.</p>
+<p>곱셈이라고 생각하면 편해요.<br>
+아무리 좋은 산출물을 많이 뽑아도, <strong class="u">읽는 사람</strong>이 0이면 곱한 값도 0이에요.<br>
+읽는 사람이 빠진 자동화는, 잘 돌수록 오히려 관리비만 먹는 짐이 되고요.</p>
+<img src="img/04_value.png" alt="가치 공식 — 가운데 큰 수식 &quot;자동화의 가치 = 산출물의 양 × 읽는 사람의 수&quot;, 그 아래 빨간 강조 줄 &quot;읽는 사람 = 0 이면 → 전체 가치 = 0&quot;" loading="lazy">
+<p>| 볼 것 | 예전의 나 | 지금의 나 |<br>
+|---|---|---|<br>
+| 판단 기준 | 잘 돌아가는가 | 읽는 사람이 있는가 |<br>
+| 성공의 정의 | 동기화 성공률 | 실제 열람·활용 |<br>
+| 많이 쌓이면 | 뿌듯 | 관리비부터 걱정 |<br>
+| 안 읽히면 | 그냥 켜둠 | 과감히 끔 |</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 애써 만든 자동화를 끄는 게 아깝지 않았어요?</strong><br>
+아까웠죠. 근데 안 읽는 창고를 유지하는 비용이 더 아깝더라고요. 그리고 완전히 버린 게 아니라, 껐다가 진짜 필요한 핵심만 다시 살린 거예요. 실패한 설계도 다음 설계의 데이터가 되니까, 이 자동화도 헛수고는 아니었어요.</p>
+<p><strong>Q. 그럼 자동화를 아예 줄이라는 얘기인가요?</strong><br>
+그건 아니에요. 만드는 걸 줄이자는 게 아니라, 사람이 못 따라갈 만큼 쏟아지면 &#x27;읽는 표면&#x27;을 줄이자는 거예요. 전부 다 볼 수 없으면 핵심만 샘플로 보고, 문제 생긴 것만 눈에 띄게 하는 구조요. 생산 쪽이 아니라 검토 쪽을 손보는 거죠.</p>
+<h2>정리하면요</h2>
+<p>AI로 자동화를 돌리기 시작하면, 어느 순간 만드는 속도가 읽는 속도를 앞질러요.<br>
+그때부터는 &#x27;잘 도는 자동화&#x27;가 곧 &#x27;좋은 자동화&#x27;가 아니에요.<br>
+잘 돌수록 아무도 안 보는 걸 더 부지런히 쌓을 수도 있거든요.</p>
+<p>- ☐ 내가 만든 자동화, 그 결과물을 최근에 다시 열어본 적 있는가<br>
+- ☐ &#x27;성공률&#x27; 같은 지표가 &#x27;쓸모&#x27;까지 재준다고 착각하고 있진 않은가<br>
+- ☐ 안 읽히는데 잘 돈다는 이유로 그냥 켜두고 있진 않은가</p>
+<p>하나라도 뜨끔했다면, 한 번쯤 과감히 꺼보시는 것도 방법이에요.<br>
+저는 이렇게 잘 돌지만 꺼버린 자동화들의 기록을 makefield.ai에 남기고 있어요.<br>
+그래도 공장은, 계속 만들어지고 있고요.</p>
+<p>---<br>
+태그: #노션자동화 #노션자동화후기 #AI업무자동화 #자동화정리 #세컨드브레인 #노션활용 #AI문서자동화 #빌드과잉 #자동화관리 #AI실무 #현장엔지니어 #제조업AI #AI활용법 #엔지니어AI #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224355806929" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
