@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>중국 오픈소스 AI가 뜨는 이유, 현장 엔지니어가 본 열림과 닫힘 | 도면 읽는 AI</title>
+<meta name="description" content="누가 만들었는지 꺼려하던 모델로, 지금은 사람들이 되레 몰려갑니다. 1년 전만 해도 &quot;그거 중국 거잖아&quot; 하며 안 쓰던 오픈소스 AI가 그새 흐름을 바꿨어요. 저는 이걸 기술 뉴스가 아니라, 매일 AI를 실무에 굴리는 사람의 눈으로 지켜봤습니다. 이 글은 왜 사람들이 닫힌 AI">
+<link rel="canonical" href="https://makefield.ai/blog/20260730-open-vs-closed-ai/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="중국 오픈소스 AI가 뜨는 이유, 현장 엔지니어가 본 열림과 닫힘 | 도면 읽는 AI">
+<meta property="og:description" content="누가 만들었는지 꺼려하던 모델로, 지금은 사람들이 되레 몰려갑니다. 1년 전만 해도 &quot;그거 중국 거잖아&quot; 하며 안 쓰던 오픈소스 AI가 그새 흐름을 바꿨어요. 저는 이걸 기술 뉴스가 아니라, 매일 AI를 실무에 굴리는 사람의 눈으로 지켜봤습니다. 이 글은 왜 사람들이 닫힌 AI">
+<meta property="og:url" content="https://makefield.ai/blog/20260730-open-vs-closed-ai/">
+<meta property="og:image" content="https://makefield.ai/blog/20260730-open-vs-closed-ai/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "중국 오픈소스 AI가 뜨는 이유, 현장 엔지니어가 본 열림과 닫힘", "datePublished": "2026-07-28", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260730-open-vs-closed-ai/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-07-28</span></div>
+<h1>중국 오픈소스 AI가 뜨는 이유, 현장 엔지니어가 본 열림과 닫힘</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;중국 오픈소스 AI가 뜨는 이유 / 닫는 순간, 신뢰가 샌다&quot;" loading="lazy">
+<p>누가 만들었는지 꺼려하던 모델로, 지금은 사람들이 되레 몰려갑니다.<br>
+1년 전만 해도 &quot;그거 중국 거잖아&quot; 하며 안 쓰던 오픈소스 AI가 그새 흐름을 바꿨어요.<br>
+저는 이걸 기술 뉴스가 아니라, 매일 AI를 실무에 굴리는 사람의 눈으로 지켜봤습니다.<br>
+이 글은 왜 사람들이 닫힌 AI에서 열린 AI로 눈을 돌리는지, 그리고 저는 왜 그 흐름을 자연스럽게 보는지에 대한 기록이에요.</p>
+<p>저는 수소 설비 제어판넬을 15년째 만지는 엔지니어예요.<br>
+판넬 설계하고 PLC 로직 짜는 게 본업인데, 요즘은 그 일을 AI랑 같이 합니다.<br>
+빠른 상용 AI도 쓰고, 제 노트북 안에서만 도는 로컬 모델도 같이 굴려요.<br>
+그래서 이번 흐름이 저한테는 남의 나라 얘기가 아니었어요.</p>
+<h2>1. 새 모델이 나흘 만에 사라진 날</h2>
+<p>지난 6월, 제가 쓰던 AI의 최상위 모델이 나흘 만에 통째로 막힌 일이 있었어요.<br>
+회사가 스스로 끊은 게 아니라, 정부의 수출통제 명령 때문이었죠. (이 사건 자체는 예전 글에서 자세히 풀었어요.)<br>
+그때 제 머릿속에 남은 건 업무 걱정보다 좀 더 근본적인 질문이었어요.<br>
+<strong>이 대단한 AI는, 대체 누구의 것일까.</strong></p>
+<h2>2. AI를 키운 재료는 누구의 것인가</h2>
+<p>저는 미국을 존경해요.<br>
+이 거대한 AI 플랫폼을 지어 올린 시간과 투자, 기술력은 분명 미국의 공이에요.<br>
+우방국 국민으로서 그 덕을 매일 보고 있고요.</p>
+<p>그런데 그 AI를 학습시킨 <strong class="u">&#x27;재료&#x27;</strong>를 생각하면 얘기가 좀 달라져요.<br>
+웹 문서, 특허, 논문, 보고서, 기사 — AI가 삼킨 건 전 세계 사람들이 남긴 결과물이에요.</p>
+<img src="img/02_ai-layers.png" alt="AI의 두 겹 — 아래층 &#x27;재료: 전 세계 인류의 데이터(웹·특허·논문·기사)&#x27;, 위층 &#x27;플랫폼: 미국의 투자·기술·시간&#x27;. 아래 라벨 &quot;지어 올린 공은 미국, 흙과 물은 지구인 전체&quot;" loading="lazy">
+<p>플랫폼을 세운 공은 미국이지만, 그 안을 채운 흙과 물은 인류 공동의 유산이라는 거죠.<br>
+그래서 이 결과물을 국력과 자본의 논리로만 잠가버리는 흐름엔, 솔직히 아쉬움이 남아요.<br>
+자본주의 시장에선 당연한 셈법이란 것도 알지만요.</p>
+<h2>3. &#x27;중국 오픈모델은 위험하다&#x27;는 말, 반은 맞고 반은 틀려요</h2>
+<p>여기서 많은 분이 걱정하시죠. &quot;중국 모델 쓰면 정보 새는 거 아니냐.&quot;<br>
+찜찜함, 저도 있어요. 무단 수집 얘기가 많은 나라니까요.<br>
+근데 기술적으로 딱 하나만 짚을게요.</p>
+<p>오픈웨이트(공개된 가중치) 모델의 핵심은, &quot;누가 만들었나&quot;와 &quot;내 데이터가 어디로 가나&quot;를 <strong class="u">분리</strong>한다는 거예요.</p>
+<img src="img/03_data-flow.png" alt="두 개의 딴 얘기 — 왼쪽 &#x27;그쪽 앱·API에 보냄 → 데이터가 나간다(위험)&#x27;(빨강), 오른쪽 &#x27;공개 가중치를 내 PC 오픈소스 엔진으로 실행 → 데이터가 안 나간다&#x27;(초록). 아래 라벨 &quot;위험한 건 &#x27;중국 모델&#x27;이 아니라 &#x27;중국 서버로 보내는 것&#x27;&quot;" loading="lazy">
+<p>모델 가중치 파일 자체는 그냥 숫자 덩어리예요. 혼자서는 인터넷으로 뭘 내보낼 능력이 없어요.<br>
+데이터가 밖으로 나가려면 반드시 &#x27;네트워크를 쓰는 실행 소프트웨어&#x27;가 있어야 하는데, 로컬에서 도는 오픈소스 실행기는 그 통신을 들여다보고 막을 수 있어요.<br>
+그러니 진짜 위험한 건 &#x27;중국이 만든 모델&#x27;이 아니라, &#x27;중국이 호스팅하는 서버에 내 대화를 보내는 것&#x27;이에요.</p>
+<p>물론 오픈모델이 만능은 아니에요.<br>
+출처 불명의 모델 파일엔 악성코드가 숨을 수도 있고(그래서 안전한 파일 포맷을 골라야 해요), 인터넷 붙은 PC라 완벽한 격리도 아니고요.<br>
+그래도 &quot;닫힌 서비스에 일단 다 보내는 것&quot;과는 구조가 근본적으로 달라요.</p>
+<h2>4. 그래서 저는 &#x27;열림&#x27;에 걸어요</h2>
+<p>닫는 순간 신뢰가 새고, 그 틈으로 열림이 자라요.<br>
+사람이 많이 쓰는 도구는 그만큼 빨리 커져요.<br>
+모델 알맹이가 대화 한 번에 실시간으로 자라는 건 아니지만, 사용자가 몰리면 그 생태계 — 사용법, 트러블슈팅, 예제, 붙는 도구들 — 이 눈덩이처럼 불어나거든요.<br>
+지금 오픈모델 쪽에 그 눈덩이가 굴러가기 시작했어요.<br>
+한 시장 집계에선, 1년 전 1%도 안 되던 오픈모델 사용 비중이 30%를 넘겼다고 하고요.</p>
+<p>저는 이걸 반미도 친중도 아닌, 그냥 물이 낮은 데로 흐르는 일로 봐요.<br>
+사람들은 잠긴 문 앞에 오래 서 있지 않아요. 열린 문으로 걸어가죠.</p>
+<p>저는 여전히 상용 AI 덕에 매일 성장하고, 그 시스템에 감사해요.<br>
+다만 인류가 함께 쌓은 유산 위에 지은 거라면, 그 문을 너무 쉽게 잠그지는 않았으면 하는 바람이에요.<br>
+그래서 저는 성능은 빌려 쓰되, 끊겨도 굴러가게 열린 로컬 모델 한쪽을 늘 열어둡니다.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 오픈소스 AI, 성능이 상용만큼 되나요?</strong><br>
+솔직히 최상위 상용 모델의 복잡한 판단력엔 아직 못 미쳐요. 근데 분류·요약·문서 정리 수준은 요즘 오픈모델로 충분하고, 격차도 빠르게 좁혀지는 중이에요. 전부 갈아타라는 게 아니라 한쪽에 열어두라는 겁니다.</p>
+<p><strong>Q. 그래도 중국산 모델은 꺼려지는데요?</strong><br>
+그 마음 이해해요. 핵심은 &#x27;어디서 돌리느냐&#x27;예요. 그쪽 앱이나 API로 쓰면 데이터가 나가지만, 공개된 가중치를 내 PC 오픈소스 엔진으로 돌리면 얘기가 완전히 달라져요. 만든 나라보다 데이터가 흐르는 &#x27;경로&#x27;를 보세요.</p>
+<p>다음 글에선, 사무용 PC에서 실제로 오픈모델 하나를 올려 돌려본 과정을 순서대로 풀어볼게요.<br>
+여러분은 &#x27;열린 AI&#x27;와 &#x27;닫힌 AI&#x27; 중 어느 쪽에 더 신뢰가 가세요?</p>
+<p>AI를 실무에 굴리다 깨지고 고친 기록은 makefield.ai에 차곡차곡 쌓는 중이에요.</p>
+<p>---<br>
+태그: #중국오픈소스AI #오픈소스LLM #오픈웨이트 #로컬AI모델 #AI개방정책 #AI주권 #온프레미스AI #AI데이터보안 #딥시크대안 #AI벤더종속 #제조업AI #현장엔지니어 #AI실무 #오픈모델성능 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224360182920" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
