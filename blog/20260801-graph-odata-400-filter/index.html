@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MS Graph API $filter 400 에러 해결 — 따옴표 하나 차이였어요 | 도면 읽는 AI</title>
+<meta name="description" content="AI한테 &quot;내 미완료 할일 목록 좀 뽑아줘&quot;라고 시켰어요. 잠시 뒤 돌아온 답이 &quot;미완료 0건, 다 끝내셨네요!&quot;였고요. 근데 그때 제 할 일은 산더미였거든요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260801-graph-odata-400-filter/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MS Graph API $filter 400 에러 해결 — 따옴표 하나 차이였어요 | 도면 읽는 AI">
+<meta property="og:description" content="AI한테 &quot;내 미완료 할일 목록 좀 뽑아줘&quot;라고 시켰어요. 잠시 뒤 돌아온 답이 &quot;미완료 0건, 다 끝내셨네요!&quot;였고요. 근데 그때 제 할 일은 산더미였거든요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260801-graph-odata-400-filter/">
+<meta property="og:image" content="https://makefield.ai/blog/20260801-graph-odata-400-filter/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "MS Graph API $filter 400 에러 해결 — 따옴표 하나 차이였어요", "datePublished": "2026-07-29", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260801-graph-odata-400-filter/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-07-29</span></div>
+<h1>MS Graph API $filter 400 에러 해결 — 따옴표 하나 차이였어요</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;MS Graph API $filter 400 에러 / 따옴표 하나 차이였어요&quot;" loading="lazy">
+<p>AI한테 &quot;내 미완료 할일 목록 좀 뽑아줘&quot;라고 시켰어요.<br>
+잠시 뒤 돌아온 답이 &quot;미완료 0건, 다 끝내셨네요!&quot;였고요.<br>
+근데 그때 제 할 일은 산더미였거든요.</p>
+<p>결론부터 말할게요.<br>
+<strong>MS Graph API의 <code>$filter</code>에서 문자열은 홑따옴표(<code>&#x27;completed&#x27;</code>)만 됩니다.</strong> 큰따옴표를 쓰면 서버가 <code>400 Bad Request</code>를 돌려줘요.<br>
+그런데 더 무서운 건 이게 아니에요. AI가 짠 스크립트가 그 400 에러를 받아놓고도 조용히 &quot;0건&quot;으로 삼켜버린 거였어요.<br>
+원인은 어이없게도 <strong class="u">따옴표 하나</strong>였습니다.</p>
+<p>저는 수소 설비 제어판넬을 설계하는 15년차 엔지니어예요.<br>
+도면 그리고 PLC 코드 짜는 게 본업인데, 요즘은 손 많이 가는 반복 업무를 AI한테 스크립트로 짜서 맡기는 일이 부쩍 늘었어요.<br>
+이 글은 그렇게 AI한테 맡긴 자동화 하나가 저를 감쪽같이 속였던 기록이자, 같은 400 에러로 헤매는 분들을 위한 해결 노트예요.</p>
+<p>(전제: 파이썬 + requests, MS Graph API v1.0 기준 / 2026년 7월 기준으로 확인한 내용이에요.)</p>
+<h2>1. 증상: 400 에러인데 화면엔 &quot;0건&quot;이 떴어요</h2>
+<p>가장 골치 아픈 유형이에요. <strong>에러가 났는데 에러처럼 안 보이는 경우죠.</strong><br>
+서버는 분명 400을 돌려줬는데, 스크립트는 태연하게 &quot;미완료 0건&quot;이라고 출력했어요.</p>
+<p>문제의 코드는 대략 이렇게 생겼었어요.</p>
+<pre><code># AI가 즉석에서 짜준 조회 스크립트 (문제 버전)
+url = f&#x27;.../tasks?$filter=status ne &quot;completed&quot;&amp;$top=200&#x27;
+resp = requests.get(url, headers=headers)
+tasks = resp.json().get(&quot;value&quot;, [])   # ← 여기가 함정
+print(f&quot;미완료 {len(tasks)}건&quot;)</code></pre>
+<p><code>resp.json().get(&quot;value&quot;, [])</code>가 범인이에요.<br>
+400 응답의 본문에는 <code>value</code> 키가 없어요. 대신 <code>error</code> 객체가 들어있죠.<br>
+그러니 <code>.get(&quot;value&quot;, [])</code>는 없는 키를 찾다가 조용히 <strong class="u">빈 배열</strong>을 돌려줘요.<br>
+빈 배열의 길이는 0이니까, 화면엔 &quot;0건&quot;이 뜨고요.<br>
+서버는 &quot;네 요청 틀렸어&quot;라고 소리쳤는데, 코드가 그 입을 막아버린 셈이에요.</p>
+<img src="img/02_error_swallow.png" alt="에러가 &quot;0건&quot;으로 둔갑하는 경로 — ①큰따옴표 필터 요청 → ②서버 400 Bad Request(error 객체 반환) → ③코드가 .get(&quot;value&quot;,[])로 파싱 → ④value 키 없음 → 빈 배열 → ⑤&quot;미완료 0건&quot; 오보. 아래 라벨 &quot;서버는 소리쳤지만 코드가 입을 막았다&quot;" loading="lazy">
+<h2>2. 원인 하나: OData 문자열은 홑따옴표만 됩니다</h2>
+<p><code>$filter</code>가 400을 뱉은 진짜 이유는 문법이었어요.<br>
+<strong>OData 쿼리에서 문자열 값은 반드시 홑따옴표로 감싸야 해요.</strong> 큰따옴표는 문법 위반이라 무조건 400이에요.</p>
+<p>이건 프로그래밍 언어의 따옴표 습관과 충돌해서 실수하기 쉬워요.<br>
+파이썬에선 <code>&quot;completed&quot;</code>나 <code>&#x27;completed&#x27;</code>나 똑같은 문자열이잖아요?<br>
+근데 OData(서버가 읽는 쿼리 문법)에선 둘이 완전히 달라요.</p>
+<pre><code>status ne &#x27;completed&#x27;   → OK (홑따옴표)
+status ne &quot;completed&quot;   → 400 Bad Request (큰따옴표)</code></pre>
+<p>특히 저처럼 AI한테 &quot;한 줄짜리 스크립트로 빨리 짜줘&quot;라고 시키면 이 함정에 잘 빠져요.<br>
+셸 명령 안에 파이썬을 인라인으로 욱여넣다 보면 바깥 따옴표와 안쪽 따옴표가 꼬여서, 결과적으로 URL에 큰따옴표가 박히거든요.</p>
+<img src="img/03_quote_rule.png" alt="두 세계의 따옴표 규칙 — 왼쪽 &#x27;파이썬 문자열: &quot;x&quot; = \&#x27;x\&#x27; (같음)&#x27;, 오른쪽 &#x27;OData 필터: \&#x27;x\&#x27;만 허용, &quot;x&quot;는 400&#x27;. 가운데 경고 라벨 &quot;같은 따옴표인데 한쪽에선 문법 위반&quot;" loading="lazy">
+<h2>3. 원인 둘: 에러를 안 찍으면 영원히 못 찾아요</h2>
+<p>따옴표를 고쳐도, 애초에 400을 조용히 삼키는 구조가 남아있으면 다음에 또 당해요.<br>
+그래서 저는 규칙을 하나 박았어요. <strong>응답 상태 코드를 확인하기 전엔 본문을 절대 신뢰하지 않는다.</strong></p>
+<p><code>.get(&quot;value&quot;, [])</code>처럼 에러를 삼키는 패턴 대신, 300 이상이면 바로 멈추고 서버가 보낸 에러 메시지를 그대로 보여주게 했어요.</p>
+<pre><code># 고친 버전 — 홑따옴표 + 에러 체크
+resp = requests.get(
+    &quot;.../tasks&quot;,
+    headers=headers,
+    params={&quot;$filter&quot;: &quot;status ne &#x27;completed&#x27;&quot;, &quot;$top&quot;: 200},
+)
+if resp.status_code &gt;= 300:              # 에러면 즉시 멈춤
+    raise RuntimeError(f&quot;API 에러: {resp.status_code} {resp.text[:200]}&quot;)
+tasks = resp.json()[&quot;value&quot;]
+print(f&quot;미완료 {len(tasks)}건&quot;)</code></pre>
+<p><code>params</code> 딕셔너리를 쓴 것도 포인트예요.<br>
+URL을 손으로 이어붙이면 따옴표·공백·특수문자가 꼬이는데, <code>requests</code>가 알아서 인코딩해주면 사람이 실수할 자리가 줄어들어요.<br>
+이렇게 바꾸고 나니, 다음부터는 필터를 틀리면 &quot;0건&quot;이 아니라 시뻘건 에러 메시지가 즉시 떴어요.<br>
+<strong class="u">틀리면 시끄럽게</strong> — 그게 자동화에선 오히려 안전이더라고요.</p>
+<h2>4. 덤으로 걸린 함정: 한글이 공백으로 새어나갔어요</h2>
+<p>같은 날 하나를 더 배웠어요.<br>
+셸 명령에 파이썬을 인라인으로 끼워 넣고 한글을 API로 보냈더니, &quot;프로세스&quot;의 &quot;세&quot;자가 사라진 채 등록됐어요.</p>
+<p>원인을 뜯어보니, 한글 한 글자(UTF-8 3바이트)가 전달 과정에서 공백 세 칸으로 치환돼 있었어요.</p>
+<pre><code>보낸 값 : 프로세스   (EC 84 B8 = &quot;세&quot;)
+저장된 값: 프로  스   (20 20 20 = 공백 3칸)</code></pre>
+<img src="img/04_korean_corruption.png" alt="한글이 새어나가는 지점 — &quot;프로세스&quot;(UTF-8 EC 84 B8) → 윈도우 셸 인코딩 경계 통과 → &quot;세&quot;자가 공백 3칸(20 20 20)으로 치환 → &quot;프로  스&quot; 저장. 아래 라벨 &quot;인라인 스크립트가 바이트를 흘렸다&quot;" loading="lazy">
+<p>윈도우 셸을 거치면서 인코딩 경계에서 바이트가 깨진 거예요.<br>
+그래서 규칙을 하나 더 세웠어요. <strong>한글이 든 데이터를 API로 보낼 땐 인라인 스크립트 금지, 별도 <code>.py</code> 파일이나 기존 클라이언트 모듈로만 보낸다.</strong> 급하다고 한 줄로 우겨넣지 않기로요.</p>
+<h2>5. 확인 방법 (성공 판정 기준)</h2>
+<p>고친 게 진짜 먹었는지는 이렇게 확인해요.</p>
+<p>- ☐ 일부러 필터에 큰따옴표를 넣어본다 → &quot;0건&quot;이 아니라 <code>400</code> 에러 메시지가 즉시 떠야 정상<br>
+- ☐ 정상 필터로 조회 → 실제 미완료 건수와 화면 숫자가 일치하는지 눈으로 대조<br>
+- ☐ 한글이 든 항목을 하나 등록 → 글자가 공백으로 새지 않았는지 확인</p>
+<p>세 개가 다 통과하면, 이 자동화는 더 이상 저를 &quot;0건&quot;으로 속이지 못해요.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. <code>$filter</code>에 큰따옴표를 쓰면 무조건 400인가요?</strong><br>
+네, OData 문법상 문자열 리터럴은 홑따옴표만 유효해서 큰따옴표는 <code>400 Bad Request</code>예요. MS Graph만이 아니라 OData를 따르는 API 대부분이 같아요. 파이썬에선 두 따옴표가 같아 보여도, 서버가 읽는 쿼리 문법에선 다르다는 걸 기억하시면 돼요.</p>
+<p><strong>Q. 400인데 왜 에러가 아니라 &quot;0건&quot;으로 나왔나요?</strong><br>
+응답 본문을 <code>.get(&quot;value&quot;, [])</code>처럼 &quot;없으면 빈 배열&quot; 방식으로 파싱했기 때문이에요. 400 응답엔 <code>value</code> 키가 없고 <code>error</code> 키가 있는데, 이 패턴은 그걸 못 보고 빈 결과로 처리해버려요. 그래서 상태 코드부터 확인하는 순서가 중요해요.</p>
+<p><strong>Q. AI가 짜준 코드인데 이런 실수를 하나요?</strong><br>
+해요. AI는 빠르게 그럴듯한 코드를 뽑지만, &quot;이 API의 따옴표 규칙&quot;이나 &quot;에러 응답 형태&quot; 같은 건 실제로 호출해봐야 드러나요. 그래서 저는 AI가 짠 API 코드는 반드시 일부러 틀린 값을 한 번 넣어보고, 에러가 제대로 터지는지부터 확인해요.</p>
+<h2>정리하면요</h2>
+<p><code>$filter</code> 400 에러는 대부분 두 가지가 겹쳐서 사람을 오래 헤매게 해요.</p>
+<p>| 볼 것 | 잘못된 습관 | 고친 규칙 |<br>
+|---|---|---|<br>
+| 문자열 따옴표 | <code>&quot;completed&quot;</code> (400) | <code>&#x27;completed&#x27;</code> (홑따옴표) |<br>
+| URL 조립 | 손으로 문자열 이어붙이기 | <code>params</code> 딕셔너리에 맡기기 |<br>
+| 에러 처리 | <code>.get(&quot;value&quot;, [])</code>로 삼킴 | <code>status_code &gt;= 300</code>이면 멈춤 |<br>
+| 한글 전송 | 인라인 스크립트 | 별도 <code>.py</code>·클라이언트 모듈 |</p>
+<p>AI한테 자동화를 맡길수록, 저는 &quot;잘 도는지&quot;보다 &quot;틀렸을 때 시끄럽게 우는지&quot;를 먼저 봐요.<br>
+조용한 자동화가 제일 무섭거든요.<br>
+혹시 같은 400에 막혀 계셨다면 따옴표부터 바꿔보세요.<br>
+다음엔 AI가 짜준 코드를 배포 전에 어떻게 한 번 걸러내는지, 제 검증 순서를 풀어볼게요 — 이런 API 삽질들은 종류별로 makefield.ai에 정리해두는 중이에요.</p>
+<p>---<br>
+태그: #GraphAPI400에러 #ODatafilter #BadRequest해결 #MSGraph필터 #파이썬API오류 #statusnecompleted #그래프API필터 #API에러처리 #requests400 #파이썬requests #AI코딩검증 #업무자동화 #현장엔지니어 #제조업AI #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224362076576" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
