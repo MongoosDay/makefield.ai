@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR 코드 대량 생성 자동화, 진짜 어려운 건 검수였습니다 | 도면 읽는 AI</title>
+<meta name="description" content="QR 코드 스무 개를 만들어 달라는 연락을 받았어요. QR 만드는 거야 금방이죠. 문제는 그다음이었어요. 이게 전부 제대로 된 주소로 연결되는지, 스무 개를 어떻게 다 확인하냐는 거요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260808-qr-batch-verify/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QR 코드 대량 생성 자동화, 진짜 어려운 건 검수였습니다 | 도면 읽는 AI">
+<meta property="og:description" content="QR 코드 스무 개를 만들어 달라는 연락을 받았어요. QR 만드는 거야 금방이죠. 문제는 그다음이었어요. 이게 전부 제대로 된 주소로 연결되는지, 스무 개를 어떻게 다 확인하냐는 거요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260808-qr-batch-verify/">
+<meta property="og:image" content="https://makefield.ai/blog/20260808-qr-batch-verify/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "QR 코드 대량 생성 자동화, 진짜 어려운 건 검수였습니다", "datePublished": "2026-08-06", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260808-qr-batch-verify/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-08-06</span></div>
+<h1>QR 코드 대량 생성 자동화, 진짜 어려운 건 검수였습니다</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드" loading="lazy">
+<p>QR 코드 스무 개를 만들어 달라는 연락을 받았어요.<br>
+QR 만드는 거야 금방이죠. 문제는 그다음이었어요.<br>
+이게 전부 제대로 된 주소로 연결되는지, 스무 개를 어떻게 다 확인하냐는 거요.</p>
+<p>그날 배운 걸 한 줄로 요약하면 이래요.<br>
+<strong>QR 코드 대량 생성에서 진짜 일은 &#x27;만들기&#x27;가 아니라 &#x27;검수&#x27;입니다.</strong><br>
+그리고 그 검수를 대충 자동화했다가, 저는 하마터면 <strong class="u">멀쩡히 속을 뻔</strong>했어요.</p>
+<p>저는 제조 현장에서 자동화랑 제어를 15년 해온 엔지니어예요.<br>
+회로 보고, 제어 로직 짜고, 현장 뛰는 게 본업인데요.<br>
+요즘은 그 사이사이 끼는 반복 잡무를 AI한테 떠넘기는 습관이 생겼어요.<br>
+이번 QR 건도 딱 그런 잡무였고, 그러다 검수에서 한 방 먹은 이야기입니다.</p>
+<h2>1. QR 만드는 건 5분이면 끝나요</h2>
+<p>먼저 김 빼는 얘기부터 할게요.<br>
+QR 코드를 수십 개 만드는 건 정말 쉬워요.<br>
+파이썬에 <code>qrcode</code>라는 라이브러리가 있는데, 주소 목록만 넣으면 이미지 파일을 줄줄이 뽑아줘요.</p>
+<p>제 경우엔 제품마다 붙는 정보 페이지 주소가 달랐어요.<br>
+용량이 다른 모델 4종에, 개수는 스무 개가 넘었고요.<br>
+그래도 목록을 표로 정리해서 넘기니까 QR 이미지 스무 장이 몇 분 만에 나왔습니다.</p>
+<p>여기까지만 보면 &quot;이거 왜 외주를 맡기지?&quot; 싶죠.<br>
+저도 처음엔 그랬어요.<br>
+근데 진짜 일은 만든 다음에 있었어요.</p>
+<h2>2. &quot;스무 개가 다 맞나&quot;를 어떻게 확인하죠</h2>
+<p>만들었으면 확인을 해야 하잖아요.<br>
+QR 하나가 엉뚱한 주소로 연결되면, 그건 제품에 붙어서 고객 손까지 가는 사고예요.<br>
+불량 하나가 현장까지 나가는 걸 15년간 봐온 사람 입장에선, 검수 안 하고 넘기는 게 제일 무서워요.</p>
+<p>그럼 방법이 뭐가 있냐면요.<br>
+폰 카메라로 QR 스무 개를 하나하나 찍어서, 뜨는 화면을 눈으로 대조하는 거예요.<br>
+스무 개면 그나마 버티는데, 이런 주문이 반복돼서 그동안 만든 게 100개를 넘었거든요.<br>
+100개를 매번 손으로 찍고 있으면, 자동화를 한 의미가 없죠.</p>
+<p>그래서 검수도 코드로 짰어요.<br>
+처음 짠 검수는 두 단계였어요.<br>
+하나, QR 이미지를 프로그램으로 다시 읽어서 <strong class="u">원하는 주소</strong>가 박혔는지 대조.<br>
+둘, 그 주소로 접속 요청을 보내서 응답 코드가 200(정상)인지 확인.<br>
+스무 개 전부 초록불이 떴어요. 다 통과.<br>
+저는 &quot;끝났다&quot; 하고 넘길 뻔했습니다.</p>
+<h2>3. 하마터면 속을 뻔했어요</h2>
+<p>찜찜해서 페이지를 하나만 직접 열어봤어요.<br>
+그런데 제 검수 코드가 &quot;정상&quot;이라고 한 그 주소에, <strong class="u">엉뚱한 다른 제품</strong> 사진이 대표로 떠 있는 거예요.<br>
+주소는 살아 있고, 응답도 200이고, QR도 그 주소가 맞아요.<br>
+그런데 열린 내용은 제가 의도한 제품이 아니었어요.</p>
+<img src="img/02_open_vs_correct.png" alt="HTTP 200 &#x27;열렸다&#x27;는 초록불, 그런데 열린 내용은 엉뚱한 제품이라 빨강. &#x27;열림&#x27;과 &#x27;맞음&#x27;은 다른 문제라는 대비" loading="lazy">
+<p>원인을 파보니 요즘 웹페이지의 함정이 있었어요.<br>
+제 검수 코드는 주소로 받아온 HTML 원문만 봤거든요.<br>
+그런데 요즘 페이지들은 접속 순간엔 뼈대만 오고, 제품 정보 같은 알맹이는 그다음에 자바스크립트가 그려요.<br>
+그러니 원문만 받아본 제 코드 눈엔 정작 중요한 제품표가 통째로 안 보였던 거예요.<br>
+&quot;열린다&quot;는 확인했는데 &quot;열린 게 맞다&quot;는 확인을 못 한 거죠.</p>
+<p>이게 딱 제가 예전에 자동화에서 데인 것과 똑같은 함정이었어요.<br>
+프로세스가 돌았다는 것과 일이 됐다는 건 다른 얘기잖아요.<br>
+QR에서도 응답 200은 &quot;주소가 살아 있다&quot;는 알리바이일 뿐, &quot;내용이 맞다&quot;는 증거가 아니었던 거예요.</p>
+<h2>4. 브라우저를 진짜로 띄워야 진짜 내용이 보여요</h2>
+<p>해결은 결국 &quot;사람이 보는 것과 똑같이 보게 하기&quot;였어요.<br>
+원문만 받지 말고, 브라우저를 실제로 띄워서 자바스크립트까지 다 실행시킨 뒤의 화면을 보는 거예요.<br>
+크롬을 창 없이 돌리는 헤드리스 모드로 이걸 했어요.</p>
+<img src="img/03_static_vs_render.png" alt="같은 주소를 받아도 원문만 받는 방식은 알맹이 없는 빈 뼈대 HTML, 브라우저로 실행한 방식은 자바스크립트까지 돈 뒤의 진짜 제품표. 두 결과가 다르다는 비교" loading="lazy">
+<pre><code>chrome --headless --dump-dom &quot;제품정보_주소&quot; &gt; page.html
+# 렌더 끝난 뒤의 진짜 화면(DOM)을 파일로 받아 대조</code></pre>
+<p>여기서도 한 번 더 걸렸어요.<br>
+요즘 크롬은 헤드리스 방식이 두 가지인데, 최신 방식으로 하니까 이 명령이 빈 파일만 뱉더라고요.<br>
+구버전 방식으로 바꾸니까 그제야 렌더가 끝난 진짜 화면이 나왔어요.<br>
+그 화면에서 제품표의 선택된 행을 읽어서, 주소가 가리키는 모델과 실제 표시된 모델이 같은지 대조했습니다.<br>
+이번엔 4종 전부 정확히 맞았어요.</p>
+<p>한 가지 더. 크롬이 작업 폴더에 증거 화면을 저장하려다 권한 오류로 막히길래, 임시 폴더에 찍고 복사하는 걸로 우회했어요.<br>
+자동화는 늘 이런 자잘한 데서 발목이 잡히더라고요.</p>
+<h2>5. 원샷으로 박제했어요</h2>
+<p>여기까지 오니 아까웠어요.<br>
+이 고생을 이번 한 번만 쓰고 버리면, 다음 주문 때 또 처음부터잖아요.<br>
+그래서 명령 한 번이면 끝까지 도는 파이프라인으로 묶었어요.</p>
+<img src="img/04_pipeline.png" alt="5단계 검수 파이프라인 - ①QR 생성 → ②이미지 디코딩으로 주소 대조 → ③접속 응답+식별번호 확인 → ④브라우저 렌더 후 실제 내용 대조 → ⑤원본 문서와 수량 대조. 하나라도 틀리면 실패로 종료" loading="lazy">
+<p>명령 하나 치면 이렇게 리포트가 떨어져요. (아래는 결과 화면을 알아보기 쉽게 재구성한 예시예요.)</p>
+<pre><code>[1/5] QR 생성 ........... 스무 개+ 생성
+[2/5] 이미지 주소 대조 ... 전부 일치
+[3/5] 접속 응답 + 식별값 . 그룹별 반영 확인
+[4/5] 실제 화면 대조 ..... 모델 4종 일치
+[5/5] 원본 문서 대조 ..... 수량 일치
+RESULT: PASS</code></pre>
+<p>핵심은 마지막 한 줄이에요.<br>
+하나라도 어긋나면 전체를 실패로 처리하고 멈춰요.<br>
+&quot;대충 다 된 것 같다&quot;가 아니라, 다섯 관문을 전부 통과해야만 통과로 찍히는 구조요.<br>
+그리고 브라우저로 확인한 화면은 증거로 자동 저장해둬서, 나중에 &quot;이거 확인한 거 맞냐&quot; 소리를 들어도 바로 꺼내 보여줄 수 있어요.</p>
+<h2>자주 묻는 것들</h2>
+<p><strong>Q. QR 코드 대량 생성은 뭘로 하나요?</strong><br>
+파이썬 <code>qrcode</code> 라이브러리면 충분해요. 주소 목록을 표로 정리해서 넘기면 이미지가 줄줄이 나와요. 진짜 어려운 건 만드는 게 아니라 검수라, 여기에 시간 쓰지 마세요.</p>
+<p><strong>Q. QR이 제대로 연결되는지 자동으로 확인할 수 있나요?</strong><br>
+두 겹으로 하세요. 먼저 QR 이미지를 프로그램으로 다시 읽어 &#x27;원하는 주소가 박혔나&#x27;를 보고, 그다음 그 주소에 접속해 &#x27;살아 있나&#x27;를 봅니다. 단 이건 &quot;열린다&quot;까지만 증명해요.</p>
+<p><strong>Q. 그럼 &quot;내용이 맞다&quot;는 어떻게 확인하죠?</strong><br>
+브라우저를 실제로 띄워 자바스크립트까지 실행한 화면을 봐야 해요. 요즘 페이지는 접속 직후 원문엔 알맹이가 없고 나중에 그려지거든요. 원문만 받아 검수하면 엉뚱한 내용을 정상으로 착각할 수 있어요.</p>
+<h2>정리하면</h2>
+<p>QR 코드 대량 생성 자체는 5분짜리 잡무예요.<br>
+승부는 검수에서 나요.<br>
+그리고 그 검수는 &quot;주소가 열리나&quot;가 아니라 &quot;열린 내용이 맞나&quot;까지 봐야 진짜 검수예요.<br>
+접속 응답 200은 통과증이 아니라 그냥 문이 열렸다는 신호일 뿐이거든요.</p>
+<p>혹시 지금 반복되는 외주나 잡무를 손으로 붙들고 계시면, 만드는 부분 말고 <strong>검수하는 부분</strong>을 먼저 자동화해보세요.<br>
+거기서 시간이 제일 많이 새고, 사고도 거기서 나니까요.<br>
+저처럼 자잘한 외주를 자동화하며 남긴 스크립트와 삽질 메모는 makefield.ai에 하나씩 모아두는 중이에요.</p>
+<p>---<br>
+현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224369549142" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
