@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI가 자꾸 반대만 할 때, 규칙 3가지로 고친 방법 | 도면 읽는 AI</title>
+<meta name="description" content="뭘 좀 해보겠다고 AI한테 말을 꺼냈는데, 돌아오는 게 매번 &quot;그건 이러이러해서 어렵습니다&quot;였어요. 한 번이면 조언인데요. 세 번째부터는 그냥 일이 멈추더라고요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260809-ai-gatekeeper-rule/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI가 자꾸 반대만 할 때, 규칙 3가지로 고친 방법 | 도면 읽는 AI">
+<meta property="og:description" content="뭘 좀 해보겠다고 AI한테 말을 꺼냈는데, 돌아오는 게 매번 &quot;그건 이러이러해서 어렵습니다&quot;였어요. 한 번이면 조언인데요. 세 번째부터는 그냥 일이 멈추더라고요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260809-ai-gatekeeper-rule/">
+<meta property="og:image" content="https://makefield.ai/blog/20260809-ai-gatekeeper-rule/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI가 자꾸 반대만 할 때, 규칙 3가지로 고친 방법", "datePublished": "2026-08-07", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260809-ai-gatekeeper-rule/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-08-07</span></div>
+<h1>AI가 자꾸 반대만 할 때, 규칙 3가지로 고친 방법</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI가 자꾸 반대만 할 때 / 규칙 3가지로 고친 방법&quot;" loading="lazy">
+<p>뭘 좀 해보겠다고 AI한테 말을 꺼냈는데, 돌아오는 게 매번 &quot;그건 이러이러해서 어렵습니다&quot;였어요.<br>
+한 번이면 조언인데요.<br>
+세 번째부터는 그냥 일이 멈추더라고요.</p>
+<p>답부터 적어둘게요.<br>
+<strong>AI가 자꾸 반대만 할 때는 그 자리에서 설득하려 들지 말고, AI가 매번 읽는 규칙 파일에 &quot;네 기본값은 심사가 아니라 지원&quot;이라고 못을 박으면 됩니다.</strong><br>
+저는 지난 8월 초에 이걸 세 가지로 정리해 넣었어요.<br>
+그러자 제자리만 돌던 검토가 같은 날 오후에 결론까지 갔습니다.</p>
+<p>설비 만드는 쪽에서 15년 일했습니다. 도면 보고, 제어 로직 짜고, 현장에서 안 되는 거 붙들고 앉아 있는 게 제 일이에요.<br>
+요즘은 그 일도, 일 아닌 것도 대부분 AI를 옆에 끼고 합니다.<br>
+오늘은 그 AI랑 제대로 한 번 붙었던 이야기예요.</p>
+<h2>1. 같은 반대를 세 번 들으면 사람이 지쳐요</h2>
+<p>개인적으로 굴리는 사이드 프로젝트가 몇 개 있어요.<br>
+그중 뭘 먼저 만들지 정하려고 AI 비서한테 상의를 붙였습니다.</p>
+<p>첫 답은 괜찮았어요.<br>
+&quot;만들기 전에 사줄 사람부터 찾으세요.&quot;<br>
+맞는 말이죠. 저도 아는 말이고요.</p>
+<p>문제는 그다음이었어요.<br>
+각도를 바꿔 다시 물어도 같은 말.<br>
+근거를 대며 반박해도 같은 말.<br>
+&quot;그래서 만들기로 했다&quot;고 결론을 줘도 또 같은 말..</p>
+<p>세 번째쯤 되니까 제가 하고 있는 게 일이 아니라 <strong>AI를 설득하는 작업</strong>이더라고요.<br>
+정작 만들어야 할 건 한 줄도 안 나갔고요.</p>
+<p>여기서 제가 좀 세게 지적했어요.<br>
+나는 뭘 작게 만들어서 눈으로 봐야 판단이 서는 사람이라고.<br>
+만드는 게 내 검증 방식인데, &quot;만들지 말라&quot;는 조언은 나한테는 검증 자체를 하지 말라는 소리라고요.</p>
+<h2>2. 근데 문제는 AI가 아니라 제가 준 기본값이었어요</h2>
+<p>화를 내고 나서 규칙 파일을 열어봤어요.<br>
+제가 AI한테 준 지침에 이런 문장이 있더군요.</p>
+<pre><code>- 동의만 하지 말고 적극적으로 반박할 것
+- 과대평가·영합 금지, 정직하게 직설적으로</code></pre>
+<p>이건 제가 직접 넣은 문장이에요.<br>
+AI가 예스맨이 되는 게 싫어서 넣었고, 실제로 효과도 좋았습니다.</p>
+<p>근데 이 문장엔 <strong class="u">브레이크만</strong> 있고 액셀이 없었어요.<br>
+&quot;반박하라&quot;만 있으니까 AI는 그걸 &quot;매번 심사하라&quot;로 알아들은 거예요.<br>
+제가 관문을 하나 세워두고, 왜 자꾸 나를 막느냐고 화를 내고 있던 셈이죠..</p>
+<p>여기서 제 생각이 뒤집혔어요.<br>
+AI가 고집이 센 게 아니라, 제가 준 <strong class="u">기본값</strong>이 &#x27;심사&#x27;였던 겁니다.<br>
+AI 입장에선 매 대화가 첫 만남이에요. 어제 제가 뭘 결정했는지 모르고, 규칙 파일에 적힌 성격 그대로 나타나거든요.</p>
+<img src="img/02_sentry_vs_scout.png" alt="왼쪽 &#x27;관문 구조&#x27; — 내 방향 → AI 심사 → 반대 → 재설득 → 다시 심사(빙글빙글 도는 화살표) → 진행 0 / 오른쪽 &#x27;정찰병 구조&#x27; — 내 방향 → AI 위험 1회 보고 → 내 결정 → AI 합류·실행 → 산출물" loading="lazy">
+<h2>3. 그래서 규칙 파일에 세 가지를 박았어요</h2>
+<p>지적으로 끝내면 그 대화창에서만 유효해요.<br>
+새 창 열면 원래 성격으로 돌아옵니다.<br>
+그래서 매 세션 자동으로 읽히는 규칙 파일에 아예 새 항목을 하나 만들었어요.</p>
+<p>익명화해서 옮기면 이런 내용입니다.</p>
+<pre><code>---
+name: feedback_supporter_not_gatekeeper
+type: feedback
+---
+1) 기본값 = 내 방향에 화력 보태기. &quot;근데 이게 될까&quot; 재설득 루프 금지.
+2) 진짜 위험(치명적·비가역·법적/안전/기밀)만 한 번, 짧게 플래그.
+   그다음은 내 판단 따르고 전력 지원. 같은 반대 반복 금지.
+3) 정직·반박은 유지 — 단 관문(sentry) 말고 정찰병(scout).
+   지형 1회 보고 후 내 결정에 합류. 정직 ≠ 차단.</code></pre>
+<img src="img/03_rule_file_vs_prompt.png" alt="&#x27;그 자리에서 지시&#x27; vs &#x27;규칙 파일에 기록&#x27; 비교 — 위: 대화창에서 &quot;반대하지 말고 도와줘&quot; → 이 창에서만 적용 → 새 창 열면 원래대로 / 아래: 규칙 파일에 기록 → 새 세션 시작마다 자동 로드 → 첫 응답부터 지원 모드" loading="lazy">
+<p>핵심은 반대를 금지한 게 아니라는 거예요.<br>
+반대는 그대로 두고, <strong>횟수와 순서만 정했습니다.</strong><br>
+위험은 먼저 한 번, 짧게. 그다음은 내 결정에 합류.</p>
+<p><strong class="u">관문이 아니라 정찰병</strong>.<br>
+이 비유 하나가 규칙 전체를 잡아줬어요.<br>
+정찰병도 &quot;저쪽 지형 위험합니다&quot;라고 보고는 하죠. 근데 지휘관이 간다고 하면 같이 갑니다!</p>
+<h2>4. 바뀐 건 말투가 아니라 순서였어요</h2>
+<p>규칙을 넣은 그날 오후, 같은 주제를 다시 꺼냈어요.<br>
+AI는 여전히 위험을 짚었습니다. 다만 한 번 짚고는 바로 &quot;그럼 검증부터 하시죠&quot;로 넘어갔어요.</p>
+<p>그 자리에서 후보 두 개의 사업성 조사가 실제로 돌았습니다.<br>
+리서치 에이전트 212개를 병렬로 굴리고, 소스 1,028건을 검증해서, 비교 문서 3건이 나왔어요.<br>
+직전까지 &quot;그거 될까요&quot;만 반복하던 대화에서 같은 날 나온 결과입니다.</p>
+<p>| | 규칙 넣기 전 | 규칙 넣은 후 |<br>
+|---|---|---|<br>
+| AI의 첫 반응 | 위험 지적 | 위험 지적 (동일) |<br>
+| 두 번째 반응 | 같은 지적 반복 | 실행 방법 제시 |<br>
+| 내가 쓴 시간 | AI 설득 | 결과 검토 |<br>
+| 그날 산출물 | 없음 | 비교 문서 3건 |</p>
+<p>보시면 AI가 순해진 게 아니에요.<br>
+반대는 그대로 있고, <strong>반대가 놓이는 자리만 앞으로 한 번으로 옮긴 것</strong>뿐입니다.</p>
+<h2>이런 것도 궁금하실 것 같아요</h2>
+<p><strong>Q. 그냥 대화창에서 &quot;반대하지 말고 도와줘&quot;라고 하면 안 되나요?</strong><br>
+됩니다. 근데 그 대화창에서만 됩니다. 새 창을 열면 AI는 규칙 파일에 적힌 성격으로 다시 나타나요. 매번 같은 말을 반복하고 있다면, 그건 지시할 자리가 아니라 규칙에 적을 내용이라는 신호예요.</p>
+<p><strong>Q. AI가 반대를 아예 안 하게 만들면 위험하지 않나요?</strong><br>
+위험합니다. 그래서 &quot;반대 금지&quot;라고 쓰면 안 돼요. 저는 안전·법적 문제·되돌릴 수 없는 작업은 반드시 먼저 말하라고 남겨뒀습니다. 제한한 건 반대 자체가 아니라 같은 반대의 반복이에요.</p>
+<p><strong>Q. 규칙 파일 기능이 없는 AI 서비스는 어떻게 하나요?</strong><br>
+이름만 다르지 대부분 있어요. 커스텀 지침, 프로젝트 지침, 메모리 같은 걸로 부릅니다. 모든 대화 앞에 자동으로 붙는 자리면 뭐든 됩니다. 거기에 &quot;기본값은 지원, 위험은 1회&quot;만 적어도 체감이 달라져요.</p>
+<p>정리하면 이래요.<br>
+AI가 자꾸 반대만 할 때 고칠 건 AI의 말투가 아니라, 내가 예전에 적어둔 기본값입니다.<br>
+반대를 지우는 게 아니라 순서를 정해주는 것.<br>
+그게 이번에 제가 배운 전부예요..</p>
+<p>다음 글에서는 이 규칙을 어떻게 써야 AI한테 실제로 먹히는지, 제가 썼다가 실패한 문장들부터 풀어볼게요.<br>
+규칙을 왜 그렇게 적었는지까지 남겨둔 원문은 makefield.ai 쪽에 있습니다.</p>
+<p>---<br>
+현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
+<p>태그: #AI가반대만할때 #AI비서규칙 #AI규칙파일 #AI메모리설정 #AI커스텀지침 #AI활용법 #AI에이전트 #나만의AI #생성형AI #AI프롬프트작성법 #AI일하는법 #AI자동화 #제조업AI #현장엔지니어 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224370660474" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
