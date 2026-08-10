@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 업무 기록 정리, 500개 쌓고도 못 찾다가 바꾼 규칙 3개 | 도면 읽는 AI</title>
+<meta name="description" content="AI 업무 기록 정리는 쌓는 일이 아니라 꺼내지게 쌓기입니다. 저는 문서 500개를 채우고 나서야 이걸 알았어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260815-ai-work-log-archive/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 업무 기록 정리, 500개 쌓고도 못 찾다가 바꾼 규칙 3개 | 도면 읽는 AI">
+<meta property="og:description" content="AI 업무 기록 정리는 쌓는 일이 아니라 꺼내지게 쌓기입니다. 저는 문서 500개를 채우고 나서야 이걸 알았어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260815-ai-work-log-archive/">
+<meta property="og:image" content="https://makefield.ai/blog/20260815-ai-work-log-archive/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 업무 기록 정리, 500개 쌓고도 못 찾다가 바꾼 규칙 3개", "datePublished": "2026-08-10", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260815-ai-work-log-archive/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-08-10</span></div>
+<h1>AI 업무 기록 정리, 500개 쌓고도 못 찾다가 바꾼 규칙 3개</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 업무 기록 정리 / 500개를 쌓고도 못 찾았어요&quot;" loading="lazy">
+<p><strong>AI 업무 기록 정리는 쌓는 일이 아니라 <strong class="u">꺼내지게 쌓기</strong>입니다.</strong> 저는 문서 500개를 채우고 나서야 이걸 알았어요.</p>
+<p>지난주에 오래된 글 서랍을 정리하다가 이상한 걸 발견했거든요.<br>
+1년 전의 제가 써놓고 발행은 안 한 글 두 편이요.</p>
+<p>거기엔 &quot;앞으로 이 공간에서 계속 나누겠다&quot;고 적혀 있었습니다.<br>
+그 다짐 이후 1년 동안 제가 발행한 글은 0편이에요.</p>
+<p>저는 현장에서 설비 제어하는 일로 15년쯤 보냈어요. 도면 보고, 신호 잡고, 안 되면 원인 찾는 쪽입니다.<br>
+글을 못 쓴 이유가 바빠서인 줄 알았는데, 파보니까 아니더라고요.<br>
+저한테 없었던 건 시간도 글솜씨도 아니고 <strong>꺼낼 수 있는 창고</strong>였습니다.</p>
+<img src="img/02_two_tracks.png" alt="같은 1년의 두 갈래 — 왼쪽 &quot;글 발행 0편&quot;, 오른쪽 &quot;AI에 쌓인 기록 40억 토큰&quot;. 아래에 물음표와 &quot;왜 하나는 나오고 하나는 안 나왔나&quot;" loading="lazy">
+<h2>1. 글은 0편인데 기록은 미친 듯이 쌓였어요</h2>
+<p>재밌는 게 여기예요.<br>
+글은 한 편도 못 썼는데, 그 1년 동안 기록은 정말 많이 했습니다.</p>
+<p>글 대신 AI한테 매일을 갈아 넣었거든요.<br>
+그날 한 작업, 내린 결정, 반복한 실수, 판단 기준까지 전부요.<br>
+1년 쌓인 걸 세어보니 작업 이력 수백 건에 지식 문서 500개, AI랑 주고받은 토큰이 40억 개였어요. 책으로 치면 4만 권쯤 되는 양이라고 하더라고요..</p>
+<p>그러니까 &quot;글쓰기로 나를 세우겠다&quot;는 다짐은 실패했는데, 기록으로 세우는 건 저도 모르게 되고 있었던 거죠.</p>
+<p>여기까지만 보면 훈훈한 얘기인데, 문제는 그다음이었습니다.</p>
+<h2>2. 500개를 쌓아놨는데 검색이 안 되더라고요</h2>
+<p>쌓기만 하면 되는 줄 알았어요.</p>
+<p>그런데 정작 필요한 순간에 안 나왔습니다.<br>
+&quot;작년에 그거 어떻게 해결했더라&quot; 하고 찾으면, 분명 어딘가 적어놨는데 검색 결과에 안 걸리는 거예요.</p>
+<p>올해 6월에 제 기록 창고 검색 성능을 한번 재봤어요. 찾아야 할 문서를 실제로 찾아낸 비율이 <strong>41.9%</strong>에서 더 안 올라가더라고요.<br>
+절반도 못 찾는다는 뜻이죠. 그때 노트에 이렇게 적어놨더라고요.</p>
+<pre><code>[2026-06-08] KB 데이터 산재 → 검색 recall 41.9% 정체.
+&quot;더 쪼개기 ≠ 개선, 진짜 문제는 분류 축 부재&quot;</code></pre>
+<p>처음엔 파일을 더 잘게 쪼개면 나아질 줄 알았어요. 정반대였습니다.<br>
+쪼갤수록 같은 내용이 여기저기 흩어져서 어디를 봐야 할지 더 모르게 됐거든요.</p>
+<p>진짜 원인은 양이 아니라 <strong class="u">분류 축</strong>이었어요.<br>
+언제 있었던 일인지, 어느 갈래 일인지, 왜 그렇게 정했는지가 파일 안에 안 적혀 있으니까 나중의 저도 못 찾고 AI도 못 찾은 겁니다.<br>
+존재하는데 못 찾으면 없는 거나 마찬가지였어요.</p>
+<img src="img/03_archive_compare.png" alt="안 꺼내지는 창고 vs 꺼내지는 창고 비교 — 왼쪽은 파일들이 무질서하게 흩어지고 검색 화살표가 튕겨나감(41.9%), 오른쪽은 날짜·갈래·인덱스 축으로 정렬돼 검색 화살표가 바로 도달" loading="lazy">
+<h2>3. 그래서 규칙을 딱 세 개만 정했습니다</h2>
+<p>도구를 바꾸지는 않았어요. 지금도 그냥 텍스트 파일입니다.<br>
+AI 업무 기록 정리에서 제가 바꾼 건 도구가 아니라 쓰는 방식 세 가지였어요.</p>
+<p><strong>하나, 한 사건에 한 파일. 파일명이 곧 검색어.</strong><br>
+날짜와 갈래와 한 줄 요약을 파일명에 박습니다. 폴더를 뒤지지 않고 파일명만 훑어도 찾아지게요.</p>
+<pre><code>2026-06-08_기록창고_검색안됨_분류축부재.md
+2026-08-09_리포트자동화_무인가동_검증완료.md</code></pre>
+<p><strong>둘, 무엇을 했는지보다 왜 그렇게 했는지를 남긴다.</strong><br>
+이게 제일 크게 바뀐 부분이에요.<br>
+예전 기록은 &quot;폴더 구조를 이렇게 바꿨다&quot;에서 끝났는데, 그러면 몇 달 뒤에 이유를 모르니까 멀쩡한 걸 도로 되돌리는 사고가 납니다. 실제로 한 번 겪었고요.<br>
+지금은 결정마다 이유와 영향 범위를 같이 적습니다.</p>
+<p><strong>셋, 파일을 만들면 인덱스에 한 줄 추가한다.</strong><br>
+문서 500개를 통째로 읽힐 수는 없으니, 목차 파일 하나에 한 줄씩만 남겨요.</p>
+<pre><code>- [기록창고 검색 실패](2026-06-08_기록창고_검색안됨.md) — 쪼개기로는 안 됨, 축이 문제</code></pre>
+<p>이 한 줄이 있어야 AI가 &quot;무슨 파일이 있는지&quot;를 먼저 보고 필요한 것만 열어봅니다. 사람이 목차 보고 책 펴는 거랑 똑같아요.</p>
+<p>| 규칙 | 안 지키면 생기는 일 | 확인 방법 |<br>
+|---|---|---|<br>
+| 한 사건 한 파일 (파일명=검색어) | 같은 내용이 흩어져 어디를 볼지 모름 | 파일명만 보고 내용이 떠오르나 |<br>
+| 왜(WHY)와 영향 범위 기록 | 몇 달 뒤 이유를 몰라 멀쩡한 걸 되돌림 | 3개월 전 파일 열어 이유가 읽히나 |<br>
+| 인덱스 한 줄 추가 | AI가 문서 존재 자체를 모름 | 목차만 보고 원하는 파일 찾히나 |</p>
+<img src="img/04_three_rules.png" alt="기록 한 건이 흐르는 3단계 파이프라인 — &quot;① 한 사건 한 파일(날짜_갈래_요약)&quot; → &quot;② WHY·영향범위 기록&quot; → &quot;③ 인덱스 한 줄&quot; → 오른쪽 끝에 &quot;AI가 꺼내 씀&quot; 도착 표시" loading="lazy">
+<h2>4. 창고가 생기니까 글이 나왔어요</h2>
+<p>지금 세어보니 지식 문서는 515개, 줄 수로 23만 줄이 넘었습니다.<br>
+1년 전보다 양은 더 늘었는데, 이제는 필요할 때 꺼내집니다. 규칙 세 개 차이예요.</p>
+<p>이 글도 그래요.<br>
+빈 화면 앞에서 &quot;뭘 쓰지..&quot; 하고 앉아 있었던 게 아니라, 서랍에서 나온 옛날 글 한 편이랑 두 달 전 기록 노트 한 줄을 꺼내서 붙인 게 전부거든요.</p>
+<p>1년 전의 저는 글감이 없어서 못 쓴 게 아니었어요.<br>
+<strong class="u">창고가 없었다</strong>는 게 정확한 진단이었습니다.<br>
+그때의 저한테 한마디 해줄 수 있다면, 매주 쓰겠다고 다짐하지 말고 매일 세 줄만 남기라고 하겠습니다.</p>
+<h2>이런 것도 궁금하실 것 같아요</h2>
+<p><strong>Q. AI 업무 기록 정리는 어떤 앱으로 하는 게 좋나요?</strong><br>
+저는 그냥 텍스트 파일(.md)에 씁니다. 앱을 바꿔봐야 검색이 되는 게 아니더라고요. 중요한 건 파일명·WHY·인덱스 세 가지고, 이건 어떤 도구를 쓰든 지킬 수 있어요. 오히려 특정 앱에 묶이면 나중에 AI한테 통째로 읽히기가 더 번거로워집니다.</p>
+<p><strong>Q. 매일 기록하려면 시간이 얼마나 드나요?</strong><br>
+일 끝날 때 3~5분이에요. 요령이 하나 있는데, 제가 처음부터 쓰지 않고 그날 작업하던 AI한테 &quot;오늘 한 일이랑 결정한 이유를 파일로 정리해줘&quot;라고 시킨 다음 제가 고칩니다. 초안은 AI가, 왜 그렇게 정했는지는 제가 채우는 식이요. 백지에서 시작하는 것보다 훨씬 오래 갑니다!</p>
+<p>여러분 기록 창고에는 지금 뭐가 잠들어 있나요?<br>
+1년 묵은 파일 하나 열어보시면, 그게 다음에 쓸 무언가의 재료인지 아닌지 바로 아실 거예요.</p>
+<p>---<br>
+현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
+<p>태그: #AI업무기록정리 #AI기록습관 #AI지식관리 #AI메모정리 #업무일지자동화 #AI세컨브레인 #지식베이스만들기 #기록검색 #AI활용법 #AI로일하기 #노트정리법 #업무기록양식 #개인지식관리 #현장엔지니어 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224374337438" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
