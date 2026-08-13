@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>작업 스케줄러 정리, 껐다고 믿은 자동화가 33일을 더 돌았어요 | 도면 읽는 AI</title>
+<meta name="description" content="한 달 전에 끈 줄 알았던 자동화가, 어젯밤에도 제 PC에서 멀쩡히 돌고 있었습니다. 지시는 분명히 내렸어요. 규칙 문서에도 적어뒀고요. 그런데 안 멈췄더라고요.. 그래서 작업 스케줄러 정리를 처음부터 다시 했습니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20260820-zombie-scheduler-cleanup/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="작업 스케줄러 정리, 껐다고 믿은 자동화가 33일을 더 돌았어요 | 도면 읽는 AI">
+<meta property="og:description" content="한 달 전에 끈 줄 알았던 자동화가, 어젯밤에도 제 PC에서 멀쩡히 돌고 있었습니다. 지시는 분명히 내렸어요. 규칙 문서에도 적어뒀고요. 그런데 안 멈췄더라고요.. 그래서 작업 스케줄러 정리를 처음부터 다시 했습니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20260820-zombie-scheduler-cleanup/">
+<meta property="og:image" content="https://makefield.ai/blog/20260820-zombie-scheduler-cleanup/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "작업 스케줄러 정리, 껐다고 믿은 자동화가 33일을 더 돌았어요", "datePublished": "2026-08-14", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260820-zombie-scheduler-cleanup/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-08-14</span></div>
+<h1>작업 스케줄러 정리, 껐다고 믿은 자동화가 33일을 더 돌았어요</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;껐다고 믿은 자동화 3개 / 작업 스케줄러 정리 · 33일을 더 돌고 있었습니다&quot;" loading="lazy">
+<p>한 달 전에 끈 줄 알았던 자동화가, 어젯밤에도 제 PC에서 멀쩡히 돌고 있었습니다.<br>
+지시는 분명히 내렸어요. 규칙 문서에도 적어뒀고요. 그런데 안 멈췄더라고요..<br>
+그래서 작업 스케줄러 정리를 처음부터 다시 했습니다.</p>
+<p>답부터 적을게요.<br>
+<strong>자동화는 &quot;그만해&quot;라고 쓴 문서를 읽고 멈추지 않습니다. 실제로 멈추는 건 ①그걸 호출하는 코드 ②시작할 때 자동으로 끼어드는 설정·훅 ③OS 작업 스케줄러, 이 세 군데를 직접 열어봤을 때예요.</strong> 저는 문서만 고쳐놓고 33일을 흘려보냈습니다.</p>
+<p>저는 현장 설비를 만지는 일로 15년쯤 살았어요.<br>
+새로 뭘 붙이는 것보다 안 쓰는 걸 떼어내는 쪽이 늘 더 어렵습니다. 배선 하나 걷어내려면 그게 어디까지 물려 있는지 전부 따라가 봐야 하잖아요.<br>
+개인 AI 자동화도 똑같더라고요.</p>
+<p>전제부터 적어둘게요. 윈도우 10·11의 작업 스케줄러 기준이고, 아래 명령은 2026년 8월 기준 PowerShell에서 그대로 씁니다. 목록 조회는 일반 권한으로 되고, 끄거나 지우는 건 관리자 권한이 필요해요.</p>
+<h2>1. 문서에 &quot;하지 마&quot;를 스무 군데 적어도 안 멈춰요</h2>
+<p>7월 중순에 결정을 하나 했어요. 매일 문서를 클라우드 노트로 밀어 올리던 동기화를 그만 쓰기로요. 잘 돌긴 하는데 정작 제가 안 읽고 있었거든요.<br>
+그러고 나서 제가 한 일은 규칙 문서를 고친 거였어요. AI한테 &quot;이제 안 한다&quot;고 알려주려고요.</p>
+<p>33일 뒤에 열어봤더니 상태가 이랬습니다.</p>
+<p>- 규칙·지침 문서: &quot;중지&quot;와 &quot;필수&quot;가 파일마다 섞여서 남아 있음<br>
+- 세션 훅 2개: 작업을 시작할 때마다 &quot;동기화는 필수&quot;라고 AI한테 여전히 주입<br>
+- 실행 코드 3곳: 새벽 5시, 밤 11시 30분, 밤 11시 40분에 <strong>매일 실제로 동기화 수행</strong></p>
+<p>세 번째 줄이 제일 뜨끔했어요.<br>
+사람은 &quot;그거 안 하기로 했지&quot;라고 기억하는데, 코드는 그냥 하던 걸 계속하고 있었습니다.<br>
+그날 손댄 곳을 세어보니 문서 20건, 훅 2개, 실행 코드 3곳이었어요. 지시 한 줄이 이렇게 여러 겹으로 흩어져 있는 줄 저도 그때 알았습니다..</p>
+<img src="img/02_drift.png" alt="지시와 실행의 3층 드리프트 — 위층 &quot;사람이 읽는 층: 규칙 문서 20건 → 폐지라고 적힘&quot;, 가운데층 &quot;AI에 주입되는 층: 훅 2개 → 아직도 &#x27;필수&#x27;라고 말함&quot;, 아래층 &quot;기계가 도는 층: 실행 코드 3곳 → 매일 05:00 / 23:30 / 23:40 수행&quot;. 오른쪽 세로에 &quot;33일간 그대로&quot; 표시" loading="lazy">
+<h2>2. 지금 내 PC에서 도는 자동화, 한 줄로 다 꺼내는 법</h2>
+<p>작업 스케줄러 정리는 목록을 눈으로 보는 데서 시작합니다. GUI로 하나씩 클릭하면 놓쳐요.<br>
+PowerShell을 열고 이 한 덩어리를 그대로 붙여 넣으세요.</p>
+<pre><code>Get-ScheduledTask | Where-Object { $_.TaskPath -notlike &quot;\Microsoft*&quot; } |
+  ForEach-Object {
+    $i = $_ | Get-ScheduledTaskInfo
+    [PSCustomObject]@{
+      이름     = $_.TaskName
+      상태     = $_.State
+      최근실행 = $i.LastRunTime
+      결과     = $i.LastTaskResult
+    }
+  } | Sort-Object 최근실행 -Descending | Format-Table -AutoSize</code></pre>
+<p><code>\Microsoft*</code>를 빼는 게 요령이에요. 그걸 안 걸면 윈도우가 기본으로 깔아둔 작업 수백 개에 파묻혀서 정작 내가 만든 게 안 보입니다.</p>
+<p>제 PC에서 나온 결과를 이름만 바꿔서 그대로 옮겨볼게요.</p>
+<pre><code>이름                    상태      최근실행                     결과
+--------------------    --------  --------------------  ----------
+매일_대시보드            Ready     2026-08-14 05:48:48           0
+매일_블로그발행          Running   2026-08-14 05:30:30      267009
+매일_영어레슨            Ready     2026-08-14 04:30:30           0
+밤_점검                  Ready     2026-08-13 23:10:10           0
+예전에지운프로그램       Ready     2026-08-07 00:30:30  2147942402
+그래픽드라이버_업데이트  Ready     1999-11-30 00:00:00      267011
+도면엔진_점검            Disabled  2026-07-01 14:00:00           0</code></pre>
+<p>한 화면에 놓고 보니 그제야 보이더라고요.<br>
+제가 만든 작업만 21개였습니다. 이 중에 어제 안 돈 것, 결과가 0이 아닌 것, 상태가 Disabled인 것부터 눈에 걸리기 시작했어요.</p>
+<h2>3. &quot;마지막 실행 결과&quot; 숫자는 이렇게 읽습니다</h2>
+<p>여기가 이 글에서 제일 써먹을 데가 많은 부분이에요.<br>
+결과 칸에 뜨는 십진수는 그 작업의 진단서입니다. 자주 만나는 값만 정리하면 이래요.</p>
+<p>| 결과 값 | 16진수 | 뜻 | 내가 내리는 판단 |<br>
+|---|---|---|---|<br>
+| 0 | 0x0 | 정상 종료 | 정상 |<br>
+| 267009 | 0x00041301 | 지금 실행 중 | 조회 순간에 돌던 중, 정상 |<br>
+| 267011 | 0x00041303 | 한 번도 실행된 적 없음 | 등록만 되고 안 도는 작업 |<br>
+| 2147942402 | 0x80070002 | 지정된 파일을 찾을 수 없음 | 대상 프로그램이 사라진 <strong class="u">좀비 작업</strong> |<br>
+| 9009 | — | 명령을 못 찾음 | 경로·확장자·인코딩 문제 |</p>
+<p>검색해도 안 나오는 십진수를 만나면 이렇게 16진수로 바꿔서 다시 찾으면 됩니다.</p>
+<pre><code>&#x27;0x{0:X8}&#x27; -f 2147942402   # → 0x80070002</code></pre>
+<p>제 목록에서 2147942402가 뜬 건 제가 만든 것도 아닌 작업이었어요. 어떤 프로그램이 설치될 때 같이 등록해두고 간 예약 작업인데, 정작 실행할 파일은 지금 그 자리에 없습니다. 그래서 매번 &quot;파일을 못 찾겠다&quot;고 실패하면서도 조용히 다시 예약돼요.<br>
+1999년 날짜로 찍힌 267011짜리도 하나 있었고요. 등록만 되고 한 번도 안 돈 작업입니다.</p>
+<p>이런 게 왜 문제냐면요.<br>
+얘들은 실패해도 아무한테도 안 알립니다. 로그는 쌓이고, 점검 도구는 매번 이걸 다시 읽고, 알람은 계속 울려요.<br>
+저는 7월 초에 일부러 세워둔 작업의 실패 기록이 매일 재스캔되면서 같은 알람이 <strong>1,232회</strong> 반복돼 있는 것도 그날 발견했습니다. 로그를 보관 폴더로 옮기고 해소 처리하니 미해결 0건이 됐고요.</p>
+<img src="img/03_codes.png" alt="마지막 실행 결과 판독표 — 세로 4칸 신호등. 초록 &quot;0 = 정상 종료&quot;, 파랑 &quot;267009 = 지금 실행 중&quot;, 노랑 &quot;267011 = 한 번도 안 돔&quot;, 빨강 &quot;2147942402 (0x80070002) = 대상 파일 없음 → 좀비&quot;. 오른쪽에 &quot;십진수는 &#x27;0x{0:X8}&#x27; -f 로 16진 변환 후 검색&quot; 캡션" loading="lazy">
+<h2>4. 끄는 순서 — 지우지 말고 막으세요</h2>
+<p>여기서 순서를 틀리면 저처럼 33일을 날립니다. 제가 정리한 순서는 이래요.</p>
+<p><strong>1단계, <strong class="u">호출부</strong>부터 막습니다.</strong><br>
+코드 자체를 지우지 않아요. 그 기능을 부르는 한 줄만 없애거나, 함수 맨 앞에 &quot;그냥 돌아가라&quot;는 가드를 한 줄 넣습니다. 나중에 왜 껐는지 근거가 코드에 남아야 하거든요.</p>
+<p><strong>2단계, 자동으로 끼어드는 설정과 훅을 뗍니다.</strong><br>
+저는 작업 시작 스크립트의 리마인더 문구를 지우고, 설정 파일에 등록돼 있던 훅 하나를 등록만 해제했어요. 훅 파일 자체는 남겨뒀습니다.</p>
+<p><strong>3단계, OS 스케줄러를 내립니다.</strong> 관리자 권한 PowerShell이 필요해요.</p>
+<pre><code># 일단 멈춰두기 (되살리기 쉬움)
+Disable-ScheduledTask -TaskName &quot;작업이름&quot;
+
+# 대상 프로그램 자체가 사라진 좀비만 완전 삭제
+Unregister-ScheduledTask -TaskName &quot;작업이름&quot; -Confirm:$false</code></pre>
+<p>되살릴 여지가 조금이라도 있으면 Disable까지만 합니다. 삭제는 대상이 아예 없어진 것만요.</p>
+<p><strong>4단계, 마지막에 문서와 규칙을 고칩니다.</strong><br>
+순서가 거꾸로 보이시죠? 저도 문서부터 고쳤다가 당했어요. 문서를 먼저 손보면 &quot;정리 끝냈다&quot;는 기분만 생기고 기계는 그대로 돕니다. <strong class="u">실행을 먼저</strong> 끊고 기록은 나중에, 이게 그날 얻은 순서예요.</p>
+<img src="img/04_order.png" alt="끄는 순서 4단계 — 세로 흐름 &quot;① 호출부 차단(코드는 보존)&quot; → &quot;② 훅·설정 등록 해제&quot; → &quot;③ 스케줄러 Disable / 좀비만 삭제&quot; → &quot;④ 문서·규칙 갱신&quot;. 왼쪽에 회색 화살표로 &quot;문서부터 고치면 = 착각만 남고 기계는 계속 돈다&quot; 반대 경로 표시" loading="lazy">
+<h2>5. 진짜 멈췄는지 확인하는 방법</h2>
+<p>껐다고 믿는 게 이 사고의 원인이었으니, 확인 기준을 숫자로 정해뒀어요. 다음 날 아침에 셋만 봅니다.</p>
+<p>| 확인할 것 | 방법 | 통과 기준 |<br>
+|---|---|---|<br>
+| 스케줄러가 안 돌았나 | 2장의 조회 명령 재실행 | 최근실행 시각이 어제 그대로 |<br>
+| 산출물이 안 생겼나 | 결과 저장 폴더 정렬 | 새 파일 0건 |<br>
+| 로그가 안 자랐나 | 로그 파일 크기·마지막 줄 | 어제 이후 추가 줄 없음 |</p>
+<p>셋 중 하나라도 어긋나면 아직 어딘가에서 부르고 있는 겁니다. 그때는 2단계 훅을 다시 의심하면 대개 나와요.</p>
+<h2>이런 게 궁금하실 것 같아요</h2>
+<p><strong>Q. 그냥 전부 삭제하면 안 되나요?</strong><br>
+삭제는 되돌리기가 안 됩니다. 특히 코드를 지우면 &quot;왜 껐는지&quot;가 같이 사라져서, 몇 달 뒤에 똑같은 걸 또 만들어요. 저는 코드는 남기고 호출만 막는 쪽을 기본으로 씁니다. 완전 삭제는 대상 프로그램 자체가 이미 없어진 작업, 그러니까 결과가 0x80070002로 뜨는 것들에만 적용해요.</p>
+<p><strong>Q. AI한테 &quot;이제 하지 마&quot;라고 말해두면 안 지켜지나요?</strong><br>
+그 대화 안에서는 지켜집니다. 문제는 자동으로 도는 것들이 대화 밖에 있다는 거예요. 스케줄러는 제가 잠든 시간에 코드를 실행할 뿐이라, 사람이 어디에 뭐라고 적어놨는지를 읽지 않습니다. 지시는 사람이 읽는 층, 실행은 기계가 읽는 층. 두 층을 따로 손봐야 해요.</p>
+<p>정리하면, 제가 그날 배운 건 하나예요.<br>
+자동화를 만들 땐 스위치를 켜는 것만 신경 썼는데, 끄는 데도 순서가 필요하더라고요. 호출부, 훅, 스케줄러, 그리고 마지막에 문서.<br>
+위의 조회 명령 한 줄이면 30초 만에 내 PC 목록이 나옵니다. 저는 그날 3개를 내렸어요. 한 달 묵은 착각치고는 싸게 끝났습니다!</p>
+<p>여러분 PC에는 지금 몇 개가 돌고 있고, 그중 마지막으로 결과를 열어본 게 몇 개인가요?</p>
+<p>---<br>
+혼자 굴리는 자동화가 열 개를 넘어가면 관리가 또 하나의 일이 됩니다. 그 언저리에서 막히실 때 찾아오실 곳으로 makefield.ai를 열어두고 있어요.</p>
+<p>태그: #작업스케줄러정리 #안쓰는자동화정리 #작업스케줄러오류 #마지막실행결과 #0x80070002 #윈도우자동화 #파워쉘 #자동화관리 #무인자동화 #파이썬자동화 #AI자동화 #AI에이전트 #AI로일하기 #현장엔지니어 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224378092356" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
