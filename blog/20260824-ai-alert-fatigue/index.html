@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 알림 자동화, 29일 연속 같은 경고를 보낸 이유 | 도면 읽는 AI</title>
+<meta name="description" content="AI 알림 자동화를 만들어놓고 한 달째 안 열어보고 있었습니다. 매일 새벽 4시에 알림이 하나 오는데, 오늘도 노란불이라고요. 계속 같은 색이었거든요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260824-ai-alert-fatigue/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 알림 자동화, 29일 연속 같은 경고를 보낸 이유 | 도면 읽는 AI">
+<meta property="og:description" content="AI 알림 자동화를 만들어놓고 한 달째 안 열어보고 있었습니다. 매일 새벽 4시에 알림이 하나 오는데, 오늘도 노란불이라고요. 계속 같은 색이었거든요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260824-ai-alert-fatigue/">
+<meta property="og:image" content="https://makefield.ai/blog/20260824-ai-alert-fatigue/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 알림 자동화, 29일 연속 같은 경고를 보낸 이유", "datePublished": "2026-08-16", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260824-ai-alert-fatigue/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-08-16</span></div>
+<h1>AI 알림 자동화, 29일 연속 같은 경고를 보낸 이유</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 알림 자동화 / 29일 연속 노란불. 저는 그 알림을 안 열어봤습니다&quot;" loading="lazy">
+<p>AI 알림 자동화를 만들어놓고 한 달째 안 열어보고 있었습니다.<br>
+매일 새벽 4시에 알림이 하나 오는데, 오늘도 노란불이라고요. 계속 같은 색이었거든요.</p>
+<p>이 글의 답은 한 문장입니다.<br>
+<strong>매일 도는 알림은 &#x27;지금 상태&#x27;를 보내면 죽고, &#x27;어제와 달라진 것&#x27;을 보내야 삽니다.</strong> 상태값은 며칠만 고정돼도 읽는 사람에게서 의미가 사라지거든요. 그런데 대부분의 AI 알림 자동화는 기본값이 상태값 전송입니다.</p>
+<p>저는 공장 설비 쪽 일을 열다섯 해쯤 했습니다. 계기판 보고, 경보 뜨면 원인 찾으러 가는 쪽이요.<br>
+현장에서 제일 위험한 알람이 뭔지 아세요? 안 울리는 알람이 아니라 <strong class="u">늘 켜져 있는 알람</strong>입니다. 계속 떠 있으면 사람이 그걸 배경으로 취급해버리거든요. 제가 만든 개인 자동화에서 똑같은 걸 재현하고 있었어요.</p>
+<p>전제는 이렇습니다. 2026년 8월 기준이고, 매일 돌면서 로그를 텍스트로 남기는 자동화면 종류를 안 가립니다. 명령은 윈도우 PowerShell과 맥·리눅스 터미널 두 가지로 적었어요.</p>
+<h2>1. 로그 29개를 열어봤더니 전부 같은 색이었어요</h2>
+<p>제가 굴리는 AI 알림 자동화 중에 매일 새벽에 도는 게 하나 있습니다. 자료를 모아 요약 문서를 만들고 마지막에 신호등을 띄우는 구조예요. 초록·노랑·빨강 세 단계고요.<br>
+어느 날 문득 &quot;이거 마지막으로 색이 바뀐 게 언제지?&quot; 싶더라고요.. 그래서 로그를 전부 뒤졌습니다. 판정 줄만 뽑았어요.</p>
+<pre><code>Get-ChildItem .\logs\*.log | ForEach-Object {
+  $m = (Select-String -Path $_.FullName -Pattern &#x27;안전등[^*]{0,20}&#x27; |
+        Select-Object -First 1).Matches.Value
+  &quot;{0} | {1}&quot; -f $_.BaseName, $m
+}</code></pre>
+<p>맥이나 리눅스면 이 한 줄이면 됩니다.</p>
+<pre><code>for f in logs/*.log; do echo &quot;$f | $(grep -o &#x27;안전등.\{0,20\}&#x27; &quot;$f&quot; | head -1)&quot;; done</code></pre>
+<p>돌려서 나온 결과를 파일 이름만 바꿔서 옮기면 이랬습니다.</p>
+<pre><code>브리핑_2026-08-10 | 안전등: 🟡 YELLOW 유지
+브리핑_2026-08-11 | 안전등: 🟡 YELLOW
+브리핑_2026-08-12 | 안전등: 🟡 주의 (YELLOW)
+브리핑_2026-08-13 | 안전등: 🟡 YELLOW 유지
+브리핑_2026-08-14 | 안전등: 🟡 YELLOW 유지
+브리핑_2026-08-15 | 안전등: 🟡 주의 (YELLOW)
+브리핑_2026-08-16 | 안전등: 🟡 YELLOW 유지</code></pre>
+<p>7월 16일부터 8월 16일까지 로그가 남은 날이 <strong>29일</strong>이었는데, 29일 전부 노란불이었습니다. 빨간불이 마지막으로 켜진 건 7월 14일이고, 초록불은 그 사이 한 번도 없었어요.<br>
+한 달 내내 알림을 받았는데 새로 전달된 정보는 사실상 0이었던 셈입니다..</p>
+<img src="img/02_timeline.png" alt="등급 시계열 띠 — 가로로 7/14부터 8/16까지 날짜 눈금. 7/14 칸만 빨강, 7/16~8/16 칸 29개가 전부 노랑으로 이어짐. 띠 아래에 &quot;색 변화 0회 / 알림 29회&quot; 캡션, 오른쪽 끝에 &quot;그래서 안 열어보게 됨&quot; 라벨" loading="lazy">
+<h2>2. 시장이 안 변한 게 아니라, 이유가 세 번 갈렸어요</h2>
+<p>여기서 그냥 &quot;그동안 별일 없었나 보다&quot; 하고 넘어갈 뻔했습니다.<br>
+그런데 로그 본문을 열어보니 얘기가 달랐어요. 색은 같은데 <strong>밑에 붙은 사유가 완전히 물갈이돼 있었습니다.</strong></p>
+<p>| 시점 | 노란불이 켜진 이유 |<br>
+|---|---|<br>
+| 7월 중순 | 밸류에이션 과열 + 유가 급등(중동 정세) |<br>
+| 8월 초 | 위기 신호는 전부 정상, 밸류에이션 과열 단독 |<br>
+| 8월 중순 | 밸류에이션 과열 + 소비 지표 둔화(9개월 만의 첫 감소) |</p>
+<p>읽는 사람 입장에서 이 셋은 완전히 다른 상황이에요. 지정학 리스크가 걷힌 것도 사건이고, 소비가 꺾이기 시작한 것도 사건이니까요.<br>
+그런데 제 알림에는 그 셋이 전부 &quot;🟡 노란불 유지&quot; 한 줄로 압축돼서 나갔습니다.<br>
+정보가 없어서 알림이 무의미해진 게 아니라, <strong class="u">요약이 너무 세서</strong> 정보가 뭉개진 거였어요.</p>
+<h2>3. 노란불을 붙잡고 있던 건 항목 하나였습니다</h2>
+<p>그럼 왜 29일 동안 한 번도 안 내려갔을까요.<br>
+8월 5일 로그에 답이 그대로 적혀 있었습니다. 제 AI가 스스로 써둔 문장이에요. 지표 수치만 지우고 옮겨볼게요.</p>
+<pre><code>위기성 신호(급락·변동성·금리·유가)는 전부 정상이지만,
+밸류에이션 과열이 어제에 이어 지속 →
+일관성·보수성 원칙에 따라 GREEN으로 내리지 않고 🟡 유지</code></pre>
+<p>네 개 축 중 셋이 초록인데, 나머지 하나가 계속 켜져 있어서 등급이 안 내려간 겁니다.<br>
+문제는 그 하나가 <strong>몇 년 단위로 움직이는 지표</strong>라는 거예요. 어제 대비 오늘 바뀔 성질의 값이 아니죠. 하루짜리 알림에 그런 항목을 물려놓으면 등급은 구조적으로 고정됩니다.<br>
+현장 말로 바꾸면, 경보반에 &quot;이 공장은 오래된 설비입니다&quot; 같은 상시 조건을 램프로 물려둔 꼴이에요. 틀린 말은 아닌데 그게 켜져 있는 동안 나머지 램프가 안 보입니다.</p>
+<img src="img/03_gate.png" alt="등급 판정 구조 — 왼쪽에 입력 4칸 &quot;급락 신호: OFF&quot;, &quot;변동성: OFF&quot;, &quot;금리·유가: OFF&quot;, &quot;밸류에이션 과열: ON(상시)&quot;. 네 칸이 가운데 OR 게이트로 모이고, 출력은 &quot;등급 = YELLOW 고정&quot;. 오른쪽에 붉은 주석 &quot;느린 지표 1개가 빠른 알림을 잠가버림&quot;" loading="lazy">
+<h2>4. 그래서 알림 규칙을 이렇게 바꾸는 중입니다</h2>
+<p>손댈 곳은 판정 로직이 아니라 <strong class="u">알리는 기준</strong>이었어요. 순서대로 적을게요. 미리 밝히면 1단계까지가 오늘 한 일이고, 나머지는 이번 주 작업분입니다.</p>
+<p><strong>1단계. 항상 켜져 있는 항목을 색출합니다.</strong> (완료)<br>
+위의 명령으로 30일치 판정을 뽑고, 사유별로 등장 횟수를 셉니다. 30일 중 28일 이상 등장하는 항목이 범인이에요. 제 경우는 밸류에이션 과열 하나가 29일 전부에 들어 있었습니다.</p>
+<p><strong>2단계. 그 항목을 등급에서 빼서 &#x27;배경 상수&#x27;로 옮깁니다.</strong><br>
+지우는 게 아니라 자리를 옮기는 겁니다. 느린 지표는 문서 맨 앞 고정 문단으로 내리고, 재평가 주기를 월 1회로 따로 잡습니다. 매일 판정에는 안 넣고요.</p>
+<p><strong>3단계. 매일 보내는 건 값이 아니라 차이로 바꿉니다.</strong><br>
+&quot;오늘 노란불&quot;이 아니라 &quot;어제와 같음(29일째)&quot; 또는 &quot;사유 교체: 유가 → 소비 지표&quot;처럼요. 사람이 읽고 행동이 갈리는 건 언제나 차이 쪽입니다.</p>
+<p><strong>4단계. 사유를 산문 대신 항목으로 남깁니다.</strong><br>
+이게 없으면 3단계가 아예 불가능해요. <code>[&quot;과열&quot;, &quot;유가&quot;]</code>처럼 목록으로 저장돼 있어야 어제와 대조가 되거든요. 저는 이번에 로그를 하나씩 눈으로 읽어가며 사유를 셌습니다.. 항목으로 남겼으면 명령 한 줄로 끝날 일이었고요.</p>
+<img src="img/04_before_after.png" alt="개선 전후 비교 — 위쪽 &#x27;전&#x27; 흐름 &quot;판정 → 등급 한 글자 → 매일 푸시&quot; 끝에 회색 사람 아이콘과 &quot;안 열어봄&quot;. 아래쪽 &#x27;후&#x27; 흐름 &quot;판정 → 사유를 항목 목록으로 저장 → 어제와 비교 → 변화 있을 때만 푸시 / 변화 없으면 조용&quot; 끝에 &quot;열어보게 됨&quot; 라벨. 왼쪽에 별도 박스 &quot;느린 지표 = 배경 상수, 월 1회 재평가&quot;" loading="lazy">
+<p><strong>확인 방법도 정해뒀어요.</strong> 한 달 뒤에 1단계 명령을 다시 돌립니다. 판정이 바뀐 횟수를 세서 30일에 3~5회 근처면 통과, 0회면 그 알림은 아직 죽어 있는 겁니다. 반대로 매일 바뀌면 그건 기준이 너무 예민한 거고요.<br>
+AI 알림 자동화는 이 숫자 하나로 살았는지 죽었는지가 판정됩니다. 알림 개수도, 문서 분량도 아니고요.</p>
+<h2>이런 게 궁금하실 것 같아요</h2>
+<p><strong>Q. 매일 오는 알림 자체를 없애면 안 되나요?</strong><br>
+없애면 기록이 같이 끊깁니다. 나중에 &quot;그때 왜 이랬지&quot;를 되짚을 재료가 사라져요.<br>
+그래서 제가 잡은 방향은 생성은 매일 그대로 두고 <strong>알림만 조건부</strong>로 돌리는 겁니다. 문서는 매일 쌓이고, 폰이 울리는 건 뭔가 달라진 날뿐이게요.</p>
+<p><strong>Q. AI한테 &quot;중요할 때만 알려줘&quot;라고 하면 되지 않나요?</strong><br>
+그 한마디로는 잘 안 됩니다. &#x27;중요&#x27;의 기준이 매번 다시 해석되거든요. 어제 뭘 보냈는지 기억 못 하는 상태라면 더 그렇고요.<br>
+비교 대상을 파일로 남겨주는 편이 확실합니다. 어제 사유 목록을 읽어와 오늘 것과 맞춰보라고 하면, 판단이 아니라 대조 작업이 되니까 결과가 안정적이에요.</p>
+<h2>정리하면요</h2>
+<p>29일 연속 노란불은 시장이 조용했다는 뜻이 아니었습니다. 제 알림이 차이를 지우고 있었다는 뜻이었어요.<br>
+고칠 것도 대단한 게 아니고요. 느린 항목 하나를 등급에서 빼고, 보내는 내용을 상태에서 차이로 바꾸면 됩니다. 정작 오래 걸린 건 그걸 알아채는 쪽이었어요. 한 달 동안 알림은 매일 왔는데 제가 안 열어봤으니까요!</p>
+<p>매일 뭔가를 보내주는 자동화를 굴리고 계시다면, 위 명령으로 최근 30일 판정만 뽑아보세요. 30초면 됩니다.<br>
+줄줄이 같은 값이 찍혀 있다면 그건 조용한 한 달이 아니라 고장 난 알림일 가능성이 높아요.</p>
+<p>다음 편에서는 이렇게 뽑은 판정 기록을 매달 한 장짜리 회고 문서로 자동 정리하는 방법을 써볼게요.</p>
+<p>---<br>
+만든 자동화보다 꺼보고 고쳐본 자동화 얘기가 더 많은 곳, makefield.ai입니다.</p>
+<p>태그: #AI알림자동화 #알림피로 #자동화알림설계 #매일리포트자동화 #AI에이전트 #무인자동화 #파이썬자동화 #작업스케줄러 #AI산출물검증 #로그파일확인 #AI리포트 #개인AI에이전트 #AI로일하기 #현장엔지니어 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224379988818" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
