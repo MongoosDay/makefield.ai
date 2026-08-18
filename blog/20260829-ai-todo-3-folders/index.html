@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 할 일 목록 43개, 지우지 않고 15개로 줄인 방법 | 도면 읽는 AI</title>
+<meta name="description" content="세션을 열 때마다 제 AI가 안 끝난 일 목록을 먼저 읽어줍니다. 어느 날 그게 43줄이었어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260829-ai-todo-3-folders/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 할 일 목록 43개, 지우지 않고 15개로 줄인 방법 | 도면 읽는 AI">
+<meta property="og:description" content="세션을 열 때마다 제 AI가 안 끝난 일 목록을 먼저 읽어줍니다. 어느 날 그게 43줄이었어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260829-ai-todo-3-folders/">
+<meta property="og:image" content="https://makefield.ai/blog/20260829-ai-todo-3-folders/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 할 일 목록 43개, 지우지 않고 15개로 줄인 방법", "datePublished": "2026-08-19", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260829-ai-todo-3-folders/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-08-19</span></div>
+<h1>AI 할 일 목록 43개, 지우지 않고 15개로 줄인 방법</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 할 일 목록 43개 / 하나도 못 지우면서 매일 43줄을 읽었습니다&quot;" loading="lazy">
+<p>세션을 열 때마다 제 AI가 안 끝난 일 목록을 먼저 읽어줍니다. 어느 날 그게 43줄이었어요.</p>
+<p>AI 할 일 목록이 안 줄어드는 걸 저는 한동안 제 게으름 탓으로 알았어요. 정리해보니 아니더라고요.<br>
+<strong>목록이 안 줄어드는 건 일이 많아서가 아니라, 끝난 일을 닫는 절차가 없고 &quot;지금은 안 함&quot;이라는 상태 자체가 없어서예요.</strong> 그래서 저는 하나도 지우지 않고 폴더 세 개로 갈랐습니다. 43개가 15개가 됐어요.</p>
+<p>숫자부터 먼저 적어둘게요. 43개 중 8개는 이미 끝난 일이었고, 19개는 지금 안 할 일이었습니다. 진짜로 굴러가던 건 15개였어요.<br>
+2026년 8월 얘기고, 거창한 도구는 안 썼습니다. 안건 하나당 파일 하나, 폴더 세 개가 전부예요.</p>
+<h2>1. 브리핑이 43줄이 되면 아무도 안 읽어요</h2>
+<p>제 일은 설비가 정상인지 아닌지를 판정하는 쪽입니다. 그 판정만 십오 년 했는데, 정작 제 일감에는 판정 기준이 없었어요.</p>
+<p>쓰는 방식은 단순합니다. 세션이 중간에 끊기면 &quot;어디까지 했는지 + 다음에 뭘 할지&quot;를 파일 하나로 남겨두고, 다음에 AI가 그걸 읽고 이어가는 구조예요.<br>
+문제는 이 목록이 세션을 열 때마다 통째로 브리핑된다는 점입니다.</p>
+<pre><code>[이어가기] 15건:
+  - (안건명 15줄)</code></pre>
+<p>지금은 15줄이라 눈에 들어오는데, 43줄일 땐 스크롤로 지나갔어요. 저만 안 읽은 게 아닙니다. AI 입장에서도 43개가 동등한 무게로 들어오니 뭘 먼저 물어야 할지 못 고르더라고요.<br>
+결국 목록이 아니라 사람이 먼저 무너졌습니다. 잠은 모자라고 본업은 본업대로 있는데 안 끝낸 일 43개를 매일 확인하는 상태였거든요. 그때 제가 한 말이 &quot;못 하겠다&quot;였어요..</p>
+<h2>2. 지우기가 왜 안 되냐면요</h2>
+<p>제일 먼저 든 생각은 당연히 삭제였습니다. 반년째 손도 안 댄 것들, 그냥 지우면 되잖아요.</p>
+<p>근데 열어보면 지울 수가 없어요. 그 파일 안에는 그때 조사해둔 것, 막혔던 지점, 다음에 뭘 확인해야 하는지가 들어 있거든요. 지우면 나중에 다시 시작할 때 조사부터 처음부터 합니다.<br>
+죽은 안건이 아니라 <strong class="u">지금 안 하는</strong> 안건인 거예요. 그런데 제 목록에는 그 상태를 담을 칸이 없었습니다. 살아있음 아니면 삭제, 둘뿐이었어요.</p>
+<p>상태를 셋으로 늘리고 나서야 갈렸습니다.</p>
+<p>| 상태 | 뜻 | 어디에 두나 | 브리핑에 뜨나 |<br>
+|---|---|---|---|<br>
+| 끝남 | 결과가 다른 기록에 남아 있음 | 완료 폴더 | 안 뜸 |<br>
+| 지금 안 함 | 죽진 않았고 이번 달엔 안 건드림 | 보류 폴더 | 안 뜸 |<br>
+| 진행 중 | 이번 달에 실제로 손댈 것 | 목록 루트 | 뜸 |</p>
+<h2>3. 폴더 세 개로 갈랐습니다</h2>
+<p>구조는 이게 전부입니다. 마크다운 파일을 폴더 사이로 옮기는 것뿐이에요.</p>
+<pre><code>_이어가기/
+├── (진행 중 15건)
+├── _보류/   ← 19건, 죽지 않았지만 지금 안 함
+└── _완료/   ← 끝난 것 누적 보관</code></pre>
+<img src="img/02_three_folders.png" alt="정리 전후 비교 — 왼쪽에 &#x27;이어가기&#x27; 상자 하나에 43줄이 빽빽하게 들어차 있고 그 위에 &quot;세션마다 43줄 브리핑&quot; 캡션. 가운데에 판정 질문 &quot;이번 달에 손댈 건가?&quot; 마름모. 오른쪽으로 세 갈래 화살표가 갈라져 각각 &#x27;_완료 8건&#x27;(회색), &#x27;_보류 19건&#x27;(회색), &#x27;루트 15건&#x27;(강조색) 상자로 이어지고, 강조색 상자에만 &quot;브리핑에 뜸&quot; 표시" loading="lazy">
+<p>갈라내는 데 오래 안 걸렸어요. 질문을 바꿨더니 그렇게 됐습니다.<br>
+전에는 파일을 열 때마다 &quot;이거 끝났나?&quot;를 물었어요. 그러면 답이 안 나옵니다. 대부분은 끝난 것도 아니고 안 끝난 것도 아니거든요.<br>
+대신 이렇게 물었습니다. <strong>&quot;이번 달에 내가 여기 손을 대나?&quot;</strong> 이건 3초면 답이 나와요.</p>
+<p>그렇게 8건은 완료로 내려갔습니다. 사실 이미 끝난 일들이었어요. 결과는 다른 기록에 멀쩡히 남아 있는데 목록만 안 닫혀 있던 것뿐이었습니다.</p>
+<h2>4. 방치 일수를 세봤더니 답이 이미 나와 있었어요</h2>
+<p>보류로 내린 19건이 정말 보류가 맞았는지, 파일 최종 수정일로 확인해봤습니다.</p>
+<pre><code>평균 방치   40일
+중앙값      34일
+최장        70일</code></pre>
+<p>19건 전부 최소 8일, 절반 이상이 한 달 넘게 손을 안 댄 상태였어요. 두 달 넘은 것도 여섯 개였고요.<br>
+저는 그걸 &quot;진행 중&quot;이라고 부르고 있었습니다. 판정은 이미 파일 날짜에 찍혀 있었는데 제가 안 본 거예요.</p>
+<img src="img/03_idle_days.png" alt="가로 막대 19개가 방치 일수 순으로 정렬된 차트. 세로축은 &#x27;안건(익명)&#x27; 19줄, 가로축은 0~70일 눈금. 34일 지점에 &#x27;중앙값&#x27; 점선, 40일 지점에 &#x27;평균&#x27; 점선. 60일 넘는 상위 6개 막대만 진한 색으로 강조하고 옆에 &quot;두 달 넘게 진행 중이라고 불렀던 것들&quot; 캡션" loading="lazy">
+<p>한 가지는 같이 정했습니다. <strong class="u">재평가 날짜</strong>예요.<br>
+보류함에 날짜가 없으면 그건 그냥 삭제거든요. 그래서 8월 말 이후 한 번에 다시 열어보기로 하고, 그 날짜를 규칙 파일에 적어뒀습니다. 이게 없으면 보류 폴더는 6개월 뒤 두 번째 쓰레기통이 돼요.</p>
+<h2>5. 같은 병이 두 군데 더 있었습니다</h2>
+<p>목록만 그런 게 아니었어요. 같은 날 두 군데를 더 열어봤는데 증상이 똑같았습니다.</p>
+<p>하나는 AI 에이전트끼리 주고받는 인수인계 큐였어요. 12건이 쌓여 있었고, 등록일은 전부 4월 말에서 6월 초. 짧은 게 69일, 긴 건 106일 묵은 것이었습니다.<br>
+열어보니 8건은 이미 의미가 없어진 것이었고, 1건은 다른 안건으로 대체돼 있었어요. 진짜로 살아있는 건 2~3건이었습니다. 나머지는 100일 동안 아무도 안 읽으면서 브리핑에는 꼬박꼬박 올라왔고요.<br>
+다른 하나는 결정 대기 목록인데, 4월에 등록된 네 건이 110일 넘게 그대로였습니다.</p>
+<p>공통점이 하나예요. 셋 다 <strong>등록은 자동인데 종료는 수동</strong>입니다. 넣는 건 AI가 알아서 하고, 빼는 건 아무도 안 해요.<br>
+그러니 입구만 있고 <strong class="u">출구</strong>가 없는 통이 됩니다. AI 할 일 목록이 유독 빨리 부는 이유가 이거예요. 자동화를 붙일수록 등록 속도만 올라가거든요.</p>
+<img src="img/04_queue_exit.png" alt="위쪽은 &#x27;입구만 있는 큐&#x27; — 왼쪽에서 &#x27;자동 등록&#x27; 화살표 여러 개가 통으로 쏟아지고 통이 넘치는데 오른쪽 출구는 X자로 막혀 있음. 아래쪽은 &#x27;출구 만든 뒤&#x27; — 같은 통에 오른쪽으로 세 갈래 출구(완료·보류·폐기)가 뚫려 있고, 통 아래에 &#x27;주기 점검&#x27; 시계 아이콘과 &quot;월 1회, 판정 질문 하나&quot; 캡션" loading="lazy">
+<h2>이건 저도 궁금했어요</h2>
+<p><strong>Q. 보류함도 결국 또 쌓이기만 하는 거 아닌가요?</strong><br>
+날짜를 안 박으면 그렇게 됩니다. 저는 보류로 내릴 때 &quot;언제 다시 볼지&quot; 한 줄을 같이 적어요. 그리고 그 날짜에 한꺼번에 엽니다. 하나씩 다시 판단하려 들면 결국 안 열어요.</p>
+<p><strong>Q. 완료 처리를 AI한테 시키면 안 되나요?</strong><br>
+후보를 뽑는 것까지는 시켜도 됩니다. 제 8건도 결과가 이미 다른 기록에 남아 있어서 대조로 걸러낼 수 있는 것들이었어요.<br>
+다만 닫는 판정은 제가 했습니다. 끝난 것처럼 보이는 일과 진짜 끝난 일은 다르고, 잘못 닫으면 조사가 통째로 사라지니까요.</p>
+<p><strong>Q. 목록은 몇 개가 적당한가요?</strong><br>
+정답은 모르겠어요. 저는 브리핑에 떴을 때 스크롤 없이 읽히는 줄 수로 잡았습니다. 제 경우엔 15줄쯤에서 다시 읽히더라고요.</p>
+<p>---</p>
+<p>정리하고 나서 제일 달라진 건 AI 할 일 목록의 길이가 아니라 세션 첫 1분이었어요.<br>
+15줄은 읽히거든요. 읽히니까 그중 하나를 고르게 되고, 고르니까 그날 뭐라도 하나는 끝납니다!</p>
+<p>혹시 안 끝난 일 목록을 안고 계시면, 지우려 하지 마시고 파일 날짜부터 한 번 세보세요. 어느 게 살아있고 어느 게 아닌지는 아마 거기 이미 적혀 있을 거예요.</p>
+<p>아직 안 닫힌 목록이 그대로 남아 있는 곳은 makefield.ai입니다.</p>
+<p>태그: #AI할일목록 #밀린일정리 #미완료작업관리 #할일목록정리법 #AI세션브리핑 #AI비서 #개인AI에이전트 #AI로일하기 #AI에게일시키기 #백로그정리 #업무관리방법 #폴더정리 #AI워크스페이스 #현장엔지니어 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224382872612" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
