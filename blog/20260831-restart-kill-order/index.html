@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>프로그램 종료해도 다시 실행될 때, 10초 뒤 부활하는 이유 | 도면 읽는 AI</title>
+<meta name="description" content="작업 관리자에서 프로세스를 끝냈는데, 잠깐 딴짓하고 돌아와서 보면 그게 또 떠 있었어요. 처음엔 제가 잘못 눌렀나 했습니다. 두 번째엔 좀 섬뜩했고요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260831-restart-kill-order/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="프로그램 종료해도 다시 실행될 때, 10초 뒤 부활하는 이유 | 도면 읽는 AI">
+<meta property="og:description" content="작업 관리자에서 프로세스를 끝냈는데, 잠깐 딴짓하고 돌아와서 보면 그게 또 떠 있었어요. 처음엔 제가 잘못 눌렀나 했습니다. 두 번째엔 좀 섬뜩했고요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260831-restart-kill-order/">
+<meta property="og:image" content="https://makefield.ai/blog/20260831-restart-kill-order/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "프로그램 종료해도 다시 실행될 때, 10초 뒤 부활하는 이유", "datePublished": "2026-08-20", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260831-restart-kill-order/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-08-20</span></div>
+<h1>프로그램 종료해도 다시 실행될 때, 10초 뒤 부활하는 이유</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;프로그램 종료해도 다시 실행 / 분명히 껐는데, 10초 뒤에 또 켜져 있었습니다&quot;" loading="lazy">
+<p>작업 관리자에서 프로세스를 끝냈는데, 잠깐 딴짓하고 돌아와서 보면 그게 또 떠 있었어요.<br>
+처음엔 제가 잘못 눌렀나 했습니다. 두 번째엔 좀 섬뜩했고요.</p>
+<p>프로그램 종료해도 다시 실행된다면, 범인은 대개 그 프로그램이 아니에요.<br>
+<strong>옆에서 &quot;얘가 죽었나&quot; 지켜보다가 다시 켜주는 스크립트가 따로 돌고 있는 겁니다.</strong> 그래서 손댈 자리도 프로그램이 아니라 <strong class="u">끄는 순서</strong>예요. 지켜보는 쪽을 먼저 끄고, 본체는 그 다음에 끕니다.</p>
+<p>저는 십오 년째 자동화 설비 쪽에서 일합니다. 사람이 안 붙어 있어도 알아서 복구되는 물건을 만드는 게 밥벌이예요.<br>
+그 복구 장치를 손으로 만들어 파는 사람이, 정작 제 PC에서 그것 때문에 한참을 헤맸습니다..</p>
+<p>2026년 8월, 윈도우 PC에서 있었던 일이에요. 개인적으로 만들어 쓰는 봇을 손보다가 벌어졌습니다.</p>
+<h2>1. 유일한 증상은 검은 창 하나였어요</h2>
+<p>그날 저는 봇 코드를 고치고 다시 띄웠습니다. 늘 쓰던 배치 파일을 더블클릭했어요.<br>
+그랬더니 검은 콘솔 창이 하나 떠서 안 사라지더라고요. 작업 표시줄에 계속 남아 있는 그 창이요.</p>
+<p>거슬려서 물었습니다. &quot;이 창은 원래 뜨는 건가?&quot;<br>
+답을 찾다가 알았어요. <strong>원래는 안 뜹니다.</strong> 두 달 전에 제가 만들어둔 정상 실행 경로는 창이 안 보이는 쪽이었거든요.</p>
+<p>경로가 이렇게 생겼습니다.</p>
+<pre><code>시작프로그램(vbs)  →  감시용 배치파일  →  봇 본체
+   (창 숨김)         (죽으면 10초 뒤 재시작)   (로그만 파일로)</code></pre>
+<p>부팅하면 알아서 켜지고, 죽으면 알아서 다시 켜지고, 창은 안 보이고. 6월에 그렇게 만들어놓고 저는 그 사실을 까맣게 잊고 있었어요.<br>
+그러니까 그날 제가 한 일은 <strong>이미 돌던 봇 옆에 봇을 하나 더 띄운 것</strong>이었습니다. 창이 뜬 건 고장이 아니라, 평소와 다른 문으로 들어왔다는 신호였고요.</p>
+<img src="img/02_two_paths.png" alt="봇이 두 개가 된 경로 — 자동 경로와 수동 경로" loading="lazy">
+<p>중복인지 확인하는 건 한 줄이면 됩니다. 윈도우 파워셸에서요.</p>
+<pre><code>Get-CimInstance Win32_Process -Filter &quot;Name like &#x27;python%&#x27;&quot; | Select-Object ProcessId, CommandLine</code></pre>
+<p>같은 스크립트 이름이 두 줄로 나오면 두 개 도는 겁니다. 저는 두 줄이었어요..</p>
+<h2>2. 본체만 죽이면 10초 뒤에 살아납니다</h2>
+<p>정리하려고 봇 프로세스를 죽였습니다. 그런데 조금 있다 보면 또 살아 있어요.<br>
+당연했습니다. 감시용 배치 파일이 이렇게 생겼거든요.</p>
+<pre><code>:loop
+python -X utf8 bot.py &gt;&gt; bot.log 2&gt;&amp;1
+timeout /t 10 /nobreak &gt;nul
+goto loop</code></pre>
+<p>세 줄이 전부입니다. 봇을 실행하고, 봇이 끝나면 10초 쉬고, 다시 실행. 무한 반복이요.<br>
+얘 입장에서 제가 봇을 죽이는 건 &quot;봇이 죽었다&quot;와 구별이 안 됩니다. 그럼 시킨 대로 다시 켜죠. 정확히 10초 뒤에요.</p>
+<p><strong>자동 복구 장치는 내가 끄는 것과 사고로 꺼지는 것을 구분하지 못합니다.</strong> 이게 이 문제의 전부예요.<br>
+현장 설비도 똑같습니다. 자동 재기동이 걸린 펌프를 정지 버튼으로 세워봐야 잠시 뒤 다시 돕니다. 정비하려면 자동을 먼저 풀어야 하죠. 저는 그걸 매번 하면서도 제 PC에선 본체부터 죽이고 있었어요.<br>
+프로그램 종료해도 다시 실행되는 상황에서 힘으로 이기려는 게 제일 헛된 짓입니다. 강제 종료를 열 번 눌러도 상대는 열 번 다 되살립니다.</p>
+<img src="img/03_kill_order.png" alt="틀린 순서와 맞는 순서" loading="lazy">
+<h2>여기서 자주 막히는 것 세 가지</h2>
+<p><strong>Q. 작업 관리자에서 끝내기를 눌렀는데 왜 소용이 없나요?</strong><br>
+작업 관리자는 지금 떠 있는 프로세스만 봅니다. 그걸 다시 켜주는 쪽은 보통 cmd나 wscript 같은 다른 이름으로 떠 있어서 눈에 안 띄어요. 먼저 죽여야 할 건 그 다른 이름 쪽입니다.</p>
+<p><strong>Q. 감시 스크립트를 만든 기억이 없는데도 이런 일이 생기나요?</strong><br>
+생깁니다. 윈도우 작업 스케줄러의 &quot;실패 시 다시 시작&quot; 옵션, 서비스 등록, 시작프로그램 폴더에 넣어둔 파일이 전부 같은 일을 해요. 저처럼 두 달 전의 자기 자신이 범인인 경우도 있고요.</p>
+<p><strong>Q. 그냥 감시 스크립트를 안 쓰면 되지 않나요?</strong><br>
+그러면 봇이 새벽에 한 번 죽었을 때 아침까지 죽어 있습니다. 저는 그게 더 싫어서 감시 쪽을 남겼어요. 없애는 게 아니라 <strong class="u">끄는 절차</strong>를 만드는 게 답입니다.</p>
+<h2>3. 끄는 순서를 파일 하나로 박아뒀어요</h2>
+<p>머리로 기억하면 다음에 또 틀립니다. 그래서 종료용 파일을 하나 만들었어요. 하는 일은 두 단계뿐입니다.</p>
+<pre><code># 1) 감시 루프를 먼저 종료
+Get-CimInstance Win32_Process -Filter &quot;Name=&#x27;cmd.exe&#x27;&quot; |
+  Where-Object { $_.CommandLine -like &#x27;*start_bot.bat*&#x27; } |
+  ForEach-Object { Stop-Process -Id $_.ProcessId -Force }
+
+# 2) 그 다음에 본체 종료
+Get-CimInstance Win32_Process -Filter &quot;Name like &#x27;python%&#x27;&quot; |
+  Where-Object { $_.CommandLine -like &#x27;*bot.py*&#x27; } |
+  ForEach-Object { Stop-Process -Id $_.ProcessId -Force }</code></pre>
+<p>파일 맨 위에는 주석으로 이유를 적어뒀습니다. &quot;감시 루프를 먼저 죽인다. 순서가 반대면 10초 뒤에 봇이 되살아난다.&quot;<br>
+이런 주석이 있어야 반년 뒤의 제가 순서를 안 바꿉니다. 오늘의 나보다 반년 뒤의 나를 못 믿는 편이 안전하더라고요!</p>
+<p>켜는 쪽도 두 갈래로 정리했어요.</p>
+<p>| 상황 | 쓰는 방법 | 창 |<br>
+|---|---|---|<br>
+| 평소 재시작 | 숨김 실행 스크립트 | 안 뜸 |<br>
+| 오류 볼 때 | 콘솔 배치 파일 | 뜸 |</p>
+<p>평소엔 창 없는 쪽, 로그를 눈으로 봐야 할 때만 콘솔 쪽. 이 표를 만들고 나서야 &quot;창이 떴다&quot;가 <strong class="u">경로 표시등</strong>으로 읽히기 시작했습니다. 여러분 PC에서 이유 없이 뜨는 창도 사실은 그런 표시등일지 몰라요.</p>
+<h2>4. 그리고 로그에서 10초가 0.08초였습니다</h2>
+<p>정리하고 로그를 되짚다가 이상한 구간을 봤어요. 재시작이 10초 간격이어야 하는데 이렇게 찍혀 있더라고요.</p>
+<pre><code>[2026-08-17 12:40:03.28] bot start
+[2026-08-17 12:40:03.36] bot exited, restarting in 10s
+[2026-08-17 12:40:03.37] bot start
+[2026-08-17 12:40:03.44] bot exited, restarting in 10s</code></pre>
+<img src="img/04_interval.png" alt="적어둔 10초와 실제 0.08초" loading="lazy">
+<p>간격이 0.08초입니다. 이 구간을 다 세어보니 &quot;10초 뒤 재시작&quot;이라는 문구가 <strong>5초 동안 50번</strong> 지나갔더라고요.<br>
+창이 없는 환경에서 대기 명령이 그냥 통과된 것으로 <strong>추정</strong>하고 있습니다. 아직 안 팠어요. 이건 다음 숙제로 남겨뒀습니다.</p>
+<p>다만 하나는 확실해졌어요. 로그에 적힌 &quot;10초 뒤&quot;는 제가 그렇게 적어둔 글자일 뿐, 실제로 10초를 쉬었다는 증거가 아니라는 것.<br>
+간격을 정해뒀다면 로그에서 시각 두 개를 빼보는 게 유일한 확인 방법입니다.</p>
+<p>정리하면 이렇습니다. 프로그램 종료해도 다시 실행될 때 볼 곳은 세 군데예요. 나 말고 누가 켜주는지, 그 순서를 파일로 적어뒀는지, 그리고 적어둔 대기 시간이 실제로 지켜지는지.<br>
+다음 글에서는 이 봇이 긴 작업 중에 죽지 않도록 대기 시간 기준 자체를 바꾼 이야기를 적어볼게요.</p>
+<p>제가 만든 것들을 어떻게 끄는지까지 적어두는 곳은 makefield.ai입니다.</p>
+<p>태그: #프로그램종료해도다시실행 #자동재시작 #프로그램중복실행 #cmd창계속뜸 #프로세스종료방법 #윈도우자동실행 #배치파일 #워치독 #파이썬자동화 #무인자동화 #개인AI에이전트 #AI에게일시키기 #자동화설계 #현장엔지니어 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224384022982" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
