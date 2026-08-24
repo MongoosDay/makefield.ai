@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>자동화 점검 통과했는데 실패, 초록불이 거짓말한 이유 | 도면 읽는 AI</title>
+<meta name="description" content="상태 점검이 &quot;로그인 정상&quot;이라고 했습니다. 3분 48초 뒤에 같은 브라우저에서 실행이 실패했어요. 저녁에 한 번 더 돌렸는데 또 같은 자리에서 멈췄고요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260906-healthcheck-green-lie/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="자동화 점검 통과했는데 실패, 초록불이 거짓말한 이유 | 도면 읽는 AI">
+<meta property="og:description" content="상태 점검이 &quot;로그인 정상&quot;이라고 했습니다. 3분 48초 뒤에 같은 브라우저에서 실행이 실패했어요. 저녁에 한 번 더 돌렸는데 또 같은 자리에서 멈췄고요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260906-healthcheck-green-lie/">
+<meta property="og:image" content="https://makefield.ai/blog/20260906-healthcheck-green-lie/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "자동화 점검 통과했는데 실패, 초록불이 거짓말한 이유", "datePublished": "2026-08-25", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260906-healthcheck-green-lie/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-08-25</span></div>
+<h1>자동화 점검 통과했는데 실패, 초록불이 거짓말한 이유</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;자동화 점검 통과했는데 실패 / 3분 48초 전엔 초록불이었습니다&quot;" loading="lazy">
+<p>상태 점검이 &quot;로그인 정상&quot;이라고 했습니다. 3분 48초 뒤에 같은 브라우저에서 실행이 실패했어요. 저녁에 한 번 더 돌렸는데 또 같은 자리에서 멈췄고요.</p>
+<p>결론부터 적을게요.<br>
+<strong>자동화 점검 통과했는데 실패한다면, 십중팔구 점검이 실행과 다른 것을 봤거나 점검과 실행 사이에 시간이 흘렀기 때문입니다.</strong> 점검은 &quot;지금 로그인돼 있나&quot;가 아니라 <strong class="u">실행이 쓸 경로</strong>가 지금 열려 있나를 물어야 해요.</p>
+<p>제가 하는 일은 제조 설비의 제어 쪽입니다. 15년째요.<br>
+설비에는 운전 가능 램프라는 게 있어요. 그 램프가 실제 운전 조건을 다 안 보고 켜지면, 조작반은 초록인데 설비는 안 도는 상황이 생깁니다. 현장에서 제일 골치 아픈 고장이 이거예요. 안 도는 게 문제가 아니라 <strong>왜 안 도는지 아무도 못 찾는</strong> 상태가 되거든요.<br>
+그걸 제 PC에다 똑같이 만들어 놨더라고요..</p>
+<p>2026년 8월, 윈도우 PC에서 브라우저를 조종해 SNS에 글을 자동으로 올리는 개인 스크립트 얘기입니다. 특정 도구 문제가 아니라 &quot;점검하고 나서 실행하는&quot; 구조면 다 해당돼요.</p>
+<h2>1. 점검은 초록불, 4분 뒤 실패</h2>
+<p>8월 24일 오전 로그입니다. 앞쪽은 상태 점검 결과예요.</p>
+<pre><code>11:00:20   &quot;url&quot;: &quot;https://x.com/home&quot;,
+11:00:20   &quot;composeBtn&quot;: true,
+11:00:20   &quot;accountBtn&quot;: false,
+11:00:20   &quot;loginBtn&quot;: false,
+11:00:20   &quot;handle&quot;: &quot;&quot;
+11:00:20   RESULT: LOGGED_IN</code></pre>
+<p>판정은 통과. 그리고 몇 분 뒤 실제 발행이 이렇게 끝났습니다.</p>
+<pre><code>11:04:08   ERROR: locator.click: Timeout 30000ms exceeded.
+11:04:08   Call log:
+11:04:08     - waiting for locator(&#x27;[data-testid=&quot;SideNav_NewTweet_Button&quot;]&#x27;)
+11:04:08   ERROR: 발행 실패</code></pre>
+<p>버튼 하나를 30초 동안 기다리다 포기한 겁니다. 저녁 8시에 자동으로 한 번 더 시도했는데 20시 05분 23초에 토씨 하나 안 틀리고 같은 에러가 났어요. 그날 올라간 글은 0건입니다.</p>
+<h2>2. 점검기와 실행기가 서로 다른 버튼을 보고 있었어요</h2>
+<p>점검 스크립트에서 이 줄을 찾았습니다.</p>
+<pre><code>composeBtn: has(&#x27;[data-testid=&quot;SideNav_NewTweet_Button&quot;]&#x27;)
+         || has(&#x27;a[href=&quot;/compose/post&quot;]&#x27;),</code></pre>
+<p>또는(<code>||</code>)이 들어가 있죠. 왼쪽이 없어도 오른쪽만 있으면 참입니다.<br>
+그런데 발행 스크립트는 이렇게 클릭해요.</p>
+<pre><code>await page.locator(&#x27;[data-testid=&quot;SideNav_NewTweet_Button&quot;]&#x27;).first().click();</code></pre>
+<p>왼쪽 하나만 씁니다. <strong>점검은 둘 중 아무거나 있으면 통과시키고, 실행은 특정 하나를 요구하는 구조</strong>였어요. 두 파일을 다른 날 만들어놓고, 그 사이를 한 번도 맞춰본 적이 없었습니다.</p>
+<p>증거는 같은 로그 안에 이미 있었고요. accountBtn이 false, handle이 빈 문자열이었잖아요. 화면 왼쪽 메뉴가 제대로 안 그려졌다는 뜻입니다. 그런데 로그인 판정식이 이렇게 생겼어요.</p>
+<pre><code>const loggedIn = (info.composeBtn || info.accountBtn) &amp;&amp; !info.loginBtn &amp;&amp; ...</code></pre>
+<p>여기도 또는입니다. 둘 중 하나만 참이면 초록불이에요. 사이드바가 반쪽만 그려졌다는 신호를 제가 판정식에서 스스로 지운 셈이죠.</p>
+<img src="img/02_or_green_lie.png" alt="점검기는 A 또는 B 중 하나만 있어도 통과, 실행기는 A만 클릭 — B만 남은 화면에서 거짓 초록불이 켜지는 구조" loading="lazy">
+<h2>3. 두 번째 함정은 점검과 실행 사이의 시간이었어요</h2>
+<p>8월 20일 로그를 보다가 다른 패턴을 하나 더 찾았습니다. 이날 점검 결과는 완벽했어요.</p>
+<pre><code>11:00:21   &quot;accountBtn&quot;: true,
+11:00:21   &quot;handle&quot;: &quot;(내 계정)&quot;
+11:00:21   RESULT: LOGGED_IN
+11:00:21   지터 11.1분</code></pre>
+<p>사이드바도 계정 이름도 다 잡혔습니다. 그런데 11분 8초 뒤,</p>
+<pre><code>11:11:29   ERROR: browserType.connectOverCDP:
+           connect ECONNREFUSED 127.0.0.1:9222</code></pre>
+<p>브라우저가 통째로 사라져 있었어요.</p>
+<p>봇 티가 안 나게 실행 시각을 랜덤하게 미루는 장치를 넣어뒀는데(지터라고 부릅니다), 하필 그 대기 시간이 점검과 실행 사이에 끼어 있었던 겁니다. <strong class="u">점검은 스냅샷</strong>이에요. 11분 전에 찍은 사진을 보고 지금을 판단한 거죠.</p>
+<h2>4. 실패 12건을 세어보니 전부 초록불 다음이었습니다</h2>
+<p>로그 37일치를 전부 열어서 실패를 유형별로 세어봤어요.</p>
+<p>| 실패 유형 | 건수 | 로그에 찍힌 문구 |<br>
+|---|---|---|<br>
+| 브라우저가 사라짐 | 7 | connect ECONNREFUSED 127.0.0.1:9222 |<br>
+| 클릭할 버튼이 없음 | 2 | locator.click: Timeout 30000ms exceeded |<br>
+| 브라우저 팝업에 걸림 | 2 | Page.handleJavaScriptDialog |<br>
+| 게시 버튼이 잠김 | 1 | element is not enabled |</p>
+<p>37일 중 10일에서 12건이 실패했고, <strong>그 10일 전부 직전 점검 결과가 로그인 정상이었습니다.</strong> 자동화 점검 통과했는데 실패한 날이 열흘인데, 점검은 한 번도 그걸 예고하지 못한 거예요..</p>
+<p>이건 제가 전에 적었던 &quot;끝나고 나서 성공이라고 찍힌 로그&quot;와는 다른 축입니다. 그때는 사후 기록이 거짓말을 했고, 이번엔 사전 점검이 거짓말을 했어요. 방향만 반대지 원인은 같습니다. <strong>판정 기준이 실제 동작과 따로 놀았다</strong>는 것.</p>
+<h2>5. 그래서 이렇게 고치려고 합니다 (아직 안 고쳤어요)</h2>
+<p>솔직히 적자면 오늘 기준으로 코드는 아직 그대로입니다. 원인만 잡아둔 상태예요. 손볼 순서는 이렇게 정했습니다.</p>
+<img src="img/03_check_order.png" alt="기존 순서(로그인 여부 점검 → 11분 대기 → 실행)와 고칠 순서(대기 → 실행 경로 그대로 점검 → 바로 실행) 전후 비교" loading="lazy">
+<p>1. 점검이 보는 조건과 실행이 쓰는 조건을 <strong class="u">같은 셀렉터</strong>로 통일합니다. 또는(<code>||</code>)은 뺍니다. 실행이 A만 쓰면 점검도 A만 봐야죠.<br>
+2. 점검을 대기 시간 뒤로 옮깁니다. 지금은 점검하고 11분 쉬고 실행인데, 쉬고 나서 점검하고 바로 실행이 맞아요.<br>
+3. 점검을 &quot;있나 없나&quot;가 아니라 &quot;열리나&quot;로 바꿉니다. 창을 실제로 띄워보고 닫는 데까지 가봐야 진짜 점검이에요.<br>
+4. 실패하면 알림이 오게 합니다. 이번엔 이틀이 지나서야 로그를 뒤지다 알았거든요..</p>
+<h2>이런 게 궁금하실 것 같아서</h2>
+<p><strong>Q. 그냥 재시도를 넣으면 되지 않나요?</strong><br>
+브라우저가 잠깐 없었던 경우엔 그게 맞습니다. 다만 8월 24일처럼 화면 구조 자체가 다르게 그려진 날은 백 번 재시도해도 같은 자리에서 30초씩 기다리다 끝나요. 재시도는 일시적인 문제를 덮는 장치지, 조건이 어긋난 걸 고쳐주지는 못합니다.</p>
+<p><strong>Q. 점검을 아예 빼면 더 단순하지 않나요?</strong><br>
+저도 잠깐 그 생각을 했어요. 그런데 점검을 빼면 로그인이 풀린 날에 스크립트가 로그인 화면에다 글을 입력하려 듭니다. 점검이 있는 게 문제가 아니라 점검이 엉뚱한 걸 보는 게 문제라, 없애는 쪽이 아니라 조준을 옮기는 쪽이 맞더라고요.</p>
+<p>정리하면 이렇습니다. 점검이 통과했는데 실행이 실패하면 스크립트보다 점검을 먼저 의심하세요. 보는 대상이 다르거나, 보는 시각이 다르거나 둘 중 하나입니다.</p>
+<p>자동화에 상태 점검을 붙여두셨다면 한 가지만 확인해보세요. 그 점검이 통과시킨 조건과, 실제로 실패하는 그 줄이 같은 것을 보고 있나요? 저는 두 파일이 서로 다른 걸 보고 있다는 걸 두 달 만에 알았습니다.</p>
+<p>이런 뒤늦은 깨달음은 makefield.ai에 그때그때 던져둡니다.</p>
+<p>태그: #자동화점검 #자동화실패원인 #헬스체크설계 #셀렉터클릭안됨 #브라우저자동화 #playwright에러 #자동화디버깅 #무인자동화 #파이썬자동화 #자동게시실패 #AI에이전트 #개인AI에이전트 #AI에게일시키기 #현장엔지니어 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224389214155" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
