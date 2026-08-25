@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>작업 스케줄러 267009, 오류 아닙니다 (AI 진단 4개 다 오답) | 도면 읽는 AI</title>
+<meta name="description" content="제 자동화가 나흘째 &quot;완료&quot;라고 로그에 찍고 있었어요. 그런데 남아야 할 기록은 5일치가 비어 있었습니다. 작업 스케줄러 267009라는 숫자가 마지막 실행 결과 칸에 떠 있었고, 저는 그걸 고장 신호로 읽었고요. 원인을 AI한테 정리시켰더니 네 가지를 짚어주더라고요. 다음 날">
+<link rel="canonical" href="https://makefield.ai/blog/20260908-scheduler-267009/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="작업 스케줄러 267009, 오류 아닙니다 (AI 진단 4개 다 오답) | 도면 읽는 AI">
+<meta property="og:description" content="제 자동화가 나흘째 &quot;완료&quot;라고 로그에 찍고 있었어요. 그런데 남아야 할 기록은 5일치가 비어 있었습니다. 작업 스케줄러 267009라는 숫자가 마지막 실행 결과 칸에 떠 있었고, 저는 그걸 고장 신호로 읽었고요. 원인을 AI한테 정리시켰더니 네 가지를 짚어주더라고요. 다음 날">
+<meta property="og:url" content="https://makefield.ai/blog/20260908-scheduler-267009/">
+<meta property="og:image" content="https://makefield.ai/blog/20260908-scheduler-267009/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "작업 스케줄러 267009, 오류 아닙니다 (AI 진단 4개 다 오답)", "datePublished": "2026-08-26", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260908-scheduler-267009/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-08-26</span></div>
+<h1>작업 스케줄러 267009, 오류 아닙니다 (AI 진단 4개 다 오답)</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;작업 스케줄러 267009 / 오류 코드인 줄 알았는데 &#x27;실행 중&#x27;이었습니다&quot;" loading="lazy">
+<p>제 자동화가 나흘째 &quot;완료&quot;라고 로그에 찍고 있었어요. 그런데 남아야 할 기록은 5일치가 비어 있었습니다.<br>
+작업 스케줄러 267009라는 숫자가 마지막 실행 결과 칸에 떠 있었고, 저는 그걸 고장 신호로 읽었고요.<br>
+원인을 AI한테 정리시켰더니 네 가지를 짚어주더라고요. 다음 날 하나씩 직접 확인해봤는데, <strong class="u">네 개 전부 오답</strong>이었습니다.</p>
+<p>짧게 먼저 적을게요.<br>
+<strong>작업 스케줄러 267009는 오류 코드가 아니라 &quot;그 작업이 지금 실행 중&quot;이라는 뜻입니다.</strong> 16진수로 바꾸면 0x41301이고요. 그래서 이 값이 떠 있다고 뭘 고치려 들면, 멀쩡한 걸 붙잡고 반나절을 버리게 됩니다.<br>
+그리고 하나 더. 자동화가 실패했는지는 상태 값이 아니라 <strong>시각</strong>에서 보입니다. 이게 오늘 글의 전부예요.</p>
+<p>십오 년째 제조 설비 쪽에서 일합니다. 고장 원인 찾는 게 업무의 절반인데, 그중 태반은 &quot;지금 보고 있는 이 계기가 맞는 계기인가&quot;를 따지는 데 씁니다. 엉뚱한 계기 붙잡고 회의 두 시간 하는 거, 현장에선 흔한 일이거든요..<br>
+이번엔 제 PC에서 똑같은 짓을 했습니다.</p>
+<p>2026년 8월, 윈도우 10에서 매일 새벽에 도는 개인 자동화 얘기예요. 확인은 전부 파워셸과 로그 파일로 했습니다.</p>
+<h2>1. 어제의 진단 4개, 오늘 보니 전부 오답</h2>
+<p>먼저 결과부터 놓고 보겠습니다. 왼쪽이 전날 AI가 정리해준 진단이고, 오른쪽이 다음 날 제가 직접 확인한 값이에요.</p>
+<p>| 어제의 진단 | 오늘 실측 |<br>
+|---|---|<br>
+| &quot;8월 23일·24일은 스케줄러가 안 돌았다&quot; | 23일은 <strong>정상 실행됨</strong>. 04:00:01에 시작해서 04:15:01에 제한 시간 초과로 강제 종료 |<br>
+| &quot;24일도 미실행&quot; | 24일은 <strong>PC가 꺼져 있었음</strong> (23일 20:56 종료 → 24일 07:12 부팅) |<br>
+| &quot;로그 파일이 없으면 안 돈 것이다&quot; | 로그는 <strong>양쪽 다 있었음</strong>. 이 잣대로는 아무것도 못 잡음 |<br>
+| &quot;마지막 실행 결과가 0인지 보라&quot; | 실제 값은 267009. 오류가 아니라 <strong>&quot;실행 중&quot;</strong> |<br>
+| &quot;기록 공백은 소급 보완 완료&quot; | 파일의 마지막 항목은 <strong>5일 전 날짜</strong>였음 |</p>
+<p>네 가지를 물었는데 다섯 줄이 틀렸어요.<br>
+AI가 유난히 엉망이어서 그런 게 아닙니다. 다섯 줄의 근거가 <strong>전부 &quot;값 하나&quot;</strong>였거든요. 상태 값 하나, 파일이 있느냐 없느냐 하나. 제가 평소에 쓰던 잣대 그대로였고요.</p>
+<img src="img/02_diagnosis_vs_measured.png" alt="왼쪽 &#x27;어제의 진단&#x27; 4개 박스(미실행·미실행·로그없음=미실행·결과0확인) → 각각 X 표시 → 오른쪽 &#x27;오늘 실측&#x27; 4개 박스(강제종료·PC전원꺼짐·로그둘다있음·267009=실행중)" loading="lazy">
+<h2>2. 267009는 오류가 아니라 &quot;실행 중&quot;입니다</h2>
+<p>여섯 자리에 못 보던 숫자라 저는 당연히 오류 코드인 줄 알았어요. 파워셸에서 16진수로 바꿔보면 정체가 바로 나옵니다.</p>
+<pre><code>&#x27;{0:X}&#x27; -f 267009
+# 41301</code></pre>
+<p>0x41301은 윈도우가 쓰는 상태 값이고, 이름이 SCHED_S_TASK_RUNNING이에요. 뜻 그대로 <strong>작업이 아직 실행 중</strong>이라는 표시입니다. 실패가 아니라 진행 중이라는 안내죠. (마이크로소프트 Q&amp;A와 여러 기술 문서에서 &quot;오류로 오인되는 성공 코드&quot;로 정리돼 있습니다. 2026년 8월 확인)</p>
+<p>그래서 이 값이 보일 때 판단은 이렇게 갈립니다.</p>
+<p>- 시작한 지 몇 분 안 됐다 → 정상입니다. 그냥 도는 중이에요<br>
+- 몇 시간째 그대로다 → 그 프로세스가 안 끝나고 있는 겁니다. 코드를 고칠 게 아니라 무엇을 기다리는지 봐야 해요</p>
+<p>제 경우는 후자에 가까웠고, 제한 시간 15분이 걸려 있어서 매일 04:15에 강제로 잘려나가고 있었습니다.</p>
+<h2>3. &quot;로그 파일이 있으니 돌았다&quot;는 잣대가 제일 위험했어요</h2>
+<p>가장 뼈아팠던 건 세 번째 진단이에요. 로그 파일이 있으면 돌아간 걸로 치자는 기준이요. 로그를 열어보면 왜 위험한지 바로 보입니다.</p>
+<pre><code>[2026-08-25 04:00:02] 데일리 리포트 시작
+[2026-08-25 04:15:02] 타임아웃 (15분 초과)
+[2026-08-25 04:15:02] 데일리 리포트 완료</code></pre>
+<p>강제 종료된 바로 다음 줄에 &quot;완료&quot;가 찍혀 있죠.<br>
+코드를 열어보니 이유가 허무했어요. 타임아웃을 잡는 부분은 예외 처리 블록 안에 있는데, &quot;완료&quot; 한 줄은 그 블록 <strong>바깥</strong>에 있었습니다. 성공이든 실패든 마지막엔 무조건 찍히는 구조였던 거예요. (아래는 지금 시점의 코드라 제한 시간을 이미 30분으로 올려둔 상태입니다. 사고가 난 날들은 15분이었고요.)</p>
+<pre><code>        except subprocess.TimeoutExpired:
+            log.write(f&quot;\n[{datetime.now()}] 타임아웃 (30분 초과)\n&quot;)
+        except Exception as e:
+            log.write(f&quot;\n[{datetime.now()}] 오류: {e}\n&quot;)
+
+        log.write(f&quot;[{datetime.now()}] 데일리 리포트 완료\n\n&quot;)</code></pre>
+<p>제가 몇 달 전에 저렇게 짜놓고 잊고 있었습니다. 그러니까 AI를 탓할 게 아니라, <strong>거짓말하는 로그를 제 손으로 만들어 놓고</strong> 그걸 AI한테 읽으라고 준 셈이죠..</p>
+<p>여기서 더 황당한 걸 발견했습니다! 25일 산출물 파일이 만들어진 시각은 04:14:57, 강제 종료는 04:15:02였어요. <strong>5초 차이로 문서만 저장되고 그다음 기록 단계가 잘린 겁니다.</strong> 결과물은 매일 나왔으니 겉보기엔 멀쩡했고, 없어진 건 늘 마지막 단계 하나였어요.</p>
+<h2>4. 원인은 시각 세 개를 겹치고 나서야 나왔습니다</h2>
+<p>값 하나로는 안 되겠다 싶어서, 서로 다른 출처의 시각 세 개를 나란히 놓고 봤어요.</p>
+<p>① 실행 로그의 시작·종료 타임스탬프<br>
+② 산출물 파일이 실제로 만들어진 시각<br>
+③ 윈도우 이벤트 로그의 종료·부팅 시각</p>
+<p>③은 이렇게 뽑습니다. 1074는 &quot;누가 종료를 지시했는가&quot;, 6005는 &quot;부팅됐다&quot;는 기록이에요.</p>
+<pre><code>Get-WinEvent -FilterHashtable @{LogName=&#x27;System&#x27;; ID=1074,6005; StartTime=(Get-Date).AddDays(-7)} |
+  Select-Object TimeCreated, Id | Format-Table -AutoSize</code></pre>
+<p>실제로 나온 값이 이거였고요.</p>
+<pre><code>TimeCreated               Id
+-----------               --
+2026-08-24 오전 7:12:37   6005      &lt;- 부팅
+2026-08-23 오후 8:56:33   1074      &lt;- 전원 끄기, 사유: 기타(계획되지 않음)</code></pre>
+<p>예약은 새벽 4시인데 PC가 전날 밤 8시 56분에 꺼져서 다음 날 아침 7시 12분에 켜졌어요. 그 사이에 4시가 들어 있으니 24일은 애초에 돌 수가 없었던 겁니다. 스크립트 문제가 아니었고요. (꺼져 있던 회차가 만회되지 않고 사라지는 얘기는 앞선 글에서 다뤘어요.)</p>
+<p>그래서 23일은 강제 종료, 24일은 전원 없음. <strong>원인이 두 개였는데 저는 하나로 묶어 보고 있었습니다.</strong></p>
+<p>세 시각을 겹쳐본 뒤로 제 점검 순서는 이렇게 바뀌었어요.</p>
+<p>- [ ] 상태 값이 아니라 <strong>마지막 실행 시각</strong>부터 본다<br>
+- [ ] 산출물 파일의 생성 시각을 로그의 종료 시각과 나란히 놓는다 (몇 초 차이가 범인일 때가 있다)<br>
+- [ ] 그날 PC가 켜져 있었는지는 이벤트 로그 1074·6005로 확인한다<br>
+- [ ] 267009 같은 값은 의미부터 확인한다. 16진수로 바꾸면 대개 답이 나온다<br>
+- [ ] &quot;완료&quot;라고 찍는 줄이 예외 처리 바깥에 있는지 코드에서 확인한다</p>
+<img src="img/03_three_clocks.png" alt="가운데 &#x27;원인 확정&#x27; 원, 세 방향에서 화살표 — ①실행 로그 타임스탬프 ②산출물 파일 생성 시각 ③이벤트 로그 1074/6005. 값 하나만 볼 때는 X, 세 개 겹칠 때 O" loading="lazy">
+<h2>자주 묻는 것</h2>
+<p><strong>Q. 제한 시간을 늘리면 해결되나요?</strong><br>
+당장은 됩니다. 저도 900초에서 1800초로 올렸고 다음 날은 22분 27초 만에 정상 종료됐어요. 다만 이건 시간을 산 거지 고친 게 아닙니다. 작업이 무거워지는 속도가 그대로면 언젠가 30분도 넘겨요. 그래서 <strong>매일 걸린 시간을 같이 기록</strong>해두고 추세를 봅니다. 갑자기 튄 날보다 조금씩 길어지는 쪽이 진짜 위험 신호더라고요.</p>
+<p><strong>Q. 그럼 원인 진단을 AI한테 안 맡기는 게 낫나요?</strong><br>
+아니요, 계속 맡깁니다. 대신 요구를 하나 더 붙였어요. &quot;무엇을 근거로 그렇게 판단했는지 같이 적어라.&quot; 이번에 틀린 네 개는 근거가 전부 값 하나였는데, 근거를 적게 하니 그 빈약함이 바로 눈에 보이더라고요. 저 혼자 봤어도 똑같이 틀렸을 겁니다. AI는 제 잣대를 그대로 받아서 실행했을 뿐이고요.</p>
+<img src="img/04_timeline.png" alt="8/21~8/26 가로 타임라인. 매일 04:00 시작 막대, 15분 지점에 빨간 &#x27;제한선&#x27;. 21·22·23·25일은 제한선에서 잘림(문서만 저장), 24일은 막대 없음(PC 꺼짐), 26일은 제한선을 30분으로 늘려 22분 27초에 정상 종료" loading="lazy">
+<p>혹시 작업 스케줄러 267009를 지금 보고 계신다면, 그건 고칠 대상이 아닐 확률이 높습니다. 대신 그 작업의 시작 시각과 지금 시각을 빼보세요. 저는 그 뺄셈 한 번을 나흘 동안 안 했습니다.</p>
+<p>틀린 진단들은 따로 모아 makefield.ai에 오답 노트처럼 쌓아두고 있어요.</p>
+<p>태그: #작업스케줄러267009 #0x41301 #작업스케줄러마지막실행결과 #자동화실패원인 #이벤트ID1074 #컴퓨터꺼진시간확인 #윈도우이벤트로그 #자동화점검 #자동화디버깅 #무인자동화 #파이썬자동화 #AI에이전트 #개인AI에이전트 #AI에게일시키기 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224390387605" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
