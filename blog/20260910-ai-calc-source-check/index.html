@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 계산 오류, 검산은 통과했는데 53p가 틀렸습니다 | 도면 읽는 AI</title>
+<meta name="description" content="어제 새벽 리포트에 &quot;확정&quot;이라고 적힌 숫자가 하나 있었어요. 뒤에 괄호까지 붙어 있었습니다. (산술검산 일치) 오늘 새벽, 같은 리포트가 그 숫자를 스스로 정정했습니다. 53.8만큼요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260910-ai-calc-source-check/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 계산 오류, 검산은 통과했는데 53p가 틀렸습니다 | 도면 읽는 AI">
+<meta property="og:description" content="어제 새벽 리포트에 &quot;확정&quot;이라고 적힌 숫자가 하나 있었어요. 뒤에 괄호까지 붙어 있었습니다. (산술검산 일치) 오늘 새벽, 같은 리포트가 그 숫자를 스스로 정정했습니다. 53.8만큼요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260910-ai-calc-source-check/">
+<meta property="og:image" content="https://makefield.ai/blog/20260910-ai-calc-source-check/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 계산 오류, 검산은 통과했는데 53p가 틀렸습니다", "datePublished": "2026-08-27", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260910-ai-calc-source-check/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-08-27</span></div>
+<h1>AI 계산 오류, 검산은 통과했는데 53p가 틀렸습니다</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 계산 오류 / 검산은 통과했는데 53p가 틀렸습니다&quot;" loading="lazy">
+<p>어제 새벽 리포트에 &quot;확정&quot;이라고 적힌 숫자가 하나 있었어요. 뒤에 괄호까지 붙어 있었습니다. (산술검산 일치)<br>
+오늘 새벽, 같은 리포트가 그 숫자를 스스로 정정했습니다. 53.8만큼요.</p>
+<p>먼저 결론부터 적을게요.<br>
+<strong>AI 계산 오류는 대개 계산에서 안 나옵니다. 맞는 계산을 틀린 출발점에 대고 해서 생겨요.</strong> 그래서 &quot;검산 통과&quot;는 안전 신호가 아닙니다. 검산이 재는 건 <strong class="u">내부 일관성</strong>뿐이고, 그 값이 바깥 세상과 맞는지는 아무도 안 본 상태일 수 있거든요.</p>
+<p>제조 설비 쪽에서 열다섯 해를 일했습니다. 그 바닥에서 제일 자주 듣는 말이 &quot;그거 어디서 읽은 값이냐&quot;예요. 계기에 뜬 숫자를 그대로 쓰는 게 아니라 기준기에 한 번 맞춰보고 쓰는 습관이요.<br>
+그 습관을 제 개인 리포트에는 안 걸어두고 있었습니다..</p>
+<p>2026년 8월 기준이고, 매일 새벽에 AI가 웹을 뒤져 리포트 한 장을 만들어두는 개인 자동화 얘기예요. 도구가 뭐든 <strong>AI가 찾아온 숫자를 문서에 옮겨 적는 상황</strong>이면 그대로 적용됩니다.</p>
+<h2>1. &quot;확정&quot;이라고 적힌 줄이 하루 만에 정정됐어요</h2>
+<p>로그 두 줄을 나란히 놓아볼게요. 딱 하루 차이입니다.</p>
+<pre><code>[08-26]  어제 &#x27;확인불가&#x27;였던 지수 → 29,077(-0.79%) 확정   (산술검산 일치)
+[08-27]  실제는 29,023.18(-0.97%). 오차 53.8p</code></pre>
+<p>문제는 아랫줄이 아니라 윗줄 끝의 괄호예요. <strong>산술검산 일치.</strong><br>
+저 다섯 글자를 보고 저는 그 값을 다 확인된 값으로 읽었습니다. 실제로 그날 리포트에서 그 숫자는 &#x27;확인불가&#x27; 칸에서 &#x27;확정&#x27; 칸으로 올라갔고요.</p>
+<p>그런데 검산이 실제로 한 일은 이거였어요. 전날 종가에 등락률을 곱해서 나온 값이, 곱셈으로 다시 되짚었을 때 같은 값이 나오는지 보는 것. 당연히 맞죠. 자기가 만든 값을 자기 방식으로 되짚었으니까요..</p>
+<h2>2. 레벨을 안 보고 등락률로 역산했던 게 원인이었습니다</h2>
+<p>오늘 리포트가 원인을 이렇게 적어놨더라고요. 원문 그대로 옮깁니다.</p>
+<pre><code>지수 레벨을 직접 보지 않고 기사의 등락률로 역산했기 때문이며,
+계산은 완벽했으나 출발점이 틀렸습니다.</code></pre>
+<p>등락률은 -0.79%로 받아왔는데 실제로는 -0.97%였어요. 0.18%p 차이입니다.<br>
+이 정도면 별것 아닌 것 같지만, 29,000에 곱해지면 53.8p가 됩니다. <strong class="u">출발점</strong>의 소수점 두 자리가 결과의 두 자리를 통째로 밀어버린 거예요.</p>
+<p>역산이 위험한 건 값을 <strong>만들어내기만 하고 확인은 안 하기</strong> 때문입니다. 그런데 결과물만 보면 직접 본 값이랑 생김새가 똑같아요. 소수점 둘째 자리까지 붙어 있으니 오히려 더 정확해 보이고요.<br>
+제가 겪은 AI 계산 오류는 거의 다 이 모양이었습니다. 틀린 티가 나는 값은 애초에 걸러지고, 남는 건 그럴듯하게 생긴 값이거든요.</p>
+<img src="img/02_two_paths.png" alt="두 경로 비교 — 왼쪽 &#x27;기사 등락률 -0.79%&#x27; → &#x27;× 전일 종가&#x27; → &#x27;29,077 (계산은 완벽)&#x27; 빨간 X 표시 / 오른쪽 &#x27;지수 레벨을 직접 조회&#x27; → &#x27;29,023.18&#x27; 초록 체크. 두 결과 사이에 &#x27;오차 53.8p&#x27; 라벨" loading="lazy">
+<p>현장에서도 똑같은 사고가 납니다. 유량계가 고장 나서 밸브 개도로 유량을 환산해 적어두면, 그 표는 며칠 뒤 누가 봐도 그냥 계측값처럼 보이거든요. 환산했다는 사실이 표에 안 남으면 그때부터 그건 측정값이 됩니다.</p>
+<h2>3. 진짜 무서웠던 건 정정이 한쪽으로만 쏠렸다는 거예요</h2>
+<p>같은 날 정정 보고에 이런 줄이 있었습니다.</p>
+<pre><code>8/24 소급 정정 2건
+ - 지수 29,077 → 29,023.18
+ - 30년물 금리 5.20% → 5.23% (연준 H.15 공식치)
+   둘 다 &#x27;위험을 온순하게 적은&#x27; 방향, 8월 들어 4번째</code></pre>
+<p>전날 정정 열 건 중 세 건도 위험을 낮게 적은 쪽이었어요.<br>
+오차가 진짜 랜덤이면 방향이 반반쯤 나와야 정상입니다. 한쪽으로만 쏠린다는 건 실수가 아니라 <strong>성향</strong>이라는 뜻이에요. 계측으로 치면 산포가 아니라 오프셋이고요. 오프셋은 평균을 더 내도 안 없어집니다.</p>
+<p>왜 그런 방향이 나오는지도 대충 짐작이 갑니다. 확인이 안 된 자리를 메울 때 쓰는 재료가 대개 기사 요약인데, 요약은 원래 순한 쪽으로 반올림되거든요.<br>
+여러분이 AI한테 받아 쓰신 수치들도 혹시 한 방향으로만 얌전한 편은 아니던가요?</p>
+<img src="img/03_bias.png" alt="정정 방향 막대 — 가운데 세로 기준선, 왼쪽 &#x27;위험을 낮게 적었던 쪽&#x27;에 정정 항목 3줄(지수 레벨 29,077→29,023.18 / 30년물 금리 5.20→5.23% / 장중치 게재 3건)이 몰려 있고 오른쪽 &#x27;높게 적었던 쪽&#x27;은 전부 0건. 하단에 &#x27;랜덤 오차라면 반반이어야 한다&#x27; 캡션" loading="lazy">
+<h2>4. 그래서 규약에 두 줄을 넣었습니다</h2>
+<p>오늘 리포트가 스스로 적은 개정 문구가 이거예요. 저는 이 두 줄을 그대로 규약에 옮겼습니다.</p>
+<pre><code>1. 산술검산은 내부 일관성만 증명할 뿐 외부 진실을 증명하지 않는다.
+2. 레벨(절대값)은 반드시 레벨 소스 2곳에서 직접 확인한다.</code></pre>
+<p>그리고 값마다 <strong>어떻게 얻었는지</strong>를 문서에 남기게 했어요. 값 옆에 한 단어만 붙이면 됩니다.</p>
+<p>| 어떻게 얻은 값인가 | 붙이는 표시 | 게재 |<br>
+|---|---|---|<br>
+| 값 자체를 두 곳에서 직접 확인 | 확정 | 그대로 씀 |<br>
+| 다른 값에서 계산해 만든 값 | <strong>역산</strong> | 쓰되 &#x27;역산&#x27;을 반드시 붙임 |<br>
+| 못 찾은 값 | 확인불가 | 칸을 비워 둠 |</p>
+<p>가운데 줄이 이번에 없던 칸이에요. 예전에는 확정 아니면 확인불가, 두 칸뿐이었습니다. 그러니 역산으로 만든 값이 갈 곳이 위쪽밖에 없었던 거죠.<br>
+전에 검산 장치 세 개를 걸어뒀다고 쓴 적이 있는데, 이번에 뚫린 자리가 바로 그 장치 안쪽이었어요. <strong>장치가 없어서가 아니라 장치가 볼 수 없는 값이 있어서</strong> 뚫린 겁니다.</p>
+<img src="img/04_scale.png" alt="저울 그림 — 왼쪽 접시에 &#x27;내부 일관성 = 검산 일치&#x27;가 올라가 초록으로 기울어 있고, 오른쪽 접시 &#x27;외부 진실 = 실제 값&#x27;은 비어 있음. 저울 아래 &#x27;검산은 왼쪽 접시만 잰다&#x27; 캡션" loading="lazy">
+<p>참고로 오늘 리포트는 04시 00분에 시작해 04시 16분에 종료 코드 0으로 끝났습니다. 기계는 아무 문제 없이 잘 돌았어요. 잘 도는 것과 맞는 값을 싣는 건 완전히 다른 문제더라고요!<br>
+AI 계산 오류를 종료 코드로 잡을 수 없는 이유가 여기 있습니다. 오류는 실행이 아니라 <strong>값 안쪽</strong>에 있으니까요.</p>
+<h2>이런 게 궁금하실 것 같아서</h2>
+<p><strong>Q. 그럼 역산을 쓰지 말라는 건가요?</strong><br>
+아니요, 계속 씁니다. 역산은 교차 확인용으로는 제일 싸고 좋은 장치예요. 직접 본 값이 두 개 있을 때 그 둘이 맞는지 보는 데는 최고고요. 문제는 역할이 바뀔 때 생깁니다. <strong>확인 수단이던 역산이 게재할 값으로 승격되는 순간</strong>이 사고 지점이에요. 그래서 없애는 대신 &#x27;역산&#x27;이라는 칸을 하나 만들어 준 겁니다.</p>
+<p><strong>Q. AI가 &#x27;확정&#x27;이라고 쓰면 그냥 믿으면 안 되나요?</strong><br>
+확정을 상태가 아니라 절차 이름으로 쓰게 하면 좀 낫습니다. &quot;무엇을 보고 확정했는지 한 줄로 같이 적어라&quot;를 붙여두면, 적을 게 없는 자리가 스스로 드러나거든요. 이번에도 원인 문장을 AI가 먼저 적었어요. 저는 그 문장을 규약으로 옮겼을 뿐이고요.</p>
+<p>한 줄로 줄이면 이렇습니다. 검산은 값이 스스로와 맞는지만 보고, 세상과 맞는지는 안 봅니다.<br>
+다음 편에서는 이렇게 정정된 값이 예전 문서에 그대로 남아 있는 문제, 그러니까 이미 돌려본 자료를 어디까지 소급해 고칠지를 이야기해보려 합니다.</p>
+<p>숫자를 어디서 받아왔는지까지 적어두는 규약은 makefield.ai에 정리해두고 있습니다.</p>
+<p>태그: #AI계산오류 #AI숫자출처확인 #AI역산검증 #AI가알려준수치 #AI팩트체크 #AI할루시네이션 #AI데이터오류 #교차검증 #AI리포트검증 #자동화검산 #무인자동화 #AI에이전트 #개인AI에이전트 #AI에게일시키기 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224391566758" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
