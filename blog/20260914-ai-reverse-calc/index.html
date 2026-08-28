@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 역산, 기록을 안 남겼는데 뭘 했는지 알아냈습니다 | 도면 읽는 AI</title>
+<meta name="description" content="기록을 안 남긴 과거를 알아내야 할 일이 생겼습니다. 화면에 남은 건 지금 값 하나뿐이었고, 거기까지 어떻게 왔는지는 아무 데도 안 적혀 있었어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260914-ai-reverse-calc/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 역산, 기록을 안 남겼는데 뭘 했는지 알아냈습니다 | 도면 읽는 AI">
+<meta property="og:description" content="기록을 안 남긴 과거를 알아내야 할 일이 생겼습니다. 화면에 남은 건 지금 값 하나뿐이었고, 거기까지 어떻게 왔는지는 아무 데도 안 적혀 있었어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260914-ai-reverse-calc/">
+<meta property="og:image" content="https://makefield.ai/blog/20260914-ai-reverse-calc/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 역산, 기록을 안 남겼는데 뭘 했는지 알아냈습니다", "datePublished": "2026-08-29", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260914-ai-reverse-calc/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-08-29</span></div>
+<h1>AI 역산, 기록을 안 남겼는데 뭘 했는지 알아냈습니다</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 역산 / 기록은 없고, 지금 값만 남았을 때&quot;" loading="lazy">
+<p>기록을 안 남긴 과거를 알아내야 할 일이 생겼습니다.<br>
+화면에 남은 건 지금 값 하나뿐이었고, 거기까지 어떻게 왔는지는 아무 데도 안 적혀 있었어요.</p>
+<p>먼저 답부터 적을게요.<br>
+<strong>AI 역산이면 됩니다. 기록이 없어도 지금 값과 그 값이 만들어지는 계산 규칙만 있으면, 과거의 선택을 거꾸로 구할 수 있어요.</strong> 조건이 하나 붙습니다. 값 하나만 가지고는 안 되고, 서로 다른 값 두세 개가 같은 답을 가리켜야 그때 확정이에요.</p>
+<p>저는 만든 지 오래된 기계를 넘겨받는 일을 십오 년쯤 해왔어요.<br>
+인수인계 서류가 멀쩡한 경우는 별로 없습니다. 그래서 지금 돌아가는 상태를 보고 &quot;이 사람이 그때 뭘 만졌겠구나&quot;를 되짚는 게 반쯤 습관이 됐어요. 이번에 그 습관을 주말 취미에다 써봤습니다.</p>
+<h2>1. 공략은 만들어놨는데, 제가 어디까지 왔는지를 몰랐어요</h2>
+<p>지난주에 AI랑 게임 공략 문서를 하나 만들었어요. 레벨 8 시점 기준으로 만렙까지 어디에 몇 점을 넣을지 확정해둔 문서였습니다.<br>
+그리고 이번 주에 레벨 9가 됐어요.</p>
+<p>여기서 막혔습니다.<br>
+문서는 &quot;앞으로 이렇게 찍어라&quot;인데, 저는 <strong>지금까지 뭘 찍었는지</strong>를 몰랐거든요.<br>
+화면에는 힘·민첩·체력의 최종 합계만 뜹니다. 어느 레벨에 어디로 몇 점이 갔는지는 어디에도 안 남아요.</p>
+<p>그냥 넘어갈 수도 있었는데, 이 게임에는 겁나는 조항이 하나 있어요. 공략 문서에 제가 이렇게 적어뒀더라고요.</p>
+<pre><code>| 이미 바에 목표보다 많이 넣음 | 회수 불가. 그대로 두고 다음 관문으로 점프 |</code></pre>
+<p>스킬은 골드를 내면 환급이 되는데, 마스터리 바하고 스탯 포인트는 한 번 들어가면 못 뺍니다.<br>
+그러니까 잘못 가고 있으면 지금 알아야지, 스무 레벨 더 가서 알면 캐릭터를 버리는 거예요.</p>
+<p>처음엔 기억으로 세보려고 했습니다.<br>
+그런데 며칠에 걸쳐 올린 레벨을 한 점씩 기억할 리가 없죠.. 세볼수록 답이 달라져서 그냥 접었어요.</p>
+<img src="img/02_direction.png" alt="왼쪽 순방향 — &#x27;레벨 1 → 2 → 3 … → 9&#x27; 화살표가 오른쪽 끝 &#x27;합계 하나&#x27;로 모임. 오른쪽 역방향 — &#x27;합계 하나&#x27;에서 왼쪽으로 뻗는 점선 화살표 세 개에 &#x27;전쟁 바 ?&#x27;, &#x27;방어 바 ?&#x27;, &#x27;체력 투자 ?&#x27; 물음표 라벨. 하단 캡션 &#x27;기록이 없으면 왼쪽은 못 본다. 볼 수 있는 건 오른쪽뿐&#x27;" loading="lazy">
+<h2>2. 그래서 방향을 뒤집었습니다</h2>
+<p>기억을 되짚는 걸 포기하고, 화면 숫자에서 거꾸로 올라가 보기로 했어요.</p>
+<p><strong class="u">역산</strong>이란 결과 값과 변환 규칙을 알고 있을 때 입력 값을 거꾸로 구하는 걸 말합니다. AI 역산은 그 풀이를 AI한테 시키는 것뿐이고요.<br>
+재료는 두 개면 됩니다. <strong>지금 눈에 보이는 값</strong>, 그리고 <strong>그 값이 어떻게 만들어지는지에 대한 규칙.</strong></p>
+<p>다행히 규칙은 지난주에 이미 문서로 적어뒀어요. 웹에서 열두 번 교차검증해서 확정한 계산식이었습니다.</p>
+<pre><code>힘   = 50  + 4×(힘 투자점)  + 2×(전쟁 바) + 1×(방어 바)
+민첩 = 50  +                 2×(전쟁 바) + 2×(방어 바)
+체력 = 300 + 40×(체력 투자점) + 28×(전쟁 바) + 35×(방어 바)</code></pre>
+<p>여기서 제가 모르는 건 네 개예요. 전쟁 바, 방어 바, 힘 투자점, 체력 투자점.<br>
+그런데 화면에서 읽을 수 있는 값은 세 개(힘·민첩·체력)뿐입니다.</p>
+<p>이게 핵심이었어요. <strong>모르는 값이 아는 값보다 많으면 답이 하나로 안 좁혀집니다.</strong><br>
+체력 790만 놓고 보면 이걸 만드는 조합은 수십 가지예요. 방어 바를 많이 올렸을 수도 있고, 체력에 직접 투자했을 수도 있고요.</p>
+<p>그래서 조건을 하나 더 넣었습니다. 게임 안에서 마스터리 바 숫자는 직접 눈으로 셀 수 있거든요. 그 값을 먼저 확정해놓고 나머지를 풀게 했어요.<br>
+AI한테 준 지시는 이 순서였습니다. 눈으로 확인 가능한 값부터 고정하고, 남은 미지수를 세 식에 동시에 걸어라.</p>
+<p>나온 답이 이랬어요.<br>
+전쟁 바 10, 방어 바 6, 힘에 13점, 체력에 0점.</p>
+<h2>3. 검산이 되니까 그제야 믿었습니다</h2>
+<p>답이 나왔다고 바로 쓰면 안 되죠. 숫자가 나왔다는 것과 그 숫자가 맞다는 건 다른 얘기니까요.<br>
+그래서 나온 답을 다시 식에 넣어봤습니다.</p>
+<pre><code>체력 = 300 + 40×0 + 28×10 + 35×6
+     = 300 +    0 +    280 +   210
+     = 790          ← 화면 값과 일치</code></pre>
+<p>여기가 이 방법의 전부입니다.<br>
+역산 결과는 <strong class="u">딱 떨어지는지</strong>로 판정해요. 788이나 793처럼 어중간하게 나왔으면 그건 답이 아니라 근사값이고, 근사값은 버려야 합니다.</p>
+<p>그다음에 공략 문서의 목표치 표와 대조했어요.</p>
+<p>| 레벨 | 목표 힘 | 목표 민첩 | 목표 체력 | 현재 |<br>
+|---:|---:|---:|---:|---|<br>
+| 8 | 119 | 72 | 695 | 통과 (체력 790) |<br>
+| 10 | 130 | 78 | 880 | 이대로면 90 부족 |<br>
+| 15 | 168 | 90 | 1,170 | — |</p>
+<p>레벨 8 목표선은 넘겼습니다. 여기까지는 잘 온 거예요.<br>
+문제는 레벨 10이었어요. 목표 체력이 880인데 지금 790이라 90이 모자랍니다. 체력 투자 1점이 40을 주니까 다음 레벨에서 체력에 2점을 넣으면 870이 되고, 마스터리 바가 주는 몫까지 더하면 선에 닿아요.<br>
+결론은 한 줄이었습니다. <strong>레벨 10에서 체력 2점.</strong> 이 한 줄을 얻자고 계산식을 다시 꺼내 붙든 거예요.</p>
+<p>여기서 솔직하게 하나 밝혀야 할 게 있어요.<br>
+이 역산은 가정 하나에 통째로 얹혀 있습니다. 저 식의 맨 앞 숫자 300, 그러니까 레벨 1의 기본 체력이요. 그건 커뮤니티에서 다들 그렇게 말하는 값이지 제가 원문으로 확인한 값이 아니에요. 그래서 문서에 <strong class="u">미검증</strong>이라고 적어두고 이런 주석을 달아뒀습니다.</p>
+<pre><code>게임 화면과 300 내외 차이가 나면 그 차이만큼 평행이동해서 보면 된다</code></pre>
+<p>만약 지난주에 이걸 &quot;확정&quot;으로 적어놨다면, 이번 주의 저는 틀린 전제 위에서 계산하고도 답이 딱 떨어졌다고 좋아했을 겁니다.<br>
+여러분도 AI가 준 계산식을 그대로 문서에 옮겨 적은 적 있으실 텐데요. 그중에 확인한 값과 통설이 섞여 있진 않을까요?</p>
+<img src="img/03_checksum.png" alt="체력 790을 만드는 분해 막대 그래프 — 왼쪽부터 &#x27;기본 300&#x27; 회색, &#x27;전쟁 바 10 × 28 = 280&#x27; 파랑, &#x27;방어 바 6 × 35 = 210&#x27; 초록, &#x27;체력 투자 0점 × 40 = 0&#x27; 빈칸. 막대 오른쪽 끝에 &#x27;= 790 화면 값과 일치&#x27; 초록 라벨. 기본 300 블록에만 &#x27;미검증(통설)&#x27; 노란 점선 테두리" loading="lazy">
+<h2>4. 이 방법이 통하는 조건은 세 개였어요</h2>
+<p>이번에 해보고 정리한 건 이겁니다. 셋 중 하나라도 없으면 역산은 추측이 됩니다.</p>
+<p>| 조건 | 없으면 생기는 일 |<br>
+|---|---|<br>
+| 규칙이 확정돼 있을 것 | 계산식이 추정이면 답도 추정. 검산이 통과해도 의미 없음 |<br>
+| 아는 값이 모르는 값보다 많거나 같을 것 | 답이 하나로 안 좁혀짐. 그럴듯한 조합 중 하나를 고르게 됨 |<br>
+| 합계가 딱 떨어질 것 | 어긋나면 규칙이나 가정이 틀린 것. 반올림으로 넘기면 안 됨 |</p>
+<p>세 번째가 제일 중요합니다.<br>
+검산이 안 맞을 때 &quot;거의 맞으니까 됐다&quot;로 넘어가는 순간, 역산은 계산이 아니라 그냥 소망이 돼요.</p>
+<img src="img/04_conditions.png" alt="세 조건을 세로 게이트 세 칸으로 그린 흐름도 — &#x27;현재 값 + 규칙&#x27; 입력 박스에서 ①규칙 확정 ②아는 값 ≥ 모르는 값 ③검산 일치 순서로 통과. 각 칸에서 옆으로 빠지는 빨간 화살표 라벨 &#x27;추정&#x27;, &#x27;조합 중 하나를 찍음&#x27;, &#x27;근사값&#x27;. 세 칸을 다 통과한 출구에만 초록 &#x27;확정&#x27; 박스" loading="lazy">
+<h2>이런 게 궁금하실 것 같아서</h2>
+<p><strong>Q. 그냥 AI한테 &quot;내가 뭘 찍었는지 맞춰봐&quot; 하면 안 되나요?</strong><br>
+해봤는데 그럴듯한 숫자가 나옵니다.. 규칙을 같이 주지 않으면 AI는 비슷한 사례를 기억해서 답을 짓거든요. 그럼 검산할 방법이 없어요. AI 역산의 정확도는 AI가 아니라 제가 준 계산식에서 나옵니다. 규칙 없이 물어보면 그건 역산이 아니라 점을 보는 겁니다.</p>
+<p><strong>Q. 화면 숫자를 잘못 읽었으면요?</strong><br>
+그래서 값을 한 종류만 쓰면 위험합니다. 저는 체력으로 풀고 힘·민첩으로 다시 확인했어요. 하나를 잘못 읽었으면 나머지 두 개가 안 맞아떨어져서 티가 납니다. 값 세 개가 동시에 맞는 우연은 잘 안 생기거든요.</p>
+<h2>정리하면요</h2>
+<p>기록이 없다고 포기할 일이 생각보다 적었습니다.<br>
+남아 있는 지금 값과 그 값을 만든 규칙만 있으면, 그 사이는 계산으로 메울 수 있어요. 대신 답이 나왔다고 믿지 말고 다시 넣어서 딱 떨어지는지를 봐야 합니다. 그리고 그 규칙 안에 미검증 가정이 몇 개 섞여 있는지도 같이 적어두고요.</p>
+<p>이번에 나온 결론은 &quot;다음 레벨에서 체력 2점&quot;이라는 한 줄이 전부였습니다.<br>
+그 한 줄 얻자고 이 짓을 했나 싶다가도, 되돌릴 수 없는 걸 만지기 전에 확인하는 값은 원래 이 정도는 하는 거라고 생각하기로 했어요!</p>
+<p>다음 글에서는 이렇게 되짚은 값을 문서에 다시 써넣을 때, 원래 계획과 실제 상태 중 어느 쪽을 남겨야 하는지를 다뤄보겠습니다.</p>
+<p>제가 쓰는 검산 지시문 원문은 makefield.ai에 그대로 공개해두었습니다.</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224393866300" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
