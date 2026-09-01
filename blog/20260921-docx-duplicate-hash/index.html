@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>워드 파일 중복 확인, 해시 비교가 안 통하는 이유 (파이썬 15줄) | 도면 읽는 AI</title>
+<meta name="description" content="폴더 정리를 AI한테 맡겼다가 삭제 직전에 손을 멈춘 날이 있습니다. 같은 이름 파일 일곱 쌍을 놓고 &quot;이건 중복이니 지워도 됩니다&quot;라는 답을 받았는데, 판정 근거가 파일 해시더라고요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260921-docx-duplicate-hash/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="워드 파일 중복 확인, 해시 비교가 안 통하는 이유 (파이썬 15줄) | 도면 읽는 AI">
+<meta property="og:description" content="폴더 정리를 AI한테 맡겼다가 삭제 직전에 손을 멈춘 날이 있습니다. 같은 이름 파일 일곱 쌍을 놓고 &quot;이건 중복이니 지워도 됩니다&quot;라는 답을 받았는데, 판정 근거가 파일 해시더라고요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260921-docx-duplicate-hash/">
+<meta property="og:image" content="https://makefield.ai/blog/20260921-docx-duplicate-hash/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "워드 파일 중복 확인, 해시 비교가 안 통하는 이유 (파이썬 15줄)", "datePublished": "2026-09-01", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260921-docx-duplicate-hash/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-09-01</span></div>
+<h1>워드 파일 중복 확인, 해시 비교가 안 통하는 이유 (파이썬 15줄)</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;워드 파일 중복 확인 / 해시는 다른데 내용은 같았습니다&quot;" loading="lazy">
+<p>폴더 정리를 AI한테 맡겼다가 삭제 직전에 손을 멈춘 날이 있습니다.<br>
+같은 이름 파일 일곱 쌍을 놓고 &quot;이건 중복이니 지워도 됩니다&quot;라는 답을 받았는데, 판정 근거가 파일 해시더라고요.</p>
+<p><strong>워드 파일 중복 확인을 해시 비교로 하면 안 됩니다.</strong> docx·pptx·xlsx는 속이 zip 압축 파일이라, 내용이 한 글자도 안 바뀌어도 다시 저장하는 순간 안에 박히는 시각 정보 때문에 바이트가 달라져요. 그래서 해시가 다르다고 내용이 다른 게 아니고, 반대로 크기가 같다고 같은 것도 아닙니다. 확실하게 가르려면 <strong>압축을 풀어 안에 든 조각을 하나씩 대조</strong>해야 해요. 파이썬 표준 라이브러리로 15줄이면 됩니다.</p>
+<p>2026년 9월 기준, 윈도우에 파이썬 3으로 돌린 코드입니다. 추가 설치 없이 <code>zipfile</code> 모듈만 써요.</p>
+<p>도면이랑 설비 문서를 십오 년 다뤘습니다. 이 바닥에서 제일 크게 혼나는 사고가 뭐냐면 고장 낸 게 아니라 <strong>파일을 잘못 지운 것</strong>이에요. 그래서 중복 정리는 늘 맨 뒤로 미뤘고, 미룬 만큼 폴더가 지저분해졌죠..</p>
+<h2>1. 해시가 왜 안 통하나요</h2>
+<p>제 정리 규칙은 단순합니다. 구버전은 <code>_old</code> 폴더로 내리고 최신본만 위에 둔다. 그런데 <code>_old</code> 안에 이미 같은 이름 파일이 있으면 자동으로 못 옮겨요. 덮어쓰기를 막아뒀거든요. 그렇게 일곱 쌍이 몇 달째 밀려 있었습니다..</p>
+<p>여기서 AI가 낸 첫 판정이 해시 비교였어요. 그런데 문서 파일은 이게 두 방향으로 다 틀립니다.</p>
+<p>| 판정 방법 | 이런 경우에 틀림 | 결과 |<br>
+|---|---|---|<br>
+| 해시(md5) 비교 | 내용은 같은데 다시 저장만 한 파일 | 멀쩡한 중복을 못 찾음 |<br>
+| 파일 크기 비교 | 글자 수는 같고 내용이 바뀐 파일 | <strong>다른 파일을 같다고 판정</strong> |</p>
+<p>아래쪽 칸이 무서운 쪽입니다. 위쪽은 정리를 못 할 뿐이지만, 아래쪽은 <strong class="u">원본을 지웁니다</strong>.</p>
+<p>이유는 파일 속을 열어보면 납득이 돼요. docx는 문서 한 개가 아니라 여러 조각을 담은 압축 폴더입니다. 확장자를 zip으로 바꿔 풀어보면 본문, 스타일, 이미지가 따로 들어 있어요. 그리고 압축 파일은 조각마다 <strong>언제 넣었는지</strong>를 같이 적어둡니다. 내용이 같아도 저장 시각이 다르면 그 부분이 달라지고, 해시는 파일 전체를 재료로 만드니까 값이 바뀌죠.</p>
+<p>제 코드에도 이 문장이 주석으로 박혀 있습니다.</p>
+<pre><code>docx/pptx/xlsx는 OOXML(zip)이라 내용이 같아도 재생성하면
+타임스탬프 때문에 바이트·해시가 달라진다.
+반대로 크기가 같다고 같은 것도 아니다.</code></pre>
+<img src="img/02_parts.png" alt="docx 파일 아이콘 하나가 지퍼처럼 열리며 내부 파트 목록(document.xml · styles.xml · media/) 이 드러나는 그림. 왼쪽 파일과 오른쪽 파일의 파트를 화살표로 1:1 연결해 대조하는 구조. 아래 캡션 &#x27;문서 하나 = 조각 여러 개&#x27;" loading="lazy">
+<h2>2. 압축을 풀어 조각끼리 맞춰봤습니다</h2>
+<p>그래서 워드 파일 중복 확인용 판정 함수를 새로 짰어요. 순서는 세 단계입니다.</p>
+<p><strong>1단계. 문서 파일이 아니면 크기부터 봅니다.</strong> 크기가 다르면 볼 것도 없이 다른 파일이에요. 다만 이 지름길은 docx·pptx·xlsx에는 쓰면 안 됩니다. 같은 내용도 압축 결과 크기가 달라질 수 있거든요.</p>
+<p><strong>2단계. 문서 파일이면 압축을 풀어 조각 이름부터 맞춥니다.</strong> 조각 목록이 다르면 그 자리에서 다른 파일로 끝냅니다.</p>
+<p><strong>3단계. 목록이 같으면 조각을 하나씩 바이트로 대조합니다.</strong> 하나라도 어긋나면 다른 파일이에요.</p>
+<pre><code>if a.suffix.lower() in (&quot;.docx&quot;, &quot;.pptx&quot;, &quot;.xlsx&quot;):
+    import zipfile
+    with zipfile.ZipFile(a) as za, zipfile.ZipFile(b) as zb:
+        na, nb = set(za.namelist()), set(zb.namelist())
+        if na != nb:
+            return False
+        return all(za.read(n) == zb.read(n) for n in na)
+return a.read_bytes() == b.read_bytes()</code></pre>
+<p>한 줄을 더 붙였는데, 저는 이게 이 함수에서 제일 중요하다고 봐요.</p>
+<pre><code>except Exception:
+    return False  # 판정 불가 시 &#x27;다름&#x27;으로 보아 보존 쪽으로 안전하게 기운다</code></pre>
+<p>파일이 깨졌거나 열리지 않으면 판정을 포기하고 <strong>다름</strong>으로 답합니다. 그러면 최악의 경우에도 파일이 남아요. 판정 못 하겠으면 지우지 않는다, 이 한 줄만 박아둬도 밤에 잘 자게 됩니다.</p>
+<p><strong>확인 방법(성공 판정).</strong> 내용이 같은 걸 아는 파일 한 쌍을 넣어 <code>True</code>, 다른 걸 아는 한 쌍을 넣어 <code>False</code>가 나오면 통과입니다. 저는 여기에 두 가지를 더 붙였는데, 그건 4번에 적을게요.</p>
+<img src="img/03_flow.png" alt="두 파일이 입력되는 판정 흐름도 — 분기1 &#x27;문서 파일인가&#x27; → 아니오면 크기·바이트 대조 경로. 예면 분기2 &#x27;조각 목록 동일한가&#x27; → 아니오 다름. 예면 분기3 &#x27;모든 조각 바이트 동일한가&#x27; → 예 같음 / 아니오 다름. 오른쪽에 예외 처리 박스 &#x27;판정 불가 → 다름(보존)&#x27;이 붙어 있음" loading="lazy">
+<h2>3. 판정이 갈리면 처리도 갈라야 합니다</h2>
+<p>일곱 쌍을 돌린 결과는 이렇게 나왔어요.</p>
+<pre><code>중복 후보 7쌍
+├ 내용 동일 5쌍 (내부 조각 17~52개가 전부 일치)
+└ 내용 상이 2쌍
+   ├ 발표자료 한 건 — 슬라이드 조각 10개가 서로 다름
+   └ 텍스트 파일 한 건 — 482바이트 vs 3977바이트</code></pre>
+<p>동일한 다섯 쌍은 위쪽 사본을 정리했는데, 삭제 직전에 같은 판정을 한 번 더 통과시켰습니다. 제 규칙엔 데이터를 함부로 지우지 않는다는 조항이 있어서, 근거가 나왔어도 사람 확인 절차는 건너뛰지 않았어요.</p>
+<p>문제는 남은 두 쌍이었어요. 둘 다 보존해야 하니 <strong>고칠 수가 없는 항목</strong>입니다. 그런데 점검 도구는 이걸 계속 &quot;정리 안 된 파일&quot;로 잡아 매일 경고를 띄웠어요. 같은 &#x27;중복&#x27;이어도 성격이 완전히 다른데 말이죠.</p>
+<p>| 판정 | 실제 성격 | 처리 |<br>
+|---|---|---|<br>
+| 내용 동일 | 지금 정리 가능 | 경고로 띄움 |<br>
+| 내용 상이 | 보존 확정, 손댈 게 없음 | 기록만, 감점 없음 |<br>
+| 판정 불가 | 확인 전까지 보류 | 보존 |</p>
+<p>손댈 수 없는 항목을 경고로 두면 그 경고는 영원히 안 없어지고, 쌓이면 사람은 경고를 통째로 안 봅니다. 그래서 보존 확정분은 감점 없는 기록으로만 남겼어요. 여러분 알림함에도 몇 달째 그대로인 항목이 있다면, 그게 진짜 할 일인지 애초에 할 수 없는 일인지부터 갈라보시면 좋겠습니다.</p>
+<h2>이건 저도 헷갈렸던 것들</h2>
+<p><strong>Q. 그냥 워드에서 열어보고 눈으로 비교하면 안 되나요?</strong><br>
+일곱 쌍이면 됩니다. 저도 처음엔 그러려고 했어요. 그런데 슬라이드 수십 장짜리 발표자료 두 개를 눈으로 대조해보면 압니다.. 사람 눈은 &quot;글자는 같은데 표 안 숫자 하나가 다른&quot; 경우를 못 잡아요.</p>
+<p><strong>Q. 파일 비교 프로그램을 쓰면 되지 않나요?</strong><br>
+비교 도구 대부분은 바이트나 해시로 먼저 거릅니다. 그러면 1번에서 적은 함정을 그대로 밟아요. 문서 파일을 zip으로 인식해 안까지 들어가 주는 도구가 아니면 결과가 같습니다. 저는 워드 파일 중복 확인을 매일 도는 점검에 붙일 거라 함수로 만드는 쪽을 택했어요.</p>
+<p><strong>Q. 조각 이름만 비교해도 충분하지 않나요?</strong><br>
+그건 1차 거름망일 뿐이에요. 문서 구조가 같으면 조각 목록은 당연히 같습니다. 이름이 같은 조각의 <strong>속</strong>이 다른 게 흔한 경우고, 이름 비교에서 멈추면 내용이 바뀐 파일을 같다고 판정해요.</p>
+<h2>4. 지우기 전에, 판정기부터 시험했어요</h2>
+<p>여기가 이 작업에서 제일 마음에 드는 부분입니다.</p>
+<p>판정 함수가 &quot;같다&quot;고 하면 저는 파일을 지웁니다. 그 함수가 대충 만들어져 있으면 지우는 근거가 통째로 흔들리죠. 그래서 지우기 전에 함수를 시험대에 올렸어요. 네 가지를 넣어봤습니다.</p>
+<pre><code>1) 서로 다른 파일  → False 여야 함     OK
+2) 자기 자신과 비교 → True 여야 함     OK
+3) 복사본(바이트 동일) → True 여야 함  OK
+4) 1바이트만 바꾼 파일 → False 여야 함 OK</code></pre>
+<p>3번과 4번이 핵심이에요. 3번은 진짜 같은 걸 같다고 하는지, 4번은 <strong>딱 1바이트 다른 것도 잡아내는지</strong>를 봅니다. 4번을 통과 못 하는 판정기는 &quot;대충 비슷하면 같다&quot;고 말하는 판정기고, 그런 판정기에 삭제 권한을 주면 안 되잖아요. 네 줄에 다 OK가 뜨고 나서야 삭제로 넘어갔습니다!</p>
+<p>이 시험은 파일로 남겨뒀어요. 나중에 판정 조건을 느슨하게 바꾸면 4번이 먼저 빨간불을 켭니다.</p>
+<img src="img/04_test.png" alt="가운데 &#x27;판정 함수&#x27; 상자에 네 개의 입력이 화살표로 들어가는 그림 — 다른 파일·자기 자신·복사본·1바이트 변조본. 각 화살표 끝에 기대값(False/True/True/False)과 통과 표시. 아래 캡션 &#x27;삭제 권한을 주기 전에 먼저 시험한다&#x27;" loading="lazy">
+<h2>정리하면</h2>
+<p>- 문서 파일 중복은 해시로 판정하면 안 된다 — 같은 내용도 해시가 달라진다<br>
+- 압축을 풀어 조각 목록 → 조각 내용 순으로 대조한다<br>
+- 판정이 안 되면 무조건 보존 쪽으로 기운다<br>
+- 고칠 수 없는 항목은 경고에서 빼고 기록으로만 남긴다<br>
+- 삭제를 자동화하기 전에 판정기부터 시험한다</p>
+<p>AI한테 폴더 정리를 시키면 대개 잘합니다. 다만 삭제가 걸린 판정만은 근거를 열어보는 게 좋아요. 이번에도 AI가 게을렀던 게 아니라 방법이 틀렸던 거고, 제가 &quot;해시로 비교한 거냐&quot;고 물어본 게 전부였습니다.</p>
+<p>다음 편에서는 이렇게 정리한 파일을 이름 규칙에 맞춰 자동으로 옮기는 쪽을 적어볼게요. 탐지만 하고 옮겨줄 도구가 없어서 몇 달을 방치했던 그 항목입니다.</p>
+<p>지울 뻔한 기록까지 makefield.ai에 그대로 남겨두는 편입니다.</p>
+<p>태그: #워드파일중복확인 #docx파일비교 #파일중복삭제 #같은파일인데용량이다를때 #파일정리자동화 #파이썬파일비교 #zipfile #파일해시비교 #폴더정리 #AI에게일시키기 #AI자동화구축 #AI결과물검수 #무인자동화 #개인AI에이전트 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224397671273" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
