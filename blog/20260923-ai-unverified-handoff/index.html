@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI가 확인해달라고 할 때, 진짜 미해결만 거르는 4단계 | 도면 읽는 AI</title>
+<meta name="description" content="AI한테 몇 달치 개인 기록을 정리시켰더니, 결과물 맨 아래에 이런 칸이 붙어 나왔습니다. &quot;확인 필요 3건.&quot;">
+<link rel="canonical" href="https://makefield.ai/blog/20260923-ai-unverified-handoff/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI가 확인해달라고 할 때, 진짜 미해결만 거르는 4단계 | 도면 읽는 AI">
+<meta property="og:description" content="AI한테 몇 달치 개인 기록을 정리시켰더니, 결과물 맨 아래에 이런 칸이 붙어 나왔습니다. &quot;확인 필요 3건.&quot;">
+<meta property="og:url" content="https://makefield.ai/blog/20260923-ai-unverified-handoff/">
+<meta property="og:image" content="https://makefield.ai/blog/20260923-ai-unverified-handoff/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI가 확인해달라고 할 때, 진짜 미해결만 거르는 4단계", "datePublished": "2026-09-02", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260923-ai-unverified-handoff/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-09-02</span></div>
+<h1>AI가 확인해달라고 할 때, 진짜 미해결만 거르는 4단계</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI가 확인해달라고 할 때 / 3건 중 3건은 이미 답이 있었습니다&quot;" loading="lazy">
+<p>AI한테 몇 달치 개인 기록을 정리시켰더니, 결과물 맨 아래에 이런 칸이 붙어 나왔습니다. &quot;확인 필요 3건.&quot;</p>
+<p>목록이 꼼꼼해 보여서 며칠을 그냥 뒀어요. 그러다 첫 줄을 눌러봤는데, 답이 이미 제 문서 안에 적혀 있더라고요.</p>
+<p>먼저 결론부터 적을게요.<br>
+<strong>AI가 확인해달라고 할 때 그 항목은 대개 미해결이 아니라 <strong class="u">미조회</strong>입니다.</strong> 몰라서 남긴 게 아니라 아직 안 뒤져본 거예요. 그래서 저는 그 목록을 받으면 답을 찾기 전에 <strong>네 군데를 순서대로 뒤지게</strong> 먼저 시킵니다. 이 순서를 넣었더니 3건이 그 자리에서 전부 사라졌어요. 대신 저 아니면 알 수 없는 두 줄만 새로 남았고요.</p>
+<p>2026년 9월 기준이고요. 대화형 AI에 내 기록 폴더를 붙여 쓰는 환경이면 도구를 안 가리고 똑같이 됩니다. 개인 기록 정리 얘기라 특정 분야 조언은 아니에요.</p>
+<p>설비 제어를 십오 년 했습니다. 현장에서 제일 싫어하는 서류가 뭐냐면 칸마다 &quot;확인 필요&quot;라고 적힌 검사표예요. 그건 점검한 표가 아니라 <strong class="u">점검 안 한 표</strong>거든요. 그런데 제 AI가 딱 그 표를 만들어서 저한테 내밀고 있었습니다..</p>
+<h2>1. &quot;확인 필요 3건&quot;의 정체부터 봤습니다</h2>
+<p>한 건씩 직접 확인해봤어요. 세 건 다 제가 아니라 AI가 30초면 끝낼 수 있는 일이었습니다.</p>
+<p>| AI가 남긴 말 | 실제 상황 | 필요했던 작업 |<br>
+|---|---|---|<br>
+| &quot;통에 적힌 표시를 확인해 주세요&quot; | <strong>자기가 석 달 전에 만든 표에 이미 판정이 적혀 있었음</strong> | 자기 문서 다시 읽기 |<br>
+| &quot;이 항목은 미해결입니다&quot; | 같은 문서에 &quot;문제 없음&quot;으로 <strong>종결된 항목</strong> | 종결 여부 확인 |<br>
+| &quot;1단계는 실패로 확정합니다&quot; | 실패라고 볼 근거가 기록 어디에도 없었음 | 기록 폴더 검색 한 번 |</p>
+<p>두 번째 줄이 특히 아팠어요. 이미 닫아둔 항목이 근거도 없이 경고 표시를 달고 되살아난 거니까요. 목록은 길어졌는데 새로 밝혀진 건 하나도 없었습니다.</p>
+<p>여기서 알았어요. 미해결 목록이 길다고 꼼꼼한 게 아니라, <strong>검증을 안 한 만큼 목록이 길어진다</strong>는 걸요.</p>
+<img src="img/02_list.png" alt="위쪽 &#x27;보이는 것&#x27; — &quot;확인 필요 3건&quot;이라는 체크리스트 상자에 물음표 세 개가 나란히 붙어 꼼꼼해 보이는 모습. 아래쪽 &#x27;실제&#x27; — 같은 세 줄이 각각 &#x27;내 문서에 답 있음 / 이미 종결됨 / 안 찾아봄&#x27;으로 뒤집혀 표시되고, 오른쪽 끝에 &#x27;남은 진짜 미해결 = 0&#x27;이라는 결과 상자. 가운데를 &#x27;검증 안 한 만큼 목록이 길어진다&#x27;는 캡션이 가로지름" loading="lazy">
+<h2>2. 목록을 받으면 답 대신 이 한 줄을 먼저 보냅니다</h2>
+<p>전에는 목록을 받으면 제가 한 줄씩 확인해줬어요. 그러다 순서를 바꿨습니다. AI가 확인해달라고 할 때 답을 찾아주는 대신, 목록을 통째로 되돌려 보내는 거예요.</p>
+<pre><code>이 3건 중에 네가 지금 직접 확인할 수 있는 건 몇 개야?
+확인 가능한 건 먼저 확인하고, 그러고도 안 되는 것만 남겨줘.
+남길 때는 어디를 뒤졌는데 왜 못 찾았는지 같이 적어줘.</code></pre>
+<p>세 줄짜리인데 마지막 줄이 핵심입니다. &quot;왜 못 찾았는지 적어줘&quot;를 붙이면 안 뒤지고 남기는 게 불가능해져요. 뒤진 자리를 적으려면 실제로 뒤져야 하니까요.</p>
+<h2>3. 뒤지는 순서 — 가까운 데서 먼 데로</h2>
+<p>문제는 &quot;뒤져봐&quot;라고만 하면 AI가 곧장 인터넷부터 검색한다는 거예요. 정작 답은 제 폴더 안에 있는데도요. 그래서 순서를 못 박았습니다.</p>
+<p>1. <strong>내가 만든 정본 문서 전문</strong> — 제일 자주 여기서 나옵니다. 이번 3건 중 2건이 여기서 끝났어요<br>
+2. <strong>기록 폴더 전문 검색</strong> — 과거에 이 얘기를 한 적이 있는지<br>
+3. <strong>작업 로그</strong> — 문서로 안 남은 자잘한 실행 이력<br>
+4. <strong>웹 검색</strong> — 바깥 정보가 필요한 것만 마지막에</p>
+<p>3번까지가 전부 제 PC 안입니다. 밖으로 나가기 전에 안쪽을 다 훑는 게 요점이에요. 실제로 세 번째 항목은 이 명령 한 줄로 판가름 났습니다.</p>
+<pre><code>$ grep -ril &quot;그 항목&quot; ./기록/ ./로그/
+(결과 없음)
+
+기록 폴더 전체 + 작업 로그 675건 검색 → 관련 언급 0건</code></pre>
+<img src="img/03_funnel.png" alt="왼쪽에서 오른쪽으로 좁아지는 4단 깔때기. 각 단에 &#x27;① 내 정본 문서 / ② 기록 폴더 검색 / ③ 작업 로그 / ④ 웹 검색&#x27; 라벨. ①②③ 구간을 &#x27;내 PC 안&#x27;이라는 점선 박스가 감싸고, ④만 바깥에 위치. 각 단 아래에 걸러진 건수 &#x27;3건 → 1건 → 0건 → 0건&#x27;이 줄어드는 표시. 하단 캡션 &#x27;바깥으로 나가기 전에 안쪽을 다 훑는다&#x27;" loading="lazy">
+<p>그런데 이 0건을 보고 저는 처음에 검색이 실패한 줄 알았어요. 아니었습니다.</p>
+<p>기록이 0건이라는 건 <strong>제가 그 얘기를 어디에도 남긴 적이 없다</strong>는 뜻이거든요. AI가 &quot;실패로 확정&quot;이라고 단정한 근거가 실은 없었다는 게 그 0건으로 증명된 겁니다. 그래서 그 줄은 확정이 아니라 미확정으로 되돌렸어요.</p>
+<p>이게 4단계를 돌리는 진짜 이유예요. 답을 찾으려는 게 아니라 <strong>단정할 자격이 있는지</strong>를 먼저 보는 겁니다. 안 뒤지고 남긴 &quot;미해결&quot;과, 다 뒤지고도 안 나온 &quot;미확인&quot;은 완전히 다른 물건이에요.</p>
+<h2>4. 사람한테 넘겨도 되는 건 딱 한 종류입니다</h2>
+<p>그럼 AI가 저한테 물어봐도 되는 건 뭘까요. 이번에 선을 이렇게 그었습니다.</p>
+<p>| 사람만 아는 것 (물어봐도 됨) | 기록에 있는 것 (물어보면 안 됨) |<br>
+|---|---|<br>
+| 내 몸 상태, 지금 느끼는 것 | 제품에 적힌 표시, 문헌, 규격 |<br>
+| 내가 실제로 한 행동 | 과거 판정 이력, 종결 여부 |<br>
+| 현장에 놓인 실물 | 예전에 쓴 문서 안의 숫자 |</p>
+<p>그리고 이 표를 만들다가 이번 건에서 제일 큰 실수를 찾았어요.</p>
+<p>저는 어느 항목을 <strong>원래 정한 양의 절반으로 혼자 줄여서</strong> 쓰고 있었습니다. 근데 그걸 어디에도 안 적어놨어요. AI는 원래 계획대로 계산했고, 결과적으로 지금 제가 하고 있는 것의 <strong>두 배</strong>를 다음 계획으로 내밀었습니다..</p>
+<p>이건 AI 탓이 아니에요. 왼쪽 칸, 그러니까 <strong class="u">나만 아는 것</strong>이었으니까요. 다만 제가 안 적었으니 AI 입장에선 존재하지 않는 정보였던 거죠. 그래서 규칙을 하나 더 넣었습니다. <strong>내가 스스로 바꾼 건 그날 기록에 남긴다.</strong> 계획만 주고 실제를 안 주면, 계산은 계획 위에서만 정확해집니다.</p>
+<p>덧붙여 이번에 같이 배운 것 하나. 바꿀 게 두 개면 <strong>한 번에 하나씩</strong> 바꿔야 해요. 저는 둘을 동시에 바꿨다가 뭐가 효과를 냈는지 해석이 안 되는 상황을 만들었습니다..</p>
+<h2>확인 방법 — 잘 돌아가는지 어떻게 아나요</h2>
+<p>가이드는 성공 판정이 있어야 쓸모가 있죠. 다음번에 AI가 확인해달라고 할 때, 그 목록에서 이 세 가지를 보시면 됩니다.</p>
+<p>- 미해결 목록 아래에 <strong>뒤진 자리가 적혀 있는가</strong> (없으면 아직 안 돌린 겁니다)<br>
+- 이미 종결한 항목이 새 근거 없이 다시 올라와 있지는 않은가<br>
+- 남은 항목이 전부 &quot;사람만 아는 것&quot; 칸에 들어가는가</p>
+<p>세 개가 다 맞으면 그 목록은 진짜 미해결입니다. 저는 3건에서 0건이 됐고, 대신 딱 두 줄이 새로 남았어요. 둘 다 제가 직접 겪어봐야만 알 수 있는 것들이었습니다.</p>
+<img src="img/04_gate.png" alt="좌우 대비 두 상자. 왼쪽 붉은 상자 &#x27;반려하는 목록&#x27; — &quot;확인 필요 3건&quot;만 나열되고 근거 칸이 비어 있음. 오른쪽 초록 상자 &#x27;통과하는 목록&#x27; — 항목마다 &#x27;뒤진 자리 4곳 / 못 찾은 이유 / 사람만 아는 것 여부&#x27; 세 줄이 붙어 있음. 아래 캡션 &#x27;목록의 길이가 아니라 붙어 있는 근거를 본다&#x27;" loading="lazy">
+<h2>이건 저도 한참 헷갈렸어요</h2>
+<p><strong>Q. AI가 모른다고 솔직하게 말하는 건 좋은 거 아닌가요?</strong><br>
+모른다고 하는 건 좋습니다. 문제는 <strong>안 찾아보고 모른다고 하는 것</strong>이에요. 둘은 겉모습이 똑같아서 구분이 안 갑니다. 그래서 &quot;어디를 뒤졌는지 적어라&quot;를 붙이는 거예요. 뒤진 자리가 적혀 있으면 진짜 모르는 거고, 안 적혀 있으면 안 뒤진 겁니다.</p>
+<p><strong>Q. 그럼 확인 요청을 아예 못 하게 막으면 되나요?</strong><br>
+그건 더 위험합니다. 막아버리면 AI가 모르는 걸 아는 척 채워 넣어요. 막을 게 아니라 <strong>조건을 다는 겁니다.</strong> 네 군데를 다 돌린 뒤에도 안 나오면 그때는 얼마든지 물어보라고요.</p>
+<p><strong>Q. 기록 폴더를 뒤지게 하려면 대단한 도구가 필요한가요?</strong><br>
+아니요. 저도 명령어 한 줄에 폴더 경로 두 개가 전부였어요. 필요한 건 검색 기능이 아니라 <strong>평소에 기록을 남겨두는 것</strong>입니다. 이번에도 검색은 잘 돌았는데 찾을 내용 자체가 없었잖아요. 도구보다 그쪽이 먼저예요.</p>
+<h2>정리하면</h2>
+<p>- &quot;확인 필요&quot;는 답이 아니라 <strong>아직 안 뒤졌다는 표시</strong>로 읽는다<br>
+- 목록을 받으면 확인해주기 전에 &quot;직접 확인 가능한 게 몇 개냐&quot;를 되돌려 묻는다<br>
+- 뒤지는 순서는 내 문서 → 기록 폴더 → 작업 로그 → 웹 검색<br>
+- 못 찾았으면 <strong>어디를 뒤졌는지</strong>를 같이 적게 한다. 0건도 결과다<br>
+- 사람한테 넘길 건 몸 상태·내가 한 행동·현장 실물, 이 세 가지뿐이다<br>
+- 내가 계획을 벗어나 뭔가 바꿨으면 그날 기록에 남긴다</p>
+<p>AI가 게을러서 목록이 길어진 게 아니었어요. 제가 그 목록을 그냥 숙제로 받아든 게 원인이었습니다. 받는 방식만 바꿨을 뿐인데 3건이 0건이 됐고요!</p>
+<p>다음 편에서는 이렇게 남은 진짜 미확인 항목에 판정하는 날짜를 걸어두는 방법을 적어볼게요.</p>
+<p>이런 반려 기록은 성공 기록보다 많은데, 그쪽도 makefield.ai에 순서대로 쌓아둡니다.</p>
+<p>태그: #AI가확인해달라고할때 #AI미해결항목 #AI검증시키는법 #AI가되묻기만할때 #AI결과물검수 #AI에게일시키기 #AI자동화구축 #AI팩트체크 #AI에게물어보기 #AI리서치 #AI활용법 #AI실무활용 #개인기록관리 #개인AI에이전트 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224398867817" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
