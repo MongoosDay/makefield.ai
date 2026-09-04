@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 기록 분석, 완료율 53%만 보고 정반대 결론을 냈습니다 | 도면 읽는 AI</title>
+<meta name="description" content="AI 기록 분석을 한번 제대로 돌려봤습니다. 반년 넘게 쌓인 제 작업 기록 파일 835개하고, 진행 중인 안건 목록 89건을 통째로 넘겼어요. 사람이 눈으로 읽을 양은 아니니까요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260927-ai-record-ratio-trap/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 기록 분석, 완료율 53%만 보고 정반대 결론을 냈습니다 | 도면 읽는 AI">
+<meta property="og:description" content="AI 기록 분석을 한번 제대로 돌려봤습니다. 반년 넘게 쌓인 제 작업 기록 파일 835개하고, 진행 중인 안건 목록 89건을 통째로 넘겼어요. 사람이 눈으로 읽을 양은 아니니까요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260927-ai-record-ratio-trap/">
+<meta property="og:image" content="https://makefield.ai/blog/20260927-ai-record-ratio-trap/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 기록 분석, 완료율 53%만 보고 정반대 결론을 냈습니다", "datePublished": "2026-09-04", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260927-ai-record-ratio-trap/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-09-04</span></div>
+<h1>AI 기록 분석, 완료율 53%만 보고 정반대 결론을 냈습니다</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 기록 분석 / 완료율 53%가 정반대를 가리키고 있었습니다&quot;" loading="lazy">
+<p>AI 기록 분석을 한번 제대로 돌려봤습니다. 반년 넘게 쌓인 제 작업 기록 파일 835개하고, 진행 중인 안건 목록 89건을 통째로 넘겼어요. 사람이 눈으로 읽을 양은 아니니까요.</p>
+<p>30분 만에 답이 나왔고, 저는 그 답을 믿었습니다. 그리고 30분 뒤에 정반대로 뒤집었어요.</p>
+<p>핵심만 먼저 박아둘게요.<br>
+<strong>비율은 두 무더기의 성질이 같을 때만 뜻이 있습니다.</strong> 완료율 53%는 숫자로는 맞는데, 완료된 47건과 보류된 19건이 애초에 다른 종류의 일이면 그 53%는 아무것도 설명하지 못해요. 그래서 저는 AI한테 비율을 묻는 걸 뒤로 미루고, <strong>항목 이름부터 전부 나열</strong>시키는 순서로 바꿨습니다.</p>
+<p>2026년 9월 기준이고요. 개인 기록을 정리하는 얘기지 특정 도구를 권하는 글은 아닙니다. 다만 AI한테 뭔가를 세게 하고 계시다면 대상이 뭐든 똑같이 걸리는 함정이에요.</p>
+<p>제 본업은 설비 제어입니다. 도면 보고, 제어 로직 짜고, 현장에서 값 맞추는 일을 15년쯤 했어요. 이 바닥에선 합격률만 들고 오면 바로 되돌려 보냅니다. &quot;어떤 항목이 떨어졌냐&quot;를 안 물어보면 그 합격률은 종이 한 장이거든요. 정작 제 기록을 볼 땐 그걸 안 했습니다..</p>
+<h2>무엇을 넘겼고 첫 답이 뭐였나</h2>
+<p>넘긴 건 두 덩어리예요. 날짜별로 쌓인 작업 기록, 그리고 &quot;이건 아직 안 끝났다&quot;고 표시해둔 안건 목록.</p>
+<p>세는 건 간단했습니다. 이 한 줄로 끝났어요.</p>
+<pre><code>(Get-ChildItem -Path .\.history -Filter *.md -File | Measure-Object).Count
+# 841   (분석 시점엔 835)</code></pre>
+<p>안건 목록 89건은 상태가 세 가지로 갈렸습니다.</p>
+<p>| 상태 | 건수 |<br>
+|---|---|<br>
+| 완료 | 47 |<br>
+| 보류 | 19 |<br>
+| 진행 중 | 23 |</p>
+<p>첫 답이 여기서 나왔어요. 완료 47을 89로 나누면 53%. 그러니까 절반 넘게 닫았고, 예전에 스스로 내려둔 &quot;나는 뭔가를 자꾸 미룬다&quot;는 진단은 데이터로 기각된다 — 이렇게요.</p>
+<p>솔직히 듣기 좋았습니다. 그래서 더 안 따졌고요.</p>
+<h2>목록을 한 줄씩 읽었더니 뒤집혔어요</h2>
+<p>그다음에 한 게 별거 없어요. 보류 19건의 <strong>이름을 그냥 다 나열</strong>시켰습니다. 비율 말고 이름을요.</p>
+<p>19줄을 위에서 아래로 읽는데, 16줄이 한 덩어리로 보이더라고요. 글을 공개하는 일, 심사에 신청하는 일, 얼굴 나오는 영상, 값을 받고 파는 일. 표현만 다르지 전부 같은 성질이었어요.</p>
+<p>그럼 완료된 47은 뭐였냐. 대가가 미리 정해져 있었거나, 마감이 걸려 있어서 누가 기다리는 일이었습니다.</p>
+<p>| 닫힌 47건 | 열린 채 남은 19건 |<br>
+|---|---|<br>
+| 대가가 정해진 일 | 공개하는 일 |<br>
+| 마감이 걸린 일 | 심사받는 일 |<br>
+| 평가자가 없는 일 | 값을 매겨 파는 일 |</p>
+<p>두 무더기의 차이는 난이도가 아니었어요. <strong>내 이름이 걸리고 남이 점수를 매기느냐</strong>, 딱 그거 하나였습니다. 어려워서 못 닫은 게 아니라 평가받는 자리라 안 연 거였어요.</p>
+<p>그러니까 53%는 &quot;절반은 해낸다&quot;는 뜻이 아니라, &quot;평가자 없는 일만 골라 닫았다&quot;는 뜻이었습니다. 같은 숫자가 정반대를 가리키고 있었어요.</p>
+<p>기록에는 이렇게 남겼습니다.</p>
+<pre><code>1차 분석에서 &quot;완료율 53%이니 예전 진단은 틀렸다&quot;고 판단했으나,
+표본 오판이었음(완료된 것이 전부 마감 걸린 일). 정정 기록.</code></pre>
+<img src="img/02_ratio_vs_list.png" alt="좌우 대비 2단. 왼쪽 회색 패널 &#x27;비율로 본 그림&#x27; — 도넛 차트에 완료 47(초록)·보류 19(회색)·진행 23(회색), 가운데 큰 글씨 &quot;53%&quot;, 아래 라벨 &#x27;결론: 절반은 닫는다&#x27;. 오른쪽 패널 &#x27;목록으로 본 그림&#x27; — 세로로 19개 짧은 막대가 나열되고 그중 16개가 붉은색으로 뭉쳐 하나의 그룹 괄호로 묶임, 괄호 옆 라벨 &#x27;전부 남이 평가하는 일&#x27;, 아래 라벨 &#x27;결론: 평가자 없는 것만 닫았다&#x27;. 두 패널 사이에 굵은 화살표와 &#x27;같은 데이터, 반대 결론&#x27;. 하단 캡션 &#x27;비율은 무더기의 성질을 지워버린다&#x27;" loading="lazy">
+<h2>왜 비율이 거짓말을 했을까요</h2>
+<p>AI가 계산을 틀린 게 아니에요. 47÷89는 정확했습니다.</p>
+<p>문제는 <strong>분모 안에 다른 종류가 섞여 있었다</strong>는 거예요. 성질이 다른 걸 한 통에 넣고 평균을 내면, 그 평균은 어느 쪽도 대표하지 못합니다. 통계에서 흔히 나오는 함정인데, 저는 그걸 제 기록에서 그대로 밟았어요.</p>
+<p>그리고 이게 왜 잘 안 걸리냐면, 요약 숫자가 <strong>깔끔해서</strong> 그렇습니다. 53%는 반박할 구석이 없어 보여요. 반면 19줄짜리 목록은 지저분하고 읽기 귀찮죠. 그래서 다들 앞엣것만 받아 적습니다. 저도 그랬고요..</p>
+<p>여러분이 AI한테 받은 요약 숫자는 어떤가요? 그 밑에 깔린 목록을 한 번이라도 펼쳐보신 적 있으신지..</p>
+<h2>그래서 분석 지시를 5단계로 바꿨습니다</h2>
+<p>지금은 이 순서로만 시킵니다. 순서가 핵심이라 중간을 건너뛰면 다시 원래대로 돌아가요.</p>
+<p>1. <strong>전수로 넣는다</strong> — &quot;최근 것 몇 개만&quot;이 아니라 전부. 몇 개인지 먼저 세어서 숫자를 프롬프트에 박습니다<br>
+2. <strong>분류만 시킨다</strong> — 이 단계에서 비율 계산은 금지. &quot;세지 말고 나눠라&quot;<br>
+3. <strong>각 무더기의 항목 이름을 전부 출력시킨다</strong> — 요약 금지, 원래 이름 그대로<br>
+4. <strong>무더기마다 라벨을 붙이게 한다</strong> — &quot;이 무더기에만 있고 저쪽엔 없는 성질이 뭐냐&quot;<br>
+5. <strong>그다음에 비율을 본다</strong> — 라벨이 서로 다르면 비율은 쓰지 않습니다</p>
+<p>지시문은 이 정도면 충분했어요.</p>
+<pre><code>1) 전체 89건을 상태별로 분류만 해라. 비율은 계산하지 마라.
+2) 각 상태의 항목 이름을 하나도 빠뜨리지 말고 나열해라.
+3) 각 무더기의 공통 성질을 한 문장으로 붙여라.
+4) 무더기끼리 성질이 다르면 그 사실을 먼저 보고해라.</code></pre>
+<p><strong>확인 방법</strong>은 4단계 결과 한 줄로 갈립니다. 두 무더기의 라벨이 서로 다른 말로 나오면, 그 비율은 버리는 게 맞아요. 라벨이 같은 말로 나올 때만 비율이 뜻을 갖습니다. 이 판정을 안 하면 3단계까지 잘해놓고 마지막에 다시 속아요.</p>
+<img src="img/03_five_steps.png" alt="세로 5단 흐름도. 위에서부터 박스 5개 — ①전수 수집(부제 &#x27;개수를 먼저 센다&#x27;) ②분류만(부제 &#x27;비율 계산 금지&#x27;, 박스에 붉은 금지 아이콘) ③항목 이름 전량 나열(부제 &#x27;요약 금지&#x27;) ④무더기별 라벨 붙이기(부제 &#x27;이쪽에만 있는 성질은?&#x27;) ⑤비율 판정(부제 &#x27;라벨이 같을 때만 사용&#x27;). ④와 ⑤ 사이에 마름모 분기 &#x27;라벨이 서로 다른가?&#x27; — 왼쪽 &#x27;예&#x27; 화살표는 붉은 상자 &#x27;비율 폐기&#x27;로, 오른쪽 &#x27;아니오&#x27; 화살표는 초록 상자 &#x27;비율 채택&#x27;으로. 하단 캡션 &#x27;숫자는 맨 마지막에 본다&#x27;" loading="lazy">
+<h2>자주 걸리는 질문 셋</h2>
+<p><strong>Q. 처음부터 &quot;전수로 분석해&quot;라고 하면 되지 않나요?</strong><br>
+그것만으론 안 되더라고요. 전수로 읽어도 출력이 요약이면 결과는 똑같습니다. 저도 전수로 넣었는데 첫 답이 53%였어요. 관건은 입력량이 아니라 <strong>출력 형태</strong>예요. 이름을 나열하게 만들어야 무더기가 눈에 보입니다.</p>
+<p><strong>Q. 항목이 수백 개면 나열이 감당이 되나요?</strong><br>
+안 되죠. 그래서 저는 상태별로 쪼개서 제일 작은 무더기부터 나열시킵니다. 이 건도 19줄부터 폈어요. 그리고 보통은 작은 쪽에 답이 있습니다. 잘 안 되는 일이 모여 있는 자리라서요.</p>
+<p><strong>Q. AI가 붙인 라벨이 틀리면요?</strong><br>
+저는 라벨을 받아 적고 반례를 하나 찾아봅니다. &quot;이 성질에 안 맞는 항목이 이 무더기에 있나?&quot; 이 건에선 19건 중 3건이 라벨 밖이었어요. 16 대 3이면 라벨을 채택하고, 절반쯤 어긋나면 라벨을 버립니다.</p>
+<img src="img/04_label_check.png" alt="라벨 검증 도식. 상단에 &#x27;보류 19건&#x27; 상자. 아래로 두 갈래 — 왼쪽에 붉은 사각형 16개가 격자로 묶인 블록과 라벨 &#x27;남이 평가하는 일&#x27;, 오른쪽에 회색 사각형 3개 블록과 라벨 &#x27;반례&#x27;. 두 블록 아래에 저울 아이콘과 &#x27;16 : 3&#x27; 표기. 저울 아래 판정 상자 두 개 — 초록 &#x27;한쪽으로 크게 기울면 → 라벨 채택&#x27;, 붉은 &#x27;반반이면 → 라벨 폐기&#x27;. 하단 캡션 &#x27;라벨은 반례를 세어서 채택한다&#x27;" loading="lazy">
+<h2>정리</h2>
+<p>- AI 기록 분석은 요약 숫자를 먼저 받는 순간 결론이 미리 정해집니다<br>
+- 비율보다 <strong class="u">항목 이름</strong>이 정보량이 많아요. 지저분한 쪽에 답이 있습니다<br>
+- 분모에 성질이 다른 게 섞여 있는지부터 확인하고, 섞였으면 그 비율은 버리세요</p>
+<p>숫자가 틀려서 속은 게 아니라 <strong class="u">맞아서</strong> 속았습니다. 계산이 정확하면 검산할 생각이 안 들거든요. 이제는 AI가 퍼센트를 들고 오면 &quot;그 밑에 목록 펼쳐줘&quot;부터 칩니다! 한 줄 더 치는 값으로 결론이 통째로 뒤집힌 적이 벌써 한 번 있으니까요.</p>
+<p>이런 분석 지시문이랑, 제가 틀렸던 판정들은 makefield.ai에 그대로 모아두고 있습니다.</p>
+<p>태그: #AI기록분석 #AI통계착시 #AI데이터집계 #AI전수분석 #AI완료율 #AI분석지시 #AI결과물검수 #AI에게일시키기 #AI판단검증 #AI기록관리 #AI지식관리 #AI비서만들기 #AI활용법 #AI실무활용 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224401220964" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
