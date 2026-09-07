@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>자동화 돌고 있는지 확인, 로그 날짜만 보면 7일을 놓칩니다 | 도면 읽는 AI</title>
+<meta name="description" content="자동화가 돌고 있는지 확인하려고 아침에 점검 화면을 켰더니, 경고가 하나 떠 있었어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261003-automation-alive-check/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="자동화 돌고 있는지 확인, 로그 날짜만 보면 7일을 놓칩니다 | 도면 읽는 AI">
+<meta property="og:description" content="자동화가 돌고 있는지 확인하려고 아침에 점검 화면을 켰더니, 경고가 하나 떠 있었어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261003-automation-alive-check/">
+<meta property="og:image" content="https://makefield.ai/blog/20261003-automation-alive-check/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "자동화 돌고 있는지 확인, 로그 날짜만 보면 7일을 놓칩니다", "datePublished": "2026-09-07", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261003-automation-alive-check/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-09-07</span></div>
+<h1>자동화 돌고 있는지 확인, 로그 날짜만 보면 7일을 놓칩니다</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;자동화 돌고 있는지 확인 / 로그는 오늘 날짜, 실제로는 7일째 정지&quot;" loading="lazy">
+<p>자동화가 돌고 있는지 확인하려고 아침에 점검 화면을 켰더니, 경고가 하나 떠 있었어요.</p>
+<pre><code>[WARNING] 가동성 — 자동 에이전트 정지 의심 1건
+ - QA : 마지막 갱신 2026-08-31 09:50 (3일+ 미갱신)
+점수 95 / 100 (A)   CRITICAL 0   WARNING 2   OK 36</code></pre>
+<p>해당 로그 파일부터 열어봤습니다. 수정 날짜가 <strong>오늘 오전 11시 41분</strong>. 몇 시간 전이에요.<br>
+살아 있는데 왜 정지라고 하지. 오탐이네.. 그러고 창을 닫을 뻔했습니다.</p>
+<p>먼저 답부터 적을게요.<br>
+<strong>자동화가 돌고 있는지 확인할 때 로그 파일의 수정 날짜는 증거가 되지 못합니다.</strong> 그 파일에 글을 쓰는 주체가 내가 확인하려는 자동화와 같은 놈인지부터 봐야 해요. 살아있음을 증명하는 건 <strong class="u">주체가 남긴 시각</strong> 하나뿐입니다.</p>
+<p>2026년 9월 기준이고, 윈도우 PC에서 작업 스케줄러로 파이썬 스크립트 여러 개를 굴리는 환경 얘기예요. 스케줄러든 크론이든 상관없습니다. <strong>자동화 여러 개가 로그를 나눠 쓰는 구조</strong>라면 도구가 뭐든 똑같이 걸리는 함정이에요.</p>
+<h2>로그는 오늘 날짜인데 왜 정지라고 할까요</h2>
+<p>파일을 열어 눈으로 훑는 대신, 줄 수부터 셌습니다. 1,694줄. 그다음 어떤 종류의 기록이 몇 줄씩 들어 있는지 집계했어요.</p>
+<pre><code># 로그에 어떤 이벤트가 몇 건씩 쌓였는지 세기 (재구성 예시)
+awk -F&#x27;|&#x27; &#x27;{gsub(/^\[[^]]*\] /,&quot;&quot;,$1); print $1}&#x27; 점검로그.log | sort | uniq -c | sort -rn
+
+    435 session_close.live_status
+    435 session_close.history
+    435 session_close.brain_log
+    348 session_close.handoff_report
+     39 session_close.kb_index
+      1 build_relations.dry_run
+      1 build_relations</code></pre>
+<p>여기서 좀 멍했어요. 1,694줄 중 1,692줄이 <strong>세션 종료 훅</strong>이 남긴 기록입니다. 제가 확인하려던 그 점검 자동화가 직접 남긴 줄은 <strong class="u">0줄</strong>이었어요. 2026년 5월 19일 첫 줄부터 오늘까지, 단 한 줄도요.</p>
+<p>원인은 코드에 있었습니다. 파일 경로가 다른 스크립트에 상수로 박혀 있더라고요.</p>
+<pre><code># session_close.py
+QA_LOG = &quot;.../qa_automation_test.log&quot;   # 이름은 점검 로그, 쓰는 놈은 세션 종료 훅</code></pre>
+<p>처음에 점검용으로 하나 만들어 둔 파일이었는데, 나중에 만든 다른 스크립트가 &quot;로그 파일 이미 있네&quot; 하고 그 자리에 계속 써온 겁니다. 그래서 파일 수정 날짜는 매일 갱신됐어요. 정작 파일 이름에 적힌 그 자동화만 빼고 전부가요.</p>
+<p>저는 제조 쪽에서 제어 일을 열다섯 해쯤 하고 있습니다. 판넬 앞에서 표시등 보고 설비 상태를 읽는 게 일상인데, 이 바닥에서 램프는 &quot;전원이 들어왔다&quot;는 뜻이지 &quot;기계가 일하고 있다&quot;는 뜻이 아니에요. 램프만 믿고 돌아섰다가 다시 불려 나온 사람이 한둘이 아닙니다. 파일 수정 날짜가 딱 그 램프였어요.</p>
+<img src="img/02_log_share.png" alt="로그 파일 하나를 여러 프로세스가 공유하는 구조. 왼쪽에 회색 상자 세 개 &#x27;세션 종료 훅&#x27;, &#x27;관계 색인 스크립트&#x27;, &#x27;점검 자동화(정지됨)&#x27;. 앞의 두 개에서만 파란 화살표가 오른쪽 파일 아이콘 &#x27;점검로그.log&#x27;로 들어가고, 세 번째 상자의 화살표는 붉은 점선에 X 표시. 파일 아이콘 옆에 큰 글씨 &#x27;수정 날짜: 오늘&#x27;. 하단 캡션 &#x27;파일은 살아 있고, 이름에 적힌 주인만 죽어 있다&#x27;" loading="lazy">
+<h2>상태 칸에는 &#x27;운영중&#x27;이라고 적혀 있었어요</h2>
+<p>그럼 상태를 따로 기록해 두는 표를 보면 되겠네, 싶었죠. 제 시스템은 자동화별로 현재 상태를 작은 DB에 한 줄씩 들고 있거든요. 열어봤습니다.</p>
+<pre><code># 상태 표 조회 결과 (역할 이름만 A·B로 바꿨습니다)
+role   status   updated_at
+-----  -------  -------------------
+A      운영중    2026-09-07 11:41
+B      운영중    2026-09-06 20:19
+QA     운영중    2026-08-31 09:50     ← 7일 전</code></pre>
+<p>상태 칸은 <strong>운영중</strong>이었어요. 7일째 아무것도 안 했는데요.</p>
+<p>당연한 얘기인데 당하기 전엔 잘 안 보입니다. 상태 문자열은 그 자동화가 <strong>마지막으로 끝났을 때의 결과</strong>예요. 잘 끝났으면 &#x27;운영중&#x27;이 찍히고, 그다음 실행이 영영 없어도 그 글자는 그대로 남습니다. 죽을 때 &quot;나 죽는다&quot;고 써주고 죽는 프로세스는 없어요. 멈춘 자동화는 아무 말도 안 하고, 그래서 마지막으로 남긴 말이 계속 화면에 붙어 있는 겁니다.</p>
+<p>정답은 같은 줄의 오른쪽 끝에 있었어요. 갱신 시각. 저 값 하나만 오늘과 빼면 7일이 나옵니다.</p>
+<h2>그래서 무엇을 보고 판정해야 하나요</h2>
+<p>네 가지 신호를 놓고 각각 뭘 증명하는지 정리해봤습니다.</p>
+<p>| 보는 것 | 실제로 증명하는 것 | 왜 속나 |<br>
+|---|---|---|<br>
+| 로그 파일 수정 날짜 | 누군가 이 파일에 썼다 | 쓴 주체가 다른 놈일 수 있다 |<br>
+| 상태 칸 문자열 | 마지막으로 끝났을 때의 결과 | 다음 실행이 없어도 안 바뀐다 |<br>
+| 스케줄러 종료 코드 0 | 프로세스가 정상 종료했다 | 아무 일도 안 하고 끝나도 0이다 |<br>
+| <strong>주체가 남긴 갱신 시각</strong> | <strong>그 주체가 마지막으로 살아 있던 시점</strong> | (이게 유일한 증거) |</p>
+<p>앞의 세 개는 전부 &quot;누군가 뭔가 했다&quot;까지만 말해줍니다. 마지막 하나만 &quot;이 자동화가 언제까지 살아 있었다&quot;를 말해줘요. 여러분은 자동화 돌고 있는지 확인하실 때, 이 넷 중 어느 걸 보고 계신가요?</p>
+<h2>따라 하실 수 있게 4단계로</h2>
+<p><strong>전제</strong>: 윈도우 10/11 + 파이썬 3, 작업 스케줄러로 스크립트를 굴리는 구조. 2026년 9월 기준입니다.</p>
+<p>1. <strong>로그 파일에 누가 쓰는지 코드에서 먼저 찾습니다.</strong> 파일 이름으로 프로젝트 전체를 검색하세요. 저는 여기서 스크립트 두 개가 같은 파일을 물고 있는 걸 발견했어요.<br>
+2. <strong>로그를 눈으로 읽지 말고 종류별로 셉니다.</strong> 위의 집계 한 줄이면 충분해요. 확인하려는 자동화의 기록이 <strong>0건</strong>이면 그 파일은 증거가 아닙니다.<br>
+3. <strong>자동화마다 자기 이름으로 시각을 남기게 합니다.</strong> 실행 성공 직후 <code>이름 / 시각 / 방금 한 일</code> 한 줄이면 돼요. 하트비트라고 부르는 그거고, 파일 한 줄이든 DB 한 행이든 형식은 상관없습니다. 중요한 건 <strong>다른 놈이 대신 못 써주는 자리</strong>여야 한다는 것.<br>
+4. <strong>경고 임계값은 기대 주기의 2~3배로 박습니다.</strong> 매일 도는 자동화면 3일, 주 1회면 2~3주. 제 점검 규칙은 3일이었고, 그래서 이번에도 결국은 그 규칙이 잡아냈습니다!</p>
+<img src="img/03_heartbeat.png" alt="하트비트 한 줄의 구조. 가운데 파란 상자에 큰 글씨 &#x27;자동화 A — 2026-09-07 04:00 — 브리핑 1건 생성&#x27;. 상자 위로 세 개의 라벨 화살표가 각 부분을 가리킴 — 왼쪽 &#x27;누가(주체 이름)&#x27;, 가운데 &#x27;언제(성공 직후 시각)&#x27;, 오른쪽 &#x27;무엇을(방금 한 일)&#x27;. 상자 아래 회색 띠에 &#x27;기대 주기 24시간 × 3 = 임계 72시간&#x27;. 하단 캡션 &#x27;남이 대신 써줄 수 없는 자리에, 세 조각을 한 줄로&#x27;" loading="lazy">
+<p><strong>확인 방법</strong>: 잘 도는 자동화 하나를 일부러 하루 멈춰보세요. 임계값이 지난 뒤 경고가 뜨면 성공입니다. 안 뜨면 그 감시는 지금 아무것도 안 보고 있는 거예요.</p>
+<img src="img/04_before_after.png" alt="판정 기준 전후 비교 2단. 위쪽 회색 패널 &#x27;전&#x27; — 상자 세 개 &#x27;파일 수정: 오늘&#x27;, &#x27;상태: 운영중&#x27;, &#x27;종료코드: 0&#x27;이 모두 초록색이고 아래에 붉은 글씨 &#x27;판정: 정상(오답)&#x27;. 아래쪽 파란 패널 &#x27;후&#x27; — 상자 하나 &#x27;자기 이름으로 남긴 갱신: 8/31&#x27;만 붉은색, 아래에 &#x27;판정: 7일째 정지&#x27;. 하단 캡션 &#x27;신호를 늘리지 말고, 주인이 있는 신호 하나를 만든다&#x27;" loading="lazy">
+<h2>미리 답해두는 질문 셋</h2>
+<p><strong>Q. 로그 파일을 자동화마다 따로 만들면 해결되지 않나요?</strong><br>
+그게 제일 깔끔합니다. 다만 파일을 나눠도 &quot;언제까지 살아 있었나&quot;는 여전히 파일 수정 날짜로 보게 돼요. 백업 도구나 편집기가 파일을 건드리면 그 날짜는 또 움직입니다. 파일을 나누는 건 원인 하나를 없애는 거지, 판정 기준을 세우는 것과는 다른 일이에요.</p>
+<p><strong>Q. 스케줄러 기록에 &#x27;마지막 실행 시각&#x27;이 이미 있는데요?</strong><br>
+그건 스케줄러가 <strong>띄웠다</strong>는 기록입니다. 스크립트가 첫 줄에서 죽어도 그 시각은 찍혀요. 저는 그래서 실행 시각이 아니라 성공 직후에 찍히는 시각을 따로 봅니다. 둘이 벌어져 있으면 뜨긴 뜨는데 일은 안 하고 있다는 뜻이라, 오히려 이 간격이 제일 쓸모 있는 신호예요.</p>
+<p><strong>Q. 감시 규칙을 또 만들면 그것도 언젠가 멈추지 않나요?</strong><br>
+멈춥니다. 그래서 감시 규칙은 하나만 두고, 그 하나가 매일 점수와 경고 건수를 남기게 했어요. 오늘 아침에도 95점에 경고 2건이 찍혀 있었고요. 감시가 멈추면 그 숫자 자체가 안 올라오니까 그건 눈에 띕니다.</p>
+<p>경고를 오탐이라고 판단할 뻔한 근거가 파일 수정 날짜 하나였다는 게 좀 뜨끔했어요. 3일 임계값을 넣어둔 과거의 제가 이번엔 저를 살렸습니다..</p>
+<p>이런 오판과 정정 기록은 makefield.ai 쪽에 날짜별로 정리해 두고 있어요.</p>
+<p>태그: #자동화돌고있는지확인 #자동화정지확인 #로그파일수정날짜 #자동화하트비트 #작업스케줄러확인 #자동화모니터링 #AI자동화구축 #AI에이전트관리 #AI결과물검수 #자동화로그 #파이썬자동화 #업무자동화 #AI에게일시키기 #개인AI에이전트 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224404005444" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
