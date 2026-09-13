@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>원격 데스크톱 연결 안됨, 계정이 하루 38번 잠기고 있었어요 | 도면 읽는 AI</title>
+<meta name="description" content="밖에서 집에 켜둔 PC에 붙으려는데 로그인이 계속 튕겼어요. 어쩌다 한 번 들어가지면 이번엔 화면이 먹통이고요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261009-rdp-connect-fail-lockout/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="원격 데스크톱 연결 안됨, 계정이 하루 38번 잠기고 있었어요 | 도면 읽는 AI">
+<meta property="og:description" content="밖에서 집에 켜둔 PC에 붙으려는데 로그인이 계속 튕겼어요. 어쩌다 한 번 들어가지면 이번엔 화면이 먹통이고요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261009-rdp-connect-fail-lockout/">
+<meta property="og:image" content="https://makefield.ai/blog/20261009-rdp-connect-fail-lockout/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "원격 데스크톱 연결 안됨, 계정이 하루 38번 잠기고 있었어요", "datePublished": "2026-09-13", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261009-rdp-connect-fail-lockout/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-09-13</span></div>
+<h1>원격 데스크톱 연결 안됨, 계정이 하루 38번 잠기고 있었어요</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;원격 데스크톱 연결 안됨 / 범인은 PC 사양이 아니라 하루 38번의 계정 잠금이었습니다&quot;" loading="lazy">
+<p>밖에서 집에 켜둔 PC에 붙으려는데 로그인이 계속 튕겼어요. 어쩌다 한 번 들어가지면 이번엔 화면이 먹통이고요.</p>
+<p><strong>원격 데스크톱 연결 안됨 증상이 나면 저는 늘 PC 사양부터 의심했는데, 이번엔 사양이 완전히 무죄였습니다.</strong> 결론부터 적을게요. 원인은 두 개였고 둘 다 성능과 상관없었어요. 하나는 <strong class="u">계정 잠금</strong>, 다른 하나는 절전에서 못 깨어나는 문제였습니다.</p>
+<p>2026년 9월 기준 윈도우 10이고, 집에 켜둔 PC를 밖에서 원격으로 쓰는 구조면 그대로 적용돼요. 확인은 전부 윈도우 기본 도구로 되고 설치할 건 없습니다.</p>
+<p>제 일은 공장 설비 제어예요. 15년쯤 했습니다. 장비가 안 돌면 전원부터 신호까지 순서대로 짚는 게 몸에 뱄는데, 이번엔 그 습관이 저를 엉뚱한 데로 데려갔어요.</p>
+<h2>1. 사양은 전부 멀쩡했어요</h2>
+<p>AI한테 &quot;이 PC 자원을 전수로 훑어달라&quot;고 시켰는데, 죄다 정상이었습니다.</p>
+<p>| 항목 | 실측 | 판정 |<br>
+|---|---|---|<br>
+| CPU | 부하 10~64% | 정상 |<br>
+| 메모리 32GB | 사용률 26.5% (23.3GB 여유) | 정상 |<br>
+| SSD 1TB | 상태 Healthy, 715GB 여유(77%) | 정상 |<br>
+| 배터리 | 설계 57,000mWh / 실제 58,100mWh = <strong>102%</strong> | 신품급 |<br>
+| 블루스크린 덤프 | 파일 자체가 없음 | 커널 크래시 아님 |</p>
+<p>배터리가 설계 용량보다 더 나오는 걸 보고 허탈했어요. 몇 년 쓴 노트북이 이 정도면 하드웨어를 의심할 이유가 없죠..</p>
+<p>그래서 질문을 바꿨습니다. <strong>&quot;뭐가 고장 났나&quot; 대신 &quot;누가 로그인을 방해하나&quot;로요.</strong></p>
+<h2>2. 계정이 10분마다 잠기고 있었습니다</h2>
+<p>보안 이벤트 로그를 열자마자 답이 나왔어요. 로그온 실패가 <strong>최근 6시간에 8,775건</strong>이었습니다.</p>
+<p>계정 잠금 이벤트(ID 4740)는 그날 하루에만 <strong>38회</strong>였고요. 잠긴 시각을 뽑아보니 간격이 소름 끼치게 일정했습니다.</p>
+<pre><code>17:27:44
+17:16:03
+17:04:34
+16:53:59
+16:42:52
+16:30:54
+16:18:35   ← 10분 35초 ~ 12분 19초 간격으로 반복</code></pre>
+<p>윈도우 기본 정책이 <strong>10분 안에 10번 틀리면 10분 잠금</strong>이거든요. 풀리고 1~2분 만에 다시 잠겼다는 뜻이에요. <strong class="u">로그인 가능한 창</strong>이 10분에 1~2분뿐이었던 겁니다.</p>
+<img src="img/02_lockout_cycle.png" alt="계정 잠금 10분 사이클 — 가로 타임라인 위에 빨간 블록 &#x27;잠김 10분&#x27;과 좁은 초록 블록 &#x27;열림 1~2분&#x27;이 번갈아 반복. 초록 블록 위에 말풍선 &#x27;여기 맞춰 들어가야 성공&#x27;. 하단 캡션 &#x27;하루 38번 반복됐다&#x27;" loading="lazy">
+<p>누가 두드리고 있었냐면, 원격 접속 포트가 인터넷에 그대로 열려 있었어요. 60초만 추적했는데 <strong>서로 다른 나라의 IP 8개</strong>가 동시에 붙어 있더군요.</p>
+<pre><code>연결 수신     1,947 건
+인증 성공         3 건   ← 이 3건도 전부 집 안에서 들어온 것</code></pre>
+<p>봇이 아이디·비밀번호를 무한정 넣어보는 중이었고, 제 계정은 그 실패 횟수 때문에 도어록처럼 잠겨 있던 겁니다. 비밀번호가 뚫린 게 아니라 <strong>잠금 정책이 저를 막고 있던</strong> 상황이었어요.</p>
+<p>조치는 한 줄이었습니다. 전 세계(Any)를 향해 열려 있던 방화벽 규칙을 집 안 대역으로 좁혔어요.</p>
+<pre><code># 원격 데스크톱 인바운드 규칙을 집 내부망으로 제한
+Get-NetFirewallRule -Direction Inbound |
+  Where-Object { $_.DisplayGroup -match &#x27;Remote Desktop|원격 데스크톱&#x27; } |
+  Set-NetFirewallRule -RemoteAddress LocalSubnet</code></pre>
+<p>밖에서 들어올 통로는 개인용 VPN 툴로 따로 뒀습니다. 적용 순간이 로그에 이렇게 찍혔어요.</p>
+<pre><code>17:09~17:27   분당 12~16건   (두드리는 중)
+17:28              1 건      ← 방화벽 적용
+17:29 이후         0 건</code></pre>
+<p>60초 재추적에서 외부 IP는 0개, 계정 잠금 상태도 그날 처음 &quot;잠김 아님&quot;으로 바뀌었어요.</p>
+<h2>3. 로그인은 되는데 화면이 먹통인 건 다른 문제였어요</h2>
+<p>여기서 끝난 줄 알았는데 아니었어요. <strong>접속은 되는데 응답이 없는</strong> 증상은 따로 있었습니다.</p>
+<p>로그를 보니 PC가 절전에서 깨는 과정에 서비스 여덟 개가 동시에 30초씩 타임아웃을 먹고 있었어요. 로그온이 끝나기까지 <strong>2분 36초</strong>가 걸렸습니다. 정상이면 몇 초예요. 그걸 못 기다리고 전원 버튼을 길게 눌러 끈 적이 두 번 있었고요.</p>
+<p>문제는 절전을 이미 꺼뒀다는 거였습니다. 전원 옵션에서 &quot;안 함&quot;으로 다 바꿔놨는데도 계속 들어갔어요. 이유는 이거였습니다.</p>
+<pre><code>사용할 수 있음 : 대기 모드(S0 저 전원 유휴), 최대 절전 모드
+사용할 수 없음 : S1, S2, S3 (펌웨어에서 미지원)</code></pre>
+<p>요즘 노트북에 흔한 <strong>모던 스탠바이</strong> 전용 장비였던 겁니다. 옛날식 절전(S3)이 아예 없고, 이 방식은 전원 옵션의 절전 시간 설정을 <strong>무시한 채</strong> 자기 판단으로 들어가요. &quot;안 함&quot;으로 바꿔도 소용이 없었던 이유죠.</p>
+<p>레지스트리에서 이 기능 자체를 끄고 재부팅했더니 목록이 이렇게 바뀌었습니다.</p>
+<pre><code>사용할 수 있음 : 최대 절전 모드
+사용할 수 없음 : S1, S2, S3, S0 저 전원 유휴, 하이브리드 절전, 빠른 시작</code></pre>
+<p><strong>&quot;사용할 수 있음&quot;에 있던 항목이 &quot;사용할 수 없음&quot;으로 넘어간 것</strong>, 이게 성공 판정 기준이에요. 이 확인을 안 하면 적용됐는지 알 방법이 없습니다.</p>
+<img src="img/03_two_branches.png" alt="증상 두 갈래 분기 — 위쪽 상자 &#x27;원격 접속이 안 된다&#x27;에서 화살표 두 개. 왼쪽 &#x27;로그인 자체가 튕긴다 → 계정 잠금·차단 계열 → 보안 로그 4740/4625 확인&#x27;, 오른쪽 &#x27;붙긴 붙는데 응답이 없다 → 절전 복귀 실패 계열 → powercfg /a 확인&#x27;. 하단 캡션 &#x27;증상이 다르면 뒤질 로그도 다르다&#x27;" loading="lazy">
+<h2>4. 그대로 따라 하는 확인 순서</h2>
+<p><strong>전제조건</strong>: 윈도우 10/11, 관리자 권한 파워셸. 2026년 9월 기준이고 추가 설치는 없습니다.</p>
+<p>1. <strong>로그 용량부터 키운다.</strong> 이게 1번인 이유가 있어요. 제 경우 드라이버 하나가 7일간 <strong>8만 건</strong>을 쏟아부어 시스템 로그의 99.5%를 차지했고, 정작 사고 직전 기록은 밀려 나간 뒤였습니다.<br>
+2. <strong>잠금 이벤트를 센다.</strong> <code>Get-WinEvent</code>로 보안 로그의 ID 4740(계정 잠금)과 4625(로그온 실패)를 뽑습니다. 하루 수십 건이면 그게 답이에요.<br>
+3. <strong>열려 있는 통로를 센다.</strong> 공유기 포트포워딩 목록을 눈으로 훑으세요. 저는 여기서 <strong>원격 접속 포트가 4개</strong> 열려 있는 걸 봤습니다.<br>
+4. <strong>절전 지원 목록을 본다.</strong> <code>powercfg /a</code> 한 줄이면 이 장비가 어떤 절전을 쓰는지 나옵니다. 모던 스탠바이 전용이면 전원 옵션 설정은 믿지 마세요.</p>
+<p><strong>확인 방법</strong>: 2번의 잠금 건수가 0으로 떨어지고, 4번 목록에서 절전 항목이 &quot;사용할 수 없음&quot;으로 넘어갔으면 끝난 겁니다.</p>
+<h2>5. AI가 로그를 거꾸로 읽은 대목</h2>
+<p>이 글에서 제일 남는 장면은 따로 있습니다.</p>
+<p>AI가 전원 관련 오류 로그 두 건을 잡고 <strong>&quot;하드웨어 크래시&quot;</strong>로 판정했어요. 근거도 그럴듯했고요. 그런데 그 두 건은 제가 응답이 없어서 <strong>전원 버튼을 길게 눌러 끈 기록</strong>이었습니다.</p>
+<p>제가 &quot;그거 내가 손으로 껐다&quot;고 한마디 하자 진단이 통째로 뒤집혔어요. &quot;PC가 죽었다&quot;에서 &quot;PC가 응답을 안 해서 내가 끌 수밖에 없었다&quot;로요.</p>
+<img src="img/04_log_two_reads.png" alt="같은 로그 두 가지 해석 — 가운데 로그 상자 &#x27;전원 비정상 종료 기록&#x27;에서 화살표 두 갈래. 위쪽 빨강 &#x27;하드웨어 크래시로 읽음 → 부품 교체 검토&#x27;, 아래쪽 초록 &#x27;사용자가 강제 종료 → 절전 복귀 실패 추적&#x27;. 하단 캡션 &#x27;로그는 결과만 남기고 의도는 안 남긴다&#x27;" loading="lazy">
+<p><strong>기계 로그는 결과만 적어두지 의도를 안 적어둡니다.</strong> 로그를 통째로 던져놓고 답을 기다리는 것보다, 내가 그날 뭘 했는지 한 줄 보태주는 게 훨씬 빨라요. 그 한 줄이 부품 교체 검토를 통째로 날려줬습니다!</p>
+<p>하나 더요. 정리하는 김에 공유기의 자동 개방 규칙을 싹 지우려다 멈췄습니다. 네 건 중 <strong>세 건이 제가 쓰는 VPN의 직결 통로</strong>였거든요. 남겨둔 포트 하나도 VPN이 죽었을 때 쓸 <strong class="u">예비 경로</strong>고요..</p>
+<h2>미리 답해두면 좋을 세 가지</h2>
+<p><strong>Q. 비밀번호를 복잡하게 바꾸면 해결되나요?</strong><br>
+잠금은 안 풀려요. 계정 잠금은 &quot;누가 맞혔나&quot;가 아니라 &quot;몇 번 틀렸나&quot;로 걸리거든요. 봇이 계속 두드리면 실패 횟수는 그대로 쌓이고, 못 들어가는 건 저입니다. 통로를 막는 게 먼저예요.</p>
+<p><strong>Q. 포트 번호를 기본값 말고 다른 걸로 바꿔두면 안전하지 않나요?</strong><br>
+저도 그렇게 믿고 몇 대를 바꿔뒀는데, 열린 포트를 훑고 다니는 쪽에선 번호가 몇 번이든 상관없어요. 실제로 번호를 바꿔둔 것들도 똑같이 밖에서 접속 가능한 상태였습니다. 번호 변경은 숨긴 게 아니라 위치만 옮긴 거예요.</p>
+<p><strong>Q. 절전을 완전히 꺼도 괜찮나요?</strong><br>
+상시 전원을 꽂아두고 원격으로만 쓰는 PC면 괜찮습니다. 대신 배터리로 들고 다니는 노트북이면 되돌리세요. 덮개를 닫아도 안 꺼지니까 가방 안에서 계속 돌아갑니다.</p>
+<p>정리하면 고칠 건 두 개였는데, 제가 뒤진 곳은 사양표와 배터리와 디스크였어요. 전부 &quot;정상&quot;이라는 답만 돌아왔죠. 원격 접속이 안 될 때 사양부터 펴보는 습관은 이번에 버렸습니다. <strong>로그인이 튕기는 것과 화면이 멎는 것은 아예 다른 고장</strong>이라는 것도요. 혹시 지금 원격 데스크톱 연결 안됨으로 고생 중이시라면, 보안 로그의 잠금 건수부터 세어보시겠어요?</p>
+<p>밟은 순서를 더 자세히 적어둔 건 makefield.ai에 있습니다.</p>
+<p>태그: #원격데스크톱연결안됨 #원격데스크톱로그인안됨 #계정잠김해제 #RDP보안설정 #원격접속안될때 #절전모드원격접속 #모던스탠바이해제 #윈도우이벤트뷰어 #윈도우로그확인 #PC원격제어 #AI로PC점검 #AI에게일시키기 #홈네트워크보안 #포트포워딩정리 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224410366627" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
