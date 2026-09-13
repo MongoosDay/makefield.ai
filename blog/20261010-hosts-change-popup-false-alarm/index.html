@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hosts 파일 변경 탐지 팝업, 범인은 악성코드가 아니었어요 | 도면 읽는 AI</title>
+<meta name="description" content="재부팅만 하면 보안 프로그램이 저한테 물었어요. hosts 파일이 바뀌었는데 원래대로 되돌릴까요?">
+<link rel="canonical" href="https://makefield.ai/blog/20261010-hosts-change-popup-false-alarm/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hosts 파일 변경 탐지 팝업, 범인은 악성코드가 아니었어요 | 도면 읽는 AI">
+<meta property="og:description" content="재부팅만 하면 보안 프로그램이 저한테 물었어요. hosts 파일이 바뀌었는데 원래대로 되돌릴까요?">
+<meta property="og:url" content="https://makefield.ai/blog/20261010-hosts-change-popup-false-alarm/">
+<meta property="og:image" content="https://makefield.ai/blog/20261010-hosts-change-popup-false-alarm/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "hosts 파일 변경 탐지 팝업, 범인은 악성코드가 아니었어요", "datePublished": "2026-09-14", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261010-hosts-change-popup-false-alarm/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-09-14</span></div>
+<h1>hosts 파일 변경 탐지 팝업, 범인은 악성코드가 아니었어요</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;hosts 파일 변경 탐지 팝업 / 범인은 악성코드가 아니라, 제가 직접 켠 기능이었습니다&quot;" loading="lazy">
+<p>재부팅만 하면 보안 프로그램이 저한테 물었어요. hosts 파일이 바뀌었는데 원래대로 되돌릴까요?</p>
+<p><strong>hosts 파일 변경 탐지라는 문구를 보고 저는 당연히 악성코드부터 떠올렸습니다.</strong> 근데 범인은 바깥에서 들어온 놈이 아니었어요. 며칠 전 제가 직접 깔고 직접 켠 기능이었습니다.</p>
+<p>2026년 9월 기준 윈도우 10 노트북이고, 밖에서 집 PC에 붙으려고 원격접속용 개인 VPN 툴을 새로 깐 직후였습니다.</p>
+<p>저는 제조 현장에서 설비 자동화를 15년쯤 했어요. 기계가 멈추면 원인을 순서대로 짚는 게 직업입니다. 이번에도 순서대로 짚었는데, 하필 제일 비싼 용의자를 붙잡고 있었네요..</p>
+<h2>1. 팝업이 말한 그 파일이 뭐 하는 파일인가</h2>
+<p>hosts는 윈도우에 들어 있는 <strong class="u">이름표 파일</strong>이에요. 어떤 주소로 접속할 때 시스템이 DNS 서버에 물어보기 <strong>전에</strong> 이 파일을 먼저 들여다봅니다. 여기에 &quot;이 이름은 이 IP&quot;라고 적혀 있으면 DNS까지 가지도 않고 그대로 믿어요.</p>
+<img src="img/02_hosts_position.png" alt="hosts 파일이 끼어드는 위치 — 왼쪽 상자 &#x27;프로그램이 이름으로 접속 시도&#x27;에서 화살표가 가운데 상자 &#x27;hosts 파일(내 PC 안의 텍스트 파일)&#x27;로 들어감. 가운데 상자에서 화살표 두 갈래: 위쪽 &#x27;항목이 있으면 → 여기서 끝(적힌 IP로 직행)&#x27;, 아래쪽 &#x27;항목이 없으면 → DNS 서버에 질의&#x27;. 하단 캡션 &#x27;DNS보다 먼저 읽히는 파일, 그래서 노려진다&#x27;" loading="lazy">
+<p>그래서 파밍 공격의 고전 수법이 바로 이 파일 고치기예요. 은행 주소 옆에 가짜 IP를 적어두면, 사용자는 정상 주소를 치고 들어가는데 도착지는 가짜가 됩니다.</p>
+<p>금융 보안 프로그램이 이 파일을 부팅마다 감시하는 이유가 그겁니다. 변경 자체를 <strong>파밍 공격의 서명</strong>으로 취급해요. 그러니까 그 팝업은 &quot;공격을 잡았다&quot;가 아니라 &quot;공격에 쓰이는 자리가 건드려졌다&quot;는 신호였던 거죠. 처음엔 이 차이를 못 읽었습니다.</p>
+<h2>2. 보안 프로그램 로그를 뒤졌는데, 읽을 수가 없었어요</h2>
+<p>AI한테 &quot;팝업이 언제 몇 번 떴는지 이력을 뽑아달라&quot;고 시켰어요. 저는 당연히 로그가 있을 줄 알았거든요.</p>
+<pre><code>&gt; 보안 프로그램 설치 폴더\Log\(감시 로그).log
+   CP949로 디코딩 → 바이너리. 판독 불가</code></pre>
+<p>암호화 저장이었습니다. 팝업이 떴는지 안 떴는지는 <strong>기계가 남긴 기록에서 확인할 방법이 없었어요.</strong> 남은 데이터원은 하나뿐이었죠. 그 화면을 본 사람, 즉 저요..</p>
+<p>이게 이번 건에서 제일 오래 기억에 남을 대목입니다. 자동화든 AI든 &quot;로그 보면 되지&quot;로 시작하는데, <strong class="u">GUI 알림</strong>은 로그에 안 남는 경우가 있어요. 그래서 그 뒤로는 검증 항목마다 &quot;이건 누가 확인할 수 있는가&quot;를 적어둡니다. 안 적어두면 다음 세션에서 또 로그를 뒤지느라 시간을 태우거든요. 여러분도 &quot;로그에 없으니 확인 불가&quot;로 흘려버린 증상, 하나쯤 있지 않으세요?</p>
+<h2>3. hosts를 열어보니 제 기기 이름이 적혀 있었습니다</h2>
+<p>정작 답은 팝업이 가리킨 파일 안에 있었어요. 열어보니 제가 깐 VPN 툴이 자기 구역을 만들어 놓고, 제 기기 네 대를 적어두고 있었습니다.</p>
+<pre><code># (VPN 툴) Hosts Section Start
+100.x.x.x    내-노트북
+100.x.x.x    내-맥북
+100.x.x.x    내-폰
+100.x.x.x    내-보조노트북
+# (VPN 툴) Hosts Section End</code></pre>
+<p>이 툴에는 기기를 IP 대신 이름으로 부를 수 있게 해주는 기능이 있어요. 그 기능이 이름과 IP를 어디에 적어두느냐 하면, 바로 hosts입니다. 악성코드가 쓰는 것과 <strong>똑같은 방법으로, 똑같은 파일에</strong> 쓴 거죠.</p>
+<img src="img/03_false_alarm_overlap.png" alt="오탐이 만들어진 삼각 구도 — 위쪽 상자 &#x27;VPN 툴: 기기 이름을 hosts에 기입 (정상 동작)&#x27;, 아래쪽 상자 &#x27;금융 보안 프로그램: hosts 변경 = 파밍 서명 (정상 동작)&#x27;, 두 상자 사이에 충돌 표시와 &#x27;부팅마다 팝업&#x27;. 오른쪽에 사람 아이콘과 말풍선 &#x27;둘 다 제 일을 했는데 왜 나만 괴롭나&#x27;. 하단 캡션 &#x27;오탐은 고장이 아니라 겹침이다&#x27;" loading="lazy">
+<p>여기서 고칠 수 있는 지점이 세 곳이었고, 저는 세 번째를 골랐습니다.</p>
+<p>| 고칠 지점 | 팝업 | 잃는 것 |<br>
+|---|---|---|<br>
+| 보안 프로그램 삭제 | 사라짐 | 은행 접속 보안 통째로 |<br>
+| 감시 예외 등록 | 사라짐 | 진짜 파밍도 통과 (구멍) |<br>
+| <strong>VPN 툴이 hosts를 안 쓰게</strong> | <strong>사라짐</strong> | <strong>거의 없음 (아래에서 검증)</strong> |</p>
+<p><strong>오탐은 경보기를 부수는 게 아니라 연기를 없애야 합니다!</strong> 경보기는 이번에 옳게 짖은 거니까요.</p>
+<h2>4. &quot;그거 끄면 원격접속 못 하는 거 아냐?&quot;</h2>
+<p>설정 한 줄로 끝났다고 보고했더니 바로 반박이 돌아왔습니다. 이름 해석 기능을 끄면 밖에서 이 PC를 못 찾는 거 아니냐, 그게 더 미친짓 아니냐고요.</p>
+<pre><code>(vpn-cli) set --accept-dns=false</code></pre>
+<p>반박이 정당했고, 제 설명이 부정확했습니다. 저는 &quot;기능을 껐다&quot;고 썼는데 실제로 바뀐 건 그게 아니었어요. 이 옵션은 <strong>이 PC가 그 DNS 설정을 받아들일지</strong>만 바꾸는 내 PC 한 대짜리 설정이고, 기능 자체는 계정 전체에서 그대로 켜져 있습니다. 용어를 뭉갠 제 표현이 쓸데없는 불안을 만든 거죠.</p>
+<p>핵심은 이겁니다. <strong>이름을 IP로 바꾸는 일은 접속하는 쪽 기기에서 일어납니다.</strong> 이 노트북은 접속을 받는 쪽이라, 폰이나 다른 노트북이 이름으로 찾아 들어오는 건 그쪽 기기 사정이에요. 이 PC의 hosts와는 상관이 없습니다.</p>
+<p>말로만 하면 안 믿기니 재보라는 요구가 또 들어왔어요. 그래서 실제로 쟀습니다.</p>
+<pre><code>피어 대상 터널 ping   pong ... in 1ms   ← 릴레이 아닌 직결
+인바운드 차단 설정     꺼짐(받는 것 허용) 유지
+원격접속 포트 확인     열림
+바뀐 설정 항목         DNS 수용 여부 하나뿐</code></pre>
+<p>여기서 교훈 하나 더 건졌어요. 처음에 저는 <strong>내 PC에서 내 PC 포트를 찍어보고</strong> &quot;터널 정상&quot;이라고 했습니다. 그건 자기 자신 대상이라 터널을 안 거칠 수도 있어요. 남의 기기를 향해 쏘고 왕복 시간을 받아야 진짜 증거입니다. 반박이 없었으면 약한 증거로 그냥 덮었을 거예요..</p>
+<img src="img/04_peer_discovery_path.png" alt="이름을 찾는 경로 두 가지 비교 — 위쪽 잘못된 그림 &#x27;다른 PC가 이 PC의 hosts를 읽어간다&#x27;에 빨간 X. 아래쪽 실제 경로 &#x27;각 기기 → 중앙 서버에 자기 이름·주소 등록 → 서버가 전체 기기 목록을 배포 → 기기끼리 직접 연결&#x27;. 옆에 실측 메모 &#x27;내 hosts는 0줄인데 다른 기기 이름은 전부 살아 있었다&#x27;. 하단 캡션 &#x27;hosts는 로컬 파일이라 네트워크로 공유되지 않는다&#x27;" loading="lazy">
+<p>그리고 결정적인 장면이 하나 있었습니다. hosts를 비우던 그 순간, 저는 다른 기기에서 그 노트북에 원격으로 붙어 있는 상태였어요. <strong>세션이 안 끊겼습니다.</strong></p>
+<p>다만 그건 &quot;이미 맺힌 연결이 유지된다&quot;는 증거일 뿐이라, &quot;새로 붙는 것도 되나&quot;는 미입증으로 남겨뒀습니다. 그 항목은 이틀 뒤에 저절로 닫혔어요. 재부팅을 두 번 하고 나서 붙은 연결의 포트 번호가 전과 달랐거든요. 같은 연결이 살아남은 게 아니라 새로 성립한 접속이라는 뜻이었죠.</p>
+<h2>종결은 이렇게 확인했습니다</h2>
+<pre><code>hosts 마지막 수정 : 18:13   ← 재부팅(19:03) 이전 = 부팅 후 변경 0회
+hosts 유효 라인   : 0줄 (주석 제외)
+보안 프로그램     : 19:04 기동 = 감시 정상 작동 중
+목격              : &quot;안 떴다&quot; — 재부팅 2회 모두</code></pre>
+<p>기계 실측과 눈으로 본 결과가 같은 쪽을 가리켰어요. 그래서 &quot;다른 프로그램이 hosts를 건드리는 것일 수도 있다&quot;고 남겨둔 가설은 폐기했습니다. 감시 프로그램이 죽어서 조용해진 게 아니라는 확인, 저건 꼭 같이 봐야 합니다!</p>
+<p>재발 조건도 적어뒀습니다. 트레이 메뉴에서 그 DNS 옵션을 다시 켜면 hosts에 또 쓰기 시작하고 팝업도 부활합니다. 되돌리는 건 반대로 한 줄이고요.</p>
+<h2>이런 질문이 나올 것 같아서</h2>
+<p><strong>Q. 그냥 팝업에서 &quot;복원&quot;을 누르면 안 되나요?</strong><br>
+누르면 그 순간은 조용해져요. 문제는 다음 부팅에서 VPN 툴이 또 쓴다는 겁니다. 복원과 재기입이 무한 왕복하죠. hosts 파일 변경 탐지 팝업이 <strong>부팅마다 반복된다면</strong> 그건 일회성 공격이 아니라 상주 프로그램이 범인이라는 신호예요. 반복성 자체가 단서입니다.</p>
+<p><strong>Q. 팝업이 떴으면 이미 감염된 거 아닌가요?</strong><br>
+이 경우엔 아니었어요. 다만 &quot;아닐 것&quot;이라고 넘기라는 얘기는 아닙니다. 순서만 지키면 돼요. hosts 파일을 직접 열어서 <strong>뭐가 적혀 있는지 눈으로 보는 것</strong>이 먼저입니다. 낯선 도메인에 낯선 IP가 붙어 있으면 감염 쪽을 파고, 내가 깐 프로그램 이름으로 된 구역이 보이면 그 프로그램 설정을 보면 됩니다. 실제로 제 hosts에는 제 기기 이름 네 개만 있었고, 그게 곧 답이었습니다.</p>
+<p>고친 건 결국 설정 한 줄이었는데, 그 한 줄까지 가는 길에서 배운 건 두 가지였어요. 경보기가 울리면 경보기를 의심하기 전에 <strong>누가 연기를 냈는지</strong> 먼저 찾는다는 것. 그리고 화면에만 뜨는 알림은 로그에 없으니, 본 사람의 증언이 유일한 데이터라는 것. 다음 편에서는 드라이버 하나가 일주일에 8만 건을 쏟아부어 정작 필요한 기록을 밀어내 버린 건을 풀어보겠습니다.</p>
+<p>이번 건처럼 오탐 하나 쫓다가 배운 것들은 makefield.ai에 따로 정리해 둡니다.</p>
+<p>태그: #hosts파일변경탐지 #hosts파일복원 #파밍경고 #보안프로그램오탐 #백신팝업계속 #hosts파일위치 #윈도우보안경고 #원격접속VPN #개인VPN설정 #PC보안점검 #AI로PC점검 #AI에게일시키기 #AI디버깅 #홈네트워크 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224410743445" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
