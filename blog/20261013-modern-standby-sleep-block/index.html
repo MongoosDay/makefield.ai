@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>절전 모드 껐는데 계속 절전될 때, 레지스트리 한 줄로 막았습니다 | 도면 읽는 AI</title>
+<meta name="description" content="그날 저는 전원 버튼을 두 번 길게 눌렀습니다. 화면도 안 켜지고 원격으로도 안 들어가지니, 남은 방법이 그것뿐이었어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261013-modern-standby-sleep-block/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="절전 모드 껐는데 계속 절전될 때, 레지스트리 한 줄로 막았습니다 | 도면 읽는 AI">
+<meta property="og:description" content="그날 저는 전원 버튼을 두 번 길게 눌렀습니다. 화면도 안 켜지고 원격으로도 안 들어가지니, 남은 방법이 그것뿐이었어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261013-modern-standby-sleep-block/">
+<meta property="og:image" content="https://makefield.ai/blog/20261013-modern-standby-sleep-block/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "절전 모드 껐는데 계속 절전될 때, 레지스트리 한 줄로 막았습니다", "datePublished": "2026-09-15", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261013-modern-standby-sleep-block/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-09-15</span></div>
+<h1>절전 모드 껐는데 계속 절전될 때, 레지스트리 한 줄로 막았습니다</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;절전 모드 껐는데 계속 절전될 때 / 설정은 다 꺼놨는데, 50분마다 혼자 잠들었습니다&quot;" loading="lazy">
+<p>그날 저는 전원 버튼을 두 번 길게 눌렀습니다. 화면도 안 켜지고 원격으로도 안 들어가지니, 남은 방법이 그것뿐이었어요.</p>
+<p><strong>절전 모드 껐는데 계속 절전되는 증상은 대부분 설정을 덜 껐기 때문이 아닙니다. 요즘 노트북이 예전 절전(S3)이 아니라 &quot;모던 스탠바이&quot;라는 다른 방식을 쓰는데, 이 방식은 전원 옵션의 &quot;절전 안 함&quot;을 보지 않는 경로가 있어요.</strong> 그래서 전원 옵션이 아니라 <strong class="u">레지스트리 한 줄</strong>로 절전 방식 자체를 꺼야 멈춥니다.</p>
+<p>2026년 9월 기준 Windows 10 Pro(빌드 19045)에서 잡은 내용이고, 11도 구조는 같습니다. 관리자 권한 PowerShell만 있으면 되고 설치할 프로그램은 없어요. 다만 <strong>항상 켜두고 쓰는 PC 기준</strong>입니다. 들고 다니는 노트북이라면 권하지 않는데, 이유는 4번에 적어뒀습니다.</p>
+<p>제어 일을 15년쯤 하면서 배운 게 하나 있다면, 안 멈춘다고 적혀 있는 설비일수록 멈추는 방식이 이상하다는 겁니다. 이번엔 그게 제 노트북이었어요..</p>
+<h2>1. 설정은 다 꺼놨는데 50분마다 들어갔어요</h2>
+<p>집에 노트북을 켜두고 밖에서 원격으로 씁니다. 그런데 며칠 사이, 들어가려고 하면 먹통인 날이 반복됐어요. 로그를 뽑아보니 이렇게 나와 있었습니다. (기기 정보는 지우고 시각만 옮겼어요)</p>
+<pre><code>12:50:01  [507] 절전에서 빠져나옴   사유: 마우스 입력
+12:50:18        원격 접속 시도
+12:50:36        사용자 서비스 8개가 동시에 30초 타임아웃
+12:52:37        로그온 성공 — 2분 36초 걸림 (정상은 몇 초)
+12:53:33        응답 없음. 전원 버튼 길게 눌러 강제 종료
+13:39:11  [506] 다시 절전으로 들어감  사유: 유휴 시간 초과</code></pre>
+<p>깨우기는 됩니다. 문제는 <strong>복귀가 끝나질 않는다는 것</strong>이었어요. 화면도 안 오고 원격도 안 붙으니 선택지가 전원 버튼밖에 없었습니다. 그날 그렇게 두 번 껐어요.</p>
+<p>여기서 한 번 크게 틀렸습니다. 처음엔 비정상 종료 기록(Kernel-Power 41) 두 건을 보고 &quot;하드웨어가 죽는다&quot;로 읽었거든요. 그런데 그 기록의 정체는 <strong>제가 전원 버튼을 누른 흔적</strong>이었어요. 기계 로그는 결과만 남기고 왜 그랬는지는 안 남깁니다. 이 한 마디가 없었으면 멀쩡한 메인보드를 며칠 더 의심했을 거예요.</p>
+<p>더 이상한 건, 전원 옵션에서 절전은 이미 &quot;안 함&quot;이었다는 점입니다. 그런데도 손을 떼고 50분쯤 지나면 어김없이 들어갔어요.</p>
+<img src="img/02_loop.png" alt="반복되던 먹통 루프 — 가로로 네 개 상자를 화살표로 연결. ①&quot;유휴 50분&quot; → ②&quot;절전 진입(506)&quot; → ③&quot;깨웠는데 복귀가 안 끝남 / 로그온 2분 36초·서비스 8개 타임아웃&quot;(빨강 강조) → ④&quot;전원 버튼 강제 종료&quot;. ④에서 ①로 되돌아가는 곡선 화살표에 &quot;부팅 10분 뒤 재진입&quot; 라벨. 하단 캡션 &quot;고장이 아니라 잠들었다 못 깨어난 것&quot;" loading="lazy">
+<h2>2. 내 PC가 어떤 절전을 쓰는지부터 보세요</h2>
+<p>절전 모드 껐는데 계속 절전되는 원인은 설정값이 아니라 <strong>장비가 지원하는 절전 종류</strong>에 있어요. 명령 한 줄이면 나옵니다.</p>
+<pre><code>powercfg /a</code></pre>
+<p>조치 전 제 노트북 결과는 이랬어요.</p>
+<pre><code>이 시스템에서 다음 절전 모드를 사용할 수 있습니다.
+    대기 모드(S0 저 전원 유휴)
+    최대 절전 모드
+
+이 시스템에서 다음 절전 모드를 사용할 수 없습니다.
+    대기 모드(S1) / (S2) / (S3)
+        시스템 펌웨어에서 이 대기 모드를 지원하지 않습니다.</code></pre>
+<p>S3가 아래쪽에 있고 위에는 &quot;S0 저 전원 유휴&quot;만 남아 있죠. 이게 <strong class="u">모던 스탠바이 전용</strong> 장비라는 뜻입니다. 고를 수 있는 게 아니라 그것밖에 없는 거예요.</p>
+<p>| 구분 | 예전 절전(S3) | 요즘 절전(S0 저 전원 유휴) |<br>
+|---|---|---|<br>
+| 상태 | 메모리만 남기고 사실상 꺼짐 | 켜진 채로 저전력 유지 |<br>
+| 깨우는 신호 | 전원·키보드 정도 | 입력·네트워크·타이머 등 다양 |<br>
+| 전원 옵션 &quot;절전 안 함&quot; | 그대로 먹힘 | 무시되는 경로가 있음 |<br>
+| 복귀에 실패하면 | 대개 재시작으로 끝 | 화면·원격이 동시에 먹통 |</p>
+<p>제 경우 &quot;절전 모드로 전환&quot;, &quot;최대 절전 모드로 전환&quot;이 둘 다 &#x27;안 함&#x27;이었는데도 유휴 시간 초과로 진입했습니다. 덮개 닫기 동작은 전원 옵션 화면에 항목조차 없었고요. 보이지도 않는 설정이 뒤에서 돌고 있었던 셈이에요. 여러분 PC는 위 목록에서 어느 쪽이던가요?</p>
+<img src="img/03_why.png" alt="왜 설정이 안 먹었나 — 좌우 두 칸 비교. 왼쪽 &quot;예전 절전(S3)&quot;: 상자 &#x27;전원 옵션 = 절전 안 함&#x27; → 화살표 → &#x27;절전 진입 차단됨 (정상)&#x27;(초록). 오른쪽 &quot;모던 스탠바이(S0ix)&quot;: 상자 &#x27;전원 옵션 = 절전 안 함&#x27; → 화살표가 점선으로 끊기며 &#x27;무시&#x27;(빨강 X), 그 아래 별도 경로로 &#x27;숨은 항목: 무인 절전 시간 제한&#x27; + &#x27;유휴 시간 초과&#x27; → &#x27;절전 진입&#x27;(빨강). 하단에 가로 막대 하나 &#x27;레지스트리 PlatformAoAcOverride = 0 → 이 경로 자체를 차단&#x27;(파랑)" loading="lazy">
+<h2>3. 숨은 설정을 꺼내고, 레지스트리 한 줄을 넣었습니다</h2>
+<p>관리자 권한 PowerShell에서 순서대로 합니다. 세 단계예요.</p>
+<p><strong>① 전원 옵션에 숨어 있는 항목 네 개를 화면에 꺼냅니다</strong></p>
+<pre><code>$SLEEP  = &#x27;238c9fa8-0aad-41ed-83f4-97be242c8f20&#x27;   # 절전 그룹
+$BUTTON = &#x27;4f971e89-eebd-4455-a8de-9e59040e7347&#x27;   # 전원 단추/덮개 그룹
+
+powercfg /attributes $SLEEP  7bc4a2f9-d8fc-4469-b07b-33eb785aaca0 -ATTRIB_HIDE  # 무인 절전 시간 제한
+powercfg /attributes $SLEEP  d4c1d4c8-d5cc-43d3-b83e-fc51215cb04d -ATTRIB_HIDE  # 시스템 무인 절전
+powercfg /attributes $BUTTON 5ca83367-6e45-459f-a27b-476b1d01c936 -ATTRIB_HIDE  # 덮개 닫기 동작
+powercfg /attributes $BUTTON 7648efa3-dd9c-4e3e-b566-50f929386280 -ATTRIB_HIDE  # 전원 단추 동작</code></pre>
+<p><code>-ATTRIB_HIDE</code>는 숨기라는 뜻이 아니라 <strong>숨김 속성을 떼라</strong>는 뜻이에요. 이름 때문에 반대로 읽기 쉬운 자리입니다.</p>
+<p><strong>② 꺼낸 값을 전부 0(안 함)으로, 콘센트·배터리 양쪽 다</strong></p>
+<pre><code>powercfg /setacvalueindex SCHEME_CURRENT $SLEEP 7bc4a2f9-d8fc-4469-b07b-33eb785aaca0 0
+powercfg /setdcvalueindex SCHEME_CURRENT $SLEEP 7bc4a2f9-d8fc-4469-b07b-33eb785aaca0 0
+powercfg /setacvalueindex SCHEME_CURRENT $SLEEP bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 0  # 해제 타이머 끄기
+powercfg /setacvalueindex SCHEME_CURRENT $BUTTON 5ca83367-6e45-459f-a27b-476b1d01c936 0  # 덮개 닫기: 아무것도 안 함
+powercfg /setactive SCHEME_CURRENT</code></pre>
+<p>AC만 하고 DC를 빼먹으면 전원 뽑았을 때 그대로 재발해요. 저는 일곱 항목을 양쪽 다 넣었습니다.</p>
+<p><strong>③ 모던 스탠바이 자체를 끕니다 — 이게 결정타입니다</strong></p>
+<pre><code>New-ItemProperty -Path &#x27;HKLM:\SYSTEM\CurrentControlSet\Control\Power&#x27; `
+  -Name &#x27;PlatformAoAcOverride&#x27; -PropertyType DWord -Value 0 -Force</code></pre>
+<p>그리고 <strong>재부팅</strong>. ③은 재부팅해야 적용됩니다. ①②만 하고 덮으면 증상이 그대로 남아요. 솔직히 저는 재부팅 버튼 누르기 전까지 이게 될까 싶었습니다.</p>
+<h2>4. 고쳐졌는지는 이렇게 확인했어요</h2>
+<p><strong>1단계 — 절전 목록이 이동했는지</strong></p>
+<pre><code>powercfg /a</code></pre>
+<p>&quot;대기 모드(S0 저 전원 유휴)&quot;가 사용할 수 <strong>없는</strong> 쪽으로 내려갔으면 성공입니다. 여기서 놀라지 마세요. 사유가 &quot;시스템 펌웨어에서 이 대기 모드를 지원하지 않습니다&quot;로 뜹니다. BIOS가 고장 난 게 아니라, 방금 넣은 값이 시킨 대로 동작하는 거예요. 저도 이 문구 보고 잠깐 식은땀 났어요..</p>
+<p><strong>2단계 — 진입 기록이 0인지 (24시간 뒤)</strong></p>
+<pre><code>Get-WinEvent -FilterHashtable @{LogName=&#x27;System&#x27;;
+  ProviderName=&#x27;Microsoft-Windows-Kernel-Power&#x27;; Id=506} -MaxEvents 5</code></pre>
+<p>506은 &quot;절전으로 들어갔다&quot;는 기록이에요. 결과가 안 나오면 진입이 사라진 겁니다.</p>
+<p>저는 판정 기준을 24시간으로 <strong>먼저</strong> 못박아 뒀는데, 조치 직후엔 1시간 40분치 데이터밖에 없었어요. 그래서 그날 기록에는 &quot;잠정 양호&quot;라고만 적었습니다. 기준을 스스로 정해놓고 미달인 채로 &quot;고쳤다&quot;고 부르기가 싫었거든요.</p>
+<p>이 글을 쓰면서 다시 쟀습니다. 2026년 9월 15일 기준이에요.</p>
+<pre><code>가동 시간              : 45.6 시간
+절전 진입 (506)        : 0 건
+절전 이탈 (507)        : 0 건
+비정상 종료 (41)       : 0 건
+PlatformAoAcOverride   : 0</code></pre>
+<p>조치 전에는 손 떼고 50분에서 한 시간이면 반드시 들어갔어요. 지금은 45시간 넘게 한 번도 안 들어갔습니다. 이제 완치라고 불러도 되겠네요.</p>
+<p><strong>3단계 — 되돌리는 명령을 같이 적어두기</strong></p>
+<pre><code>Remove-ItemProperty &#x27;HKLM:\SYSTEM\CurrentControlSet\Control\Power&#x27; PlatformAoAcOverride
+powercfg /setacvalueindex SCHEME_CURRENT $SLEEP bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 1
+powercfg /setactive SCHEME_CURRENT</code></pre>
+<p>그리고 이건 꼭 알고 시작하세요. 이 조치를 하면 그 PC에서 <strong>절전이 통째로 사라집니다</strong>. S3를 못 쓰는 장비라 대신 들어갈 절전이 없거든요. 남는 건 최대 절전(디스크에 저장하고 끄는 방식)뿐이에요. 덮개를 닫아도 안 꺼지니 그대로 가방에 넣으면 뜨거워집니다. 24시간 켜두는 PC에는 맞는 조치지만, 들고 다니는 노트북에는 안 맞아요.</p>
+<img src="img/04_verify.png" alt="조치 후 확인 3단계 — 세로 3행에 번호 상자(초록). 1행 &quot;powercfg /a → S0 저 전원 유휴가 &#x27;사용할 수 없음&#x27;으로 이동&quot;, 2행 &quot;24시간 뒤 Kernel-Power 506 = 0건&quot;, 3행 &quot;되돌리기 명령 미리 적어두기&quot;. 우측에 실측값 박스(파랑 테두리) &#x27;실측 2026-09-15 / 가동 45.6h / 506·507·41 각 0건&#x27;. 하단에 주황 테두리 경고 줄 &#x27;주의 · 절전 수단은 최대 절전만 남는다 — 들고 다니는 노트북이면 되돌릴 것&#x27;" loading="lazy">
+<h2>이건 걸리실 것 같아 미리 적어둡니다</h2>
+<p><strong>Q. 전원 옵션에서 &quot;절전 안 함&quot;으로 해놨는데 왜 또 들어가나요?</strong><br>
+&quot;무인 절전 시간 제한&quot;처럼 화면에 안 보이는 항목이 따로 돌고 있어서예요. 3번의 ①번 명령으로 꺼내야 보입니다. 그것까지 다 꺼도 모던 스탠바이는 진입하는 경우가 있어서 ③번이 필요했어요.</p>
+<p><strong>Q. 제 PC는 S3가 &quot;사용할 수 있음&quot;에 있는데요?</strong><br>
+그럼 이 글의 ③번은 필요 없습니다. 예전 방식이라 전원 옵션 설정이 그대로 먹혀요. 그래도 먹통이 반복된다면 절전이 아니라 다른 원인(드라이버·서비스)을 보셔야 합니다.</p>
+<p><strong>Q. 레지스트리 건드리는 게 무섭습니다.</strong><br>
+값 하나 만들고 지우는 게 전부고 되돌리기가 한 줄이에요. 저는 지우는 명령을 미리 메모장에 붙여놓고 시작했습니다.</p>
+<p>절전 하나 껐을 뿐인데 같이 조용해진 게 하나 더 있어요. 초 단위로 로그를 쏟아내던 드라이버가 분당 8건에서 0.078건으로, 100배 가까이 잠잠해졌습니다. 다만 이건 <strong>인과를 확정하지 못했습니다.</strong> 대조할 예전 로그가 이미 밀려나 사라진 뒤였거든요. 정황은 맞아떨어지지만 &quot;추정&quot;으로만 적어둡니다.</p>
+<p>지금 켜둔 PC가 밤사이 혼자 잠들어 있다면, <code>powercfg /a</code> 한 줄부터 쳐보세요. 위쪽 목록에 S0 저 전원 유휴가 있으면 이 글이 그대로 해당됩니다.</p>
+<p>같은 노트북에서 줄줄이 나온 나머지 원인들은 makefield.ai 쪽에 한 묶음으로 올려두고 있습니다.</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224412858791" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
