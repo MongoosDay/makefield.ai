@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PowerShell 한글 깨짐, AI가 짜준 스크립트가 실행부터 실패한 이유 | 도면 읽는 AI</title>
+<meta name="description" content="AI한테 PC 점검 스크립트를 하나 짜달라고 했어요. 받아서 저장하고 실행했더니, 첫 줄부터 이게 나왔습니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261015-powershell-korean-bom/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PowerShell 한글 깨짐, AI가 짜준 스크립트가 실행부터 실패한 이유 | 도면 읽는 AI">
+<meta property="og:description" content="AI한테 PC 점검 스크립트를 하나 짜달라고 했어요. 받아서 저장하고 실행했더니, 첫 줄부터 이게 나왔습니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261015-powershell-korean-bom/">
+<meta property="og:image" content="https://makefield.ai/blog/20261015-powershell-korean-bom/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "PowerShell 한글 깨짐, AI가 짜준 스크립트가 실행부터 실패한 이유", "datePublished": "2026-09-16", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261015-powershell-korean-bom/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-09-16</span></div>
+<h1>PowerShell 한글 깨짐, AI가 짜준 스크립트가 실행부터 실패한 이유</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;PowerShell 한글 깨짐 / 글자만 깨진 줄 알았는데, 스크립트가 통째로 죽어 있었습니다&quot;" loading="lazy">
+<p>AI한테 PC 점검 스크립트를 하나 짜달라고 했어요. 받아서 저장하고 실행했더니, 첫 줄부터 이게 나왔습니다.</p>
+<pre><code>[?ㅽ뙣] 沅뚰븳???놁뒿?덈떎</code></pre>
+<p><strong>PowerShell 한글 깨짐은 글꼴이나 터미널 설정 문제가 아니라, 파일을 어떻게 저장했느냐의 문제예요. Windows PowerShell 5.1은 파일 맨 앞에 표식이 없으면 UTF-8로 저장된 파일을 옛 한국어 코드페이지로 읽습니다.</strong> 그래서 한글만 골라서 깨져요.</p>
+<p>고치는 건 한 줄입니다. 파일을 <strong>BOM 붙은 UTF-8</strong>로 다시 저장하면 끝나요.</p>
+<p>문제는 글자만 깨지고 끝나지 않는다는 겁니다. 운이 나쁘면 깨진 바이트가 문자열 끝의 따옴표를 삼켜서, 스크립트가 시작도 못 하고 문법 오류로 죽어요. 저는 그걸로 한 번 날렸습니다.</p>
+<p>2026년 9월 기준이고, 확인한 환경은 Windows 10 Pro(빌드 19045)에 기본으로 깔린 Windows PowerShell 5.1입니다. 정확히는 5.1.19041.7725였어요. 이 글의 로그는 전부 오늘 제 장비에서 다시 재현해서 뽑은 것들입니다.</p>
+<h2>1. 증상이 두 가지로 갈립니다</h2>
+<p>제 본업은 제어 쪽이에요. 설비 돌리는 프로그램 짜고 현장에서 맞는지 확인하는 일인데, 요즘은 그 일 상당 부분을 AI랑 같이 합니다. 집 노트북 점검도 마찬가지라, 절전 설정 바꾸는 스크립트를 AI한테 시켜서 받았어요.</p>
+<p>첫 번째 증상은 위에 보여드린 거예요. <strong>실행은 됩니다.</strong> 명령도 다 돌아가요. 그런데 화면에 찍히는 안내문만 알아볼 수 없는 글자로 나옵니다. 성공했는지 실패했는지를 그 안내문으로 판단하려던 거라, 사실상 눈을 가리고 돌린 셈이었어요.</p>
+<p>두 번째가 진짜입니다. 같은 방식으로 저장한 다른 파일은 아예 실행이 안 됐어요.</p>
+<pre><code>At C:\temp\check.ps1:2 char:14
++ Write-Host &quot;[?ㅽ뙣] 沅뚰븳 ?놁쓬&quot;
++              ~
+Array index expression is missing or not valid.</code></pre>
+<p>배열이 어쨌다는 얘기가 나오는데, 제 스크립트에는 배열이 한 개도 없었습니다. 깨진 글자 안에 하필 대괄호로 읽히는 바이트가 들어 있었던 거예요.</p>
+<p>더 고약한 것도 있었어요.</p>
+<pre><code>At C:\temp\check.ps1:2 char:15
++ Write-Host &quot;OK&quot;
++               ~
+The string is missing the terminator: &quot;.</code></pre>
+<p>2번째 줄이 문제라고 찍혀 있는데, 2번째 줄은 영어만 있는 멀쩡한 줄입니다. 진짜 범인은 1번째 줄의 한글이었어요. <strong class="u">에러 줄 번호</strong>가 실제 문제 줄이 아닌 겁니다. 이거 모르고 2번 줄만 몇 번을 고쳤는지 모르겠어요..</p>
+<h2>2. 왜 한글만 깨지나요?</h2>
+<p>한글 한 글자는 UTF-8로 저장하면 <strong>3바이트</strong>를 씁니다. 그런데 PowerShell 5.1이 이 파일을 옛 한국어 코드페이지로 읽으면 <strong>2바이트씩</strong> 끊어서 한 글자로 봐요. 3으로 저장한 걸 2로 끊는 거라 한 글자마다 1바이트씩 어긋납니다.</p>
+<img src="img/02_byte_shift.png" alt="3바이트를 2바이트로 끊을 때 생기는 어긋남 — 위쪽 가로 띠에 UTF-8 저장 상태를 &#x27;한(3칸) 글(3칸) 자(3칸)&#x27;로 3칸씩 색을 나눠 표시. 아래쪽 가로 띠에 PowerShell 5.1의 읽기 방식을 2칸씩 잘라 경계선을 그어 표시. 두 띠의 경계선이 서로 어긋나는 지점에 점선 화살표와 &#x27;1바이트씩 밀린다&#x27; 라벨. 하단 캡션 &#x27;3으로 쓴 걸 2로 끊으면, 글자가 아니라 경계가 깨진다&#x27;" loading="lazy">
+<p>글자가 깨지는 건 여기까지예요. 문법 오류는 한 걸음 더 갑니다.</p>
+<p>한글 글자 수가 홀수로 끝나면 마지막에 1바이트가 남아요. 그 남은 바이트가 다음 글자의 앞자리로 잡히면서, <strong>바로 뒤에 있던 닫는 따옴표를 같이 먹어버립니다.</strong> 따옴표가 사라지니 PowerShell 입장에선 문자열이 안 닫힌 거예요. 그래서 다음 줄까지 문자열로 이어서 읽다가 거기서 에러를 뱉습니다. 에러 줄 번호가 엉뚱하게 찍히는 이유가 이겁니다.</p>
+<img src="img/03_quote_eaten.png" alt="따옴표가 먹히는 순간 — 가로 한 줄에 코드 조각을 바이트 박스로 나열. 왼쪽부터 회색 박스 &#x27;여는 따옴표(&quot;)&#x27;, 파란 박스 3개 묶음 &#x27;한글 3바이트&#x27;, 주황 박스 1개 &#x27;남은 1바이트&#x27;, 빨간 박스 &#x27;닫는 따옴표(&quot;)&#x27;. 주황 박스와 빨간 박스를 하나로 묶는 큰 점선 사각형과 &#x27;한 글자로 합쳐짐&#x27; 라벨, 그 아래 빨간 화살표로 &#x27;문자열이 안 닫힘 → 다음 줄까지 삼킴&#x27;. 하단 캡션 &#x27;글자가 깨지는 게 아니라, 문법이 깨진다&#x27;" loading="lazy">
+<h2>3. 고치는 법은 파일을 다시 저장하는 것뿐이에요</h2>
+<p>PowerShell 한글 깨짐은 코드를 고쳐서 잡는 게 아니라 <strong>저장 방식</strong>을 고쳐서 잡습니다. 파일 맨 앞에 UTF-8이라는 걸 알려주는 3바이트짜리 표식을 붙이면 돼요. 이걸 BOM이라고 부릅니다.</p>
+<p>PowerShell 창을 열고 이 두 줄이면 끝나요. 경로만 본인 파일로 바꾸시면 됩니다.</p>
+<pre><code>$p = &quot;C:\temp\check.ps1&quot;
+$c = [System.IO.File]::ReadAllText($p, [System.Text.UTF8Encoding]::new($false))
+[System.IO.File]::WriteAllText($p, $c, [System.Text.UTF8Encoding]::new($true))</code></pre>
+<p>첫 줄에서 BOM 없이 읽고, 다음 줄에서 BOM을 붙여 덮어씁니다. <code>$false</code>가 &quot;BOM 없음&quot;, <code>$true</code>가 &quot;BOM 있음&quot;이에요. 이 둘만 안 바뀌면 됩니다.</p>
+<p>메모장에서 다른 이름으로 저장하면서 인코딩을 <code>UTF-8 (BOM)</code>으로 고르셔도 같은 결과예요. 다만 파일이 여러 개면 위 방식이 빠릅니다.</p>
+<h2>4. 고쳐졌는지는 눈으로 확인하세요</h2>
+<p>저장했다고 믿지 말고 두 가지를 봅니다. 먼저 파일 맨 앞 3바이트예요.</p>
+<pre><code>(Get-Content &quot;C:\temp\check.ps1&quot; -Encoding Byte -TotalCount 3) -join &#x27; &#x27;</code></pre>
+<pre><code>239 187 191</code></pre>
+<p>이 세 숫자가 <strong class="u">BOM 세 바이트</strong>입니다. 이게 안 나오면 저장이 안 된 거예요. 그다음 실제로 돌려봅니다.</p>
+<pre><code>[성공] 적용됨
+[실패] 권한 없음
+끝</code></pre>
+<p>깨졌던 그 파일이 이렇게 나오면 끝난 겁니다. 저는 아까 그 스크립트를 이 순서로 고쳐서 다시 돌렸고, 한 번에 통과했습니다!</p>
+<img src="img/04_verify_steps.png" alt="3단계 확인 흐름 — 가로로 3개 상자를 화살표로 연결. ① &#x27;저장 방식 바꾸기 (BOM 붙여 재저장)&#x27; ② &#x27;선두 3바이트 확인 → 239 187 191&#x27; ③ &#x27;다시 실행 → 한글 정상 출력&#x27;. 각 상자 아래 작은 체크박스 아이콘. ②번 상자 아래에 빨간 글씨로 &#x27;여기서 숫자가 다르면 ①로 돌아간다&#x27;. 하단 캡션 &#x27;저장했다는 말은 확인이 아니다&#x27;" loading="lazy">
+<h2>5. 배치파일(.bat)은 정반대라 헷갈립니다</h2>
+<p>여기서 한 번 더 걸렸어요. PowerShell에서 배운 걸 그대로 배치파일에 적용했다가 똑같이 깨졌거든요. 두 개는 <strong class="u">정반대</strong>입니다.</p>
+<p>| 구분 | .ps1 (PowerShell 5.1) | .bat (명령 프롬프트) |<br>
+|---|---|---|<br>
+| 기본으로 읽는 방식 | 표식 없으면 옛 한국어 코드페이지 | 항상 옛 한국어 코드페이지 |<br>
+| UTF-8로 저장하면 | BOM 있으면 정상, 없으면 깨짐 | 한글이 깨짐 |<br>
+| 한글을 쓰려면 | BOM 붙여 저장 | <strong>아예 한글을 안 쓰는 게 안전</strong> |<br>
+| 안 지켰을 때 | 문법 오류로 실행 실패 | 깨진 글자를 명령어로 실행 시도 |</p>
+<p>배치파일 쪽 마지막 칸이 제일 위험해요. 한글 주석 한 줄 넣고 UTF-8로 저장한 파일을 돌렸더니 이렇게 나왔습니다.</p>
+<pre><code>&#x27;??정&#x27; is not recognized as an internal or external command,
+operable program or batch file.
+exit=0</code></pre>
+<p>깨진 글자를 <strong>명령어인 줄 알고 실행하려다 실패</strong>한 거예요. 그런데 마지막 줄을 보세요. 종료 코드는 0, 그러니까 정상 종료입니다. 자동화에 걸어두고 종료 코드만 보고 있었으면 아무 문제 없는 걸로 보였을 거예요. 그래서 저는 배치파일에는 한글을 안 씁니다. 주석까지 전부 영어로 적어요.</p>
+<h2>이 부분은 미리 적어두는 게 낫겠네요</h2>
+<p><strong>Q. AI한테 시키면 알아서 맞게 저장해주지 않나요?</strong><br>
+제가 써본 도구들은 BOM 없이 저장했어요. 그게 요즘 표준이라 이상한 동작도 아니고요. 문제는 Windows에 기본으로 깔린 PowerShell 5.1이 그 표준을 그대로 못 읽는다는 거예요. 그래서 저는 아예 순서를 바꿨습니다. 한글 들어간 스크립트를 받으면 <strong>실행하기 전에 BOM 재저장부터</strong> 하고, 그다음에 돌려요. 같은 실수를 두 번 하고 나서야 순서를 바꿨습니다.</p>
+<p><strong>Q. 그냥 한글을 안 쓰면 되는 거 아닌가요?</strong><br>
+그것도 맞는 답이에요. 실제로 배치파일은 그렇게 씁니다. 다만 스크립트가 길어지면 &quot;[실패] 권한이 없습니다&quot; 같은 안내문이 있고 없고가 차이가 커요. 급할 때 영어 메시지를 읽고 있을 여유가 없더라고요. 그래서 PowerShell 쪽은 BOM을 붙이는 쪽으로 정리했습니다.</p>
+<p><strong>Q. PowerShell 7을 쓰면 해결되나요?</strong><br>
+7은 기본 인코딩 정책이 다른 걸로 알고 있습니다. 다만 제 장비에는 5.1만 깔려 있어서 <strong>직접 확인은 못 했어요.</strong> 확인 안 된 건 확인 안 됐다고 적어둡니다. 어차피 Windows에 기본으로 들어 있는 건 5.1이라, 남에게 넘길 스크립트라면 5.1 기준으로 맞춰두는 편이 안전하고요.</p>
+<p>PowerShell 한글 깨짐 자체는 눈에 보이니까 금방 압니다. 진짜 시간을 잡아먹은 건 엉뚱한 줄을 가리키던 에러 메시지였어요. 지금은 한글 스크립트에서 이상한 문법 오류가 뜨면 코드부터 안 봅니다. 파일 맨 앞 3바이트부터 찍어봐요.</p>
+<p>혹시 지금 AI한테 받아서 쓰고 계신 스크립트, 한글이 들어 있나요?</p>
+<p>이런 식으로 밟았던 함정들은 makefield.ai에 하나씩 쌓아두는 중입니다.</p>
+<p>태그: #PowerShell한글깨짐 #ps1한글깨짐 #파워셸스크립트오류 #파워셸실행오류 #bat한글깨짐 #배치파일한글깨짐 #UTF8BOM #윈도우인코딩 #CP949 #스크립트문자깨짐 #AI스크립트작성 #AI코딩도구 #AI에게일시키기 #AI로PC점검 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224414114233" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
