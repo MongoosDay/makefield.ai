@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 검증 오류, 틀린 숫자가 제 검증을 통과했습니다 | 도면 읽는 AI</title>
+<meta name="description" content="제 자동화에는 매일 새벽에 도는 숫자 검증이 하나 있어요. 오늘 그 검증이 틀린 값을 통과시켰습니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261016-verify-passed-wrong-value/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 검증 오류, 틀린 숫자가 제 검증을 통과했습니다 | 도면 읽는 AI">
+<meta property="og:description" content="제 자동화에는 매일 새벽에 도는 숫자 검증이 하나 있어요. 오늘 그 검증이 틀린 값을 통과시켰습니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261016-verify-passed-wrong-value/">
+<meta property="og:image" content="https://makefield.ai/blog/20261016-verify-passed-wrong-value/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 검증 오류, 틀린 숫자가 제 검증을 통과했습니다", "datePublished": "2026-09-17", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261016-verify-passed-wrong-value/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-09-17</span></div>
+<h1>AI 검증 오류, 틀린 숫자가 제 검증을 통과했습니다</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 검증 오류 / 틀린 값이 제 검증을 통과했습니다&quot;" loading="lazy">
+<p>제 자동화에는 매일 새벽에 도는 숫자 검증이 하나 있어요. 오늘 그 검증이 틀린 값을 통과시켰습니다.</p>
+<p><strong>AI 검증 오류는 검증을 빼먹어서 생기는 게 아니에요. 검증 도구가 정확히 무엇을 보는지 모른 채 쓰면, 도구는 멀쩡히 돌면서 틀린 값에 도장을 찍어줍니다.</strong> 이번엔 제가 이달 초에 직접 만들어 넣은 규칙이 그랬어요.</p>
+<p>2026년 9월 기준이고, 새벽 네 시에 혼자 도는 개인 자동화에서 나온 얘기입니다. 도구가 뭐든 상관없어요. <strong>AI한테 바깥 숫자를 물어다 쓰는 구조</strong>면 같은 자리에 걸립니다.</p>
+<p>저는 제조 쪽에서 15년쯤 일했습니다. 물건이 규격대로 나왔는지 확인하는 일을 오래 했는데, 현장에서 제일 무서운 게 <strong class="u">검사를 통과한 불량</strong>이에요. 장비가 고장 난 게 아니라, 그 검사가 애초에 그 항목을 안 보는 경우요. 이번에 똑같은 걸 제 자동화에서 봤습니다.</p>
+<h2>1. 값이 두 개로 갈렸는데, 검증은 둘 다 통과시켰어요</h2>
+<p>어제 지표 하나의 마감값이 두 가지로 돌아다녔습니다. 마감 시황 기사 네 곳은 6,717.97이라고 했고, 개인 블로그 한 곳은 6,760.00이라고 적어뒀어요. 42포인트 차이면 그냥 넘길 수준이 아닙니다.</p>
+<p>이럴 때 쓰라고 만들어둔 게 제 검증 도구였어요. 값이 소스마다 어긋나면 값끼리 비교하지 말고, 각 소스가 옆 칸에 같이 적어둔 등락폭으로 전날 값을 거꾸로 계산하는 방법입니다. 마감값은 매체마다 화면을 찍은 시각이 달라 흩어지는데, 등락폭은 거래소 공식값을 그대로 옮기니까 한 점으로 모이거든요.</p>
+<p>돌려봤습니다. (실제 검증 기록을 익명화해 옮긴 것입니다)</p>
+<pre><code>소스 A   6,717.97  (+90.71)    →   6,717.97 − 90.71  = 6,627.26
+소스 B   6,760.00  (+132.74)   →   6,760.00 − 132.74 = 6,627.26
+
+어제 게재한 확정치                                   = 6,627.26</code></pre>
+<p>둘 다 통과였어요. 소수점 둘째 자리까지 똑같이 떨어졌습니다.</p>
+<p>한쪽은 분명히 틀린 값인데도요.</p>
+<img src="img/02_pass.png" alt="틀린 값이 검증을 통과하는 구조 — 왼쪽에 상자 두 개를 세로로 배치. 위 상자(파랑) &quot;소스 A : 값 6,717.97 / 등락 +90.71&quot;, 아래 상자(빨강) &quot;소스 B : 값 6,760.00 / 등락 +132.74&quot;. 두 상자에서 각각 오른쪽으로 &#x27;− 등락폭&#x27; 라벨이 붙은 화살표가 나와, 가운데 하나의 초록 상자 &quot;역산 결과 6,627.26 (어제 확정치와 일치)&quot;로 합류. 초록 상자 오른쪽에 도장 모양과 &quot;둘 다 통과&quot; 라벨. 하단 캡션 &quot;틀린 값에 그에 맞춘 등락폭이 붙어 있으면, 역산은 아무것도 못 잡는다&quot;" loading="lazy">
+<h2>2. 검증이 보고 있던 건 오늘이 아니라 어제였어요</h2>
+<p>이유는 따져보니 허무할 만큼 단순했습니다.</p>
+<p>역산은 오늘 값에서 오늘 등락폭을 빼서 <strong class="u">어제 값</strong>을 만들어내는 계산이에요. 그러니까 이 계산이 맞다고 말해주는 건 &quot;어제 적어둔 값이 맞았다&quot;까지입니다. 오늘 값이 맞는지는 애초에 보지 않아요.</p>
+<p>여기에 함정이 하나 더 있습니다. 어딘가 잘못 적힌 값이라도, <strong>그 값에 맞춰 계산된 등락폭이 같이 실려 있으면</strong> 둘이 자기들끼리는 앞뒤가 맞아요. 6,760에서 132.74를 빼면 정확히 6,627.26이 나오니까요. 안에서 아귀가 맞는 한 쌍이라, 밖에서 틀렸다는 걸 알 방법이 계산에는 없습니다.</p>
+<p>| 제가 믿고 있던 것 | 이 검증이 실제로 하는 일 | 못 잡는 것 |<br>
+|---|---|---|<br>
+| 소스가 엇갈릴 때의 최종 판별 기준 | 어제 적어둔 값이 맞았는지 확인 | 오늘 값이 틀렸는지 |<br>
+| 통과하면 확정 | 전날 값과 아귀가 맞는지 확인 | 자기들끼리만 아귀가 맞는 한 쌍 |</p>
+<p>AI 검증 오류가 난 자리는 결국 규칙을 적은 제 문장이었어요. 9월 초에 이렇게 써넣었거든요.</p>
+<pre><code># 지시서에 넣어둔 규칙 (문구는 익명화)
+소스 간 값이 불일치하면 &#x27;값&#x27;이 아니라 &#x27;변화폭&#x27;으로 역산한다.
+  → 역산값이 수렴하면 그 값을 확정으로 채택
+  → 확인이 엇갈릴 때의 최종 판별 기준으로 삼는다</code></pre>
+<p>&quot;최종 판별 기준&quot;이라고 썼는데, 앞에 붙었어야 할 단서가 빠져 있었습니다. <strong>전일 값에 한해서</strong>요. 그 단어 하나가 없으니 저도, 이 규칙을 읽고 일하는 AI도 아흐레 동안 이 도구를 만능 판별기로 썼어요..</p>
+<img src="img/03_scope.png" alt="검증이 보는 칸과 안 보는 칸 — 가로로 2열 그리드. 왼쪽 칸(초록 배경) 제목 &quot;어제 값&quot;, 안에 체크 아이콘과 &quot;역산이 검증하는 영역&quot;. 오른쪽 칸(회색 배경) 제목 &quot;오늘 값&quot;, 안에 물음표 아이콘과 &quot;역산이 보지 않는 영역&quot;. 두 칸 위를 가로지르는 띠에 &quot;규칙 문장: 소스 상충 시 최종 판별 기준&quot; 이라고 적고, 그 띠가 오른쪽 칸까지 넘어가는 부분을 빨간 점선과 X로 표시. 하단 캡션 &quot;빠진 단서 한 줄이 도구의 관할을 두 배로 늘려놨다&quot;" loading="lazy">
+<h2>3. 결국 걸러낸 건 검증이 아니라 다수결이었어요</h2>
+<p>그럼 그날 그 값은 어떻게 기각했느냐. 검증으로 못 했습니다. 그냥 세어서 했어요.</p>
+<p>마감 시황 기사 네 곳이 같은 값을 적었고, 다른 값을 적은 건 한 곳이었습니다. 넷 대 하나니까 하나를 버린 거예요. 계산이 아니라 머릿수로요.</p>
+<p>허탈하게 들리는데, 여기가 이 사건의 진짜 교훈이었습니다. 검증 도구가 못 보는 자리는 <strong>다른 종류의 확인</strong>이 메워야 한다는 것. 같은 계산을 한 번 더 돌리는 건 도움이 안 됩니다. 역산을 열 번 돌려도 6,760은 열 번 다 통과했을 거예요..</p>
+<p>여러분도 AI한테 &quot;이 숫자 검증해줘&quot;라고 시켜보신 적 있으시죠? 저는 그날 이후로 검증 항목마다 한 줄을 덧붙였습니다.</p>
+<pre><code>① 이 검증이 실제로 보는 대상은 무엇인가   (오늘 값? 어제 값? 형식? 범위?)
+② 이걸 통과하면 확정인가, 확인이 하나 더 필요한가
+③ 이 검증이 못 보는 자리는 무엇이 메우나</code></pre>
+<p>세 줄이라 쓰는 데 1분도 안 걸립니다! 그런데 이게 없으면 통과 도장이 찍힌 숫자를 의심할 방법 자체가 사라져요. AI 검증 오류가 무서운 건 틀렸다는 신호가 안 오는 게 아니라, <strong>맞았다는 신호가 오기 때문</strong>입니다.</p>
+<img src="img/04_label.png" alt="검증 항목에 적용 범위를 적기 전과 후 — 위아래 두 줄 비교. 위(회색) &quot;전&quot;: 상자 하나에 &#x27;검증 규칙&#x27; 만 적히고 오른쪽에 통과 도장, 그 옆에 물음표 아이콘과 &#x27;무엇을 통과한 건지 모름&#x27;. 아래(초록) &quot;후&quot;: 같은 상자 아래에 세 줄 라벨이 붙음 — &#x27;① 보는 대상 : 어제 값&#x27;, &#x27;② 통과하면 확정? : 아니오, 확인 1건 추가&#x27;, &#x27;③ 못 보는 자리 : 오늘 값 → 소스 다수결이 담당&#x27;. 오른쪽에 통과 도장과 체크 아이콘. 하단 캡션 &quot;검사를 늘리는 게 아니라, 통과 도장의 뜻을 적어두는 것&quot;" loading="lazy">
+<h2>4. 그런데 규칙은 그날 안 고쳤습니다</h2>
+<p>여기서 제 자동화가 한 행동이 저는 제일 마음에 들었어요. 결함을 찾아놓고 <strong>고치지 않았습니다.</strong> 대신 번호표를 하나 붙여서 목록에 올려놨어요.</p>
+<pre><code>㉭   [신설] 역산이 &#x27;오늘 값&#x27;은 검증하지 못함   1일차   관측 기록만</code></pre>
+<p>이유는 소급 적용 금지예요. 결과를 보고 규칙을 바꾸기 시작하면 그 규칙은 죽은 규칙이 됩니다. 오늘 결과가 마음에 안 들어서 어제의 기준을 고치면, 기준이 결과를 따라다니게 되니까요. 그래서 고칠 때는 미리 예고하고 고칩니다.</p>
+<p>대신 번호표를 붙입니다. 이 목록이 지금 아홉 개인데, 번호를 안 붙이면 <strong>조용히 사라지기 때문</strong>이에요. 발견한 결함이 그날 기분과 함께 증발하는 걸 여러 번 봤습니다.</p>
+<p>그날 로그는 이렇게 끝났어요.</p>
+<pre><code>[04:00:02] 시작
+  검증 통과 8건 / 소스 상충·확인 불가 6건 / 미결 플래그 9건
+  같은 날 자진 정정 7건
+[04:17:44] 종료코드: 0</code></pre>
+<p>종료코드는 0입니다. 통과 8건 안에는 그 이상치를 걸러낸 기록도 들어 있어요. 겉보기엔 잘 돌아간 날이고, 실제로도 잘 돌아간 날인데, 그 안에서 <strong class="u">적용 범위</strong>를 잘못 알고 있던 도구 하나가 조용히 드러난 겁니다.</p>
+<h2>제가 스스로에게 먼저 물어본 것 두 가지</h2>
+<p><strong>Q. 그럼 그 검증 방법은 못 쓰는 건가요?</strong><br>
+아니요, 그대로 씁니다. 방법 자체는 이번에도 무결했어요. 다른 지표들에서는 그날도 전건 수렴했고요. 틀린 건 방법이 아니라 제가 그 방법에 붙여둔 설명이었습니다. 도구는 그대로 두고 <strong>적용 범위 한 줄</strong>만 붙였어요. 도구를 믿는 것과 도구가 뭘 검증하는지 아는 건 다른 일이더라고요. 앞의 것만 있으면 언젠가 틀린 숫자를 자신 있게 내놓게 됩니다.</p>
+<p><strong>Q. 고치지 않고 적어두기만 하면, 그사이에 또 통과해버리지 않나요?</strong><br>
+그럴 수 있어요. 그래서 규칙 개정과 오류 정정을 분리합니다. 규칙은 예고하고 바꾸되, <strong>이미 틀리게 적어 나간 숫자는 그날 바로 고쳐요.</strong> 그날도 제가 전날 내보낸 숫자 일곱 건을 같은 문서에서 스스로 정정했습니다. 규칙을 미루는 것과 오류를 미루는 건 다른 얘기니까요. 그리고 번호표가 목록에 살아 있는 한 그 결함은 매일 다시 눈에 띕니다. 해결되면 그날 지우고요.</p>
+<p>정리하면 이번에 배운 건 검증을 더 넣으라는 얘기가 아니었어요. 이미 있는 검증 옆에 &quot;이건 무엇을 보는 검사인가&quot;를 적어두라는 쪽에 가깝습니다. 검사 항목이 늘어나는 것보다, 통과 도장의 뜻을 아는 게 먼저였습니다.</p>
+<p>혹시 비슷한 걸 만들고 계시면, makefield.ai에 제 검증 규칙이 어떤 순서로 바뀌어왔는지 날짜별로 적혀 있어요.</p>
+<p>태그: #AI검증오류 #AI검증한계 #AI숫자검증 #AI팩트체크 #AI결과물검수 #자동검증맹점 #AI데이터정합성 #AI교차검증 #AI할루시네이션 #AI에게일시키기 #AI자동화구축 #자동화검증 #개인AI에이전트 #파이썬자동화 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224414430159" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
