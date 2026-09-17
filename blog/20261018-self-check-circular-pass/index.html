@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 자기 검증 함정, 무오류 33일이 자기 답 채점이었습니다 | 도면 읽는 AI</title>
+<meta name="description" content="AI 자기 검증을 33일 동안 통과해온 제 자동화가, 오늘은 자기 잘못 세 건을 적어놓고 끝났어요. 새벽 네 시에 혼자 도는 녀석입니다. 남긴 로그 중 하나가 이거였습니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261018-self-check-circular-pass/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 자기 검증 함정, 무오류 33일이 자기 답 채점이었습니다 | 도면 읽는 AI">
+<meta property="og:description" content="AI 자기 검증을 33일 동안 통과해온 제 자동화가, 오늘은 자기 잘못 세 건을 적어놓고 끝났어요. 새벽 네 시에 혼자 도는 녀석입니다. 남긴 로그 중 하나가 이거였습니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261018-self-check-circular-pass/">
+<meta property="og:image" content="https://makefield.ai/blog/20261018-self-check-circular-pass/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 자기 검증 함정, 무오류 33일이 자기 답 채점이었습니다", "datePublished": "2026-09-18", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261018-self-check-circular-pass/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-09-18</span></div>
+<h1>AI 자기 검증 함정, 무오류 33일이 자기 답 채점이었습니다</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 자기 검증 / 무오류 33일이 자기 답 채점이었습니다&quot;" loading="lazy">
+<p>AI 자기 검증을 33일 동안 통과해온 제 자동화가, 오늘은 자기 잘못 세 건을 적어놓고 끝났어요. 새벽 네 시에 혼자 도는 녀석입니다. 남긴 로그 중 하나가 이거였습니다.</p>
+<pre><code>[04:00:02] 시작
+  자기 오류 자백 3건
+   ② 곱셈 1,000 단위 오차 — &quot;33일 연속 1원 단위 일치&quot; 검산이 못 잡음
+      원인: 맞춰본 두 값을 모두 같은 곱셈에서 만듦 (순환 참조)
+[04:20:48] 종료코드: 0</code></pre>
+<p><strong>AI 자기 검증이 무너지는 자리는 검산을 빼먹은 자리가 아니에요. 검산은 매일 돌았고 매일 통과했습니다. 문제는 맞춰본 두 숫자를 <strong class="u">둘 다 AI가</strong> 만들었다는 거였어요.</strong> 한쪽이 틀리면 다른 쪽도 같이 틀리니까, 그 검산은 33일 내내 통과할 수밖에 없었습니다.</p>
+<p>2026년 9월 기준이고, 회사 일이 아니라 개인 취미로 굴리는 자동 리포트에서 나온 얘기입니다. 매일 숫자를 모아 표로 만드는 구조라면 도구가 뭐든 같은 자리에 걸려요.</p>
+<p>제 일은 제조 현장 쪽입니다. 15년쯤 하면서 계기를 믿을지 말지 정하는 일을 꽤 했는데, 그 바닥엔 오래된 규칙이 하나 있어요. <strong>계기는 자기 눈금으로 자기를 교정하지 못합니다.</strong> 아무리 정밀해도 바깥에서 표준기를 가져다 대야 해요. 이번에 제 자동화가 딱 그 규칙을 어기고 있었습니다.</p>
+<h2>1. 매일 붙어 나오던 &quot;33일 연속 일치&quot;</h2>
+<p>그 리포트에는 표가 하나 들어갑니다. 줄마다 수량과 단가가 있고, 맨 아래에 총액이 붙어요. 그리고 표 바로 밑에 검산 결과가 한 줄 따라붙습니다.</p>
+<pre><code>검산: 줄별 합계  =  총액
+      (A) 각 줄의 [수량 × 단가] 를 전부 더한 값
+      (B) 표 맨 아래에 적힌 총액
+  → A = B  →  33일 연속 1원 단위 일치</code></pre>
+<p>저는 이 줄을 매일 봤어요. 솔직히 말하면 보고 그냥 넘겼습니다. 33일이나 붙어 있는 문장은 읽히는 게 아니라 풍경이 되거든요..</p>
+<p>그런데 그날, 표의 한 줄에서 곱셈이 1,000 단위로 틀렸습니다. 검산은 그날도 통과였고요.</p>
+<img src="img/02_circular_check.png" alt="순환 참조 검산의 구조 — 맨 위 빨간 상자 &quot;표의 한 줄: 수량 × 단가 → 값이 1,000 틀림&quot;. 여기서 아래로 화살표 두 갈래가 갈라져 나감. 왼쪽 파란 상자 &quot;(A) 줄별 합계 = 틀린 값을 포함해 더함 → 1,000 작음&quot;, 오른쪽 파란 상자 &quot;(B) 총액 = 같은 틀린 값에서 만듦 → 1,000 작음&quot;. 두 상자에서 다시 아래로 화살표가 모여 초록 상자 &quot;A = B → 검산 통과&quot;에 합류. 초록 상자 오른쪽에 도장 모양과 &quot;33일 연속&quot; 라벨. 하단 캡션 &quot;틀린 값이 양쪽에 똑같이 들어가면, 두 값은 언제나 일치한다&quot;" loading="lazy">
+<h2>2. 자기가 만든 답을 자기가 채점하고 있었어요</h2>
+<p>이유는 따져보니 민망할 만큼 단순했습니다.</p>
+<p>A와 B는 <strong>출처가 다른 두 숫자가 아니었어요.</strong> 둘 다 같은 곱셈에서 나온 값이었습니다. 줄별 합계도 그 곱셈을 더한 것이고, 총액도 그 곱셈으로 만들어진 것이라서요. 곱셈이 틀리면 A도 1,000 작아지고 B도 똑같이 1,000 작아집니다. 그래서 둘은 계속 같아요.</p>
+<pre><code>A = B 가 알려주는 것   :  내가 더한 방식에 실수가 없었다
+A = B 가 모르는 것     :  더하기 전의 그 곱셈이 맞았는지</code></pre>
+<p>&quot;33일 연속 1원 단위 일치&quot;는 33일 동안 정확했다는 뜻이 아니었습니다. <strong>33일 동안 자기 자신과 비교해왔다는 뜻</strong>이었어요.</p>
+<p>여기에 하나가 더 겹쳐 있었습니다. 바깥에서 가져온 기준값이 여섯 주 넘게 안 들어오고 있었어요. 원래는 실제 화면을 캡처해서 대조하는 절차가 있는데, 그 캡처가 오랫동안 없었습니다. 안에서만 맞춰보고 바깥 표준기는 여섯 주째 안 댄 계기, 딱 그 상태였던 거예요.</p>
+<p>| 검산 방식 | 맞춰보는 두 값 | 잡히는 오류 | 못 잡는 오류 |<br>
+|---|---|---|---|<br>
+| 합계 ↔ 총액 대조 | 둘 다 내부에서 생성 | 더하기·옮겨적기 실수 | 곱셈 자체가 틀린 경우 |<br>
+| 줄별 곱셈 재계산 | 계산값 ↔ 원자료 | 곱셈 실수 | 원자료가 애초에 틀린 경우 |<br>
+| 바깥 기준값 대조 | 계산값 ↔ 외부 실물 | 위 둘 다 | 기준값을 못 구하는 기간 |</p>
+<p>혹시 AI한테 &quot;숫자 맞는지 검산해줘&quot;라고 시켜보신 적 있으신가요? 그때 AI가 무엇과 무엇을 맞춰보는지까지 같이 물어보시면 좋겠어요. AI 자기 검증은 그 한 줄을 물어봤는지 아닌지로 갈립니다. 저는 33일 만에 물어봤어요..</p>
+<h2>3. 그래서 33일 카운터를 1일차로 되돌렸습니다</h2>
+<p>고친 건 두 가지예요. 하나는 당연한 것이고, 하나는 좀 아까운 것이었습니다.</p>
+<pre><code>[검산 방식 교체]
+  before : (A) 합계  ↔  (B) 총액        ← 둘 다 내가 만든 값
+  after  : 줄마다 [수량 × 단가] 를 다시 계산해 한 건씩 대조
+
+[연속 일치 카운트]
+  33일차  →  1일차로 리셋</code></pre>
+<p>아까운 쪽은 아래였어요. 검산 방식을 바꿨으니 이전 기록은 새 방식으로 쌓은 게 아닙니다. 그런데도 34일차라고 이어 적고 싶은 마음이 들더라고요. 숫자가 크면 기분이 좋으니까요.</p>
+<p><strong>그래서 리셋했습니다!</strong> 34일차라고 적어두면 그 숫자가 내일 또 저를 안심시킬 테니까요. 연속 기록은 성적표처럼 보이지만, 실은 <strong class="u">의심을 끄는 스위치</strong>에 가깝습니다. 33일 동안 제가 그 줄을 읽지 않고 넘긴 게 그 증거고요.</p>
+<img src="img/03_streak_reset.png" alt="연속 기록이 의심을 끄는 구조 — 위아래 두 줄 비교. 위(회색) &quot;리셋 안 함&quot;: 왼쪽 상자 &quot;검산 방식 교체&quot;에서 오른쪽 상자 &quot;34일 연속 일치&quot;로 화살표, 그 오른쪽에 졸고 있는 눈 아이콘과 &quot;숫자가 커서 다시 안 봄&quot;, 화살표 위에 빨간 X 표시. 아래(초록) &quot;리셋 함&quot;: 같은 왼쪽 상자에서 오른쪽 상자 &quot;1일차&quot;로 화살표, 그 오른쪽에 뜬 눈 아이콘과 &quot;새 방식이 되는지 내일 확인&quot;. 하단 캡션 &quot;검사 방법을 바꿨으면 기록도 같이 0으로&quot;" loading="lazy">
+<h2>4. 정작 더 무서웠던 건 결론이 맞았던 쪽이에요</h2>
+<p>같은 날 자백이 하나 더 있었습니다. 이쪽이 진짜였어요.</p>
+<p>며칠 전 리포트에 설명 한 꼭지가 실렸는데, 근거로 붙인 숫자 세 개의 방향이 반대였습니다. 올랐다고 적힌 게 실제로는 내렸고요. 그런데 그 꼭지의 <strong>결론은 맞았습니다.</strong> 지금 다시 봐도 맞아요.</p>
+<p>그래서 아무도 근거를 되짚지 않았습니다. 저를 포함해서요.</p>
+<p>틀린 결론은 현실이 먼저 부딪혀서 알려줍니다. 어긋나는 게 눈에 보이니까요. 그런데 맞는 결론을 떠받친 틀린 근거는 부딪힐 데가 없어요. 결론이 멀쩡하니 아무도 그 아래를 안 봅니다.</p>
+<p>그게 잡힌 경위가 더 뼈아팠어요. 검증에서 걸린 게 아니라, 그 숫자를 지식 파일에 옮겨 적다가 눈에 띈 겁니다. 그냥 우연이었어요. <strong>우연히 걸리는 건 검증이 아닙니다.</strong></p>
+<p>게다가 그 지식 파일에는 재검증 장치가 없었습니다. 리포트에 적힌 숫자는 다음 날 대조 대상에 오르는데, 지식 파일로 옮겨 적힌 순간 그 목록에서 빠지거든요. 하루만 늦었어도 틀린 근거가 &quot;확정된 해석&quot;으로 굳을 뻔했습니다.</p>
+<pre><code>검증 대상 목록
+  리포트에 적은 수치      → 다음 날 대조함
+  지식 파일로 옮긴 수치   → 대조 안 함   ← 여기가 구멍</code></pre>
+<img src="img/04_wrong_basis_fixed.png" alt="틀린 근거가 지식으로 굳는 경로 — 왼쪽에서 오른쪽으로 흐르는 4단 가로 흐름도. ①빨간 상자 &quot;근거 숫자 3건: 방향이 반대&quot; → ②파란 상자 &quot;결론: 맞음&quot; → ③회색 상자 &quot;결론이 맞으니 아무도 아래를 안 봄&quot;(눈을 감은 아이콘) → ④진한 회색 상자 &quot;지식 파일로 옮겨 적힘 = 확정된 해석&quot;. ③에서 아래로 갈라지는 초록 점선 화살표에 &quot;우연히 옮겨 적다 발견&quot;이라고 적고 &quot;정정&quot;이라는 작은 초록 상자로 연결, 점선임을 강조. 하단 캡션 &quot;틀린 결론은 현실이 부딪혀 알려주지만, 맞는 결론 아래의 틀린 근거는 부딪힐 데가 없다&quot;" loading="lazy">
+<h2>AI한테 검산을 맡길 때 저는 이 네 줄을 봅니다</h2>
+<pre><code>□ 맞춰보는 두 값을 누가 만들었나 — 둘 다 AI가 만들었으면 순환이다
+□ 바깥에서 가져온 기준값이 마지막으로 들어온 게 언제인가
+□ 검산 방식을 바꿨는데 연속 기록만 그대로 이어붙이고 있지 않나
+□ 결론이 맞았다는 이유로 근거를 안 본 표가 있지 않나</code></pre>
+<h2>쓰면서 제가 먼저 받은 질문 세 개</h2>
+<p><strong>Q. 그럼 AI가 하는 검산은 못 믿는 건가요?</strong><br>
+그건 아니에요. 검산 자체는 계속 시킵니다. 다만 &quot;통과&quot;라는 말을 결과가 아니라 <strong>범위</strong>로 읽게 됐어요. 합계 대조가 통과했다면 더하기가 맞았다는 뜻이지, 숫자가 맞았다는 뜻은 아니거든요. AI는 이런 걸 스스로 구분해서 말해주지 않아요. 물어보면 아주 잘 대답하는데, 안 물어보면 그냥 &quot;검산 통과&quot;라고만 적습니다.</p>
+<p><strong>Q. 바깥 기준값을 못 구하는 기간엔 어떻게 하나요?</strong><br>
+없는 채로 갑니다. 대신 <strong>없다는 걸 리포트에 적어둬요.</strong> 이번에도 여섯 주 넘게 비어 있었는데, 그 공백이 어디에도 안 적혀 있었던 게 문제였습니다. 지금은 &quot;바깥 대조 없이 며칠째&quot;가 표시로 붙어요. 빈칸을 그럴듯한 값으로 채우는 것보다, 빈칸이라고 적어두는 쪽이 훨씬 안전하더라고요.</p>
+<p><strong>Q. 1,000 차이면 그냥 넘어가도 되지 않나요?</strong><br>
+이번 오차는 방향까지 저한테 유리한 쪽이었어요. 실제 숫자가 더 컸거든요. 그래도 고쳐서 적었습니다. 유리한 오류를 조용히 넘기기 시작하면, 불리한 오류도 언젠가 같은 문턱을 넘어가니까요. 그리고 금액이 문제가 아니라 <strong>33일 동안 못 잡았다는 구조</strong>가 문제였고요.</p>
+<p>이번에 배운 건 검사를 하나 더 넣으라는 얘기가 아니었습니다. 이미 있는 검사가 무엇과 무엇을 맞춰보는지, 그 둘을 누가 만들었는지 한 번 확인하라는 쪽이었어요. 계기에 표준기를 대는 일을 15년 해놓고, 정작 제 자동화에는 그걸 안 대고 있었네요..</p>
+<p>연속 기록은 앞으로도 쌓겠지만, 이제 그 숫자를 성적표로는 안 읽으려고 합니다.</p>
+<p>제가 굴리는 자동화들이 매일 어떤 자백을 남기는지는 makefield.ai에 그대로 열어두고 있어요.</p>
+<p>태그: #AI자기검증 #AI검산오류 #AI결과물검수 #AI숫자검증 #AI팩트체크 #자동화무오류기록 #자동화검증 #AI데이터정합성 #AI지식관리 #AI에게일시키기 #AI자동화구축 #AI리포트 #개인AI에이전트 #파이썬자동화 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224415585368" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
