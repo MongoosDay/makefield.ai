@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>윈도우 업데이트 자동 재시작 막기, 활성 시간이 함정이었어요 | 도면 읽는 AI</title>
+<meta name="description" content="하루 동안 PC가 네 번 꺼졌다고 생각했어요. 원격으로 붙어서 일하는 중에 화면이 툭 날아가는 게 네 번이었거든요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261023-windows-update-active-hours/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="윈도우 업데이트 자동 재시작 막기, 활성 시간이 함정이었어요 | 도면 읽는 AI">
+<meta property="og:description" content="하루 동안 PC가 네 번 꺼졌다고 생각했어요. 원격으로 붙어서 일하는 중에 화면이 툭 날아가는 게 네 번이었거든요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261023-windows-update-active-hours/">
+<meta property="og:image" content="https://makefield.ai/blog/20261023-windows-update-active-hours/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "윈도우 업데이트 자동 재시작 막기, 활성 시간이 함정이었어요", "datePublished": "2026-09-20", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261023-windows-update-active-hours/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-09-20</span></div>
+<h1>윈도우 업데이트 자동 재시작 막기, 활성 시간이 함정이었어요</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;윈도우 업데이트 자동 재시작, 활성 시간이 함정이었어요 / PC가 네 번 꺼진 줄 알았는데, 그날은 한 번도 안 꺼졌습니다&quot;" loading="lazy">
+<p>하루 동안 PC가 네 번 꺼졌다고 생각했어요. 원격으로 붙어서 일하는 중에 화면이 툭 날아가는 게 네 번이었거든요.</p>
+<p>저녁에 로그를 열어봤습니다.</p>
+<pre><code>[System 로그 · 당일 하루치 조회]
+  41 / 6008   예기치 않은 종료 ........ 0건
+  1074        종료·재시작 개시 ........ 0건
+  42 / 506    절전 진입·복귀 .......... 0건
+  14:20~14:50 구간 이벤트 ............ 0건</code></pre>
+<p>그날 이 PC는 한 번도 안 꺼졌더라고요.</p>
+<p><strong>결론부터 적을게요. 윈도우 업데이트 자동 재시작을 막을 때 손댈 곳은 설정 화면의 스위치가 아니라 <strong class="u">활성 시간</strong> 범위입니다.</strong> 기본값이 8~17시라 퇴근하고 나면 재시작이 허용되는 구간에 그대로 들어가거든요. 제 PC가 진짜로 재부팅된 건 이틀 전 17시 30분, 활성 시간이 끝나고 딱 30분 뒤였습니다.</p>
+<p>그 앞에 할 일도 하나 있어요. <strong>진짜 꺼진 게 맞는지부터 확인하는 것.</strong> 저는 이 순서를 건너뛰고 이틀을 엉뚱한 데서 헤맸습니다.</p>
+<p>저는 제조 현장에서 제어·자동화를 15년 했어요. 설비가 안 돈다고 연락이 오면 설비보다 통신선을 먼저 보는 동네입니다. 증상이 보이는 자리랑 고장 난 자리가 다른 경우가 워낙 많거든요. 그걸 매일 하는 사람이 제 PC한테는 똑같이 속았네요..</p>
+<p>2026년 9월 기준, Windows 10 환경입니다. 회사 일이 아니라 개인 PC를 원격으로 붙여 쓰는 얘기예요.</p>
+<h2>정말 꺼진 게 맞는지 어떻게 확인하나요</h2>
+<p><strong>마지막 부팅 시각 하나만 찍어보면 끝납니다.</strong> 그 시각이 오늘 안이 아니면, 오늘 꺼진 적이 없는 거예요.</p>
+<pre><code>(Get-CimInstance Win32_OperatingSystem).LastBootUpTime</code></pre>
+<p>제 결과는 이랬습니다.</p>
+<pre><code>2026-09-17  17:30:45      ← 마지막 부팅
+조회 시점까지 21시간 연속 가동</code></pre>
+<p>네 번 꺼졌다고 믿었던 날은 9월 18일이었어요. 부팅 시각은 이틀 전이고요. 그러니까 그 PC는 그날 내내 멀쩡히 돌고 있었습니다.</p>
+<p>여기서 걸리면 다음은 System 로그입니다. 이 세 종류만 보면 됩니다.</p>
+<p>| 이벤트 ID | 뜻 | 제 결과(당일) |<br>
+|---|---|---|<br>
+| 41 / 6008 | 예기치 않은 종료 (전원이 그냥 끊김) | 0건 |<br>
+| 1074 | 누군가 종료·재시작을 개시함 | 0건 |<br>
+| 42 / 506 / 507 | 절전 진입 · 복귀 | 0건 |</p>
+<pre><code>Get-WinEvent -FilterHashtable @{LogName=&#x27;System&#x27;; Id=1074,6008,41,42} -MaxEvents 20 |
+  Select-Object TimeCreated, Id, ProviderName</code></pre>
+<p>세 줄 다 0건이면 답은 하나예요. <strong>꺼진 건 PC가 아니라 내 화면입니다!</strong></p>
+<h2>안 꺼졌는데 왜 화면이 날아갔나요</h2>
+<p><strong>원격 접속이 끊긴 겁니다. 이건 PC 로그가 아니라 원격 세션 로그에 찍혀요.</strong></p>
+<p>제 원격 세션 기록은 이렇게 생겼습니다.</p>
+<pre><code>12:04  재연결   세션 rdp-tcp#6   원격 100.x.x.x
+12:20  끊김     reason code 0
+12:36  재연결
+13:22  끊김     reason code 0
+13:32  재연결
+13:38  끊김     reason code 0
+13:45  재연결</code></pre>
+<pre><code>Get-WinEvent -LogName Microsoft-Windows-TerminalServices-LocalSessionManager/Operational -MaxEvents 30 |
+  Select-Object TimeCreated, Id, Message</code></pre>
+<p>세션 이름 끝의 숫자는 그날 몇 번째 연결인지예요. <code>rdp-tcp#6</code>이면 하루에 여섯 번 다시 붙었다는 뜻이죠.</p>
+<p>중요한 건 <code>reason code 0</code>입니다. 서버가 끊은 게 아니라 <strong>클라이언트가 조용히 사라졌을 때</strong> 남는 값이에요. 세션 상태를 확인해보니 계속 <code>Active</code>였고요.</p>
+<pre><code>SESSIONNAME   USERNAME   ID  STATE
+rdp-tcp#6     (사용자)    1   Active</code></pre>
+<p>접속이 끊겨도 세션은 살아 있고 그 안에서 돌던 프로그램도 안 죽습니다. 저쪽 PC는 아무 일도 없었고, <strong>망이 끊긴 건 제가 들고 있던 기기 쪽</strong>이었어요.</p>
+<img src="img/02_screen_vs_power.png" alt="체감과 실제의 분리 — 왼쪽에 사람 아이콘과 노트북(화면이 검게 꺼진 모습), 가운데 점선으로 &#x27;원격 망 · reason code 0&#x27;이라 쓰인 끊긴 연결선, 오른쪽에 파란 상자 &#x27;PC(21시간 연속 가동)&#x27; 안에 초록 체크와 &#x27;Session 1: Active&#x27;, &#x27;프로세스 살아 있음&#x27; 두 줄. 하단 캡션 &#x27;꺼진 것은 PC가 아니라 화면이다&#x27;" loading="lazy">
+<p>여러분도 원격으로 붙여 쓰는 PC가 있으신가요? &quot;꺼졌다&quot;는 느낌이 들 때 그게 전원인지 화면인지부터 갈라보시면, 엉뚱한 데 손대는 시간이 확 줄어듭니다.</p>
+<h2>그럼 진짜 재시작은 누가 시켰나요</h2>
+<p><strong>딱 한 번 있었고, 누른 사람은 윈도우 업데이트였습니다.</strong> 이틀 전 기록에 1074가 하나 찍혀 있었어요.</p>
+<pre><code>09-17  17:30  Event 1074
+  프로세스 : svchost.exe
+  사용자   : NT AUTHORITY\SYSTEM
+  사유     : 운영 체제 (계획된 재시작)</code></pre>
+<p>1074의 좋은 점이 여기 있어요. <strong>누가 눌렀는지가 같이 적힌다</strong>는 겁니다. 사용자 이름이 제 계정이면 제가 누른 거고, <code>SYSTEM</code> + <code>svchost.exe</code>면 업데이트가 누른 거예요. 이 한 줄이면 범인 찾기가 끝납니다.</p>
+<p>문제는 그다음이었어요. 저는 재시작을 안 하도록 해뒀다고 생각했거든요. 그래서 활성 시간 값을 직접 읽어봤습니다.</p>
+<pre><code>ActiveHoursStart = 8     ← 오전 8시
+ActiveHoursEnd   = 17    ← 오후 5시</code></pre>
+<p>재시작이 일어난 시각은 17시 30분. <strong>활성 시간이 끝나고 30분 뒤였습니다.</strong> 윈도우 입장에선 규칙을 지킨 거예요. 5시 넘으면 사용 중이 아니라고 알고 있었으니까요.</p>
+<p>저녁에도 일하고 새벽에도 스크립트가 도는 PC인데, 자기가 9시간짜리 근무를 한다고 믿고 있었던 겁니다..</p>
+<img src="img/03_active_hours.png" alt="활성 시간 타임라인 — 가로로 0시부터 24시까지 눈금 막대 2줄. 위 막대는 8~17시 구간만 파랗게 칠해지고 나머지는 회색, 17:30 지점에 빨간 세로선과 &#x27;⚡ 자동 재시작&#x27; 라벨, 회색 구간에 &#x27;재시작 허용&#x27; 표기. 아래 막대는 7~23시 구간이 넓게 파랗게 칠해지고 같은 17:30 지점에 초록 방패와 &#x27;차단&#x27; 라벨. 두 막대 사이 화살표에 &#x27;범위를 넓힘&#x27; 캡션" loading="lazy">
+<h2>윈도우 업데이트 자동 재시작은 어떻게 막나요</h2>
+<p>값 세 개를 넣었습니다. 관리자 권한 PowerShell에서 실행했어요.</p>
+<pre><code># 1) 로그인한 사용자가 있으면 자동 재시작 금지
+reg add &quot;HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU&quot; /v NoAutoRebootWithLoggedOnUsers /t REG_DWORD /d 1 /f
+
+# 2) 활성 시간을 실제 사용 시간대로 넓히기
+reg add &quot;HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings&quot; /v ActiveHoursStart /t REG_DWORD /d 7 /f
+reg add &quot;HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings&quot; /v ActiveHoursEnd /t REG_DWORD /d 23 /f</code></pre>
+<p>한 줄이 길어 보여도 <strong>줄은 끊지 말고 그대로 한 줄로 넣으세요.</strong> 창마다 줄을 잇는 기호가 달라서, 다른 창에서 쓰던 기호를 그대로 붙이면 명령이 중간에서 잘립니다.</p>
+<p>1번이 본잠금, 2번이 보조예요. 1번만 넣어도 로그인 상태면 막히지만, 잠금화면으로 두고 나갈 때를 생각하면 2번을 같이 넣는 게 마음 편합니다. 7~23시 범위는 문제없이 들어갔어요.</p>
+<p><strong>그리고 이건 공짜가 아닙니다.</strong> 설치는 계속되니까 보안 구멍이 생기진 않지만, <strong>완료는 제가 직접 재부팅해야 됩니다.</strong> 그래서 주말에 한 번 껐다 켜는 걸 규칙으로 같이 붙였어요.</p>
+<p>제대로 들어갔는지 확인하는 방법은 이렇습니다.</p>
+<p>1. 값부터 되읽습니다. <code>reg query</code>로 세 값이 <code>1</code>, <code>7</code>, <code>23</code>으로 찍히는지, 타입이 <code>REG_DWORD</code>인지 같이 보세요. 문자열로 들어가면 무시됩니다.<br>
+2. 다음 부팅 시각이 <strong>내가 누른 시각과 일치하는지</strong> 봅니다. 안 누른 시각에 찍혀 있으면 아직 안 막힌 거예요.<br>
+3. 한 달쯤 뒤에 1074를 다시 조회해 <code>SYSTEM</code> 개시 건이 0인지 봅니다. 설정은 넣는 순간이 아니라 <strong>한 달 뒤에 검증되는 것</strong>이더라고요.</p>
+<img src="img/04_diagnosis_order.png" alt="진단 순서 3단 — 세로 3단 박스. ①&#x27;마지막 부팅 시각 = 오늘인가?&#x27; (아니오 → 오른쪽으로 빠지는 회색 화살표 &#x27;원격 세션 로그로&#x27;) ②&#x27;1074가 있는가 · 누가 눌렀나?&#x27; (SYSTEM → 오른쪽 &#x27;업데이트가 범인&#x27;) ③&#x27;활성 시간 범위 안이었나?&#x27; (밖 → 오른쪽 &#x27;여기를 고친다&#x27;). 각 박스 왼쪽에 번호 원형 배지, 하단 캡션 &#x27;전원 → 화면 → 재시작 주체 → 시간대 순서로 좁힌다&#x27;" loading="lazy">
+<p>참고로 제 경우엔 원인이 하나가 아니었어요. 체감한 네 번은 원격 끊김, 진짜 재시작은 이틀 전 업데이트, 엿새 전엔 절전에서 못 깨어난 전원 손실이 따로 두 건. <strong>증상이 하나라고 원인도 하나인 건 아니었습니다.</strong></p>
+<h2>이 얘기 하면 나오는 질문들</h2>
+<p><strong>Q. 설정 앱에서 &quot;업데이트 후 자동으로 다시 시작&quot; 끄면 되는 거 아닌가요?</strong><br>
+그 스위치는 &quot;재시작 전에 알림 표시&quot;에 가까워서, 알림이 뜨고 시간이 지나면 결국 재시작합니다. 게다가 그 화면만 봐선 활성 시간이 8~17시라는 게 눈에 안 들어와요. 저도 값을 직접 읽기 전까지는 몰랐습니다.</p>
+<p><strong>Q. 활성 시간을 하루 24시간으로 잡아버리면 제일 깔끔하지 않나요?</strong><br>
+범위에 상한이 있어서 24시간 전체로는 안 잡히는 걸로 압니다. 제가 직접 확인한 건 7~23시(16시간)가 정상으로 들어간다는 것까지고, 상한이 몇 시간인지는 안 재봤어요. 어차피 시간대만으로 다 막으려는 접근이 위태로워서, 잠금값(1번)을 본체로 두는 게 낫습니다.</p>
+<p><strong>Q. 원격이 자꾸 끊기는 건 어떻게 고쳤나요?</strong><br>
+아직 못 고쳤습니다. <code>reason code 0</code>이 가리키는 건 접속하는 쪽 기기의 망이라 이 PC에서 할 수 있는 게 없어요. 다만 원인을 PC에서 기기로 옮겨놓은 것만으로 헛수고가 줄었습니다. 이틀 동안 멀쩡한 PC의 전원 설정을 뒤지고 있었거든요..</p>
+<p><strong>Q. 자동화 PC라면 어떤 값을 먼저 봐야 하나요?</strong><br>
+재시작 시각과 스크립트 실행 시각이 겹치는지부터 보세요. 새벽에 도는 작업이 있어도 활성 시간을 거기까지 늘리는 게 아니라, 잠금값(1번)으로 막고 재부팅을 제 손으로 잡는 편이 안전합니다.</p>
+<p>이틀을 헤매고 얻은 건 설정값 세 개가 아니라 순서였어요. 전원인지 화면인지, 누가 눌렀는지, 어느 시간대였는지. 이 세 칸을 채우기 전에 손대면 멀쩡한 걸 고치게 됩니다. 윈도우 업데이트 자동 재시작은 그 세 번째 칸에서야 범인으로 확정되는 거고요!</p>
+<p>이렇게 한 번씩 건드린 PC 설정값들은 makefield.ai 한쪽에 &quot;왜 이 값을 넣었는지&quot;랑 같이 목록으로 모아두는 중이에요.</p>
+<p>다음 편은 재부팅을 제 손으로 잡기로 한 뒤에, 밀린 패치를 놓치지 않으려고 붙인 확인 루틴 얘기로 가겠습니다.</p>
+<p>태그: #윈도우업데이트자동재시작 #활성시간설정 #컴퓨터혼자재부팅 #윈도우자동재시작끄기 #이벤트뷰어 #윈도우10설정 #원격데스크톱끊김 #PC절전문제 #자동화PC관리 #이벤트로그분석 #윈도우레지스트리 #AI자동화구축 #개인AI에이전트 #자동화서버관리 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224417933292" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
