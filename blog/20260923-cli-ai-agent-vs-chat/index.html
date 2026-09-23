@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLI AI 에이전트가 채팅창과 다른 점 하나, 내 파일을 직접 엽니다 | 도면 읽는 AI</title>
+<meta name="description" content="채팅창과 CLI AI 에이전트의 차이는 똑똑함이 아니라 손이 닿는 범위입니다. 채팅은 제가 복사해서 붙여 넣은 글자만 봅니다. CLI 에이전트는 제 PC의 폴더를 열어 파일을 직접 읽고, 고치고, 저장해요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260923-cli-ai-agent-vs-chat/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CLI AI 에이전트가 채팅창과 다른 점 하나, 내 파일을 직접 엽니다 | 도면 읽는 AI">
+<meta property="og:description" content="채팅창과 CLI AI 에이전트의 차이는 똑똑함이 아니라 손이 닿는 범위입니다. 채팅은 제가 복사해서 붙여 넣은 글자만 봅니다. CLI 에이전트는 제 PC의 폴더를 열어 파일을 직접 읽고, 고치고, 저장해요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260923-cli-ai-agent-vs-chat/">
+<meta property="og:image" content="https://makefield.ai/blog/20260923-cli-ai-agent-vs-chat/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "CLI AI 에이전트가 채팅창과 다른 점 하나, 내 파일을 직접 엽니다", "datePublished": "2026-09-23", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260923-cli-ai-agent-vs-chat/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-09-23</span></div>
+<h1>CLI AI 에이전트가 채팅창과 다른 점 하나, 내 파일을 직접 엽니다</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;CLI AI 에이전트가 채팅창과 다른 점 하나 / 내 파일을 직접 엽니다&quot;" loading="lazy">
+<p><strong>채팅창과 CLI AI 에이전트의 차이는 똑똑함이 아니라 손이 닿는 범위입니다.</strong> 채팅은 제가 복사해서 붙여 넣은 글자만 봅니다. CLI 에이전트는 제 PC의 폴더를 열어 파일을 직접 읽고, 고치고, 저장해요.</p>
+<p>그래서 복붙 왕복이 사라집니다. 붙여넣고 → 답 받고 → 다시 내 파일에 옮겨 붙이고 → 다음 대화에서 또 처음부터 설명하고. 이 네 박자가 통째로 없어지는 거예요.</p>
+<p>저는 제조 현장에서 제어·자동화로 15년을 보냈고 개발자는 아닙니다. 코드는 필요할 때 겨우 짜는 정도예요. 그런 사람 기준으로 터미널 처음 여는 것부터 쌓아가는 연재의 첫 편입니다. 오늘은 설치 전에 <strong>뭐가 다른지</strong>만 잡고 갈게요.</p>
+<p>먼저 전제입니다. 2026년 9월 기준이에요.</p>
+<p>| 항목 | 값 |<br>
+|---|---|<br>
+| OS | Windows 10/11 (맥·리눅스도 구조 동일) |<br>
+| 도구 | Claude Code 기준 (Codex CLI·Gemini CLI도 방식 같음) |<br>
+| 필요한 것 | 해당 서비스 유료 구독 또는 API 키 |<br>
+| 사전 지식 | 터미널 명령 두 개 — 폴더 이동, 실행 |<br>
+| 필요 없는 것 | 프로그래밍 언어 지식 |</p>
+<h2>1. 채팅창이 못 하는 건 읽기가 아니라 &#x27;쓰기&#x27;예요</h2>
+<p>CLI AI 에이전트란 <strong>터미널에서 실행되어, 지정한 폴더의 파일을 직접 읽고 고칠 수 있는 AI</strong>입니다. 요즘은 웹 채팅도 파일을 올리면 읽기는 해요. 차이는 결과를 돌려주는 자리에서 갈립니다.</p>
+<p>채팅은 답을 <strong>화면에</strong> 줍니다. 내 파일에 반영하는 건 제 일이에요. CLI 에이전트는 답을 <strong>파일에</strong> 씁니다. 제가 하는 일은 그 변경을 승인하는 것뿐이고요.</p>
+<p>| | 웹 채팅 | CLI 에이전트 |<br>
+|---|---|---|<br>
+| 입력 | 내가 붙여 넣은 만큼만 | 폴더에 있는 파일 그대로 |<br>
+| 파일 여러 개 | 하나씩 올리고 설명 | 폴더만 지정하면 전부 |<br>
+| 결과 | 화면에 텍스트 | 파일에 저장됨 |<br>
+| 반영 | 내가 다시 옮겨 붙이기 | 이미 반영돼 있음 |<br>
+| 맥락 | 새 대화마다 다시 설명 | 폴더에 둔 규칙 파일을 읽고 시작 |</p>
+<img src="img/02_roundtrip.png" alt="좌우 비교. 왼쪽 빨강 영역 제목 &#x27;웹 채팅&#x27; — 세로 3단 박스 &#x27;나&#x27; → &#x27;① 복사해서 붙여넣기&#x27; → &#x27;AI&#x27; → &#x27;② 답은 화면에만&#x27; → &#x27;내 파일에 다시 옮겨 붙이기&#x27;, 하단 캡션 &#x27;사람이 운반책&#x27;. 오른쪽 초록 영역 제목 &#x27;CLI 에이전트&#x27; — &#x27;나 — 폴더만 지정&#x27; → &#x27;① 자연어 한 줄&#x27; → &#x27;CLI 에이전트&#x27; → 양방향 화살표 &#x27;② 읽기 / 쓰기&#x27; → &#x27;내 폴더의 파일&#x27;, 하단 캡션 &#x27;파일이 직접 오간다&#x27;" loading="lazy">
+<h2>2. 실제로는 이렇게 생겼습니다</h2>
+<p>시작은 두 줄이에요. 터미널을 열고 일할 폴더로 가서 도구를 실행합니다.</p>
+<pre><code>cd C:\작업폴더
+claude</code></pre>
+<p>그다음부터는 그냥 한국어로 말합니다. 첫 명령으로 저는 늘 이걸 시켜요.</p>
+<pre><code>&gt; 이 폴더에 파일 몇 개 있어? 이름이랑 용량도 같이 알려줘</code></pre>
+<p>여기서 중요한 건 제가 <strong>아무것도 안 올렸다</strong>는 점입니다. 첨부하지도, 목록을 붙여넣지도 않았어요. 폴더 안에 있으니까 그냥 보는 겁니다. 그래서 이 한 번이 연결 확인이 돼요. 알려준 적 없는 파일 개수를 맞히면 진짜 읽은 거고, 얼버무리면 폴더가 잘못 잡힌 겁니다.</p>
+<p>파일을 고치는 것도 같은 방식이에요.</p>
+<pre><code>&gt; 여기 사진 파일들 촬영 날짜 기준으로 이름 바꿔줘. 바꾸기 전에 목록부터 보여주고</code></pre>
+<p>목록부터 보여달라는 게 핵심이에요. 승인 전엔 파일이 안 바뀌고, 승인하면 탐색기에서 파일명이 실제로 달라져 있습니다.</p>
+<img src="img/03_scope.png" alt="동심 사각형 2개. 바깥 회색 사각형 라벨 &#x27;PC의 나머지 전체 — 기본 접근 안 함&#x27;, 안쪽 초록 사각형 라벨 &#x27;작업 폴더 — 읽기·쓰기 허용&#x27; 안에 문서 아이콘 4개. 안쪽 사각형 아래 &#x27;실행할 때 지정한 이 경계가 전부다&#x27;, 하단 캡션 &#x27;처음엔 작업용 폴더 하나만 열어라&#x27;" loading="lazy">
+<p><strong class="u">작업 폴더</strong>를 고르는 건 곧 권한 범위를 고르는 일이에요. 도구를 실행한 그 폴더가 경계입니다. 처음엔 작업용 폴더 하나만 만들어 거기서만 돌리시길 권해요.</p>
+<p>첫 실행이 제대로 붙었는지는 이 순서로 봅니다.</p>
+<p>| 순서 | 확인할 것 | 통과 기준 |<br>
+|---|---|---|<br>
+| 1 | 실행한 폴더가 맞나 | 시작 줄에 그 경로가 떠 있음 |<br>
+| 2 | 진짜 읽고 있나 | 내가 안 알려준 파일 개수를 맞힘 |<br>
+| 3 | 쓰기가 되나 | 파일 고친 뒤 탐색기 수정 시각이 바뀜 |<br>
+| 4 | 되돌릴 수 있나 | 원본 사본이 있거나, 변경 목록을 먼저 봤음 |</p>
+<p>2번이 핵심이에요. 답이 그럴듯한 것과 파일을 실제로 읽은 것은 화면상 구분이 안 됩니다. 그래서 <strong>내가 모르는 걸 묻는 게 아니라, 내가 아는 걸 물어서</strong> 맞히는지 보는 거죠.</p>
+<h2>3. 복붙 22번이 명령 한 줄이 된 자리</h2>
+<p>2026년 4월에 개인적으로 맡아둔 작은 일이 있었어요. 부품 시리얼 번호마다 제품 페이지 주소를 만들고, 그 주소를 QR 코드 이미지로 뽑는 일입니다.</p>
+<p>원래 방식은 웹 QR 생성기를 열고 → 주소 하나 붙여넣고 → 이미지 내려받고 → 파일명 바꾸고 → 모델별 폴더에 넣고. 그걸 22번 반복해요. 해보신 분은 아실 텐데, 어렵진 않은데 사람이 반드시 한 번은 틀립니다..</p>
+<p>에이전트에게 건넨 건 시리얼 번호가 줄줄이 적힌 텍스트 파일 하나였어요. &quot;이 목록으로 QR 만들어줘, 모델별로 폴더 나눠서.&quot;</p>
+<pre><code>시리얼번호.txt  ─▶  generate_qr.py  ─▶  모델별 폴더 / PNG 400×400</code></pre>
+<p>돌아온 건 이미지 22장과 생성 스크립트 하나. 다음에 또 오면 스크립트만 돌리면 됩니다.</p>
+<p>그런데 진짜 소득은 시간이 아니었어요. 전수 대조에서 <strong>발표자료에는 22장인데 목록 파일에는 21개</strong>만 적힌 게 걸렸거든요. 한 건은 애초에 잘못 적힌 번호였습니다. 제가 복붙으로 22번 찍고 있었으면 그냥 22개 만들고 끝났을 거예요. 두 파일을 나란히 열고 한 줄씩 대조하는 건 사람이 제일 하기 싫어하는 일이잖아요.</p>
+<p>마지막엔 만든 QR을 거꾸로 스캔해 주소가 맞는지까지 봤습니다. 매핑·내용·스캔 3단계 전수로 22건 전부 통과. 이 검증도 붙여넣기로는 불가능해요. 이미지 파일이 손에 있어야 하니까요.</p>
+<h2>4. 저는 이 습관 때문에 며칠을 돌아갔어요</h2>
+<p>솔직히 저도 한참 채팅창 사고방식에서 못 빠져나왔습니다.</p>
+<p>화면 캡처를 붙여넣으려고 단축키를 눌렀는데 터미널이 화면을 세로로 쪼개기만 하더라고요. 설정 파일을 열어보니 반년 전에 제가 그 키에 <strong>화면 분할</strong>을 배정해둔 거였어요. 그것도 터미널 두 개 다. 예전에 다른 키와 충돌해서 피신시켜둔 자리였는데, 하필 그 피난처가 이번 자리였습니다.</p>
+<p>문제는 그다음이었어요. &quot;폰이나 맥북에서도 붙여넣게 앱을 하나 만들까&quot;로 생각이 커졌거든요. 기록을 뒤져보니 비슷한 걸 만들려다 방식 다섯 개가 전부 깨진 이력이 이미 있더라고요. 결국 새 앱은 0줄, 돌아가던 봇에 25줄 붙여서 끝났습니다.</p>
+<p>거기서 원리 한 줄을 건졌습니다. 드래그도, <code>@</code>도, <code>Ctrl+V</code>도 전부 <strong class="u">경로 전달</strong>이었어요. 파일 내용을 밀어 넣는 게 아니라 &quot;그 파일 거기 있다&quot;고 위치를 알려주는 겁니다.</p>
+<pre><code>내가 주는 것 :  C:\작업폴더\목록.txt      ← 위치
+AI가 하는 것 :  그 위치를 열어서 읽는다   ← 내용은 AI가 가져감</code></pre>
+<p>그래서 원격 접속한 다른 기기의 파일은 아무리 복사해도 안 들어갑니다. 그 PC에 파일이 실재해야 하거든요. 이걸 알고 나니 붙여넣기에 매달릴 이유가 사라졌어요. 폴더에 두면 끝이니까요!</p>
+<h2>5. GPT·Gemini CLI로도 똑같이 됩니다</h2>
+<p>이 연재는 Claude Code로 설명하지만 도구를 고르는 얘기는 아닙니다. 2026년 9월 기준 주요 CLI 에이전트 셋은 구조가 같아요.</p>
+<p>| 도구 | 실행 명령 | 규칙 파일 |<br>
+|---|---|---|<br>
+| Claude Code (Anthropic) | <code>claude</code> | <code>CLAUDE.md</code> |<br>
+| Codex CLI (OpenAI) | <code>codex</code> | <code>AGENTS.md</code> |<br>
+| Gemini CLI (Google) | <code>gemini</code> | <code>GEMINI.md</code> |</p>
+<p>셋 다 ①실행한 폴더를 작업 공간으로 잡고 ②파일 읽기·쓰기·명령 실행을 승인받아 하고 ③폴더에 둔 규칙 파일을 읽고 시작합니다. 이름만 다르고 뼈대가 같아요. 그래서 이 연재에서 만들 기록 구조와 규칙 파일은 도구를 갈아타도 그대로 씁니다.</p>
+<img src="img/04_tools.png" alt="상단에 나란히 3개 박스 &#x27;Claude Code&#x27;, &#x27;Codex CLI&#x27;, &#x27;Gemini CLI&#x27;. 세 박스에서 아래로 화살표가 모여 하나의 3층 스택으로 합류. 스택 위층부터 &#x27;① 실행한 폴더 = 작업 공간&#x27;, &#x27;② 읽기·쓰기·실행은 승인 후&#x27;, &#x27;③ 규칙 파일을 읽고 시작&#x27;. 하단 캡션 &#x27;도구는 갈아타도 뼈대는 같다&#x27;" loading="lazy">
+<h2>6. 시작 전에 많이 걸리는 질문 셋</h2>
+<p><strong>Q. 개발을 못 하는데 괜찮나요?</strong><br>
+명령 두 개로 시작합니다. 저도 그 이상 안 외웠어요. 다만 승인 버튼을 누를지 말지는 사람이 판단해야 해서, 코딩 실력보다 <strong>뭘 시켰는지 기억하는 습관</strong>이 훨씬 중요하더라고요.</p>
+<p><strong>Q. 제 파일이 통째로 어디론가 넘어가는 건가요?</strong><br>
+파일과 실행은 제 PC 안에서만 일어납니다. 다만 <strong>대화 내용 자체는 그 서비스 서버를 거쳐요.</strong> &quot;로컬 도구니까 아무것도 안 나간다&quot;는 절반만 맞는 말입니다. 그래서 저는 민감한 폴더를 애초에 작업 폴더로 안 잡아요.</p>
+<p><strong>Q. 그럼 웹 채팅은 이제 안 쓰나요?</strong><br>
+씁니다. 손에 파일이 없고 생각만 정리할 땐 채팅이 훨씬 빨라요. 기준은 단순합니다. 결과물이 파일로 남아야 하면 CLI, 머릿속만 정리하면 채팅. 참고로 워드·엑셀·파워포인트는 CLI 에이전트도 그냥은 못 읽어요. 속이 압축된 형식이라 따로 처리가 필요합니다.</p>
+<p>오늘 얘기는 사실 한 줄이에요. 채팅은 내가 운반책이고, CLI는 파일이 직접 오간다는 것. 여러분도 아직 복사·붙여넣기로 AI랑 일하고 계신가요?</p>
+<p>다음 편은 설치와 첫 실행입니다. 10분이면 되는데 비개발자가 가장 많이 미끄러지는 자리가 딱 하나 있어요. 폴더 경로에 한글이나 공백이 들어갔을 때 벌어지는 일부터 짚고 시작하겠습니다.</p>
+<p>연재 전체 순서와 중간에 만드는 파일들은 makefield.ai에 한 묶음으로 올려둡니다. 블로그엔 한 편씩, 거기엔 순서대로요.</p>
+<p>태그: #CLIAI에이전트 #클로드코드 #ClaudeCode #CodexCLI #GeminiCLI #터미널AI #AI에게파일읽히기 #복붙자동화 #비개발자AI #AI자동화구축 #AI에게일시키기 #개인AI에이전트 #파이썬자동화 #현장엔지니어AI #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224421231773" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
