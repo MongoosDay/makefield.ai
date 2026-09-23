@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>클로드 코드 설치 10분, 첫 실행이 안 될 땐 폴더 경로부터 봅니다 | 도면 읽는 AI</title>
+<meta name="description" content="클로드 코드 설치는 명령 한 줄이면 끝납니다. 10분 중 9분은 &quot;어느 창에서 치느냐&quot;와 &quot;어느 폴더에서 실행하느냐&quot;에 쓰여요. 비개발자가 미끄러지는 자리도 정확히 이 둘입니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20260924-claude-code-install-first-run/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="클로드 코드 설치 10분, 첫 실행이 안 될 땐 폴더 경로부터 봅니다 | 도면 읽는 AI">
+<meta property="og:description" content="클로드 코드 설치는 명령 한 줄이면 끝납니다. 10분 중 9분은 &quot;어느 창에서 치느냐&quot;와 &quot;어느 폴더에서 실행하느냐&quot;에 쓰여요. 비개발자가 미끄러지는 자리도 정확히 이 둘입니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20260924-claude-code-install-first-run/">
+<meta property="og:image" content="https://makefield.ai/blog/20260924-claude-code-install-first-run/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "클로드 코드 설치 10분, 첫 실행이 안 될 땐 폴더 경로부터 봅니다", "datePublished": "2026-09-24", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260924-claude-code-install-first-run/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-09-24</span></div>
+<h1>클로드 코드 설치 10분, 첫 실행이 안 될 땐 폴더 경로부터 봅니다</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;클로드 코드 설치 10분 / 첫 실행이 안 될 땐 폴더 경로부터&quot;" loading="lazy">
+<p><strong>클로드 코드 설치는 명령 한 줄이면 끝납니다. 10분 중 9분은 &quot;어느 창에서 치느냐&quot;와 &quot;어느 폴더에서 실행하느냐&quot;에 쓰여요.</strong> 비개발자가 미끄러지는 자리도 정확히 이 둘입니다.</p>
+<p>지난 편에서는 채팅창과 CLI 에이전트의 차이가 결국 <strong>내 파일에 손이 닿느냐</strong>라는 데까지 봤어요. 이번엔 그 손을 실제로 내 PC에 붙입니다.</p>
+<p>제조 현장 설비 제어를 15년째 하고 있고 전공은 개발이 아닙니다. 터미널도 필요할 때만 겨우 열던 사람이에요. 그러니 검은 창 처음 여는 분 기준으로만 씁니다. 2026년 9월 기준이고요.</p>
+<p>| 항목 | 값 |<br>
+|---|---|<br>
+| OS | Windows 10(1809 이상)·11, macOS 13 이상, 리눅스 |<br>
+| 하드웨어 | RAM 4GB 이상 |<br>
+| 계정 | 해당 서비스 유료 구독 또는 API 제공사 계정 (무료 웹 플랜엔 미포함) |<br>
+| 걸리는 시간 | 설치 2분, 확인 1분, 첫 명령 7분 |<br>
+| 필요 없는 것 | 프로그래밍 지식, 관리자 권한 |</p>
+<p>관리자 권한이 필요 없다는 건 공식 문서에 명시돼 있어요. 회사 PC라 막힐까 걱정하셨다면 일단 한 번 쳐보셔도 됩니다.</p>
+<h2>1. 창부터 제대로 열어야 설치가 됩니다</h2>
+<p><strong>Windows에는 검은 창이 두 종류 있고 설치 명령이 서로 다릅니다.</strong> PowerShell과 CMD예요. 여기서 반쯤 갈립니다.</p>
+<p>구분법은 맨 앞 글자예요. <code>PS C:\Users\...&gt;</code> 처럼 <strong>PS로 시작하면 PowerShell</strong>, <code>C:\Users\...&gt;</code> 면 CMD입니다.</p>
+<p>PowerShell이면 이 한 줄.</p>
+<pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
+<p>CMD면 이 한 줄이고요.</p>
+<pre><code>curl -fsSL https://claude.ai/install.cmd -o install.cmd &amp;&amp; install.cmd &amp;&amp; del install.cmd</code></pre>
+<p>창을 헷갈리면 에러가 대신 알려줘요. 워낙 흔해서 공식 문서가 이 두 문구를 창 판별 신호로 안내할 정도입니다.</p>
+<pre><code>The token &#x27;&amp;&amp;&#x27; is not a valid statement separator
+   → CMD용 명령을 PowerShell에 친 경우
+
+&#x27;irm&#x27; is not recognized as an internal or external command
+   → PowerShell용 명령을 CMD에 친 경우</code></pre>
+<p>저는 winget으로 깔았어요.</p>
+<pre><code>winget install Anthropic.ClaudeCode</code></pre>
+<p>다만 winget은 자동 업데이트가 안 돼서 가끔 <code>winget upgrade Anthropic.ClaudeCode</code>를 직접 쳐줘야 해요. 위 스크립트로 깔면 알아서 올라갑니다.</p>
+<p>확인은 한 줄입니다.</p>
+<pre><code>&gt; claude --version
+2.1.220 (Claude Code)</code></pre>
+<p>제 PC에서 방금 찍은 그대로예요. 버전 숫자가 나오면 끝입니다.</p>
+<img src="img/02_install.png" alt="가로 3단계 흐름. ① 초록 박스 &#x27;창 확인 — PS로 시작? PowerShell / 아니면 CMD&#x27; ② 초록 박스 &#x27;설치 명령 한 줄&#x27; ③ 초록 박스 &#x27;claude --version → 버전 숫자&#x27;. 각 박스 아래 작은 글씨로 &#x27;30초 / 2분 / 10초&#x27;. 하단 캡션 &#x27;여기까지 3분, 폴더 얘기는 아직 시작도 안 했다&#x27;" loading="lazy">
+<h2>2. 폴더를 정하는 건 권한을 정하는 일이에요</h2>
+<p><strong>CLI 에이전트는 실행한 그 폴더를 작업 공간으로 잡습니다. 어디서 실행하느냐가 곧 어디까지 건드려도 되는지를 정하는 일이에요.</strong></p>
+<p>그래서 바탕화면이나 사용자 폴더에서 그냥 실행하면 안 됩니다. 연습용 폴더를 하나 새로 파세요. 세 줄이면 돼요.</p>
+<pre><code>mkdir C:\ai-work
+cd C:\ai-work
+claude</code></pre>
+<p><code>mkdir</code>은 폴더 만들기, <code>cd</code>는 이동, <code>claude</code>는 실행. 외울 건 이게 전부예요. 맥·리눅스면 <code>mkdir ~/ai-work</code> 로 바꾸시면 됩니다. 처음 한 번은 로그인이 뜨는데, 브라우저에서 계정 승인하면 그다음부턴 안 물어봐요.</p>
+<p>폴더 이름을 굳이 <code>ai-work</code>로 쓴 이유는 4장에 나와요. 결론만 먼저 말하면 <strong class="u">영문·소문자</strong>에 공백 없이 짓는 게 제일 편합니다.</p>
+<img src="img/03_path.png" alt="가로 두 줄 비교. 위쪽 초록 줄 &#x27;C:\ai-work&#x27; 옆 체크 표시와 &#x27;따옴표 불필요 · 스크립트에 그대로 재사용&#x27;. 아래쪽 빨강 줄 &#x27;C:\내 작업 폴더\2026년 자료&#x27; 옆 경고 표시와 &#x27;공백 2곳 · 한글 · 나중에 스케줄러에서 재인용&#x27;. 하단 캡션 &#x27;문서 이름은 한글 OK, 작업 폴더 경로만 영문으로&#x27;" loading="lazy">
+<h2>3. 첫 명령 세 개로 읽기·쓰기·되돌리기를 다 봅니다</h2>
+<p><strong>첫 명령은 성능 시험이 아니라 연결 확인이에요.</strong> 쓰기 한 번, 읽기 한 번, 지우기 한 번이면 이 도구가 뭘 할 수 있는지 다 보입니다. 이제 그냥 한국어로 말하면 돼요.</p>
+<pre><code>&gt; 여기에 test.txt 만들고 안에 오늘 날짜 한 줄 써줘
+&gt; 방금 만든 파일 열어서 뭐라고 썼는지 보여줘
+&gt; test.txt 지워줘</code></pre>
+<p>이때 바로 실행되진 않아요. 명령마다 승인 화면이 한 번씩 뜨고, 허용을 눌러야 탐색기에 파일이 생깁니다. 이게 안전장치예요. 그래서 &quot;항상 허용&quot;을 습관적으로 누르지 마세요. 특히 삭제는요.</p>
+<p>시간대별로 뭘 보고 통과를 판정할지 정리하면 이렇습니다.</p>
+<p>| 시각 | 할 일 | 통과 판정 |<br>
+|---|---|---|<br>
+| 0~2분 | 창 확인 후 설치 명령 한 줄 | 설치 완료 메시지 |<br>
+| 2~3분 | <code>claude --version</code> | 버전 숫자가 찍힘 |<br>
+| 3~4분 | <code>mkdir</code> → <code>cd</code> → <code>claude</code> | 시작 줄에 그 폴더 경로가 보임 |<br>
+| 4~6분 | 브라우저에서 계정 승인 | 입력창(<code>&gt;</code>)이 뜸 |<br>
+| 6~9분 | 파일 만들기 명령 | 탐색기에 파일이 실제로 생김 |<br>
+| 9~10분 | 읽기·삭제 명령 | 승인 누른 것만 반영됨 |</p>
+<p>6분 칸이 진짜 관문이에요. 화면에 답이 그럴듯하게 뜨는 것과 <strong>파일이 실제로 생기는 것</strong>은 다른 일이거든요. 탐색기를 열어 눈으로 확인하고 넘어가세요.</p>
+<h2>4. 저는 여기서 미끄러졌어요 — 한글과 공백</h2>
+<p><strong>오해부터 풀고 갈게요. 한글 폴더 이름 자체는 요즘 잘 돌아갑니다. 깨지는 건 그다음, 자동화를 붙이는 순간이에요.</strong></p>
+<p>제 작업 폴더 중엔 한글과 공백이 섞인 이름이 그냥 있는데, 오늘 확인해보니 에이전트가 그 안 항목 16개를 멀쩡히 읽어요. 제가 넘어진 자리는 따로 세 군데였습니다.</p>
+<p><strong>하나, 공백은 따옴표가 없으면 경로가 쪼개집니다.</strong> 오늘 임시 폴더로 그대로 재현해본 겁니다.</p>
+<pre><code>PS C:\&gt; cd C:\WorkClaude\My Work Folder
+A positional parameter cannot be found that accepts argument &#x27;Work&#x27;.</code></pre>
+<p><code>My Work Folder</code>가 세 조각으로 읽힌 거예요. <strong class="u">따옴표 한 쌍</strong>이면 되는데, 매번 기억하느니 애초에 공백을 안 넣는 쪽이 낫더라고요.</p>
+<p><strong>둘, 한글 주석 한 줄이 새벽 자동 실행을 멈춰 세웠습니다.</strong> 4월에 개인적으로 돌리던 리포트가 매일 새벽 에러 창을 띄웠어요.</p>
+<pre><code>&#x27;由?釉뚮━??&#x27;은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램,
+또는 배치 파일이 아닙니다.</code></pre>
+<p>저 외계어가 원래는 제가 달아둔 한글 주석이었어요. UTF-8로 저장한 한글을 명령 창이 옛날 한국어 코드(CP949)로 읽으며 깨졌고, 그 깨진 글자를 명령어로 착각한 겁니다. 주석인데 말이죠..</p>
+<p>같은 형식 파일을 전부 뒤져 13개 중 11개를 고쳤어요. 규칙은 두 줄. 실행 파일 안엔 한글 주석을 안 쓴다, 맨 위에 <code>chcp 65001 &gt; nul</code> 로 창을 UTF-8로 맞춘다.</p>
+<p><strong>셋, 한글이 한 글자만 조용히 사라지기도 합니다.</strong> 명령줄에 한글을 직접 실어 보냈다가 &quot;프로세스&quot;가 &quot;프로세&quot;로 등록된 적이 있어요. &#x27;세&#x27; 한 글자가 공백 세 개로 바뀌었는데 에러도 안 납니다. 그냥 틀린 채로 저장돼요..</p>
+<p>| 어디서 | 증상 | 대책 |<br>
+|---|---|---|<br>
+| 경로에 공백 | 경로가 쪼개져 인식 실패 | 따옴표로 감싸거나 공백 없는 이름 |<br>
+| 실행 파일 속 한글 | 깨진 글자를 명령어로 인식 | 한글 주석 금지 + <code>chcp 65001 &gt; nul</code> |<br>
+| 명령줄에 실은 한글 | 글자가 조용히 사라짐 | 한글은 파일에 담아 넘기기 |</p>
+<p>덤으로 하나 더. 어떤 데선 <code>2026년_5월</code>, 어떤 데선 <code>2026년 5월</code>로 쓰다가 같은 달 자료가 두 폴더로 갈라진 적도 있어요. 언더바 하나 차이로 23개 파일을 손으로 합쳤습니다.</p>
+<p>그래서 클로드 코드 설치 단계의 제 권고는 단순해요. <strong>읽고 쓸 문서 이름은 한글이어도 됩니다. 다만 작업 폴더 경로만큼은 영문·소문자·공백 없이 가세요.</strong> 경로는 스크립트와 스케줄러가 계속 재인용하는 자리라, 한 번 지뢰를 심으면 몇 달 뒤에 터집니다.</p>
+<h2>5. 설치할 때 많이 걸리는 질문 셋</h2>
+<p><strong>Q. 설치는 끝났다는데 <code>claude</code>를 치면 없는 명령이래요.</strong><br>
+대부분 창이 아직 모르는 상태예요. 터미널을 닫았다 새로 열면 해결됩니다. 그래도 안 되면 <code>claude doctor</code>가 설치 상태만 읽기 전용으로 진단해줘요.</p>
+<p><strong>Q. 폴더를 잘못 잡고 실행했는데 뭐가 바뀐 건 아닐까요?</strong><br>
+승인을 안 눌렀다면 아무것도 안 바뀝니다. 읽기·쓰기·실행 전부 승인을 거치거든요. 창을 닫고 제대로 된 폴더에서 다시 실행하면 돼요.</p>
+<p><strong>Q. npm으로 깔라는 글도 있던데 뭐가 맞나요?</strong><br>
+둘 다 됩니다. npm 방식은 <code>npm install -g @anthropic-ai/claude-code</code> 인데 Node.js 22 이상이 필요해요. 참고로 공식 문서는 <code>sudo</code>를 붙인 전역 설치를 경고합니다. 권한·보안 문제가 생겨요.</p>
+<h2>6. GPT·Gemini CLI도 세 줄은 똑같습니다</h2>
+<p>이 연재는 Claude Code로 설명하지만 도구 고르는 얘기는 아니에요. 주요 CLI 에이전트 셋은 골격이 같습니다.</p>
+<p>| 도구 | 설치 | 실행 |<br>
+|---|---|---|<br>
+| Claude Code | <code>irm <a href="https://claude.ai/install.ps1" target="_blank" rel="noopener">https://claude.ai/install.ps1</a> \| iex</code> (Windows PowerShell) | <code>claude</code> |<br>
+| Codex CLI | <code>npm install -g @openai/codex</code> | <code>codex</code> |<br>
+| Gemini CLI | <code>npm install -g @google/gemini-cli</code> | <code>gemini</code> |</p>
+<p>설치 방식만 다르고 그다음은 전부 같아요. 폴더로 이동해 실행하고, 그 폴더가 작업 공간이 되고, 승인을 거쳐 파일을 읽고 씁니다. Gemini CLI는 <code>npx @google/gemini-cli</code> 로 설치 없이 띄워볼 수도 있고요. 2장에서 판 <code>ai-work</code> 폴더는 도구를 갈아타도 그대로 씁니다.</p>
+<img src="img/04_tools.png" alt="상단 3개 박스 &#x27;claude&#x27;, &#x27;codex&#x27;, &#x27;gemini&#x27;가 각각 다른 점선 화살표로 내려와 하나의 공통 블록으로 합류. 공통 블록 3줄 &#x27;① 폴더로 이동해 실행&#x27;, &#x27;② 그 폴더가 작업 공간&#x27;, &#x27;③ 승인 후 읽기·쓰기&#x27;. 하단 캡션 &#x27;설치만 다르고 그다음은 같다&#x27;" loading="lazy">
+<p>오늘 남길 건 명령 몇 개가 아니라 순서 하나예요. 창 확인 → 폴더 지정 → 첫 명령. 폴더 이름은 꼭 영문으로 하시고요. 혹시 예전에 깔았다가 터미널 앞에서 막막해 덮어두신 적 있으신가요? 저도 그랬는데, 막혔던 게 도구가 아니라 폴더였더라고요!</p>
+<p>다음 편은 이 폴더에 첫 자동화를 걸어봅니다. &quot;이 폴더 정리해줘&quot; 한 줄로 시작하는데, 시키지도 않은 파일까지 건드렸던 얘기부터 하려고요.</p>
+<p>연재에서 만드는 폴더 구조와 규칙 파일은 makefield.ai에 순서대로 모아둡니다. 블로그는 한 편씩, 거기는 통째로요.</p>
+<p>태그: #클로드코드설치 #ClaudeCode설치 #클로드코드 #CLIAI에이전트 #ClaudeCode첫실행 #터미널AI설치 #한글경로오류 #윈도우터미널 #PowerShell설치 #CodexCLI #GeminiCLI #비개발자AI #AI자동화구축 #현장엔지니어AI #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224421515690" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
