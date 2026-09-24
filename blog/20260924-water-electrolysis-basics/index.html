@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수전해 원리, 중학교 물 전기분해와 뭐가 다를까 | 도면 읽는 AI</title>
+<meta name="description" content="물에 전극 두 개를 꽂고 전지를 연결하면 한쪽에서 수소가 올라옵니다. 중학교 과학실 실험 그대로예요. 수전해 원리는 정말로 그것과 같습니다. 그런데 왜 산업 설비는 컨테이너 한 칸을 통째로 쓸까요.">
+<link rel="canonical" href="https://makefield.ai/blog/20260924-water-electrolysis-basics/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="수전해 원리, 중학교 물 전기분해와 뭐가 다를까 | 도면 읽는 AI">
+<meta property="og:description" content="물에 전극 두 개를 꽂고 전지를 연결하면 한쪽에서 수소가 올라옵니다. 중학교 과학실 실험 그대로예요. 수전해 원리는 정말로 그것과 같습니다. 그런데 왜 산업 설비는 컨테이너 한 칸을 통째로 쓸까요.">
+<meta property="og:url" content="https://makefield.ai/blog/20260924-water-electrolysis-basics/">
+<meta property="og:image" content="https://makefield.ai/blog/20260924-water-electrolysis-basics/img/00-title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "수전해 원리, 중학교 물 전기분해와 뭐가 다를까", "datePublished": "2026-09-24", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260924-water-electrolysis-basics/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">논문 읽는 AI</span><span>2026-09-24</span></div>
+<h1>수전해 원리, 중학교 물 전기분해와 뭐가 다를까</h1>
+<article>
+<img src="img/00-title.png" alt="00-title.png — 타이틀카드" loading="lazy">
+<p>물에 전극 두 개를 꽂고 전지를 연결하면 한쪽에서 수소가 올라옵니다. 중학교 과학실 실험 그대로예요. <strong>수전해 원리는 정말로 그것과 같습니다.</strong> 그런데 왜 산업 설비는 컨테이너 한 칸을 통째로 쓸까요.</p>
+<p>국제에너지기구(IEA) 수소 협력과제 Task 43이 2025년에 낸 안전거리 지침 논문에 답의 절반이 있어요. 안전 문서인데 2장을 통째로 &quot;전해조가 무엇인가&quot;에 쓰거든요 [Vyazmina 외 2025].</p>
+<h2>1. 전기분해에 필요한 건 네 가지</h2>
+<p>논문의 정의부터. 전기분해란 전기(때로는 열)로 물을 수소와 산소 이온으로 분해하는 과정이며, <strong>&quot;저절로 일어나지 않는(nonspontaneous)&quot; 반응</strong>입니다 [Vyazmina 외 2025, §2.1]. 수소와 산소가 만나 물이 되는 쪽은 가만히 둬도 일어나죠. 그 반대라서 전기를 끊으면 그 자리에서 멈춥니다.</p>
+<p>필요한 건 <strong>전해질, 전극, 외부 전원</strong> 세 가지. 여기에 칸막이가 더해집니다. 이온교환막 같은 분리막인데, 만들어진 가스가 반대편 전극으로 넘어가지 못하게 막아요 [Vyazmina 외 2025, §2.1].</p>
+<img src="img/01-electrolysis-parts.png" alt="01-electrolysis-parts.png — 전기분해 4요소" loading="lazy">
+<p><strong class="u">전해질</strong>이 필요한 건, 전극 사이에서 전하를 나르는 게 전자가 아니라 전해질이 공급하는 <strong>이온</strong>이라서입니다 [Vyazmina 외 2025, §2.1]. 운반책이 다르면 방식 이름도 달라져요.</p>
+<p>| 방식 | 전해질 | 운전 온도 | 성숙도(TRL) |<br>
+|---|---|---|---|<br>
+| 알칼라인(AEC) | KOH 수용액 20~30% | 70~80 °C | 9 |<br>
+| PEM | 고체 고분자 양성자 전도막 | 약 80 °C | 9 |<br>
+| 음이온교환막(AEM) | 고체 OH⁻ 전도막 | 약 80 °C | 낮음 |<br>
+| 고체산화물(SOEC) | 산소이온 전도 세라믹 | 800 °C 초과 | 7~8 |</p>
+<p>알칼라인은 실적이 가장 많고 1 MW 이상 대형에서 가장 저렴합니다. 고체막 없이 알칼리 용액이 이온 통로예요 [Vyazmina 외 2025, §2.1·§2.3].</p>
+<h2>2. 셀 한 장은 약 2 V, 그래서 쌓습니다</h2>
+<p>교실 실험과 갈라지는 첫 지점입니다. 전극 한 쌍이 만드는 최소 단위가 셀이고, <strong>전극을 포개어 쌓은 것이 스택</strong>이에요. 안쪽 전극들이 <strong class="u">바이폴라 플레이트</strong>가 되어 양 끝 전극을 직렬로 잇습니다 [Vyazmina 외 2025, §2.1].</p>
+<p>왜 한 통에 크게 만들지 않을까요.</p>
+<p>&gt; 예전 설계에서는 스택의 전극들을 병렬로 연결했다. 현대식 스택은 높은 직류 전압(바이폴라 플레이트 수 × 2 V로 계산)을 요구하며, 단극(unipolar) 설계는 약 2 V 직류에서 작동하므로 전기적 손실이 비교적 크다. [Vyazmina 외 2025, §2.1]</p>
+<p>플레이트 100장이면 스택 전압은 약 200 V. 한 장짜리를 크게 만들면 2 V에 머물고, 논문 표현으로 &quot;전기적 손실이 비교적 크다&quot;는 상태가 됩니다. 왜 커지는지까지는 논문이 적지 않아요.</p>
+<img src="img/02-cell-vs-stack.png" alt="02-cell-vs-stack.png — 셀 하나와 스택" loading="lazy">
+<h2>3. 달라지는 건 원리가 아니라 &#x27;가스가 모이는 자리&#x27;</h2>
+<p>스택 혼자서는 아무것도 못 합니다. 논문은 부속 일체를 <strong>BoP(Balance of Plant)</strong>라 부르고 목록을 달아요. 산소/물 분리, 수처리, 수소/물 분리, 수소에서 산소 흔적과 수분을 걷어 내는 정제 [Vyazmina 외 2025, §2.2].</p>
+<p>위험이 어디 있는지는 이렇게 정리합니다 [Vyazmina 외 2025, §4].</p>
+<p>- 스택 자체는 자유 공간이 작아 폭발 위험 면에서는 <strong>덜 중요한</strong> 편<br>
+- 대신 <strong class="u">자유 체적</strong>이 큰 기액분리기·정제 장치·저장 용기가 더 중요. 가스가 쌓이고 섞일 수 있어서<br>
+- 위험은 보유량에 비례해 커지고, 상시 걸린 높은 전압은 그 자체로 꾸준한 점화원이 된다</p>
+<p>사고 기록도 같은 곳을 가리켜요. 1975년 영국 라포트 공장 폭발은 원인이 셀 스택 안에 있었는데 피해는 바깥에 몰렸습니다. 수소가 13% 넘게 섞인 곳은 산소측 분리 드럼이었고, 작업자 한 명이 사망했어요 [Vyazmina 외 2025, §7].</p>
+<p>시험관에서는 가스가 나오는 즉시 흩어집니다. 산업 설비는 모으고, 말리고, 압축하고, 저장하죠. 수전해 원리는 그대로인데 <strong>가스가 모여 앉을 공간이 새로 생기는</strong> 겁니다.</p>
+<img src="img/03-lab-vs-plant.png" alt="03-lab-vs-plant.png — 교실 실험과 산업 설비" loading="lazy">
+<h2>4. 이 논문을 AI에게 읽힌 방법</h2>
+<p>도구 이야기입니다. 어느 분야 논문에도 그대로 씁니다.</p>
+<p>1. <strong>페이지 구분자를 붙여 텍스트로 뽑는다.</strong> PDF를 통째로 던지지 않고 <code>=== PAGE n ===</code> 표시를 넣어 추출해요. 나중에 &quot;몇 쪽인가&quot;를 기계적으로 되물을 수 있습니다.<br>
+2. <strong>요약 대신 원문 문장을 시킨다.</strong> &quot;요약해 줘&quot;가 아니라 &quot;2장에서 전해질의 역할을 설명하는 문장을 쪽수와 함께 원문 그대로 붙여라&quot;처럼 묻습니다. 인용을 못 내놓으면 그 주장은 논문에 없는 거예요.<br>
+3. <strong>받은 문장을 원문에서 문자열로 찾는다.</strong> 검색해 안 걸리면 버립니다.</p>
+<p>이 3단계가 실제로 걸러낸 게 있어요. 이 글에서 가장 쓰고 싶었던 문장은 &quot;순수한 물은 전기가 잘 통하지 않아서 전해질을 넣는다&quot;였습니다. 그럴듯하죠. 그런데 이 논문에 그 문장은 없어요. 적힌 건 &quot;전하 운반은 전해질이 공급하는 이온이 한다&quot;까지고, 순수한 물이 전기를 통하느냐는 한 줄도 없어요. 그래서 1장을 논문이 쓴 범위에 맞춰 다시 썼습니다.</p>
+<p>셀 전압도 같습니다. 교과서에 흔한 1.23 V 같은 숫자는 이 논문에 없어요. 있는 건 &quot;약 2 V&quot;뿐이라 본문에도 그것만 남겼습니다.</p>
+<img src="img/04-ai-crosscheck.png" alt="04-ai-crosscheck.png — AI 대조 3단계" loading="lazy">
+<h2>5. 이 논문이 답하지 않는 것</h2>
+<p>교과서가 아니라 <strong>안전거리 방법론 문서</strong>라, 전해조 설명은 배경이고 전기화학 이론은 얕습니다. 공백도 스스로 인정해요. 30명 넘는 참여자 설문에서 전 세계에 통용되는 의무 규정이 없다는 점이 지적됐고, 피해 기준이 나라마다 제각각이었습니다 [Vyazmina 외 2025, §3.2]. 2020년 유럽 워크숍 회의록은 <strong>부분부하 시험 요구사항이 표준에 비어 있다</strong>고 적고요 [FCH 2 JU 2021].</p>
+<h2>6. FAQ</h2>
+<p><strong>Q. 수전해와 물의 전기분해는 다른 말인가요?</strong><br>
+같은 현상입니다. 논문도 electrolysis 하나로 써요. 다만 &#x27;수전해&#x27;는 수소를 제품으로 뽑는 설비 전체를 가리키는 쪽에 가깝습니다.</p>
+<p><strong>Q. 산소는 어디로 가나요?</strong><br>
+여러 설계에서 산소는 부산물이라 대기로 방출합니다. ISO 22734-1 요건을 따라야 한다고 논문이 명시해요 [Vyazmina 외 2025, §2.2].</p>
+<p><strong>Q. 알칼라인과 PEM 중 뭐가 낫나요?</strong><br>
+논문은 우열을 매기지 않아요. 알칼라인이 PEM보다 제조 비용이 낮다는 것까지만 적습니다 [Vyazmina 외 2025, §2.3].</p>
+<p>---</p>
+<p>원리는 교실 실험 그대로고, 규모가 커지며 새로 생기는 건 가스가 모여 앉을 공간입니다.</p>
+<p>다음 편은 알칼라인·PEM·AEM이 왜 갈라졌는지 읽어 볼게요. 여러분은 수소 이야기에서 효율과 안전 중 어느 쪽이 먼저 궁금하세요?</p>
+<p>&gt; 출처 ① Vyazmina, E. 외 18인 (2025). IEA TCP TASK 43 – Recommendations for Safety Distances Methodology for Alkaline and PEM Electrolyzers. *Hydrogen Safety*, 2(1), 47–67. DOI 10.58895/hysafe.18<br>
+&gt; 출처 ② Azkarate, I., Jordan, T., Moretto, P. (2021). Minutes of the FCH 2 JU Workshop on Safety of Electrolysis, 18 Nov 2020.<br>
+&gt; 본문 그림은 논문 도표 전재가 아니라 개념을 직접 그린 것입니다.</p>
+<p>→ 논문과 도면을 AI에게 읽히는 기록은 [makefield.ai](<a href="https://makefield.ai)에" target="_blank" rel="noopener">https://makefield.ai)에</a> 모읍니다.</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224421976071" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
