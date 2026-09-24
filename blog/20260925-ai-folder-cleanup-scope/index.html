@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 폴더 정리 시킬 때 파일 날리는 실수, 네 줄로 막습니다 | 도면 읽는 AI</title>
+<meta name="description" content="AI 폴더 정리를 시킬 때 사고는 AI가 멍청해서가 아니라 범위를 안 정해줘서 납니다. 프롬프트에 네 줄만 먼저 박으면 대부분 막혀요. 대상은 루트 파일만, 삭제 금지 이동만, 규칙에 없는 건 그대로, 실행 전에 계획표 먼저. 이 네 줄입니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20260925-ai-folder-cleanup-scope/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 폴더 정리 시킬 때 파일 날리는 실수, 네 줄로 막습니다 | 도면 읽는 AI">
+<meta property="og:description" content="AI 폴더 정리를 시킬 때 사고는 AI가 멍청해서가 아니라 범위를 안 정해줘서 납니다. 프롬프트에 네 줄만 먼저 박으면 대부분 막혀요. 대상은 루트 파일만, 삭제 금지 이동만, 규칙에 없는 건 그대로, 실행 전에 계획표 먼저. 이 네 줄입니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20260925-ai-folder-cleanup-scope/">
+<meta property="og:image" content="https://makefield.ai/blog/20260925-ai-folder-cleanup-scope/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 폴더 정리 시킬 때 파일 날리는 실수, 네 줄로 막습니다", "datePublished": "2026-09-25", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260925-ai-folder-cleanup-scope/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-09-25</span></div>
+<h1>AI 폴더 정리 시킬 때 파일 날리는 실수, 네 줄로 막습니다</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 폴더 정리 시킬 때 파일 날리는 실수 / 네 줄로 막습니다&quot;" loading="lazy">
+<p><strong>AI 폴더 정리를 시킬 때 사고는 AI가 멍청해서가 아니라 범위를 안 정해줘서 납니다. 프롬프트에 네 줄만 먼저 박으면 대부분 막혀요.</strong> 대상은 루트 파일만, 삭제 금지 이동만, 규칙에 없는 건 그대로, 실행 전에 계획표 먼저. 이 네 줄입니다.</p>
+<p>지난 편에서 설치하고 <code>ai-work</code> 폴더까지 만들었죠. 오늘은 그 폴더에 첫 일을 시킵니다.</p>
+<p>현장 설비 돌리는 일로 15년을 채웠고 코드는 필요할 때만 겨우 씁니다. 그러니 &quot;이 폴더 정리해줘&quot; 한 줄을 처음 쳐보는 분 기준으로만 쓸게요. 2026년 9월 기준이고, 아래 출력은 전부 제 PC에서 오늘 직접 돌린 것 그대로입니다.</p>
+<h2>1. &quot;이 폴더 정리해줘&quot;가 왜 위험한 한 줄인가</h2>
+<p><strong>정리라는 말에는 기준이 없습니다.</strong> 그래서 이 한 줄을 던지는 순간 기준을 정하는 권한이 통째로 AI에게 넘어가요.</p>
+<p>AI 입장에선 정할 게 한두 개가 아닙니다. 확장자로 묶을까 날짜로 묶을까. 하위 폴더도 대상인가. <code>report_final.pdf</code>와 <code>report_final2.pdf</code>는 중복인가 아닌가. 중복이면 지워도 되나.</p>
+<p>전부 그럴듯하게 결정되고, 그 결정이 파일에 바로 반영돼요. 채팅창이면 틀린 답이 화면에 뜨고 끝이지만 CLI 에이전트는 결과가 <strong class="u">디스크에 남습니다</strong>.</p>
+<p>| 내가 안 정해준 것 | AI가 대신 정하는 것 |<br>
+|---|---|<br>
+| 대상 범위 | 하위 폴더까지 훑을지 |<br>
+| 분류 기준 | 확장자냐 날짜냐 이름이냐 |<br>
+| 삭제 권한 | 중복·임시파일을 지울지 |<br>
+| 실행 시점 | 물어보고 할지 바로 할지 |</p>
+<img src="img/02_scope.png" alt="동심 사각형 2개. 바깥 회색 사각형 라벨 &#x27;작업 폴더 전체&#x27;, 안쪽 초록 사각형 라벨 &#x27;이번 작업 범위 — 루트 파일만&#x27; 안에 문서 아이콘 5개. 바깥 영역에 빨강 점선 박스 &#x27;하위 폴더 · 규칙에 없는 확장자 = 손대지 않음&#x27; 표시. 하단 캡션 &#x27;범위를 안 그리면 바깥까지 전부 대상이 된다&#x27;" loading="lazy">
+<h2>2. 그래서 프롬프트에 경계부터 씁니다</h2>
+<p><strong>정리를 잘 시키는 법은 좋은 요청 문장을 찾는 게 아니라, 하지 말 것을 먼저 적는 겁니다.</strong> 제가 쓰는 네 줄은 이래요.</p>
+<pre><code>&gt; C:\ai-work\sandbox-ep03 폴더만 정리해줘. 조건은 이거야.
+&gt; 1) 하위 폴더는 건드리지 마. 루트에 있는 파일만 대상이야
+&gt; 2) 삭제·덮어쓰기 금지. 이동만 한다
+&gt; 3) 규칙에 없는 확장자는 그냥 둬
+&gt; 4) 실행 전에 &#x27;어느 파일을 어디로&#x27; 표로 먼저 보여줘. 내가 OK 하면 그때 옮겨</code></pre>
+<p>세 번째 줄이 은근히 중요해요. 애매한 파일을 만났을 때 AI에게 <strong>판단하라고 하지 말고 그냥 두라고</strong> 시키는 겁니다. 판단시키면 없는 규칙을 지어내거든요.</p>
+<p>그리고 연습은 원본 말고 복사본으로 하세요. 저는 샘플 폴더를 하나 만들어 씁니다.</p>
+<pre><code>mkdir C:\ai-work\sandbox-ep03</code></pre>
+<p>맥·리눅스면 <code>mkdir -p ~/ai-work/sandbox-ep03</code> 이고요. 이 연재는 Claude Code로 설명하지만 도구 고르는 얘기는 아니에요. 같은 네 줄을 GPT의 Codex CLI(<code>npm install -g @openai/codex</code> 설치 후 <code>codex</code>), Gemini CLI(<code>npm install -g @google/gemini-cli</code> 설치 후 <code>gemini</code>)에 그대로 넣어도 됩니다. 승인 화면을 거쳐 파일을 옮긴다는 골격이 같거든요.</p>
+<h2>3. 계획표가 먼저입니다. 이 단계에서 파일은 한 개도 안 움직여요</h2>
+<p><strong>사람이 계획을 보고 승인하기 전까지 디스크를 건드리지 않는 것, 이걸 드라이런(dry-run)이라고 합니다.</strong> 정리 자동화에서 안전장치 역할을 하는 건 사실상 이거 하나예요.</p>
+<p>제 연습 폴더엔 파일 18개와 하위 폴더 하나가 있었어요. 먼저 뭐가 있는지부터 셉니다.</p>
+<pre><code>Count Name
+----- ----
+    1 .csv
+    4 .txt
+    2 .pdf
+    1 .exe
+    2 .xlsx
+    3 .docx
+    3 .jpg
+    2 .png</code></pre>
+<p>그다음 4번 조건대로 계획표를 받았습니다. 일부만 옮기면 이렇게 나와요.</p>
+<p>| 원본 | 이동할 곳 | 사유 |<br>
+|---|---|---|<br>
+| 견적서_v1.xlsx | 문서\ | 확장자 규칙 |<br>
+| 회의록_0901.docx | 문서\ | 확장자 규칙 |<br>
+| 사진_001.jpg | 이미지\ | 확장자 규칙 |<br>
+| 캡처_1.png | 이미지\ | 확장자 규칙 |<br>
+| log_0901.txt | 메모\ | 확장자 규칙 |<br>
+| setup.exe | (제외) | 규칙에 없는 확장자 |</p>
+<pre><code>이동대상: 17 / 제외: 1
+실제변경: 없음 (루트 파일 18개 그대로)</code></pre>
+<p>봐야 할 건 마지막 두 줄입니다. 이동대상 17 + 제외 1 = 18로, 제 루트 파일 수와 정확히 맞아요. <strong>표에 안 나온 파일이 없다</strong>는 뜻입니다. 계획표를 받으면 예쁜 분류보다 이 합계부터 맞춰보세요.</p>
+<p>승인할 땐 되돌릴 근거를 같이 남기라고 시킵니다.</p>
+<pre><code>&gt; 좋아, 그대로 실행해. 단 옮기기 전에 파일명·원경로·새경로·md5를
+&gt; C:\ai-work\manifest_ep03.csv 에 남겨. 정리 대상 폴더 바깥에 저장해줘</code></pre>
+<p><code>md5</code>는 파일 내용을 숫자 지문처럼 뽑아둔 값이에요. 나중에 파일이 온전한지 대조할 때 씁니다. 이 기록은 꼭 <strong>대상 폴더 바깥</strong>에 두세요. 저는 오늘 계획 파일을 대상 폴더 안에 만들었다가, 다음 집계에서 그게 <code>.csv</code> 하나로 같이 잡히는 걸 봤어요. 정리 도구가 자기가 만든 파일을 다음 판에 정리 대상으로 삼는 겁니다.</p>
+<img src="img/03_dryrun.png" alt="가로 4단계 흐름. ① 회색 박스 &#x27;요청 — 범위 4줄&#x27; ② 노랑 박스 &#x27;계획표 (드라이런) — 디스크 변경 0&#x27; ③ 사람 아이콘이 붙은 초록 박스 &#x27;사람 승인&#x27; ④ 초록 박스 &#x27;실행 + 매니페스트 기록&#x27;. ②와 ③ 사이에 굵은 세로 점선과 라벨 &#x27;STOP — 여기를 건너뛰면 사고&#x27;. 하단 캡션 &#x27;안전장치는 프롬프트가 아니라 이 정지선이다&#x27;" loading="lazy">
+<h2>4. 눈으로 확인하는 숫자 세 개</h2>
+<p><strong>실행했다는 말과 제대로 됐다는 건 다른 얘기입니다.</strong> AI가 &quot;정리 완료했습니다&quot;라고 말하는 건 아무 증거가 아니에요. 저는 세 개만 봅니다.</p>
+<pre><code>이동전 총 파일수: 19
+이동후 총 파일수: 19
+매니페스트 기록: 17 건
+루트에 남은 파일: setup.exe
+기존폴더 내용: 건드리지마.txt</code></pre>
+<img src="img/04_check.png" alt="가로 카드 3개. ① &#x27;총 파일 개수&#x27; 큰 글씨 &#x27;19 → 19&#x27; 아래 작은 글씨 &#x27;이동 전 = 이동 후 / 줄면 삭제가 섞인 것&#x27; ② &#x27;제외 대상&#x27; 큰 글씨 &#x27;제자리&#x27; 아래 &#x27;setup.exe · 하위폴더 / 범위가 안 샜다&#x27; ③ &#x27;되돌리기&#x27; 큰 글씨 &#x27;0 건&#x27; 아래 &#x27;md5 불일치 없음 / 안전망이 실제로 작동&#x27;. 하단 빨강 캡션 &#x27;개수가 줄었다면 이동이 아니라 삭제가 섞인 것이다&#x27;" loading="lazy">
+<p><strong>하나, 총 파일 개수가 그대로인가.</strong> 19에서 19. 이동만 했다면 전체 개수는 변할 수 없어요. 숫자가 줄면 뭔가 지워진 겁니다. 이 개수는 AI 말을 안 믿고 직접 셀 수 있어요.</p>
+<pre><code>(Get-ChildItem C:\ai-work\sandbox-ep03 -Recurse -File).Count</code></pre>
+<p>맥·리눅스면 <code>find ~/ai-work/sandbox-ep03 -type f | wc -l</code> 입니다.</p>
+<p><strong>둘, 안 건드리기로 한 게 그대로 있는가.</strong> 규칙에 없던 <code>setup.exe</code>는 루트에 남았고 하위 폴더 파일도 제자리입니다. 조건 1번과 3번이 지켜졌다는 증거예요.</p>
+<p><strong>셋, 되돌아가는가.</strong> 백업은 만들 때가 아니라 되돌려봤을 때 백업입니다. 매니페스트를 보고 전부 원위치시켜 봤어요.</p>
+<pre><code>되돌린 뒤 루트 파일수: 18
+총 파일수: 19
+md5 불일치: 0 건</code></pre>
+<p>원래대로 18개, 내용도 한 건도 안 상했습니다. 이 확인까지 해보고 나서야 진짜 폴더에 같은 작업을 시켰어요.</p>
+<p>| 확인 항목 | 통과 기준 | 실패면 |<br>
+|---|---|---|<br>
+| 총 파일 개수 | 이동 전 = 이동 후 | 삭제가 섞였다 |<br>
+| 제외 대상 | 제자리에 그대로 | 범위가 새어나갔다 |<br>
+| 되돌리기 | 원위치 + 내용 무손상 | 안전망이 없는 상태 |</p>
+<h2>5. 제가 문서 187개를 날린 자리</h2>
+<p><strong>저는 이 습관을 사고 나고 나서 들였습니다.</strong> 개인 문서를 정리해주던 동기화 스크립트를 돌리던 때예요.</p>
+<p>미분류함 목록을 불러오는 명령이 문서 165개를 돌려줬어요. 저는 그걸 <strong>어디에도 안 담긴 떠돌이 문서</strong>라고 읽고 전부 삭제를 걸었습니다. 그게 아니었어요. 그 목록엔 폴더에 멀쩡히 들어 있던 문서까지 섞여 있었거든요. 이름만 &#x27;미분류함&#x27;이지 전체 목록에 가까웠던 겁니다.</p>
+<p>하필 그때 휴지통 비우기가 돌아가는 중이었어요. 삭제된 문서들이 휴지통에 잠깐 머물지도 못하고 그대로 영구 삭제됐습니다. 그리고 저는 같은 방법을 개인 쪽에도 한 번 더 썼어요. 거기서 187개가 더 날아갔고요..</p>
+<p>기록에 남긴 교훈은 한 줄이었습니다. <strong>판단하기 전에 1개만 시험 삭제하고 폴더 문서 수가 어떻게 변하는지 먼저 볼 것.</strong> 한 개만 지워봤으면 1개 선에서 끝났을 일이에요.</p>
+<p>그 뒤로 대량 작업엔 무조건 계획표 단계를 넣습니다. 지식 파일 191개를 폴더별로 재분류할 때가 그랬어요. 드라이런에서 자동 분류가 확실한 건 17건뿐이었고, 나머지 <strong class="u">162건은 사람 판단</strong>으로 남겼습니다. 폴더 체계 자체가 없는 영역이라 밀어붙였으면 없는 폴더 이름을 지어냈을 거예요.</p>
+<p>재밌는 건 그다음입니다. 옮기고 나서 미분류 개수를 다시 세니 191에서 173으로 18이 줄었어요. 제가 옮긴 건 17건인데 1건이 안 맞습니다. 끝까지 파봤더니 실제 파일은 오래전에 사라졌는데 목록에만 남아 있던 낡은 기록 하나가 같이 청소된 거였어요. 제 작업과 무관했고 오히려 정합성이 좋아진 쪽이었습니다.</p>
+<p>숫자가 1 안 맞을 때 넘어가느냐 파느냐. 이게 나중에 내 폴더를 믿을 수 있는지를 가릅니다.</p>
+<h2>6. AI 폴더 정리 시킬 때 자주 걸리는 질문</h2>
+<p><strong>Q. 계획표 없이 그냥 시키면 정말 문제가 생기나요?</strong><br>
+작은 폴더면 대개 잘 됩니다. 문제는 파일이 많아질수록 계획표를 안 보고 승인 버튼만 누르게 된다는 거예요. 사고는 양이 많을 때 나고, 그땐 되돌릴 근거가 있느냐만 남습니다.</p>
+<p><strong>Q. 중복 파일 정리도 맡겨도 되나요?</strong><br>
+이름이 비슷하다고 내용이 같은 건 아니에요. 맡기더라도 md5 같은 내용 지문이 완전히 같은 것만 대상으로 못 박고, 삭제 대신 <code>_중복</code> 폴더로 이동시키세요.</p>
+<p><strong>Q. 승인 화면에서 &quot;항상 허용&quot;을 눌러도 되나요?</strong><br>
+읽기는 괜찮습니다. 이동과 삭제는 권하지 않아요. 파일을 만지는 동작마다 한 번씩 멈추는 게 지금 단계에선 유일한 안전장치입니다.</p>
+<p>오늘 돌려보실 분을 위한 체크리스트로 닫을게요.</p>
+<p>- [ ] 원본 말고 복사본 폴더에서 연습했다<br>
+- [ ] 프롬프트에 범위 네 줄(대상·삭제금지·제외·계획표 먼저)을 넣었다<br>
+- [ ] 계획표의 이동 + 제외 합계가 실제 파일 수와 맞는지 봤다<br>
+- [ ] 매니페스트를 대상 폴더 바깥에 남겼다<br>
+- [ ] 이동 전후 총 개수를 직접 세어 대조하고, 한 번은 되돌려봤다</p>
+<p>정리는 AI가 하고 판정은 제가 합니다. 오늘 남길 건 명령어가 아니라 이 역할 분담 하나예요! 혹시 AI한테 파일 맡겼다가 엉뚱한 게 움직여서 놀란 적 있으신가요? 저는 그게 187개였습니다..</p>
+<p>다음 편은 기록 얘기예요. 오늘 정한 이 네 줄을 내일 AI는 하나도 기억 못 하거든요.</p>
+<p>연재에서 쓰는 프롬프트 네 줄과 확인 절차는 makefield.ai에도 순서대로 정리해두고 있어요.</p>
+<p>태그: #AI폴더정리 #AI파일정리 #클로드코드 #ClaudeCode #CLIAI에이전트 #드라이런 #파일정리자동화 #AI에게일시키기 #매니페스트 #롤백 #CodexCLI #GeminiCLI #비개발자AI #AI자동화구축 #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224422220942" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
