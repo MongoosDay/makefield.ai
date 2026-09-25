@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>알칼라인 PEM 차이, 논문이 보여준 맞바꿈 5가지 | 도면 읽는 AI</title>
+<meta name="description" content="수전해 방식이 여러 개인 건 아직 승자가 안 정해져서가 아니에요. 알칼라인 PEM 차이는 우열이 아니라 맞바꿈입니다. 싸고 오래 가는 쪽과 빠르고 촘촘한 쪽이 서로 교환되는 구조라 하나로 통일이 안 됩니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20260925-alkaline-pem-tradeoff/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="알칼라인 PEM 차이, 논문이 보여준 맞바꿈 5가지 | 도면 읽는 AI">
+<meta property="og:description" content="수전해 방식이 여러 개인 건 아직 승자가 안 정해져서가 아니에요. 알칼라인 PEM 차이는 우열이 아니라 맞바꿈입니다. 싸고 오래 가는 쪽과 빠르고 촘촘한 쪽이 서로 교환되는 구조라 하나로 통일이 안 됩니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20260925-alkaline-pem-tradeoff/">
+<meta property="og:image" content="https://makefield.ai/blog/20260925-alkaline-pem-tradeoff/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "알칼라인 PEM 차이, 논문이 보여준 맞바꿈 5가지", "datePublished": "2026-09-25", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260925-alkaline-pem-tradeoff/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">논문 읽는 AI</span><span>2026-09-25</span></div>
+<h1>알칼라인 PEM 차이, 논문이 보여준 맞바꿈 5가지</h1>
+<article>
+<img src="img/01_title.png" alt="00-title.png — 타이틀카드" loading="lazy">
+<p>수전해 방식이 여러 개인 건 아직 승자가 안 정해져서가 아니에요. <strong>알칼라인 PEM 차이는 우열이 아니라 맞바꿈</strong>입니다. 싸고 오래 가는 쪽과 빠르고 촘촘한 쪽이 서로 교환되는 구조라 하나로 통일이 안 됩니다.</p>
+<p>이번에 읽은 건 노르웨이과학기술대(NTNU)와 SINTEF가 2024년 ESREL에 낸 전해조 사고 리뷰예요 [Tuhi 외 2024]. 비교 논문이 아니라 사고 논문인데, 오히려 그래서 차이가 선명하게 나옵니다. 사고가 서로 다른 자리에서 나거든요.</p>
+<h2>1. 알칼라인 PEM 차이는 이렇게 갈립니다</h2>
+<p>논문이 1장과 2장에 적은 대비를 그대로 옮기면 이렇습니다.</p>
+<p>| 항목 | 알칼라인 | PEM |<br>
+|---|---|---|<br>
+| 성숙도 | 대규모 전해의 표준, 매우 성숙 | 더 최근 기술, 중소 규모 중심 |<br>
+| 투자·유지비 | 더 낮음 | 더 비쌈(백금·이리듐 촉매, 티타늄 부품) |<br>
+| 수명 | 더 김 | 더 짧음 |<br>
+| 전해질 | KOH 또는 NaOH 수용액, 약 30 중량% | 얇은 산성 고분자막(주로 Nafion 계열) |<br>
+| 운전 | — | 더 유연·소형·고효율, 더 높은 전류밀도·온도·압력 |</p>
+<p>알칼라인이 싼 대신 <strong class="u">약 30 중량%</strong> 알칼리 용액이 설비 안을 계속 돕니다. 논문은 &quot;순환하는 다량의 가성 전해액&quot;을 알칼라인의 주요 안전 이슈로 못 박아요 [Tuhi 외 2024, §2.1]. PEM은 반대쪽입니다. 얇은 고분자막이 가스가 서로 넘어가는 걸 줄여 가연성 혼합물 위험을 낮추는데 [Tuhi 외 2024, §2.2], 그 대가가 <strong class="u">백금과 이리듐</strong>, 그리고 티타늄이에요. 값을 깎으면 유연성이 깎이고, 유연성을 사면 값을 냅니다.</p>
+<h2>2. 고장 데이터가 없어서, 사고를 뒤졌습니다</h2>
+<p>논문이 붙잡은 문제는 따로 있어요. <strong>전해조 고장 데이터가 부족합니다</strong> [Tuhi 외 2024, §1]. 그래서 지난 사고 시나리오를 분석하는 게 안전 운전을 확보하는 데 큰 역할을 한다고 적어요.</p>
+<p>유럽 공동연구센터가 만든 수소 사고 데이터베이스 HIAD 2.1에는 수소 관련 사고가 713건 올라와 있는데, 그중 전해조 관련은 <strong>8건뿐</strong>이었습니다. 문헌 검색으로 3건을 더해 1975년부터 2021년까지 총 11건을 훑었어요 [Tuhi 외 2024, §4.1]. 전해조 사고가 통계로 잡히기엔 표본이 이만큼 얕다는 뜻이기도 합니다.</p>
+<h2>3. 사고가 나는 자리도 방식마다 갈립니다</h2>
+<p>11건을 방식별로 놓고 보면 원인이 갈라져요.</p>
+<p><strong>알칼라인 쪽</strong>은 침전물(슬러지)과 전해액입니다. 1975년 영국 라포트 공장 폭발은 셀에 두껍게 쌓인 슬러지가 전극과 분리막을 부식시켜 셀이 물리적으로 무너진 게 발단이었어요. 1690 L 산소 드럼에 수소가 약 13.5% 섞였고, 충격파는 TNT 22 kg에 해당했으며, 작업자 한 명이 사망했습니다. 2021년 독일 KOH 누출도 유로에 쌓인 침전물이 시작이었고요 [Tuhi 외 2024, Table 1].</p>
+<p><strong>PEM 쪽</strong>은 막입니다. 2012년 실험실에서 1.8 A/cm²의 높은 전류밀도로 시험하던 중 막이 천공됐어요. 개별 셀 전압이 갑자기 떨어지고 산소 쪽 수소량이 늘어난 것으로 고장을 잡아냈습니다 [Tuhi 외 2024, §4.1].</p>
+<p>다만 결말은 한 곳으로 모입니다. 논문이 정리한 최악의 결과는 <strong>전해조 내부에서 수소·산소 혼합물이 만들어져 폭발하는 것</strong> 하나예요 [Tuhi 외 2024, §4.2]. 2019년 국내 사고도 막 열화로 산소가 수소 쪽에 흘러 들어간 경우로 분류돼 있고, 사망 3명·부상 6명으로 기록됩니다 [Tuhi 외 2024, Table 1].</p>
+<h2>4. &#x27;빠르다&#x27;는 게 공짜는 아니에요</h2>
+<p>재생에너지는 출력이 오르내려서 전해조가 그 변동을 따라가야 합니다. PEM이 유연하다는 게 여기서 값을 해요. 전류밀도가 수소 생산율을 직접 좌우하니까요. 그런데 논문이 바로 단서를 답니다.</p>
+<p>&gt; 전류밀도의 급격한 변화는 전해조 부품을 손상시키는 것으로 나타났으며, 이는 조작 변수로서의 사용을 제한할 수 있다. [Tuhi 외 2024, §4.4]</p>
+<p>빠르게 움직일 수 있다는 것과 빠르게 움직여도 된다는 건 다른 말입니다. 전류밀도는 크로스오버율과 전압 열화에도 함께 영향을 주고, 온도 역시 크로스오버율을 좌우하는데 <strong>특히 낮은 전류밀도에서</strong> 그렇다고 적혀 있어요 [Tuhi 외 2024, §4.4]. 부하를 낮출수록 신경 쓸 게 늘어납니다.</p>
+<p>감시 목록도 방식마다 달라요. 논문은 PEM 제어변수를 고를 때 <strong class="u">전해액 유량</strong>을 뺍니다. PEM에는 해당이 없거든요 [Tuhi 외 2024, §4.4]. 반대로 침전물 위험이 있는 알칼라인에서는 셀 온도와 전해액 유량이 감시 대상으로 남습니다 [Tuhi 외 2024, Table 2].</p>
+<h2>5. AEM은 왜 안 나오나 — 이 논문을 AI에게 읽힌 방법</h2>
+<p>여기부터는 도구 이야기예요. 어느 분야 논문에나 그대로 씁니다.</p>
+<p>AI에게 &quot;이 논문 기준으로 알칼라인·PEM·AEM을 비교해 줘&quot;라고 시켰더니 세 방식이 나란히 들어간 표를 그럴듯하게 만들어 줬어요. 문제는 <strong>이 논문에 AEM이 한 번도 안 나온다</strong>는 겁니다. 전문에서 anion, AEM, alkaline exchange 세 문자열을 찾으면 0건이에요. 그래서 표를 지웠고, 그 과정에서 쓴 방법이 세 가지입니다.</p>
+<p>1. <strong>주장마다 원문 문장을 내놓게 하고, 그 문장을 문자열로 검색한다.</strong> &quot;요약해 줘&quot;가 아니라 &quot;근거 문장을 절 번호와 함께 원문 그대로 붙여라&quot;로 묻습니다. 검색에 안 걸리면 그 주장은 논문에 없는 거예요.<br>
+2. <strong>끊긴 문장을 찾아 눈으로 다시 읽는다.</strong> 이 PDF는 텍스트로 뽑으면 한 문장이 <code>temperatures, and p</code> 에서 잘리고 다음 줄이 <code>Nevertheless</code>로 시작해요. 범인은 인용 표기 <code>(Falcão et al., 2020)</code>의 <code>ã</code>였습니다. 2장 끝에서도 <code>by an electrolyte (Fal</code> 로 같은 자리가 끊기고요. 그래서 그 좌표만 이미지로 렌더링해 육안으로 읽었습니다. 잘린 문장은 AI가 조용히 이어 붙이니까, <strong>마침표 없이 끝나거나 소문자로 끝나는 줄</strong>을 추출 실패 신호로 잡으면 됩니다.<br>
+3. <strong>관측인지 인용인지, 그리고 몇 년 것인지 구분시킨다.</strong> 이 논문의 비교 서술은 대부분 남의 논문을 옮긴 거예요. 비용·수명은 (Rizwan 외 2021), 유연성·압력은 (Falcão 외 2020), 1~30 bar와 50~80 °C는 (IRENA 2020)에서 왔습니다 [Tuhi 외 2024, §1·§4.4]. 순도 기준(산소 98.8%·수소 99.7%에서 경보, 산소 98%·수소 99.5%에서 정지)은 더 멀어서, <strong>1976년 영국 공장감독국 사고 보고서</strong>를 재인용한 값이에요 [Tuhi 외 2024, §4.3]. 2024년 논문에 실렸다고 2024년 수치가 아닙니다.</p>
+<h2>6. 남는 질문들 — 이 논문이 답하지 않는 것</h2>
+<p>이 논문은 비교 논문이 아니라 사고 리뷰라 비어 있는 데가 있어요. 가격을 숫자로 대지 않고, AEM과 고체산화물을 다루지 않으며, 식별한 운전 조건을 <strong>어떤 방법으로 감시할지는 이 연구에서 논의하지 않는다</strong>고 직접 밝힙니다 [Tuhi 외 2024, §1].</p>
+<p><strong>Q. 알칼라인 PEM 차이를 한 줄로 말하면요?</strong><br>
+논문은 우열을 매기지 않아요. 비용·수명은 알칼라인, 유연성·압력·전류밀도는 PEM이라는 대비까지만 적습니다 [Tuhi 외 2024, §1].</p>
+<p><strong>Q. 두 방식의 사고 원인이 완전히 다른가요?</strong><br>
+출발점이 다르고 결말이 같아요. 알칼라인은 침전물과 부식, PEM은 막 천공에서 시작하는데 도착지는 둘 다 수소·산소 혼합입니다 [Tuhi 외 2024, §4.2].</p>
+<p><strong>Q. 논문이 꼽은 위험 요인은 몇 가지인가요?</strong><br>
+다섯입니다. 막 손상, 가스 분리기의 물리적 파손, 전극 부식, 가스 크로스오버, 침전물 생성 [Tuhi 외 2024, §4.2].</p>
+<p>---</p>
+<p>종류가 나뉜 건 기술이 미완이라서가 아니라 맞바꿀 게 있어서고, 사고 기록은 그 맞바꿈이 어디서 대가를 치르는지 보여 줍니다. 다음 편에서는 배터리로 안 되는 저장 이야기를 같은 방식으로 읽어 볼게요.</p>
+<p>&gt; 출처 Tuhi, F. Y., Fredriksen, M., Bucelli, M., Liu, Y. (2024). Accidents Review And Control Assessment For Reliable Operation Of PEM Water Electrolyzer Stacks. *Advances in Reliability, Safety and Security, Part 9*, ESREL 2024 Monograph Book Series. ISBN 978-83-68136-08-1.<br>
+&gt; 본문 그림은 논문 도표 전재가 아니라 개념을 직접 그린 것입니다.</p>
+<p>→ 원문과 대조하며 걸러낸 것들은 [makefield.ai](<a href="https://makefield.ai)에" target="_blank" rel="noopener">https://makefield.ai)에</a> 그대로 남겨 둡니다.</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224422617975" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
