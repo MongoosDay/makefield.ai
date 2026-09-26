@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://makefield.ai/</loc></url>
   <url><loc>https://makefield.ai/blog/</loc></url>
+  <url><loc>https://makefield.ai/blog/20260926-shunt-current-why-stacked-cells-leak/</loc><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://makefield.ai/blog/20260926-ai-session-memory-claude-md/</loc><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://makefield.ai/blog/20260925-alkaline-pem-tradeoff/</loc><lastmod>2026-09-25</lastmod></url>
   <url><loc>https://makefield.ai/blog/20260925-ai-folder-cleanup-scope/</loc><lastmod>2026-09-25</lastmod></url>

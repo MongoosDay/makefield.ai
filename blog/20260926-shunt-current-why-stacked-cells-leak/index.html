@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기생전류란? 셀을 쌓으면 전기가 새는 구조 (논문 해설) | 도면 읽는 AI</title>
+<meta name="description" content="전해조에 넣은 전기가 전부 수소가 되지는 않습니다. 일부는 셀을 통과하지 않고 전해액 배관을 따라 그냥 흘러가요. 이게 기생전류(shunt current) 입니다. 오늘 읽은 논문은 정격 운전에서도 스택에 넣은 전력의 16.8%가 이 길로 샜다고 계산합니다 [Sakas et a">
+<link rel="canonical" href="https://makefield.ai/blog/20260926-shunt-current-why-stacked-cells-leak/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="기생전류란? 셀을 쌓으면 전기가 새는 구조 (논문 해설) | 도면 읽는 AI">
+<meta property="og:description" content="전해조에 넣은 전기가 전부 수소가 되지는 않습니다. 일부는 셀을 통과하지 않고 전해액 배관을 따라 그냥 흘러가요. 이게 기생전류(shunt current) 입니다. 오늘 읽은 논문은 정격 운전에서도 스택에 넣은 전력의 16.8%가 이 길로 샜다고 계산합니다 [Sakas et a">
+<meta property="og:url" content="https://makefield.ai/blog/20260926-shunt-current-why-stacked-cells-leak/">
+<meta property="og:image" content="https://makefield.ai/blog/20260926-shunt-current-why-stacked-cells-leak/img/00_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "기생전류란? 셀을 쌓으면 전기가 새는 구조 (논문 해설)", "datePublished": "2026-09-26", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260926-shunt-current-why-stacked-cells-leak/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">논문 읽는 AI</span><span>2026-09-26</span></div>
+<h1>기생전류란? 셀을 쌓으면 전기가 새는 구조 (논문 해설)</h1>
+<article>
+<img src="img/00_title.png" alt="타이틀카드 — 00_title.png" loading="lazy">
+<p>전해조에 넣은 전기가 전부 수소가 되지는 않습니다. 일부는 셀을 통과하지 않고 전해액 배관을 따라 그냥 흘러가요.<br>
+이게 <strong>기생전류(shunt current)</strong> 입니다. 오늘 읽은 논문은 정격 운전에서도 스택에 넣은 전력의 16.8%가 이 길로 샜다고 계산합니다 [Sakas et al. 2024].</p>
+<p>AI로 논문 한 편씩 읽고 정리하는 연재예요. 이번엔 핀란드 LUT 연구팀이 2024년 Renewable Energy에 낸 오픈액세스 논문 13쪽입니다.</p>
+<h2>기생전류란 무엇이고, 왜 셀을 쌓으면 생기나요</h2>
+<p>스택의 전기회로에서 <strong>전해 경로가 아닌 저저항 경로로 흐르는 전류</strong>를 말합니다. parasitic·leakage·bypass current라고도 불러요 [Sakas et al. 2024].</p>
+<p>원인은 고장이 아니라 구조입니다.</p>
+<p>산업용 스택에서 셀은 전기적으로 <strong>직렬</strong>입니다. 전압을 높여야 같은 출력을 낮은 전류로 보낼 수 있으니까요. 그런데 전해액을 돌리는 배관은 모든 셀에 <strong>병렬</strong>로 물려 있어요. 한 통에서 퍼서 똑같이 나눠주니까요.</p>
+<p>전해액은 그 자체가 전기가 통하는 액체입니다. 그래서 <strong class="u">공통 배관</strong> 이 셀과 셀을 잇는 &#x27;염다리(salt bridge)&#x27;가 돼요. 첫 셀과 마지막 셀 사이 전압차가 크니, 전류 입장에선 셀을 통과하는 것보다 배관으로 돌아가는 쪽이 편한 길입니다 [Sakas et al. 2024, Fig.1].</p>
+<img src="img/01_shunt_path.png" alt="셀은 전기로 직렬, 배관으로는 병렬 — 01_shunt_path.png" loading="lazy">
+<p>피해는 효율에서 끝나지 않아요. 전력 손실, 전류효율 저하, 셀별 성능 불균일, 부식, 수력 계통 고장, 가스 오염까지 나열돼 있습니다 [Grimes et al., Sakas et al. 2024 재인용].</p>
+<h2>그럼 배관을 셀마다 따로 빼면 되지 않나요</h2>
+<p>분리형 구조도 있습니다. 그런데도 공통 배관을 쓰는 이유는 세 가지예요 [Sakas et al. 2024].</p>
+<p>| 공통 배관을 쓰는 이유 | 대신 치르는 대가 |<br>
+|---|---|<br>
+| 모든 셀에 균일한 전해액 공급 | 셀 사이에 전류 우회로가 열림 |<br>
+| 열전달·냉각 등 열관리 효율 | 전류 분포가 불균일해짐 |<br>
+| 생성 가스의 효율적 배출 | 부식 등 2차 반응 유발 |</p>
+<p>줄이는 방법은 알려져 있어요. 직렬 셀 수를 줄이거나, 배관을 길고 좁게 만들어 저항을 키우는 식입니다. 밸브로 흐름을 끊는 방법도 있지만 공통 배관을 쓰기로 한 이유와 정면으로 모순되죠.<br>
+그래서 길고 가는 귀환배관을 써도 <strong class="u">직렬 50셀</strong> 이 실질 한계로 인용돼 있습니다 [Swiegers et al., Sakas et al. 2024 재인용].</p>
+<h2>얼마나 새는지 논문은 어떻게 쟀나요</h2>
+<p>직접 측정이 아니라 <strong>시뮬레이션</strong>입니다. 핀란드의 실제 3 MW·16 bar 알칼라인 수전해 플랜트로 검증한 MATLAB 동적 모델을 돌렸어요. 명목 전류 9,135 A, 전해액 입구 70 ℃ 조건입니다 [Sakas et al. 2024].</p>
+<p>핵심은 계수 k예요. k = 1이 실제 플랜트 수준이고, k = 0이면 전혀 새지 않는 가상의 스택입니다.</p>
+<p>| 항목 | 정격 100% 부하 | 30% 부하 |<br>
+|---|---|---|<br>
+| 새어 나간 전력 비중 | 16.8% | 75.4% |<br>
+| 수소로 간 에너지(HHV) | 64.8% | 21.6% |<br>
+| 과전압 손실 | 17.4% | 1.7% |<br>
+| 단위 에너지 소비(SEC) | 61 kWh/kg | 182 kWh/kg |</p>
+<img src="img/02_loss_share.png" alt="부하별 손실 구성 비교 — 02_loss_share.png" loading="lazy">
+<p>직관과 어긋나는 대목이 있어요. 부하를 낮추면 전압도 내려가니 덜 샐 것 같은데 반대입니다.<br>
+설명은 기포예요. 높은 부하에선 배관 안이 가스 기포로 차서 저항이 크지만, 부하가 낮아지면 기포가 줄어 배관 저항이 전압보다 더 빨리 떨어집니다 [Sakas et al. 2024, 3.1절].</p>
+<img src="img/03_bubble_resistance.png" alt="기포가 만드는 저항 — 03_bubble_resistance.png" loading="lazy">
+<p>안전 하한도 같이 올라가요. 수소가 산소 쪽으로 넘어간 농도가 폭발하한(LEL)의 절반에 닿는 지점이 운전 하한인데, 이 설비는 명목 전류의 <strong class="u">46.5%</strong> 였습니다(수소 14.0 kg/h). 기생전류가 없는 k = 0이면 최소 출력이 109 kW인데, 실제인 k = 1에선 547 kW로 다섯 배가 됩니다 [Sakas et al. 2024, Table 2].</p>
+<h2>이 논문이 답하지 않은 것</h2>
+<p>숫자는 전부 계산값입니다. 모델은 실제 플랜트로 검증됐지만 16.8%나 75.4%가 계측기로 찍은 값은 아니에요.<br>
+사례도 3 MW·16 bar 한 대이고, 라인 최적화는 정상상태 기준입니다. 라인별 열화 차이, 보조설비 공유, 압축기·저장까지 넣은 계산은 후속 과제로 남겼다고 밝혀요 [Sakas et al. 2024, 4장].</p>
+<h2>이 논문을 AI에게 읽힌 방법</h2>
+<p>여기부터는 논문 내용이 아니라 읽는 방법이에요. 어느 분야 논문에나 그대로 씁니다.</p>
+<img src="img/04_ai_readcheck.png" alt="AI 논문 읽기 4단 검증 — 04_ai_readcheck.png" loading="lazy">
+<p>먼저 결론 세 줄을 받습니다. 요약은 숫자를 대체로 맞게 뱉는데 <strong>조건을 떨궈요.</strong> 그래서 두 번째로 분모를 묻습니다.</p>
+<pre><code>%로 표기된 수치를 표로 정리해줘.
+각 행에 [값 / 분모 / 조건(부하·온도·압력) / 페이지] 열을 반드시 채울 것.
+원문에서 못 찾으면 &#x27;원문 없음&#x27;이라고 써.</code></pre>
+<p>이걸 안 물으면 &quot;75%가 샌다&quot;가 상시 성능처럼 굳어버립니다. 실제로는 30% 부하라는 조건이 붙고, 같은 논문의 안전 하한이 46.5%니까 30%는 경향을 보려고 일부러 내려간 계산 구간이에요.</p>
+<p>세 번째가 제일 많이 걸리는 함정입니다. 논문 안에 인용된 남의 결론이 이 논문의 결론으로 붙는 사고예요.</p>
+<pre><code>아래 주장 각각에 대해 답해줘.
+(1) 이 논문의 자체 결과인가, 다른 문헌 인용인가
+(2) 인용이면 참고문헌 번호와 해당 문장을 그대로 붙일 것</code></pre>
+<p>이 글의 &#x27;50셀 한계&#x27;와 &#x27;피해 목록&#x27;도 자체 실험 결과가 아니라 인용이라 표기를 따로 했습니다.</p>
+<p>마지막은 대조예요. 페이지 번호를 강제로 받아 그 쪽을 열고 원문과 1:1로 맞춰봅니다. 같은 수치가 본문과 결론 양쪽에 나오는지도 확인해요. 16.8%와 75.4%는 3장과 4장에 똑같이 적혀 있어서 통과했습니다.</p>
+<p>재미있는 건 이 논문도 저자들이 문장 다듬기에 AI 도구를 썼다고 말미에 명시해 뒀다는 점이에요 [Sakas et al. 2024, Declaration].</p>
+<h2>미리 답해두는 질문 셋</h2>
+<p><strong>Q. 절연이 나빠서 생기는 건가요?</strong><br>
+아니요. 전해액 자체가 도체라서, 셀들이 같은 배관으로 전해액을 나눠 쓰는 순간 그 배관이 전류의 우회로가 됩니다 [Sakas et al. 2024].</p>
+<p><strong>Q. 그럼 셀을 무한정 쌓을 수는 없겠네요?</strong><br>
+네. 배관을 길고 가늘게 해도 직렬 50개 언저리가 실질 한계로 인용돼 있어요 [Swiegers et al., Sakas et al. 2024 재인용].</p>
+<p><strong>Q. 75.4%면 전기의 4분의 3이 버려진다는 뜻인가요?</strong><br>
+그 조건에서만요. 30% 부하는 경향을 보기 위한 계산 구간이고, 안전 운전 하한은 명목 전류의 46.5%입니다 [Sakas et al. 2024].</p>
+<p>---</p>
+<p>정리하면 기생전류는 고장이 아니라 <strong>셀을 쌓고 배관을 공유하기로 한 설계의 청구서</strong>예요. 없앨 수 없으니 관리 대상이 됩니다.</p>
+<p>다음 편에서는 왜 하필 부분부하에서 효율이 급격히 무너지는지, 재생에너지에 물린 설비가 그 구간을 피할 수 없는 이유를 같은 논문의 최적화 결과로 이어서 보겠습니다.</p>
+<p>논문을 AI로 읽고 남긴 기록은 makefield.ai에 모아두고 있어요.</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224423311181" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
