@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 세션 이어가기 노트, 복붙용 프롬프트까지 넣는 이유 | 도면 읽는 AI</title>
+<meta name="description" content="AI 세션 이어가기는 파일 하나로 됩니다. 세션을 닫기 전에 &quot;현재 상황 / 다음 할 일 / 하지 말 것 / 복붙용 프롬프트&quot; 네 칸짜리 노트를 AI에게 쓰게 하고, 다음 날 새 창에 그 프롬프트를 그대로 붙여넣으면 끝이에요. 핵심은 마지막 칸입니다. &quot;아까 하던 거 이어서 해">
+<link rel="canonical" href="https://makefield.ai/blog/20260928-ai-session-handoff-note/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 세션 이어가기 노트, 복붙용 프롬프트까지 넣는 이유 | 도면 읽는 AI">
+<meta property="og:description" content="AI 세션 이어가기는 파일 하나로 됩니다. 세션을 닫기 전에 &quot;현재 상황 / 다음 할 일 / 하지 말 것 / 복붙용 프롬프트&quot; 네 칸짜리 노트를 AI에게 쓰게 하고, 다음 날 새 창에 그 프롬프트를 그대로 붙여넣으면 끝이에요. 핵심은 마지막 칸입니다. &quot;아까 하던 거 이어서 해">
+<meta property="og:url" content="https://makefield.ai/blog/20260928-ai-session-handoff-note/">
+<meta property="og:image" content="https://makefield.ai/blog/20260928-ai-session-handoff-note/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 세션 이어가기 노트, 복붙용 프롬프트까지 넣는 이유", "datePublished": "2026-09-28", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260928-ai-session-handoff-note/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-09-28</span></div>
+<h1>AI 세션 이어가기 노트, 복붙용 프롬프트까지 넣는 이유</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;AI 세션 이어가기 노트 / 복붙용 프롬프트까지 넣는 이유&quot;" loading="lazy">
+<p><strong>AI 세션 이어가기는 파일 하나로 됩니다. 세션을 닫기 전에 &quot;현재 상황 / 다음 할 일 / 하지 말 것 / 복붙용 프롬프트&quot; 네 칸짜리 노트를 AI에게 쓰게 하고, 다음 날 새 창에 그 프롬프트를 그대로 붙여넣으면 끝이에요.</strong> 핵심은 마지막 칸입니다. &quot;아까 하던 거 이어서 해줘&quot;라고 치면, 하던 일이 두 갈래 이상일 때 AI가 <strong class="u">알아서 하나를 골라</strong> 실행해버리거든요.</p>
+<p>지난 편에서 <code>.history</code> 폴더에 끝난 일을 남기는 법을 만들었죠. 이번 편은 <strong>하다 만 일</strong>을 받는 파일입니다. 둘은 역할이 달라요.</p>
+<p>현장 엔지니어로 15년째 일하고, 퇴근하고 나면 개인 자동화를 AI랑 굴립니다. 아래 출력은 2026년 9월 28일 연습 폴더에서 Claude Code로 직접 돌린 화면 그대로예요. 실험 조건을 깨끗하게 하려고 AI 자동 메모리는 꺼두고 돌렸습니다.</p>
+<h2>1. 하던 일이 하나뿐이면 노트 없이도 이어집니다</h2>
+<p>먼저 반대 결과부터 말씀드릴게요. 제 예상이 틀렸거든요.</p>
+<p>지난 편 연습 폴더를 복사해서, 첫 세션에 일을 반만 시켰습니다.</p>
+<pre><code>&gt; 임계값 파일 3개를 thresholds/ 폴더로 옮기고, 그걸 읽는 스크립트 경로를
+  고치는 작업을 하자. 오늘은 시간이 없어서 파일 이동하고 check_level.py
+  하나만 고친 다음 멈춰.</code></pre>
+<p>그리고 같은 세션에서 말로만 방침 하나를 정했어요. &quot;온도 센서를 바꿔서 <code>check_temp.py</code>는 경로만 고치면 안 된다, <code>th_temp_v2.json</code>을 새로 만들어 읽게 하고 기존 파일은 지우지 마라.&quot; 창을 닫고, 새 세션에서 딱 한 줄 쳤습니다.</p>
+<pre><code>&gt; 아까 하던 거 이어서 해줘
+
+이 세션에는 이전 대화 내용이 남아 있지 않아서 `.history` 기록을 보고
+이어서 했습니다.
+- scripts/check_temp.py: 경로만 고치지 않고, 온도 센서 교체 방침대로
+  새로 만든 thresholds/th_temp_v2.json(max_C = 50)을 읽게 했습니다.</code></pre>
+<p>제대로 이어받았습니다. 지난 편 규칙(&quot;구조를 바꾸면 <code>.history</code>에 남긴다&quot;) 덕분에 첫 세션이 말로 정한 방침까지 기록해뒀더라고요. <strong>기록이 잘 돼 있고 하던 일이 하나뿐이면, <code>.history</code>만으로 충분합니다.</strong> 굳이 파일을 하나 더 만들 필요가 없어요.</p>
+<p>문제는 하던 일이 둘일 때였습니다.</p>
+<h2>2. 두 갈래가 되자, AI가 하나를 골라 실행했어요</h2>
+<p>같은 폴더에 다른 작업 기록을 하나 더 넣었습니다. &quot;알람 문자 발송 1차 — 뼈대만 짜고, 문자 서비스 연동은 다음 작업.&quot; 파일 시각으로는 이쪽이 더 최근이에요. 그리고 똑같이 쳤습니다.</p>
+<pre><code>&gt; 아까 하던 거 이어서 해줘
+
+`.history`에 남아 있던 다음 작업, 즉 임계값 파일 경로 수정과 온도
+임계값 v2 적용을 끝냈습니다.
+...
+**다음 작업:** 알람 문자 발송입니다. 이어서 진행할까요?</code></pre>
+<p><strong>묻지 않고 하나를 골라서, 파일 4개를 바꾼 다음에</strong> 나머지 하나를 물어봤습니다. 이번엔 운 좋게 제가 원하던 쪽이었지만, 제가 말한 &quot;아까&quot;가 알람 쪽이었다면 엉뚱한 파일 4개가 바뀐 거죠..</p>
+<p>AI 잘못이라고 보긴 어려워요. &quot;아까&quot;라는 말에 답이 없으니까요. 사람한테 인수인계하면서 &quot;아까 그거 해줘&quot;라고 하지 않잖아요. 그런데 AI한테는 매일 그렇게 하고 있었던 겁니다.</p>
+<p>제 실제 작업 폴더는 두 갈래 정도가 아닙니다. 오늘 세어보니 진행 중인 이어가기 노트가 <strong>37개</strong>예요. 끝나서 <code>_완료/</code>로 옮긴 게 45개, 잠시 멈춘 <code>_보류/</code>가 22개고요. 5월 6일에 이 체계를 만들 때 기록에 이렇게 적어뒀습니다. &quot;세션 중단 시 미완료 작업이 유실되는 문제.&quot; 그리고 한 줄 더. <strong>&quot;과거 히스토리에서 중단 작업 역추적은 불가 → 지금부터 적용.&quot;</strong> 그전에 끊긴 일들은 결국 못 살렸어요.</p>
+<img src="img/02_two_tracks.png" alt="02_two_tracks.png — 상단 제목 &#x27;&quot;아까 하던 거&quot;는 몇 번째 일인가&#x27;. 왼쪽 박스(초록) &#x27;하던 일 1개&#x27; → &#x27;.history만 보고 정확히 이어받음&#x27;. 오른쪽 박스(붉은) &#x27;하던 일 2개&#x27; → 두 갈래 화살표(임계값 경로 / 알람 문자) → &#x27;AI가 하나를 골라 파일 4개 수정 → 그다음에 질문&#x27;. 하단 &#x27;내 실제 폴더: 진행 중 37 · 완료 45 · 보류 22&#x27;" loading="lazy">
+<h2>3. 세션 닫기 전에, 네 칸짜리 노트를 쓰게 합니다</h2>
+<p>그래서 세션을 닫기 전에 이렇게 시킵니다. 형식을 제가 정해주는 게 포인트예요.</p>
+<pre><code>&gt; 세션 닫기 전에 이어가기 노트 하나 써줘. 위치는 _이어가기/임계값_경로이전.md.
+  칸은 네 개: 현재 상황 / 다음 할 일 / 하지 말 것 / 복붙용 프롬프트.
+  복붙용 프롬프트는 내가 내일 새 창에 그대로 붙여넣을 문장이야.
+  이 파일만 보고도 너 없이 이어받을 수 있게 써.</code></pre>
+<p>AI가 만든 노트를 줄여서 보여드리면 이렇습니다.</p>
+<pre><code># 이어가기: 임계값 파일 thresholds/ 이전
+
+## 현재 상황
+- 임계값 파일 3개를 thresholds/ 로 옮겼음 (완료)
+- check_level.py: 고쳤고 실행해서 low: 200 high: 1800 확인 (완료)
+- check_flow.py, check_temp.py: 아직 루트 경로를 읽음. 지금 실행하면 FileNotFoundError
+
+## 다음 할 일
+1. check_flow.py 경로를 thresholds/th_flow.json 으로 (확인: min: 3)
+2. thresholds/th_temp_v2.json 을 {&quot;max_C&quot;:50} 으로 새로 만든다
+3. check_temp.py 가 v2 를 읽게 한다 (확인: max: 50)
+4. 스크립트 3개 전부 다시 실행
+5. .history 기록 하나 남기기
+
+## 하지 말 것
+- thresholds/th_temp.json (max_C 45) 은 지우지 말 것
+- check_temp.py 를 &quot;경로만&quot; 고치지 말 것. v2 파일을 읽어야 함
+- CLAUDE.md 에 thresholds/ 경로가 빠진 문제는 먼저 물어볼 것
+
+## 복붙용 프롬프트
+_이어가기/임계값_경로이전.md 를 먼저 읽고 &quot;다음 할 일&quot; 1~5번을 진행해줘.
+요약하면: check_flow.py 는 경로만 고치고, th_temp_v2.json 을 {&quot;max_C&quot;:50}
+으로 새로 만든 다음 check_temp.py 가 그걸 읽게 해줘.
+기존 th_temp.json 은 절대 지우지 마.
+CLAUDE.md 의 thresholds/ 경로 문제는 고치지 말고 나한테 먼저 물어봐.</code></pre>
+<p>칸마다 하는 일이 다릅니다.</p>
+<p>| 칸 | 답하는 질문 | 빠지면 생기는 일 |<br>
+|---|---|---|<br>
+| 현재 상황 | 어디까지 됐나 | 끝난 걸 또 하거나, 된 줄 알고 넘어감 |<br>
+| 다음 할 일 | 뭘 어떤 순서로, 뭐가 나오면 성공인가 | 순서를 AI가 새로 정함 |<br>
+| 하지 말 것 | 건드리면 안 되는 것 | &quot;정리&quot;하다가 지우면 안 될 걸 지움 |<br>
+| 복붙용 프롬프트 | 내일 첫 줄에 뭘 칠까 | &quot;아까 하던 거&quot;로 돌아감 |</p>
+<p>제가 제일 아끼는 칸은 <strong>하지 말 것</strong>이에요. <code>.history</code>에는 한 일이 남지만, &quot;안 하기로 한 일&quot;은 잘 안 남거든요. 그리고 AI는 기본적으로 부지런해서, 눈에 띄는 걸 고쳐주려고 합니다.</p>
+<p>AI가 노트를 쓰면서 한 말 중에 이 대목이 좋았어요. &quot;노트를 읽지 않더라도 핵심 지시가 빠지지 않게 문장 안에 직접 넣었습니다.&quot; 복붙용 프롬프트에 &quot;파일 먼저 읽어&quot;만 적지 않고 핵심 세 줄을 같이 박아둔 이유가 이겁니다.</p>
+<img src="img/03_note_anatomy.png" alt="03_note_anatomy.png — 세로로 쌓인 4칸 카드. ①현재 상황(청록) &#x27;어디까지 됐나 — 완료/미완료 구분&#x27; ②다음 할 일(초록) &#x27;순서 + 성공 판정값(min: 3, max: 50)&#x27; ③하지 말 것(주황, 굵게) &#x27;지우지 마 · 경로만 고치지 마 · 먼저 물어봐&#x27; ④복붙용 프롬프트(흰색 테두리) &#x27;첫 줄 = 이 파일 먼저 읽어 / 나머지 = 핵심 지시 요약&#x27;. 오른쪽 주석 &#x27;.history = 끝난 일 / 이어가기 = 하다 만 일&#x27;" loading="lazy">
+<h2>4. AI 세션 이어가기, 복붙용 프롬프트 한 줄로 다시 돌려봤습니다</h2>
+<p>2번과 똑같은 두 갈래 상태(알람 문자 기록까지 있는 폴더)로 되돌려놓고, 이번엔 &quot;아까 하던 거&quot; 대신 노트의 복붙용 프롬프트를 그대로 붙여넣었습니다.</p>
+<pre><code>&quot;다음 할 일&quot; 1~5번을 모두 끝냈고, 프로젝트 루트에서 스크립트 3개가
+에러 없이 실행되는 것까지 확인했습니다.
+
+$ python scripts/check_level.py
+low: 200 high: 1800
+$ python scripts/check_flow.py
+min: 3
+$ python scripts/check_temp.py
+max: 50
+
+## 여쭤볼 것
+CLAUDE.md에 thresholds/ 경로가 빠져 있습니다. ... 지시하신 대로
+고치지 않았습니다. 규칙 3번을 예를 들어 아래처럼 바꿔도 될까요?</code></pre>
+<p>알람 쪽은 건드리지 않았고, 기존 파일도 안 지웠고, 고치지 말라고 한 규칙 파일은 고치기 전에 물어봤습니다. 덤으로 이런 줄도 붙여왔어요. &quot;이어가기 문서에는 프로젝트 루트가 <code>sandbox-ep06</code>로 적혀 있지만, 실제 작업은 지금 폴더인 <code>ep06-C</code>에서 했습니다.&quot; 실험하려고 폴더를 복사해서 돌렸는데 그것까지 짚더라고요.</p>
+<p><strong>&quot;아까&quot;라는 말 대신 파일 경로를 주면, 몇 갈래가 있든 AI는 고를 필요가 없습니다.</strong> 복붙용 프롬프트를 넣는 이유는 딱 이거예요. 여러분은 어제 하다 만 일, 오늘 첫 줄에 뭐라고 치셨나요?</p>
+<img src="img/04_before_after.png" alt="04_before_after.png — 좌우 대비. 왼쪽(붉은) 입력 &#x27;아까 하던 거 이어서 해줘&#x27; → &#x27;AI가 갈래를 추측 → 실행 → 질문&#x27;. 오른쪽(초록) 입력 &#x27;_이어가기/임계값_경로이전.md 를 먼저 읽고…&#x27; → &#x27;지정된 1~5번만 · 금지 항목 준수 · 규칙 수정 전 질문&#x27;. 하단 &#x27;같은 폴더, 같은 두 갈래 — 달라진 건 첫 줄&#x27;" loading="lazy">
+<h2>5. 노트가 있어도 안 열면 없는 것 — 제가 실제로 당한 일</h2>
+<p>여기까지만 보면 노트만 있으면 될 것 같죠. 저도 그렇게 믿었습니다. 9월 22일 전까지는요.</p>
+<p>그날 노트북 원격 접속 도구 설정을 AI한테 물었어요. 답이 바로 왔습니다. &quot;노드 인증키가 기본 180일 뒤 만료되니 관리 콘솔에서 꺼둬라.&quot; 그럴듯하죠. 그런데 이미 꺼져 있었습니다. 그것도 제 이어가기 노트 <strong>309번째 줄</strong>에 이렇게 적혀 있었어요.</p>
+<pre><code>- **키 만료 비활성화 완료** — (기기 3대 이름, 여기선 생략)</code></pre>
+<p>심지어 그 세션을 시작할 때 이어가기 목록에 그 노트 이름이 떠 있었습니다. 저는 세션이 열리면 진행 중인 노트 목록이 자동으로 뜨게 해뒀거든요. AI는 목록을 보고도 파일을 안 열고 일반 지식으로 답했습니다. 제가 콘솔에 들어가서 헛손질하기 직전에 잡았어요..</p>
+<p>그날 기록에 남긴 교훈은 한 줄입니다. <strong>&quot;내가 아는 것&quot;보다 &quot;이 환경에 기록된 것&quot;이 우선한다.</strong> 제 장비는 기본값과 다르게 세팅돼 있는 게 정상이고, 그 차이가 곧 노트에 쌓인 자산이에요. 일반 지식으로 답하면 그 자산이 매번 0으로 돌아갑니다.</p>
+<p>재밌는 건, 연습 폴더에서 같은 상황을 재현하려고 노트를 안 가리키는 질문(&quot;<code>check_temp.py</code> 돌리면 에러 나. 고쳐줘&quot;)을 던졌더니 <strong>이번엔 잘 됐다</strong>는 거예요. 도구 호출 로그를 보니 파일을 전부 열어봤더라고요. 파일이 열 개 남짓이니까요. 제 실제 폴더는 진행 중 노트만 37개, 중간값이 68줄, 제일 긴 게 511줄입니다. 전부 여는 게 안 되는 크기예요.</p>
+<p>그래서 두 가지를 바꿨습니다.</p>
+<p>1. <strong>이어받을 땐 무조건 복붙용 프롬프트로 시작한다.</strong> 첫 줄이 &quot;이 파일 먼저 읽어&quot;라서, 읽을지 말지를 AI가 판단할 틈이 없습니다.<br>
+2. <strong>AI가 매 세션 읽는 규칙 메모에 한 줄 추가.</strong> &quot;진행 중인 노트가 있는 주제는 답하기 전에 그 노트를 먼저 연다.&quot; 그리고 그 사고 자체를 해당 노트 안에 적어뒀어요. 다음 세션이 같은 함정에 빠지지 않게요.</p>
+<img src="img/05_not_opened.png" alt="05_not_opened.png — 흐름도. &#x27;세션 시작 → 진행 중 노트 목록 표시(이름 떠 있음)&#x27; → 갈림길. 위(붉은) &#x27;질문에 바로 일반 지식으로 답&#x27; → &#x27;이미 끝난 조치를 다시 지시 (309번째 줄에 완료 기록)&#x27;. 아래(초록) &#x27;복붙용 프롬프트로 시작 = 첫 줄이 파일 읽기&#x27; → &#x27;기록된 환경 기준으로 답&#x27;. 하단 &#x27;연습 폴더 10개 파일: 전부 열어봄 / 실제 폴더 37개·최대 511줄: 안 열어봄&#x27;" loading="lazy">
+<h2>6. 도구가 달라도 같고, 헷갈리는 것 세 가지</h2>
+<p>AI 세션 이어가기에 쓴 건 텍스트 파일과 폴더 하나뿐이라 도구를 안 탑니다. <strong>Codex CLI(GPT)나 Gemini CLI에서도 같은 방식으로 됩니다.</strong> 규칙 파일 이름만 <code>AGENTS.md</code>, <code>GEMINI.md</code>로 바뀌고, 노트 폴더와 복붙용 프롬프트는 그대로 씁니다. 도구를 갈아타도 노트는 따라옵니다.</p>
+<p>규칙 파일에 얹을 줄은 이 정도면 됩니다.</p>
+<pre><code>## 이어가기
+- &quot;여기까지만&quot;, &quot;내일 이어하자&quot; 하면 _이어가기/주제.md 를 쓴다
+  (칸: 현재 상황 / 다음 할 일 / 하지 말 것 / 복붙용 프롬프트)
+- 진행 중인 노트가 있는 주제는 답하기 전에 그 노트를 먼저 연다
+- 끝난 노트는 지우지 말고 _완료/ 로 옮긴다</code></pre>
+<p><strong>Q. 대화 자체를 되살리는 기능(<code>--resume</code>)이 있는데 굳이 노트가 필요한가요?</strong><br>
+대화 재개는 그 대화를 통째로 다시 싣는 거라, 길어진 세션일수록 무겁고 그 PC에서만 됩니다. 노트는 요점만 담은 텍스트라 다른 도구, 다른 컴퓨터, 폰에서도 열려요. 저는 둘 다 쓰되, 다음 날 이어받는 건 노트로 합니다.</p>
+<p><strong>Q. <code>.history</code>랑 뭐가 달라요? 하나로 합치면 안 되나요?</strong><br>
+<code>.history</code>는 끝난 일의 기록이라 계속 쌓이고, 이어가기 노트는 하다 만 일이라 끝나면 <code>_완료/</code>로 빠집니다. 수명이 달라요. 5월에 체계를 만들 때도 &quot;고정 문서 1개 방식&quot;은 여러 안건이 섞인다는 이유로 기각하고, 주제당 파일 하나로 갔습니다.</p>
+<p><strong>Q. 노트가 너무 길어지면요?</strong><br>
+길어집니다. 제 원격 접속 노트가 437줄이에요. 그래서 맨 위에 상태 세 줄, 맨 아래에 복붙용 프롬프트를 둡니다. 사람은 위만 보고, AI는 프롬프트가 시키는 대로 전체를 읽으면 되니까요.</p>
+<p>다음 편부터는 3단계로 넘어갑니다. 기록과 노트가 쌓이면 그 안에 좋은 답이 묻히기 시작하는데, 그걸 지식으로 끌어올리는 기준을 다룰게요. 오늘은 세션 닫기 전에 &quot;이어가기 노트 써줘&quot; 한 줄만 쳐보세요!</p>
+<p>끊겨도 이어지는 작업 방식은 makefield.ai에 계속 모아두고 있어요.</p>
+<p>태그: #AI세션이어가기 #클로드코드이어서작업 #AI인수인계파일 #복붙용프롬프트 #이어가기노트 #AI작업연속성 #클로드코드resume #클로드코드CLAUDEmd #AGENTSmd #클로드코드 #ClaudeCode #CodexCLI #GeminiCLI #비개발자AI #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224424420198" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
