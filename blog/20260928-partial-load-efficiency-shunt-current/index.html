@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수전해 부분부하 효율, 왜 낮출수록 무너질까 (논문 해설) | 도면 읽는 AI</title>
+<meta name="description" content="수전해 부분부하 효율이 무너지는 이유를 한 줄로 줄이면 이렇습니다. 새는 전류는 운전점을 낮춰도 별로 안 줄어드는데, 수소를 만드는 전류는 크게 줄어요. 오늘 논문의 시뮬레이션에서 수소로 간 전류 비율(쿨롱효율)은 높은 운전점에서 93~94%, 가장 낮은 운전점에서 약 32%였">
+<link rel="canonical" href="https://makefield.ai/blog/20260928-partial-load-efficiency-shunt-current/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="수전해 부분부하 효율, 왜 낮출수록 무너질까 (논문 해설) | 도면 읽는 AI">
+<meta property="og:description" content="수전해 부분부하 효율이 무너지는 이유를 한 줄로 줄이면 이렇습니다. 새는 전류는 운전점을 낮춰도 별로 안 줄어드는데, 수소를 만드는 전류는 크게 줄어요. 오늘 논문의 시뮬레이션에서 수소로 간 전류 비율(쿨롱효율)은 높은 운전점에서 93~94%, 가장 낮은 운전점에서 약 32%였">
+<meta property="og:url" content="https://makefield.ai/blog/20260928-partial-load-efficiency-shunt-current/">
+<meta property="og:image" content="https://makefield.ai/blog/20260928-partial-load-efficiency-shunt-current/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "수전해 부분부하 효율, 왜 낮출수록 무너질까 (논문 해설)", "datePublished": "2026-09-28", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260928-partial-load-efficiency-shunt-current/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">논문 읽는 AI</span><span>2026-09-28</span></div>
+<h1>수전해 부분부하 효율, 왜 낮출수록 무너질까 (논문 해설)</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — 00_title.png" loading="lazy">
+<p>수전해 부분부하 효율이 무너지는 이유를 한 줄로 줄이면 이렇습니다. <strong>새는 전류는 운전점을 낮춰도 별로 안 줄어드는데, 수소를 만드는 전류는 크게 줄어요.</strong><br>
+오늘 논문의 시뮬레이션에서 수소로 간 전류 비율(쿨롱효율)은 높은 운전점에서 93~94%, 가장 낮은 운전점에서 약 32%였습니다 [Golmarz et al. 2025, Fig.9].</p>
+<p>AI로 논문을 읽는 연재 6편째예요. 지난 편이 &#x27;셀을 쌓으면 배관으로 전기가 샌다&#x27;였다면, 이번엔 그게 왜 <strong>낮은 출력에서 유독 아픈지</strong>입니다. 이란 타브리즈대 연구팀이 2025년 9월 Energy Engineering에 낸 오픈액세스 논문이에요.</p>
+<h2>1. 이 논문은 무엇을 풀려고 했나요</h2>
+<p>알칼라인 수전해 스택에서 <strong>기생전류가 셀마다 얼마나 드나들고, 효율을 얼마나 깎는지</strong> 계산하는 게 목표였어요 [Golmarz et al. 2025, 1장].</p>
+<p>기생전류(shunt current)란 셀을 통과하지 않고 공통 전해액 배관으로 돌아가는 전류입니다. 재생에너지에 물린 설비는 출력을 수시로 내려야 하니, 낮은 출력에서 이 누수가 얼마나 커지는지가 곧 운전 효율이에요.</p>
+<h2>2. 어떻게 계산했나요</h2>
+<p>실험이 아니라 <strong>컴퓨터 시뮬레이션</strong>입니다 [Golmarz et al. 2025, 2장].</p>
+<p>| 항목 | 설정 |<br>
+|---|---|<br>
+| 스택 | 20셀, 바이폴라판 + 강철 끝판 |<br>
+| 전해액 | 수산화칼륨(KOH) 6 M |<br>
+| 온도 | 85 ℃ 고정 |<br>
+| 운전점 | 평균 셀 전압 1.3 → 1.8 V |<br>
+| 뺀 것 | 기체상 물질전달 제한 |</p>
+<p>장치가 하나 더 있어요. 기포 때문에 <strong>액체가 차지하는 비율</strong>을 스택 아래 100%에서 위 출구 50%로 줄게 넣고, 전도도는 그 비율의 1.5제곱에 비례시켰습니다 [Golmarz et al. 2025, 식(3)].<br>
+50%를 넣으면 0.5^1.5 ≈ 0.35. 위쪽 배관은 <strong>전기가 약 3분의 1만 통하는 길</strong>이 됩니다.</p>
+<h2>3. 부분부하에서 효율이 무너지는 구조는 무엇인가요</h2>
+<p><strong>① 아래 입구 쪽이 더 샌다.</strong> 위 출구는 기포가 많아 전도도가 낮기 때문이에요 [Golmarz et al. 2025, 3장].</p>
+<p><strong>② 스택 양 끝이 제일 많이 샌다.</strong> 가운데(10번 셀 근처)에서 0을 지나고, 1번 쪽은 음(−), 20번 쪽은 양(+) 방향으로 커집니다 [Golmarz et al. 2025, Fig.6·7].</p>
+<p><strong>③ 전압을 올리면 누수도 늘지만, 조금만 는다.</strong> 셀당 최댓값이 1.4 V에서 16 A, 1.8 V에서 약 20 A예요 [Golmarz et al. 2025, Fig.6·7]. 같은 구간에서 쿨롱효율은 32%대에서 94% 가까이로 뜁니다.</p>
+<p>쿨롱효율은 <strong>넣은 전하 중 수소 생성에 쓰인 몫</strong>이에요. 논문은 전 셀의 수소 생성 전류 합을 &#x27;스택 전류 × 셀 수&#x27;로 나눠 구했습니다 [Golmarz et al. 2025, 3장].</p>
+<p>두 수치를 나란히 놓으면 함정이 보여요. 운전점을 내려도 누수는 크게 줄지 않는데 수소를 만드는 전류는 확 줄어드니, <strong>새는 몫의 비율이 커집니다.</strong> 논문은 부하가 없어도 전극 반응식이 0이 아닌 전류를 예측해 기생전류가 생긴다고 설명하고, 낮은 전류의 효율 저하를 여러 분극 효과의 상호작용으로 봅니다 [Golmarz et al. 2025, 2~3장].</p>
+<p>그럼 무조건 높이 돌리면 될까요? 초록은 아니라고 해요. 에너지효율은 쿨롱효율을 따라 오르다 약 1400 mA에서 정점을 찍고, 이후 스택 전압이 올라 다시 떨어진다고 적었습니다 [Golmarz et al. 2025, 초록].</p>
+<h2>4. 이 논문의 한계는 무엇인가요</h2>
+<p>전부 계산값이고, 실측 검증은 본문에 없어요. 온도 고정, 20셀 한 구성입니다.<br>
+또 &#x27;부하 30%&#x27; 같은 비율이 아니라 셀 전압으로 운전점을 바꿔서, &quot;30% 부하에서 몇 %&quot;로 옮기면 논문에 없는 말이 됩니다.</p>
+<h2>5. AI에게 이 논문을 어떻게 읽혔나요</h2>
+<p>여기부터는 읽는 방법이에요. PDF 텍스트를 AI에게 읽히고, 그림이 있는 쪽은 이미지로 따로 띄워 대조했습니다. 이 논문은 <strong>원문에 걸림돌이 네 개</strong> 있어 연습 교재로 좋았어요.</p>
+<p><strong>축 라벨.</strong> 본문은 &quot;1.3 A에서 32%&quot;라고 쓰고, 요약도 그대로 옮깁니다. 그런데 그림을 띄우면 가로축 눈금이 1.3~1.8로 전압 범위와 똑같아요. 단위를 확정할 수 없어 이 글은 &#x27;낮은/높은 운전점&#x27;으로만 썼습니다.</p>
+<p><strong>정의 방향.</strong> 에너지효율 정의가 초록과 결론에서 분자·분모가 뒤집혀 있어요.</p>
+<p><strong>주장-그림 매핑.</strong> 초록의 &#x27;1400 mA 정점&#x27;을 보여주는 그림은 본문에 없습니다. 그래서 출처를 [초록]으로만 달았어요.</p>
+<p><strong>문장 vs 그래프.</strong> 본문은 &quot;스택 끝으로 갈수록 커진다&quot;지만 그래프는 양 끝이 다 큽니다.</p>
+<p>네 개를 잡은 질문은 이것이었어요.</p>
+<pre><code>1) Fig.8·9의 축 제목과 눈금 최솟값/최댓값을 그대로 적고,
+   본문의 전압·전류 범위와 숫자가 겹치면 표시해.
+2) &#x27;efficiency&#x27; 정의를 초록/본문/결론에서 찾아 분자·분모를 따로 적어.
+3) 초록 주장마다 근거 그림·표 번호를 붙여. 없으면 &#x27;근거 그림 없음&#x27;.
+4) 본문 문장과 그래프 모양이 다르게 읽히는 곳을 뽑아.</code></pre>
+<p>요약은 문장을 옮길 뿐이라 원문의 흠까지 같이 옮깁니다. <strong>그림을 따로 띄워 문장과 맞춰보는 한 단계</strong>가 핵심이에요.</p>
+<h2>6. 자주 나올 질문 세 가지</h2>
+<p><strong>Q. 부분부하 효율 저하의 주범은 기생전류뿐인가요?</strong><br>
+논문은 여러 분극 효과의 상호작용이라고 씁니다. 다만 낮은 운전점에서도 누수가 크게 줄지 않는다는 결과가 핵심이에요 [Golmarz et al. 2025, 3장].</p>
+<p><strong>Q. 그럼 항상 최대 출력이 답인가요?</strong><br>
+아니요. 에너지효율은 약 1400 mA에서 정점이고 이후 전압 상승으로 떨어집니다 [Golmarz et al. 2025, 초록].</p>
+<p><strong>Q. 32%는 실제 설비 값인가요?</strong><br>
+아니요. 20셀·85 ℃ 시뮬레이션의 가장 낮은 운전점 값입니다.</p>
+<p>---</p>
+<p>정리하면 부분부하의 효율 붕괴는 <strong>줄지 않는 누수를 작아진 생산량으로 나누는 문제</strong>예요. 논문은 전해액 분포 관리와 바이폴라판 설계·절연으로 양 끝 누수를 줄이는 방향을 제시합니다 [Golmarz et al. 2025, 3장].</p>
+<p>다음 편에서는 셀을 직렬로 더 쌓을수록 이 손해가 왜 커지는지 봅니다. 여러분 분야 논문에도 초록과 그림이 서로 다른 말을 하는 곳이 있던가요?</p>
+<p>AI로 논문 읽는 방법은 makefield.ai에 계속 쌓아두고 있습니다.</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224425136198" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
