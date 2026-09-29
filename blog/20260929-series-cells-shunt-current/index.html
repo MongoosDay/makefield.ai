@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수전해 스택 셀을 직렬로 늘리면 왜 기생전류가 커질까 (논문 해설) | 도면 읽는 AI</title>
+<meta name="description" content="수전해 스택 기생전류는 셀을 직렬로 많이 쌓을수록 커집니다. 한 시뮬레이션에서 공급 전류 중 새는 비율이 50셀 3.9%, 500셀 59.4%였어요 [Hysa et al. 2025, Fig.6]. 500셀이면 넣은 전류의 절반 넘게 수소를 못 만든다는 뜻입니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20260929-series-cells-shunt-current/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="수전해 스택 셀을 직렬로 늘리면 왜 기생전류가 커질까 (논문 해설) | 도면 읽는 AI">
+<meta property="og:description" content="수전해 스택 기생전류는 셀을 직렬로 많이 쌓을수록 커집니다. 한 시뮬레이션에서 공급 전류 중 새는 비율이 50셀 3.9%, 500셀 59.4%였어요 [Hysa et al. 2025, Fig.6]. 500셀이면 넣은 전류의 절반 넘게 수소를 못 만든다는 뜻입니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20260929-series-cells-shunt-current/">
+<meta property="og:image" content="https://makefield.ai/blog/20260929-series-cells-shunt-current/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "수전해 스택 셀을 직렬로 늘리면 왜 기생전류가 커질까 (논문 해설)", "datePublished": "2026-09-29", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260929-series-cells-shunt-current/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">논문 읽는 AI</span><span>2026-09-29</span></div>
+<h1>수전해 스택 셀을 직렬로 늘리면 왜 기생전류가 커질까 (논문 해설)</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — 00_title.png" loading="lazy">
+<p>수전해 스택 기생전류는 셀을 직렬로 많이 쌓을수록 커집니다. 한 시뮬레이션에서 공급 전류 중 새는 비율이 <strong>50셀 3.9%, 500셀 59.4%</strong>였어요 [Hysa et al. 2025, Fig.6]. 500셀이면 넣은 전류의 절반 넘게 수소를 못 만든다는 뜻입니다.</p>
+<p>AI로 논문을 읽는 연재 7편, 지난 편이 &#x27;출력을 낮추면&#x27;이었다면 이번엔 <strong>몸집을 키우면</strong> 왜 아픈가입니다. 핀란드 LUT대 연구팀의 오픈액세스 논문 두 편, 문제를 다룬 2025년 IET Renewable Power Generation 논문과 해법을 다룬 2026년 Journal of Power Sources 논문을 붙여 읽었어요.</p>
+<h2>1. 두 논문은 무엇을, 어떻게 풀었나요</h2>
+<p><strong>셀을 직렬로 더 붙여 전압을 올리면 이득인데, 기생전류가 발목을 잡는다</strong>는 게 출발점이에요. 직렬 셀을 늘려 운전 전압을 1000~1500 V로 올리면 설비비가 줄고 전력변환기 효율도 좋아진다고 논문은 씁니다 [Hysa et al. 2025, 1장]. 기생전류(shunt current)란 셀 안에서 반응하지 않고 <strong>공통 전해액 배관(포트·매니폴드)으로 빠져나가는 전류</strong>입니다. 이 전기는 수소 대신 열이 돼요 [Hysa et al. 2025, 1장].</p>
+<p>2025년 논문은 &quot;셀 수를 늘리면 얼마나 새나&quot;, 2026년 논문은 &quot;그럼 <strong>스택을 여러 개로 쪼개 직렬로 이으면</strong> 나아지나&quot;를 물었습니다. 방법은 둘 다 <strong>전기 회로 모델 시뮬레이션</strong>이에요. 셀마다 막 저항, 전극 저항, 입·출구 포트 저항 4개를 넣고, 셀 사이 매니폴드 저항까지 그물처럼 엮었어요 [Hysa et al. 2025, 2.1절].</p>
+<p>| 항목 | 설정 |<br>
+|---|---|<br>
+| 기준 스택 | 실제 산업용 알칼라인 수전해, 163셀 직렬 |<br>
+| 공급 전류 | 4567 A |<br>
+| 온도·압력 | 입구 70 ℃ / 출구 80 ℃, 16 bar |<br>
+| 전해액 | 수산화칼륨(KOH) 25 wt% |<br>
+| 셀 특성 | 개방전압 1.7 V, 셀 저항 55 μΩ (직선 근사) |</p>
+<p>(출처: [Hysa et al. 2025, Table 1·2])</p>
+<p>출구 쪽 기포로 전기가 덜 통하는 효과도 넣었어요. 빼고 계산하면 기생전류가 <strong>과대평가</strong>됩니다 [Hysa et al. 2025, 3.1절].</p>
+<h2>2. 셀 수와 수전해 스택 기생전류는 어떤 관계인가요</h2>
+<p><strong>셀이 늘수록 새는 비율이 가파르게 오릅니다.</strong> 163셀 실제 스택은 측정 기반 약 16%에 맞춰 둔 기준점이고(2026년 논문 표기 15.8%), 500셀은 59.4%까지 오릅니다 [Hysa et al. 2025, 3.1절; Hysa et al. 2026, 2.3절].</p>
+<p>수소 1 kg당 전력(SEC)도 50셀 54.2 kWh에서 500셀 118.8 kWh로 두 배가 넘어요 [Hysa et al. 2025, Fig.6(c)]. 출력을 낮추면 더 나빠져, 그래프로 읽으면 163셀은 정격에서 약 16%, 50% 부하에서 약 38%까지 오릅니다 [Hysa et al. 2025, Fig.7, 그래프 판독].</p>
+<p>왜 그럴까요. 직렬 셀이 늘면 <strong>전류가 샐 병렬 샛길이 그만큼 늘고</strong> [Hysa et al. 2025, 3.1절], 첫 셀과 끝 셀 사이 <strong>전위차가 커집니다</strong> [Hysa et al. 2026, 3.3절]. 샛길 전류는 스택 양 끝 셀에서 가장 크고 가운데에서 방향이 바뀌어요 [Hysa et al. 2025, Fig.5].</p>
+<h2>3. 쪼개서 직렬로 이으면 얼마나 줄어드나요</h2>
+<p><strong>같은 500셀을 50셀짜리 10개로 나누면 59.4%가 3.9%로 떨어집니다</strong> [Hysa et al. 2026, Fig.3]. 단, 전해액 순환을 서브스택마다 따로 둘 때의 값이에요.</p>
+<p>| 500셀 구성 | 기생전류 비율 | 출처 |<br>
+|---|---|---|<br>
+| 1개 × 500셀 | 59.4% | [Hysa et al. 2026, 3.1절] |<br>
+| 10개 × 50셀, 전해액 분리 | 3.9% | [Hysa et al. 2026, 3.1절] |<br>
+| 2개 × 250셀, 전해액 공유 | 36.5 → 26.9% | [Hysa et al. 2026, Fig.7] |<br>
+| 10개 × 50셀, 전해액 공유 | 12.5 → 5.6% | [Hysa et al. 2026, Fig.7] |</p>
+<p>전해액을 공유하면 서브스택 사이 외부 배관으로 또 샙니다. 화살표는 외부 포트를 1 m에서 10 m로 늘린 결과로, 길수록 덜 새지만 줄어드는 폭은 점점 둔해져요 [Hysa et al. 2026, 3.2절].</p>
+<p>논문 비교표는 전류효율·신뢰성은 <strong>분리형</strong>, 비용·단순함은 <strong>공유형</strong>에 표시합니다 [Hysa et al. 2026, Table 2]. 분리형은 서브스택마다 펌프·유량 제어기가 따로 필요해서예요 [Hysa et al. 2026, 3.3절].</p>
+<h2>4. 이 논문들의 한계는 무엇인가요</h2>
+<p>- 전부 시뮬레이션입니다. 여러 서브스택 직렬 실험 검증은 저자들도 <strong>향후 과제</strong>로 남겼어요 [Hysa et al. 2026, 3.3절].<br>
+- 전해액 펌프 전력은 계산에서 뺐습니다. 포트를 길게 하면 압력손실이 커져 펌프 전력이 늘어요 [Hysa et al. 2025, 3.2절].<br>
+- 저자들은 이 형상을 &quot;비효율적 설계&quot;라 부르고, 셀이 아주 많을 때의 값은 정상 운전에 맞지 않는다고 적었어요 [Hysa et al. 2026, 2.3절]. <strong>59.4%는 업계 평균이 아닙니다.</strong></p>
+<h2>5. AI에게 이 두 논문을 어떻게 읽혔나요</h2>
+<p>여기부터는 읽는 방법이에요. 두 PDF를 텍스트로 뽑아 AI에게 읽히고, 그림·표가 있는 쪽은 이미지로 따로 띄워 대조했습니다. 함정이 네 개 나왔어요.</p>
+<p><strong>맞춘 값과 예측한 값.</strong> 초록은 &quot;측정 데이터로 검증했다&quot;고만 써서, 요약하면 &#x27;모델이 16%를 맞혔다&#x27;로 읽히기 쉬워요. 본문은 다릅니다. 포트·매니폴드 길이 0.8 cm를 <strong>16%에 맞추도록 조정</strong>했다고 적혀 있어요 [Hysa et al. 2025, 2.3절]. 16%는 결과가 아니라 입력입니다.</p>
+<p><strong>함께 바뀐 조건.</strong> 셀을 늘릴 때 유속을 일정하게 두려고 매니폴드 저항을 셀 수에 반비례하게 바꿨어요 [Hysa et al. 2025, 식(8)]. &quot;셀만 늘렸다&quot;는 요약은 틀립니다.</p>
+<p><strong>사라진 칸 위치.</strong> 텍스트로 뽑으면 비교표의 체크표시가 줄줄이 나오기만 하고, 어느 칸인지가 사라져요. 표 쪽을 이미지로 띄워 다시 읽혔습니다.</p>
+<p><strong>두 논문의 같은 숫자.</strong> 3.9%가 두 논문에 다 나와요. 2025년 논문의 50셀 단일 스택 값과, 2026년 논문의 분리형 10개 × 50셀 값입니다. 2026년 논문은 분리형이 서브스택 사이로 기생전류가 흐르지 않는 구성이라고 밝혀요 [Hysa et al. 2026, 3.1절]. 조건을 확인한 뒤에야 두 숫자를 이어 읽을 수 있어요.</p>
+<p>네 개를 잡은 질문입니다.</p>
+<pre><code>1) 모든 수치를 &#x27;입력으로 맞춘 값&#x27;과 &#x27;모델이 계산한 값&#x27;으로 나눠 적어.
+2) 비교 케이스마다 함께 바뀐 변수를 전부 나열해.
+3) 표는 이미지로 보고 칸별로 다시 읽어. 텍스트 추출본과 다르면 표시.
+4) 두 논문에 같은 숫자가 나오면 조건이 같은지 확인해.</code></pre>
+<p><strong>요약은 &quot;무엇이 나왔나&quot;만 옮기고 &quot;무엇을 맞췄나&quot;는 흘립니다.</strong> 파라미터 절을 따로 묻는 한 단계가 핵심이에요.</p>
+<h2>6. 자주 나올 질문 세 가지</h2>
+<p><strong>Q. 셀을 적게 쌓으면 무조건 좋은가요?</strong><br>
+기생전류만 보면 그렇지만 전압 이점이 줄어요. 그래서 논문은 짧은 스택을 직렬로 잇자고 합니다 [Hysa et al. 2026, 3.3절].</p>
+<p><strong>Q. 수전해 스택 기생전류는 포트를 길게 하면 해결되나요?</strong><br>
+500셀·400셀에서 5% 아래로 내리려면 포트 저항을 약 1000배 키워야 했어요. 그만큼 압력손실과 설비비가 늘어납니다 [Hysa et al. 2025, 3.2절].</p>
+<p><strong>Q. 운전 압력·온도도 영향이 있나요?</strong><br>
+높은 압력은 기포를 줄이고, 높은 온도는 전해액 전도도를 올려 둘 다 기생전류를 키운다고 해요 [Hysa et al. 2026, 3.2절]. 다음 편 주제입니다.</p>
+<p>---</p>
+<p>정리하면 직렬 셀 수는 <strong>전압 이득과 누설 손해를 맞바꾸는 손잡이</strong>예요. 두 논문의 답은 &quot;통째로 길게&quot;가 아니라 <strong>&quot;짧게 여러 개, 사이를 잘 끊어서&quot;</strong>입니다.</p>
+<p>다음 편은 압력과 온도를 올릴 때 누수가 왜 같이 오르는지 봅니다. 여러분이 읽는 논문에서 &#x27;맞춘 값&#x27;이 결과처럼 요약된 적은 없었나요?</p>
+<p>AI로 논문 읽는 방법은 makefield.ai에 계속 쌓아두고 있습니다.</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224426304859" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
