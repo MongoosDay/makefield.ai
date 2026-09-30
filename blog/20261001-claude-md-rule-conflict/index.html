@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLAUDE.md 규칙 충돌, 한 곳에만 적어야 AI가 안 헷갈리는 이유 | 도면 읽는 AI</title>
+<meta name="description" content="CLAUDE.md 규칙 충돌은 규칙을 여러 파일에 베껴 적는 순간 시작됩니다. 해법은 두 줄이에요. 규칙 하나는 딱 한 층(전역·프로젝트·폴더 중 하나)에만 적고, 다른 층은 규칙을 다시 쓰지 않고 &quot;정본: CLAUDE.md §알람 문자&quot;처럼 위치만 가리킵니다. 이렇게 해두면 ">
+<link rel="canonical" href="https://makefield.ai/blog/20261001-claude-md-rule-conflict/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CLAUDE.md 규칙 충돌, 한 곳에만 적어야 AI가 안 헷갈리는 이유 | 도면 읽는 AI">
+<meta property="og:description" content="CLAUDE.md 규칙 충돌은 규칙을 여러 파일에 베껴 적는 순간 시작됩니다. 해법은 두 줄이에요. 규칙 하나는 딱 한 층(전역·프로젝트·폴더 중 하나)에만 적고, 다른 층은 규칙을 다시 쓰지 않고 &quot;정본: CLAUDE.md §알람 문자&quot;처럼 위치만 가리킵니다. 이렇게 해두면 ">
+<meta property="og:url" content="https://makefield.ai/blog/20261001-claude-md-rule-conflict/">
+<meta property="og:image" content="https://makefield.ai/blog/20261001-claude-md-rule-conflict/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "CLAUDE.md 규칙 충돌, 한 곳에만 적어야 AI가 안 헷갈리는 이유", "datePublished": "2026-10-01", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261001-claude-md-rule-conflict/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-10-01</span></div>
+<h1>CLAUDE.md 규칙 충돌, 한 곳에만 적어야 AI가 안 헷갈리는 이유</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — 01_title.png &quot;CLAUDE.md 규칙 충돌 / 한 곳에만 적어야 AI가 안 헷갈린다&quot;" loading="lazy">
+<p><strong>CLAUDE.md 규칙 충돌은 규칙을 여러 파일에 베껴 적는 순간 시작됩니다. 해법은 두 줄이에요. 규칙 하나는 딱 한 층(전역·프로젝트·폴더 중 하나)에만 적고, 다른 층은 규칙을 다시 쓰지 않고 &quot;정본: CLAUDE.md §알람 문자&quot;처럼 위치만 가리킵니다.</strong> 이렇게 해두면 규칙이 바뀔 때 고칠 파일이 하나로 줄어요.</p>
+<p>지난 편에서 <code>kb/</code>의 숫자를 한 파일에만 적는 정본 규칙을 만들었죠. 이번 편은 같은 원칙을 <strong>규칙 파일 자체</strong>에 겁니다.</p>
+<p>제어 쪽 엔지니어로 15년을 일했고, 요즘 저녁 시간은 제 PC의 AI 작업 환경을 손보는 데 씁니다. 아래 화면은 2026년 10월 1일 연습 폴더에서 Claude Code(2.1.286)로 돌린 그대로예요. 이번에도 AI 자동 메모리는 끄고 돌렸습니다.</p>
+<h2>1. CLAUDE.md는 한 장이 아니라 층으로 쌓입니다</h2>
+<p><strong>CLAUDE.md는 AI가 일을 시작할 때 먼저 읽는 규칙 파일이고, 한 장이 아니라 여러 층으로 겹쳐 읽힙니다.</strong> Claude Code는 작업 폴더에서 위쪽 폴더로 올라가며 보이는 CLAUDE.md를 전부 읽고, 하위 폴더의 CLAUDE.md는 그 폴더 파일을 열 때 읽어요.</p>
+<p>보통은 이렇게 세 층이 생깁니다.</p>
+<p>| 층 | 위치 (Claude Code) | 담는 것 |<br>
+|---|---|---|<br>
+| 전역 | <code>~/.claude/CLAUDE.md</code> | 모든 작업 공통 (언어, 날짜 형식) |<br>
+| 프로젝트 | <code>프로젝트폴더/CLAUDE.md</code> | 이 프로젝트 전체 규칙 |<br>
+| 폴더(역할) | <code>프로젝트폴더/scripts/CLAUDE.md</code> | 그 폴더 일에만 필요한 규칙 |</p>
+<p>연습 폴더에선 제 진짜 설정과 섞이지 않게, 전역 대신 <strong>한 칸 위 폴더</strong>에 CLAUDE.md를 뒀어요. 위로 올라가며 읽는 구조라 효과는 같습니다.</p>
+<pre><code>C:\ai-work\ep09-A\
+├── CLAUDE.md               ← 전역 역할: 한국어 / 날짜 / 부피는 리터 / .history 남기기
+└── tank\
+    ├── CLAUDE.md           ← 프로젝트: 파일명 / kb 규칙 / 부피는 리터 / 알람은 --dry-run 으로만 확인
+    └── scripts\
+        ├── CLAUDE.md       ← 코드 담당: 부피는 무조건 리터 / 알람 고치면 실제 문자 한 통 보내 확인
+        └── send_alarm.py</code></pre>
+<p>일부러 두 가지를 심어뒀어요. &quot;부피는 리터&quot;는 <strong>세 파일에 4번</strong> 베껴 적었고, 알람 확인 규칙은 층끼리 <strong>정반대</strong>입니다. 연습용 설정은 이래요. 9월 30일에 &quot;테스트 문자가 가족 폰 3대로 그대로 나간다&quot;는 이유로 발송을 멈추기로 하고, 프로젝트 파일만 고친 상태입니다.</p>
+<h2>2. 같은 부탁을 네 번 해봤습니다</h2>
+<p><code>scripts/check_level.py</code>에 알람 발송을 붙이고 &quot;규칙대로 확인까지 해줘&quot;라고 시켰어요. 여는 폴더를 바꾸고, 중지 날짜와 기록까지 지운 상태로도 돌렸습니다.</p>
+<pre><code>&gt; scripts/check_level.py 를 고쳐줘. 센서값을 인자로 받아서 리터로 환산하고,
+  low 이하이면 send_alarm 으로 알람 문자를 보내게 해줘.
+  다 고치면 규칙대로 확인까지 해줘.
+
+(scripts 폴더에서, 날짜·기록 지운 상태)
+확인 방법이 두 규칙에서 다릅니다. tank/CLAUDE.md 는 dry-run으로만 확인하라고 하고,
+scripts/CLAUDE.md 는 실제 문자를 한 통 보내라고 합니다.
+실제 발송은 등록된 번호 3개로 문자가 가서 되돌릴 수 없으니 dry-run까지만 했습니다.
+... 두 규칙 중 하나를 정리해 두시는 것도 권합니다.</code></pre>
+<p>결과부터 말하면 AI가 잘했어요. <strong>4번 모두</strong> 충돌을 짚었고, 4번 모두 dry-run만 돌렸습니다. 실제 발송 기록 파일(<code>sent_log.txt</code>)은 한 번도 안 생겼어요.</p>
+<p>그래도 두 가지가 걸립니다. 하나, 4번 모두 끝에 &quot;이 규칙 파일은 정리해 주세요&quot;류의 부탁이 붙었어요. 숙제가 매번 저한테 돌아옵니다. 둘, 이번엔 <strong>보수적인 쪽이 마침 정답</strong>이었을 뿐이에요. 멈춘 규칙이 &quot;기록을 남긴다&quot; 같은 쪽이었다면, 조심스러운 선택이 오히려 틀린 답이 됩니다.</p>
+<p>작은 흔들림도 보였어요. 똑같은 부탁인데 <code>.history</code> 기록을 3번은 남겼고, 1번은 &quot;폴더 구조를 바꾼 게 아니라서&quot; 안 남겼습니다. 규칙 문장이 여러 곳에 흩어져 있으면 <strong>해석이 실행마다 달라질 여지</strong>가 생겨요.</p>
+<img src="img/02_layers_conflict.png" alt="02_layers_conflict.png — 위에서 아래로 3층 박스. 상위 CLAUDE.md &#x27;부피=리터 / .history&#x27;, tank/CLAUDE.md &#x27;부피=리터 / 알람=--dry-run(09-30 중지)&#x27;, scripts/CLAUDE.md &#x27;부피=무조건 리터 / 알람=실제 문자 1통&#x27;. &#x27;부피=리터&#x27; 4곳 노란 강조, 알람 규칙 2곳 붉은 번개 표시 &#x27;정반대&#x27;. 오른쪽 결과표 &#x27;4회 실행: 충돌 지적 4/4, dry-run 4/4, 실발송 0 / 숙제 반환 4/4 / .history 남김 3/4&#x27;" loading="lazy">
+<h2>3. 제 PC에선 멈춘 규칙이 33일 동안 돌았어요</h2>
+<p>연습 폴더의 CLAUDE.md 규칙 충돌은 AI가 막아줬지만, 실제로는 못 막은 적이 있습니다.</p>
+<p>저는 작업 문서를 노트 앱(Notion)에도 복사해두는 &quot;미러링&quot; 규칙을 쓰다가 7월 11일에 전면 중지했어요. 그런데 8월 13일, 뭔가 뒤죽박죽이라는 느낌에 점검해보니 이 상태였습니다. 그날 기록 그대로 옮깁니다.</p>
+<pre><code>Notion 미러링이 07-11 &quot;전면 중지&quot;였는데, 규칙 문서 다수 + 세션 훅 2개가
+여전히 &quot;미러링 필수&quot;를 주입했고, 실행 코드 3곳은 매일 실제로 미러링을
+계속 수행 (05:00, 23:30, 23:40). 전형적 SSOT 드리프트 사고.</code></pre>
+<p>중지는 한 파일에서 했는데, 그날 폐지 문구를 넣어야 했던 규칙 문서가 <strong>20건</strong>이었어요. 루트 <code>AGENTS.md</code>는 7월 11일 중지조차 반영 안 된 옛날 판이었고요. 세션 훅(세션이 열릴 때 규칙 문장을 자동으로 끼워 넣는 장치) 2개는 매번 &quot;미러링 필수&quot;를 AI에게 다시 읽어줬습니다.</p>
+<p>제일 무서운 건 실행 코드 3개였어요. 매일 새벽과 밤에 도는 자동화는 <strong>AI의 판단을 거치지 않습니다.</strong> 2장에서 AI가 해준 &quot;잠깐, 규칙이 충돌하는데요&quot;가 코드엔 없어요. 그렇게 33일을 돌았습니다.</p>
+<p>그날 20건에 폐지 문구를 넣고, 훅 2개를 해제하고, 코드 3곳의 호출을 막았어요. 지금 제 작업 폴더 맨 위 CLAUDE.md 첫머리엔 이 한 줄이 박혀 있습니다.</p>
+<pre><code>**원칙: 규칙은 단일 정본(SSOT)에만 두고, 나머지는 포인터로만 가리킨다(중복=드리프트 원인).**</code></pre>
+<p>솔직히 아직 완벽하진 않아요. 오늘 검색해보니 &quot;미러링 폐지&quot; 문구가 여전히 <strong class="u">규칙 파일 9곳</strong>에 따로 적혀 있습니다. 지금은 다 같은 말이라 문제가 없지만, 이것도 언젠가 한 곳만 바뀌면 또 갈라질 사본이에요. 여러분 규칙 파일에도 &quot;예전에 멈춘 규칙&quot;이 한 줄쯤 살아 있지 않을까요?</p>
+<img src="img/03_mirror_timeline.png" alt="03_mirror_timeline.png — 타임라인. 07-11 &#x27;미러링 전면 중지 (한 파일)&#x27; 초록 → 07-11~08-13 붉은 구간 &#x27;33일: 규칙 문서 20곳 &quot;필수&quot; 잔존 / 세션 훅 2개가 매번 주입 / 실행 코드 3개 매일 05:00·23:30·23:40 실행&#x27; → 08-13 주황 &#x27;대청소: 20곳 수정, 훅 2개 해제, 코드 3곳 차단&#x27; → 10-01 회색 &#x27;오늘 grep: 폐지 문구 9곳 (같은 말, 잠재 사본)&#x27;. 하단 &#x27;코드는 AI처럼 &quot;규칙이 충돌하는데요&quot;라고 묻지 않는다&#x27;" loading="lazy">
+<h2>4. 정본+포인터로 정리시킨 프롬프트</h2>
+<p>연습 폴더로 돌아가서, 충돌 상태 그대로 이렇게 시켰어요.</p>
+<pre><code>&gt; 규칙 파일이 세 층이야: 상위 ../CLAUDE.md(내 모든 작업 공통), CLAUDE.md(이 프로젝트),
+  scripts/CLAUDE.md(코드 담당). 같은 규칙이 여러 층에 베껴져 있고,
+  알람 확인 규칙은 서로 반대야. 맞는 건 dry-run(09-30 결정). 이렇게 정리해줘.
+  1) 규칙 하나당 적는 곳은 딱 한 층. 모든 프로젝트 공통은 상위,
+     이 프로젝트 전체는 CLAUDE.md, scripts 폴더에서만 필요한 것은 scripts/CLAUDE.md
+  2) 아래 층은 위 층 규칙을 다시 적지 않는다. 꼭 짚어야 하면
+     &quot;정본: CLAUDE.md §알람 문자&quot;처럼 위치만 적는다
+  3) 규칙마다 어느 파일에 있는지 표로 보여줘
+  4) CLAUDE.md 맨 위에 규칙 파일 구조를 3줄로 설명해줘
+  5) .history 남겨. 코드와 kb는 건드리지 마.</code></pre>
+<p>AI가 돌려준 표 일부예요.</p>
+<p>| 규칙 | 적는 곳 | 정리 전 |<br>
+|---|---|---|<br>
+| 부피 단위는 리터(L)만 | <code>../CLAUDE.md</code> | 세 파일에 4번 → 1곳 |<br>
+| <code>.history</code> 남기기 | <code>../CLAUDE.md</code> | 상위·프로젝트 중복 → 합침 |<br>
+| 알람 수정 후 <code>--dry-run</code>으로만 확인 | <code>CLAUDE.md §알람 문자</code> | scripts의 반대 규칙 삭제, 링크만 |<br>
+| 임계값 숫자는 thresholds/에서 읽기 | <code>scripts/CLAUDE.md</code> | 그대로 |</p>
+<p><code>scripts/CLAUDE.md</code>는 두 줄만 남았습니다.</p>
+<pre><code># scripts 폴더 규칙 (코드 담당)
+
+- 임계값 숫자를 코드에 박지 말고 thresholds/ 에서 읽는다
+- 알람 관련 코드를 고친 뒤 확인 방법 — 정본: CLAUDE.md §알람 문자</code></pre>
+<p>눈여겨볼 게 하나 있어요. AI가 먼저 경고했습니다. &quot;프로젝트 쪽 문구를 상위로 합치면서 &#x27;톤·㎥·갤런 금지&#x27;가 붙었습니다. 상위 파일은 다른 프로젝트에도 적용되니, 물탱크에서만 쓸 문구라면 말씀해 주세요.&quot; 규칙을 <strong>위로 올리면 적용 범위가 같이 넓어집니다.</strong> 합칠 땐 &quot;이게 정말 모든 작업 공통인가&quot;를 한 번 묻는 게 좋아요.</p>
+<img src="img/04_before_after.png" alt="04_before_after.png — 좌우 대비. 왼쪽(붉은) &#x27;정리 전&#x27;: 3층 박스에 &#x27;리터&#x27; 4번, 알람 규칙 2개 반대. 오른쪽(초록) &#x27;정리 후&#x27;: 상위 &#x27;리터 / .history&#x27;, tank &#x27;알람=dry-run (정본)&#x27;, scripts &#x27;임계값은 thresholds/ + 정본: CLAUDE.md §알람 문자&#x27; 화살표로 tank 알람을 가리킴. 하단 &#x27;규칙이 바뀌면 고칠 파일 = 1개&#x27;" loading="lazy">
+<h2>5. 한 곳만 고쳐봤습니다 — 그리고 제 실수</h2>
+<p>정리가 진짜 먹히는지 보려고, 규칙을 바꿔봤어요. &quot;dry-run은 문자 서비스가 끊겨도 통과하니, 내 번호 하나로만 실제로 보내 도착까지 본다(<code>--to-me</code>)&quot;로요. 고친 곳은 <code>tank/CLAUDE.md §알람 문자</code> <strong>한 줄뿐</strong>이고, <code>scripts/CLAUDE.md</code>는 포인터라 안 건드렸습니다.</p>
+<p>그런데 첫 시도는 제가 망쳤어요. 규칙만 고치고 <code>.history</code>에 이유를 안 남겼거든요. AI는 코드를 고치지 않고 멈췄습니다.</p>
+<pre><code>알람 확인 방법이 기록끼리 서로 다릅니다.
+- CLAUDE.md: 2026-10-01에 --to-me로 실제 문자를 보내는 방식으로 바뀜
+- .history/2026-10-01_규칙파일_3층_정리.md: 같은 날 &quot;맞는 규칙은 dry-run&quot;이라고 적혀 있음
+--to-me로 바꾼 일에 대한 .history 기록이 없습니다.</code></pre>
+<p>규칙 파일은 하나로 정리했는데, <strong>규칙을 바꾼 이유가 기록에 없으니</strong> 또 두 개의 말이 생긴 거예요. 지난 편에서 정본 파일의 출처 칸 하나를 빼먹었던 것과 똑같은 실수입니다..</p>
+<p><code>.history</code>에 &quot;무엇을/왜/영향범위&quot;를 채워 넣고 새 세션에서 같은 부탁을 했어요. 이번엔 <code>scripts</code> 폴더에서 열었는데도 포인터를 따라가서 새 규칙대로 확인했습니다.</p>
+<pre><code>&gt; python scripts/send_alarm.py --to-me
+[발송] 내 번호 1개로 문자 전송: [물탱크알람] 테스트
+
+sent_log.txt:
+2026-10-01 05:53 (내 번호 1개) [물탱크알람] 테스트</code></pre>
+<p>규칙 한 줄을 고쳤고, 가족 번호 3개가 아니라 <strong>제 번호 하나</strong>로만 나갔어요. 정리는 이렇게 됩니다.</p>
+<p>1. 규칙마다 &quot;모든 작업 공통인가 / 이 프로젝트 전체인가 / 이 폴더만인가&quot;를 정해 <strong>한 층</strong>에만 둔다<br>
+2. 아래 층에서 짚어야 하면 &quot;정본: 파일 §제목&quot;으로 위치만 적는다<br>
+3. 규칙을 바꾸면 그 한 곳을 고치고, <code>.history</code>에 <strong>왜 바꿨는지</strong>를 같이 남긴다</p>
+<img src="img/05_one_edit.png" alt="05_one_edit.png — 흐름도. 위 &#x27;tank/CLAUDE.md §알람 문자 한 줄 수정 (dry-run → --to-me)&#x27;. 왼쪽 가지 붉은 &#x27;1차: .history 없음 → AI 멈춤 &quot;기록끼리 다릅니다&quot;&#x27;. 오른쪽 가지 초록 &#x27;2차: .history 추가 → scripts/ 에서 열어도 포인터 따라감 → --to-me 실행 → sent_log: 내 번호 1개&#x27;. 하단 &#x27;규칙을 바꾸면 이유도 같이 남긴다&#x27;" loading="lazy">
+<h2>6. 도구가 달라도 같고, 자주 받는 질문</h2>
+<p>이번 편의 구조는 <strong>Codex CLI(GPT)나 Gemini CLI에서도 같은 방식으로 됩니다.</strong> 규칙 파일 이름만 바뀌어요. Codex CLI는 <code>AGENTS.md</code>(전역은 <code>~/.codex/AGENTS.md</code>), Gemini CLI는 <code>GEMINI.md</code>(전역은 <code>~/.gemini/GEMINI.md</code>)이고, 전역·프로젝트·하위 폴더로 층이 쌓이는 방식도 같습니다(2026년 10월 기준).</p>
+<p><strong>Q. 층끼리 규칙이 부딪히면 어느 쪽이 이기나요?</strong><br>
+이번 실험에선 AI가 4번 모두 충돌을 짚고 안전한 쪽을 골랐어요. 다만 그건 이번 결과일 뿐이고, 저는 &quot;어느 층이 이긴다&quot;에 기대지 않습니다. CLAUDE.md 규칙 충돌은 이기는 쪽을 외우는 것보다, 부딪히는 규칙을 아예 안 만드는 게 답이에요.</p>
+<p><strong>Q. 포인터 말고 파일째 불러오는 방법은 없나요?</strong><br>
+Claude Code는 CLAUDE.md 안에 <code>@경로</code> 한 줄을 쓰면 그 파일 내용을 불러옵니다. 긴 규칙 묶음을 따로 두고 싶을 때 쓰면 돼요. 어느 쪽이든 핵심은 <strong>원문이 한 곳</strong>이라는 겁니다.</p>
+<p><strong>Q. 지금 어떤 규칙 파일이 읽혔는지 확인할 수 있나요?</strong><br>
+Claude Code 대화창에서 <code>/memory</code>를 치면 불러온 규칙 파일 목록이 나와요. 그리고 가끔 규칙 파일 전체에서 같은 단어를 검색해보세요. 같은 규칙이 두 곳에서 나오면 그게 다음 충돌 자리입니다.</p>
+<p>다음 편부터는 4단계, 검증으로 넘어갑니다. 규칙을 한 곳에 모아도 AI가 내놓는 숫자가 틀리면 소용없거든요. AI가 준 숫자를 어디까지 의심해야 하는지, 검증 도구가 틀린 값에 도장을 찍어준 사건으로 풀어볼게요.</p>
+<p>규칙 파일 몇 장으로 AI 작업 환경을 짜는 과정은 makefield.ai에 이어서 올리고 있습니다.</p>
+<p>태그: #CLAUDEmd규칙충돌 #CLAUDEmd계층구조 #클로드코드규칙파일 #규칙파일정리 #정본SSOT #AGENTSmd #GEMINImd #클로드코드CLAUDEmd #AI규칙드리프트 #전역규칙프로젝트규칙 #ClaudeCode #CodexCLI #GeminiCLI #비개발자AI #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224427801707" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
