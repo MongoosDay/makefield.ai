@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 지식베이스 파일 구조, 숫자는 한 파일에만 적는 이유 | 도면 읽는 AI</title>
+<meta name="description" content="AI 지식베이스 파일 구조는 세 줄 규칙이면 됩니다. 사실 하나당 정본 파일은 딱 하나이고, 숫자는 그 정본에만 적습니다. 다른 파일은 숫자를 베끼지 않고 &quot;정본: kb/파일명&quot; 링크만 겁니다. 여기에 파일 이름 앞 분류(fact·calc·issue)와 목록 파일 INDEX.m">
+<link rel="canonical" href="https://makefield.ai/blog/20260930-ai-kb-file-ssot/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 지식베이스 파일 구조, 숫자는 한 파일에만 적는 이유 | 도면 읽는 AI">
+<meta property="og:description" content="AI 지식베이스 파일 구조는 세 줄 규칙이면 됩니다. 사실 하나당 정본 파일은 딱 하나이고, 숫자는 그 정본에만 적습니다. 다른 파일은 숫자를 베끼지 않고 &quot;정본: kb/파일명&quot; 링크만 겁니다. 여기에 파일 이름 앞 분류(fact·calc·issue)와 목록 파일 INDEX.m">
+<meta property="og:url" content="https://makefield.ai/blog/20260930-ai-kb-file-ssot/">
+<meta property="og:image" content="https://makefield.ai/blog/20260930-ai-kb-file-ssot/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 지식베이스 파일 구조, 숫자는 한 파일에만 적는 이유", "datePublished": "2026-09-30", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20260930-ai-kb-file-ssot/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-09-30</span></div>
+<h1>AI 지식베이스 파일 구조, 숫자는 한 파일에만 적는 이유</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — 01_title.png &quot;AI 지식베이스 파일 구조 / 숫자는 한 파일에만 적는 이유&quot;" loading="lazy">
+<p><strong>AI 지식베이스 파일 구조는 세 줄 규칙이면 됩니다. 사실 하나당 정본 파일은 딱 하나이고, 숫자는 그 정본에만 적습니다. 다른 파일은 숫자를 베끼지 않고 &quot;정본: kb/파일명&quot; 링크만 겁니다.</strong> 여기에 파일 이름 앞 분류(<code>fact_</code>·<code>calc_</code>·<code>issue_</code>)와 목록 파일 <code>INDEX.md</code> 한 장을 더하면 끝이에요. 이 규칙 없이 파일을 쪼개면, 같은 숫자가 여러 파일에서 <strong>따로따로 늙어갑니다.</strong></p>
+<p>지난 편에서 좋은 답을 <code>kb/</code> 폴더의 지식 파일로 올렸죠. 이번 편은 그 파일들을 <strong>어떻게 나누고, 값이 바뀌면 어디를 고치는지</strong> 다룹니다.</p>
+<p>공장 설비 제어로 15년째 밥벌이를 하고, 퇴근 후엔 제 PC에 AI 작업 환경을 조금씩 짓고 있어요. 아래 화면은 전부 2026년 9월 30일 연습 폴더에서 Claude Code(2.1.285)로 돌린 그대로입니다. 이번에도 AI 자동 메모리는 끄고 돌렸어요.</p>
+<h2>1. 파일 하나만 고쳤더니 숫자가 두 개가 됐어요</h2>
+<p>연습 폴더는 지난 편 끝 상태 그대로입니다. <code>kb/</code>에 물탱크 레벨센서 관련 파일이 4개 있어요. 그중 &quot;센서가 탱크 바닥에서 100 mm 위에 달려 있다&quot;는 사실이 핵심이었죠.</p>
+<p>그런데 줄자로 재보니 150 mm였다고 해봅시다. 사람이 제일 흔하게 하는 행동은 이거예요. <strong>센서 설명 파일 하나를 열어서 숫자를 고친다.</strong> 저도 그렇게 했습니다. 그리고 숫자를 검색해봤어요.</p>
+<pre><code>&gt; grep -rn &quot;100\|150&quot; kb/   (줄임)
+
+kb/level_sensor_spec.md:8:          - 센서 설치 위치: 탱크 바닥에서 **150 mm** 위
+kb/level_sensor_spec.md:10:         - 실제 물 높이(mm) = 센서값(mm) + 150
+kb/level_to_liter_formula.md:7:     - 환산식: **L = (센서값 + 100) × 2**
+kb/level_to_liter_formula.md:8:       - +100: 센서 설치 높이
+kb/low_threshold_at_sensor_position.md:4: ... 실제 물 높이 100 mm = 센서 위치라서</code></pre>
+<p>같은 사실인데 150이 한 파일, 100이 두 파일입니다. 환산식 파일이 설치 높이를 <strong>자기 안에 숫자로 베껴두고 있었던</strong> 거예요. 이 상태에서 새 세션을 열고 물었습니다.</p>
+<pre><code>&gt; 레벨센서 값이 60이야. 몇 리터야? 저수위 알람 떠야 하는 상황이야?
+
+센서값 60은 420 L입니다. 저수위 알람 상황은 아닙니다.
+(kb/level_sensor_spec.md 2026-09-30 실측값 기준)
+
+## kb 파일끼리 값이 서로 다릅니다
+환산식 파일이 옛날 값 그대로입니다. ... 옛날 식으로 계산하면 320 L가 나옵니다.
+그래도 알람 기준 아래는 아니라서 결론은 같습니다.
+...
+kb 정리: level_to_liter_formula.md와 low_threshold_at_sensor_position.md를
+150 mm 기준으로 고칠까요?</code></pre>
+<p>솔직히 말하면 제 예상보다 AI가 잘했어요. 질문을 바꿔 한 번 더 돌려도 똑같이 420 L를 내고 불일치를 짚었습니다. 파일이 4개뿐이라 <strong>다 열어볼 수 있었으니까요.</strong></p>
+<p>그래도 두 가지가 남아요. 하나, 이번엔 320이든 420이든 알람 기준(200 L) 위라 결론이 같았을 뿐입니다. 둘, 결국 &quot;어느 파일을 고칠까요?&quot;라는 숙제가 저한테 돌아왔어요. 그리고 제 진짜 KB는 오늘 기준 <strong>529개</strong>입니다. 이 규모면 AI가 매번 전부 열어보길 기대하긴 어렵습니다.</p>
+<img src="img/02_drift.png" alt="02_drift.png — 상단 제목 &#x27;같은 사실, 세 파일, 두 개의 값&#x27;. 가운데 사람 아이콘 &#x27;줄자 실측 150 mm&#x27; → 화살표 1개만 초록 박스 &#x27;level_sensor_spec.md : 150&#x27;으로. 옆의 붉은 박스 2개 &#x27;level_to_liter_formula.md : (센서값+100)×2&#x27;, &#x27;low_threshold_...md : 100 mm&#x27;는 화살표 없이 회색 &#x27;안 고쳐짐&#x27;. 하단 &#x27;같은 질문 → 420 L(새 값) / 320 L(옛 값) 둘 다 계산 가능&#x27;" loading="lazy">
+<h2>2. 제 게임 공략집에선 아무도 못 잡았습니다</h2>
+<p>이번엔 실제로 당한 얘기예요. 저는 모바일 게임 공략을 AI랑 같이 파일로 정리해둡니다. 폴더 하나에 <code>00_게임시스템_기본가이드.md</code>부터 <code>08_...</code>까지 번호 붙은 파일이 있고, 폴더 <strong>밖에</strong> <code>타이탄퀘스트_모바일_공략.md</code>라는 큰 파일이 하나 따로 있어요.</p>
+<p>최고 난이도(Legendary)에선 캐릭터 저항이 깎입니다. 6월 14일에 만든 기본 가이드엔 &quot;Legendary −100%&quot;라고 <strong>맞게</strong> 적혀 있었어요. 그 뒤 8월 17일에 폴더 밖 모바일 공략을 새로 만들었는데, 8월 26일에 열어보니 거기엔 <strong>&quot;약 −60%&quot;</strong>가 들어가 있었습니다.</p>
+<p>아이템 강화 공략을 새로 쓰면서 기존 문서를 대조하다가 걸린 거예요. 그날 기록에 이렇게 남아 있습니다.</p>
+<pre><code>교차검증: 같은 폴더 00_게임시스템_기본가이드.md line 140에 이미
+&quot;Epic −40%/Legendary −100%&quot;로 정확히 적혀 있었음
+→ 모바일 공략만 어긋나 있던 드리프트였다.
+교훈: 같은 주제 문서가 여러 개면 수치가 조용히 갈라진다.</code></pre>
+<p>−60을 믿고 저항을 맞추면 40만큼 모자란 채로 최고 난이도에 들어가는 셈이죠. 같은 날 &quot;부적(Charm) 조각 수 = 가변 3~8&quot;이라는 표기도 &quot;5조각&quot;으로 고쳤습니다.</p>
+<p>오늘 이 글을 쓰면서 공략 폴더를 다시 검색해봤어요.</p>
+<p>- &quot;Legendary −100&quot;은 지금 <strong>파일 3개</strong>(00번·07번·모바일 공략)에 따로 적혀 있습니다.<br>
+- 05번 파일 190행에는 &quot;Charm 가변&quot;이 <strong>아직 한 줄 남아 있었어요.</strong> 같은 파일 48행에선 &quot;가변 3~8 표기는 정정됐다&quot;고 써놓고요..<br>
+- 08번은 &quot;07번 §1~3 참조&quot;라고 링크를 걸어놓고, 바로 뒤에 &quot;요약: Relic 3조각 / Charm 5조각&quot;을 또 베껴뒀습니다.</p>
+<p>고쳤다고 적은 파일 안에 옛 값이 살아 있고, 링크 옆에 복사본이 붙어 있어요. 제 공략집은 아직 정본 규칙으로 정리가 안 된 상태라는 뜻입니다. 여러분 폴더에도 같은 숫자가 두 군데 적힌 파일, 하나쯤 있지 않나요?</p>
+<img src="img/03_game_drift.png" alt="03_game_drift.png — 타임라인. 06-14 &#x27;00 기본 가이드: Legendary −100% (정답)&#x27; 초록 → 08-17 &#x27;폴더 밖 모바일 공략: 약 −60%&#x27; 붉은 → 08-26 &#x27;07번 쓰다 대조 → 발견·정정&#x27; 주황 → 09-30 &#x27;오늘 grep: −100이 3개 파일에 / 05번 190행 Charm 가변 잔존 / 08번 링크+복사본&#x27; 회색. 하단 &#x27;고쳤다고 적은 파일 안에 옛 값이 살아 있다&#x27;" loading="lazy">
+<h2>3. 정본(SSOT) 규칙, 실제로 이렇게 시켰습니다</h2>
+<p><strong>정본(SSOT, Single Source of Truth)이란 어떤 사실의 값을 적는 유일한 파일입니다.</strong> 값이 바뀌면 그 파일 하나만 고치면 되고, 나머지는 그 파일을 가리키기만 해요.</p>
+<p>연습 폴더로 돌아가서, 값이 갈라진 상태 그대로 이렇게 쳤습니다.</p>
+<pre><code>&gt; kb/ 파일끼리 같은 사실이 여러 곳에 적혀 있어서 값이 갈라졌어.
+  설치 높이는 오늘 줄자로 잰 150mm가 맞아. 이렇게 정리해줘.
+  1) 사실 하나당 정본 파일은 딱 하나. 숫자는 정본에만 적는다.
+  2) 다른 파일은 숫자를 베끼지 말고 &#x27;정본: kb/파일명&#x27; 링크만 건다.
+  3) 파일 이름 앞에 분류를 붙인다: fact_ (측정·사양) / calc_ (계산식) / issue_ (열린 문제).
+  4) kb/INDEX.md 에 파일마다 한 줄 요약.
+  5) CLAUDE.md 에 이 규칙을 짧게 추가하고 .history 도 남겨.
+  임계값 파일과 코드는 건드리지 마.</code></pre>
+<p>폴더가 이렇게 바뀌었어요.</p>
+<pre><code>kb\
+├── INDEX.md                             파일마다 한 줄 요약
+├── fact_level_sensor.md                 센서 단위 mm, 설치 높이 150 mm ← 정본
+├── fact_tank_a_dimensions.md            바닥 크기, 물 높이 1 mm당 2 L ← 정본
+├── calc_level_to_liter.md               환산식 (숫자 없이 기호로)
+└── issue_low_threshold_below_sensor.md  저수위 알람 문제 (결정 전)</code></pre>
+<p>제일 달라진 건 환산식 파일이에요. <code>(센서값 + 100) × 2</code>처럼 숫자를 박아두던 식이 기호로 바뀌었습니다.</p>
+<pre><code>## 입력값 (숫자는 여기 적지 않음)
+| 기호 | 뜻               | 정본                          |
+|------|------------------|-------------------------------|
+| H    | 센서 설치 높이   | kb/fact_level_sensor.md       |
+| k    | 물 높이 1mm당 L  | kb/fact_tank_a_dimensions.md  |
+
+## 식
+- L = (센서값 + H) × k</code></pre>
+<p>AI는 값이 갈라진 원인도 짚었습니다. &quot;예전 센서 파일은 본문에 150, 출처 칸에 100이 적혀 있었습니다. 환산식 파일은 100을 그대로 베껴 쓰고 있었습니다.&quot; 제가 한 파일 안에서도 칸 하나를 덜 고쳤던 거예요.</p>
+<p>덤으로 AI가 먼저 짚은 게 있어요. &quot;어제 드린 &#x27;센서 620 → 1,440 L&#x27; 답은 틀렸습니다. 맞는 값은 1,540 L입니다.&quot; 설치 높이가 바뀌면 <strong>예전 계산 결과도 같이 바뀐다</strong>는 거죠. 반면 100 mm가 적힌 지난 작업 기록(<code>.history</code>)은 &quot;지난 로그라서 고치지 않았습니다&quot;라며 그대로 뒀습니다.</p>
+<p>CLAUDE.md에 붙은 규칙은 세 줄이에요.</p>
+<pre><code>## kb 규칙
+- 사실 하나당 정본 파일 하나. 숫자는 정본에만 적고, 다른 파일은 `정본: kb/파일명` 링크만 건다
+- kb 파일명 앞에 분류: fact_ (측정·사양) / calc_ (계산식) / issue_ (열린 문제)
+- kb 파일을 추가·변경하면 kb/INDEX.md 에 한 줄 요약을 맞춘다</code></pre>
+<p>정리 직후 새 세션에서 같은 질문을 던지니, 답이 &quot;약 420 L, 알람 안 뜬다&quot; 하나로 나오고 근거로 &quot;환산식 정본: kb/calc_level_to_liter.md&quot;를 달았습니다.</p>
+<h2>4. 분류 축은 &quot;무엇이 바뀌면 이 파일이 바뀌나&quot;로 잡습니다</h2>
+<p>AI 지식베이스 파일 구조에서 주제별로 쪼개는 것만으론 부족해요. <strong>어떤 기준으로 쪼갰는지</strong>가 파일 이름에 보여야 검색할 때 헤매지 않습니다. 저는 &quot;이 파일은 무엇 때문에 바뀌나&quot;를 축으로 삼았어요.</p>
+<p>| 접두어 | 담는 것 | 바뀌는 계기 | 연습 폴더 예시 |<br>
+|---|---|---|---|<br>
+| <code>fact_</code> | 측정값·사양 | 다시 재거나 사양이 바뀔 때 | 설치 높이, 탱크 바닥 크기 |<br>
+| <code>calc_</code> | 계산식 | 식 자체가 틀렸을 때만 | 센서값 → 리터 |<br>
+| <code>issue_</code> | 아직 안 정한 문제 | 결정이 나면 닫힘 | 저수위 알람이 안 울리는 문제 |</p>
+<p>이렇게 나누면 &quot;설치 높이가 바뀌었다&quot;는 소식이 왔을 때 열어야 할 파일이 <code>fact_</code> 하나로 좁혀져요. 계산식 파일은 숫자를 안 들고 있으니 건드릴 필요가 없고요.</p>
+<p>게임 공략집에서도 사실 같은 판단을 한 적이 있습니다. 8월 26일에 아이템 강화 문서를 새로 만들 때 &quot;05번 = 어디서 뭐가 떨어지는지, 07번 = 강화 규칙, 06번 = 빌드&quot;로 <strong>역할을 나눠</strong> 겹치지 않게 했거든요. 그런데 폴더 밖에 떨어져 있던 모바일 공략 한 개는 이 역할 분담 바깥에 있었고, 드리프트가 거기서 났습니다. <strong class="u">분류 밖 파일</strong>이 제일 위험해요.</p>
+<img src="img/04_ssot.png" alt="04_ssot.png — 좌우 대비. 왼쪽(붉은) &#x27;정리 전&#x27;: 파일 3개가 각자 숫자 보유(150 / 100 / 100), 선 없음. 오른쪽(초록) &#x27;정리 후&#x27;: 가운데 fact_level_sensor.md &#x27;150 mm (정본)&#x27; 박스, calc_·issue_·INDEX 3개 박스가 화살표로 &#x27;정본: kb/fact_...&#x27; 링크만. 하단 &#x27;값이 바뀌면 고칠 파일 = 1개&#x27;" loading="lazy">
+<h2>5. 정본만 고쳐봤습니다 — 그리고 남은 구멍</h2>
+<p>규칙이 진짜 먹히는지 보려고, 정리된 폴더에서 <strong>정본 파일 하나만</strong> 다시 고쳐봤어요. 레이저 거리계로 다시 쟀더니 120 mm였다는 설정입니다(줄자 값은 브래킷 두께까지 잰 거였다고요).</p>
+<p>첫 시도는 제가 망쳤습니다. 본문 숫자만 120으로 바꾸고, 같은 파일 아래 출처 칸의 &quot;줄자로 잰 150mm&quot;는 그대로 뒀어요. 날짜도 실수로 내일 날짜(10-01)를 적었고요. AI의 답은 이랬습니다.</p>
+<pre><code>같은 파일의 출처·검증 칸, calc 파일, 오늘자 .history는 모두 150 mm입니다.
+게다가 10-01은 내일 날짜입니다.
+그래서 위 계산에는 기록이 뒷받침되는 150 mm를 썼습니다.</code></pre>
+<p><strong>정본을 하나로 만들어도, 그 파일 안에서 칸 하나를 빼먹으면 또 갈라집니다.</strong> 그리고 AI는 여러 기록이 가리키는 쪽, 즉 옛 값을 골랐어요. 맞는 판단이지만 제 의도와는 반대였죠.</p>
+<p>두 번째는 제대로 했습니다. 본문·출처·검증 칸을 전부 120으로, 날짜도 오늘로요. 결과는 이렇습니다.</p>
+<pre><code>센서 60이면 약 360 L 있고, 저수위 알람은 뜨지 않습니다.
+| H (센서 설치 높이) | 120 mm | kb/fact_level_sensor.md |
+
+calc_level_to_liter.md의 계산 결과 표가 옛날 값 기준입니다.
+센서 0일 때 300 L, 센서 620일 때 1,540 L라고 적혀 있고,
+120 mm 기준으로는 각각 240 L와 1,480 L가 맞습니다.
+그래서 표 대신 정본 값으로 직접 계산했습니다.</code></pre>
+<p>파일 하나만 고쳤는데 답이 새 값(360 L)으로 바로 따라왔어요. 정본 규칙은 먹혔습니다.</p>
+<p>그런데 새 구멍이 보였죠. 환산식 파일 안에 <strong>미리 계산해둔 결과표</strong>가 있었고, 그 표는 옛 값으로 남아 있었어요. 계산 결과도 결국 숫자의 복사본이었던 겁니다. 그래서 연습 폴더 규칙에 한 줄을 더 붙였습니다. &quot;계산 결과를 적어둘 땐 어느 정본 값으로 계산했는지 같이 적고, 정본이 바뀌면 다시 계산한다.&quot;</p>
+<img src="img/05_leftover.png" alt="05_leftover.png — 흐름도. 위 &#x27;정본(fact_) 150→120 수정&#x27; → 초록 화살표 &#x27;답: 360 L (새 값 반영)&#x27;. 옆 가지 붉은 점선 &#x27;calc_ 파일의 미리 계산한 표: 300 L / 1,540 L (옛 값)&#x27;. 아래 주황 박스 &#x27;실패 1회차: 본문만 고치고 출처 칸 방치 → AI가 옛 값 150 선택&#x27;. 하단 &#x27;계산 결과도 복사본이다 — 무슨 값으로 계산했는지 같이 적는다&#x27;" loading="lazy">
+<h2>6. 도구가 달라도 같고, 자주 받는 질문</h2>
+<p>이번 AI 지식베이스 파일 구조에 쓴 건 폴더 하나, 마크다운 파일 몇 개, 규칙 세 줄입니다. <strong>Codex CLI(GPT)나 Gemini CLI에서도 같은 방식으로 됩니다.</strong> 규칙 파일 이름만 <code>AGENTS.md</code>, <code>GEMINI.md</code>로 바뀌고 <code>kb/</code> 폴더와 <code>INDEX.md</code>는 그대로 옮겨 쓰면 돼요.</p>
+<p><strong>Q. 한 파일에 한 주제면 파일이 너무 많아지지 않나요?</strong><br>
+많아집니다. 그래서 <code>INDEX.md</code>가 필요해요. 사람은 목록 한 장만 보면 되고, AI한테도 &quot;INDEX부터 보고 필요한 파일만 열어&quot;라고 시킬 수 있어요. 파일 수보다 무서운 건 <strong>같은 숫자가 두 군데 있는 것</strong>이에요.</p>
+<p><strong>Q. 접두어 대신 폴더로 나누면 안 되나요?</strong><br>
+됩니다. 폴더도 분류 축이에요. 다만 제 공략집처럼 폴더 밖에 떨어진 파일이 드리프트 자리가 되기 쉽고, 접두어는 검색 결과 한 줄에 분류가 같이 찍혀서 저는 이쪽을 씁니다.</p>
+<p><strong>Q. <code>.history</code>에 적힌 옛 숫자도 고쳐야 하나요?</strong><br>
+아니요. 작업 기록은 &quot;그때 이렇게 알고 있었다&quot;는 사실이라 고치면 오히려 거짓이 됩니다. 정본만 새 값으로 고치고, 기록엔 &quot;언제 왜 바꿨다&quot;를 새로 남기면 됩니다.</p>
+<p>적용 전에 이것만 확인해보세요.</p>
+<p>- [ ] 같은 숫자를 검색했을 때 <code>kb/</code>에서 한 파일만 나오나<br>
+- [ ] 계산식 파일이 숫자 대신 &quot;정본: kb/...&quot; 링크를 들고 있나<br>
+- [ ] 정본을 고칠 때 본문·출처·검증 칸을 같이 고쳤나<br>
+- [ ] 미리 계산해둔 결과표에 &quot;무슨 값으로 계산했는지&quot;가 적혀 있나</p>
+<p>다음 편은 규칙 쪽입니다. 오늘 <code>kb/</code>에 적용한 &quot;한 곳에만 두고 나머지는 가리킨다&quot;를 CLAUDE.md 같은 규칙 파일에도 똑같이 걸어야 하는데, 규칙은 숫자보다 더 조용히 충돌하거든요. 전역·프로젝트·역할 규칙 파일을 어떻게 나눴는지 풀어볼게요.</p>
+<p>파일 몇 개로 AI 작업 환경을 짜는 과정은 makefield.ai에 순서대로 올려두고 있어요.</p>
+<p>태그: #AI지식베이스파일구조 #KB파일설계 #정본SSOT #SingleSourceofTruth #클로드코드KB정리 #AI지식베이스 #개인지식베이스 #문서드리프트 #한파일한주제 #클로드코드CLAUDEmd #AGENTSmd #ClaudeCode #CodexCLI #GeminiCLI #비개발자AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224427421266" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
