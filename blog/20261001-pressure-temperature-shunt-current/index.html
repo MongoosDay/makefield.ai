@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수전해 압력 올리면 기생전류가 커지는 이유 (논문 해설) | 도면 읽는 AI</title>
+<meta name="description" content="수전해 압력을 올리면 기생전류가 커지는 이유는 출구의 기포가 줄어서입니다. 기포는 전기가 새는 길을 막는 장애물인데, 압력이 기포를 눌러 작게 만들면 그 길이 뚫려요 [Anttilainen 2026, 3.1절]. 한 시뮬레이션에서 50% 부하일 때 압력을 32 bar에서 1 b">
+<link rel="canonical" href="https://makefield.ai/blog/20261001-pressure-temperature-shunt-current/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="수전해 압력 올리면 기생전류가 커지는 이유 (논문 해설) | 도면 읽는 AI">
+<meta property="og:description" content="수전해 압력을 올리면 기생전류가 커지는 이유는 출구의 기포가 줄어서입니다. 기포는 전기가 새는 길을 막는 장애물인데, 압력이 기포를 눌러 작게 만들면 그 길이 뚫려요 [Anttilainen 2026, 3.1절]. 한 시뮬레이션에서 50% 부하일 때 압력을 32 bar에서 1 b">
+<meta property="og:url" content="https://makefield.ai/blog/20261001-pressure-temperature-shunt-current/">
+<meta property="og:image" content="https://makefield.ai/blog/20261001-pressure-temperature-shunt-current/img/00_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "수전해 압력 올리면 기생전류가 커지는 이유 (논문 해설)", "datePublished": "2026-10-02", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261001-pressure-temperature-shunt-current/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">논문 읽는 AI</span><span>2026-10-02</span></div>
+<h1>수전해 압력 올리면 기생전류가 커지는 이유 (논문 해설)</h1>
+<article>
+<img src="img/00_title.png" alt="타이틀카드 — 00_title.png" loading="lazy">
+<p>수전해 압력을 올리면 기생전류가 커지는 이유는 <strong>출구의 기포가 줄어서</strong>입니다. 기포는 전기가 새는 길을 막는 장애물인데, 압력이 기포를 눌러 작게 만들면 그 길이 뚫려요 [Anttilainen 2026, 3.1절].<br>
+한 시뮬레이션에서 50% 부하일 때 압력을 32 bar에서 1 bar로 낮추자 전류효율이 25%p 가까이 올랐습니다 [Anttilainen 2026, 3.1절].</p>
+<p>&#x27;논문 읽는 AI&#x27; 8편은 설계가 아니라 <strong>운전</strong> 이야기예요. 셀 수가 정해진 뒤에도 같은 스택을 몇 bar, 몇 ℃로 돌리느냐에 따라 새는 양이 달라집니다. 지난 편과 같은 핀란드 LUT대 연구팀이 2026년 4월 Journal of Power Sources에 공개한 오픈액세스 논문을 읽었어요.</p>
+<h2>1. 이 논문은 무엇을, 어떻게 풀었나요</h2>
+<p><strong>압력과 온도가 스택 안 기생전류를 어떻게 바꾸는지 함께 따진 연구는 없었다</strong>는 게 출발점입니다. 공장 단위 선행연구는 1→32 bar에서 손실이 거의 두 배라고 했지만, 스택 내부 누수 경로는 모델에 없었어요 [Anttilainen 2026, 1장].</p>
+<p>- <strong>기생전류(stray·shunt current)</strong>: 반응 면을 거치지 않고 전해액 통로(포트·매니폴드)로 빠져나가는 전류. 수소 대신 열이 됩니다.<br>
+- <strong>전류효율</strong>: 넣은 전류 중 실제로 수소를 만든 비율.<br>
+- <strong>ΔT(입출구 온도차)</strong>: 들어가는 전해액과 나오는 전해액의 온도 차이. 출구는 80 ℃로 <strong>고정</strong>하고, 입구를 얼마나 차갑게 넣느냐로 ΔT를 바꿉니다 [Anttilainen 2026, 2.4절].</p>
+<p>방법은 <strong>전기 회로 모델 + 열 수지 모델</strong>이에요. 누수 전류가 열을 만들고, 열이 입구 온도를, 입구 온도가 전도도를, 전도도가 다시 누수를 정하니 입구 온도가 수렴할 때까지 반복 계산합니다 [Anttilainen 2026, 2.4절].</p>
+<p>| 항목 | 기준값 |<br>
+|---|---|<br>
+| 스택 | 산업용 알칼라인 수전해, 163셀 |<br>
+| 공급 전류 | 4567 A |<br>
+| 운전 압력 | 16 bar(a) |<br>
+| 출구 온도 / ΔT | 80 ℃ 고정 / 10 ℃ |<br>
+| 전해액 | KOH 25 wt%, 셀당 0.076 kg/s |</p>
+<p>(출처: [Anttilainen 2026, Table 1])</p>
+<p>정격점 기생전류 16%에 맞춰 조정한 뒤 [Anttilainen 2026, 2.5.1절] 실측 7개 지점과 비교하니 전류효율 상대오차는 −0.2~1.2%였어요 [Anttilainen 2026, Table 2].</p>
+<h2>2. 수전해 압력을 올리면 기생전류가 왜 커지나요</h2>
+<p><strong>기포가 작아지고 수증기가 줄어, 출구 전해액이 전기를 더 잘 통하게 되기 때문</strong>입니다 [Anttilainen 2026, 3.1절]. 고리 셋으로 이어져요.</p>
+<img src="img/01_pressure_chain.png" alt="압력에서 출구 누수까지의 연쇄 — 01_pressure_chain.png" loading="lazy">
+<p>1. 압력이 기포를 눌러 부피를 줄입니다.<br>
+2. 수증기가 덜 생겨 증발로 빠지던 열이 줄어요. 정격 부하에서 증발 냉각은 1 bar일 때 스택 입력 직류 전력의 약 7.8%, 32 bar일 때 약 0.15%입니다 [Anttilainen 2026, 3.1절].<br>
+3. 못 빠진 열을 빼려면 전해액을 더 흘려야 해요. 같은 ΔT를 지키려면 1→32 bar 구간에서 정격은 50% 넘게, 부분부하는 최대 90%까지 유량이 늘어납니다 [Anttilainen 2026, 3.1절].</p>
+<p>기포는 줄고 액체는 늘었으니 출구 전도도가 올라갑니다. 새는 자리도 정해져 있어요. <strong>입구 쪽은 압력과 거의 상관없이 약 4%이고, 바뀌는 건 출구 매니폴드</strong>입니다 [Anttilainen 2026, 4장].</p>
+<img src="img/02_outlet_share.png" alt="30→10 bar 누수 자리별 변화 — 02_outlet_share.png" loading="lazy">
+<p>ΔT 10 ℃에서 30 bar를 10 bar로 낮추면 양극 출구 매니폴드는 6.1%→3.1%, 음극 출구는 4.4%→1.6%로 줄어요. 둘 다 전체 입력 전류 대비 값입니다 [Anttilainen 2026, 4장].</p>
+<h2>3. 입구를 더 차갑게 넣으면 얼마나 줄어드나요</h2>
+<p><strong>입구 온도를 낮춰 ΔT를 키우면 누수가 줄어듭니다.</strong> 16 bar에서 ΔT를 5 ℃에서 30 ℃로 키우면 전류효율이 정격 부하 80.1%→91.1%, 50% 부하 59.1%→83.1%로 올라요 [Anttilainen 2026, 3.2절].</p>
+<img src="img/03_delta_t.png" alt="ΔT 5→30 ℃ 전류효율 비교 — 03_delta_t.png" loading="lazy">
+<p>이유는 두 갈래입니다 [Anttilainen 2026, 3.2절].</p>
+<p>- <strong>입구 쪽</strong>: 차가운 전해액은 전기가 덜 통해요. ΔT 10→30 ℃에서 입구 전도도가 약 22% 떨어집니다.<br>
+- <strong>출구 쪽</strong>: 차가운 전해액이 열을 더 실어 나르니 유량을 줄여도 됩니다. 액체가 줄면 출구 기포 비율이 올라 전도도가 양극 약 63%, 음극 약 76% 떨어져요.</p>
+<p>논문이 짚은 운전 손잡이는 셋입니다.</p>
+<p>| 손잡이 | 방향 | 효과 | 근거 |<br>
+|---|---|---|---|<br>
+| 운전 압력 | 낮춘다 | 출구 매니폴드 누수 감소 | [Anttilainen 2026, 3.1절] |<br>
+| ΔT | 키운다(입구를 차갑게) | 입구·출구 누수 모두 감소 | [Anttilainen 2026, 3.2절] |<br>
+| 전해액 유량 | 부하에 맞춰 줄인다 | 고정 유량 대비 50% 부하에서 2.0~7.6%p 차이 | [Anttilainen 2026, 3.2.1절] |</p>
+<p>손잡이끼리 바꿔 낄 수도 있어요. 20 bar·ΔT 30 ℃가 10 bar·ΔT 10 ℃보다 전류효율이 높습니다 [Anttilainen 2026, 4장]. 압력을 못 낮추면 ΔT로 메울 수 있다는 뜻이에요.</p>
+<h2>4. 이 논문의 한계는 무엇인가요</h2>
+<p>- 정상상태 시뮬레이션이라 급격한 출력 변동·냉간 기동은 다루지 않아요 [Anttilainen 2026, 2.5.2절].<br>
+- 기포와 액체가 같은 속도로 흐른다고 가정했어요. 기포 비율에 상한(0.5·0.75)을 걸면 압력을 낮춰도 효율이 더 안 오르는 평탄 구간이 생겨요. 0.5 상한 예시에서 정격 부하 전류효율은 약 85%에 머뭅니다 [Anttilainen 2026, 3.1.1절]. 실측 기반 상한은 향후 과제로 남겼어요 [Anttilainen 2026, 5장].<br>
+- 냉각 능력과 기체 배출용 최소 유량 때문에 ΔT를 무한정 키울 수 없고, 약 40 ℃부터는 이득도 미미합니다 [Anttilainen 2026, 3.2절].<br>
+- 펌프·전력변환기 같은 보조설비는 모델 밖이고, 산업 데이터는 공개되지 않았어요 [Anttilainen 2026, 2.5.2절·Data availability].<br>
+- 압력을 낮추면 뒤단 압축 부담이 늘어요. 그래서 저자들은 최저 압력이 곧 최적이라 하지 않고, 25 bar를 넘으면 손실이 불균형하게 커진다고만 적었습니다 [Anttilainen 2026, 3.1.1절].</p>
+<h2>5. AI 요약에서 어떤 숫자가 틀어졌나요</h2>
+<p>이제 읽은 방법입니다. PDF를 텍스트로 뽑아 AI에게 읽히고, 그래프 쪽은 이미지로 띄워 본문 숫자와 대조했더니 함정이 네 개 나왔어요.</p>
+<img src="img/04_ai_traps.png" alt="이 논문에서 걸린 함정 4개 — 04_ai_traps.png" loading="lazy">
+<p><strong>&#x27;온도&#x27;가 어느 온도인가.</strong> &quot;온도를 올리면 누수가 커진다&quot;는 요약은 반만 맞아요. 출구는 80 ℃ 고정이고, 바뀐 건 입구 온도입니다 [Anttilainen 2026, 2.4절]. 최고 온도를 올린 실험이 아니에요.</p>
+<p><strong>기준점이 다른 두 숫자.</strong> 결론은 &quot;정격 최대 7%p, 50% 부하 최대 25%p&quot;를 한 문장에 묶습니다 [Anttilainen 2026, 5장]. 본문에서 25%p는 32→1 bar 기준이에요 [Anttilainen 2026, 3.1절]. 7%p는 Fig.2 그래프로 읽으면 16→1 bar 폭에 맞습니다(그래프 판독). 둘을 나란히 놓고 배율을 내면 틀려요.</p>
+<p><strong>같은 22%, 다른 뜻.</strong> 위에서 쓴 입구 전도도 22% 감소와 별개로, 4장에는 1 bar에서 ΔT를 10→30 ℃로 키우면 전체 기생전류 손실이 <strong>상대적으로</strong> 22% 준다는 값이 또 나와요(10 bar에선 약 40%) [Anttilainen 2026, 4장]. 여기에 6.1%→3.1%는 입력 전류 대비 점유율, 7%p는 효율 차이입니다. AI 요약은 이걸 전부 &#x27;%&#x27;로 뭉개요.</p>
+<p><strong>검증 범위 밖 숫자.</strong> 검증표는 정격 대비 74.9~99.7% 부하의 7개 점이에요 [Anttilainen 2026, Table 2]. 가장 극적인 50% 부하 결과는 이 표 밖입니다. 다만 회로 모델 자체는 선행연구에서 부분부하까지 검증했다고 밝혀요 [Anttilainen 2026, 2.5.1절].</p>
+<p>네 개를 잡은 질문입니다.</p>
+<pre><code>1) 바뀐 변수와 고정한 변수를 표로 나눠. &#x27;온도&#x27;는 어느 지점 값인지 붙여.
+2) 비교 숫자마다 출발 조건과 도착 조건을 적어.
+3) 모든 증감값을 %p / 점유율 / 상대% 중 하나로 표시해.
+4) 결과마다 검증 범위 안인지 밖인지 표시해.</code></pre>
+<p><strong>결론 문단은 숫자를 가장 짧게 줄인 곳이라 조건이 가장 많이 떨어져 나갑니다.</strong> 결론의 숫자는 본문 절로 되짚어 가 확인하는 한 단계가 핵심이에요.</p>
+<h2>6. 읽다 보면 생기는 질문 3개</h2>
+<p><strong>Q. 수전해 압력은 낮출수록 좋은가요?</strong><br>
+기생전류만 보면 그렇지만 뒤단 압축 부담이 늘어요. 기포 비율이 포화하면 약 10 bar 아래에선 이득이 줄어든다고 논문은 봅니다 [Anttilainen 2026, 3.1.1절].</p>
+<p><strong>Q. 장비를 바꿔야 기생전류가 줄어드나요?</strong><br>
+논문은 압력과 ΔT를 함께 조정하고 부하에 맞춰 펌프 속도를 바꾸면 하드웨어 변경 없이 줄일 수 있다고 해요. 냉각 능력과 최소 유량 안에서라는 조건이 붙습니다 [Anttilainen 2026, 4장].</p>
+<p><strong>Q. 압력이 셀 전압에도 영향을 주나요?</strong><br>
+1→30 bar에서 개방전압은 20~30 mV 오르는 정도라 모델에서 뺐어요 [Anttilainen 2026, 2.3.3절]. 이 논문에서 압력의 효과는 전압이 아니라 출구 전도도로 나타납니다.</p>
+<p>---</p>
+<p>한 줄로 줄이면 출구 기포는 <strong>누수를 막아 주던 절연재</strong>였어요. 압력은 그 절연재를 줄이고, 입구 온도와 유량은 그걸 되살리는 손잡이입니다.</p>
+<p>다음 편은 운전 조건이 아니라 <strong>구조</strong>, 매니폴드 설계로 누수를 막는 방법을 봅니다. 여러분이 읽는 논문의 결론 문장, 본문 조건과 대조해 본 적 있나요?</p>
+<p>논문을 AI로 읽을 때 쓰는 질문 목록은 makefield.ai에 모아 두고 있어요.</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224429702613" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
