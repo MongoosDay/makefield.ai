@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수전해 매니폴드 설계로 기생전류·크로스오버를 줄일 수 있을까? (논문 해설) | 도면 읽는 AI</title>
+<meta name="description" content="수전해 매니폴드 설계만 바꿔도 기생전류와 크로스오버를 줄일 수 있다는 실험 결과가 있습니다. 기체가 빠져나갈 출구 매니폴드를 따로 낸 정사각형 전해조가 기존 원형 설계보다 낮은 전류에서도 가스 순도와 패러데이 효율이 높았어요 [Liu 2025, Abstract]. 그 &#x27;낮은 전">
+<link rel="canonical" href="https://makefield.ai/blog/20261003-manifold-design-shunt-current/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="수전해 매니폴드 설계로 기생전류·크로스오버를 줄일 수 있을까? (논문 해설) | 도면 읽는 AI">
+<meta property="og:description" content="수전해 매니폴드 설계만 바꿔도 기생전류와 크로스오버를 줄일 수 있다는 실험 결과가 있습니다. 기체가 빠져나갈 출구 매니폴드를 따로 낸 정사각형 전해조가 기존 원형 설계보다 낮은 전류에서도 가스 순도와 패러데이 효율이 높았어요 [Liu 2025, Abstract]. 그 &#x27;낮은 전">
+<meta property="og:url" content="https://makefield.ai/blog/20261003-manifold-design-shunt-current/">
+<meta property="og:image" content="https://makefield.ai/blog/20261003-manifold-design-shunt-current/img/00_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "수전해 매니폴드 설계로 기생전류·크로스오버를 줄일 수 있을까? (논문 해설)", "datePublished": "2026-10-03", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261003-manifold-design-shunt-current/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">논문 읽는 AI</span><span>2026-10-03</span></div>
+<h1>수전해 매니폴드 설계로 기생전류·크로스오버를 줄일 수 있을까? (논문 해설)</h1>
+<article>
+<img src="img/00_title.png" alt="타이틀카드 — 00_title.png" loading="lazy">
+<p>수전해 매니폴드 설계만 바꿔도 기생전류와 크로스오버를 줄일 수 있다는 실험 결과가 있습니다. 기체가 빠져나갈 <strong>출구 매니폴드를 따로 낸 정사각형 전해조</strong>가 기존 원형 설계보다 낮은 전류에서도 가스 순도와 패러데이 효율이 높았어요 [Liu 2025, Abstract].<br>
+그 &#x27;낮은 전류&#x27;는 10 mA/cm²까지 내려갑니다 [Liu 2025, Abstract].</p>
+<p>&#x27;논문 읽는 AI&#x27; 9편이에요. 지난 편이 압력·온도라는 <strong>운전 손잡이</strong>였다면, 이번엔 손잡이가 아니라 <strong>구조</strong> 자체를 고칩니다. 중국 연구팀이 2025년 6월 Electrochimica Acta에 낸 논문(doi: 10.1016/j.electacta.2025.146186)을 읽었어요. 다만 이번 PDF는 전문이 아니라 <strong>출판사 미리보기</strong>(초록·서론·절 발췌)였습니다. 그래서 아래 내용은 미리보기에 실린 범위만 옮겼어요.</p>
+<h2>1. 이 논문은 무엇을 풀려 했나요</h2>
+<p><strong>낮은 출력에서 수소와 산소가 섞여 설비가 멈추는 문제</strong>입니다. 알칼라인 수전해는 양극과 음극 사이 분리막으로 두 기체를 나누지만, 기체가 막을 넘어가는 크로스오버를 완전히 없앨 수는 없어요 [Liu 2025, 서론].</p>
+<p>- <strong>크로스오버</strong>: 한쪽 칸의 기체가 분리막을 넘어 반대쪽으로 섞여 드는 현상.<br>
+- <strong>HTO(산소 중 수소 농도)</strong>: 산소 쪽에 수소가 얼마나 섞였는지를 나타내는 비율.<br>
+- <strong>매니폴드</strong>: 여러 셀에 전해액을 나눠 주고, 기체와 전해액을 모아 내보내는 공용 통로.</p>
+<img src="img/01_low_power_chain.png" alt="저출력에서 설비가 멈추기까지 — 01_low_power_chain.png" loading="lazy">
+<p>논문 서론이 짚는 고리는 이렇습니다 [Liu 2025, 서론].</p>
+<p>1. 재생에너지는 출력이 오르내려서 전해조가 낮은 전류로 도는 시간이 생겨요.<br>
+2. 낮은 전류에서는 막을 넘어오는 기체 속도가 전극에서 기체가 생기는 속도를 넘어서기도 합니다.<br>
+3. 수소는 기포가 산소보다 작아 막을 더 쉽게 통과하고, HTO가 위험 수준까지 오를 수 있어요.<br>
+4. 보통 HTO가 2%를 넘으면 시스템이 자동 정지합니다. 결국 쓸 수 있는 출력 범위가 좁아져요.</p>
+<h2>2. 왜 막이 아니라 유로를 고쳤나요</h2>
+<p><strong>막을 바꾸는 길은 비용·내구성 벽이 있고, 크로스오버는 칸 안에 기포가 고이는 정도와 관련이 깊기 때문</strong>입니다 [Liu 2025, 서론]. 논문이 정리한 선행 접근은 셋이에요.</p>
+<p>| 접근 | 장점 | 걸림돌 | 근거 |<br>
+|---|---|---|---|<br>
+| 분리막 개선(AEM 등) | 기체 차단력이 기존 막보다 훨씬 강함 | 제작비, 장기 화학·기계 안정성 | [Liu 2025, 서론] |<br>
+| 분리 수전해(DWE) | 수소·산소 발생 칸을 아예 나눔 | 매개 전극 안정성, 전류밀도 한계, 제어 복잡 | [Liu 2025, 서론] |<br>
+| 유로 설계 개선 | 기포 정체 구역을 줄임 | 시뮬레이션 위주, 실측 데이터 부족 | [Liu 2025, 서론] |</p>
+<p>유로 쪽 선행 시뮬레이션 숫자도 서론에 인용돼 있어요. 입구 3개 설계는 입구 1개보다 출구 수소 농도를 22% 낮췄고, 입·출구 3개씩인 구조는 수소 생산 3.21% 증가, 비에너지 소비 2.95% 감소로 계산됐습니다 [Liu 2025, 서론에서 인용한 선행연구]. 저자들은 이런 연구가 <strong>에너지 소비 절감에 치우쳐 크로스오버는 덜 다뤘고, 실제 장치 실험 데이터도 적다</strong>고 봤어요 [Liu 2025, 서론].</p>
+<h2>3. 수전해 매니폴드를 어떻게 바꿨나요</h2>
+<p><strong>바이폴라 플레이트 출구 구조를 고쳐 기체만 빼내는 독립 매니폴드를 추가했습니다</strong> [Liu 2025, 결론]. 같은 조건에서 비교하려고 두 대를 직접 만들었어요 [Liu 2025, Electrolyzers 절].</p>
+<img src="img/02_manifold_compare.png" alt="기존 원형 vs 정사각형+독립 가스 출구 매니폴드 개념 비교 — 02_manifold_compare.png" loading="lazy">
+<p>| 항목 | 내용 |<br>
+|---|---|<br>
+| 비교 대상 | 새 정사각형 필터프레스형 vs 기존 원형 필터프레스형 |<br>
+| 셀 구성 | 엔드플레이트 2장 + 바이폴라 플레이트 3장 = 직렬 4셀 |<br>
+| 재질 | 316L 스테인리스강 |<br>
+| 기액 분리 | 양쪽 엔드플레이트 밖 분리탱크 2개, 수소측·산소측 순환 루프를 따로 구성 |<br>
+| 순환 방식 | 전해 중 생긴 기포가 만드는 자연대류 |<br>
+| 시험 범위 | 10~400 mA/cm² |</p>
+<p>(출처: [Liu 2025, Electrolyzers·Design of the electrolyzer 절, 서론])</p>
+<p>설계 의도를 저자들은 <strong>유체 순환 강화와 기생전류 억제의 균형</strong>이라고 표현합니다 [Liu 2025, 서론]. 두 목표를 한 문장에 묶은 데는 이유가 있어요. 지난 편들(EP05~08)에서 본 것처럼 매니폴드는 기체와 전해액이 지나는 길이면서 기생전류가 흐르는 통로이기도 하니까요.</p>
+<h2>4. 무엇을 알아냈고, 한계는 무엇인가요</h2>
+<p><strong>정사각형 설계가 전 구간에서 원형보다 나았다는 게 결론입니다</strong> [Liu 2025, Abstract·서론].</p>
+<p>- 10 mA/cm²처럼 낮은 전류에서도 가스 순도와 패러데이 효율(넣은 전기 중 실제 기체가 된 비율)이 높았어요.<br>
+- 높은 전류에서는 전해 전압이 낮아졌습니다.<br>
+- 저자들은 원인을 <strong>기체가 빨리 빠져 기포 정체가 줄어든 것</strong>으로 봅니다.<br>
+- 기생전류를 LPPC와 SPPC 두 종류로 나눠 순도·효율에 주는 영향을 분석했다고 밝혀요.</p>
+<p>한계도 분명합니다.</p>
+<p>- <strong>미리보기 범위</strong>: 순도·효율의 구체 수치, LPPC·SPPC의 정의, 독립 매니폴드가 기생전류를 억제하는 원리는 이 PDF에 없어요. 그래서 이 글에도 넣지 않았습니다.<br>
+- <strong>4셀 실험 장치</strong>: 셀 4장을 직렬로 쌓은 장치이고 [Liu 2025, Electrolyzers 절], 대형 스택에서 같은 효과가 나는지는 미리보기에서 확인되지 않아요.<br>
+- <strong>비교 기준</strong>: 비교 상대는 연구팀이 같은 조건으로 만든 원형 장치입니다 [Liu 2025, Electrolyzers 절].</p>
+<h2>5. AI로 읽을 때 어디서 막혔나요</h2>
+<p>이번엔 숫자보다 <strong>문서 자체</strong>에서 걸렸어요. 함정 넷과 그걸 넘은 방법입니다.</p>
+<img src="img/03_ai_traps.png" alt="이 PDF에서 걸린 함정 4개 — 03_ai_traps.png" loading="lazy">
+<p><strong>텍스트가 깨져 나온다.</strong> PDF에서 글자를 뽑으니 <code>!&quot;#$%</code> 같은 기호만 나왔어요. 웹페이지를 인쇄한 PDF라 글꼴 인코딩이 깨진 경우입니다. 페이지를 이미지로 바꿔 AI에게 보여 주는 쪽으로 돌렸어요.</p>
+<p><strong>전문이 아니다.</strong> &#x27;Purchase PDF&#x27;, &#x27;Organizational access&#x27; 문구와 &#x27;Section snippets&#x27; 제목이 있었어요. 문장이 &#x27;…&#x27;로 끊긴 절도 여럿입니다. 이걸 놓치면 AI는 없는 본문을 채워서 요약하기 쉬워요.</p>
+<p><strong>정의 없는 약어.</strong> LPPC·SPPC는 초록에 이름만 나오고 풀이가 없어요. 그럴듯하게 풀어 쓰기 가장 쉬운 자리라, 풀이 없이 이름만 옮겼습니다.</p>
+<p><strong>범례 없는 그래프.</strong> 그래픽 초록에 순도·효율 곡선 두 개가 있지만 어느 색이 어느 장치인지 표시가 없어요. 그래서 그래프에서 숫자를 읽지 않았습니다. 서론의 22%·3.21%도 이 논문 결과가 아니라 <strong>인용한 선행연구 숫자</strong>라 출처를 따로 달았어요.</p>
+<p>네 개를 잡은 질문입니다.</p>
+<pre><code>1) 이 PDF가 전문인지 미리보기인지 먼저 판정해. 근거 문구를 인용해.
+2) 본문이 &#x27;…&#x27;로 끊긴 절을 목록으로 뽑아. 그 뒤 내용은 추정하지 마.
+3) 정의가 없는 약어·기호를 표시해. 풀이를 지어내지 마.
+4) 숫자마다 &#x27;이 논문 결과&#x27;인지 &#x27;인용한 선행연구&#x27;인지 구분해.</code></pre>
+<p><strong>요약을 맡기기 전에 &quot;이 문서에 무엇이 없는가&quot;부터 묻는 게 핵심이에요.</strong> 빈칸을 먼저 표시해 두면 AI가 그 빈칸을 메우지 못합니다.</p>
+<h2>6. 읽다 보면 생기는 질문 3개</h2>
+<p><strong>Q. 수전해 매니폴드를 키우면 무조건 좋은가요?</strong><br>
+아니요. 논문은 유체 순환 강화와 기생전류 억제의 <strong>균형</strong>을 목표로 잡았어요 [Liu 2025, 서론]. 지난 편들에서 봤듯 매니폴드는 기생전류가 흐르는 통로이기도 해요(EP05~08).</p>
+<p><strong>Q. 크로스오버는 왜 낮은 출력에서 더 심해지나요?</strong><br>
+낮은 전류에서는 막을 넘어오는 기체가 전극에서 새로 생기는 기체보다 많아질 수 있어서예요 [Liu 2025, 서론]. 섞인 비율이 커지면 HTO 2%에 걸려 정지합니다.</p>
+<p><strong>Q. 막을 좋은 걸로 바꾸면 되지 않나요?</strong><br>
+AEM 같은 막은 차단력이 훨씬 강하지만 제작비와 장기 안정성이 과제로 남아 있다고 논문은 정리해요 [Liu 2025, 서론].</p>
+<p>---</p>
+<p>한 줄로 줄이면, 이번 논문은 <strong>기체가 머물 틈을 줄이는 구조</strong>로 크로스오버와 누수를 함께 다뤘어요. 미리보기만으로는 원리까지 못 봤다는 것도 정직하게 남겨 둡니다.</p>
+<p>다음 편은 누수가 효율만 깎는 게 아니라 <strong>부식</strong>까지 만드는 이야기예요. 여러분이 AI에게 맡긴 PDF, 전문이었는지 확인해 본 적 있나요?</p>
+<p>논문을 AI로 읽을 때 쓰는 질문 목록은 makefield.ai에 모아 두고 있어요.</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224430018523" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
