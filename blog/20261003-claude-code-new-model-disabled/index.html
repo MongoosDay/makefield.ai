@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>클로드 코드 새 모델 선택 안될 때, 원인만 물었는데 AI가 6곳을 고쳤어요 | 도면 읽는 AI</title>
+<meta name="description" content="제가 AI한테 보낸 질문은 이 한 줄이었어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261003-claude-code-new-model-disabled/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="클로드 코드 새 모델 선택 안될 때, 원인만 물었는데 AI가 6곳을 고쳤어요 | 도면 읽는 AI">
+<meta property="og:description" content="제가 AI한테 보낸 질문은 이 한 줄이었어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261003-claude-code-new-model-disabled/">
+<meta property="og:image" content="https://makefield.ai/blog/20261003-claude-code-new-model-disabled/img/01_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "클로드 코드 새 모델 선택 안될 때, 원인만 물었는데 AI가 6곳을 고쳤어요", "datePublished": "2026-10-04", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261003-claude-code-new-model-disabled/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-10-04</span></div>
+<h1>클로드 코드 새 모델 선택 안될 때, 원인만 물었는데 AI가 6곳을 고쳤어요</h1>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;클로드 코드 새 모델 선택 안될 때 / 원인만 물었는데 AI가 6곳을 고쳤어요&quot;" loading="lazy">
+<p>제가 AI한테 보낸 질문은 이 한 줄이었어요.</p>
+<p>&quot;여전히 opus 5.5는 disable인데?&quot;</p>
+<p>돌아온 답에는 설치 방식 전환, 환경변수·설정 파일 수정, 무인 자동화 스크립트 여섯 개 수정이 들어 있었어요. 저는 원인을 물었는데요.</p>
+<p><strong>클로드 코드 새 모델 선택 안될 때, 가장 먼저 의심할 건 CLI <strong class="u">버전 미달</strong>이에요.</strong> 새 모델 ID는 특정 버전부터 들어오는데, 깔려 있는 프로그램이 그보다 낮으면 모델 목록에 이름만 보이고 회색으로 잠깁니다. 계정이나 요금제 문제가 아니었어요.</p>
+<p>여기까지는 짧은 얘기예요. 이 글의 나머지는 그다음에 벌어진 일입니다.</p>
+<p>2026년 9월 27일 기준, 윈도우 개인 PC에서 겪은 일이에요. 회사 일 아니고 제 개발 도구 얘기입니다.</p>
+<h2>1. 새 모델이 회색으로 잠기는 이유는 뭔가요</h2>
+<p><strong>새 모델은 그 모델을 아는 버전의 CLI에서만 켜집니다.</strong> 구버전도 &quot;이런 모델이 있다&quot;는 건 받아오는데, 그 모델을 다룰 코드가 로컬에 없으니 선택을 막아요. 그래서 목록엔 보이는데 안 눌리는 이상한 상태가 됩니다.</p>
+<p>제 PC 숫자는 이랬어요.</p>
+<pre><code>설치된 버전   2.1.268   (winget으로 설치)
+필요한 버전   2.1.280 이상
+공식 최신     2.1.283</code></pre>
+<p>열두 단계가 모자랐던 거죠. 버전만 올리면 끝나는 문제였습니다.</p>
+<img src="img/02_causes.png" alt="원인 3겹 — 가로로 세 개의 박스가 화살표로 연결. ①&#x27;CLI 2.1.268 &lt; 필요 2.1.280&#x27; ②&#x27;winget 저장소가 공식보다 늦음 → 업그레이드 없음&#x27; ③&#x27;설정 파일에 이전 모델 고정(opus[1m])&#x27;. 각 박스 아래 작은 글씨로 &#x27;버전 올리기 / 설치 방식 바꾸기 / 설정값 한 줄&#x27;. 하단 캡션 &#x27;하나만 풀면 다음 겹이 나온다&#x27;" loading="lazy">
+<h2>2. 그런데 업데이트가 안 되더라고요</h2>
+<p>버전을 올리려고 했더니 막혔어요. 저는 이 도구를 winget으로 깔았거든요.</p>
+<pre><code>winget upgrade Anthropic.ClaudeCode
+# → &quot;사용 가능한 업그레이드 없음&quot;으로 끝남 (종료코드 43)</code></pre>
+<p>공식 최신은 2.1.283인데, winget 저장소에 올라온 최신이 제 버전과 똑같은 2.1.268이었습니다. 저장소가 공식 릴리스를 못 따라온 거예요. 그래서 프로그램 자체 업데이트 명령(<code>claude update</code>)을 쳐봤더니, 이건 winget이 관리하는 설치본이니 winget으로 하라는 안내만 하고 끝났습니다. 막다른 길이었죠..</p>
+<p>지난번 설치 글에서 &quot;winget은 자동 업데이트가 안 돼서 가끔 직접 올려줘야 한다&quot;고 썼는데, 사흘 만에 그게 이런 모양으로 돌아왔어요. 직접 올리려 해도 저장소가 늦으면 올릴 게 없습니다.</p>
+<p>해결은 설치 방식을 바꾸는 거였어요.</p>
+<pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
+<p>공식 설치 스크립트로 깔면 2.1.283이 바로 들어오고, 이후로는 알아서 업데이트됩니다. 여기에 하나가 더 걸려 있었어요. 설정 파일에 모델이 이전 버전 계열로 박혀 있었거든요.</p>
+<pre><code>&quot;model&quot;: &quot;opus[1m]&quot;   →   &quot;model&quot;: &quot;opus&quot;</code></pre>
+<p><code>opus[1m]</code>은 이전 모델의 특정 변형을 콕 집어 지정하는 값이라, 버전을 올려도 이 줄이 새 모델 선택을 막습니다. 별칭(<code>opus</code>)으로 바꾸니 새 버전에서 새 모델을 가리키게 됐어요.</p>
+<p>마지막 확인은 이 한 줄로 했습니다.</p>
+<pre><code>claude -p &quot;1+1은?&quot; --model claude-opus-5-5</code></pre>
+<p>정상 응답이 왔어요! 남은 건 터미널 재시작뿐이었습니다.</p>
+<h2>3. 진짜 사고는 고친 다음에 났어요</h2>
+<p>여기서 AI가 멈추지 않았습니다.</p>
+<p>새로 깐 경로를 확인하다가, 제 PC에서 매일 혼자 도는 무인 자동화 여섯 개가 옛날 winget 설치 경로를 <strong>절대경로로 박아서</strong> 쓰고 있다는 걸 찾아냈어요. 투자 브리핑, 필기 판독 같은 것들이요. 스케줄러로 도는 작업은 PATH를 못 읽어서, 만들 때 경로를 하드코딩해 둔 겁니다.</p>
+<p>AI는 그 여섯 개를 전부 열어서 고쳤어요. 경로를 하나로 박는 대신 후보를 차례로 찾게 바꿨습니다.</p>
+<pre><code>1) CLAUDE_EXE 환경변수
+2) %USERPROFILE%\.local\bin\claude.exe   (새 설치본)
+3) 기존 winget 설치 경로                   (지우지 않고 예비로 남김)
+4) PATH</code></pre>
+<p>솔직히 내용만 보면 틀린 조치가 아니에요. 나중에 winget 설치본을 지웠으면 여섯 개가 조용히 줄줄이 죽었을 테니까요. 예비 경로를 안 지우고 남긴 것도 제가 평소 원하는 방식이고요.</p>
+<p>문제는 그 결과를 받은 제 반응이었습니다. 원문 그대로 옮겨요.</p>
+<pre><code>나: 아니 지금 뭔짓을하는데? 뭘자꾸바꾸고 어쩌고저저고하나?</code></pre>
+<p>그러자 AI는 되돌리는 방법 세 가지를 표로 정리해서 내밀었어요. 제 다음 말은 이거였습니다.</p>
+<pre><code>나: 아니 그래서 되는거가 안되는거가?</code></pre>
+<p>필요했던 답은 &quot;됩니다. 터미널만 재시작하세요.&quot; 한 줄이었어요. 두 번 연속으로 질문과 다른 걸 대답한 거죠.</p>
+<img src="img/03_scope.png" alt="질문과 답의 크기 비교 — 왼쪽에 작은 말풍선 하나 &#x27;왜 안 돼?&#x27;. 오른쪽으로 부채꼴처럼 퍼지는 화살표 6개가 각각 박스로 연결: &#x27;설치 방식 전환&#x27;, &#x27;PATH 수정&#x27;, &#x27;설정 파일 변경&#x27;, &#x27;무인 자동화 6개 편집&#x27;, &#x27;기록 파일 작성&#x27;, &#x27;되돌리기 선택지 표&#x27;. 맨 아래 초록 박스 하나 &#x27;필요했던 답: 됩니다 / 재시작하세요&#x27;. 하단 캡션 &#x27;진단을 물었는데 수리가 왔다&#x27;" loading="lazy">
+<h2>4. 진단 질문과 수리 지시는 다른 일이에요</h2>
+<p><strong>&quot;왜 안 돼?&quot;는 원인을 묻는 <strong class="u">진단 질문</strong>이지, 손대도 된다는 허락이 아니었어요.</strong> 15년 동안 설비 앞에서 일하면서 이 구분은 몸에 배어 있었습니다. 점검 요청을 받고 간 사람이 부품을 갈아 끼우고 오면, 결과가 좋아도 일단 말이 나와요. 다른 데랑 연결된 걸 건드렸으면 더 그렇고요.</p>
+<p>AI한테도 같은 선을 그어두기로 했습니다.</p>
+<p>| 들어온 말 | AI가 할 일 | 멈출 자리 |<br>
+|---|---|---|<br>
+| &quot;왜 안 돼?&quot; (진단) | 원인 + 해결에 필요한 최소 조치 | 그 이상은 말로 제안만 |<br>
+| &quot;고쳐줘&quot; (지시) | 고치고 결과 보고 | 다른 시스템으로 번지면 실행 전에 알림 |<br>
+| 짜증·급함이 보일 때 | <strong>결론 한 줄 먼저</strong> | 경위·표·선택지는 물어볼 때만 |</p>
+<p>여기서 하나는 솔직하게 남겨둘게요. 제가 짜증 난 게 ①바꾼 것 자체 때문인지, ②묻지 않고 바꿔서인지, ③보고가 길어서인지는 <strong>저도 그때 대답을 안 했어요.</strong> 그래서 AI 쪽 기록에도 &quot;원인 미확인&quot;으로 남아 있습니다. 셋 중 하나로 정해버리면 다음에 엉뚱한 걸 고치게 되니까요.</p>
+<img src="img/04_fallback.png" alt="경로 후보 순회 — 세로로 4칸 사다리. 위에서부터 &#x27;CLAUDE_EXE 환경변수&#x27;, &#x27;새 설치본 경로&#x27;, &#x27;기존 winget 경로(예비)&#x27;, &#x27;PATH&#x27;. 각 칸 오른쪽에 &#x27;있으면 사용 → 없으면 아래로&#x27; 화살표. 하단 캡션 &#x27;하나가 사라져도 다음 칸이 받는다&#x27;" loading="lazy">
+<h2>5. 미리 답해두는 질문 둘</h2>
+<p><strong>Q. 버전을 올렸는데도 클로드 코드 새 모델 선택 안될 때는요?</strong><br>
+설정 파일(<code>settings.json</code>)의 <code>model</code> 값을 먼저 보세요. 이전 모델을 콕 집은 값이 박혀 있으면 버전과 상관없이 그쪽으로 고정됩니다. 그리고 터미널을 완전히 껐다 켜야 해요. 이미 떠 있는 창은 구버전 프로세스 그대로라서, 업데이트가 끝나도 그 창 안에선 여전히 회색입니다.</p>
+<p><strong>Q. 그럼 AI한테 아예 못 고치게 막아야 하나요?</strong><br>
+저는 반대 방향으로 갔어요. 고치는 건 계속 맡깁니다. 다만 질문의 종류를 먼저 가르게 했어요. 진단 질문이면 원인까지만, 지시면 고치되 무인 자동화나 환경변수처럼 다른 데로 번지는 건 실행 전에 한 줄 알리기. 막으면 저만 손해고, 선을 그으면 같은 속도로 덜 놀랍니다.</p>
+<p>여섯 개를 고친 그 조치는 그날 되돌리지 않았어요. 고친 내용이 틀린 게 아니라, 제가 물은 것보다 큰 답이 먼저 온 게 문제였으니까요. 여러분은 AI한테 &quot;왜 안 돼?&quot;라고 물었을 때, 원인이 오나요, 수리가 오나요?</p>
+<p>다음 글에서는 무인 자동화가 경로 하나 바뀌었다고 조용히 죽는 구조, 그러니까 절대경로 하드코딩을 어떻게 찾아내는지 정리해볼게요.</p>
+<p>AI한테 그어둔 선들은 사고 날짜와 같이 makefield.ai에 한 줄씩 쌓고 있습니다.</p>
+<p>태그: #클로드코드 #클로드코드새모델 #클로드코드모델선택 #ClaudeCode #클로드코드업데이트 #winget업그레이드 #클로드코드설치 #AI코딩도구 #AI작업범위 #AI가시키지않은일 #AI에게일시키기 #개인AI에이전트 #AI자동화구축 #현장엔지니어AI #도면읽는AI</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224430806987" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
