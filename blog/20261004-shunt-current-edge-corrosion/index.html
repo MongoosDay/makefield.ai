@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기생전류 부식, 왜 스택 끝 셀 가장자리부터 생길까? (논문 해설) | 도면 읽는 AI</title>
+<meta name="description" content="기생전류 부식은 스택 전체에 고르게 생기지 않습니다. 전위가 가장 높은 쪽 끝 셀의, 양극 가장자리에 몰려요. 공용 통로로 새어 나가는 전류가 전극 끝에 반응을 몰아주기 때문입니다 [Darling 2017, Fig.3·결론]. 실제로 오래 충·방전한 바나듐 플로우 배터리를 분해">
+<link rel="canonical" href="https://makefield.ai/blog/20261004-shunt-current-edge-corrosion/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="기생전류 부식, 왜 스택 끝 셀 가장자리부터 생길까? (논문 해설) | 도면 읽는 AI">
+<meta property="og:description" content="기생전류 부식은 스택 전체에 고르게 생기지 않습니다. 전위가 가장 높은 쪽 끝 셀의, 양극 가장자리에 몰려요. 공용 통로로 새어 나가는 전류가 전극 끝에 반응을 몰아주기 때문입니다 [Darling 2017, Fig.3·결론]. 실제로 오래 충·방전한 바나듐 플로우 배터리를 분해">
+<meta property="og:url" content="https://makefield.ai/blog/20261004-shunt-current-edge-corrosion/">
+<meta property="og:image" content="https://makefield.ai/blog/20261004-shunt-current-edge-corrosion/img/00_title.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "기생전류 부식, 왜 스택 끝 셀 가장자리부터 생길까? (논문 해설)", "datePublished": "2026-10-04", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261004-shunt-current-edge-corrosion/"}</script>
+<style>
+:root{--bg-primary:#06060b;--bg-secondary:#0d0d14;--bg-card:#13131d;--text-primary:#e8e8f0;--text-secondary:#8585a0;--text-muted:#4a4a60;--accent:#4f8fff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%);--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','Malgun Gothic',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.85;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:760px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.05em;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-inner a.plain{color:var(--text-secondary);text-decoration:none;font-size:.82em;font-weight:500;letter-spacing:.04em}
+.nav-inner a.plain:hover{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.82em;color:var(--text-secondary);margin-bottom:16px}
+.badge{padding:3px 12px;border-radius:14px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.3);color:var(--accent);font-weight:600;font-size:.92em}
+h1{font-size:1.7em;line-height:1.4;margin-bottom:36px;letter-spacing:-.01em}
+article h2{font-size:1.25em;margin:44px 0 16px;padding-left:14px;border-left:3px solid var(--accent);letter-spacing:-.01em}
+article h3{font-size:1.08em;margin:32px 0 12px;color:var(--accent3)}
+article p{margin:0 0 22px;color:var(--text-primary)}
+article strong.u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+article img{max-width:100%;border-radius:12px;border:1px solid var(--border);margin:8px 0 26px;display:block}
+article pre{background:#0a0a12;border:1px solid var(--border);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 24px;font-size:.85em;line-height:1.6}
+article code{font-family:'JetBrains Mono','Consolas',monospace;color:#9ecbff}
+article p code{background:#13131d;padding:2px 7px;border-radius:5px;font-size:.9em}
+article a{color:var(--accent);text-decoration:none}article a:hover{text-decoration:underline}
+.cta{margin-top:56px;padding:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-align:center}
+.cta p{color:var(--text-secondary);font-size:.9em;margin-bottom:14px}
+.cta a{display:inline-block;margin:0 8px;padding:10px 22px;border-radius:8px;font-size:.86em;font-weight:600;text-decoration:none}
+.cta a.primary{background:var(--gradient);color:#fff}
+.cta a.ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.post-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;text-decoration:none;transition:border-color .25s}
+.post-card:hover{border-color:rgba(79,143,255,.35)}
+.post-card h2{font-size:1.12em;color:var(--text-primary);margin:10px 0 10px;line-height:1.45}
+.post-card p{font-size:.88em;color:var(--text-secondary);line-height:1.7}
+.page-head{margin-bottom:36px}
+.page-head h1{margin-bottom:8px}
+.page-head p{color:var(--text-secondary);font-size:.92em}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:.78em}
+footer a{color:var(--text-secondary);text-decoration:none}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="nav-logo" href="/">MakeField AI</a><div><a class="plain" href="/blog/">Blog</a>&nbsp;&nbsp;&nbsp;<a class="plain" href="/#contact">Contact</a></div></div></nav>
+<main>
+<div class="post-meta"><span class="badge">논문 읽는 AI</span><span>2026-10-04</span></div>
+<h1>기생전류 부식, 왜 스택 끝 셀 가장자리부터 생길까? (논문 해설)</h1>
+<article>
+<img src="img/00_title.png" alt="타이틀카드 — 00_title.png" loading="lazy">
+<p>기생전류 부식은 스택 전체에 고르게 생기지 않습니다. <strong>전위가 가장 높은 쪽 끝 셀의, 양극 가장자리</strong>에 몰려요. 공용 통로로 새어 나가는 전류가 전극 끝에 반응을 몰아주기 때문입니다 [Darling 2017, Fig.3·결론].<br>
+실제로 오래 충·방전한 바나듐 플로우 배터리를 분해해 보니, 절연 프레임과 맞닿은 가장자리에서 안쪽으로 약 1 mm가 변색돼 있었어요 [Darling 2017, Fig.2].</p>
+<p>&#x27;논문 읽는 AI&#x27; 10편입니다. EP05~09는 기생전류가 <strong>넣은 전기를 새게 만든다</strong>는 이야기였죠. 이번엔 새는 전류가 지나간 자리에 <strong>흔적을 남긴다</strong>는 이야기예요.<br>
+읽은 논문은 미국 연구진이 2017년 Journal of The Electrochemical Society에 낸 오픈액세스 논문입니다(Darling 외, doi: 10.1149/2.0081711jes). 소재는 플로우 배터리지만, 저자들은 같은 구조를 가진 수전해·연료전지에서도 기생전류가 생긴다고 첫 문장부터 짚어요 [Darling 2017, Abstract].</p>
+<h2>1. 이 논문은 무엇을 풀려 했나요</h2>
+<p><strong>&quot;왜 하필 가장자리만 부식되는가&quot;를 설명하고, 부식을 피하려면 누설 전류를 어디까지 허용할 수 있는지 계산하는 식을 만드는 것</strong>이 목표였어요 [Darling 2017, 서론·결론].</p>
+<p>용어 셋만 먼저 잡고 갈게요.</p>
+<p>- <strong>기생전류(shunt current)</strong>: 직렬로 쌓은 셀들이 전해액 공용 통로(매니폴드)로 이어져 있어서, 그 통로를 타고 셀 사이를 몰래 흐르는 전류.<br>
+- <strong>포트(port)</strong>: 전극 둘레 절연 프레임 속의 좁은 유로. 매니폴드에서 전극까지 전해액을 실어 나르고, 누설을 줄이려고 일부러 이온 저항을 크게 만든 길이에요 [Darling 2017, 서론].<br>
+- <strong>과전압</strong>: 반응을 밀어붙이는 &#x27;추가 전압&#x27;. 클수록 반응이 빨라집니다.</p>
+<p>논문 서론이 깔아 둔 출발점은 넷이에요 [Darling 2017, 서론].</p>
+<p>1. 매니폴드는 셀과 셀 사이의 <strong class="u">이온 합선 통로</strong>가 된다.<br>
+2. 이 전류는 저장한 에너지를 계속 갉아먹고, 부식·가스 발생 같은 부반응까지 일으킨다.<br>
+3. 유로를 길고 좁게 만들면 줄일 수 있지만 펌프 일이 늘고, 0으로 만들 수는 없다.<br>
+4. 기존 등가회로 모델은 전류의 크기는 잘 구하지만, 전극 끝에서 <strong>어떤 반응</strong>이 그 전류를 받아 주는지는 설명하지 못한다.</p>
+<h2>2. 어떻게 확인했나요</h2>
+<p><strong>작은 스택을 정밀하게 시뮬레이션해서 현상을 보고, 큰 스택에도 쓸 수 있는 간단한 식을 따로 만들었어요</strong> [Darling 2017, 서론·Analytical Model].</p>
+<p>| 단계 | 내용 | 근거 |<br>
+|---|---|---|<br>
+| 수치 모델 | 유한요소 소프트웨어로 셀 2개를 정상상태 계산(요소 약 11.5만 개) | [Darling 2017, Numerical model] |<br>
+| 계산 조건 | 외부로 전류가 나가지 않는 개방회로, 25℃, 바나듐 전해액 | [Darling 2017, Table II] |<br>
+| 확장 | 음극 쪽 매니폴드 추가, 셀 5개로 확대 | [Darling 2017, Fig.12·13] |<br>
+| 해석 모델 | 반무한 전극 식으로 가장자리 과전압의 상한 계산 | [Darling 2017, Eq.20] |</p>
+<p>부식 반응 자체는 모델에 넣지 않았다는 점이 중요해요. 대신 가장자리에 걸리는 과전압을 보고 <strong>부식이 일어나기 쉬운 정도</strong>를 판정합니다 [Darling 2017, Numerical model].</p>
+<img src="img/01_stack_edge.png" alt="누설 전류가 끝 셀 가장자리를 빠져나가는 경로 — 01_stack_edge.png" loading="lazy">
+<h2>3. 기생전류 부식은 어디서, 얼마나 커지나요</h2>
+<p><strong>+쪽 끝 셀의 양극 가장자리에서 과전압이 약 80 mV 높아지고, 이 때문에 탄소 부식 속도가 약 2.5배로 추정된다</strong>는 게 핵심 결과입니다 [Darling 2017, Fig.8].</p>
+<p>- 전해액 전위가 전극 가장자리에서 약 100 mV, 포트를 지나며 다시 약 200 mV 떨어져요 [Darling 2017, Fig.7].<br>
+- 산화 반응은 포트에서 500 μm 안쪽에만 갇혀 일어납니다 [Darling 2017, Fig.8].<br>
+- 탄소 산화의 타펠 기울기(반응 속도를 10배 올리는 데 드는 전압)를 약 200 mV로 잡으면, 추가 80 mV는 부식 속도 약 2.5배에 해당해요 [Darling 2017, Fig.8 본문].<br>
+- 평소엔 무해한 바나듐 반응이 이 전류를 받아 줍니다. 그런데 완충전에 가까워 받아 줄 바나듐 이온이 바닥나면 <strong>탄소 부식·산소 발생이 대신 나설 수 있어요</strong> [Darling 2017, Results].</p>
+<img src="img/02_number_chain.png" alt="80 mV가 2.5배가 되기까지 — 02_number_chain.png" loading="lazy">
+<p>셀 5개로 늘린 계산에서 포트 전류는 아래(−쪽)에서 위(+쪽)로 −5.1, −1.1, 0, 1.1, 5.1 mA였어요 [Darling 2017, Fig.13 본문]. 가운데 셀 가장자리는 나머지 부분과 구별되지 않을 만큼 조용했고, 산화는 +쪽 두 셀, 그중에서도 맨 끝 셀에서 가장 셌습니다.</p>
+<img src="img/03_port_current_5cells.png" alt="셀 5개 스택의 포트 전류 — 03_port_current_5cells.png" loading="lazy">
+<p>조건을 바꿔 본 결과는 표로 정리할게요.</p>
+<p>| 바꾼 조건 | 결과 | 근거 |<br>
+|---|---|---|<br>
+| 포트 저항 ↓ | 가장자리 과전압 ↑ | [Darling 2017, Fig.9] |<br>
+| 충전 상태(SOC) ↑ (20→99%) | 과전압 ↑, 국부 부식 위험 크게 ↑ | [Darling 2017, Fig.9] |<br>
+| 전극 길이 10배 (2 mm→2 cm) | 포트 전류 3.54→3.61 mA(2% 미만), 산화 구간 0.5→1 mm | [Darling 2017, Fig.10] |<br>
+| 음극 매니폴드 추가 | 포트 전류 3.5 mA에서 6% 감소 → 양·음극 쪽 영향은 약하게만 얽힘 | [Darling 2017, Fig.12 본문] |<br>
+| 충전 중 | 스택 전압이 높아 포트 전류·가장자리 과전압 ↑ | [Darling 2017, Analytical Model] |<br>
+| 전극을 얇게 | 포트 전류 밀도가 커져 부식에 취약(얇은 카본 페이퍼는 반응 면적이 커서 일부 상쇄) | [Darling 2017, Analytical Model] |</p>
+<p>반직관적인 대목이 하나 있어요. 식만 보면 전해액 전도도를 높이면 과전압이 줄 것 같지만, 저자들은 이걸 <strong>틀린 결론</strong>이라고 못 박습니다. 전도도가 오르면 포트·매니폴드 저항이 낮아져 누설 전류 자체가 커지고, 그 영향이 더 크다는 거예요 [Darling 2017, Analytical Model].</p>
+<p>설계 쪽 제안은 두 가지입니다 [Darling 2017, Analytical Model·결론].</p>
+<p>- 포트를 빠져나온 전해액이 처음 닿는 전도성 표면은 반응 면적이 넓고 본 반응에 활성이 높아야 한다.<br>
+- 등가회로로 포트 전류를 구하고 해석식으로 가장자리 과전압 상한을 계산한다. 거꾸로 목표 수명에서 <strong>허용 최대 포트 전류</strong>를 정해 포트·매니폴드 저항을 설계한다.</p>
+<h2>4. 이 결과를 어디까지 믿어야 하나요</h2>
+<p><strong>부식의 &#x27;경향&#x27;을 보여 준 연구이지 부식 &#x27;속도&#x27;를 잰 연구는 아닙니다.</strong> 한계는 이래요.</p>
+<p>- <strong>개방회로만 계산</strong>: 부하가 걸린 상태로의 확장은 &quot;간단할 것(straightforward)&quot;이라고만 했고 계산은 하지 않았어요 [Darling 2017, 서론].<br>
+- <strong>2.5배는 환산값</strong>: 문헌의 타펠 기울기로 바꾼 추정이고, 부식을 직접 측정한 값이 아니에요 [Darling 2017, Fig.8 본문].<br>
+- <strong>해석식은 상한</strong>: 1차원 가정이라 수치 모델보다 늘 크게 나와요. 보수적으로 판정하는 용도입니다 [Darling 2017, Fig.14 본문].<br>
+- <strong>바나듐 전지 기준</strong>: 모든 계산값은 바나듐 플로우 배터리 것이고, 다른 장치로의 적용은 저자들의 견해예요 [Darling 2017, 서론].<br>
+- <strong>실험 증거는 분해 사진</strong>: 사진 속 변색 폭(약 1 mm)과 모델의 산화 구간(0.5~1 mm)이 비슷해 보이지만, 논문은 둘을 수치로 맞대 비교하지 않았어요.</p>
+<h2>5. AI에게 읽힐 때 숫자의 &quot;출신&quot;부터 물은 이유</h2>
+<p>이번 논문의 승부처는 <strong>숫자의 &#x27;출신&#x27;을 섞지 않는 것</strong>이었어요. 측정값, 시뮬레이션값, 남의 책 숫자로 환산한 추정값이 한 문단에 같이 나오거든요.</p>
+<img src="img/04_ai_traps.png" alt="AI 판독에서 숫자 출신을 지킨 4가지 — 04_ai_traps.png" loading="lazy">
+<p><strong>그리스 문자가 빠진다.</strong> PDF에서 텍스트를 뽑으니 과전압 정의 η₊ = Φ₁ − Φ₂ − U₊ 가 이렇게 나왔어요.</p>
+<pre><code>η+ = 1 −2 −U+</code></pre>
+<p>Φ가 사라져 &#x27;1 빼기 2&#x27;처럼 읽힙니다. 논문 끝 기호 목록(List of Symbols)에서 아래첨자 1=고체, 2=전해액임을 확인하고 복원했어요.</p>
+<p><strong>환산값을 측정값처럼 옮긴다.</strong> &quot;부식 2.5배&quot;는 80 mV와 다른 책에서 인용한 기울기 200 mV로 계산한 값이에요. 10^(80/200) ≈ 2.5 를 손으로 다시 계산해 맞는지 확인했고, 본문에도 &#x27;추정&#x27;이라고 붙였습니다.</p>
+<p><strong>비슷한 숫자를 &#x27;일치&#x27;로 엮는다.</strong> 사진의 1 mm와 모델의 0.5~1 mm는 &quot;모델이 실험을 재현했다&quot;로 묶고 싶어지는 자리예요. 원문에 그런 문장이 없어서 연결하지 않았어요.</p>
+<p><strong>이상한 원문을 조용히 고친다.</strong> Fig.14 가로축 이름은 &quot;Port current density [mA]&quot;입니다. 밀도라면서 단위가 mA죠. 이걸 mA/cm²로 &#x27;고쳐&#x27; 옮기면 원문과 달라져요. 그대로 두고 표시만 했습니다.</p>
+<p>여러분은 AI가 요약해 준 숫자가 측정인지 계산인지 확인해 보신 적 있나요? 네 함정을 잡은 질문은 이렇습니다. 자기 분야 논문에도 그대로 붙여 쓸 수 있어요.</p>
+<pre><code>1) 수치마다 [측정 / 시뮬레이션 / 인용값으로 환산한 추정] 중 하나로 분류하고, 근거 문장을 인용해.
+2) 깨지거나 빠진 기호가 있는 수식을 표시하고, 기호 목록과 대조해 복원해.
+3) 논문이 &#x27;일치한다&#x27;고 직접 쓰지 않은 비교는 연결하지 마.
+4) 단위·축 이름이 이상해 보여도 고치지 말고 원문 표기 그대로 둬.
+5) 계산 조건(개방회로·온도·셀 수)을 먼저 뽑고, 결론이 그 조건 밖으로 넓혀졌는지 점검해.</code></pre>
+<h2>6. 자주 묻는 질문</h2>
+<p><strong>Q. 기생전류 부식은 왜 가운데 셀에서는 잘 안 생기나요?</strong><br>
+포트 전류가 스택 양 끝에서 가장 크고 가운데는 거의 0이기 때문이에요. 셀 5개 계산에서 가운데 셀 포트 전류는 0 mA, 양 끝은 ±5.1 mA였습니다 [Darling 2017, Fig.13 본문].</p>
+<p><strong>Q. 충전 중과 방전 중 언제 더 위험한가요?</strong><br>
+충전 중이에요. 스택 전압이 높아 포트 전류가 커지기 때문입니다 [Darling 2017, Analytical Model]. 충전 상태(SOC)가 높을수록 위험이 커진다는 계산도 함께 나와요 [Darling 2017, Fig.9].</p>
+<p><strong>Q. 이 숫자를 수전해에 그대로 써도 되나요?</strong><br>
+숫자는 안 됩니다. 계산은 전부 바나듐 플로우 배터리 값이에요 [Darling 2017, 서론]. 옮겨 쓸 수 있는 건 &#x27;끝 셀 가장자리를 먼저 의심하라&#x27;는 관점입니다.</p>
+<p>---</p>
+<p>정리하면, 새는 전류는 효율만 깎는 게 아니라 <strong>끝 셀 가장자리에 부식을 몰아넣습니다.</strong> 그래서 포트 저항은 효율 문제이면서 수명 문제예요.</p>
+<p>다음 편부터는 2부로 넘어가요. 전류가 아니라 <strong>수소와 산소가 막을 넘어 섞이는 크로스오버</strong> 이야기입니다.</p>
+<p>논문 PDF를 AI에게 맡길 때 쓰는 점검 질문들은 makefield.ai에서 계속 다듬고 있어요.</p>
+</article>
+<div class="cta">
+<p>현장 엔지니어를 위한 AI 전환 — MakeField AI</p>
+<a class="primary" href="/">makefield.ai 보러가기</a>
+<a class="ghost" href="https://blog.naver.com/makefield_ai/224431302306" target="_blank" rel="noopener">네이버 블로그에서 보기</a>
+</div>
+</main>
+<footer><div style="margin-bottom:10px"><a href="/about.html">소개</a>&nbsp;&middot;&nbsp;<a href="/privacy.html">개인정보처리방침</a>&nbsp;&middot;&nbsp;<a href="/terms.html">이용약관</a>&nbsp;&middot;&nbsp;<a href="/contact.html">문의</a></div>&copy; 2026 MakeField AI &middot; 도면 읽는 AI — 현장 엔지니어의 AI 실전</footer>
+</body>
+</html>
