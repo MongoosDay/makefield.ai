@@ -298,6 +298,23 @@ section{padding:110px 0;border-bottom:1px solid var(--line)}
 .author p{color:var(--ink-2);margin-bottom:16px;font-size:1.02rem;max-width:760px}
 .author blockquote{margin-top:28px;font-size:1.3rem;font-weight:800;line-height:1.6;padding-left:20px;border-left:3px solid var(--red);transform-origin:left}
 
+/* author collage */
+.me{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.collage{position:relative;width:100%;aspect-ratio:540/660;
+  background-color:#f6f2e9;border:2px solid rgba(23,21,18,.18);border-radius:10px;
+  background-image:linear-gradient(rgba(23,21,18,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.07) 1px,transparent 1px);background-size:24px 24px}
+.pol{position:absolute;margin:0;background:#fffdf8;padding:3.2% 3.2% 0;box-shadow:0 18px 30px -14px rgba(70,48,16,.5),0 3px 6px -2px rgba(70,48,16,.25);rotate:var(--r)}
+.motion .pol{rotate:none}
+.pol img{display:block;width:100%;height:auto}
+.pol figcaption{font-family:'Nanum Pen Script',cursive;color:var(--ink);font-size:clamp(1.05rem,1.9vw,1.45rem);line-height:1;padding:.55em 0 .6em}
+.pol .tape{position:absolute;top:-11px;left:50%;width:34%;height:24px;margin-left:-17%;background:rgba(232,214,160,.78);box-shadow:0 1px 2px rgba(0,0,0,.08);transform:rotate(-4deg)}
+.me-note{position:absolute;left:3%;bottom:9%;display:flex;flex-direction:column;align-items:flex-start;pointer-events:none}
+.me-note .pen{font-size:clamp(1.25rem,2.1vw,1.75rem);line-height:1;transform:rotate(-6deg)}
+.me-note svg{width:clamp(48px,6vw,80px);height:auto;margin:0 0 4px 22%}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.facts span{font-size:.82rem;font-weight:800;padding:6px 12px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card)}
+.me-text p{max-width:none}
+
 footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
 .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .foot a{text-decoration:none;font-weight:600;color:var(--ink-2)}
@@ -325,6 +342,7 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
   .layer,.layer:not(:nth-child(3n+1)){padding:22px 14px 24px 0;border-left:0}
   .layer:nth-child(2n){padding-left:14px;border-left:1px solid var(--line)}
   .stats{grid-template-columns:1fr 1fr}
+  .me{grid-template-columns:1fr;gap:36px}
   section{padding:80px 0}
 }
 @media (max-width:420px){
@@ -608,12 +626,25 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
 <section id="author"><div class="wrap">
   <div class="sec-head">
     <div class="sec-num"><span class="id">ME</span><span class="nm">만든 사람</span><span class="ko">현장 엔지니어</span></div>
-    <div class="author" data-rv>
-      <div class="name">현장 엔지니어</div>
-      <div class="role">산업 제어 시스템 엔지니어 · MakeField AI</div>
-      <p>전자공학을 전공했고, 한국어 자료 하나 없이 영어 원서만 붙잡고 안드로이드 프레임워크부터 애플리케이션까지 만드는 개발자로 시작했습니다. 이후 15년 넘게 산업 설비의 제어 시스템을 설계하고 통합하며 기획, 소프트웨어 개발, 계장 설계, 커미셔닝, 기술영업, 품질, 부서장, 프리랜서까지 현장의 여러 자리를 거쳤습니다.</p>
-      <p>영상 인식 AI로 처음 AI 분야에 발을 들였고, 지금은 퇴근 후와 새벽 시간에 AI가 일할 현장을 직접 만들어 매일 쓰고, 고치고, 기록합니다.</p>
-      <blockquote>일이 잘 굴러가는 곳에는 대단한 천재가 아니라 규칙이 있다.</blockquote>
+    <div>
+      <h2><span class="ln"><span>현장에서 일하고,</span></span><span class="ln"><span><span class="uline">AI로 일하는<svg viewBox="0 0 100 10" preserveAspectRatio="none"><path pathLength="1" d="M1,6 C30,2 60,9 99,4"/></svg></span> 사람.</span></span></h2>
+      <p>제어반과 설비 옆에서 15년을 보냈습니다. 지금은 그 현장의 일을 AI가 알게 만드는 일을 합니다.</p>
+    </div>
+  </div>
+  <div class="body-grid"><div></div>
+    <div class="me">
+      <div class="collage" id="collage">
+        <figure class="pol" data-rot="-4" style="left:0;top:1.5%;width:53.7%;--r:-4deg"><span class="tape"></span><img src="assets/field-1.webp" alt="안전모와 안전벨트를 착용한 현장 엔지니어" width="960" height="1200" loading="lazy"><figcaption>해 질 녘, 플랜트 위</figcaption></figure>
+        <figure class="pol" data-rot="5" style="left:61%;top:0;width:37%;--r:5deg"><span class="tape"></span><img src="assets/field-3.webp" alt="한낮 현장에서 마스크와 안전모를 쓴 모습" width="700" height="875" loading="lazy"><figcaption>한낮 땡볕 현장</figcaption></figure>
+        <figure class="pol" data-rot="3" style="left:41%;top:49%;width:59%;--r:3deg"><span class="tape"></span><img src="assets/field-2.webp" alt="바다 위 바지선에 앉아 쉬는 모습" width="900" height="675" loading="lazy"><figcaption>바다 위 바지선</figcaption></figure>
+        <div class="me-note"><svg class="mark" viewBox="0 0 80 70" width="80" height="70"><path pathLength="1" stroke-width="3" d="M14,66 C10,40 22,18 52,8 M52,8 L36,4 M52,8 L42,22"/></svg><span class="pen">이런 사람이에요</span></div>
+      </div>
+      <div class="author me-text">
+        <div class="facts"><span>현장 15년+</span><span>제어 · 계장 · 커미셔닝</span><span>AI 업무 환경 직접 구축</span></div>
+        <p>전자공학을 전공했고, 한국어 자료 하나 없이 영어 원서만 붙잡고 안드로이드 프레임워크부터 애플리케이션까지 만드는 개발자로 시작했습니다. 이후 15년 넘게 산업 설비의 제어 시스템을 설계하고 통합하며 기획, 소프트웨어 개발, 계장 설계, 커미셔닝, 기술영업, 품질, 부서장, 프리랜서까지 현장의 여러 자리를 거쳤습니다.</p>
+        <p>영상 인식 AI로 처음 AI 분야에 발을 들였고, 지금은 퇴근 후와 새벽 시간에 AI가 일할 현장을 직접 만들어 매일 쓰고, 고치고, 기록합니다.</p>
+        <blockquote>일이 잘 굴러가는 곳에는 대단한 천재가 아니라 규칙이 있다.</blockquote>
+      </div>
     </div>
   </div>
 </div></section>
@@ -842,6 +873,11 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
   });
   ScrollTrigger.batch('[data-rv]',{start:'top 92%', onEnter:function(b){ gsap.fromTo(b,{opacity:0,y:36},{opacity:1,y:0,duration:.75,stagger:.08,ease:'power3.out',overwrite:true}); }});
   gsap.from('.author blockquote',{scaleY:0, opacity:0, duration:.8, ease:'power3.out', scrollTrigger:{trigger:'.author blockquote', start:'top 88%'}});
+  var pols=gsap.utils.toArray('.pol');
+  pols.forEach(function(el){ gsap.set(el,{rotation:+el.dataset.rot}); });
+  gsap.from(pols,{y:-90, opacity:0, rotation:function(i,el){ return +el.dataset.rot - 14; }, duration:.9, stagger:.18, ease:'back.out(1.5)', scrollTrigger:{trigger:'#collage', start:'top 78%'}});
+  gsap.fromTo('.me-note svg path',{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:.7,delay:.9,ease:'power2.out',scrollTrigger:{trigger:'#collage', start:'top 78%'}});
+  gsap.from('.me-note .pen',{opacity:0, x:-16, duration:.5, delay:.8, scrollTrigger:{trigger:'#collage', start:'top 78%'}});
 
   statsReady.then(function(S){
     var vals={kb_docs:S.kb_docs, kb_lines_man:Math.floor(S.kb_lines/10000), agents:S.agents, tokens_eok:Math.floor(S.total_tokens/1e8)};
