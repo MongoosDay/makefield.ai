@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MakeField AI · AI가 일할 현장을 만든다</title>
-<meta name="description" content="좋은 AI를 고르는 게 아니라, AI가 일할 현장을 만드는 일. 현장 엔지니어 최봉실의 Field Notes(기록), Field Book(책), Field Session(교육).">
+<meta name="description" content="좋은 AI를 고르는 게 아니라, AI가 일할 현장을 만드는 일. 현장 엔지니어와 함께 하는 AI — Field Notes(기록), Field Book(책), Field Session(교육).">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://makefield.ai/">
 <meta property="og:title" content="MakeField AI · AI가 일할 현장을 만든다">
-<meta property="og:description" content="Field Notes · Field Book · Field Session — 현장 엔지니어 최봉실">
+<meta property="og:description" content="Field Notes · Field Book · Field Session — 현장 엔지니어와 함께 하는 AI">
 <meta property="og:image" content="https://makefield.ai/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="naver-site-verification" content="00273c791d39e0101361e7c61f77bc0039c187cf" />
@@ -18,10 +18,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
- {"@type":"Organization","@id":"https://makefield.ai/#org","name":"MakeField AI","url":"https://makefield.ai/","slogan":"AI가 일할 현장을 만든다","founder":{"@id":"https://makefield.ai/#nick"}},
- {"@type":"Person","@id":"https://makefield.ai/#nick","name":"최봉실","url":"https://makefield.ai/","jobTitle":"산업 제어 시스템 엔지니어","worksFor":{"@id":"https://makefield.ai/#org"},"sameAs":["https://blog.naver.com/makefield_ai"]},
- {"@type":"Blog","name":"Field Notes — MakeField AI","url":"https://makefield.ai/blog/","author":{"@id":"https://makefield.ai/#nick"},"inLanguage":"ko"},
- {"@type":"Book","name":"직장인의 AI 오답 노트","alternativeHeadline":"AI에게 잘 묻는 법이 아니라, AI가 내 일을 알게 만드는 법","author":{"@id":"https://makefield.ai/#nick"},"inLanguage":"ko","numberOfPages":438,"bookFormat":"https://schema.org/Paperback","image":"https://makefield.ai/assets/book-cover.jpg"}
+ {"@type":"Organization","@id":"https://makefield.ai/#org","name":"MakeField AI","url":"https://makefield.ai/","slogan":"AI가 일할 현장을 만든다","description":"현장 엔지니어와 함께 하는 AI","sameAs":["https://blog.naver.com/makefield_ai"]},
+ {"@type":"Blog","name":"Field Notes — MakeField AI","url":"https://makefield.ai/blog/","publisher":{"@id":"https://makefield.ai/#org"},"inLanguage":"ko"},
+ {"@type":"Book","name":"직장인의 AI 오답 노트","alternativeHeadline":"AI에게 잘 묻는 법이 아니라, AI가 내 일을 알게 만드는 법","inLanguage":"ko","numberOfPages":438,"bookFormat":"https://schema.org/Paperback","image":"https://makefield.ai/assets/book-cover.jpg"}
 ]}
 </script>
 <style>
@@ -55,7 +54,8 @@ nav.solid{background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-ba
 
 /* ---------- journey (scroll-driven 3D camera over a site plan) ---------- */
 .journey{position:relative;height:960vh}
-.sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--paper)}
+.sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background-color:var(--paper);
+  background-image:linear-gradient(rgba(23,21,18,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.07) 1px,transparent 1px);background-size:44px 44px}
 .bg-glow{position:absolute;left:50%;top:50%;width:140vmax;height:110vmax;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(255,251,240,.9),rgba(242,237,227,0))}
 .bg-grain{position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply;pointer-events:none;z-index:4;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='7'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .38  0 0 0 0 .28  0 0 0 .2 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>")}
@@ -66,13 +66,15 @@ nav.solid{background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-ba
 #pan > *{position:absolute}
 
 /* the field: graph paper site plan */
-#field{left:-3000px;top:-1250px;width:6000px;height:2700px;transform:translateZ(-30px);border:4px solid rgba(23,21,18,.5);border-radius:6px;
+#field{left:-3000px;top:-1250px;width:1500px;height:675px;transform:translateZ(-30px) scale(4);transform-origin:0 0;border:1px solid rgba(23,21,18,.5);border-radius:2px;
   background-color:#f6f2e9;
   background-image:
-    linear-gradient(rgba(23,21,18,.13) 2px,transparent 2px),linear-gradient(90deg,rgba(23,21,18,.13) 2px,transparent 2px),
-    linear-gradient(rgba(23,21,18,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.05) 1px,transparent 1px);
-  background-size:500px 500px,500px 500px,50px 50px,50px 50px;background-position:-2px -2px}
-#field .tk{position:absolute;font-family:var(--mono);font-weight:700;font-size:34px;color:rgba(23,21,18,.4)}
+    linear-gradient(rgba(23,21,18,.13) .6px,transparent .6px),linear-gradient(90deg,rgba(23,21,18,.13) .6px,transparent .6px),
+    linear-gradient(rgba(23,21,18,.06) .3px,transparent .3px),linear-gradient(90deg,rgba(23,21,18,.06) .3px,transparent .3px);
+  background-size:125px 125px,125px 125px,12.5px 12.5px,12.5px 12.5px}
+#field .tk{position:absolute;font-family:var(--mono);font-weight:700;font-size:8.5px;color:rgba(23,21,18,.4)}
+/* iOS Safari: keep each big flat region on its own small layer (no giant union backing store) */
+#wall,#route,.zone,#tblock,.wpen,#post{will-change:transform}
 .zone{display:flex;align-items:baseline;gap:22px;white-space:nowrap}
 .zone .id{font-family:var(--mono);font-weight:700;font-size:44px;color:#fff;background:var(--red);padding:4px 16px;border-radius:8px}
 .zone b{font-size:66px;font-weight:900;letter-spacing:-.02em}
@@ -305,6 +307,7 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
 .motion [data-rv]{opacity:0}
 
 @media (max-width:900px){
+  .bg-grain{mix-blend-mode:normal;opacity:.12}
   .nav-links{display:none}
   .veil{background:linear-gradient(180deg,rgba(242,237,227,.97) 0%,rgba(242,237,227,.92) 46%,rgba(242,237,227,0) 70%)}
   #ov-hero{left:20px;right:20px;top:84px;transform:none;max-width:none}
@@ -352,8 +355,8 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
 
         <!-- the field (graph-paper site plan) -->
         <div id="field">
-          <span class="tk" style="left:24px;top:14px">A</span><span class="tk" style="left:524px;top:14px">B</span><span class="tk" style="left:1024px;top:14px">C</span><span class="tk" style="left:1524px;top:14px">D</span><span class="tk" style="left:2024px;top:14px">E</span><span class="tk" style="left:2524px;top:14px">F</span><span class="tk" style="left:3024px;top:14px">G</span><span class="tk" style="left:3524px;top:14px">H</span><span class="tk" style="left:4024px;top:14px">J</span><span class="tk" style="left:4524px;top:14px">K</span><span class="tk" style="left:5024px;top:14px">L</span><span class="tk" style="left:5524px;top:14px">M</span>
-          <span class="tk" style="left:18px;top:520px">1</span><span class="tk" style="left:18px;top:1020px">2</span><span class="tk" style="left:18px;top:1520px">3</span><span class="tk" style="left:18px;top:2020px">4</span><span class="tk" style="left:18px;top:2520px">5</span>
+          <span class="tk" style="left:6px;top:3px">A</span><span class="tk" style="left:131px;top:3px">B</span><span class="tk" style="left:256px;top:3px">C</span><span class="tk" style="left:381px;top:3px">D</span><span class="tk" style="left:506px;top:3px">E</span><span class="tk" style="left:631px;top:3px">F</span><span class="tk" style="left:756px;top:3px">G</span><span class="tk" style="left:881px;top:3px">H</span><span class="tk" style="left:1006px;top:3px">J</span><span class="tk" style="left:1131px;top:3px">K</span><span class="tk" style="left:1256px;top:3px">L</span><span class="tk" style="left:1381px;top:3px">M</span>
+          <span class="tk" style="left:4px;top:130px">1</span><span class="tk" style="left:4px;top:255px">2</span><span class="tk" style="left:4px;top:380px">3</span><span class="tk" style="left:4px;top:505px">4</span><span class="tk" style="left:4px;top:630px">5</span>
         </div>
 
         <!-- route between zones -->
@@ -433,7 +436,7 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
         <div id="tblock">
           <div class="r big"><div>도명</div><div>AI가 일할 현장</div></div>
           <div class="r"><div>구역</div><div>N-01 Field Notes · B-01 Field Book · S-01 Field Session</div></div>
-          <div class="r"><div>설계</div><div>최봉실 · MakeField AI</div></div>
+          <div class="r"><div>설계</div><div>MakeField AI · 현장 엔지니어와 함께</div></div>
           <div class="r"><div>상태</div><div>운영 중 — 매일 갱신</div></div>
           <div class="stamp">FIELD<br>TESTED</div>
         </div>
@@ -446,7 +449,7 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
 
     <!-- overlay: hero copy -->
     <div class="ov on" id="ov-hero">
-      <div class="kick"><span class="mono">MAKE · FIELD · AI</span>현장 엔지니어 최봉실</div>
+      <div class="kick"><span class="mono">MAKE · FIELD · AI</span>현장 엔지니어와 함께 하는 AI</div>
       <h1>AI가 일할<br><em>현장</em>을 만듭니다.</h1>
       <div class="note pen">&gt; 좋은 AI를 고르는 게 아니라, AI가 일할 자리를 만드는 일</div>
       <p>모델은 누구나 똑같이 씁니다. 결과를 가르는 건 AI가 읽을 내 기록과 규칙, 그러니까 AI가 일하는 현장입니다. 그 현장을 직접 만들고, 매일 기록하고, 책으로 묶고, 같이 만듭니다.</p>
@@ -517,7 +520,7 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
   </div>
   <div class="body-grid"><div></div>
     <div class="book-row">
-      <div class="cv" data-rv><img src="assets/book-cover.jpg" alt="직장인의 AI 오답 노트 표지 — 최봉실 지음" width="700" height="993" loading="lazy"><span class="ft">✓ FIELD-TESTED</span></div>
+      <div class="cv" data-rv><img src="assets/book-cover.jpg" alt="직장인의 AI 오답 노트 표지" width="700" height="993" loading="lazy"><span class="ft">✓ FIELD-TESTED</span></div>
       <div class="tx" data-rv>
         <p class="big">자신 있게 틀린 숫자를 내놓고, "완료했습니다"라고 말하지만 확인해 보면 비어 있는 AI. 그 틀린 자리마다 남긴 규칙을 모은 책입니다.</p>
         <p>지난 1년 동안 코드를 직접 짜지 않고 AI에게 말로 시켜 업무 환경을 만들었습니다. 지침 파일, 흩어진 회사 파일, 500개가 넘는 지식 문서, 문서를 찾아 주는 검색, 역할을 나눈 여러 AI, 결과를 확인하는 습관까지. AI가 일할 현장을 처음부터 만드는 과정입니다.</p>
@@ -527,7 +530,7 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
           <li>막히면 '증상별 찾아보기'에서 원인과 해당 장으로 바로 갑니다</li>
         </ul>
         <aside class="spec">
-          <dl><dt>지은이</dt><dd>최봉실</dd><dt>판형</dt><dd>A5 · 438쪽</dd><dt>종이책</dt><dd>26,800원</dd><dt>전자책</dt><dd>16,800원</dd></dl>
+          <dl><dt>판형</dt><dd>A5 · 438쪽</dd><dt>종이책</dt><dd>26,800원</dd><dt>전자책</dt><dd>16,800원</dd></dl>
           <div class="status">서점 등록 심사 중입니다. 구매 링크는 승인되는 대로 이곳에 올립니다.<br><br>책을 가진 분은 <a href="/book_1st/">다운로드 부록 →</a></div>
         </aside>
       </div>
@@ -606,7 +609,7 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
   <div class="sec-head">
     <div class="sec-num"><span class="id">ME</span><span class="nm">만든 사람</span><span class="ko">현장 엔지니어</span></div>
     <div class="author" data-rv>
-      <div class="name">최봉실</div>
+      <div class="name">현장 엔지니어</div>
       <div class="role">산업 제어 시스템 엔지니어 · MakeField AI</div>
       <p>전자공학을 전공했고, 한국어 자료 하나 없이 영어 원서만 붙잡고 안드로이드 프레임워크부터 애플리케이션까지 만드는 개발자로 시작했습니다. 이후 15년 넘게 산업 설비의 제어 시스템을 설계하고 통합하며 기획, 소프트웨어 개발, 계장 설계, 커미셔닝, 기술영업, 품질, 부서장, 프리랜서까지 현장의 여러 자리를 거쳤습니다.</p>
       <p>영상 인식 AI로 처음 AI 분야에 발을 들였고, 지금은 퇴근 후와 새벽 시간에 AI가 일할 현장을 직접 만들어 매일 쓰고, 고치고, 기록합니다.</p>
@@ -742,12 +745,14 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
     gsap.set('.sh-l',{clipPath:'inset(0 100% 0 0)'});
     gsap.set(['#cap1','#cap2','#cap3','#cap4'],{autoAlpha:0});
     gsap.set('#tblock',{opacity:0, y:60});
+    gsap.set('#field',{autoAlpha:1});
     ['#route-a','#route-b','#m-card path','#m-ring path','#sc1 path','#sc2 path','#sc3 path'].forEach(function(s){ gsap.set(s,{strokeDasharray:1,strokeDashoffset:1}); });
 
     // ===== N-01 Field Notes: the wall → one card unfolds into the note → dive into it
     tl.to(['#ov-hero','#veil'],{autoAlpha:0, duration:.5, ease:'power2.in'}, 0);
     tl.to('#ov-hero',{y:-30, duration:.5, ease:'power2.in'}, 0);
     leg({x:-1700, y:-40, s:.92, rx:8, ry:-14}, 0, 1.2);
+    tl.to('#field',{autoAlpha:0, duration:.35, ease:'none'}, .35);
     capIn('#cap1', 1.0);
     leg({x:-1700, y:-370, s:1.6, rx:0, ry:-4}, 1.2, .8, 'power3.out');
     draw('#m-card path', 1.7, .4);
@@ -797,6 +802,7 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
 
     // ===== pull back: the whole field + title block
     leg(OVER, 11.7, 1.2);
+    tl.to('#field',{autoAlpha:1, duration:.5, ease:'none'}, 12.2);
     tl.to('#tblock',{opacity:1, y:0, duration:.5, ease:'power3.out'}, 12.3);
     capIn('#cap4', 12.5);
     tl.to({}, {duration:.6}, 12.9);
