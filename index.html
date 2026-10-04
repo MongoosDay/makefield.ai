@@ -13,6 +13,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="naver-site-verification" content="00273c791d39e0101361e7c61f77bc0039c187cf" />
 <link rel="canonical" href="https://makefield.ai/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -44,8 +47,7 @@ img{max-width:100%;height:auto}
 nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
 nav.solid{background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--line)}
 .nav-in{max-width:var(--wrap);margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{font-weight:900;letter-spacing:-.02em;text-decoration:none;font-size:1.05rem;display:flex;align-items:center;gap:8px}
-.logo i{display:block;width:16px;height:16px;border:2px solid var(--ink);border-radius:3px;background:linear-gradient(var(--red),var(--red)) center/6px 6px no-repeat}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
 .nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
 .nav-links a{text-decoration:none;color:var(--ink-2)}
 .nav-links a:hover{color:var(--red)}
@@ -373,7 +375,7 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
 <body>
 
 <nav id="nav"><div class="nav-in">
-  <a class="logo" href="/"><i></i>MakeField AI</a>
+  <a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a>
   <div class="nav-links">
     <a href="#notes">Field Notes</a><a href="#fieldbook">Field Book</a><a href="#session">Field Session</a><a href="#method">일하는 방식</a><a href="#author">만든 사람</a>
   </div>

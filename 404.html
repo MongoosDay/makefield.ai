@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>페이지를 찾을 수 없어요 | MakeField AI</title>
 <meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -14,8 +17,7 @@ body{font-family:'Pretendard',-apple-system,'Malgun Gothic',sans-serif;color:var
   background-color:var(--paper);background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
 nav{border-bottom:1px solid var(--line);background:rgba(242,237,227,.92)}
 nav .in{max-width:1160px;margin:0 auto;padding:14px 24px}
-.logo{font-weight:900;letter-spacing:-.02em;text-decoration:none;font-size:1.05rem;display:inline-flex;align-items:center;gap:8px;color:var(--ink)}
-.logo i{display:block;width:16px;height:16px;border:2px solid var(--ink);border-radius:3px;background:linear-gradient(var(--red),var(--red)) center/6px 6px no-repeat}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
 main{flex:1;display:grid;place-items:center;padding:60px 24px}
 .card{max-width:560px;width:100%;background:var(--card);border:2px solid var(--ink);border-radius:20px;padding:36px 32px;position:relative}
 .code{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.8rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px}
@@ -30,7 +32,7 @@ p{color:var(--ink-2);margin-top:10px;line-height:1.75}
 </style>
 </head>
 <body>
-<nav><div class="in"><a class="logo" href="/"><i></i>MakeField AI</a></div></nav>
+<nav><div class="in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a></div></nav>
 <main><div class="card">
   <span class="stamp">NOT FOUND</span>
   <span class="code">404</span>
