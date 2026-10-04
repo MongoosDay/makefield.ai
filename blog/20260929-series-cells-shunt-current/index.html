@@ -10,7 +10,7 @@
 <meta property="og:title" content="수전해 스택 셀을 직렬로 늘리면 왜 기생전류가 커질까 (논문 해설) | Field Notes · MakeField AI">
 <meta property="og:description" content="수전해 스택 기생전류는 셀을 직렬로 많이 쌓을수록 커집니다. 한 시뮬레이션에서 공급 전류 중 새는 비율이 50셀 3.9%, 500셀 59.4%였어요 [Hysa et al. 2025, Fig.6]. 500셀이면 넣은 전류의 절반 넘게 수소를 못 만든다는 뜻입니다.">
 <meta property="og:url" content="https://makefield.ai/blog/20260929-series-cells-shunt-current/">
-<meta property="og:image" content="https://makefield.ai/blog/20260929-series-cells-shunt-current/img/01_title.png">
+<meta property="og:image" content="https://makefield.ai/blog/20260929-series-cells-shunt-current/img/00_title.png">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="/assets/icon-512.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -109,7 +109,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 </div></header>
 <main>
 <article>
-<img src="img/01_title.png" alt="타이틀카드 — 00_title.png" loading="lazy">
+<img src="img/00_title.png" alt="타이틀카드 — 00_title.png" loading="lazy">
 <p>수전해 스택 기생전류는 셀을 직렬로 많이 쌓을수록 커집니다. 한 시뮬레이션에서 공급 전류 중 새는 비율이 <strong>50셀 3.9%, 500셀 59.4%</strong>였어요 [Hysa et al. 2025, Fig.6]. 500셀이면 넣은 전류의 절반 넘게 수소를 못 만든다는 뜻입니다.</p>
 <p>AI로 논문을 읽는 연재 7편, 지난 편이 &#x27;출력을 낮추면&#x27;이었다면 이번엔 <strong>몸집을 키우면</strong> 왜 아픈가입니다. 핀란드 LUT대 연구팀의 오픈액세스 논문 두 편, 문제를 다룬 2025년 IET Renewable Power Generation 논문과 해법을 다룬 2026년 Journal of Power Sources 논문을 붙여 읽었어요.</p>
 <h2>1. 두 논문은 무엇을, 어떻게 풀었나요</h2>
@@ -126,10 +126,13 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>출구 쪽 기포로 전기가 덜 통하는 효과도 넣었어요. 빼고 계산하면 기생전류가 <strong>과대평가</strong>됩니다 [Hysa et al. 2025, 3.1절].</p>
 <h2>2. 셀 수와 수전해 스택 기생전류는 어떤 관계인가요</h2>
 <p><strong>셀이 늘수록 새는 비율이 가파르게 오릅니다.</strong> 163셀 실제 스택은 측정 기반 약 16%에 맞춰 둔 기준점이고(2026년 논문 표기 15.8%), 500셀은 59.4%까지 오릅니다 [Hysa et al. 2025, 3.1절; Hysa et al. 2026, 2.3절].</p>
+<img src="img/01_cells_vs_shunt.png" alt="셀 수별 기생전류 비율 — 01_cells_vs_shunt.png" loading="lazy">
 <p>수소 1 kg당 전력(SEC)도 50셀 54.2 kWh에서 500셀 118.8 kWh로 두 배가 넘어요 [Hysa et al. 2025, Fig.6(c)]. 출력을 낮추면 더 나빠져, 그래프로 읽으면 163셀은 정격에서 약 16%, 50% 부하에서 약 38%까지 오릅니다 [Hysa et al. 2025, Fig.7, 그래프 판독].</p>
 <p>왜 그럴까요. 직렬 셀이 늘면 <strong>전류가 샐 병렬 샛길이 그만큼 늘고</strong> [Hysa et al. 2025, 3.1절], 첫 셀과 끝 셀 사이 <strong>전위차가 커집니다</strong> [Hysa et al. 2026, 3.3절]. 샛길 전류는 스택 양 끝 셀에서 가장 크고 가운데에서 방향이 바뀌어요 [Hysa et al. 2025, Fig.5].</p>
+<img src="img/02_why_longer_leaks.png" alt="짧은 스택 vs 긴 스택 — 02_why_longer_leaks.png" loading="lazy">
 <h2>3. 쪼개서 직렬로 이으면 얼마나 줄어드나요</h2>
 <p><strong>같은 500셀을 50셀짜리 10개로 나누면 59.4%가 3.9%로 떨어집니다</strong> [Hysa et al. 2026, Fig.3]. 단, 전해액 순환을 서브스택마다 따로 둘 때의 값이에요.</p>
+<img src="img/03_substack_compare.png" alt="500셀 나누는 방식별 비교 — 03_substack_compare.png" loading="lazy">
 <p>| 500셀 구성 | 기생전류 비율 | 출처 |<br>
 |---|---|---|<br>
 | 1개 × 500셀 | 59.4% | [Hysa et al. 2026, 3.1절] |<br>
@@ -144,6 +147,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 - 저자들은 이 형상을 &quot;비효율적 설계&quot;라 부르고, 셀이 아주 많을 때의 값은 정상 운전에 맞지 않는다고 적었어요 [Hysa et al. 2026, 2.3절]. <strong>59.4%는 업계 평균이 아닙니다.</strong></p>
 <h2>5. AI에게 이 두 논문을 어떻게 읽혔나요</h2>
 <p>여기부터는 읽는 방법이에요. 두 PDF를 텍스트로 뽑아 AI에게 읽히고, 그림·표가 있는 쪽은 이미지로 따로 띄워 대조했습니다. 함정이 네 개 나왔어요.</p>
+<img src="img/04_ai_traps.png" alt="두 논문에서 걸린 함정 4개 — 04_ai_traps.png" loading="lazy">
 <p><strong>맞춘 값과 예측한 값.</strong> 초록은 &quot;측정 데이터로 검증했다&quot;고만 써서, 요약하면 &#x27;모델이 16%를 맞혔다&#x27;로 읽히기 쉬워요. 본문은 다릅니다. 포트·매니폴드 길이 0.8 cm를 <strong>16%에 맞추도록 조정</strong>했다고 적혀 있어요 [Hysa et al. 2025, 2.3절]. 16%는 결과가 아니라 입력입니다.</p>
 <p><strong>함께 바뀐 조건.</strong> 셀을 늘릴 때 유속을 일정하게 두려고 매니폴드 저항을 셀 수에 반비례하게 바꿨어요 [Hysa et al. 2025, 식(8)]. &quot;셀만 늘렸다&quot;는 요약은 틀립니다.</p>
 <p><strong>사라진 칸 위치.</strong> 텍스트로 뽑으면 비교표의 체크표시가 줄줄이 나오기만 하고, 어느 칸인지가 사라져요. 표 쪽을 이미지로 띄워 다시 읽혔습니다.</p>

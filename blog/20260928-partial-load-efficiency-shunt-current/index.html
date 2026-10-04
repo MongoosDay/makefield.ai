@@ -10,7 +10,7 @@
 <meta property="og:title" content="수전해 부분부하 효율, 왜 낮출수록 무너질까 (논문 해설) | Field Notes · MakeField AI">
 <meta property="og:description" content="수전해 부분부하 효율이 무너지는 이유를 한 줄로 줄이면 이렇습니다. 새는 전류는 운전점을 낮춰도 별로 안 줄어드는데, 수소를 만드는 전류는 크게 줄어요. 오늘 논문의 시뮬레이션에서 수소로 간 전류 비율(쿨롱효율)은 높은 운전점에서 93~94%, 가장 낮은 운전점에서 약 32%였">
 <meta property="og:url" content="https://makefield.ai/blog/20260928-partial-load-efficiency-shunt-current/">
-<meta property="og:image" content="https://makefield.ai/blog/20260928-partial-load-efficiency-shunt-current/img/01_title.png">
+<meta property="og:image" content="https://makefield.ai/blog/20260928-partial-load-efficiency-shunt-current/img/00_title.png">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="/assets/icon-512.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -109,7 +109,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 </div></header>
 <main>
 <article>
-<img src="img/01_title.png" alt="타이틀카드 — 00_title.png" loading="lazy">
+<img src="img/00_title.png" alt="타이틀카드 — 00_title.png" loading="lazy">
 <p>수전해 부분부하 효율이 무너지는 이유를 한 줄로 줄이면 이렇습니다. <strong>새는 전류는 운전점을 낮춰도 별로 안 줄어드는데, 수소를 만드는 전류는 크게 줄어요.</strong><br>
 오늘 논문의 시뮬레이션에서 수소로 간 전류 비율(쿨롱효율)은 높은 운전점에서 93~94%, 가장 낮은 운전점에서 약 32%였습니다 [Golmarz et al. 2025, Fig.9].</p>
 <p>AI로 논문을 읽는 연재 6편째예요. 지난 편이 &#x27;셀을 쌓으면 배관으로 전기가 샌다&#x27;였다면, 이번엔 그게 왜 <strong>낮은 출력에서 유독 아픈지</strong>입니다. 이란 타브리즈대 연구팀이 2025년 9월 Energy Engineering에 낸 오픈액세스 논문이에요.</p>
@@ -127,18 +127,22 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 | 뺀 것 | 기체상 물질전달 제한 |</p>
 <p>장치가 하나 더 있어요. 기포 때문에 <strong>액체가 차지하는 비율</strong>을 스택 아래 100%에서 위 출구 50%로 줄게 넣고, 전도도는 그 비율의 1.5제곱에 비례시켰습니다 [Golmarz et al. 2025, 식(3)].<br>
 50%를 넣으면 0.5^1.5 ≈ 0.35. 위쪽 배관은 <strong>전기가 약 3분의 1만 통하는 길</strong>이 됩니다.</p>
+<img src="img/01_inlet_outlet.png" alt="아래 입구 배관은 잘 새고 위 출구 배관은 덜 샌다 — 01_inlet_outlet.png" loading="lazy">
 <h2>3. 부분부하에서 효율이 무너지는 구조는 무엇인가요</h2>
 <p><strong>① 아래 입구 쪽이 더 샌다.</strong> 위 출구는 기포가 많아 전도도가 낮기 때문이에요 [Golmarz et al. 2025, 3장].</p>
 <p><strong>② 스택 양 끝이 제일 많이 샌다.</strong> 가운데(10번 셀 근처)에서 0을 지나고, 1번 쪽은 음(−), 20번 쪽은 양(+) 방향으로 커집니다 [Golmarz et al. 2025, Fig.6·7].</p>
 <p><strong>③ 전압을 올리면 누수도 늘지만, 조금만 는다.</strong> 셀당 최댓값이 1.4 V에서 16 A, 1.8 V에서 약 20 A예요 [Golmarz et al. 2025, Fig.6·7]. 같은 구간에서 쿨롱효율은 32%대에서 94% 가까이로 뜁니다.</p>
 <p>쿨롱효율은 <strong>넣은 전하 중 수소 생성에 쓰인 몫</strong>이에요. 논문은 전 셀의 수소 생성 전류 합을 &#x27;스택 전류 × 셀 수&#x27;로 나눠 구했습니다 [Golmarz et al. 2025, 3장].</p>
+<img src="img/02_leak_vs_efficiency.png" alt="누수는 +25%, 쿨롱효율은 약 3배 — 02_leak_vs_efficiency.png" loading="lazy">
 <p>두 수치를 나란히 놓으면 함정이 보여요. 운전점을 내려도 누수는 크게 줄지 않는데 수소를 만드는 전류는 확 줄어드니, <strong>새는 몫의 비율이 커집니다.</strong> 논문은 부하가 없어도 전극 반응식이 0이 아닌 전류를 예측해 기생전류가 생긴다고 설명하고, 낮은 전류의 효율 저하를 여러 분극 효과의 상호작용으로 봅니다 [Golmarz et al. 2025, 2~3장].</p>
 <p>그럼 무조건 높이 돌리면 될까요? 초록은 아니라고 해요. 에너지효율은 쿨롱효율을 따라 오르다 약 1400 mA에서 정점을 찍고, 이후 스택 전압이 올라 다시 떨어진다고 적었습니다 [Golmarz et al. 2025, 초록].</p>
+<img src="img/03_tradeoff.png" alt="낮으면 누수, 높으면 전압 — 03_tradeoff.png" loading="lazy">
 <h2>4. 이 논문의 한계는 무엇인가요</h2>
 <p>전부 계산값이고, 실측 검증은 본문에 없어요. 온도 고정, 20셀 한 구성입니다.<br>
 또 &#x27;부하 30%&#x27; 같은 비율이 아니라 셀 전압으로 운전점을 바꿔서, &quot;30% 부하에서 몇 %&quot;로 옮기면 논문에 없는 말이 됩니다.</p>
 <h2>5. AI에게 이 논문을 어떻게 읽혔나요</h2>
 <p>여기부터는 읽는 방법이에요. PDF 텍스트를 AI에게 읽히고, 그림이 있는 쪽은 이미지로 따로 띄워 대조했습니다. 이 논문은 <strong>원문에 걸림돌이 네 개</strong> 있어 연습 교재로 좋았어요.</p>
+<img src="img/04_ai_traps.png" alt="이번 논문에서 걸린 함정 4개 — 04_ai_traps.png" loading="lazy">
 <p><strong>축 라벨.</strong> 본문은 &quot;1.3 A에서 32%&quot;라고 쓰고, 요약도 그대로 옮깁니다. 그런데 그림을 띄우면 가로축 눈금이 1.3~1.8로 전압 범위와 똑같아요. 단위를 확정할 수 없어 이 글은 &#x27;낮은/높은 운전점&#x27;으로만 썼습니다.</p>
 <p><strong>정의 방향.</strong> 에너지효율 정의가 초록과 결론에서 분자·분모가 뒤집혀 있어요.</p>
 <p><strong>주장-그림 매핑.</strong> 초록의 &#x27;1400 mA 정점&#x27;을 보여주는 그림은 본문에 없습니다. 그래서 출처를 [초록]으로만 달았어요.</p>
