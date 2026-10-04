@@ -3,62 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>직장인의 AI 오답 노트 — 다운로드 부록</title>
+<title>직장인의 AI 오답 노트 — 다운로드 부록 | Field Book 01 · MakeField AI</title>
 <meta name="description" content="『직장인의 AI 오답 노트』 독자용 페이지 — 다운로드 부록 A~I, 정오표, 최신 안내">
 <link rel="canonical" href="https://makefield.ai/book_1st/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="직장인의 AI 오답 노트 — 다운로드 부록">
+<meta property="og:description" content="Field Book 01 독자용 페이지 — 다운로드 부록, 정오표, 최신 안내">
+<meta property="og:url" content="https://makefield.ai/book_1st/">
+<meta property="og:image" content="https://makefield.ai/assets/og.jpg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#06060b;--card:#13131d;--card2:#1a1a28;--text:#e8e8f0;--sub:#8585a0;--muted:#5a5a72;--accent:#4f8fff;--red:#ff6b6b;--border:rgba(255,255,255,.07);--grad:linear-gradient(135deg,#4f8fff 0%,#7c5cff 50%,#00d4aa 100%)}
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;word-break:keep-all}
-.wrap{max-width:720px;margin:0 auto;padding:40px 16px 64px}
-.home{color:var(--sub);text-decoration:none;font-size:.85em}
-.badge{display:inline-block;margin:28px 0 10px;padding:4px 12px;border-radius:14px;border:1px solid rgba(255,107,107,.3);color:var(--red);font-size:.75em;font-weight:600}
-h1{font-size:clamp(1.7em,6vw,2.3em);font-weight:800;letter-spacing:-.02em;line-height:1.25}
-h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.subtitle{color:var(--sub);margin:8px 0 4px}
-.author{color:var(--muted);font-size:.9em}
-h2{font-size:1.1em;margin:40px 0 12px;font-weight:700}
-.note{color:var(--sub);font-size:.88em;margin-bottom:14px}
-ul.files{list-style:none;display:grid;gap:10px}
-.files a{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);text-decoration:none;transition:background .2s,border-color .2s}
-.files a:hover,.files a:focus{background:var(--card2);border-color:rgba(79,143,255,.35)}
-.tag{flex:0 0 34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:var(--grad)}
-.files b{display:block;font-size:.95em}
-.files small{color:var(--sub);font-size:.8em}
-.box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;color:var(--sub);font-size:.9em}
-.box strong{color:var(--text)}
-footer{margin-top:48px;color:var(--muted);font-size:.8em}
-footer a{color:var(--sub)}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.02em;text-decoration:none;font-size:1.05rem;display:flex;align-items:center;gap:8px}
+.logo i{display:block;width:16px;height:16px;border:2px solid var(--ink);border-radius:3px;background:linear-gradient(var(--red),var(--red)) center/6px 6px no-repeat}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.head .in{max-width:860px;margin:0 auto;padding:56px 24px 46px;display:grid;grid-template-columns:170px 1fr;gap:36px;align-items:center}
+.head .cv img{display:block;width:100%;border-radius:3px 6px 6px 3px;box-shadow:0 24px 40px -20px rgba(70,48,16,.55);transform:rotate(-3deg)}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted)}
+.head h1{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;letter-spacing:-.035em;line-height:1.25;margin-top:14px}
+.head h1 em{font-style:normal;color:var(--red)}
+.subtitle{color:var(--ink-2);margin-top:8px}
+.head .note{font-size:1.45rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+main{max-width:860px;margin:0 auto;padding:40px 24px 60px}
+h2{display:flex;align-items:center;gap:12px;font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin:44px 0 12px;padding-top:16px;border-top:2px solid var(--ink)}
+h2:first-child{margin-top:0}
+h2 .mono{font-family:var(--mono);font-size:.78rem;color:var(--red)}
+.desc{color:var(--ink-2);font-size:.95rem;margin-bottom:16px}
+ul.files{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.files a{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;text-decoration:none;transition:border-color .2s,transform .2s;height:100%}
+.files a:hover,.files a:focus{border-color:var(--ink);transform:translateY(-2px)}
+.files li.wide{grid-column:1/-1}
+.files li.wide a{border:2px solid var(--ink)}
+.tag{flex:0 0 38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;color:#fff;background:var(--ink)}
+.files li.wide .tag{background:var(--red)}
+.files b{display:block;font-size:1rem;font-weight:800}
+.files small{display:block;color:var(--ink-2);font-size:.85rem;line-height:1.6;margin-top:2px}
+.files .dl{margin-left:auto;align-self:center;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);white-space:nowrap}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;color:var(--ink-2);font-size:.95rem}
+.box strong{color:var(--ink)}
+.session{margin-top:44px;border:2px solid var(--ink);border-radius:18px;background:var(--ink);color:var(--paper);padding:26px 26px 24px}
+.session .k{font-family:var(--mono);font-weight:700;font-size:.76rem;color:#ff6a6e;letter-spacing:.06em}
+.session .t{font-size:1.25rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.session p{color:rgba(242,237,227,.8);font-size:.95rem;margin-top:6px}
+.session .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-paper{background:var(--paper);color:var(--ink)}
+.btn-ghost{border:1.5px solid rgba(242,237,227,.5);color:var(--paper)}
+footer{border-top:1px solid var(--line)}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}ul.files{grid-template-columns:1fr}}
+@media (max-width:560px){.head .in{grid-template-columns:110px 1fr;gap:20px;padding-top:40px}.files .dl{display:none}}
+@media (max-width:420px){.nav-in,.head .in,main,footer .in{padding-left:16px;padding-right:16px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <a class="home" href="/">← MakeField AI</a>
-  <div class="badge">독자용 페이지</div>
-  <h1>직장인의 <span>AI 오답 노트</span></h1>
-  <p class="subtitle">AI에게 잘 묻는 법이 아니라, AI가 내 일을 알게 만드는 법</p>
-  <p class="author">MakeField AI · Field Book 01</p>
+<nav><div class="nav-in"><a class="logo" href="/"><i></i>MakeField AI</a>
+<div class="nav-links"><a href="/blog/">Field Notes</a><a class="on" href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div>
+<a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
 
-  <h2 id="downloads">다운로드 부록</h2>
-  <p class="note">책에 싣지 않은 부록입니다. 복사해 붙여 넣거나 출력해 쓰는 자료라 파일로 드립니다.</p>
+<header class="head"><div class="in">
+  <div class="cv"><img src="/assets/book-cover.jpg" alt="직장인의 AI 오답 노트 표지" width="700" height="993"></div>
+  <div>
+    <div class="crumb"><span class="zone-id">B-01</span><span>Field Book · 독자용 페이지</span></div>
+    <h1>직장인의 AI <em>오답 노트</em></h1>
+    <p class="subtitle">AI에게 잘 묻는 법이 아니라, AI가 내 일을 알게 만드는 법</p>
+    <div class="note pen">&gt; 책을 펼친 분께 — 부록은 여기서 받아 가세요</div>
+  </div>
+</div></header>
+
+<main>
+  <h2 id="downloads"><span class="mono">DOWNLOAD</span>다운로드 부록</h2>
+  <p class="desc">책에 싣지 않은 부록입니다. 복사해 붙여 넣거나 출력해 쓰는 자료라 파일로 드립니다.</p>
   <ul class="files">
-    <li><a href="files/appendix-I-setup-blueprint.pdf" download="부록I_AI에게건네는구축설계서_v1.pdf"><span class="tag">I</span><span><b>AI에게 건네는 구축 설계서</b><small>쓰는 AI에게 건네고 "이 설계서대로 시작해줘"라고 하면, 이 책의 일터를 단계별로 함께 만들어 줍니다</small></span></a></li>
-    <li><a href="files/appendix-A-commands.pdf" download="부록A_명령어총람_v1.pdf"><span class="tag">A</span><span><b>명령어 총람</b><small>책에서 직접 치는 명령을 한곳에</small></span></a></li>
-    <li><a href="files/appendix-B-templates.pdf" download="부록B_파일서식모음_v1.pdf"><span class="tag">B</span><span><b>파일 서식 모음</b><small>지침 파일·KB·인수인계 등 서식 원형</small></span></a></li>
-    <li><a href="files/appendix-C-code.pdf" download="부록C_전체코드_v1.pdf"><span class="tag">C</span><span><b>전체 코드</b><small>본문에 나온 코드 전문 (PDF)</small></span></a></li>
-    <li><a href="files/appendix-C-code-files.zip" download="부록C_코드파일_v1.zip"><span class="tag">C</span><span><b>전체 코드 — 파일 묶음</b><small>바로 쓰는 .py·.ps1 파일과 터미널 설정 파일 (zip)</small></span></a></li>
-    <li><a href="files/appendix-D-terminal.pdf" download="부록D_터미널설정_v1.pdf"><span class="tag">D</span><span><b>터미널 설정</b><small>검은 화면을 쓸 만하게 꾸미는 설정</small></span></a></li>
-    <li><a href="files/appendix-E-checklists.pdf" download="부록E_점검표모음_v1.pdf"><span class="tag">E</span><span><b>점검표 모음</b><small>각 장 끝 점검표를 한곳에 — 출력해 책상 옆에</small></span></a></li>
-    <li><a href="files/appendix-H-next-steps.pdf" download="부록H_더깊이가려면_v1.pdf"><span class="tag">H</span><span><b>더 깊이 가려면</b><small>층마다 다음에 읽을 이야기</small></span></a></li>
+    <li class="wide"><a href="files/appendix-I-setup-blueprint.pdf" download="부록I_AI에게건네는구축설계서_v1.pdf"><span class="tag">I</span><span><b>AI에게 건네는 구축 설계서</b><small>쓰는 AI에게 건네고 "이 설계서대로 시작해줘"라고 하면, 이 책의 일터를 단계별로 함께 만들어 줍니다</small></span><span class="dl">PDF ↓</span></a></li>
+    <li><a href="files/appendix-A-commands.pdf" download="부록A_명령어총람_v1.pdf"><span class="tag">A</span><span><b>명령어 총람</b><small>책에서 직접 치는 명령을 한곳에</small></span><span class="dl">PDF ↓</span></a></li>
+    <li><a href="files/appendix-B-templates.pdf" download="부록B_파일서식모음_v1.pdf"><span class="tag">B</span><span><b>파일 서식 모음</b><small>지침 파일·KB·인수인계 등 서식 원형</small></span><span class="dl">PDF ↓</span></a></li>
+    <li><a href="files/appendix-C-code.pdf" download="부록C_전체코드_v1.pdf"><span class="tag">C</span><span><b>전체 코드</b><small>본문에 나온 코드 전문 (PDF)</small></span><span class="dl">PDF ↓</span></a></li>
+    <li><a href="files/appendix-C-code-files.zip" download="부록C_코드파일_v1.zip"><span class="tag">C</span><span><b>전체 코드 — 파일 묶음</b><small>바로 쓰는 .py·.ps1 파일과 터미널 설정 파일 (zip)</small></span><span class="dl">ZIP ↓</span></a></li>
+    <li><a href="files/appendix-D-terminal.pdf" download="부록D_터미널설정_v1.pdf"><span class="tag">D</span><span><b>터미널 설정</b><small>검은 화면을 쓸 만하게 꾸미는 설정</small></span><span class="dl">PDF ↓</span></a></li>
+    <li><a href="files/appendix-E-checklists.pdf" download="부록E_점검표모음_v1.pdf"><span class="tag">E</span><span><b>점검표 모음</b><small>각 장 끝 점검표를 한곳에 — 출력해 책상 옆에</small></span><span class="dl">PDF ↓</span></a></li>
+    <li><a href="files/appendix-H-next-steps.pdf" download="부록H_더깊이가려면_v1.pdf"><span class="tag">H</span><span><b>더 깊이 가려면</b><small>층마다 다음에 읽을 이야기</small></span><span class="dl">PDF ↓</span></a></li>
   </ul>
 
-  <h2 id="errata">정오표</h2>
+  <h2 id="errata"><span class="mono">ERRATA</span>정오표</h2>
   <div class="box">현재 등록된 정오표는 없습니다. 틀린 곳이 확인되면 이곳에 쪽번호와 함께 고쳐 둡니다.</div>
 
-  <h2 id="updates">최신 안내</h2>
+  <h2 id="updates"><span class="mono">UPDATE</span>최신 안내</h2>
   <div class="box">책의 도구 정보(설치 명령, 요금, 메뉴 이름)는 <strong>2026년 9월 기준</strong>입니다. 도구가 바뀌어 책대로 안 되는 부분이 생기면 이곳에 먼저 알립니다.</div>
 
-  <footer>© 2026 MakeField AI · <a href="/">makefield.ai</a></footer>
-</div>
+  <div class="session">
+    <div class="k">S-01 · FIELD SESSION</div>
+    <div class="t">책대로 따라 하다 막혔다면, 같이 만들어도 됩니다.</div>
+    <p>업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니 부담 없이 문의 주세요.</p>
+    <div class="btns"><a class="btn btn-paper" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%8F%85%EC%9E%90%20%EB%AC%B8%EC%9D%98">문의하기</a><a class="btn btn-ghost" href="/blog/">Field Notes 읽기</a></div>
+  </div>
+</main>
+
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div>
+<div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">문의</a></div></div></footer>
 </body>
 </html>

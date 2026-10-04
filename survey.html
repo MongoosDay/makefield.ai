@@ -7,11 +7,11 @@
     <meta name="description" content="귀사의 업종과 부서에 맞는 AI 전환 방향을 진단합니다.">
     <meta property="og:title" content="우리 회사에 맞는 AI 전환은? - MakeField AI">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
     <style>
-        :root{--bg:#06060b;--bg2:#0d0d14;--card:#13131d;--text:#e8e8f0;--text2:#8585a0;--muted:#4a4a60;--accent:#4f8fff;--accent2:#7c5cff;--accent3:#00d4aa;--gradient:linear-gradient(135deg,#4f8fff,#7c5cff,#00d4aa);--border:rgba(255,255,255,0.05);--error:#ff5c5c;--success:#00d4aa}
+        :root{--bg:#f2ede3;--bg2:#e8e1d3;--card:#f9f6f0;--text:#171512;--text2:#4b463f;--muted:#857e73;--accent:#d4252b;--accent2:#171512;--accent3:#2f6b3f;--gradient:linear-gradient(#171512,#171512);--border:rgba(23,21,18,.16);--error:#d4252b;--success:#2f6b3f}
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh}
+        body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;word-break:keep-all;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh}
         .container{max-width:720px;margin:0 auto;padding:40px 24px 80px}
         .header{text-align:center;padding:70px 0 28px}
         .header h1{font-size:2em;font-weight:800;margin-bottom:10px;letter-spacing:-.02em}
@@ -29,15 +29,15 @@
         .hint{font-size:.76em;color:var(--muted);margin-bottom:8px}
         .r-group,.c-group{display:flex;flex-direction:column;gap:6px}
         .r-opt,.c-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all .2s;font-size:.85em}
-        .r-opt:hover,.c-opt:hover{border-color:var(--accent);background:rgba(79,143,255,.05)}
+        .r-opt:hover,.c-opt:hover{border-color:var(--accent);background:rgba(212,37,43,.05)}
         .r-opt input,.c-opt input{accent-color:var(--accent);width:16px;height:16px;flex-shrink:0}
-        .r-opt.sel,.c-opt.sel{border-color:var(--accent);background:rgba(79,143,255,.08)}
+        .r-opt.sel,.c-opt.sel{border-color:var(--accent);background:rgba(212,37,43,.08)}
         .c-opt.off{opacity:.35;pointer-events:none}
         input[type=email],input[type=text],textarea{width:100%;padding:11px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:inherit;font-size:.85em;transition:border-color .2s}
         input:focus,textarea:focus{outline:none;border-color:var(--accent)}
         textarea{resize:vertical;min-height:68px}
         .submit-btn{width:100%;padding:16px;background:var(--gradient);color:#fff;border:none;border-radius:10px;font-size:1.05em;font-weight:700;cursor:pointer;transition:all .3s}
-        .submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(79,143,255,.4)}
+        .submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(212,37,43,.4)}
         .success-msg{text-align:center;padding:60px 24px;display:none}
         .success-msg h2{font-size:1.8em;margin-bottom:16px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
         .success-msg p{color:var(--text2);line-height:1.8}
@@ -45,21 +45,21 @@
         .nav{display:flex;gap:12px;margin-top:18px}
         .nav button{flex:1;padding:13px;border-radius:8px;font-weight:600;font-size:.88em;cursor:pointer;transition:all .2s}
         .btn-p{background:transparent;border:1px solid var(--border);color:var(--text2)}.btn-p:hover{border-color:var(--accent);color:var(--accent)}
-        .btn-n{background:var(--accent);border:none;color:#fff}.btn-n:hover{background:#6ba0ff}
+        .btn-n{background:var(--accent);border:none;color:#fff}.btn-n:hover{background:#b31d22}
         .step-ind{text-align:center;margin-bottom:14px;font-size:.76em;color:var(--muted)}
-        .tree-sub{margin-top:12px;padding:16px;background:rgba(79,143,255,.03);border:1px solid rgba(79,143,255,.1);border-radius:10px;display:none}
+        .tree-sub{margin-top:12px;padding:16px;background:rgba(212,37,43,.03);border:1px solid rgba(212,37,43,.1);border-radius:10px;display:none}
         .tree-sub.show{display:block;animation:fadeIn .3s}
         .tree-sub h4{font-size:.78em;font-weight:600;color:var(--accent3);margin-bottom:10px;text-transform:uppercase;letter-spacing:.1em}
         .tree-sub .c-group{gap:5px}
         .tree-sub .c-opt{font-size:.82em;padding:8px 12px}
         .selected-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-        .tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:rgba(79,143,255,.12);border:1px solid rgba(79,143,255,.2);border-radius:20px;font-size:.74em;color:var(--accent)}
+        .tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:rgba(212,37,43,.12);border:1px solid rgba(212,37,43,.2);border-radius:20px;font-size:.74em;color:var(--accent)}
         .val-msg{font-size:.76em;color:var(--error);margin-top:6px;display:none}
         .fb-banner{padding:14px 18px;border-radius:10px;margin-bottom:18px;font-size:.84em;line-height:1.7;animation:fadeIn .4s;display:none}
         .fb-banner.show{display:block}
-        .fb-banner.info{background:rgba(79,143,255,.08);border:1px solid rgba(79,143,255,.15);color:var(--accent)}
-        .fb-banner.success{background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.15);color:var(--accent3)}
-        .fb-banner.warm{background:rgba(255,165,0,.08);border:1px solid rgba(255,165,0,.15);color:#ffa500}
+        .fb-banner.info{background:rgba(212,37,43,.08);border:1px solid rgba(212,37,43,.15);color:var(--accent)}
+        .fb-banner.success{background:rgba(47,107,63,.08);border:1px solid rgba(47,107,63,.15);color:var(--accent3)}
+        .fb-banner.warm{background:rgba(168,101,11,.08);border:1px solid rgba(168,101,11,.15);color:#a8650b}
         .fb-banner strong{font-weight:700}
         /* Phase 4: 진단 결과 */
         .diag{display:none;padding:40px 0}
@@ -71,16 +71,16 @@
         .diag-desc{color:var(--text2);font-size:.88em;line-height:1.8}
         .meter{height:8px;background:var(--bg);border-radius:4px;overflow:hidden;margin:10px 0}
         .meter-fill{height:100%;border-radius:4px;transition:width .8s}
-        .meter-fill.low{background:var(--error)}.meter-fill.mid{background:#ffa500}.meter-fill.high{background:var(--accent3)}
-        .diag-reco{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:rgba(79,143,255,.04);border:1px solid rgba(79,143,255,.08);border-radius:10px;margin-top:10px;font-size:.86em;line-height:1.8;transition:border-color .2s}
-        .diag-reco:hover{border-color:rgba(79,143,255,.2)}
+        .meter-fill.low{background:var(--error)}.meter-fill.mid{background:#a8650b}.meter-fill.high{background:var(--accent3)}
+        .diag-reco{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:rgba(212,37,43,.04);border:1px solid rgba(212,37,43,.08);border-radius:10px;margin-top:10px;font-size:.86em;line-height:1.8;transition:border-color .2s}
+        .diag-reco:hover{border-color:rgba(212,37,43,.2)}
         .diag-reco:first-child{margin-top:0}
         .reco-num{display:flex;align-items:center;justify-content:center;width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--gradient);color:#fff;font-size:.72em;font-weight:800;margin-top:1px}
         .reco-body{flex:1}
         .reco-body strong{color:var(--accent);display:block;margin-bottom:3px}
         .diag-cta{text-align:center;margin-top:28px}
         .diag-cta a{display:inline-block;padding:14px 32px;background:var(--gradient);color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:1em;transition:all .3s}
-        .diag-cta a:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(79,143,255,.4)}
+        .diag-cta a:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(212,37,43,.4)}
         .etc-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--border);border-radius:8px;margin-top:6px}
         .etc-row input[type=checkbox],.etc-row input[type=radio]{accent-color:var(--accent);width:16px;height:16px;flex-shrink:0}
         .etc-row input[type=text]{flex:1;padding:8px 10px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:inherit;font-size:.83em}
@@ -89,9 +89,21 @@
         .val-msg.show{display:block;animation:fadeIn .2s}
         @keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
         @media(max-width:600px){.header{padding:50px 0 20px}.header h1{font-size:1.45em}.section{padding:18px}}
+    
+        .mf-nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+        .mf-nav .in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+        .mf-logo{font-weight:900;letter-spacing:-.02em;text-decoration:none;font-size:1.05rem;display:flex;align-items:center;gap:8px;color:var(--text)}
+        .mf-logo i{display:block;width:16px;height:16px;border:2px solid var(--text);border-radius:3px;background:linear-gradient(#d4252b,#d4252b) center/6px 6px no-repeat}
+        .mf-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--text);padding:7px 14px;border-radius:999px;color:var(--text)}
+        .header{background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px;border-radius:16px}
+        .header h1{font-weight:900;letter-spacing:-.035em}
+        .mf-foot{border-top:1px solid var(--border)}
+        .mf-foot .in{max-width:1160px;margin:0 auto;padding:36px 24px 46px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+        .mf-foot a{text-decoration:none;font-weight:600;color:var(--text2)}
     </style>
 </head>
 <body>
+<nav class="mf-nav"><div class="in"><a class="mf-logo" href="/"><i></i>MakeField AI</a><a class="mf-cta" href="/#session">함께 만들기</a></div></nav>
 <div class="container">
     <div class="header">
         <a href="/" class="back-link">&larr; MakeField AI</a>
@@ -1047,5 +1059,6 @@ document.getElementById('sf').addEventListener('submit', function() {
 
 updateProg();
 </script>
+<footer class="mf-foot"><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">문의</a></div></div></footer>
 </body>
 </html>
