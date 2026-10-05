@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -154,11 +166,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <img src="img/04_verify_items.png" alt="예고문을 검증 항목으로 바꾼 전후 2단. 위쪽 회색 패널 &#x27;전&#x27; — 상자 하나에 큰 글씨 &#x27;내일은 눌릴 가능성이 있습니다&#x27;, 그 아래 붉은 라벨 &#x27;내일 확인할 방법: 없음&#x27;. 아래쪽 파란 패널 &#x27;후&#x27; — 상자 세 개가 세로로 &#x27;어제 적은 값 ↔ 오늘 실제 값&#x27;, &#x27;두 출처의 같은 지표 대조&#x27;, &#x27;경보 조건 5개 중 몇 개 충족&#x27;, 그 아래 초록 라벨 &#x27;내일 확인할 방법: 전부 있음&#x27;. 하단 캡션 &#x27;맞히는 문장에서 확인되는 문장으로&#x27;" loading="lazy">
 <p>바뀐 문장은 읽는 재미가 확실히 줄었어요. 대신 다음 날 아침에 채점이 됩니다. 예고는 틀려도 조용히 지나가지만, 검증 항목은 안 맞으면 바로 표에 걸리거든요.</p>
 <p>혹시 비슷한 걸 굴리고 계시면, 규칙 파일을 열어놓고 이 세 줄만 대보셔도 됩니다. 저는 이걸로 여드레 묵은 구멍을 찾았어요.</p>
-<p>| 확인할 것 | 통과 기준 |<br>
-|---|---|<br>
-| 규칙 문장에 &quot;남이 만든&quot;, &quot;외부&quot; 같은 한정어가 붙어 있나 | 붙어 있으면 AI 자신의 출력은 빠져나간다 |<br>
-| AI가 오늘 쓴 문장 중 내일 채점할 수 있는 게 있나 | 하나도 없으면 그건 보고서가 아니라 감상문이다 |<br>
-| 금지한 자리에 대신 시킨 일이 있나 | 비워두면 다음 주에 슬그머니 돌아온다 |</p>
+<div class="table-wrap"><table><thead><tr><th>확인할 것</th><th>통과 기준</th></tr></thead><tbody><tr><td>규칙 문장에 &quot;남이 만든&quot;, &quot;외부&quot; 같은 한정어가 붙어 있나</td><td>붙어 있으면 AI 자신의 출력은 빠져나간다</td></tr><tr><td>AI가 오늘 쓴 문장 중 내일 채점할 수 있는 게 있나</td><td>하나도 없으면 그건 보고서가 아니라 감상문이다</td></tr><tr><td>금지한 자리에 대신 시킨 일이 있나</td><td>비워두면 다음 주에 슬그머니 돌아온다</td></tr></tbody></table></div>
 <h2>미리 답해두면 좋을 것 같은 두 가지</h2>
 <p><strong>Q. AI한테 전망을 아예 못 하게 하면 쓸모가 줄지 않나요?</strong><br>
 저도 그 걱정을 했어요. 그런데 지워보니 없어진 건 문장이지 재료가 아니더라고요. 예고 문장은 대체로 앞에 이미 적어둔 정보를 한 방향으로 요약한 것이라, 그 위에 새로 얹힌 게 별로 없습니다. 다만 방향을 못 쓰게 하는 대신 조건은 쓰게 뒀어요. &quot;이 값이 여기를 넘으면 상태가 바뀐다&quot;는 문장은 내일 확인이 되니까요.</p>

@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -168,19 +180,12 @@ AI 여섯을 동시에 굴려 30건을 조사시켰는데, 받아보니 <strong 
 어떤 사례가 &quot;하루 1~2시간으로 해냈다&quot;고 제 보고서에 적혀 있었거든요. 저한테 하루에 쓸 수 있는 시간이 딱 그만큼이라, 제일 붙잡고 싶던 문장이었어요.<br>
 원자료를 다시 뒤지니 <strong>그 사례에는 일일 투입시간이 아예 없었습니다.</strong> &quot;퇴근 후·주말&quot;이라는 서술만 있었고 시간 수치는 채워 넣어진 것이었어요..<br>
 30건을 통틀어 하루 투입시간이 확인된 건 주 10시간짜리 하나뿐이었고요.</p>
-<p>| 검토 전 (내 보고서) | 지적 | 정정 후 |<br>
-|---|---|---|<br>
-| 가격은 양극단만 생존 | 소표본을 전체로 확장 | 폐기 → 조합 가설 |<br>
-| 전원이 자산을 먼저 쌓음 | 즉시 과금형 반례 존재 | [가설]로 강등 |<br>
-| 하루 1~2시간이면 가능 | 원자료에 일일 시간 없음 | 근거 없음, 삭제 |<br>
-| 도달 중앙값 3~5년 | 산정식·시간축 불명 | 폐기 → 재계산 |</p>
+<div class="table-wrap"><table><thead><tr><th>검토 전 (내 보고서)</th><th>지적</th><th>정정 후</th></tr></thead><tbody><tr><td>가격은 양극단만 생존</td><td>소표본을 전체로 확장</td><td>폐기 → 조합 가설</td></tr><tr><td>전원이 자산을 먼저 쌓음</td><td>즉시 과금형 반례 존재</td><td>[가설]로 강등</td></tr><tr><td>하루 1~2시간이면 가능</td><td>원자료에 일일 시간 없음</td><td>근거 없음, 삭제</td></tr><tr><td>도달 중앙값 3~5년</td><td>산정식·시간축 불명</td><td>폐기 → 재계산</td></tr></tbody></table></div>
 <p>문서는 얇아졌어요.. 대신 남은 문장은 갖다 쓸 수 있게 됐습니다.</p>
 <img src="img/03_label_downgrade.png" alt="라벨 강등 흐름 — 위쪽 &#x27;검토 전&#x27; 상자에 모든 문장이 [확정] 한 덩어리(초록). 아래쪽 &#x27;검토 후&#x27; 상자는 세 갈래로 분리 — [확정](초록, 작아짐) / [잠정](노랑) / [가설]·삭제(빨강). 오른쪽에 &#x27;계획의 전제로 쓸 수 있는 건 초록뿐&#x27; 캡션" loading="lazy">
 <h2>5. 그래서 검수 순서를 3단계로 고정했어요</h2>
 <p>지금은 AI가 만든 문서를 쓰기 전에 이 순서를 밟습니다. 2026년 8월 기준이고, 서로 다른 AI 서비스 두 개면 됩니다.</p>
-<p>1. <strong>원본과 검토자를 분리한다.</strong> 다른 서비스, 최소한 새 대화창으로. 원본과 원자료만 넘기고 앞선 결론은 넘기지 않아요.<br>
-2. <strong>판정 형식을 먼저 못 박는다.</strong> &quot;승인 / 조건부 반려 / 반려 중 하나로 판정하고, 지적은 번호 + 원문 인용 + 정정안으로 달아라.&quot; 형식을 안 주면 감상문이 돌아옵니다.<br>
-3. <strong>라벨을 강제한다.</strong> 문장마다 [확정]·[잠정]·[가설]·[미확인] 중 하나를 붙이게 하고, [확정]에는 출처를 요구합니다.</p>
+<ol><li><strong>원본과 검토자를 분리한다.</strong> 다른 서비스, 최소한 새 대화창으로. 원본과 원자료만 넘기고 앞선 결론은 넘기지 않아요.</li><li><strong>판정 형식을 먼저 못 박는다.</strong> &quot;승인 / 조건부 반려 / 반려 중 하나로 판정하고, 지적은 번호 + 원문 인용 + 정정안으로 달아라.&quot; 형식을 안 주면 감상문이 돌아옵니다.</li><li><strong>라벨을 강제한다.</strong> 문장마다 [확정]·[잠정]·[가설]·[미확인] 중 하나를 붙이게 하고, [확정]에는 출처를 요구합니다.</li></ol>
 <img src="img/04_review_flow.png" alt="검수 3단계 흐름 — ①원본 AI(회색 박스)에서 문서·원자료만 화살표로 분리 이동 → ②검토자 AI(파란 박스)에 &#x27;판정 형식&#x27; 라벨 부착 → ③판정 갈래 두 개: &#x27;승인&#x27;(회색, X표와 &#x27;검수 안 된 신호&#x27; 캡션) / &#x27;조건부 반려·반려&#x27;(초록, &#x27;정상&#x27; 캡션) → 지적 목록 → 원자료 재확인 상자로 되돌아가는 화살표" loading="lazy">
 <p>확인 방법도 적어둘게요.<br>
 <strong>첫 판정이 &quot;승인&quot;으로 나오면 검수가 안 된 겁니다.</strong> 사람 문서든 AI 문서든 초안이 한 번에 통과되는 일은 거의 없어요. 승인이 떴다면 검토자에게 권한이 안 갔다고 보고 판정 형식부터 다시 주는 게 맞습니다.</p>
@@ -196,8 +201,8 @@ AI가 쓴 보고서 검증에서 바꿀 건 질문의 강도가 아니라 검토
 같은 AI한테 &quot;이거 맞아?&quot;라고 백 번 묻는 것보다, 다른 AI에게 반려할 자격을 한 번 주는 게 낫더라고요.<br>
 제일 붙잡고 싶은 숫자가 제일 먼저 무너진다는 것도 이번에 배웠습니다..</p>
 <p>AI한테 반려당한 문서와 보정판을 나란히 놓고 뭐가 바뀌었는지 정리한 기록은 makefield.ai에 올려둡니다.</p>
-<p>---<br>
-현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
+<hr>
+<p>현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
 <p>태그: #AI가쓴보고서검증 #AI리서치검증 #AI팩트체크 #AI교차검토 #AI할루시네이션 #AI프롬프트작성법 #AI보고서 #챗GPT검증 #AI에이전트 #AI리서치 #AI활용법 #생성형AI #AI로일하기 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

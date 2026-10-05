@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -163,12 +175,7 @@ user type         : External
 문제는 늘 7일 뒤였고요.<br>
 그래서 이번엔 그날 성공을 완료로 치지 않고, <strong class="u">다음 자동 실행 주기까지 로그가 계속 초록인지</strong>를 확인 항목으로 남겨뒀어요.</p>
 <p>고쳤다는 느낌이랑 실제로 안 죽는다는 사실은 다른 물건이니까요.</p>
-<p>| 구분 | Testing 방치 | Production 전환 후 |<br>
-|---|---|---|<br>
-| refresh 토큰 수명 | 7일 | 무기한(조건부) |<br>
-| 증상 | 주 1회 invalid_grant | 정상 지속 |<br>
-| 사람 손 | 매주 재인증 | 최초 1회 |<br>
-| 완료 판정 | (착각) 고친 그날 | 다음 주기 로그 OK |</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>Testing 방치</th><th>Production 전환 후</th></tr></thead><tbody><tr><td>refresh 토큰 수명</td><td>7일</td><td>무기한(조건부)</td></tr><tr><td>증상</td><td>주 1회 invalid_grant</td><td>정상 지속</td></tr><tr><td>사람 손</td><td>매주 재인증</td><td>최초 1회</td></tr><tr><td>완료 판정</td><td>(착각) 고친 그날</td><td>다음 주기 로그 OK</td></tr></tbody></table></div>
 <p>무인 자동화는 이 마지막 칸이 핵심이에요.<br>
 등록하고 &quot;돌겠지&quot; 하는 순간이 사고의 시작이더라고요.</p>
 <h2>자주 묻는 질문</h2>
@@ -182,8 +189,8 @@ Testing이면 그게 원인이고, Production 게시 + 토큰 재발급이면 �
 그리고 고친 그날이 아니라 다음 실행 주기까지 확인해야 진짜 완료입니다.</p>
 <p>다음 글에서는 이렇게 되살린 자동화가 &#x27;고쳤다고 믿었는데 대시보드에선 계속 빨간불&#x27;이던, 확인 지표가 따로 놀던 이야기를 풀어볼게요.</p>
 <p>무인으로 굴리다 이렇게 데인 기록들은 makefield.ai 에 하나씩 쌓는 중입니다.</p>
-<p>---<br>
-태그: #invalid_grant #구글OAuth #refresh토큰 #구글API자동화 #OAuth토큰만료 #구글캘린더자동화 #파이썬자동화 #토큰재발급 #GCP콘솔 #OAuth동의화면 #Production전환 #무인자동화 #업무자동화 #현장엔지니어 #MakeFieldAI</p>
+<hr>
+<p>태그: #invalid_grant #구글OAuth #refresh토큰 #구글API자동화 #OAuth토큰만료 #구글캘린더자동화 #파이썬자동화 #토큰재발급 #GCP콘솔 #OAuth동의화면 #Production전환 #무인자동화 #업무자동화 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">
 <span class="stamp">MakeField AI</span>

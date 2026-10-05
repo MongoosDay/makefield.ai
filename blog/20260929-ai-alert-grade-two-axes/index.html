@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -119,11 +131,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>저는 설비 쪽 일을 열다섯 해쯤 했습니다. 경보반에 램프가 켜지면 왜 켜졌는지 찾으러 뛰어가는 게 일과였고요. 현장에선 빨간불을 보면 &quot;무슨 조건으로 켜졌냐&quot;부터 묻는데, 정작 제가 만든 자동화한테는 그걸 한 번도 안 물어봤어요..</p>
 <h2>빨간불 사흘 동안 숫자는 어디로 갔을까요</h2>
 <p>경고를 켠 날부터 사흘치를 나란히 놓고 봤습니다. 등급은 사흘 내내 빨강 그대로였고요.</p>
-<p>| 경과 | 대표 지표 등락 | 변동성 지표 |<br>
-|---|---|---|<br>
-| 1일차 | -0.71% | 16.34 |<br>
-| 2일차 | +0.46% | 15.20 |<br>
-| 3일차 | +1.11% | 14.46 |</p>
+<div class="table-wrap"><table><thead><tr><th>경과</th><th>대표 지표 등락</th><th>변동성 지표</th></tr></thead><tbody><tr><td>1일차</td><td>-0.71%</td><td>16.34</td></tr><tr><td>2일차</td><td>+0.46%</td><td>15.20</td></tr><tr><td>3일차</td><td>+1.11%</td><td>14.46</td></tr></tbody></table></div>
 <p>대표 지표는 사흘 중 이틀이 플러스였고, 변동성 지표는 사흘 연속 내려갔습니다. 안 움직인 건 등급 하나뿐이었어요.</p>
 <p>여기서 제가 뭘 잘못 읽고 있었는지 알았습니다. &quot;경고 3일 연속&quot;이라고 적히면 사람은 자동으로 &quot;점점 나빠지는 중&quot;으로 읽거든요. 그런데 그 등급이 실제로 재던 건 그게 아니었습니다. 리포트 본문에 이렇게 적혀 있더라고요.</p>
 <pre><code>제 경고등은 &#x27;숫자가 나빠지고 있다&#x27;는 뜻이 아니라
@@ -131,10 +139,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 둘은 다른 말이고, 이 차이를 숨기면 경고등이 늑대소년이 됩니다.</code></pre>
 <h2>조건표를 열어봤더니 축이 두 개였어요</h2>
 <p>그날 등급을 켠 조건이 정확히 뭐였는지 세어봤습니다. 경고 조건은 두 묶음으로 나뉘어 있었어요.</p>
-<p>| 축 | 조건 수 | 재는 것 | 그날 결과 |<br>
-|---|---|---|---|<br>
-| 숫자 축 | 6개 | 값이 위험 구간에 들어왔나 | 전부 미달 |<br>
-| 사건 축 | 5개 | 알아야 할 일이 새로 벌어졌나 | 2개 충족 |</p>
+<div class="table-wrap"><table><thead><tr><th>축</th><th>조건 수</th><th>재는 것</th><th>그날 결과</th></tr></thead><tbody><tr><td>숫자 축</td><td>6개</td><td>값이 위험 구간에 들어왔나</td><td>전부 미달</td></tr><tr><td>사건 축</td><td>5개</td><td>알아야 할 일이 새로 벌어졌나</td><td>2개 충족</td></tr></tbody></table></div>
 <p>숫자 축은 6개가 전부 미달이었고, 사건 축 5개 중 2개가 걸려서 빨간불이 켜진 겁니다. 두 묶음이 OR로 묶여 있으니 어느 쪽이 켰든 화면에 나오는 색은 똑같아요.</p>
 <p>색은 같은데 뜻은 전혀 다르죠. 현장 말로 바꾸면 온도 초과 램프하고 &quot;정비 작업 중&quot; 램프를 같은 빨간 램프 하나에 물려놓은 꼴입니다. 둘 다 빨강인데 하나는 뛰어가야 하고 하나는 알고만 있으면 되잖아요.</p>
 <p>그래서 등급을 지우지 않고 <strong>어느 축이 켰는지를 등급 옆에 항상 적기로</strong> 했습니다. &quot;🔴 경고(사건 축 단독 발동, 숫자 축 6개 전부 미달)&quot; 이런 식으로요. 한 줄 늘어나는 대신 오독이 사라졌어요.</p>
@@ -148,10 +153,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <img src="img/03_condition_timeline.png" alt="조건문 두 종류 비교 타임라인 — 위쪽 회색 띠 &#x27;상태 서술: ~을 확인&#x27;, 가로 타임라인에 사건 발생 시점 화살표가 있고 그 시점 이후 칸이 전부 붉은색으로 끝까지 이어짐, 오른쪽 끝에 &#x27;꺼지는 조건 없음&#x27; 라벨. 아래쪽 초록 띠 &#x27;변화 기준: 직전 24시간 내 새로 발생&#x27;, 같은 타임라인에 사건 발생 칸만 붉고 24시간 뒤 칸부터 회색으로 복귀, &#x27;자동 해제&#x27; 라벨. 하단 캡션 &#x27;조건은 상태가 아니라 변화로 적는다&#x27;" loading="lazy">
 <h2>그래서 조건표를 이 순서로 고쳤습니다</h2>
 <p>AI 경고 알림을 손볼 땐 이 순서를 지켰습니다. 중간을 건너뛰면 며칠 뒤에 그대로 원위치하더라고요..</p>
-<p>1. <strong>등급이 재는 것을 한 문장으로 적는다</strong> — 이 한 문장이 안 써지면 그 등급은 아직 쓸 수 있는 상태가 아니에요<br>
-2. <strong>축이 두 개면 등급을 쪼개거나, 발동한 축을 등급 옆에 항상 붙인다</strong> — 저는 후자를 골랐습니다<br>
-3. <strong>조건문을 전부 변화 기준으로 바꾼다</strong> — &quot;한 번 참이면 영원히 참&quot;인 문장을 색출해서 기간을 박습니다<br>
-4. <strong>개정할 땐 소급 금지 · 발효 시각 명시 · 첫날 채점표 공개</strong></p>
+<ol><li><strong>등급이 재는 것을 한 문장으로 적는다</strong> — 이 한 문장이 안 써지면 그 등급은 아직 쓸 수 있는 상태가 아니에요</li><li><strong>축이 두 개면 등급을 쪼개거나, 발동한 축을 등급 옆에 항상 붙인다</strong> — 저는 후자를 골랐습니다</li><li><strong>조건문을 전부 변화 기준으로 바꾼다</strong> — &quot;한 번 참이면 영원히 참&quot;인 문장을 색출해서 기간을 박습니다</li><li><strong>개정할 땐 소급 금지 · 발효 시각 명시 · 첫날 채점표 공개</strong></li></ol>
 <p>4번이 제일 안 지켜지는 자리예요. 조건을 새로 썼으면 어제 판정도 새 기준으로 다시 매기고 싶어지거든요. 그런데 기록엔 이렇게 적혀 있었습니다.</p>
 <pre><code>결과를 보고 나서 규칙을 고치면, 그건 규칙이 아니라 변명이 됩니다.
 새 조건은 오늘 04시부터 처음 적용했고, 소급 적용은 하지 않았습니다.</code></pre>
@@ -165,9 +167,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p><strong>Q. &quot;직전 24시간&quot;이 너무 짧지 않나요?</strong><br>
 사건 성격에 맞추시면 됩니다. 중요한 건 길이가 아니라 <strong class="u">기간이 박혔는가</strong>예요. 24시간이든 7일이든 숫자가 붙어 있으면 시간이 지나면서 조건이 스스로 꺼집니다. 기간 없는 문장만 아니면 돼요.</p>
 <h2>정리</h2>
-<p>- AI 경고 알림이 실제와 반대로 읽히면, 먼저 그 등급이 <strong>몇 종류를 재고 있는지</strong> 세어보세요<br>
-- 조건문에 기간이 없으면 그 조건은 켜지기만 하고 안 꺼집니다<br>
-- 기준을 고칠 땐 소급 적용을 하지 마세요. 대신 첫날 채점표를 남기면 다음 날 바로 판정할 수 있습니다</p>
+<ul><li>AI 경고 알림이 실제와 반대로 읽히면, 먼저 그 등급이 <strong>몇 종류를 재고 있는지</strong> 세어보세요</li><li>조건문에 기간이 없으면 그 조건은 켜지기만 하고 안 꺼집니다</li><li>기준을 고칠 땐 소급 적용을 하지 마세요. 대신 첫날 채점표를 남기면 다음 날 바로 판정할 수 있습니다</li></ul>
 <p>빨간불이 사흘째 켜져 있는데 숫자가 반대로 가고 있으면, 보통은 시장이 이상한 게 아니라 제 조건문이 이상한 겁니다. 저는 그걸 사흘 만에 알았고, 그나마도 리포트가 두 줄을 나란히 적어놨기 때문에 눈에 띄었어요. 한쪽만 적었으면 그냥 넘어갔을 겁니다!</p>
 <p>지금 돌리고 계신 자동화의 경고 조건 중에, 스스로 꺼질 방법이 없는 문장은 몇 개나 되나요?</p>
 <p>고쳐놓고 다음 날 다시 확인한 기준들은 makefield.ai에 날짜별로 남겨두고 있습니다.</p>

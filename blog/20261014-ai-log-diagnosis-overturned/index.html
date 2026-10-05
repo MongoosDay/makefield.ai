@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -158,11 +170,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 ② 지금 기계에 꽂혀 있는 것          :
 ③ 같이 쓰는 다른 기기의 상태·위치    :</code></pre>
 <p>30초면 씁니다. 이 세 줄이 없으면 로그만 보고 시작하니까, 없는 사실을 채워 넣게 돼요. 저는 이걸 세 번 깨지고 나서야 붙였습니다..</p>
-<p>| 로그가 아는 것 | 로그가 모르는 것 | 안 물어보면 생기는 일 |<br>
-|---|---|---|<br>
-| 언제 무슨 일이 있었나 | 사람이 왜 그랬나 | 강제 종료를 고장으로 읽음 |<br>
-| 어떤 드라이버가 반복되나 | 뭐가 꽂혀 있나 | 쓰지도 않는 장치를 의심 |<br>
-| 연결이 끊겼나 | 상대 기기가 어디 있나 | 직전 작업을 범인으로 지목 |</p>
+<div class="table-wrap"><table><thead><tr><th>로그가 아는 것</th><th>로그가 모르는 것</th><th>안 물어보면 생기는 일</th></tr></thead><tbody><tr><td>언제 무슨 일이 있었나</td><td>사람이 왜 그랬나</td><td>강제 종료를 고장으로 읽음</td></tr><tr><td>어떤 드라이버가 반복되나</td><td>뭐가 꽂혀 있나</td><td>쓰지도 않는 장치를 의심</td></tr><tr><td>연결이 끊겼나</td><td>상대 기기가 어디 있나</td><td>직전 작업을 범인으로 지목</td></tr></tbody></table></div>
 <p>여러분도 AI한테 &quot;이거 왜 이래?&quot; 하고 로그만 던져본 적 있으시죠? 저는 그날 이후로 로그보다 세 줄을 먼저 붙입니다.</p>
 <img src="img/04_order_change.png" alt="진단 순서 바꾸기 — 위아래 두 줄 비교. 위(회색) &quot;기존&quot;: 상자 &#x27;로그 수집&#x27; → &#x27;원인 추정&#x27; → &#x27;오진&#x27; → &#x27;사람이 정정&#x27; → &#x27;재분석&#x27;. 아래(초록) &quot;변경&quot;: 상자 &#x27;사람 3줄 브리핑&#x27; → &#x27;로그 수집&#x27; → &#x27;원인 추정&#x27; → &#x27;검증&#x27;. 오른쪽 끝에 라벨 &#x27;왕복 한 번이 줄어든다&#x27;" loading="lazy">
 <p>하나 더 있어요. 진단을 시작할 때 <strong>로그 저장 용량부터 키우는 것</strong>. 저는 이 건에서 필요한 기록을 이미 잃은 다음에야 용량을 20MB에서 256MB로 올렸습니다. 순서가 반대였죠.</p>

@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -152,12 +164,7 @@ pres.Export(out_dir, &quot;PNG&quot;, width, h)</code></pre>
         app.Quit()</code></pre>
 <p>핵심은 <code>except</code> 안의 <code>remaining = 1</code>입니다. 문서 수를 세는 것마저 실패하면 <strong>&quot;한 개 남아 있다&quot;고 치고 넘어갑니다.</strong> 그러면 종료 조건에 안 걸려요. 최악의 경우 빈 파워포인트가 하나 떠 있게 되는데, 남의 작업 창이 닫히는 것보다는 그게 훨씬 낫습니다!</p>
 <p>앞선 방법과 비교하면 이렇게 됩니다.</p>
-<p>| | 감지 방식(1차) | 문서 수 방식(최종) |<br>
-|---|---|---|<br>
-| 판단 근거 | 누가 띄웠는지 조회 | 지금 몇 개 열려 있는지 |<br>
-| 조회 실패 시 | 예외 → 종료 실행 | 예외 → 종료 안 함 |<br>
-| 실패 자체 | 자주 발생(목록·권한) | 발생해도 결과가 안전 |<br>
-| 최악의 결과 | 사용자 창 닫힘 | 빈 프로그램 하나 남음 |</p>
+<div class="table-wrap"><table class="rowhead"><thead><tr><th></th><th>감지 방식(1차)</th><th>문서 수 방식(최종)</th></tr></thead><tbody><tr><td>판단 근거</td><td>누가 띄웠는지 조회</td><td>지금 몇 개 열려 있는지</td></tr><tr><td>조회 실패 시</td><td>예외 → 종료 실행</td><td>예외 → 종료 안 함</td></tr><tr><td>실패 자체</td><td>자주 발생(목록·권한)</td><td>발생해도 결과가 안전</td></tr><tr><td>최악의 결과</td><td>사용자 창 닫힘</td><td>빈 프로그램 하나 남음</td></tr></tbody></table></div>
 <p>제 일은 현장 설비 쪽인데, 15년 하면서 이 표를 다른 이름으로 계속 봤어요. 신호가 끊겼을 때 밸브를 열린 채로 둘지 닫힌 채로 둘지 정해두는 것 말입니다. 센서가 고장 나는 건 못 막지만, 고장 났을 때 어느 쪽으로 넘어갈지는 만들 때 정할 수 있거든요. 코드도 매한가지죠.</p>
 <h2>고쳐진 게 맞는지는 어떻게 확인했나요</h2>
 <p>파워포인트를 창까지 띄워놓은 상태에서 렌더를 다시 돌렸습니다. 실행이 끝난 뒤 프로그램이 살아 있고 문서도 그대로인지 봤어요. 작업 관리자에서 프로세스 번호(PID 7120)가 실행 전후로 같은지까지 확인했습니다. 번호가 같아야 &quot;안 닫혔다&quot;가 되고, 번호가 바뀌었으면 닫혔다가 다시 뜬 거니까요.</p>

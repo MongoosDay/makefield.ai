@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -156,11 +168,7 @@ AI 업무 기록 정리에서 제가 바꾼 건 도구가 아니라 쓰는 방�
 문서 500개를 통째로 읽힐 수는 없으니, 목차 파일 하나에 한 줄씩만 남겨요.</p>
 <pre><code>- [기록창고 검색 실패](2026-06-08_기록창고_검색안됨.md) — 쪼개기로는 안 됨, 축이 문제</code></pre>
 <p>이 한 줄이 있어야 AI가 &quot;무슨 파일이 있는지&quot;를 먼저 보고 필요한 것만 열어봅니다. 사람이 목차 보고 책 펴는 거랑 똑같아요.</p>
-<p>| 규칙 | 안 지키면 생기는 일 | 확인 방법 |<br>
-|---|---|---|<br>
-| 한 사건 한 파일 (파일명=검색어) | 같은 내용이 흩어져 어디를 볼지 모름 | 파일명만 보고 내용이 떠오르나 |<br>
-| 왜(WHY)와 영향 범위 기록 | 몇 달 뒤 이유를 몰라 멀쩡한 걸 되돌림 | 3개월 전 파일 열어 이유가 읽히나 |<br>
-| 인덱스 한 줄 추가 | AI가 문서 존재 자체를 모름 | 목차만 보고 원하는 파일 찾히나 |</p>
+<div class="table-wrap"><table><thead><tr><th>규칙</th><th>안 지키면 생기는 일</th><th>확인 방법</th></tr></thead><tbody><tr><td>한 사건 한 파일 (파일명=검색어)</td><td>같은 내용이 흩어져 어디를 볼지 모름</td><td>파일명만 보고 내용이 떠오르나</td></tr><tr><td>왜(WHY)와 영향 범위 기록</td><td>몇 달 뒤 이유를 몰라 멀쩡한 걸 되돌림</td><td>3개월 전 파일 열어 이유가 읽히나</td></tr><tr><td>인덱스 한 줄 추가</td><td>AI가 문서 존재 자체를 모름</td><td>목차만 보고 원하는 파일 찾히나</td></tr></tbody></table></div>
 <img src="img/04_three_rules.png" alt="기록 한 건이 흐르는 3단계 파이프라인 — &quot;① 한 사건 한 파일(날짜_갈래_요약)&quot; → &quot;② WHY·영향범위 기록&quot; → &quot;③ 인덱스 한 줄&quot; → 오른쪽 끝에 &quot;AI가 꺼내 씀&quot; 도착 표시" loading="lazy">
 <h2>4. 창고가 생기니까 글이 나왔어요</h2>
 <p>지금 세어보니 지식 문서는 515개, 줄 수로 23만 줄이 넘었습니다.<br>
@@ -177,8 +185,8 @@ AI 업무 기록 정리에서 제가 바꾼 건 도구가 아니라 쓰는 방�
 일 끝날 때 3~5분이에요. 요령이 하나 있는데, 제가 처음부터 쓰지 않고 그날 작업하던 AI한테 &quot;오늘 한 일이랑 결정한 이유를 파일로 정리해줘&quot;라고 시킨 다음 제가 고칩니다. 초안은 AI가, 왜 그렇게 정했는지는 제가 채우는 식이요. 백지에서 시작하는 것보다 훨씬 오래 갑니다!</p>
 <p>여러분 기록 창고에는 지금 뭐가 잠들어 있나요?<br>
 1년 묵은 파일 하나 열어보시면, 그게 다음에 쓸 무언가의 재료인지 아닌지 바로 아실 거예요.</p>
-<p>---<br>
-현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
+<hr>
+<p>현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
 <p>태그: #AI업무기록정리 #AI기록습관 #AI지식관리 #AI메모정리 #업무일지자동화 #AI세컨브레인 #지식베이스만들기 #기록검색 #AI활용법 #AI로일하기 #노트정리법 #업무기록양식 #개인지식관리 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

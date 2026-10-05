@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -173,12 +185,7 @@ _이어가기/임계값_경로이전.md 를 먼저 읽고 &quot;다음 할 일&q
 기존 th_temp.json 은 절대 지우지 마.
 CLAUDE.md 의 thresholds/ 경로 문제는 고치지 말고 나한테 먼저 물어봐.</code></pre>
 <p>칸마다 하는 일이 다릅니다.</p>
-<p>| 칸 | 답하는 질문 | 빠지면 생기는 일 |<br>
-|---|---|---|<br>
-| 현재 상황 | 어디까지 됐나 | 끝난 걸 또 하거나, 된 줄 알고 넘어감 |<br>
-| 다음 할 일 | 뭘 어떤 순서로, 뭐가 나오면 성공인가 | 순서를 AI가 새로 정함 |<br>
-| 하지 말 것 | 건드리면 안 되는 것 | &quot;정리&quot;하다가 지우면 안 될 걸 지움 |<br>
-| 복붙용 프롬프트 | 내일 첫 줄에 뭘 칠까 | &quot;아까 하던 거&quot;로 돌아감 |</p>
+<div class="table-wrap"><table><thead><tr><th>칸</th><th>답하는 질문</th><th>빠지면 생기는 일</th></tr></thead><tbody><tr><td>현재 상황</td><td>어디까지 됐나</td><td>끝난 걸 또 하거나, 된 줄 알고 넘어감</td></tr><tr><td>다음 할 일</td><td>뭘 어떤 순서로, 뭐가 나오면 성공인가</td><td>순서를 AI가 새로 정함</td></tr><tr><td>하지 말 것</td><td>건드리면 안 되는 것</td><td>&quot;정리&quot;하다가 지우면 안 될 걸 지움</td></tr><tr><td>복붙용 프롬프트</td><td>내일 첫 줄에 뭘 칠까</td><td>&quot;아까 하던 거&quot;로 돌아감</td></tr></tbody></table></div>
 <p>제가 제일 아끼는 칸은 <strong>하지 말 것</strong>이에요. <code>.history</code>에는 한 일이 남지만, &quot;안 하기로 한 일&quot;은 잘 안 남거든요. 그리고 AI는 기본적으로 부지런해서, 눈에 띄는 걸 고쳐주려고 합니다.</p>
 <p>AI가 노트를 쓰면서 한 말 중에 이 대목이 좋았어요. &quot;노트를 읽지 않더라도 핵심 지시가 빠지지 않게 문장 안에 직접 넣었습니다.&quot; 복붙용 프롬프트에 &quot;파일 먼저 읽어&quot;만 적지 않고 핵심 세 줄을 같이 박아둔 이유가 이겁니다.</p>
 <img src="img/03_note_anatomy.png" alt="03_note_anatomy.png — 세로로 쌓인 4칸 카드. ①현재 상황(청록) &#x27;어디까지 됐나 — 완료/미완료 구분&#x27; ②다음 할 일(초록) &#x27;순서 + 성공 판정값(min: 3, max: 50)&#x27; ③하지 말 것(주황, 굵게) &#x27;지우지 마 · 경로만 고치지 마 · 먼저 물어봐&#x27; ④복붙용 프롬프트(흰색 테두리) &#x27;첫 줄 = 이 파일 먼저 읽어 / 나머지 = 핵심 지시 요약&#x27;. 오른쪽 주석 &#x27;.history = 끝난 일 / 이어가기 = 하다 만 일&#x27;" loading="lazy">
@@ -208,8 +215,7 @@ CLAUDE.md에 thresholds/ 경로가 빠져 있습니다. ... 지시하신 대로
 <p>그날 기록에 남긴 교훈은 한 줄입니다. <strong>&quot;내가 아는 것&quot;보다 &quot;이 환경에 기록된 것&quot;이 우선한다.</strong> 제 장비는 기본값과 다르게 세팅돼 있는 게 정상이고, 그 차이가 곧 노트에 쌓인 자산이에요. 일반 지식으로 답하면 그 자산이 매번 0으로 돌아갑니다.</p>
 <p>재밌는 건, 연습 폴더에서 같은 상황을 재현하려고 노트를 안 가리키는 질문(&quot;<code>check_temp.py</code> 돌리면 에러 나. 고쳐줘&quot;)을 던졌더니 <strong>이번엔 잘 됐다</strong>는 거예요. 도구 호출 로그를 보니 파일을 전부 열어봤더라고요. 파일이 열 개 남짓이니까요. 제 실제 폴더는 진행 중 노트만 37개, 중간값이 68줄, 제일 긴 게 511줄입니다. 전부 여는 게 안 되는 크기예요.</p>
 <p>그래서 두 가지를 바꿨습니다.</p>
-<p>1. <strong>이어받을 땐 무조건 복붙용 프롬프트로 시작한다.</strong> 첫 줄이 &quot;이 파일 먼저 읽어&quot;라서, 읽을지 말지를 AI가 판단할 틈이 없습니다.<br>
-2. <strong>AI가 매 세션 읽는 규칙 메모에 한 줄 추가.</strong> &quot;진행 중인 노트가 있는 주제는 답하기 전에 그 노트를 먼저 연다.&quot; 그리고 그 사고 자체를 해당 노트 안에 적어뒀어요. 다음 세션이 같은 함정에 빠지지 않게요.</p>
+<ol><li><strong>이어받을 땐 무조건 복붙용 프롬프트로 시작한다.</strong> 첫 줄이 &quot;이 파일 먼저 읽어&quot;라서, 읽을지 말지를 AI가 판단할 틈이 없습니다.</li><li><strong>AI가 매 세션 읽는 규칙 메모에 한 줄 추가.</strong> &quot;진행 중인 노트가 있는 주제는 답하기 전에 그 노트를 먼저 연다.&quot; 그리고 그 사고 자체를 해당 노트 안에 적어뒀어요. 다음 세션이 같은 함정에 빠지지 않게요.</li></ol>
 <img src="img/05_not_opened.png" alt="05_not_opened.png — 흐름도. &#x27;세션 시작 → 진행 중 노트 목록 표시(이름 떠 있음)&#x27; → 갈림길. 위(붉은) &#x27;질문에 바로 일반 지식으로 답&#x27; → &#x27;이미 끝난 조치를 다시 지시 (309번째 줄에 완료 기록)&#x27;. 아래(초록) &#x27;복붙용 프롬프트로 시작 = 첫 줄이 파일 읽기&#x27; → &#x27;기록된 환경 기준으로 답&#x27;. 하단 &#x27;연습 폴더 10개 파일: 전부 열어봄 / 실제 폴더 37개·최대 511줄: 안 열어봄&#x27;" loading="lazy">
 <h2>6. 도구가 달라도 같고, 헷갈리는 것 세 가지</h2>
 <p>AI 세션 이어가기에 쓴 건 텍스트 파일과 폴더 하나뿐이라 도구를 안 탑니다. <strong>Codex CLI(GPT)나 Gemini CLI에서도 같은 방식으로 됩니다.</strong> 규칙 파일 이름만 <code>AGENTS.md</code>, <code>GEMINI.md</code>로 바뀌고, 노트 폴더와 복붙용 프롬프트는 그대로 씁니다. 도구를 갈아타도 노트는 따라옵니다.</p>

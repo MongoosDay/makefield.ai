@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -167,12 +179,7 @@ AI랑 나눈 대화 기록이 200메가 넘게 쌓여 있는데,<br>
 수입보다 지출이 빠르면 빚이 늘어나는 거랑 똑같은 구조예요.<br>
 검색 깨진 문서 500개, 휘발된 글감 200메가, 전부 같은 병의 증상이고요.</p>
 <img src="img/03_debt.png" alt="생산-소화 격차가 부채로 쌓이는 그림 — 시간축 위에 두 선이 올라간다. &#x27;AI 생산&#x27;선은 가파르게 치솟고, &#x27;사람 소화&#x27;선은 완만하게 오른다. 두 선 사이 벌어지는 간격을 빗금으로 칠하고 &quot;이 차액 = 부채(못 찾는 문서·휘발된 글감)&quot;라고 라벨" loading="lazy">
-<p>| 구분 | AI 쓰기 전 | AI 쓴 뒤 |<br>
-|---|---|---|<br>
-| 병목 | 만드는 것 (느림) | 소화하는 것 (못 따라감) |<br>
-| 문서 생산 | 손으로 겨우 | 분석 끝나면 자동으로 |<br>
-| 꺼내 쓰기 | 양이 적어 다 앎 | 500개 중 41.9%만 |<br>
-| 결과 | 만드는 족족 소화 | 차액이 부채로 축적 |</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>AI 쓰기 전</th><th>AI 쓴 뒤</th></tr></thead><tbody><tr><td>병목</td><td>만드는 것 (느림)</td><td>소화하는 것 (못 따라감)</td></tr><tr><td>문서 생산</td><td>손으로 겨우</td><td>분석 끝나면 자동으로</td></tr><tr><td>꺼내 쓰기</td><td>양이 적어 다 앎</td><td>500개 중 41.9%만</td></tr><tr><td>결과</td><td>만드는 족족 소화</td><td>차액이 부채로 축적</td></tr></tbody></table></div>
 <p>AI 전에는 만드는 게 병목이라, 만드는 족족 소화가 됐거든요.<br>
 근데 AI가 그 병목을 없애버리니까, 이제 소화가 새 병목이 된 거예요.</p>
 <h2>4. 답은 덜 만드는 게 아니라, 소화도 AI한테 맡기는 거였어요</h2>
@@ -203,14 +210,12 @@ AI랑 나눈 대화 기록이 200메가 넘게 쌓여 있는데,<br>
 <p>AI를 제대로 쓰기 시작하면 생산이 소화를 추월하고, 그 차액은 반드시 부채로 쌓여요.<br>
 이건 저만 걸린 병이 아니라, AI를 진짜 업무에 굴리기 시작한 분들이라면 곧 겪을 병이에요.<br>
 걸리는 게 문제가 아니라, 모르고 계속 쌓기만 하는 게 문제고요.</p>
-<p>- ☐ 만든 자료의 검색 적중률을 재본 적 있는가 (감이 아니라 숫자로)<br>
-- ☐ 문서가 축 없이 한 폴더에 평면으로 쌓여 있지 않은가<br>
-- ☐ 정리·재분류를 사람이 다시 손으로 하고 있진 않은가 → AI 숙제로 넘기기</p>
+<ul><li>☐ 만든 자료의 검색 적중률을 재본 적 있는가 (감이 아니라 숫자로)</li><li>☐ 문서가 축 없이 한 폴더에 평면으로 쌓여 있지 않은가</li><li>☐ 정리·재분류를 사람이 다시 손으로 하고 있진 않은가 → AI 숙제로 넘기기</li></ul>
 <p>혹시 여러분도 AI가 만들어준 결과물, 나중에 다시 찾아 써본 적 있으세요?<br>
 저처럼 &#x27;분명 만들어뒀는데 어디 갔지&#x27; 하셨다면, 그게 바로 이 부채의 신호예요.</p>
 <p>이 재분류가 어디까지 갔는지, 적중률이 얼마나 올라왔는지는 makefield.ai 에 계속 기록하는 중입니다.</p>
-<p>---<br>
-태그: #AI지식관리 #AI자료정리 #AI지식베이스 #AI문서관리 #AI세컨브레인 #지식관리방법 #AI검색 #RAG #노션정리 #옵시디언 #AI업무자동화 #제조업AI #현장엔지니어 #AI실무 #MakeFieldAI</p>
+<hr>
+<p>태그: #AI지식관리 #AI자료정리 #AI지식베이스 #AI문서관리 #AI세컨브레인 #지식관리방법 #AI검색 #RAG #노션정리 #옵시디언 #AI업무자동화 #제조업AI #현장엔지니어 #AI실무 #MakeFieldAI</p>
 </article>
 <div class="endcard">
 <span class="stamp">MakeField AI</span>

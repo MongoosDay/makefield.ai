@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -150,11 +162,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <pre><code>1. 산술검산은 내부 일관성만 증명할 뿐 외부 진실을 증명하지 않는다.
 2. 레벨(절대값)은 반드시 레벨 소스 2곳에서 직접 확인한다.</code></pre>
 <p>그리고 값마다 <strong>어떻게 얻었는지</strong>를 문서에 남기게 했어요. 값 옆에 한 단어만 붙이면 됩니다.</p>
-<p>| 어떻게 얻은 값인가 | 붙이는 표시 | 게재 |<br>
-|---|---|---|<br>
-| 값 자체를 두 곳에서 직접 확인 | 확정 | 그대로 씀 |<br>
-| 다른 값에서 계산해 만든 값 | <strong>역산</strong> | 쓰되 &#x27;역산&#x27;을 반드시 붙임 |<br>
-| 못 찾은 값 | 확인불가 | 칸을 비워 둠 |</p>
+<div class="table-wrap"><table><thead><tr><th>어떻게 얻은 값인가</th><th>붙이는 표시</th><th>게재</th></tr></thead><tbody><tr><td>값 자체를 두 곳에서 직접 확인</td><td>확정</td><td>그대로 씀</td></tr><tr><td>다른 값에서 계산해 만든 값</td><td><strong>역산</strong></td><td>쓰되 &#x27;역산&#x27;을 반드시 붙임</td></tr><tr><td>못 찾은 값</td><td>확인불가</td><td>칸을 비워 둠</td></tr></tbody></table></div>
 <p>가운데 줄이 이번에 없던 칸이에요. 예전에는 확정 아니면 확인불가, 두 칸뿐이었습니다. 그러니 역산으로 만든 값이 갈 곳이 위쪽밖에 없었던 거죠.<br>
 전에 검산 장치 세 개를 걸어뒀다고 쓴 적이 있는데, 이번에 뚫린 자리가 바로 그 장치 안쪽이었어요. <strong>장치가 없어서가 아니라 장치가 볼 수 없는 값이 있어서</strong> 뚫린 겁니다.</p>
 <img src="img/04_scale.png" alt="저울 그림 — 왼쪽 접시에 &#x27;내부 일관성 = 검산 일치&#x27;가 올라가 초록으로 기울어 있고, 오른쪽 접시 &#x27;외부 진실 = 실제 값&#x27;은 비어 있음. 저울 아래 &#x27;검산은 왼쪽 접시만 잰다&#x27; 캡션" loading="lazy">

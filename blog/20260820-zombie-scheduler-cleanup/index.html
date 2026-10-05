@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -123,9 +135,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>7월 중순에 결정을 하나 했어요. 매일 문서를 클라우드 노트로 밀어 올리던 동기화를 그만 쓰기로요. 잘 돌긴 하는데 정작 제가 안 읽고 있었거든요.<br>
 그러고 나서 제가 한 일은 규칙 문서를 고친 거였어요. AI한테 &quot;이제 안 한다&quot;고 알려주려고요.</p>
 <p>33일 뒤에 열어봤더니 상태가 이랬습니다.</p>
-<p>- 규칙·지침 문서: &quot;중지&quot;와 &quot;필수&quot;가 파일마다 섞여서 남아 있음<br>
-- 세션 훅 2개: 작업을 시작할 때마다 &quot;동기화는 필수&quot;라고 AI한테 여전히 주입<br>
-- 실행 코드 3곳: 새벽 5시, 밤 11시 30분, 밤 11시 40분에 <strong>매일 실제로 동기화 수행</strong></p>
+<ul><li>규칙·지침 문서: &quot;중지&quot;와 &quot;필수&quot;가 파일마다 섞여서 남아 있음</li><li>세션 훅 2개: 작업을 시작할 때마다 &quot;동기화는 필수&quot;라고 AI한테 여전히 주입</li><li>실행 코드 3곳: 새벽 5시, 밤 11시 30분, 밤 11시 40분에 <strong>매일 실제로 동기화 수행</strong></li></ul>
 <p>세 번째 줄이 제일 뜨끔했어요.<br>
 사람은 &quot;그거 안 하기로 했지&quot;라고 기억하는데, 코드는 그냥 하던 걸 계속하고 있었습니다.<br>
 그날 손댄 곳을 세어보니 문서 20건, 훅 2개, 실행 코드 3곳이었어요. 지시 한 줄이 이렇게 여러 겹으로 흩어져 있는 줄 저도 그때 알았습니다..</p>
@@ -159,13 +169,7 @@ PowerShell을 열고 이 한 덩어리를 그대로 붙여 넣으세요.</p>
 <h2>3. &quot;마지막 실행 결과&quot; 숫자는 이렇게 읽습니다</h2>
 <p>여기가 이 글에서 제일 써먹을 데가 많은 부분이에요.<br>
 결과 칸에 뜨는 십진수는 그 작업의 진단서입니다. 자주 만나는 값만 정리하면 이래요.</p>
-<p>| 결과 값 | 16진수 | 뜻 | 내가 내리는 판단 |<br>
-|---|---|---|---|<br>
-| 0 | 0x0 | 정상 종료 | 정상 |<br>
-| 267009 | 0x00041301 | 지금 실행 중 | 조회 순간에 돌던 중, 정상 |<br>
-| 267011 | 0x00041303 | 한 번도 실행된 적 없음 | 등록만 되고 안 도는 작업 |<br>
-| 2147942402 | 0x80070002 | 지정된 파일을 찾을 수 없음 | 대상 프로그램이 사라진 <strong class="u">좀비 작업</strong> |<br>
-| 9009 | — | 명령을 못 찾음 | 경로·확장자·인코딩 문제 |</p>
+<div class="table-wrap"><table><thead><tr><th>결과 값</th><th>16진수</th><th>뜻</th><th>내가 내리는 판단</th></tr></thead><tbody><tr><td>0</td><td>0x0</td><td>정상 종료</td><td>정상</td></tr><tr><td>267009</td><td>0x00041301</td><td>지금 실행 중</td><td>조회 순간에 돌던 중, 정상</td></tr><tr><td>267011</td><td>0x00041303</td><td>한 번도 실행된 적 없음</td><td>등록만 되고 안 도는 작업</td></tr><tr><td>2147942402</td><td>0x80070002</td><td>지정된 파일을 찾을 수 없음</td><td>대상 프로그램이 사라진 <strong class="u">좀비 작업</strong></td></tr><tr><td>9009</td><td>—</td><td>명령을 못 찾음</td><td>경로·확장자·인코딩 문제</td></tr></tbody></table></div>
 <p>검색해도 안 나오는 십진수를 만나면 이렇게 16진수로 바꿔서 다시 찾으면 됩니다.</p>
 <pre><code>&#x27;0x{0:X8}&#x27; -f 2147942402   # → 0x80070002</code></pre>
 <p>제 목록에서 2147942402가 뜬 건 제가 만든 것도 아닌 작업이었어요. 어떤 프로그램이 설치될 때 같이 등록해두고 간 예약 작업인데, 정작 실행할 파일은 지금 그 자리에 없습니다. 그래서 매번 &quot;파일을 못 찾겠다&quot;고 실패하면서도 조용히 다시 예약돼요.<br>
@@ -192,11 +196,7 @@ Unregister-ScheduledTask -TaskName &quot;작업이름&quot; -Confirm:$false</cod
 <img src="img/04_order.png" alt="끄는 순서 4단계 — 세로 흐름 &quot;① 호출부 차단(코드는 보존)&quot; → &quot;② 훅·설정 등록 해제&quot; → &quot;③ 스케줄러 Disable / 좀비만 삭제&quot; → &quot;④ 문서·규칙 갱신&quot;. 왼쪽에 회색 화살표로 &quot;문서부터 고치면 = 착각만 남고 기계는 계속 돈다&quot; 반대 경로 표시" loading="lazy">
 <h2>5. 진짜 멈췄는지 확인하는 방법</h2>
 <p>껐다고 믿는 게 이 사고의 원인이었으니, 확인 기준을 숫자로 정해뒀어요. 다음 날 아침에 셋만 봅니다.</p>
-<p>| 확인할 것 | 방법 | 통과 기준 |<br>
-|---|---|---|<br>
-| 스케줄러가 안 돌았나 | 2장의 조회 명령 재실행 | 최근실행 시각이 어제 그대로 |<br>
-| 산출물이 안 생겼나 | 결과 저장 폴더 정렬 | 새 파일 0건 |<br>
-| 로그가 안 자랐나 | 로그 파일 크기·마지막 줄 | 어제 이후 추가 줄 없음 |</p>
+<div class="table-wrap"><table><thead><tr><th>확인할 것</th><th>방법</th><th>통과 기준</th></tr></thead><tbody><tr><td>스케줄러가 안 돌았나</td><td>2장의 조회 명령 재실행</td><td>최근실행 시각이 어제 그대로</td></tr><tr><td>산출물이 안 생겼나</td><td>결과 저장 폴더 정렬</td><td>새 파일 0건</td></tr><tr><td>로그가 안 자랐나</td><td>로그 파일 크기·마지막 줄</td><td>어제 이후 추가 줄 없음</td></tr></tbody></table></div>
 <p>셋 중 하나라도 어긋나면 아직 어딘가에서 부르고 있는 겁니다. 그때는 2단계 훅을 다시 의심하면 대개 나와요.</p>
 <h2>이런 게 궁금하실 것 같아요</h2>
 <p><strong>Q. 그냥 전부 삭제하면 안 되나요?</strong><br>
@@ -207,8 +207,8 @@ Unregister-ScheduledTask -TaskName &quot;작업이름&quot; -Confirm:$false</cod
 자동화를 만들 땐 스위치를 켜는 것만 신경 썼는데, 끄는 데도 순서가 필요하더라고요. 호출부, 훅, 스케줄러, 그리고 마지막에 문서.<br>
 위의 조회 명령 한 줄이면 30초 만에 내 PC 목록이 나옵니다. 저는 그날 3개를 내렸어요. 한 달 묵은 착각치고는 싸게 끝났습니다!</p>
 <p>여러분 PC에는 지금 몇 개가 돌고 있고, 그중 마지막으로 결과를 열어본 게 몇 개인가요?</p>
-<p>---<br>
-혼자 굴리는 자동화가 열 개를 넘어가면 관리가 또 하나의 일이 됩니다. 그 언저리에서 막히실 때 찾아오실 곳으로 makefield.ai를 열어두고 있어요.</p>
+<hr>
+<p>혼자 굴리는 자동화가 열 개를 넘어가면 관리가 또 하나의 일이 됩니다. 그 언저리에서 막히실 때 찾아오실 곳으로 makefield.ai를 열어두고 있어요.</p>
 <p>태그: #작업스케줄러정리 #안쓰는자동화정리 #작업스케줄러오류 #마지막실행결과 #0x80070002 #윈도우자동화 #파워쉘 #자동화관리 #무인자동화 #파이썬자동화 #AI자동화 #AI에이전트 #AI로일하기 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -140,11 +152,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>이 한 문단이 그날의 수확이었어요.<br>
 저는 그 페이지를 <strong>전부 이해해야 하는 페이지</strong>로 알고 있었습니다. 그래서 매일 훑다가 막히고, 막히니까 안 읽고, 안 읽으니까 다음 날 더 낯설어지고요. 반복 반복 반복..<br>
 정작 제 결정에 들어가는 줄은 <strong class="u">두 줄</strong>뿐이었습니다.</p>
-<p>| 구간 | 실제 성격 | 안 읽어도 되나 |<br>
-|---|---|---|<br>
-| 앞쪽 본문 | 오늘의 판단과 근거 | 아니오 |<br>
-| 뒤쪽 부록·각주 | AI가 자기 작업을 채점한 기록 | 대부분 예 |<br>
-| 그 안에 섞인 두 줄 | 내 결정에 직접 들어가는 값 | 아니오 |</p>
+<div class="table-wrap"><table><thead><tr><th>구간</th><th>실제 성격</th><th>안 읽어도 되나</th></tr></thead><tbody><tr><td>앞쪽 본문</td><td>오늘의 판단과 근거</td><td>아니오</td></tr><tr><td>뒤쪽 부록·각주</td><td>AI가 자기 작업을 채점한 기록</td><td>대부분 예</td></tr><tr><td>그 안에 섞인 두 줄</td><td>내 결정에 직접 들어가는 값</td><td>아니오</td></tr></tbody></table></div>
 <p>문제는 셋째 줄이에요. 안 읽어도 되는 90% 사이에 꼭 읽어야 하는 두 줄이 <strong>섞여</strong> 있었습니다. 그러니까 전부 읽거나 전부 안 읽거나 둘 중 하나가 되더라고요.<br>
 AI 리포트 이해가 안 될 때 제가 늘 &quot;내가 배경지식이 부족한가&quot; 쪽으로 갔던 게 여기서 깨졌습니다. 배경지식 문제가 아니라 <strong class="u">진입점</strong>이 없던 거였어요.</p>
 <h2>3. &quot;내부용&quot;이라고 생각한 페이지는 없었습니다</h2>

@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -119,24 +131,14 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 그래놓고 제 개인 자동화에 경고가 서른 몇 건씩 쌓인 걸 몇 달이나 그냥 두고 봤습니다..</p>
 <h2>1. 경고 건수는 그대로인데 점수만 널뛰었어요</h2>
 <p>먼저 한 일은 고장을 찾는 게 아니라 점수 추이를 표로 뽑는 거였습니다. 여기서 이상한 게 보였어요.</p>
-<p>| 구간 | 점수 | CRITICAL | WARNING |<br>
-|---|---|---|---|<br>
-| 8/14~16 | 90 | 0 | 31 |<br>
-| 8/18~20 | 77 | 2 | 31 |<br>
-| 8/21~22 | 67 | 2 | 32 |<br>
-| 8/23~27 | 70 | 1 | 32~33 |<br>
-| 8/28~30 | 81 | 0 | 33 |</p>
+<div class="table-wrap"><table><thead><tr><th>구간</th><th>점수</th><th>CRITICAL</th><th>WARNING</th></tr></thead><tbody><tr><td>8/14~16</td><td>90</td><td>0</td><td>31</td></tr><tr><td>8/18~20</td><td>77</td><td>2</td><td>31</td></tr><tr><td>8/21~22</td><td>67</td><td>2</td><td>32</td></tr><tr><td>8/23~27</td><td>70</td><td>1</td><td>32~33</td></tr><tr><td>8/28~30</td><td>81</td><td>0</td><td>33</td></tr></tbody></table></div>
 <p>경고 건수는 31에서 33 사이로 사실상 고정인데 점수만 90과 67을 오갔습니다.<br>
 시스템이 진짜 나빠졌다 좋아졌다 했으면 경고 건수도 따라 움직였겠죠. 안 움직였어요.<br>
 이건 시스템 상태가 아니라 <strong>점수를 내는 방식의 문제</strong>였던 겁니다.</p>
 <img src="img/02_score_vs_warning.png" alt="위쪽에 점수 꺾은선이 90→77→67→70→81로 크게 요동치고, 아래쪽에 경고 건수 막대가 31·31·32·33·33으로 거의 평평한 대비 그래프. 오른쪽에 &#x27;지표가 상태를 반영 못 함&#x27; 판정 박스" loading="lazy">
 <h2>2. 19점을 뜯어보니 9점이 오탐이었습니다</h2>
 <p>점수 산식을 손으로 재현해서 실제 보고서와 대조했어요. 81.53이 나왔고 보고서는 81점, 정확히 맞았습니다. 그래서 깎인 19점을 이렇게 갈랐습니다.</p>
-<p>| 깎인 자리 | 점수 | 진짜 고장인가 |<br>
-|---|---|---|<br>
-| 런타임 항목 (가중치 10) | -9.4 | 아니오, 전부 오탐 |<br>
-| 파일 규칙 (가중치 5) | -4.7 | 일부만 |<br>
-| 폴더 정리 (가중치 5) | -4.3 | 예 |</p>
+<div class="table-wrap"><table><thead><tr><th>깎인 자리</th><th>점수</th><th>진짜 고장인가</th></tr></thead><tbody><tr><td>런타임 항목 (가중치 10)</td><td>-9.4</td><td>아니오, 전부 오탐</td></tr><tr><td>파일 규칙 (가중치 5)</td><td>-4.7</td><td>일부만</td></tr><tr><td>폴더 정리 (가중치 5)</td><td>-4.3</td><td>예</td></tr></tbody></table></div>
 <p>제일 큰 손실원인 런타임 미해결 에러 2건을 실물로 열어봤더니 <strong class="u">둘 다 오탐</strong>이었어요.</p>
 <p>하나는 이미 나은 병이었습니다. 새벽에 도는 리포트 작업이 8/21부터 며칠 타임아웃을 냈다가 8/26부터 정상으로 돌아왔거든요. 그런데 수집기의 해소 경로가 &quot;7일 지나면 자동 만료&quot; 하나뿐이라, 성공 실행이 닷새 이어져도 에러가 계속 살아 있었어요.</p>
 <p>나머지 하나는 좀 어이없었습니다. 그 리포트 로그에는 결과물 본문이 통째로 들어갑니다. 8/26 로그, 그러니까 <strong>성공한 실행의 로그</strong> 안에 이런 문장이 있었어요.</p>

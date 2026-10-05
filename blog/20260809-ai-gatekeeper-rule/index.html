@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -176,12 +188,7 @@ AI는 여전히 위험을 짚었습니다. 다만 한 번 짚고는 바로 &quot
 <p>그 자리에서 후보 두 개의 사업성 조사가 실제로 돌았습니다.<br>
 리서치 에이전트 212개를 병렬로 굴리고, 소스 1,028건을 검증해서, 비교 문서 3건이 나왔어요.<br>
 직전까지 &quot;그거 될까요&quot;만 반복하던 대화에서 같은 날 나온 결과입니다.</p>
-<p>| | 규칙 넣기 전 | 규칙 넣은 후 |<br>
-|---|---|---|<br>
-| AI의 첫 반응 | 위험 지적 | 위험 지적 (동일) |<br>
-| 두 번째 반응 | 같은 지적 반복 | 실행 방법 제시 |<br>
-| 내가 쓴 시간 | AI 설득 | 결과 검토 |<br>
-| 그날 산출물 | 없음 | 비교 문서 3건 |</p>
+<div class="table-wrap"><table class="rowhead"><thead><tr><th></th><th>규칙 넣기 전</th><th>규칙 넣은 후</th></tr></thead><tbody><tr><td>AI의 첫 반응</td><td>위험 지적</td><td>위험 지적 (동일)</td></tr><tr><td>두 번째 반응</td><td>같은 지적 반복</td><td>실행 방법 제시</td></tr><tr><td>내가 쓴 시간</td><td>AI 설득</td><td>결과 검토</td></tr><tr><td>그날 산출물</td><td>없음</td><td>비교 문서 3건</td></tr></tbody></table></div>
 <p>보시면 AI가 순해진 게 아니에요.<br>
 반대는 그대로 있고, <strong>반대가 놓이는 자리만 앞으로 한 번으로 옮긴 것</strong>뿐입니다.</p>
 <h2>이런 것도 궁금하실 것 같아요</h2>
@@ -197,8 +204,8 @@ AI가 자꾸 반대만 할 때 고칠 건 AI의 말투가 아니라, 내가 예�
 그게 이번에 제가 배운 전부예요..</p>
 <p>다음 글에서는 이 규칙을 어떻게 써야 AI한테 실제로 먹히는지, 제가 썼다가 실패한 문장들부터 풀어볼게요.<br>
 규칙을 왜 그렇게 적었는지까지 남겨둔 원문은 makefield.ai 쪽에 있습니다.</p>
-<p>---<br>
-현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
+<hr>
+<p>현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
 <p>태그: #AI가반대만할때 #AI비서규칙 #AI규칙파일 #AI메모리설정 #AI커스텀지침 #AI활용법 #AI에이전트 #나만의AI #생성형AI #AI프롬프트작성법 #AI일하는법 #AI자동화 #제조업AI #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

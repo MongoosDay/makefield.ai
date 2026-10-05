@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -146,10 +158,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <img src="img/04_pipeline_4step.png" alt="4단계 파이프라인 — ①영상 자막 텍스트 확보 → ②AI가 &#x27;순서·판단기준&#x27;으로 구조화 → ③요약 아닌 &#x27;지시서&#x27;로 출력 → ④내 AI 지식파일에 저장" loading="lazy">
 <h2>4. 따라 하는 순서 (2026년 8월 기준)</h2>
 <p>특별한 유료 도구 없이 됩니다. 순서만 지키면 돼요.</p>
-<p>1. <strong>영상의 자막(스크립트)을 텍스트로 확보한다.</strong> 유튜브 자막을 켜서 전체 스크립트를 복사하거나, 자막 텍스트를 뽑아주는 무료 도구를 씁니다. 핵심은 &#x27;영상&#x27;이 아니라 &#x27;글&#x27;로 만드는 것.<br>
-2. <strong>그 텍스트를 AI한테 통째로 준다.</strong> 이때 &quot;요약해줘&quot;가 아니라 지시를 구체적으로 합니다. &quot;이 내용을 내가 따라 할 수 있는 단계별 지시서로 바꿔줘. 결론 말고 순서와 판단 기준을 살려줘.&quot;<br>
-3. <strong>결과를 &#x27;요약본&#x27;이 아니라 &#x27;지시서&#x27;로 받는다.</strong> 체크리스트, 순서도, 자주 하는 실수 목록 같은 실행 가능한 형태로요.<br>
-4. <strong>그걸 내 AI의 지식(참고 파일)에 넣는다.</strong> 로컬 AI든, 쓰는 AI의 프로젝트/지식 기능이든, 다음 대화부터 참조되게 저장해두면 끝.</p>
+<ol><li><strong>영상의 자막(스크립트)을 텍스트로 확보한다.</strong> 유튜브 자막을 켜서 전체 스크립트를 복사하거나, 자막 텍스트를 뽑아주는 무료 도구를 씁니다. 핵심은 &#x27;영상&#x27;이 아니라 &#x27;글&#x27;로 만드는 것.</li><li><strong>그 텍스트를 AI한테 통째로 준다.</strong> 이때 &quot;요약해줘&quot;가 아니라 지시를 구체적으로 합니다. &quot;이 내용을 내가 따라 할 수 있는 단계별 지시서로 바꿔줘. 결론 말고 순서와 판단 기준을 살려줘.&quot;</li><li><strong>결과를 &#x27;요약본&#x27;이 아니라 &#x27;지시서&#x27;로 받는다.</strong> 체크리스트, 순서도, 자주 하는 실수 목록 같은 실행 가능한 형태로요.</li><li><strong>그걸 내 AI의 지식(참고 파일)에 넣는다.</strong> 로컬 AI든, 쓰는 AI의 프로젝트/지식 기능이든, 다음 대화부터 참조되게 저장해두면 끝.</li></ol>
 <p>저도 2번에서 한 번 걸렸어요.<br>
 처음엔 지시를 대충 줬더니 또 매끈한 요약을 뱉더라고요.<br>
 &quot;순서와 판단 기준을 살려라&quot;를 명시하고 나서야 쓸 만한 지시서가 나왔어요.<br>
@@ -174,8 +183,8 @@ AI는 시키는 대로만 하니까, 원하는 결과물의 &#x27;형태&#x27;�
 <p>혹시 즐겨찾기에만 묻어둔 좋은 영상, 지금 몇 개나 쌓여 있으세요.<br>
 그중 딱 하나를 오늘 밤 AI한테 먹여보는 것부터 시작하면 돼요.<br>
 이렇게 영상 한 편씩 AI한테 이식한 기록은 makefield.ai에 하나씩 옮겨두고 있어요.</p>
-<p>---<br>
-태그: #유튜브영상AI정리 #유튜브강의AI #유튜브요약AI #영상AI학습 #AI지식관리 #유튜브자막추출 #AI활용법 #나만의AI #생성형AI #AI공부법 #로컬AI #시스템프롬프트 #제조업AI #현장엔지니어 #MakeFieldAI</p>
+<hr>
+<p>태그: #유튜브영상AI정리 #유튜브강의AI #유튜브요약AI #영상AI학습 #AI지식관리 #유튜브자막추출 #AI활용법 #나만의AI #생성형AI #AI공부법 #로컬AI #시스템프롬프트 #제조업AI #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">
 <span class="stamp">MakeField AI</span>

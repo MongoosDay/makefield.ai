@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -141,11 +153,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <h2>2. 시장이 안 변한 게 아니라, 이유가 세 번 갈렸어요</h2>
 <p>여기서 그냥 &quot;그동안 별일 없었나 보다&quot; 하고 넘어갈 뻔했습니다.<br>
 그런데 로그 본문을 열어보니 얘기가 달랐어요. 색은 같은데 <strong>밑에 붙은 사유가 완전히 물갈이돼 있었습니다.</strong></p>
-<p>| 시점 | 노란불이 켜진 이유 |<br>
-|---|---|<br>
-| 7월 중순 | 밸류에이션 과열 + 유가 급등(중동 정세) |<br>
-| 8월 초 | 위기 신호는 전부 정상, 밸류에이션 과열 단독 |<br>
-| 8월 중순 | 밸류에이션 과열 + 소비 지표 둔화(9개월 만의 첫 감소) |</p>
+<div class="table-wrap"><table><thead><tr><th>시점</th><th>노란불이 켜진 이유</th></tr></thead><tbody><tr><td>7월 중순</td><td>밸류에이션 과열 + 유가 급등(중동 정세)</td></tr><tr><td>8월 초</td><td>위기 신호는 전부 정상, 밸류에이션 과열 단독</td></tr><tr><td>8월 중순</td><td>밸류에이션 과열 + 소비 지표 둔화(9개월 만의 첫 감소)</td></tr></tbody></table></div>
 <p>읽는 사람 입장에서 이 셋은 완전히 다른 상황이에요. 지정학 리스크가 걷힌 것도 사건이고, 소비가 꺾이기 시작한 것도 사건이니까요.<br>
 그런데 제 알림에는 그 셋이 전부 &quot;🟡 노란불 유지&quot; 한 줄로 압축돼서 나갔습니다.<br>
 정보가 없어서 알림이 무의미해진 게 아니라, <strong class="u">요약이 너무 세서</strong> 정보가 뭉개진 거였어요.</p>
@@ -185,8 +193,8 @@ AI 알림 자동화는 이 숫자 하나로 살았는지 죽었는지가 판정�
 <p>매일 뭔가를 보내주는 자동화를 굴리고 계시다면, 위 명령으로 최근 30일 판정만 뽑아보세요. 30초면 됩니다.<br>
 줄줄이 같은 값이 찍혀 있다면 그건 조용한 한 달이 아니라 고장 난 알림일 가능성이 높아요.</p>
 <p>다음 편에서는 이렇게 뽑은 판정 기록을 매달 한 장짜리 회고 문서로 자동 정리하는 방법을 써볼게요.</p>
-<p>---<br>
-만든 자동화보다 꺼보고 고쳐본 자동화 얘기가 더 많은 곳, makefield.ai입니다.</p>
+<hr>
+<p>만든 자동화보다 꺼보고 고쳐본 자동화 얘기가 더 많은 곳, makefield.ai입니다.</p>
 <p>태그: #AI알림자동화 #알림피로 #자동화알림설계 #매일리포트자동화 #AI에이전트 #무인자동화 #파이썬자동화 #작업스케줄러 #AI산출물검증 #로그파일확인 #AI리포트 #개인AI에이전트 #AI로일하기 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

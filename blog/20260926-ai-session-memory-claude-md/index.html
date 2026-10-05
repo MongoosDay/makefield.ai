@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -154,13 +166,7 @@ modified: 2026-09-25T20:48:41.963Z
 Why: 단위가 섞이면 임계값·알람 계산에서 환산 실수가 생긴다.</code></pre>
 <p>저는 &quot;리터로 써&quot;라고만 했습니다. <strong>Why는 AI가 추론해서 채워 넣은 문장이에요.</strong> 그럴듯하고 심지어 맞는 말이라 더 위험합니다. 나중에 이 파일을 읽는 건 저와 AI인데, 둘 다 이게 제 말인지 AI의 추측인지 구분할 방법이 없거든요..</p>
 <p>둘째, 이 폴더는 공식 문서 표현으로 &quot;machine-local&quot;입니다. 다른 PC나 클라우드로 따라가지 않아요. 프로젝트를 통째로 복사해도 기억은 안 따라옵니다.</p>
-<p>| | 세션 로그 | 자동 메모리 | 규칙 파일 |<br>
-|---|---|---|---|<br>
-| 누가 쓰나 | 도구 | AI | 나 |<br>
-| 어디에 | 홈 설정 폴더 | 홈 설정 폴더 | 내 작업 폴더 |<br>
-| 새 세션이 읽나 | 안 읽음 | 색인 앞부분만 | 통째로 읽음 |<br>
-| 내가 고치나 | 사실상 불가 | 열어야 보임 | 바로 고침 |<br>
-| 복사·백업 따라가나 | 아니요 | 아니요 | 예 |</p>
+<div class="table-wrap"><table class="rowhead"><thead><tr><th></th><th>세션 로그</th><th>자동 메모리</th><th>규칙 파일</th></tr></thead><tbody><tr><td>누가 쓰나</td><td>도구</td><td>AI</td><td>나</td></tr><tr><td>어디에</td><td>홈 설정 폴더</td><td>홈 설정 폴더</td><td>내 작업 폴더</td></tr><tr><td>새 세션이 읽나</td><td>안 읽음</td><td>색인 앞부분만</td><td>통째로 읽음</td></tr><tr><td>내가 고치나</td><td>사실상 불가</td><td>열어야 보임</td><td>바로 고침</td></tr><tr><td>복사·백업 따라가나</td><td>아니요</td><td>아니요</td><td>예</td></tr></tbody></table></div>
 <img src="img/03_where_stored.png" alt="03_where_stored.png — 세로선 하나로 좌우 분할. 왼쪽 &#x27;내 작업 폴더(내 것)&#x27;에 CLAUDE.md, AGENTS.md/GEMINI.md + &#x27;눈에 보인다/내가 고친다/백업·공유에 따라온다&#x27;. 오른쪽 &#x27;홈 설정 폴더(도구 것)&#x27;에 memory·MEMORY.md, 세션 로그 .jsonl + &#x27;안 열어보면 모른다/AI가 쓴다/이 PC에만 있다&#x27;" loading="lazy">
 <p>자동 메모리를 끄라는 얘기가 아닙니다. 켜두되 <strong>거기에 의존하지 말자</strong>는 거예요. 기억 중에 내가 통제해야 하는 것만 폴더 안으로 끌어옵니다.</p>
 <h2>3. 규칙 파일 한 개 — 이게 오늘의 전부입니다</h2>
@@ -183,11 +189,7 @@ Why: 단위가 섞이면 임계값·알람 계산에서 환산 실수가 생긴�
 <p>성공 판정은 눈으로 하세요. 세션에서 <code>/context</code>를 치면 이번 대화에 어떤 규칙 파일이 실렸는지 목록으로 나옵니다. 만들었는데 목록에 없으면 위치나 이름이 틀린 거예요. 뭘 적을지 막막하면 <code>/init</code>이 폴더를 훑어서 초안을 만들어줍니다.</p>
 <img src="img/04_session_start.png" alt="04_session_start.png — 왼쪽 세로 3개 &#x27;CLAUDE.md&#x27;(초록), &#x27;MEMORY.md 요약&#x27;(주황), &#x27;세션 로그 .jsonl&#x27;(회색 점선). 앞의 둘은 화살표로 오른쪽 &#x27;새 세션(빈 컨텍스트에서 시작)&#x27; 상자로 들어가고 세 번째는 붉은 X로 차단. 하단 &#x27;세 번째 줄이 이 글의 전부입니다 — 대화는 남아도 다시 읽히지 않습니다&#x27;" loading="lazy">
 <p>이 연재는 Claude Code로 설명하지만 도구 고르는 얘기는 아니에요. 파일 이름만 바뀝니다.</p>
-<p>| 도구 | 파일명 | 두는 곳 | 확인 |<br>
-|---|---|---|---|<br>
-| Claude Code | <code>CLAUDE.md</code> | 작업 폴더 최상단 | <code>/context</code>, <code>/memory</code> |<br>
-| Codex CLI | <code>AGENTS.md</code> | 저장소 루트 (전역은 <code>~/.codex/</code>) | 위에서부터 이어붙임, 상한 32KiB |<br>
-| Gemini CLI | <code>GEMINI.md</code> | 작업 폴더 | 공식 README &quot;Context Files (GEMINI.md)&quot; |</p>
+<div class="table-wrap"><table><thead><tr><th>도구</th><th>파일명</th><th>두는 곳</th><th>확인</th></tr></thead><tbody><tr><td>Claude Code</td><td><code>CLAUDE.md</code></td><td>작업 폴더 최상단</td><td><code>/context</code>, <code>/memory</code></td></tr><tr><td>Codex CLI</td><td><code>AGENTS.md</code></td><td>저장소 루트 (전역은 <code>~/.codex/</code>)</td><td>위에서부터 이어붙임, 상한 32KiB</td></tr><tr><td>Gemini CLI</td><td><code>GEMINI.md</code></td><td>작업 폴더</td><td>공식 README &quot;Context Files (GEMINI.md)&quot;</td></tr></tbody></table></div>
 <p><code>AGENTS.md</code>는 아예 공개 표준이 됐어요. 공식 사이트 설명이 &quot;agents를 위한 README&quot;이고, Codex와 Gemini CLI를 포함해 20개가 넘는 도구가 이걸 읽습니다. Claude Code도 <code>CLAUDE.md</code>가 없으면 <code>AGENTS.md</code>를 대신 읽고요. 도구를 갈아탈 생각이면 처음부터 이 이름으로 시작하세요.</p>
 <img src="img/05_tool_neutral.png" alt="05_tool_neutral.png — 상단 3개 박스 &#x27;Claude Code&#x27;, &#x27;Codex CLI&#x27;, &#x27;Gemini CLI&#x27;에서 각각 아래로 화살표. 하단 3개 박스 &#x27;CLAUDE.md&#x27;, &#x27;AGENTS.md&#x27;, &#x27;GEMINI.md&#x27;. 캡션 &#x27;이름만 다르고 규칙은 같습니다 — 작업 폴더 맨 위에 두면 매 세션 자동으로 읽힙니다&#x27;" loading="lazy">
 <p>어제 그 대화 자체를 되살리고 싶을 땐 이어붙이기(resume)를 씁니다.</p>

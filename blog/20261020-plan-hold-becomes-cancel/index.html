@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -126,12 +138,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>그래서 숫자로 확인부터 했습니다. AI한테 시나리오 다섯 개를 돌리게 했어요. 지금 올리는 경우, 1년·3년·5년 뒤에 올리는 경우, 그리고 영영 안 올리는 경우.</p>
 <p>전제는 명확히 적어뒀어요. 연 수익률은 가정값이고, 20년 지평이고, 특정 상품 얘기가 아니라 <strong>결정 구조를 보려고 돌린 비교 계산</strong>입니다. 미래 수익을 예측한 게 아니에요.</p>
 <p>결과를 기준값(20년 내내 올린 경우) 대비 비율로만 옮기면 이렇게 나왔습니다.</p>
-<p>| 언제 올리느냐 | 기준 대비 손실 |<br>
-|---|---|<br>
-| 1년 뒤에 올림 | 약 3.6% |<br>
-| 3년 뒤에 올림 | 약 10% |<br>
-| 5년 뒤에 올림 | 약 15.6% |<br>
-| <strong>영영 안 올림</strong> | <strong>약 38%</strong> |</p>
+<div class="table-wrap"><table><thead><tr><th>언제 올리느냐</th><th>기준 대비 손실</th></tr></thead><tbody><tr><td>1년 뒤에 올림</td><td>약 3.6%</td></tr><tr><td>3년 뒤에 올림</td><td>약 10%</td></tr><tr><td>5년 뒤에 올림</td><td>약 15.6%</td></tr><tr><td><strong>영영 안 올림</strong></td><td><strong>약 38%</strong></td></tr></tbody></table></div>
 <p>제가 걱정하던 건 &quot;지금 못 올리는 것&quot;이었어요. 그런데 표를 보니 <strong class="u">3년을 미뤄도 10%</strong>였고, 아예 안 하면 38%였습니다. 대략 <strong>3.8배</strong> 차이예요.</p>
 <img src="img/02_cost_split.png" alt="두 개의 결정을 분리한 막대 비교 — 왼쪽 낮은 막대 &#x27;언제 할까(3년 지연) = 10%&#x27;, 오른쪽 높은 막대 &#x27;할까 말까(영구 고정) = 38%&#x27;, 사이에 &#x27;3.8배&#x27; 표기. 하단에 &#x27;내가 무서워한 쪽은 왼쪽, 실제로 비싼 쪽은 오른쪽&#x27;" loading="lazy">
 <p>그러니까 제가 붙들고 있던 고민은 싼 쪽이었어요. 진짜 비싼 건 미루는 게 아니라 <strong>미룬 걸 잊는 것</strong>이었고요. 그날 AI가 문서에 적은 문장이 이 한 줄입니다.</p>
@@ -150,10 +157,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <img src="img/03_hold_paths.png" alt="보류 항목의 두 갈래 경로 — 위쪽 &#x27;보류 + 조건만&#x27; → 조건 미도달 → 점선으로 흐려지며 &#x27;영구 취소&#x27;. 아래쪽 &#x27;보류 + 조건 3 + 날짜 1&#x27; → 갈림길에서 &#x27;조건 도달&#x27; 또는 &#x27;날짜 도래&#x27; 두 화살표가 모두 &#x27;재검토&#x27; 박스로 복귀. 우측에 &#x27;조건형=기회 포착 / 날짜형=망각 방지&#x27; 범례" loading="lazy">
 <p>그리고 이걸 문서 안에만 두지 않고 <strong>추적 목록에 별도 항목으로 등록</strong>했어요. AI 계획 관리가 실제로 굴러가느냐는 여기서 갈립니다. 규칙 파일에 적힌 건 그 파일을 열 때만 보이는데, 추적 목록은 세션 시작할 때마다 읽히거든요. 대화 중에 말로 &quot;나중에 다시 보자&quot;고 한 건 다음 세션이면 없는 셈이에요. 파일에 적힌 것만 살아남습니다.</p>
 <p>보류를 적을 때 같이 적는 네 줄을 그대로 옮기면 이렇습니다.</p>
-<p>- 무엇을 보류하는가 (원래 계획이 뭐였는지)<br>
-- 왜 지금은 아닌가 (조건이 아니라 사유)<br>
-- 무엇이 오면 다시 여는가 (조건 2~3개)<br>
-- 아무것도 안 와도 언제 여는가 (날짜 1개, 필수)</p>
+<ul><li>무엇을 보류하는가 (원래 계획이 뭐였는지)</li><li>왜 지금은 아닌가 (조건이 아니라 사유)</li><li>무엇이 오면 다시 여는가 (조건 2~3개)</li><li>아무것도 안 와도 언제 여는가 (날짜 1개, 필수)</li></ul>
 <h2>운 좋았던 지각을 성공으로 적지 않기로 했어요</h2>
 <p>같은 날 하나 더 정리한 게 있어요.</p>
 <p>그달 정기 실행이 2주쯤 늦었어요. 제 게으름이었고요. 그런데 그사이 가격이 눌리면서 <strong>결과적으로는 더 유리하게 체결</strong>됐습니다. 기분이 좋았죠.</p>

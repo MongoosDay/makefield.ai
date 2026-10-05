@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -113,13 +125,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p><strong>클로드 코드 설치는 명령 한 줄이면 끝납니다. 10분 중 9분은 &quot;어느 창에서 치느냐&quot;와 &quot;어느 폴더에서 실행하느냐&quot;에 쓰여요.</strong> 비개발자가 미끄러지는 자리도 정확히 이 둘입니다.</p>
 <p>지난 편에서는 채팅창과 CLI 에이전트의 차이가 결국 <strong>내 파일에 손이 닿느냐</strong>라는 데까지 봤어요. 이번엔 그 손을 실제로 내 PC에 붙입니다.</p>
 <p>제조 현장 설비 제어를 15년째 하고 있고 전공은 개발이 아닙니다. 터미널도 필요할 때만 겨우 열던 사람이에요. 그러니 검은 창 처음 여는 분 기준으로만 씁니다. 2026년 9월 기준이고요.</p>
-<p>| 항목 | 값 |<br>
-|---|---|<br>
-| OS | Windows 10(1809 이상)·11, macOS 13 이상, 리눅스 |<br>
-| 하드웨어 | RAM 4GB 이상 |<br>
-| 계정 | 해당 서비스 유료 구독 또는 API 제공사 계정 (무료 웹 플랜엔 미포함) |<br>
-| 걸리는 시간 | 설치 2분, 확인 1분, 첫 명령 7분 |<br>
-| 필요 없는 것 | 프로그래밍 지식, 관리자 권한 |</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>값</th></tr></thead><tbody><tr><td>OS</td><td>Windows 10(1809 이상)·11, macOS 13 이상, 리눅스</td></tr><tr><td>하드웨어</td><td>RAM 4GB 이상</td></tr><tr><td>계정</td><td>해당 서비스 유료 구독 또는 API 제공사 계정 (무료 웹 플랜엔 미포함)</td></tr><tr><td>걸리는 시간</td><td>설치 2분, 확인 1분, 첫 명령 7분</td></tr><tr><td>필요 없는 것</td><td>프로그래밍 지식, 관리자 권한</td></tr></tbody></table></div>
 <p>관리자 권한이 필요 없다는 건 공식 문서에 명시돼 있어요. 회사 PC라 막힐까 걱정하셨다면 일단 한 번 쳐보셔도 됩니다.</p>
 <h2>1. 창부터 제대로 열어야 설치가 됩니다</h2>
 <p><strong>Windows에는 검은 창이 두 종류 있고 설치 명령이 서로 다릅니다.</strong> PowerShell과 CMD예요. 여기서 반쯤 갈립니다.</p>
@@ -158,14 +164,7 @@ claude</code></pre>
 &gt; test.txt 지워줘</code></pre>
 <p>이때 바로 실행되진 않아요. 명령마다 승인 화면이 한 번씩 뜨고, 허용을 눌러야 탐색기에 파일이 생깁니다. 이게 안전장치예요. 그래서 &quot;항상 허용&quot;을 습관적으로 누르지 마세요. 특히 삭제는요.</p>
 <p>시간대별로 뭘 보고 통과를 판정할지 정리하면 이렇습니다.</p>
-<p>| 시각 | 할 일 | 통과 판정 |<br>
-|---|---|---|<br>
-| 0~2분 | 창 확인 후 설치 명령 한 줄 | 설치 완료 메시지 |<br>
-| 2~3분 | <code>claude --version</code> | 버전 숫자가 찍힘 |<br>
-| 3~4분 | <code>mkdir</code> → <code>cd</code> → <code>claude</code> | 시작 줄에 그 폴더 경로가 보임 |<br>
-| 4~6분 | 브라우저에서 계정 승인 | 입력창(<code>&gt;</code>)이 뜸 |<br>
-| 6~9분 | 파일 만들기 명령 | 탐색기에 파일이 실제로 생김 |<br>
-| 9~10분 | 읽기·삭제 명령 | 승인 누른 것만 반영됨 |</p>
+<div class="table-wrap"><table><thead><tr><th>시각</th><th>할 일</th><th>통과 판정</th></tr></thead><tbody><tr><td>0~2분</td><td>창 확인 후 설치 명령 한 줄</td><td>설치 완료 메시지</td></tr><tr><td>2~3분</td><td><code>claude --version</code></td><td>버전 숫자가 찍힘</td></tr><tr><td>3~4분</td><td><code>mkdir</code> → <code>cd</code> → <code>claude</code></td><td>시작 줄에 그 폴더 경로가 보임</td></tr><tr><td>4~6분</td><td>브라우저에서 계정 승인</td><td>입력창(<code>&gt;</code>)이 뜸</td></tr><tr><td>6~9분</td><td>파일 만들기 명령</td><td>탐색기에 파일이 실제로 생김</td></tr><tr><td>9~10분</td><td>읽기·삭제 명령</td><td>승인 누른 것만 반영됨</td></tr></tbody></table></div>
 <p>6분 칸이 진짜 관문이에요. 화면에 답이 그럴듯하게 뜨는 것과 <strong>파일이 실제로 생기는 것</strong>은 다른 일이거든요. 탐색기를 열어 눈으로 확인하고 넘어가세요.</p>
 <h2>4. 저는 여기서 미끄러졌어요 — 한글과 공백</h2>
 <p><strong>오해부터 풀고 갈게요. 한글 폴더 이름 자체는 요즘 잘 돌아갑니다. 깨지는 건 그다음, 자동화를 붙이는 순간이에요.</strong></p>
@@ -180,11 +179,7 @@ A positional parameter cannot be found that accepts argument &#x27;Work&#x27;.</
 <p>저 외계어가 원래는 제가 달아둔 한글 주석이었어요. UTF-8로 저장한 한글을 명령 창이 옛날 한국어 코드(CP949)로 읽으며 깨졌고, 그 깨진 글자를 명령어로 착각한 겁니다. 주석인데 말이죠..</p>
 <p>같은 형식 파일을 전부 뒤져 13개 중 11개를 고쳤어요. 규칙은 두 줄. 실행 파일 안엔 한글 주석을 안 쓴다, 맨 위에 <code>chcp 65001 &gt; nul</code> 로 창을 UTF-8로 맞춘다.</p>
 <p><strong>셋, 한글이 한 글자만 조용히 사라지기도 합니다.</strong> 명령줄에 한글을 직접 실어 보냈다가 &quot;프로세스&quot;가 &quot;프로세&quot;로 등록된 적이 있어요. &#x27;세&#x27; 한 글자가 공백 세 개로 바뀌었는데 에러도 안 납니다. 그냥 틀린 채로 저장돼요..</p>
-<p>| 어디서 | 증상 | 대책 |<br>
-|---|---|---|<br>
-| 경로에 공백 | 경로가 쪼개져 인식 실패 | 따옴표로 감싸거나 공백 없는 이름 |<br>
-| 실행 파일 속 한글 | 깨진 글자를 명령어로 인식 | 한글 주석 금지 + <code>chcp 65001 &gt; nul</code> |<br>
-| 명령줄에 실은 한글 | 글자가 조용히 사라짐 | 한글은 파일에 담아 넘기기 |</p>
+<div class="table-wrap"><table><thead><tr><th>어디서</th><th>증상</th><th>대책</th></tr></thead><tbody><tr><td>경로에 공백</td><td>경로가 쪼개져 인식 실패</td><td>따옴표로 감싸거나 공백 없는 이름</td></tr><tr><td>실행 파일 속 한글</td><td>깨진 글자를 명령어로 인식</td><td>한글 주석 금지 + <code>chcp 65001 &gt; nul</code></td></tr><tr><td>명령줄에 실은 한글</td><td>글자가 조용히 사라짐</td><td>한글은 파일에 담아 넘기기</td></tr></tbody></table></div>
 <p>덤으로 하나 더. 어떤 데선 <code>2026년_5월</code>, 어떤 데선 <code>2026년 5월</code>로 쓰다가 같은 달 자료가 두 폴더로 갈라진 적도 있어요. 언더바 하나 차이로 23개 파일을 손으로 합쳤습니다.</p>
 <p>그래서 클로드 코드 설치 단계의 제 권고는 단순해요. <strong>읽고 쓸 문서 이름은 한글이어도 됩니다. 다만 작업 폴더 경로만큼은 영문·소문자·공백 없이 가세요.</strong> 경로는 스크립트와 스케줄러가 계속 재인용하는 자리라, 한 번 지뢰를 심으면 몇 달 뒤에 터집니다.</p>
 <h2>5. 설치할 때 많이 걸리는 질문 셋</h2>
@@ -196,11 +191,7 @@ A positional parameter cannot be found that accepts argument &#x27;Work&#x27;.</
 둘 다 됩니다. npm 방식은 <code>npm install -g @anthropic-ai/claude-code</code> 인데 Node.js 22 이상이 필요해요. 참고로 공식 문서는 <code>sudo</code>를 붙인 전역 설치를 경고합니다. 권한·보안 문제가 생겨요.</p>
 <h2>6. GPT·Gemini CLI도 세 줄은 똑같습니다</h2>
 <p>이 연재는 Claude Code로 설명하지만 도구 고르는 얘기는 아니에요. 주요 CLI 에이전트 셋은 골격이 같습니다.</p>
-<p>| 도구 | 설치 | 실행 |<br>
-|---|---|---|<br>
-| Claude Code | <code>irm <a href="https://claude.ai/install.ps1" target="_blank" rel="noopener">https://claude.ai/install.ps1</a> \| iex</code> (Windows PowerShell) | <code>claude</code> |<br>
-| Codex CLI | <code>npm install -g @openai/codex</code> | <code>codex</code> |<br>
-| Gemini CLI | <code>npm install -g @google/gemini-cli</code> | <code>gemini</code> |</p>
+<div class="table-wrap"><table><thead><tr><th>도구</th><th>설치</th><th>실행</th></tr></thead><tbody><tr><td>Claude Code</td><td>`irm <a href="https://claude.ai/install.ps1" target="_blank" rel="noopener">https://claude.ai/install.ps1</a> \</td><td>iex` (Windows PowerShell)</td></tr><tr><td>Codex CLI</td><td><code>npm install -g @openai/codex</code></td><td><code>codex</code></td></tr><tr><td>Gemini CLI</td><td><code>npm install -g @google/gemini-cli</code></td><td><code>gemini</code></td></tr></tbody></table></div>
 <p>설치 방식만 다르고 그다음은 전부 같아요. 폴더로 이동해 실행하고, 그 폴더가 작업 공간이 되고, 승인을 거쳐 파일을 읽고 씁니다. Gemini CLI는 <code>npx @google/gemini-cli</code> 로 설치 없이 띄워볼 수도 있고요. 2장에서 판 <code>ai-work</code> 폴더는 도구를 갈아타도 그대로 씁니다.</p>
 <img src="img/04_tools.png" alt="상단 3개 박스 &#x27;claude&#x27;, &#x27;codex&#x27;, &#x27;gemini&#x27;가 각각 다른 점선 화살표로 내려와 하나의 공통 블록으로 합류. 공통 블록 3줄 &#x27;① 폴더로 이동해 실행&#x27;, &#x27;② 그 폴더가 작업 공간&#x27;, &#x27;③ 승인 후 읽기·쓰기&#x27;. 하단 캡션 &#x27;설치만 다르고 그다음은 같다&#x27;" loading="lazy">
 <p>오늘 남길 건 명령 몇 개가 아니라 순서 하나예요. 창 확인 → 폴더 지정 → 첫 명령. 폴더 이름은 꼭 영문으로 하시고요. 혹시 예전에 깔았다가 터미널 앞에서 막막해 덮어두신 적 있으신가요? 저도 그랬는데, 막혔던 게 도구가 아니라 폴더였더라고요!</p>

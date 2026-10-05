@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -137,12 +149,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 }</code></pre>
 <p>화면의 체크박스 이름과 실제 내부 키 이름이 다른 것부터 눈에 들어왔어요. 화면에는 &quot;수신 연결 허용&quot;이라고 쓰여 있는데 내부 값은 <code>ShieldsUp</code>, 즉 <strong>방패를 올린다</strong>는 반대 의미의 이름입니다. 체크를 끄면 방패가 올라가는 구조예요. 화면만 보고 판단하면 여기서 한 번 뒤집힙니다.</p>
 <p>열한 개를 하나씩 붙여봤더니 이렇게 갈렸습니다.</p>
-<p>| 판정 | 개수 | 내용 |<br>
-|---|---|---|<br>
-| 켜라 | 1 | 로그아웃·재부팅 후에도 백그라운드 유지 |<br>
-| 절대 켜지 마라 | 1 | 자체 DNS 사용 (hosts 파일을 건드림) |<br>
-| 반드시 이대로 둬라 | 1 | 수신 연결 허용 (끄면 원격 접속 차단) |<br>
-| 지금 값 유지 | 8 | 서버 기능·업데이트·기업용 항목 등 |</p>
+<div class="table-wrap"><table><thead><tr><th>판정</th><th>개수</th><th>내용</th></tr></thead><tbody><tr><td>켜라</td><td>1</td><td>로그아웃·재부팅 후에도 백그라운드 유지</td></tr><tr><td>절대 켜지 마라</td><td>1</td><td>자체 DNS 사용 (hosts 파일을 건드림)</td></tr><tr><td>반드시 이대로 둬라</td><td>1</td><td>수신 연결 허용 (끄면 원격 접속 차단)</td></tr><tr><td>지금 값 유지</td><td>8</td><td>서버 기능·업데이트·기업용 항목 등</td></tr></tbody></table></div>
 <p>열한 개 중 여덟 개는 애초에 손댈 이유가 없었어요. 그런데 &quot;다 체크할까요?&quot;라고 물었으면 그 여덟 개까지 같이 뒤집혔을 겁니다.</p>
 <h2>건드리면 확실히 망가지는 두 개가 있었어요</h2>
 <p><strong>하나는 백신과 싸우게 되고, 하나는 원격 접속 자체를 끊습니다.</strong></p>
@@ -163,11 +170,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>그 습관을 제 PC한테는 안 썼더라고요.. 도면 대신 공식 문서, 장비 화면 대신 AI 답변을 먼저 본 셈이었습니다.</p>
 <p>여러분도 AI가 알려준 설정을 그대로 적용해본 적 있으신가요? 저는 이번에 &quot;내 환경에서 이미 다른 값이 들어가 있을 가능성&quot;을 아예 계산에 안 넣고 있었어요.</p>
 <h2>그래서 묻는 순서를 세 칸으로 고정했습니다</h2>
-<p>| 순서 | 할 일 | 하는 이유 |<br>
-|---|---|---|<br>
-| 1 | 그 주제로 내가 남긴 기록부터 연다 | 이미 끝낸 조치가 있는지 확인 |<br>
-| 2 | 장비의 현재값을 명령으로 덤프한다 | 화면 표기보다 내부 값이 정확 |<br>
-| 3 | 그 값을 붙여서 AI에게 판정을 시킨다 | 일반론이 아니라 이 장비 기준 답 |</p>
+<div class="table-wrap"><table><thead><tr><th>순서</th><th>할 일</th><th>하는 이유</th></tr></thead><tbody><tr><td>1</td><td>그 주제로 내가 남긴 기록부터 연다</td><td>이미 끝낸 조치가 있는지 확인</td></tr><tr><td>2</td><td>장비의 현재값을 명령으로 덤프한다</td><td>화면 표기보다 내부 값이 정확</td></tr><tr><td>3</td><td>그 값을 붙여서 AI에게 판정을 시킨다</td><td>일반론이 아니라 이 장비 기준 답</td></tr></tbody></table></div>
 <p>질문 문장이 이렇게 바뀝니다.</p>
 <pre><code>[전]  이 설정 다 체크하는 게 맞아?
 [후]  이게 이 PC의 현재값이야. (덤프 붙임)

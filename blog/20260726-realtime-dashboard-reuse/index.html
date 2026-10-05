@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -170,19 +182,11 @@ ERROR: 잘못된 인수입니다 (경로가 공백에서 끊김)
 그 두 개만 넘기니, 반나절 만에 폰에서도 대시보드가 열렸습니다.</p>
 <h2>그대로 따라 할 수 있게 4단계로</h2>
 <p><strong>전제조건</strong>: 이미 주기적으로 도는 자동화 몇 개(데이터를 남기는 것), 파이썬, 결과를 볼 브라우저. 이게 2026년 7월 기준 제가 쓴 최소 준비물이에요.</p>
-<p>1. <strong>있는 부품 조사</strong> — 데이터를 꺼낼 방법, 화면을 띄울 서버, 정해진 시각에 돌릴 실행기가 이미 있는지부터 뒤진다. 놀랄 만큼 이미 있는 경우가 많아요.<br>
-2. <strong>없는 것 하나만 식별</strong> — 대개 &quot;데이터를 긁어 화면으로 그리는 생성기&quot; 하나예요. 새로 만들 건 여기 집중.<br>
-3. <strong>화면 자동 생성</strong> — 데이터를 긁어와 HTML 한 장으로 뿌린다. 실시간 통신은 대부분 필요 없어요.<br>
-4. <strong>주기 실행 등록</strong> — 스케줄러로 5분마다 다시 그리게 건다. 경로에 한글·공백 있으면 정지 토큰 처리.</p>
+<ol><li><strong>있는 부품 조사</strong> — 데이터를 꺼낼 방법, 화면을 띄울 서버, 정해진 시각에 돌릴 실행기가 이미 있는지부터 뒤진다. 놀랄 만큼 이미 있는 경우가 많아요.</li><li><strong>없는 것 하나만 식별</strong> — 대개 &quot;데이터를 긁어 화면으로 그리는 생성기&quot; 하나예요. 새로 만들 건 여기 집중.</li><li><strong>화면 자동 생성</strong> — 데이터를 긁어와 HTML 한 장으로 뿌린다. 실시간 통신은 대부분 필요 없어요.</li><li><strong>주기 실행 등록</strong> — 스케줄러로 5분마다 다시 그리게 건다. 경로에 한글·공백 있으면 정지 토큰 처리.</li></ol>
 <p><strong>확인 방법</strong>: 브라우저를 직접 새로고침하지 않아도, 5분 뒤에 화면 속 숫자가 저절로 바뀌어 있으면 성공이에요.</p>
 <img src="img/04_four_steps.png" alt="4단계 흐름 — &#x27;① 있는 부품 조사&#x27; → &#x27;② 없는 것 하나 식별&#x27; → &#x27;③ 화면 자동 생성&#x27; → &#x27;④ 주기 실행 등록&#x27; 가로 흐름. ③ 아래에 강조 라벨 &quot;새로 만드는 건 여기 하나뿐&quot;" loading="lazy">
 <h2>새로 짓기 vs 이어붙이기, 뭐가 다른가</h2>
-<p>| 항목 | 처음부터 새로 짓기 | 이미 도는 데 이어붙이기 |<br>
-|---|---|---|<br>
-| 걸린 시간 | 며칠 | 반나절 |<br>
-| 새로 만든 부품 | 데이터·서버·실행기·화면 전부 | 화면 생성기 1개 |<br>
-| 고장 지점 | 여러 곳 | 화면 한 곳 |<br>
-| 기존 시스템 | 건드림(위험) | 읽기만(안전) |</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>처음부터 새로 짓기</th><th>이미 도는 데 이어붙이기</th></tr></thead><tbody><tr><td>걸린 시간</td><td>며칠</td><td>반나절</td></tr><tr><td>새로 만든 부품</td><td>데이터·서버·실행기·화면 전부</td><td>화면 생성기 1개</td></tr><tr><td>고장 지점</td><td>여러 곳</td><td>화면 한 곳</td></tr><tr><td>기존 시스템</td><td>건드림(위험)</td><td>읽기만(안전)</td></tr></tbody></table></div>
 <p>저는 기존에 돌던 건 한 줄도 안 고쳤어요.<br>
 전부 읽기만 하고, 새 화면 하나만 얹었거든요.<br>
 그래서 이 대시보드가 잘못돼도 원래 자동화들은 멀쩡해요. 이게 이어붙이기의 진짜 이점이에요.</p>
@@ -195,9 +199,9 @@ ERROR: 잘못된 인수입니다 (경로가 공백에서 끊김)
 &quot;만들고 싶다&quot;가 들면, 손이 먼저 나가기 전에 &quot;이미 뭐가 도는지&quot;를 뒤지는 것.<br>
 새 시스템의 절반은 대개 이미 내 안에서 돌아가고 있더라고요.</p>
 <p>다음 글에서는 이 화면에 &#x27;보기&#x27;만 말고, 폰에서 명령까지 넣는 단계를 붙인 얘기를 풀어볼게요.<br>
-이렇게 만들다 만 것, 이어붙인 것 전부 [makefield.ai](<a href="https://makefield.ai)에" target="_blank" rel="noopener">https://makefield.ai)에</a> 풀어놓고 있어요.</p>
-<p>---<br>
-태그: #실시간대시보드만들기 #모니터링대시보드만들기 #파이썬대시보드자동화 #시스템관제화면 #자동화모니터링 #AI자동화 #현장엔지니어 #제조업AI #빌드과잉 #대시보드만드는법 #파이썬자동화 #작업스케줄러 #HTML대시보드 #AI실무 #MakeFieldAI</p>
+이렇게 만들다 만 것, 이어붙인 것 전부 <a href="https://makefield.ai" target="_blank" rel="noopener">makefield.ai</a>에 풀어놓고 있어요.</p>
+<hr>
+<p>태그: #실시간대시보드만들기 #모니터링대시보드만들기 #파이썬대시보드자동화 #시스템관제화면 #자동화모니터링 #AI자동화 #현장엔지니어 #제조업AI #빌드과잉 #대시보드만드는법 #파이썬자동화 #작업스케줄러 #HTML대시보드 #AI실무 #MakeFieldAI</p>
 </article>
 <div class="endcard">
 <span class="stamp">MakeField AI</span>

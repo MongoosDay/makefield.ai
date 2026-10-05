@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -152,11 +164,7 @@ UPnP 004  VPN 직결용            → 이 노트북</code></pre>
 가능한 위치       : 그 PC 앞</code></pre>
 <p>만료되면 그 PC 앞에 앉아서 다시 로그인을 해야 합니다. 밖에 있으면 앉을 수가 없죠. 포트를 다 닫고 예비 경로까지 지웠다면, 5일 뒤부터는 집에 도착할 때까지 그 PC가 없는 것과 같았을 겁니다. 조치는 만료를 꺼두는 것 하나였고, 그날 기기 세 대를 전부 그렇게 바꿔놨습니다!</p>
 <h2>5. 포트포워딩 삭제 전에 던지는 세 가지 질문</h2>
-<p>| 질문 | 확인 방법 | 안 하면 |<br>
-|---|---|---|<br>
-| 없으면 뭐가 안 되나 | 규칙 이름 말고 <strong>목적지 기기</strong>를 본다 | 용도를 모른 채 지운다 |<br>
-| 내가 만든 건가, 프로그램이 연 건가 | 자동 개방 목록을 <strong>따로</strong> 펼친다 | 프로그램이 뚫은 길을 막아버린다 |<br>
-| 남긴 통로가 혼자 작동하나 | 접속까지 필요한 단계를 끝까지 적어본다 | 한 칸만 끊겨도 전체가 죽는다 |</p>
+<div class="table-wrap"><table><thead><tr><th>질문</th><th>확인 방법</th><th>안 하면</th></tr></thead><tbody><tr><td>없으면 뭐가 안 되나</td><td>규칙 이름 말고 <strong>목적지 기기</strong>를 본다</td><td>용도를 모른 채 지운다</td></tr><tr><td>내가 만든 건가, 프로그램이 연 건가</td><td>자동 개방 목록을 <strong>따로</strong> 펼친다</td><td>프로그램이 뚫은 길을 막아버린다</td></tr><tr><td>남긴 통로가 혼자 작동하나</td><td>접속까지 필요한 단계를 끝까지 적어본다</td><td>한 칸만 끊겨도 전체가 죽는다</td></tr></tbody></table></div>
 <p>실행은 항목별로 끊어서 하세요. 한 번의 클릭으로 네 건이 동시에 사라지는 조작은 중간에 마음이 바뀔 여지를 없앱니다. 제가 지시가 바뀌기 직전에 버튼을 눌렀던 게 정확히 그 상황이었어요.</p>
 <p>지우고 나서는 바로 확인하는 게 좋습니다. 저는 네 건을 지운 직후에 <strong>원격 세션이 살아 있는지</strong>, <strong>직통 경로가 유지되는지</strong> 두 개를 봤어요. 세션은 그대로였고 왕복도 1ms 그대로였습니다. 전송량이 14MB에서 59MB로 늘어나는 것까지 보고서야 &quot;안 깨졌다&quot;고 판정했어요.</p>
 <p>여러분 공유기에는 지금 몇 개나 열려 있나요? 저는 다섯 개인 줄 알았다가 아홉 개를 봤습니다.</p>

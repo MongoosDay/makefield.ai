@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -167,13 +179,7 @@ slot = SLOTS[datetime.date.today().weekday()]</code></pre>
 산출물이 내 눈에 닿기까지 몇 동작이 필요한가. 두 동작을 넘으면 그 자동화는 없는 거나 마찬가지더라고요.<br>
 반나절 걸린 진단의 처방이 고작 즐겨찾기 하나였어요!</p>
 <img src="img/04_gates.png" alt="완료 판정 5게이트 세로 체크리스트 — ①실행됨 ②종료코드 0 ③산출 파일 존재 ④장부 기록 네 칸은 초록 체크, ⑤사람 도달 칸만 빨간 X와 &#x27;여기서 하루를 날림&#x27; 캡션. 오른쪽에 &#x27;스케줄러 등록 = 절반&#x27; 라벨" loading="lazy">
-<p>| 게이트 | 뭘 보는가 | 통과 기준 |<br>
-|---|---|---|<br>
-| 1 주제 고갈 | 요일 슬롯 | 7일치가 서로 다른가 |<br>
-| 2 중복 | 장부 파일 | 프롬프트에 실려 들어가는가 |<br>
-| 3 재실행 | 수동으로 한 번 더 | 스킵 로그가 찍히는가 |<br>
-| 4 산출물 | 결과 폴더 | 종료코드 말고 파일로 판정 |<br>
-| 5 도달 | 즐겨찾기·알림 | 두 동작 안에 열리는가 |</p>
+<div class="table-wrap"><table><thead><tr><th>게이트</th><th>뭘 보는가</th><th>통과 기준</th></tr></thead><tbody><tr><td>1 주제 고갈</td><td>요일 슬롯</td><td>7일치가 서로 다른가</td></tr><tr><td>2 중복</td><td>장부 파일</td><td>프롬프트에 실려 들어가는가</td></tr><tr><td>3 재실행</td><td>수동으로 한 번 더</td><td>스킵 로그가 찍히는가</td></tr><tr><td>4 산출물</td><td>결과 폴더</td><td>종료코드 말고 파일로 판정</td></tr><tr><td>5 도달</td><td>즐겨찾기·알림</td><td>두 동작 안에 열리는가</td></tr></tbody></table></div>
 <h2>자주 나오는 질문 셋</h2>
 <p><strong>Q. 스케줄러에 등록만 해두면 알아서 돌아가지 않나요?</strong><br>
 등록은 절반이에요. 저는 수동 실행 성공 → 스케줄러 등록 → 스케줄러로 실구동해서 결과값 0 확인 → 실제 산출물 눈으로 확인, 이 순서를 다 밟고 나서야 가동으로 칩니다. 화면엔 성공이라고 떠 있는데 안에서는 아무것도 안 만들어져 있던 경우를 몇 번 봤거든요.</p>
@@ -186,8 +192,8 @@ slot = SLOTS[datetime.date.today().weekday()]</code></pre>
 혹시 지금 잘 돌고 있는데 한 번도 열어본 적 없는 자동화, 하나쯤 갖고 계시지 않나요?</p>
 <p>다음엔 이렇게 쌓이기만 하고 안 읽히는 결과물을 어떻게 줄여봤는지 써볼게요.</p>
 <p>무인으로 돌려본 것들의 게이트 목록과 실패 로그는 makefield.ai 쪽에 따로 모아뒀으니, 비슷한 걸 만들 계획이면 그거부터 보시면 됩니다.</p>
-<p>---<br>
-현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
+<hr>
+<p>현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
 <p>태그: #AI자동리포트만들기 #AI자동화 #작업스케줄러자동실행 #무인자동화 #클로드코드 #AI에이전트 #헤드리스AI #파이썬자동화 #자동화검증 #매일자동리포트 #AI공부자동화 #업무자동화 #AI활용법 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -133,8 +145,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>핵심은 이거예요. <strong>DXF의 기본 텍스트 스타일은 <code>txt.shx</code>라는 영문 전용 폰트를 참조하는데, 이 폰트엔 한글 글자 모양 자체가 들어있지 않아요.</strong><br>
 없는 글자를 그리라고 하니, CAD는 어쩔 수 없이 네모(□)로 자리만 채우는 거예요.</p>
 <p>이걸 인코딩 문제랑 헷갈리기 쉬운데, 둘은 완전히 달라요.</p>
-<p>- 인코딩 문제 = 바이트를 잘못 해석해서 글자가 &quot;꺄뚫&quot; 같은 이상한 글자로 바뀌는 것<br>
-- 폰트(글리프) 문제 = 글자 데이터는 멀쩡한데, 그릴 폰트에 그 모양이 없어서 네모로 나오는 것</p>
+<ul><li>인코딩 문제 = 바이트를 잘못 해석해서 글자가 &quot;꺄뚫&quot; 같은 이상한 글자로 바뀌는 것</li><li>폰트(글리프) 문제 = 글자 데이터는 멀쩡한데, 그릴 폰트에 그 모양이 없어서 네모로 나오는 것</li></ul>
 <p>제 도면은 후자였어요. 데이터엔 &quot;판넬&quot;이 제대로 들어있는데, 그걸 그릴 <code>txt.shx</code>에 &#x27;판&#x27;도 &#x27;넬&#x27;도 없으니 네모가 뜬 거죠.</p>
 <img src="img/02_encoding_vs_font.png" alt="두 문제의 갈림길 — 왼쪽 &#x27;인코딩 문제: 바이트 오역 → 판넬이 꺄뚫로&#x27;, 오른쪽 &#x27;폰트 문제: 데이터는 판넬 정상 → 그릴 글리프 없음 → □□□&#x27;. 가운데 라벨 &quot;한글만 네모면 폰트 문제, 이상한 글자로 바뀌면 인코딩 문제&quot;" loading="lazy">
 <p>그래서 판별법은 간단해요.<br>
@@ -171,9 +182,7 @@ dimstyle.dxf.dimtxsty = &quot;HANGUL&quot;   # 치수 문자도 한글 스타일
 실제로 제가 자동 생성하는 도면들은 지금 대부분 영문 라벨로 돌아가요. 폰트 환경을 안 타서 안전하거든요.</p>
 <h2>5. 확인 방법 (성공 판정 기준)</h2>
 <p>코드만 고치고 &quot;됐겠지&quot; 하면 안 돼요. 저는 이 두부에 데어서, 뽑은 뒤 반드시 눈으로 확인해요.</p>
-<p>- ☐ 생성한 DXF를 이미지로 렌더링해서(ezdxf matplotlib 백엔드 등) 한글이 안 깨졌는지 <strong class="u">눈으로</strong> 본다<br>
-- ☐ 도면 안 텍스트 엔티티의 style이 전부 &quot;HANGUL&quot;로 지정됐는지 세어본다 (하나라도 빠지면 그것만 네모)<br>
-- ☐ 다른 PC/뷰어에서도 한 번 열어본다 (폰트 없는 환경 대비)</p>
+<ul><li>☐ 생성한 DXF를 이미지로 렌더링해서(ezdxf matplotlib 백엔드 등) 한글이 안 깨졌는지 <strong class="u">눈으로</strong> 본다</li><li>☐ 도면 안 텍스트 엔티티의 style이 전부 &quot;HANGUL&quot;로 지정됐는지 세어본다 (하나라도 빠지면 그것만 네모)</li><li>☐ 다른 PC/뷰어에서도 한 번 열어본다 (폰트 없는 환경 대비)</li></ul>
 <p>이 세 개가 통과하면, 그 도면은 남한테 보내도 두부가 안 떠요.</p>
 <h2>자주 묻는 질문</h2>
 <p><strong>Q. DXF 한글 깨짐, UTF-8로 저장하면 안 고쳐지나요?</strong><br>
@@ -184,18 +193,13 @@ dimstyle.dxf.dimtxsty = &quot;HANGUL&quot;   # 치수 문자도 한글 스타일
 AI는 도면 그리는 코드는 빠르게 잘 짜지만, &quot;이 환경에 한글 폰트가 있나&quot;, &quot;스타일을 텍스트마다 물렸나&quot; 같은 건 실제로 뽑아봐야 드러나요. 그래서 저는 AI가 짠 도면 스크립트는 무조건 한 번 렌더링해서 눈으로 확인하고 넘어가요.</p>
 <h2>정리하면요</h2>
 <p>DXF 한글 깨짐은 원인만 제대로 잡으면 세 줄로 끝나요.</p>
-<p>| 볼 것 | 착각하기 쉬운 것 | 실제 해결 |<br>
-|---|---|---|<br>
-| 증상 | 한글만 □□□로 뜸 | 인코딩 아님 → 폰트 문제 |<br>
-| 원인 | 파일이 UTF-8이 아니라서? | 기본 폰트 <code>txt.shx</code>에 한글 글리프 없음 |<br>
-| 해결 | 파일 다시 저장 | STYLE에 <code>malgun.ttf</code> 심고 텍스트마다 물리기 |<br>
-| 최후 | 한글 고집 | 안 잡히면 영문 라벨로 폴백 |</p>
+<div class="table-wrap"><table><thead><tr><th>볼 것</th><th>착각하기 쉬운 것</th><th>실제 해결</th></tr></thead><tbody><tr><td>증상</td><td>한글만 □□□로 뜸</td><td>인코딩 아님 → 폰트 문제</td></tr><tr><td>원인</td><td>파일이 UTF-8이 아니라서?</td><td>기본 폰트 <code>txt.shx</code>에 한글 글리프 없음</td></tr><tr><td>해결</td><td>파일 다시 저장</td><td>STYLE에 <code>malgun.ttf</code> 심고 텍스트마다 물리기</td></tr><tr><td>최후</td><td>한글 고집</td><td>안 잡히면 영문 라벨로 폴백</td></tr></tbody></table></div>
 <p>AI한테 도면을 맡길수록, 저는 &quot;코드가 돌았나&quot;보다 &quot;뽑은 걸 눈으로 봤나&quot;를 먼저 챙겨요.<br>
 한 번 렌더링해서 확인하는 그 30초가 두부 사태를 막아주더라고요.<br>
 혹시 같은 네모에 막혀 계셨다면, 파일 인코딩 말고 폰트 스타일부터 확인해보세요.<br>
 도면 자동화하다 만난 이런 함정들은 makefield.ai에 종류별로 모아두는 중이에요.</p>
-<p>---<br>
-태그: #DXF한글깨짐 #파이썬DXF #ezdxf한글 #DXF폰트 #CAD한글깨짐 #DXF두부 #도면자동생성 #malgun폰트 #txtshx #파이썬도면 #AI도면생성 #현장엔지니어 #제조업AI #엔지니어AI #MakeFieldAI</p>
+<hr>
+<p>태그: #DXF한글깨짐 #파이썬DXF #ezdxf한글 #DXF폰트 #CAD한글깨짐 #DXF두부 #도면자동생성 #malgun폰트 #txtshx #파이썬도면 #AI도면생성 #현장엔지니어 #제조업AI #엔지니어AI #MakeFieldAI</p>
 </article>
 <div class="endcard">
 <span class="stamp">MakeField AI</span>

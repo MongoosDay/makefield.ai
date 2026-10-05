@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -156,11 +168,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <h2>4. 진단 질문과 수리 지시는 다른 일이에요</h2>
 <p><strong>&quot;왜 안 돼?&quot;는 원인을 묻는 <strong class="u">진단 질문</strong>이지, 손대도 된다는 허락이 아니었어요.</strong> 15년 동안 설비 앞에서 일하면서 이 구분은 몸에 배어 있었습니다. 점검 요청을 받고 간 사람이 부품을 갈아 끼우고 오면, 결과가 좋아도 일단 말이 나와요. 다른 데랑 연결된 걸 건드렸으면 더 그렇고요.</p>
 <p>AI한테도 같은 선을 그어두기로 했습니다.</p>
-<p>| 들어온 말 | AI가 할 일 | 멈출 자리 |<br>
-|---|---|---|<br>
-| &quot;왜 안 돼?&quot; (진단) | 원인 + 해결에 필요한 최소 조치 | 그 이상은 말로 제안만 |<br>
-| &quot;고쳐줘&quot; (지시) | 고치고 결과 보고 | 다른 시스템으로 번지면 실행 전에 알림 |<br>
-| 짜증·급함이 보일 때 | <strong>결론 한 줄 먼저</strong> | 경위·표·선택지는 물어볼 때만 |</p>
+<div class="table-wrap"><table><thead><tr><th>들어온 말</th><th>AI가 할 일</th><th>멈출 자리</th></tr></thead><tbody><tr><td>&quot;왜 안 돼?&quot; (진단)</td><td>원인 + 해결에 필요한 최소 조치</td><td>그 이상은 말로 제안만</td></tr><tr><td>&quot;고쳐줘&quot; (지시)</td><td>고치고 결과 보고</td><td>다른 시스템으로 번지면 실행 전에 알림</td></tr><tr><td>짜증·급함이 보일 때</td><td><strong>결론 한 줄 먼저</strong></td><td>경위·표·선택지는 물어볼 때만</td></tr></tbody></table></div>
 <p>여기서 하나는 솔직하게 남겨둘게요. 제가 짜증 난 게 ①바꾼 것 자체 때문인지, ②묻지 않고 바꿔서인지, ③보고가 길어서인지는 <strong>저도 그때 대답을 안 했어요.</strong> 그래서 AI 쪽 기록에도 &quot;원인 미확인&quot;으로 남아 있습니다. 셋 중 하나로 정해버리면 다음에 엉뚱한 걸 고치게 되니까요.</p>
 <img src="img/04_fallback.png" alt="경로 후보 순회 — 세로로 4칸 사다리. 위에서부터 &#x27;CLAUDE_EXE 환경변수&#x27;, &#x27;새 설치본 경로&#x27;, &#x27;기존 winget 경로(예비)&#x27;, &#x27;PATH&#x27;. 각 칸 오른쪽에 &#x27;있으면 사용 → 없으면 아래로&#x27; 화살표. 하단 캡션 &#x27;하나가 사라져도 다음 칸이 받는다&#x27;" loading="lazy">
 <h2>5. 미리 답해두는 질문 둘</h2>

@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -145,11 +157,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 숫자로 바꿔야 다음에 제가 흔들리지 않습니다.</code></pre>
 <p><strong>미래를 맞히려고 쓰는 게 아니에요.</strong> 다음에 비슷한 상황이 오면 제가(그리고 제 AI가) 그때 기분대로 정할 걸 아니까, 지금 손을 미리 묶어두는 겁니다.</p>
 <p>그리고 저 네 줄이 전부 숫자는 아니라는 게 오히려 정직한 부분이라고 봐요. 2번과 3번은 숫자지만 1번과 4번은 여전히 말입니다. 다만 &quot;심각하면&quot;이 아니라 <strong class="u">확인 가능한 사실</strong>로 바뀌었어요. 봉쇄 확인 보도가 떴는지 안 떴는지는 다투기 어렵거든요. 전부 숫자로 바꾸겠다고 붙들고 있었으면 아마 지금도 규칙 파일을 못 고쳤을 거예요..</p>
-<p>| 조건을 적는 방식 | 예 | 나중에 다툴 수 있나 |<br>
-|---|---|---|<br>
-| 사람 말 (형용사) | &quot;심각하면&quot;, &quot;확전되면&quot; | 매번 다툼 |<br>
-| 확인 가능한 사실 | &quot;봉쇄 확인 보도가 뜨면&quot; | 거의 안 다툼 |<br>
-| 숫자 임계값 | &quot;지표 25 돌파&quot; | 안 다툼 |</p>
+<div class="table-wrap"><table><thead><tr><th>조건을 적는 방식</th><th>예</th><th>나중에 다툴 수 있나</th></tr></thead><tbody><tr><td>사람 말 (형용사)</td><td>&quot;심각하면&quot;, &quot;확전되면&quot;</td><td>매번 다툼</td></tr><tr><td>확인 가능한 사실</td><td>&quot;봉쇄 확인 보도가 뜨면&quot;</td><td>거의 안 다툼</td></tr><tr><td>숫자 임계값</td><td>&quot;지표 25 돌파&quot;</td><td>안 다툼</td></tr></tbody></table></div>
 <p>여러분이 쓰는 점검 기준은 이 표의 어느 칸에 있나요? 저는 맨 윗칸이었어요.</p>
 <h2>이런 질문이 나올 것 같아서</h2>
 <p><strong>Q. 애매할 땐 그냥 무조건 높게 잡으면 안전하지 않나요?</strong><br>
@@ -172,9 +180,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <img src="img/03_precommit_loop.png" alt="왼쪽 &#x27;오늘&#x27; 상자 — 판정 + 판정 근거 공개 + 뒤집을 조건 4줄. 가운데 하루 경과 화살표. 오른쪽 &#x27;다음 날&#x27; 상자 — 조건 대조 → 통과/오답 자진 신고 → 절차 수정. 아래 캡션 &#x27;공개해야 채점된다&#x27;" loading="lazy">
 <h2>오늘 바로 해볼 수 있는 세 줄</h2>
 <p>제 규칙 파일 손볼 때 이 순서로 했어요. 십 분이면 됩니다.</p>
-<p>1. 규칙에서 <strong>형용사로 된 조건</strong>을 찾아 형광펜 (심각한, 급격한, 이상한, 과도한)<br>
-2. 각 조건을 &quot;무엇이 확인되면&quot;으로 바꿔 쓰기 — 숫자로 안 되면 <strong>확인 가능한 사실</strong>로라도<br>
-3. 끝내 못 바꾸는 조건은 남겨두되, <strong>판정 근거를 그날 문서에 공개</strong>하게 만들기</p>
+<ol><li>규칙에서 <strong>형용사로 된 조건</strong>을 찾아 형광펜 (심각한, 급격한, 이상한, 과도한)</li><li>각 조건을 &quot;무엇이 확인되면&quot;으로 바꿔 쓰기 — 숫자로 안 되면 <strong>확인 가능한 사실</strong>로라도</li><li>끝내 못 바꾸는 조건은 남겨두되, <strong>판정 근거를 그날 문서에 공개</strong>하게 만들기</li></ol>
 <p>3번이 핵심입니다. 못 바꾼 조건을 없애는 게 아니라, 못 바꿨다는 걸 드러내 두는 거예요.</p>
 <img src="img/04_rule_rewrite.png" alt="규칙 문장 한 줄이 세 단계로 변환되는 흐름 — &quot;심각하면&quot; → &quot;봉쇄 확인 보도가 뜨면&quot; → &quot;지표 25 돌파&quot;. 각 단계 아래에 &#x27;다툼 여지&#x27; 막대가 길게·중간·짧게 줄어드는 표시" loading="lazy">
 <p>AI한테 판단을 맡기는 게 무섭다는 분들을 자주 만나요. 그런데 제가 그날 배운 건 좀 달랐습니다. 무서운 건 AI가 판단하는 게 아니라, <strong>판단 기준이 사람 말로만 적혀 있어서 누가 채점할 수도 없는 상태</strong>였어요. 기준을 숫자로 바꾼 뒤에야 저는 그 판정이 맞았는지 틀렸는지 나중에 따질 수 있게 됐습니다.</p>

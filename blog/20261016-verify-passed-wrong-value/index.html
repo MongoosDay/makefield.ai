@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -129,10 +141,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>이유는 따져보니 허무할 만큼 단순했습니다.</p>
 <p>역산은 오늘 값에서 오늘 등락폭을 빼서 <strong class="u">어제 값</strong>을 만들어내는 계산이에요. 그러니까 이 계산이 맞다고 말해주는 건 &quot;어제 적어둔 값이 맞았다&quot;까지입니다. 오늘 값이 맞는지는 애초에 보지 않아요.</p>
 <p>여기에 함정이 하나 더 있습니다. 어딘가 잘못 적힌 값이라도, <strong>그 값에 맞춰 계산된 등락폭이 같이 실려 있으면</strong> 둘이 자기들끼리는 앞뒤가 맞아요. 6,760에서 132.74를 빼면 정확히 6,627.26이 나오니까요. 안에서 아귀가 맞는 한 쌍이라, 밖에서 틀렸다는 걸 알 방법이 계산에는 없습니다.</p>
-<p>| 제가 믿고 있던 것 | 이 검증이 실제로 하는 일 | 못 잡는 것 |<br>
-|---|---|---|<br>
-| 소스가 엇갈릴 때의 최종 판별 기준 | 어제 적어둔 값이 맞았는지 확인 | 오늘 값이 틀렸는지 |<br>
-| 통과하면 확정 | 전날 값과 아귀가 맞는지 확인 | 자기들끼리만 아귀가 맞는 한 쌍 |</p>
+<div class="table-wrap"><table><thead><tr><th>제가 믿고 있던 것</th><th>이 검증이 실제로 하는 일</th><th>못 잡는 것</th></tr></thead><tbody><tr><td>소스가 엇갈릴 때의 최종 판별 기준</td><td>어제 적어둔 값이 맞았는지 확인</td><td>오늘 값이 틀렸는지</td></tr><tr><td>통과하면 확정</td><td>전날 값과 아귀가 맞는지 확인</td><td>자기들끼리만 아귀가 맞는 한 쌍</td></tr></tbody></table></div>
 <p>AI 검증 오류가 난 자리는 결국 규칙을 적은 제 문장이었어요. 9월 초에 이렇게 써넣었거든요.</p>
 <pre><code># 지시서에 넣어둔 규칙 (문구는 익명화)
 소스 간 값이 불일치하면 &#x27;값&#x27;이 아니라 &#x27;변화폭&#x27;으로 역산한다.

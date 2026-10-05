@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -118,13 +130,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>기생전류(shunt current)란 셀을 통과하지 않고 공통 전해액 배관으로 돌아가는 전류입니다. 재생에너지에 물린 설비는 출력을 수시로 내려야 하니, 낮은 출력에서 이 누수가 얼마나 커지는지가 곧 운전 효율이에요.</p>
 <h2>2. 어떻게 계산했나요</h2>
 <p>실험이 아니라 <strong>컴퓨터 시뮬레이션</strong>입니다 [Golmarz et al. 2025, 2장].</p>
-<p>| 항목 | 설정 |<br>
-|---|---|<br>
-| 스택 | 20셀, 바이폴라판 + 강철 끝판 |<br>
-| 전해액 | 수산화칼륨(KOH) 6 M |<br>
-| 온도 | 85 ℃ 고정 |<br>
-| 운전점 | 평균 셀 전압 1.3 → 1.8 V |<br>
-| 뺀 것 | 기체상 물질전달 제한 |</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>설정</th></tr></thead><tbody><tr><td>스택</td><td>20셀, 바이폴라판 + 강철 끝판</td></tr><tr><td>전해액</td><td>수산화칼륨(KOH) 6 M</td></tr><tr><td>온도</td><td>85 ℃ 고정</td></tr><tr><td>운전점</td><td>평균 셀 전압 1.3 → 1.8 V</td></tr><tr><td>뺀 것</td><td>기체상 물질전달 제한</td></tr></tbody></table></div>
 <p>장치가 하나 더 있어요. 기포 때문에 <strong>액체가 차지하는 비율</strong>을 스택 아래 100%에서 위 출구 50%로 줄게 넣고, 전도도는 그 비율의 1.5제곱에 비례시켰습니다 [Golmarz et al. 2025, 식(3)].<br>
 50%를 넣으면 0.5^1.5 ≈ 0.35. 위쪽 배관은 <strong>전기가 약 3분의 1만 통하는 길</strong>이 됩니다.</p>
 <img src="img/01_inlet_outlet.png" alt="아래 입구 배관은 잘 새고 위 출구 배관은 덜 샌다 — 01_inlet_outlet.png" loading="lazy">
@@ -161,7 +167,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 아니요. 에너지효율은 약 1400 mA에서 정점이고 이후 전압 상승으로 떨어집니다 [Golmarz et al. 2025, 초록].</p>
 <p><strong>Q. 32%는 실제 설비 값인가요?</strong><br>
 아니요. 20셀·85 ℃ 시뮬레이션의 가장 낮은 운전점 값입니다.</p>
-<p>---</p>
+<hr>
 <p>정리하면 부분부하의 효율 붕괴는 <strong>줄지 않는 누수를 작아진 생산량으로 나누는 문제</strong>예요. 논문은 전해액 분포 관리와 바이폴라판 설계·절연으로 양 끝 누수를 줄이는 방향을 제시합니다 [Golmarz et al. 2025, 3장].</p>
 <p>다음 편에서는 셀을 직렬로 더 쌓을수록 이 손해가 왜 커지는지 봅니다. 여러분 분야 논문에도 초록과 그림이 서로 다른 말을 하는 곳이 있던가요?</p>
 <p>AI로 논문 읽는 방법은 makefield.ai에 계속 쌓아두고 있습니다.</p>

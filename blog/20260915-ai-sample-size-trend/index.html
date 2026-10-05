@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -160,12 +172,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>확인 방법은 단순합니다. 그날 산출물에서 금지어를 찾으면 돼요.</p>
 <pre><code>findstr /C:&quot;경향&quot; /C:&quot;추세&quot; 산출물파일</code></pre>
 <p>걸린 문장마다 이 순서로 판정합니다.</p>
-<p>| 걸린 문장 상태 | 판정 | 조치 |<br>
-|---|---|---|<br>
-| 표본 수가 안 적혀 있다 | 위반 | 관측 문장으로 되돌림 |<br>
-| 표본 수가 있는데 20 미만 | 위반 | 숫자만 남기고 이름 삭제 |<br>
-| &quot;누적 5:1&quot; 처럼 숫자만 있다 | 통과 | 그대로 둠 |<br>
-| 규칙 위반을 설명하는 자리 | 통과 | 그대로 둠 |</p>
+<div class="table-wrap"><table><thead><tr><th>걸린 문장 상태</th><th>판정</th><th>조치</th></tr></thead><tbody><tr><td>표본 수가 안 적혀 있다</td><td>위반</td><td>관측 문장으로 되돌림</td></tr><tr><td>표본 수가 있는데 20 미만</td><td>위반</td><td>숫자만 남기고 이름 삭제</td></tr><tr><td>&quot;누적 5:1&quot; 처럼 숫자만 있다</td><td>통과</td><td>그대로 둠</td></tr><tr><td>규칙 위반을 설명하는 자리</td><td>통과</td><td>그대로 둠</td></tr></tbody></table></div>
 <p>저는 정정 당일 산출물을 이렇게 훑어봤는데 &#x27;경향&#x27;이 여덟 군데 나왔어요.<br>
 전부 &quot;왜 그 단어를 쓰면 안 되는지&quot; 설명하는 자리였고, 새로 선언된 경향은 0건이었습니다. 규칙이 하루는 버틴 셈이죠.</p>
 <h2>자주 나오는 반문 세 가지</h2>

@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -151,11 +163,7 @@ AI가 정리한 표를 보니, <strong>제가 &#x27;칼슘 제품&#x27;이라고
 <p>이게 AI로 정리해서 얻은 실제 결과예요. 정보를 예쁘게 모은 게 아니라, <strong>먹는 걸 하나 바꾼 것.</strong></p>
 <h2>4. 따라 하는 순서 (2026년 8월 기준)</h2>
 <p>유료 도구 없이 됩니다. 이미지를 읽는 AI면 다 돼요. 순서만 지키세요.</p>
-<p>1. <strong>구매내역과 제품별 성분 사진을 스크린샷으로 모은다.</strong> 쇼핑앱 주문내역 화면 + 각 제품 라벨/상세 성분 컷. 굳이 예쁘게 안 찍어도 글자만 읽히면 됩니다.<br>
-2. <strong>정리하지 말고 그대로 AI한테 올린다.</strong> 타이핑 금지가 오히려 핵심이에요. 사람이 옮겨 적는 순간 오타·단위 실수가 끼거든요.<br>
-3. <strong>표의 &#x27;열&#x27;을 콕 집어 지시한다.</strong> 제품명 / 성분 / 1회 용량 / 하루 알수 / 타이밍. 그리고 반드시 <strong>&quot;겹치는 성분은 따로 표시해줘&quot;</strong>를 붙인다. 이 한 줄이 중복 탐지를 켜는 스위치예요.<br>
-4. <strong>총량과 상한을 물어본다.</strong> &quot;성분별 하루 총합을 내주고, 일반 권장 상한을 넘는 게 있으면 알려줘.&quot; 단, 나온 숫자는 참고용이고 확정은 사람이 검증합니다.<br>
-5. <strong>결과를 눈으로 검증한다.</strong> AI가 읽은 성분·용량이 실제 라벨과 맞는지 한 통이라도 대조해봐요. 사진이 흐리면 AI가 숫자를 잘못 읽기도 하거든요.</p>
+<ol><li><strong>구매내역과 제품별 성분 사진을 스크린샷으로 모은다.</strong> 쇼핑앱 주문내역 화면 + 각 제품 라벨/상세 성분 컷. 굳이 예쁘게 안 찍어도 글자만 읽히면 됩니다.</li><li><strong>정리하지 말고 그대로 AI한테 올린다.</strong> 타이핑 금지가 오히려 핵심이에요. 사람이 옮겨 적는 순간 오타·단위 실수가 끼거든요.</li><li><strong>표의 &#x27;열&#x27;을 콕 집어 지시한다.</strong> 제품명 / 성분 / 1회 용량 / 하루 알수 / 타이밍. 그리고 반드시 <strong>&quot;겹치는 성분은 따로 표시해줘&quot;</strong>를 붙인다. 이 한 줄이 중복 탐지를 켜는 스위치예요.</li><li><strong>총량과 상한을 물어본다.</strong> &quot;성분별 하루 총합을 내주고, 일반 권장 상한을 넘는 게 있으면 알려줘.&quot; 단, 나온 숫자는 참고용이고 확정은 사람이 검증합니다.</li><li><strong>결과를 눈으로 검증한다.</strong> AI가 읽은 성분·용량이 실제 라벨과 맞는지 한 통이라도 대조해봐요. 사진이 흐리면 AI가 숫자를 잘못 읽기도 하거든요.</li></ol>
 <p>저도 4번에서 한 번 걸렸어요.<br>
 처음엔 &quot;이거 먹어도 돼?&quot;라고 두루뭉술하게 물었더니 원론적인 답만 돌아왔어요.<br>
 &quot;성분별 하루 총합을 숫자로 내고, 상한 넘는 것만 콕 집어줘&quot;라고 형태를 지정하고 나서야 쓸 만한 표가 나왔어요.<br>
@@ -176,19 +184,14 @@ AI가 사진 속 작은 글씨를 잘못 읽을 때가 있어서, 나온 숫자�
 아니요. 사진이 흐릿하면 숫자를 잘못 읽고, 권장량·상한도 개인 상태에 따라 달라요. AI 결과는 &#x27;정리·중복 발견&#x27;까지만 신뢰하고, 실제 복용량과 안전성은 반드시 전문가 확인을 거치세요. 이 글도 제 개인 정리 사례일 뿐 의학적 조언이 아닙니다.</p>
 <h2>정리하면요</h2>
 <p>영양제 정리는 라벨 옮겨 적기가 아니라, 스크린샷 던지기예요.</p>
-<p>| 볼 것 | 손으로 할 때 | AI로 할 때 |<br>
-|---|---|---|<br>
-| 성분표 옮기기 | 단위 뒤죽박죽·오타 | 스크린샷째 읽어 표로 정규화 |<br>
-| 성분 중복 | 라벨 열 개론 안 보임 | 세로로 세워 겹치는 칸 표시 |<br>
-| 하루 총량 | 계산 귀찮아 생략 | 총합+상한 초과 표시(참고용) |<br>
-| 결과 | 그냥 계속 먹음 | 겹치는 제품 교체 결정 |</p>
+<div class="table-wrap"><table><thead><tr><th>볼 것</th><th>손으로 할 때</th><th>AI로 할 때</th></tr></thead><tbody><tr><td>성분표 옮기기</td><td>단위 뒤죽박죽·오타</td><td>스크린샷째 읽어 표로 정규화</td></tr><tr><td>성분 중복</td><td>라벨 열 개론 안 보임</td><td>세로로 세워 겹치는 칸 표시</td></tr><tr><td>하루 총량</td><td>계산 귀찮아 생략</td><td>총합+상한 초과 표시(참고용)</td></tr><tr><td>결과</td><td>그냥 계속 먹음</td><td>겹치는 제품 교체 결정</td></tr></tbody></table></div>
 <p>핵심은 하나예요. <strong>생활 속 흩어진 데이터(스크린샷)를 AI한테 통째로 넘겨 한 표로 세우는 것.</strong><br>
 그 표가 서면 사람 눈엔 안 보이던 게 보이고, &#x27;뭘 바꿀지&#x27;가 정해집니다.<br>
 단, AI는 정리까지고 판단은 사람이라는 선만 지키면요.</p>
 <p>서랍에 굴러다니는 영양제, 오늘 밤 스크린샷 몇 장 찍어서 AI한테 한 표로 세워보시는 것부터 시작해보세요.<br>
 이렇게 생활 데이터를 AI로 구조화한 기록은 makefield.ai에 하나씩 모아두는 중이에요.</p>
-<p>---<br>
-태그: #영양제AI정리 #영양제성분중복 #영양제같이먹어도되나 #스크린샷AI분석 #영양제조합 #영양제타이밍 #AI활용법 #생활데이터AI #나만의AI #개인루틴자동화 #생성형AI #AI공부법 #현장엔지니어 #제조업AI #MakeFieldAI</p>
+<hr>
+<p>태그: #영양제AI정리 #영양제성분중복 #영양제같이먹어도되나 #스크린샷AI분석 #영양제조합 #영양제타이밍 #AI활용법 #생활데이터AI #나만의AI #개인루틴자동화 #생성형AI #AI공부법 #현장엔지니어 #제조업AI #MakeFieldAI</p>
 </article>
 <div class="endcard">
 <span class="stamp">MakeField AI</span>

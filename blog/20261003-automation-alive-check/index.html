@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -151,19 +163,11 @@ QA     운영중    2026-08-31 09:50     ← 7일 전</code></pre>
 <p>정답은 같은 줄의 오른쪽 끝에 있었어요. 갱신 시각. 저 값 하나만 오늘과 빼면 7일이 나옵니다.</p>
 <h2>그래서 무엇을 보고 판정해야 하나요</h2>
 <p>네 가지 신호를 놓고 각각 뭘 증명하는지 정리해봤습니다.</p>
-<p>| 보는 것 | 실제로 증명하는 것 | 왜 속나 |<br>
-|---|---|---|<br>
-| 로그 파일 수정 날짜 | 누군가 이 파일에 썼다 | 쓴 주체가 다른 놈일 수 있다 |<br>
-| 상태 칸 문자열 | 마지막으로 끝났을 때의 결과 | 다음 실행이 없어도 안 바뀐다 |<br>
-| 스케줄러 종료 코드 0 | 프로세스가 정상 종료했다 | 아무 일도 안 하고 끝나도 0이다 |<br>
-| <strong>주체가 남긴 갱신 시각</strong> | <strong>그 주체가 마지막으로 살아 있던 시점</strong> | (이게 유일한 증거) |</p>
+<div class="table-wrap"><table><thead><tr><th>보는 것</th><th>실제로 증명하는 것</th><th>왜 속나</th></tr></thead><tbody><tr><td>로그 파일 수정 날짜</td><td>누군가 이 파일에 썼다</td><td>쓴 주체가 다른 놈일 수 있다</td></tr><tr><td>상태 칸 문자열</td><td>마지막으로 끝났을 때의 결과</td><td>다음 실행이 없어도 안 바뀐다</td></tr><tr><td>스케줄러 종료 코드 0</td><td>프로세스가 정상 종료했다</td><td>아무 일도 안 하고 끝나도 0이다</td></tr><tr><td><strong>주체가 남긴 갱신 시각</strong></td><td><strong>그 주체가 마지막으로 살아 있던 시점</strong></td><td>(이게 유일한 증거)</td></tr></tbody></table></div>
 <p>앞의 세 개는 전부 &quot;누군가 뭔가 했다&quot;까지만 말해줍니다. 마지막 하나만 &quot;이 자동화가 언제까지 살아 있었다&quot;를 말해줘요. 여러분은 자동화 돌고 있는지 확인하실 때, 이 넷 중 어느 걸 보고 계신가요?</p>
 <h2>따라 하실 수 있게 4단계로</h2>
 <p><strong>전제</strong>: 윈도우 10/11 + 파이썬 3, 작업 스케줄러로 스크립트를 굴리는 구조. 2026년 9월 기준입니다.</p>
-<p>1. <strong>로그 파일에 누가 쓰는지 코드에서 먼저 찾습니다.</strong> 파일 이름으로 프로젝트 전체를 검색하세요. 저는 여기서 스크립트 두 개가 같은 파일을 물고 있는 걸 발견했어요.<br>
-2. <strong>로그를 눈으로 읽지 말고 종류별로 셉니다.</strong> 위의 집계 한 줄이면 충분해요. 확인하려는 자동화의 기록이 <strong>0건</strong>이면 그 파일은 증거가 아닙니다.<br>
-3. <strong>자동화마다 자기 이름으로 시각을 남기게 합니다.</strong> 실행 성공 직후 <code>이름 / 시각 / 방금 한 일</code> 한 줄이면 돼요. 하트비트라고 부르는 그거고, 파일 한 줄이든 DB 한 행이든 형식은 상관없습니다. 중요한 건 <strong>다른 놈이 대신 못 써주는 자리</strong>여야 한다는 것.<br>
-4. <strong>경고 임계값은 기대 주기의 2~3배로 박습니다.</strong> 매일 도는 자동화면 3일, 주 1회면 2~3주. 제 점검 규칙은 3일이었고, 그래서 이번에도 결국은 그 규칙이 잡아냈습니다!</p>
+<ol><li><strong>로그 파일에 누가 쓰는지 코드에서 먼저 찾습니다.</strong> 파일 이름으로 프로젝트 전체를 검색하세요. 저는 여기서 스크립트 두 개가 같은 파일을 물고 있는 걸 발견했어요.</li><li><strong>로그를 눈으로 읽지 말고 종류별로 셉니다.</strong> 위의 집계 한 줄이면 충분해요. 확인하려는 자동화의 기록이 <strong>0건</strong>이면 그 파일은 증거가 아닙니다.</li><li><strong>자동화마다 자기 이름으로 시각을 남기게 합니다.</strong> 실행 성공 직후 <code>이름 / 시각 / 방금 한 일</code> 한 줄이면 돼요. 하트비트라고 부르는 그거고, 파일 한 줄이든 DB 한 행이든 형식은 상관없습니다. 중요한 건 <strong>다른 놈이 대신 못 써주는 자리</strong>여야 한다는 것.</li><li><strong>경고 임계값은 기대 주기의 2~3배로 박습니다.</strong> 매일 도는 자동화면 3일, 주 1회면 2~3주. 제 점검 규칙은 3일이었고, 그래서 이번에도 결국은 그 규칙이 잡아냈습니다!</li></ol>
 <img src="img/03_heartbeat.png" alt="하트비트 한 줄의 구조. 가운데 파란 상자에 큰 글씨 &#x27;자동화 A — 2026-09-07 04:00 — 브리핑 1건 생성&#x27;. 상자 위로 세 개의 라벨 화살표가 각 부분을 가리킴 — 왼쪽 &#x27;누가(주체 이름)&#x27;, 가운데 &#x27;언제(성공 직후 시각)&#x27;, 오른쪽 &#x27;무엇을(방금 한 일)&#x27;. 상자 아래 회색 띠에 &#x27;기대 주기 24시간 × 3 = 임계 72시간&#x27;. 하단 캡션 &#x27;남이 대신 써줄 수 없는 자리에, 세 조각을 한 줄로&#x27;" loading="lazy">
 <p><strong>확인 방법</strong>: 잘 도는 자동화 하나를 일부러 하루 멈춰보세요. 임계값이 지난 뒤 경고가 뜨면 성공입니다. 안 뜨면 그 감시는 지금 아무것도 안 보고 있는 거예요.</p>
 <img src="img/04_before_after.png" alt="판정 기준 전후 비교 2단. 위쪽 회색 패널 &#x27;전&#x27; — 상자 세 개 &#x27;파일 수정: 오늘&#x27;, &#x27;상태: 운영중&#x27;, &#x27;종료코드: 0&#x27;이 모두 초록색이고 아래에 붉은 글씨 &#x27;판정: 정상(오답)&#x27;. 아래쪽 파란 패널 &#x27;후&#x27; — 상자 하나 &#x27;자기 이름으로 남긴 갱신: 8/31&#x27;만 붉은색, 아래에 &#x27;판정: 7일째 정지&#x27;. 하단 캡션 &#x27;신호를 늘리지 말고, 주인이 있는 신호 하나를 만든다&#x27;" loading="lazy">

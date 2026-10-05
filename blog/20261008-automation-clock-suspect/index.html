@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -131,13 +143,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <pre><code>[확정] 전일 종가 7,682     ← 실제 확정값은 7,673.52</code></pre>
 <img src="img/02_clock.png" alt="시계 두 개 나란히 — 왼쪽 &#x27;서울 04:00 자동화 실행&#x27;, 오른쪽 &#x27;뉴욕 15:00 장 마감까지 60분 남음&#x27;. 아래 캡션 &#x27;같은 순간이다&#x27;" loading="lazy">
 <p>다섯 건의 어긋난 폭은 이랬어요. 게재치는 여러 소스 범위, 확정치는 마감 후 값입니다.</p>
-<p>| 항목 | 자동화가 적은 값 | 실제 확정값 | 성격 |<br>
-|---|---|---|---|<br>
-| 해외 대표 지수 A | 7,681.96 ~ 7,683.48 | 7,673.52 | 장중 스냅샷 |<br>
-| 해외 대표 지수 B | 52,776.58 ~ 52,800.65 | 52,786.07 | 장중 스냅샷 |<br>
-| 해외 대표 지수 C | 26,379.01 ~ 26,452.10 | 26,421.41 | 장중 스냅샷 |<br>
-| 소형주 지수 | 2,972.54 ~ 2,973.93 | 2,960.20 | 장중 스냅샷 |<br>
-| 변동성 지표 | 15.30 | 15.72 | 장중 스냅샷 |</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>자동화가 적은 값</th><th>실제 확정값</th><th>성격</th></tr></thead><tbody><tr><td>해외 대표 지수 A</td><td>7,681.96 ~ 7,683.48</td><td>7,673.52</td><td>장중 스냅샷</td></tr><tr><td>해외 대표 지수 B</td><td>52,776.58 ~ 52,800.65</td><td>52,786.07</td><td>장중 스냅샷</td></tr><tr><td>해외 대표 지수 C</td><td>26,379.01 ~ 26,452.10</td><td>26,421.41</td><td>장중 스냅샷</td></tr><tr><td>소형주 지수</td><td>2,972.54 ~ 2,973.93</td><td>2,960.20</td><td>장중 스냅샷</td></tr><tr><td>변동성 지표</td><td>15.30</td><td>15.72</td><td>장중 스냅샷</td></tr></tbody></table></div>
 <p>재밌는 건 어긋난 방향이 제각각이라는 거예요. 어떤 건 높게, 어떤 건 낮게 적혔습니다. 한쪽으로 쏠렸으면 진작 눈치챘을 텐데, 골고루 틀려서 그냥 오차처럼 보였어요..</p>
 <h2>3. 라벨 규칙은 이미 있었는데 또 났습니다</h2>
 <p>여기서 제일 부끄러운 부분을 적어야겠네요.</p>
@@ -151,9 +157,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>검증 방법을 바꾼 게 아니라 <strong class="u">적용 날짜</strong>만 한 칸 민 거예요. 그 한 칸이 다섯 건을 살렸습니다!</p>
 <h2>4. 용의자 목록에 &#x27;언제&#x27;를 넣었어요</h2>
 <p>그래서 AI 자동화 데이터 오류를 뒤지는 순서 자체를 바꿨어요. 원래 두 명이던 용의자를 셋으로 늘렸습니다.</p>
-<p>1. <strong>규칙이 틀렸나</strong> — 계산식·판정 기준을 손계산으로 대조<br>
-2. <strong>소스가 틀렸나</strong> — 다른 출처로 교차확인<br>
-3. <strong>내가 이걸 언제 하고 있나</strong> — 실행 시각이 데이터가 확정되는 시각보다 앞서 있는지</p>
+<ol><li><strong>규칙이 틀렸나</strong> — 계산식·판정 기준을 손계산으로 대조</li><li><strong>소스가 틀렸나</strong> — 다른 출처로 교차확인</li><li><strong>내가 이걸 언제 하고 있나</strong> — 실행 시각이 데이터가 확정되는 시각보다 앞서 있는지</li></ol>
 <img src="img/04_suspects.png" alt="용의자 3인 라인업 — 왼쪽부터 &#x27;규칙&#x27; 무죄 도장, &#x27;소스&#x27; 무죄 도장, &#x27;실행 시각&#x27; 유죄 도장. 세 번째 인물 위에 말풍선 &#x27;매일 똑같아서 변수로 안 보였다&#x27;. 하단 캡션 &#x27;상수처럼 보이는 조건이 진짜 변수였다&#x27;" loading="lazy">
 <p>3번이 왜 빠져 있었는지도 알겠더라고요. <strong>매일 똑같이 반복되는 조건은 너무 당연해서 변수 후보에 안 오릅니다.</strong> 새벽 4시는 제가 정한 값이고 반년 넘게 한 번도 안 바뀌었으니까, 그건 제 머릿속에서 조건이 아니라 배경이었어요.</p>
 <p>자동화를 만들 때 실행 시각은 보통 &quot;내가 아침에 읽기 편한 시간&quot;으로 정하잖아요. 그게 <strong>데이터가 확정되는 시각과 맞는지</strong>는 아무도 안 물어봅니다. 저도 안 물어봤고요..</p>

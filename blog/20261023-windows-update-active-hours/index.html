@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -130,11 +142,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 조회 시점까지 21시간 연속 가동</code></pre>
 <p>네 번 꺼졌다고 믿었던 날은 9월 18일이었어요. 부팅 시각은 이틀 전이고요. 그러니까 그 PC는 그날 내내 멀쩡히 돌고 있었습니다.</p>
 <p>여기서 걸리면 다음은 System 로그입니다. 이 세 종류만 보면 됩니다.</p>
-<p>| 이벤트 ID | 뜻 | 제 결과(당일) |<br>
-|---|---|---|<br>
-| 41 / 6008 | 예기치 않은 종료 (전원이 그냥 끊김) | 0건 |<br>
-| 1074 | 누군가 종료·재시작을 개시함 | 0건 |<br>
-| 42 / 506 / 507 | 절전 진입 · 복귀 | 0건 |</p>
+<div class="table-wrap"><table><thead><tr><th>이벤트 ID</th><th>뜻</th><th>제 결과(당일)</th></tr></thead><tbody><tr><td>41 / 6008</td><td>예기치 않은 종료 (전원이 그냥 끊김)</td><td>0건</td></tr><tr><td>1074</td><td>누군가 종료·재시작을 개시함</td><td>0건</td></tr><tr><td>42 / 506 / 507</td><td>절전 진입 · 복귀</td><td>0건</td></tr></tbody></table></div>
 <pre><code>Get-WinEvent -FilterHashtable @{LogName=&#x27;System&#x27;; Id=1074,6008,41,42} -MaxEvents 20 |
   Select-Object TimeCreated, Id, ProviderName</code></pre>
 <p>세 줄 다 0건이면 답은 하나예요. <strong>꺼진 건 PC가 아니라 내 화면입니다!</strong></p>
@@ -182,9 +190,7 @@ reg add &quot;HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings&quot; /v ActiveH
 <p>1번이 본잠금, 2번이 보조예요. 1번만 넣어도 로그인 상태면 막히지만, 잠금화면으로 두고 나갈 때를 생각하면 2번을 같이 넣는 게 마음 편합니다. 7~23시 범위는 문제없이 들어갔어요.</p>
 <p><strong>그리고 이건 공짜가 아닙니다.</strong> 설치는 계속되니까 보안 구멍이 생기진 않지만, <strong>완료는 제가 직접 재부팅해야 됩니다.</strong> 그래서 주말에 한 번 껐다 켜는 걸 규칙으로 같이 붙였어요.</p>
 <p>제대로 들어갔는지 확인하는 방법은 이렇습니다.</p>
-<p>1. 값부터 되읽습니다. <code>reg query</code>로 세 값이 <code>1</code>, <code>7</code>, <code>23</code>으로 찍히는지, 타입이 <code>REG_DWORD</code>인지 같이 보세요. 문자열로 들어가면 무시됩니다.<br>
-2. 다음 부팅 시각이 <strong>내가 누른 시각과 일치하는지</strong> 봅니다. 안 누른 시각에 찍혀 있으면 아직 안 막힌 거예요.<br>
-3. 한 달쯤 뒤에 1074를 다시 조회해 <code>SYSTEM</code> 개시 건이 0인지 봅니다. 설정은 넣는 순간이 아니라 <strong>한 달 뒤에 검증되는 것</strong>이더라고요.</p>
+<ol><li>값부터 되읽습니다. <code>reg query</code>로 세 값이 <code>1</code>, <code>7</code>, <code>23</code>으로 찍히는지, 타입이 <code>REG_DWORD</code>인지 같이 보세요. 문자열로 들어가면 무시됩니다.</li><li>다음 부팅 시각이 <strong>내가 누른 시각과 일치하는지</strong> 봅니다. 안 누른 시각에 찍혀 있으면 아직 안 막힌 거예요.</li><li>한 달쯤 뒤에 1074를 다시 조회해 <code>SYSTEM</code> 개시 건이 0인지 봅니다. 설정은 넣는 순간이 아니라 <strong>한 달 뒤에 검증되는 것</strong>이더라고요.</li></ol>
 <img src="img/04_diagnosis_order.png" alt="진단 순서 3단 — 세로 3단 박스. ①&#x27;마지막 부팅 시각 = 오늘인가?&#x27; (아니오 → 오른쪽으로 빠지는 회색 화살표 &#x27;원격 세션 로그로&#x27;) ②&#x27;1074가 있는가 · 누가 눌렀나?&#x27; (SYSTEM → 오른쪽 &#x27;업데이트가 범인&#x27;) ③&#x27;활성 시간 범위 안이었나?&#x27; (밖 → 오른쪽 &#x27;여기를 고친다&#x27;). 각 박스 왼쪽에 번호 원형 배지, 하단 캡션 &#x27;전원 → 화면 → 재시작 주체 → 시간대 순서로 좁힌다&#x27;" loading="lazy">
 <p>참고로 제 경우엔 원인이 하나가 아니었어요. 체감한 네 번은 원격 끊김, 진짜 재시작은 이틀 전 업데이트, 엿새 전엔 절전에서 못 깨어난 전원 손실이 따로 두 건. <strong>증상이 하나라고 원인도 하나인 건 아니었습니다.</strong></p>
 <h2>이 얘기 하면 나오는 질문들</h2>

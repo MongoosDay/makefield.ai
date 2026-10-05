@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -156,15 +168,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 AI 리서치 시키는 법에서 양식 다음으로 중요한 게 이 부분이더라고요. 그래서 장치를 세 개 넣었습니다.</p>
 <p>첫째, 중복 방지 장부예요. 다룬 회사 이름을 한 줄씩 파일에 적어두고, 다음 실행 때 그 목록을 프롬프트에 통째로 넣습니다. 안 넣으면 AI는 유명한 사례부터 계속 다시 가져와요.</p>
 <p>둘째, 요일마다 시대를 다르게 배정했어요. 한 우물만 파면 비슷한 회사만 나오거든요.</p>
-<p>| 요일 | 그날의 슬롯 |<br>
-|---|---|<br>
-| 월 | 고전 (산업화~1970년대) |<br>
-| 화 | 1970~1995년 |<br>
-| 수 | 1995~2008년 (웹) |<br>
-| 목 | 2008~2015년 (모바일·소프트웨어) |<br>
-| 금 | 2015년~현재 |<br>
-| 토 | 한국 기업 |<br>
-| 일 | 실패 사례 |</p>
+<div class="table-wrap"><table><thead><tr><th>요일</th><th>그날의 슬롯</th></tr></thead><tbody><tr><td>월</td><td>고전 (산업화~1970년대)</td></tr><tr><td>화</td><td>1970~1995년</td></tr><tr><td>수</td><td>1995~2008년 (웹)</td></tr><tr><td>목</td><td>2008~2015년 (모바일·소프트웨어)</td></tr><tr><td>금</td><td>2015년~현재</td></tr><tr><td>토</td><td>한국 기업</td></tr><tr><td>일</td><td>실패 사례</td></tr></tbody></table></div>
 <p>셋째가 제일 효과가 좋았어요. 리포트 맨 끝에 &quot;오늘 훈련할 판단 1개&quot;를 질문 한 문장으로 쓰게 했습니다.<br>
 어제 것은 이랬어요.<br>
 &quot;내가 만들려는 것의 첫 유통은 내가 새로 만들 채널인가, 아니면 이미 사람이 모여 서성이는 남의 자리인가.&quot;<br>
@@ -192,8 +196,8 @@ AI 리서치 시키는 법에서 양식 다음으로 중요한 게 이 부분이
 <p>정리하면, 제가 바꾼 건 질문이 아니라 답안지였어요.<br>
 조사 범위를 늘리는 대신 <strong class="u">칸을 먼저 그렸고</strong>, 그 칸을 못 채우면 비워두게 했습니다. 그랬더니 AI가 아는 척을 멈추고 아는 것만 적기 시작했어요!</p>
 <p>쌓인 리포트를 나중에 어떻게 찾아 꺼내 쓰는지는 다음 편에 이어서 적겠습니다.</p>
-<p>---<br>
-쓰고 있는 답안지 양식이랑 리포트 실물은 makefield.ai에 그대로 올려둡니다. 가져다 쓰실 만한 게 있으면 그대로 쓰세요.</p>
+<hr>
+<p>쓰고 있는 답안지 양식이랑 리포트 실물은 makefield.ai에 그대로 올려둡니다. 가져다 쓰실 만한 게 있으면 그대로 쓰세요.</p>
 <p>태그: #AI리서치시키는법 #AI조사자동화 #AI보고서양식 #AI프롬프트작성법 #AI리포트 #AI에이전트 #무인자동화 #파이썬자동화 #AI할루시네이션 #AI출력형식 #작업스케줄러 #AI로일하기 #AI업무활용 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

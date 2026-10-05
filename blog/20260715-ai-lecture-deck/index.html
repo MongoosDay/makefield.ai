@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -192,21 +204,16 @@ PLC 배울 때 매뉴얼 외운 게 아니라 결선하고 태워먹으면서 �
 <p><strong>Q3. 강의 용어 준비는 어디까지 하나요?</strong><br>
 영어 원문 + 한글 발음 + 한 줄 뜻까지가 최소예요. 근데 발음만 외우면 예상 밖 질문에서 티가 납니다. 암기 말고 <strong class="u">내 업무에 대입해 이해</strong>하는 게 진짜 준비예요.</p>
 <h2>다음에 AI 강의 준비할 때 쓸 체크리스트</h2>
-<p>- [ ] 슬로건 슬라이드 → 동작 원리·용어·ROI·보안으로 <strong>내용 복원</strong><br>
-- [ ] 용어집: 영어 원문 + 한글 발음 + 한 줄 뜻 (그리고 내 업무에 대입)<br>
-- [ ] 숫자 슬라이드마다 <strong>출처</strong> 표기<br>
-- [ ] 슬라이드별 대본(스크립트) 별도 문서화<br>
-- [ ] 라이브 시연은 <strong>전날 리허설에서 1회 깨뜨려보기</strong><br>
-- [ ] 시간 배분: 앞부분 개념 설명 과욕 금지 (뒤가 부메랑)</p>
+<ul><li>[ ] 슬로건 슬라이드 → 동작 원리·용어·ROI·보안으로 <strong>내용 복원</strong></li><li>[ ] 용어집: 영어 원문 + 한글 발음 + 한 줄 뜻 (그리고 내 업무에 대입)</li><li>[ ] 숫자 슬라이드마다 <strong>출처</strong> 표기</li><li>[ ] 슬라이드별 대본(스크립트) 별도 문서화</li><li>[ ] 라이브 시연은 <strong>전날 리허설에서 1회 깨뜨려보기</strong></li><li>[ ] 시간 배분: 앞부분 개념 설명 과욕 금지 (뒤가 부메랑)</li></ul>
 <p>첫 유료 강의에서 배운 건 세 가지예요.<br>
 자료는 발표 못 하고 남을 만큼 두껍게 만들 것,<br>
 라이브 시연은 반드시 리허설에서 한 번 깨져볼 것,<br>
 용어는 암기가 아니라 내재화될 때까지 파둘 것.</p>
-<p>저처럼 현장에서 일하다 AI를 실무에 굴리는 이야기, 그리고 도면·PLC를 AI와 함께 다루는 기록을 [makefield.ai](<a href="https://makefield.ai)에" target="_blank" rel="noopener">https://makefield.ai)에</a> 모으고 있어요.</p>
+<p>저처럼 현장에서 일하다 AI를 실무에 굴리는 이야기, 그리고 도면·PLC를 AI와 함께 다루는 기록을 <a href="https://makefield.ai" target="_blank" rel="noopener">makefield.ai</a>에 모으고 있어요.</p>
 <p>다음 글에서는 그 라이브 시연 준비 과정, 그러니까 <strong class="u">AI한테 CAD 도면을 그리게 만드는 얘기</strong>를 따로 풀어볼게요.<br>
 혹시 여러분은 말 잘하는 강사와 자료 두꺼운 강사 중 어느 쪽이 기억에 남던가요?</p>
-<p>---<br>
-태그: #AI강의발표자료 #AI강의준비 #경영진AI교육 #AI강의후기 #AI라이브시연 #AI발표자료만들기 #현장엔지니어 #제조업AI #강의준비팁 #RAG #AI교육자료 #PPT발표자료 #강의후기 #AI실전 #MakeFieldAI</p>
+<hr>
+<p>태그: #AI강의발표자료 #AI강의준비 #경영진AI교육 #AI강의후기 #AI라이브시연 #AI발표자료만들기 #현장엔지니어 #제조업AI #강의준비팁 #RAG #AI교육자료 #PPT발표자료 #강의후기 #AI실전 #MakeFieldAI</p>
 </article>
 <div class="endcard">
 <span class="stamp">MakeField AI</span>

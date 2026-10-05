@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -136,11 +148,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>숫자를 보고 나니 판단이 쉬워졌어요.<br>
 차이가 있다는 연구가 절반, 없다는 연구가 절반. 그것도 스무 명 남짓으로 본 결과입니다. 그런데 값은 두 배 넘게 비싸고 보관도 까다로워요.</p>
 <p>결론을 유지로 바꿨고, 쓰던 걸 그대로 다시 샀습니다.</p>
-<p>| | 1차 검색 (그냥 물어봄) | 2차 검색 (판매 도메인 제외) |<br>
-|---|---|---|<br>
-| 근거 출처 | 판매사 블로그 다수 | 논문·리뷰 논문 |<br>
-| 나온 답 | &quot;상위 형태로 바꿔라&quot; | &quot;형태 차이보다 개인차&quot; |<br>
-| 내 결정 | 교체 (지출 증가) | <strong>유지 (지출 0)</strong> |</p>
+<div class="table-wrap"><table class="rowhead"><thead><tr><th></th><th>1차 검색 (그냥 물어봄)</th><th>2차 검색 (판매 도메인 제외)</th></tr></thead><tbody><tr><td>근거 출처</td><td>판매사 블로그 다수</td><td>논문·리뷰 논문</td></tr><tr><td>나온 답</td><td>&quot;상위 형태로 바꿔라&quot;</td><td>&quot;형태 차이보다 개인차&quot;</td></tr><tr><td>내 결정</td><td>교체 (지출 증가)</td><td><strong>유지 (지출 0)</strong></td></tr></tbody></table></div>
 <p>그날 기록에 저는 이렇게 적었어요. &quot;판매 소스 배제 검색이 결정적이었음.&quot;<br>
 검색을 더 많이 한 게 아니라, 볼 자료를 좁혔더니 답이 달라진 겁니다.</p>
 <h2>3. 같은 방법을 다른 항목에도 돌려봤어요</h2>
@@ -157,10 +165,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <h2>4. 숫자가 반으로 줄었는데 실제로는 늘었습니다</h2>
 <p>여기가 이번 정리에서 제일 재밌었던 부분이에요.</p>
 <p>항목 하나를 다른 제품으로 갈아치웠더니 라벨 함량이 절반으로 떨어졌습니다. 600에서 300으로요. 보통 여기서 &quot;어, 부족해지는 거 아냐?&quot; 하고 되돌리잖아요. 그런데 계산을 시켜보니 정반대였어요.</p>
-<p>| | 라벨에 적힌 양(명목) | 실제로 흡수되는 양(추정) |<br>
-|---|---|---|<br>
-| 바꾸기 전 | 600 | 약 180 |<br>
-| 바꾼 후 | <strong>300</strong> | <strong>약 204</strong> |</p>
+<div class="table-wrap"><table class="rowhead"><thead><tr><th></th><th>라벨에 적힌 양(명목)</th><th>실제로 흡수되는 양(추정)</th></tr></thead><tbody><tr><td>바꾸기 전</td><td>600</td><td>약 180</td></tr><tr><td>바꾼 후</td><td><strong>300</strong></td><td><strong>약 204</strong></td></tr></tbody></table></div>
 <p>빠져나간 300이 흡수율 4%짜리였거든요. 실제로 몸에 들어가던 건 12 남짓이었고, 나머지는 장에 그대로 남아 애초에 제가 불편했던 원인이었습니다. <strong>큰 숫자가 오히려 부작용원이었던 거죠.</strong></p>
 <p>그래서 요즘은 AI한테 계산을 시킬 때 <strong class="u">실효 기준</strong>으로 다시 뽑으라고 붙입니다. 명목 총량으로 비교하면 성분표 예쁜 쪽이 무조건 이기거든요.</p>
 <img src="img/03_nominal_vs_real.png" alt="상단 제목 &#x27;총량은 줄었는데 흡수는 늘었다&#x27;. 막대그래프 두 그룹. 왼쪽 &#x27;라벨에 적힌 양&#x27; — 600 막대가 300으로 반토막(캡션 600→300 절반으로 감소). 오른쪽 &#x27;실제 흡수되는 양&#x27; — 180 막대가 204로 상승(캡션 180→204 오히려 증가). 하단 한 줄 &#x27;빠진 300은 흡수율 4% — 실제 기여는 12 남짓&#x27;" loading="lazy">
@@ -179,11 +184,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>그래서 이번엔 전환한 날짜에 2주를 더해서 일정을 걸었습니다. 관찰을 시작한 날이 아니라 <strong>판정하는 날</strong>로요.</p>
 <img src="img/04_judgment_date.png" alt="상단 제목 &#x27;관찰 시작일 말고 판정일을 넣는다&#x27;. 가로 타임라인 두 줄. 위 &#x27;이번에 겪은 쪽&#x27; — 계획 수립 → &#x27;판정 예정&#x27; 지점이 빈 원으로 비어 있음(아무도 안 함) → 회색 두꺼운 구간 &#x27;두 달 경과&#x27; → 붉은 점 &#x27;같은 문제 재발&#x27;. 아래 &#x27;이번에 바꾼 쪽&#x27; — 전환 실행 → &#x27;+2주 판정일&#x27; 지점이 채워진 점 → 통과 / 실패→다음 두 갈래" loading="lazy">
 <p>제 AI 추천 근거 확인 순서는 결국 다섯 줄로 굳었습니다.</p>
-<p>- AI가 낸 결론보다 그 결론을 만든 <strong>자료의 출신</strong>을 먼저 본다<br>
-- 지출이 늘어나는 답이 나오면 판매 도메인을 빼고 한 번 더 시킨다<br>
-- 효과 여부만 묻지 말고 &quot;누구한테 확인된 효과냐&quot;를 같이 시킨다<br>
-- 라벨 숫자 말고 실제로 쓸모 있는 양으로 다시 계산시킨다<br>
-- 관찰 기한을 잡았으면 판정하는 날을 일정에 박는다</p>
+<ul><li>AI가 낸 결론보다 그 결론을 만든 <strong>자료의 출신</strong>을 먼저 본다</li><li>지출이 늘어나는 답이 나오면 판매 도메인을 빼고 한 번 더 시킨다</li><li>효과 여부만 묻지 말고 &quot;누구한테 확인된 효과냐&quot;를 같이 시킨다</li><li>라벨 숫자 말고 실제로 쓸모 있는 양으로 다시 계산시킨다</li><li>관찰 기한을 잡았으면 판정하는 날을 일정에 박는다</li></ul>
 <p>다섯 항목을 이 순서로 훑었더니 두 개가 뒤집히고 한 개는 아예 안 사기로 했습니다. AI가 게을렀던 게 아니에요. 제가 &quot;어디서 나온 얘기야?&quot;를 안 물어봤을 뿐이었습니다!</p>
 <p>여러분이 AI한테 마지막으로 뭔가 추천받았을 때, 그 근거를 쓴 사람은 그 물건을 파는 사람이었을까요 아니었을까요? 저는 이번에야 처음 눌러봤어요.</p>
 <p>뒤집힌 판단만 따로 모아둔 칸이 makefield.ai에 있습니다.</p>

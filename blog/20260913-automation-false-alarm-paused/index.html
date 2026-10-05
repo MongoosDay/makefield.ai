@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -144,11 +156,7 @@ REM Uncomment 2 lines below to resume.</code></pre>
 <p>점수도 마찬가지예요. 정상인데 C등급이 뜨면, 그다음부터는 등급을 봐도 아무 판단을 못 하게 됩니다.</p>
 <h2>4. 세 번째 상태를 만들었습니다</h2>
 <p>고친 방식은 단순해요. 판정을 세 칸으로 늘렸습니다.</p>
-<p>| 상태 | 판정 근거 | 알림 등급 |<br>
-|---|---|---|<br>
-| 정상 | 오늘자 산출물 있음 | OK |<br>
-| 의도적 중지 | 실행 파일에 중지 표찰 있음 | INFO (검사 생략) |<br>
-| 고장 | 표찰 없는데 산출물 없음 | CRITICAL |</p>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>판정 근거</th><th>알림 등급</th></tr></thead><tbody><tr><td>정상</td><td>오늘자 산출물 있음</td><td>OK</td></tr><tr><td>의도적 중지</td><td>실행 파일에 중지 표찰 있음</td><td>INFO (검사 생략)</td></tr><tr><td>고장</td><td>표찰 없는데 산출물 없음</td><td>CRITICAL</td></tr></tbody></table></div>
 <p>핵심은 표찰을 어디에 두느냐였어요. 저는 별도 설정 파일을 새로 만들지 않고 <strong class="u">끈 자리</strong>에 남겼습니다. 그러니까 실행 파일 첫머리요.<br>
 이유가 있어요. 끄는 사람은 어차피 그 파일을 열거든요. 켤 때도 그 파일을 엽니다. 선언과 실제 상태가 같은 자리에 있으면 둘이 어긋날 일이 없어요. 설정 파일을 따로 두면 언젠가는 &quot;껐다고 적혀 있는데 실제로는 도는&quot; 상태가 옵니다.</p>
 <p>점검 코드는 이렇게 됐습니다. 파이썬이지만 다른 언어로 옮겨도 구조는 같아요.</p>

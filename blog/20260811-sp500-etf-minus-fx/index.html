@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -165,11 +177,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 흔히 물타기라고 부르는 그 효과입니다.</p>
 <p>이게 무서운 건, 아무도 거짓말을 안 했다는 점이에요.<br>
 앱도 맞고, 계산도 맞고, 제 기록도 맞아요. 그냥 제가 <strong>비율과 금액</strong>을 같은 종류로 읽었을 뿐이죠.</p>
-<p>| 화면에 보인 것 | 실제로 일어난 일 | 판별하는 질문 |<br>
-|---|---|---|<br>
-| 계좌 -14만 5천 원 | 지수는 +3.4%, 환율이 -8% | &quot;지수·환율·납입으로 분해하면?&quot; |<br>
-| 평가손익 -2.11% → -1.72% | 손실 금액은 그대로, 평단만 하락 | &quot;비율 말고 금액으로 얼마?&quot; |<br>
-| 총평가 +15만 원 | 30만 원 넣은 결과 | &quot;내 돈 넣은 것 빼면 얼마?&quot; |</p>
+<div class="table-wrap"><table><thead><tr><th>화면에 보인 것</th><th>실제로 일어난 일</th><th>판별하는 질문</th></tr></thead><tbody><tr><td>계좌 -14만 5천 원</td><td>지수는 +3.4%, 환율이 -8%</td><td>&quot;지수·환율·납입으로 분해하면?&quot;</td></tr><tr><td>평가손익 -2.11% → -1.72%</td><td>손실 금액은 그대로, 평단만 하락</td><td>&quot;비율 말고 금액으로 얼마?&quot;</td></tr><tr><td>총평가 +15만 원</td><td>30만 원 넣은 결과</td><td>&quot;내 돈 넣은 것 빼면 얼마?&quot;</td></tr></tbody></table></div>
 <img src="img/04_ratio_vs_amount.png" alt="착시 대비 — 왼쪽 &#x27;비율 시선&#x27; 게이지가 -2.11%에서 -1.72%로 올라가며 초록 화살표(좋아짐), 오른쪽 &#x27;금액 시선&#x27; 막대는 손실액 그대로 유지되고 매수분만 옆에 붙음(회색). 가운데 &#x27;분모가 커진 것뿐&#x27; 라벨" loading="lazy">
 <h2>이런 게 궁금하실 것 같아요</h2>
 <p><strong>Q. 그럼 환헤지 상품으로 갈아타야 하나요?</strong><br>
@@ -177,15 +185,13 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p><strong>Q. AI한테 이런 걸 물으면 그냥 지어내지 않나요?</strong><br>
 그래서 분해를 시킬 때 제 실제 숫자를 같이 줍니다. 총평가액, 납입액, 보유 수량처럼 앱에서 그대로 읽히는 값이요. 검산이 가능한 숫자를 주면 답이 맞았는지 제가 확인할 수 있거든요. 실제로 이번에도 전종목 합계와 앱 총평가가 일치하는지 먼저 대조하고 넘어갔어요. 검산할 수 없는 질문은 애초에 안 시키는 게 낫더라고요.</p>
 <p>숫자 앞에서 제가 쓰는 질문은 이제 세 개로 줄었어요.</p>
-<p>- ☐ 이 변화를 요인별로 분해하면 각각 얼마인가<br>
-- ☐ 지금 보는 게 비율인가 금액인가<br>
-- ☐ 내가 넣은 돈을 빼도 같은 결론인가</p>
+<ul><li>☐ 이 변화를 요인별로 분해하면 각각 얼마인가</li><li>☐ 지금 보는 게 비율인가 금액인가</li><li>☐ 내가 넣은 돈을 빼도 같은 결론인가</li></ul>
 <p>세 줄이라 투자 말고도 아무 데나 붙습니다! 설비 데이터든 업무 지표든, 좋아 보이는 숫자가 나오면 저는 이제 저 세 개부터 던져요.</p>
 <p>계좌가 마이너스라고 종목을 탓하기 전에, 그 마이너스가 어느 칸에서 나온 건지부터 확인해보시면 어떨까요.<br>
 저는 그거 안 하고 한 달을 애먼 종목 의심하며 보낼 뻔했거든요..</p>
 <p>이렇게 숫자한테 속아본 기록은 makefield.ai에 월별로 쌓아두고 있어요.</p>
-<p>---<br>
-현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
+<hr>
+<p>현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
 <p>태그: #S&amp;P500ETF마이너스 #미국ETF환율 #환율때문에손실 #ETF평가손익 #평단하락착시 #AI원인분석 #AI에게질문하는법 #AI프롬프트 #적립식투자기록 #환노출ETF #AI활용법 #숫자읽는법 #데이터분해 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

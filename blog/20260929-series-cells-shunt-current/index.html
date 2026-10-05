@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -115,13 +127,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <h2>1. 두 논문은 무엇을, 어떻게 풀었나요</h2>
 <p><strong>셀을 직렬로 더 붙여 전압을 올리면 이득인데, 기생전류가 발목을 잡는다</strong>는 게 출발점이에요. 직렬 셀을 늘려 운전 전압을 1000~1500 V로 올리면 설비비가 줄고 전력변환기 효율도 좋아진다고 논문은 씁니다 [Hysa et al. 2025, 1장]. 기생전류(shunt current)란 셀 안에서 반응하지 않고 <strong>공통 전해액 배관(포트·매니폴드)으로 빠져나가는 전류</strong>입니다. 이 전기는 수소 대신 열이 돼요 [Hysa et al. 2025, 1장].</p>
 <p>2025년 논문은 &quot;셀 수를 늘리면 얼마나 새나&quot;, 2026년 논문은 &quot;그럼 <strong>스택을 여러 개로 쪼개 직렬로 이으면</strong> 나아지나&quot;를 물었습니다. 방법은 둘 다 <strong>전기 회로 모델 시뮬레이션</strong>이에요. 셀마다 막 저항, 전극 저항, 입·출구 포트 저항 4개를 넣고, 셀 사이 매니폴드 저항까지 그물처럼 엮었어요 [Hysa et al. 2025, 2.1절].</p>
-<p>| 항목 | 설정 |<br>
-|---|---|<br>
-| 기준 스택 | 실제 산업용 알칼라인 수전해, 163셀 직렬 |<br>
-| 공급 전류 | 4567 A |<br>
-| 온도·압력 | 입구 70 ℃ / 출구 80 ℃, 16 bar |<br>
-| 전해액 | 수산화칼륨(KOH) 25 wt% |<br>
-| 셀 특성 | 개방전압 1.7 V, 셀 저항 55 μΩ (직선 근사) |</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>설정</th></tr></thead><tbody><tr><td>기준 스택</td><td>실제 산업용 알칼라인 수전해, 163셀 직렬</td></tr><tr><td>공급 전류</td><td>4567 A</td></tr><tr><td>온도·압력</td><td>입구 70 ℃ / 출구 80 ℃, 16 bar</td></tr><tr><td>전해액</td><td>수산화칼륨(KOH) 25 wt%</td></tr><tr><td>셀 특성</td><td>개방전압 1.7 V, 셀 저항 55 μΩ (직선 근사)</td></tr></tbody></table></div>
 <p>(출처: [Hysa et al. 2025, Table 1·2])</p>
 <p>출구 쪽 기포로 전기가 덜 통하는 효과도 넣었어요. 빼고 계산하면 기생전류가 <strong>과대평가</strong>됩니다 [Hysa et al. 2025, 3.1절].</p>
 <h2>2. 셀 수와 수전해 스택 기생전류는 어떤 관계인가요</h2>
@@ -133,18 +139,11 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <h2>3. 쪼개서 직렬로 이으면 얼마나 줄어드나요</h2>
 <p><strong>같은 500셀을 50셀짜리 10개로 나누면 59.4%가 3.9%로 떨어집니다</strong> [Hysa et al. 2026, Fig.3]. 단, 전해액 순환을 서브스택마다 따로 둘 때의 값이에요.</p>
 <img src="img/03_substack_compare.png" alt="500셀 나누는 방식별 비교 — 03_substack_compare.png" loading="lazy">
-<p>| 500셀 구성 | 기생전류 비율 | 출처 |<br>
-|---|---|---|<br>
-| 1개 × 500셀 | 59.4% | [Hysa et al. 2026, 3.1절] |<br>
-| 10개 × 50셀, 전해액 분리 | 3.9% | [Hysa et al. 2026, 3.1절] |<br>
-| 2개 × 250셀, 전해액 공유 | 36.5 → 26.9% | [Hysa et al. 2026, Fig.7] |<br>
-| 10개 × 50셀, 전해액 공유 | 12.5 → 5.6% | [Hysa et al. 2026, Fig.7] |</p>
+<div class="table-wrap"><table><thead><tr><th>500셀 구성</th><th>기생전류 비율</th><th>출처</th></tr></thead><tbody><tr><td>1개 × 500셀</td><td>59.4%</td><td>[Hysa et al. 2026, 3.1절]</td></tr><tr><td>10개 × 50셀, 전해액 분리</td><td>3.9%</td><td>[Hysa et al. 2026, 3.1절]</td></tr><tr><td>2개 × 250셀, 전해액 공유</td><td>36.5 → 26.9%</td><td>[Hysa et al. 2026, Fig.7]</td></tr><tr><td>10개 × 50셀, 전해액 공유</td><td>12.5 → 5.6%</td><td>[Hysa et al. 2026, Fig.7]</td></tr></tbody></table></div>
 <p>전해액을 공유하면 서브스택 사이 외부 배관으로 또 샙니다. 화살표는 외부 포트를 1 m에서 10 m로 늘린 결과로, 길수록 덜 새지만 줄어드는 폭은 점점 둔해져요 [Hysa et al. 2026, 3.2절].</p>
 <p>논문 비교표는 전류효율·신뢰성은 <strong>분리형</strong>, 비용·단순함은 <strong>공유형</strong>에 표시합니다 [Hysa et al. 2026, Table 2]. 분리형은 서브스택마다 펌프·유량 제어기가 따로 필요해서예요 [Hysa et al. 2026, 3.3절].</p>
 <h2>4. 이 논문들의 한계는 무엇인가요</h2>
-<p>- 전부 시뮬레이션입니다. 여러 서브스택 직렬 실험 검증은 저자들도 <strong>향후 과제</strong>로 남겼어요 [Hysa et al. 2026, 3.3절].<br>
-- 전해액 펌프 전력은 계산에서 뺐습니다. 포트를 길게 하면 압력손실이 커져 펌프 전력이 늘어요 [Hysa et al. 2025, 3.2절].<br>
-- 저자들은 이 형상을 &quot;비효율적 설계&quot;라 부르고, 셀이 아주 많을 때의 값은 정상 운전에 맞지 않는다고 적었어요 [Hysa et al. 2026, 2.3절]. <strong>59.4%는 업계 평균이 아닙니다.</strong></p>
+<ul><li>전부 시뮬레이션입니다. 여러 서브스택 직렬 실험 검증은 저자들도 <strong>향후 과제</strong>로 남겼어요 [Hysa et al. 2026, 3.3절].</li><li>전해액 펌프 전력은 계산에서 뺐습니다. 포트를 길게 하면 압력손실이 커져 펌프 전력이 늘어요 [Hysa et al. 2025, 3.2절].</li><li>저자들은 이 형상을 &quot;비효율적 설계&quot;라 부르고, 셀이 아주 많을 때의 값은 정상 운전에 맞지 않는다고 적었어요 [Hysa et al. 2026, 2.3절]. <strong>59.4%는 업계 평균이 아닙니다.</strong></li></ul>
 <h2>5. AI에게 이 두 논문을 어떻게 읽혔나요</h2>
 <p>여기부터는 읽는 방법이에요. 두 PDF를 텍스트로 뽑아 AI에게 읽히고, 그림·표가 있는 쪽은 이미지로 따로 띄워 대조했습니다. 함정이 네 개 나왔어요.</p>
 <img src="img/04_ai_traps.png" alt="두 논문에서 걸린 함정 4개 — 04_ai_traps.png" loading="lazy">
@@ -165,7 +164,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 500셀·400셀에서 5% 아래로 내리려면 포트 저항을 약 1000배 키워야 했어요. 그만큼 압력손실과 설비비가 늘어납니다 [Hysa et al. 2025, 3.2절].</p>
 <p><strong>Q. 운전 압력·온도도 영향이 있나요?</strong><br>
 높은 압력은 기포를 줄이고, 높은 온도는 전해액 전도도를 올려 둘 다 기생전류를 키운다고 해요 [Hysa et al. 2026, 3.2절]. 다음 편 주제입니다.</p>
-<p>---</p>
+<hr>
 <p>정리하면 직렬 셀 수는 <strong>전압 이득과 누설 손해를 맞바꾸는 손잡이</strong>예요. 두 논문의 답은 &quot;통째로 길게&quot;가 아니라 <strong>&quot;짧게 여러 개, 사이를 잘 끊어서&quot;</strong>입니다.</p>
 <p>다음 편은 압력과 온도를 올릴 때 누수가 왜 같이 오르는지 봅니다. 여러분이 읽는 논문에서 &#x27;맞춘 값&#x27;이 결과처럼 요약된 적은 없었나요?</p>
 <p>AI로 논문 읽는 방법은 makefield.ai에 계속 쌓아두고 있습니다.</p>

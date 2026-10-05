@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -135,15 +147,9 @@ ERROR: 발행 실패</code></pre>
 <p>원인을 잡은 건 손으로 세어보고 나서였어요. 그 글은 190자였는데, X 기준으로는 308자였습니다. 한도가 280이니 28자 초과였고요.</p>
 <p>계산은 단순합니다. 한글 한 글자를 2로, 영문·숫자·공백·기호를 1로 놓고 더하면 돼요.</p>
 <p>거꾸로 풀어보면 그 글의 구성이 나옵니다. 308에서 190을 빼면 118, 그게 한글 글자수예요(한글만 1씩 더 먹으니까요).</p>
-<p>- 한글 118자 → 118 × 2 = 236<br>
-- 나머지 72자(영문·숫자·공백 등) → 72 × 1 = 72<br>
-- 합계 <strong>308</strong></p>
+<ul><li>한글 118자 → 118 × 2 = 236</li><li>나머지 72자(영문·숫자·공백 등) → 72 × 1 = 72</li><li>합계 <strong>308</strong></li></ul>
 <p>같은 190자여도 뭘로 썼느냐에 따라 값이 완전히 달라집니다.</p>
-<p>| 무엇으로 190자를 채웠나 | X가 세는 값 | 280 한도 |<br>
-|---|---|---|<br>
-| 전부 영문·숫자 | 190 | 통과 |<br>
-| 한글 118 + 나머지 72 (제 경우) | 308 | 초과 |<br>
-| 전부 한글 | 380 | 초과 |</p>
+<div class="table-wrap"><table><thead><tr><th>무엇으로 190자를 채웠나</th><th>X가 세는 값</th><th>280 한도</th></tr></thead><tbody><tr><td>전부 영문·숫자</td><td>190</td><td>통과</td></tr><tr><td>한글 118 + 나머지 72 (제 경우)</td><td>308</td><td>초과</td></tr><tr><td>전부 한글</td><td>380</td><td>초과</td></tr></tbody></table></div>
 <p>그러니까 &quot;280자&quot;라는 숫자는 영어를 쓰는 사람 기준이에요. 한글로만 쓰면 그 절반인 140자가 진짜 상한입니다.</p>
 <img src="img/03_weight-compare.png" alt="같은 190자를 세 가지로 계산 — 영문만 190, 혼합 308, 한글만 380. 280 한도선을 가로로 긋고 뒤 두 개가 선을 넘는 그림" loading="lazy">
 <p>한글이 왜 2일까요. 공식 설명을 제가 확인한 건 아니라 이유는 모르겠습니다. 다만 한글 140자와 영문 280자를 나란히 놓고 보면 담기는 내용은 비슷하긴 해요. 제가 확인한 건 규칙이 그렇게 돌아간다는 사실뿐이고, 그 규칙이 화면 어디에도 안 적혀 있다는 게 문제였습니다.</p>
@@ -179,10 +185,7 @@ else:
 <img src="img/04_guard.png" alt="가드를 넣기 전과 후 — 전: 생성 → 발행 시도 → 버튼 잠김 → 실패. 후: 생성 → 가중 글자수 검사 → 초과면 재생성(최대 2회) → 통과분만 발행" loading="lazy">
 <h2>4. 한 달치를 세어보니 두 번 걸렸더라고요</h2>
 <p>가드를 넣고 한 달쯤 지나서 로그 35일치를 훑어봤습니다. 발행 전 검사를 통과한 게 61건이었어요.</p>
-<p>- <strong class="u">가중 글자수</strong> 중앙값 <strong>226</strong> (한도의 81%)<br>
-- 가장 짧았던 날 176, 가장 길었던 날 255<br>
-- 250을 넘긴 날은 61건 중 3건<br>
-- 가드에 걸려 다시 쓴 건 2건 — 7월 17일 <strong>308</strong>, 8월 3일 <strong>314</strong></p>
+<ul><li><strong class="u">가중 글자수</strong> 중앙값 <strong>226</strong> (한도의 81%)</li><li>가장 짧았던 날 176, 가장 길었던 날 255</li><li>250을 넘긴 날은 61건 중 3건</li><li>가드에 걸려 다시 쓴 건 2건 — 7월 17일 <strong>308</strong>, 8월 3일 <strong>314</strong></li></ul>
 <p>두 번째 초과가 8월 3일이라는 게 좀 뜨끔했어요. 지시문에 130자라고 못 박아뒀는데도 AI가 314자짜리를 만들어 왔거든요. 규칙을 적어두는 것과 실제로 지켜지는 건 별개라는 뜻이죠. 그날은 가드가 대신 잡아서 재생성 한 번으로 끝났습니다.</p>
 <p>그리고 문자수만 보고 있었으면 이 두 건 다 못 봤을 거예요. 314자였던 그 글도 화면에 보이는 길이는 200자가 채 안 됐을 테니까요.</p>
 <h2>이런 게 궁금하실 것 같아서</h2>

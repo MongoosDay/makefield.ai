@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -134,20 +146,12 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>AI 알림이 안 울릴 때 조건부터 늘리는 건 저도 이미 한 번 밟아본 함정이에요. 알림을 촘촘하게 걸어두면 처음 사흘은 꼼꼼해 보이는데, 2주쯤 지나면 알림함을 안 열게 됩니다. <strong class="u">안 읽는 알림</strong>은 없는 알림이랑 같아요.</p>
 <img src="img/03_sensitivity_loop.png" alt="감도를 올리면 벌어지는 순환. 원형 화살표로 이어진 네 개 상자 — &#x27;놓친 경보 발견&#x27; → &#x27;조건 추가&#x27; → &#x27;경보 빈발(대부분 헛울림)&#x27; → &#x27;사람이 알림을 닫음&#x27; → 다시 첫 상자로. 마지막 상자에서 아래로 붉은 화살표가 내려가 회색 상자 &#x27;진짜 사건 때 아무도 안 봄&#x27;. 하단 캡션 &#x27;감도를 올리다 경보기를 죽이는 경로&#x27;" loading="lazy">
 <p>그래서 이번엔 실제로 8일 동안 무슨 일이 있었는지부터 세봤습니다.</p>
-<p>| 8일간 실제로 일어난 일 | 숫자 |<br>
-|---|---|<br>
-| 경보가 켜져 있던 날 | 8일 연속 |<br>
-| 그동안 기준 지수가 움직인 폭 | -0.39% |<br>
-| 자동화가 내린 조치 지시 | 0회 |<br>
-| 그 8일이 실제로 발생시킨 비용 | 0원 |</p>
+<div class="table-wrap"><table><thead><tr><th>8일간 실제로 일어난 일</th><th>숫자</th></tr></thead><tbody><tr><td>경보가 켜져 있던 날</td><td>8일 연속</td></tr><tr><td>그동안 기준 지수가 움직인 폭</td><td>-0.39%</td></tr><tr><td>자동화가 내린 조치 지시</td><td>0회</td></tr><tr><td>그 8일이 실제로 발생시킨 비용</td><td>0원</td></tr></tbody></table></div>
 <p>빨간불이 여드레 켜져 있는 동안 값은 0.4%도 안 움직였어요. 만약 제 규칙이 &quot;빨간불이면 정리한다&quot;였다면, 저는 0.4% 때문에 다 팔고 수수료를 내고 언제 돌아올지 모르는 상태가 됐을 겁니다. 실제 규칙은 &quot;빨간불이면 알리기만 한다&quot;였고, 그래서 여드레 값은 정확히 0원이었어요.</p>
 <p><strong>경보의 목적은 위험을 100% 잡는 게 아니라, 위험이 왔을 때 제가 즉흥적으로 움직이지 않게 하는 것</strong>이더라고요. 이걸 인정하고 나니까 오늘 발견한 구멍의 급이 달라 보였습니다.</p>
 <h2>3. 고칠 규칙과 미룰 규칙을 나누는 문턱</h2>
 <p>그래서 규칙을 두 종류로 나눠 문턱을 다르게 뒀어요. 이게 오늘의 결론입니다.</p>
-<p>| 규칙의 종류 | 예 | 채택 문턱 | 이유 |<br>
-|---|---|---|---|<br>
-| 행동을 <strong>줄이는</strong> 규칙 | &quot;이 종류 숫자는 판단 근거로 안 쓴다&quot; | 독립 증거 2건이면 채택 | 최악이라도 아무것도 안 하게 될 뿐 |<br>
-| 행동을 <strong>늘리는</strong> 규칙 | &quot;이런 신호면 움직인다&quot; | 훨씬 높게 (반복 관측 누적) | 틀리면 실제로 손해가 나고 되돌리기 어렵다 |</p>
+<div class="table-wrap"><table><thead><tr><th>규칙의 종류</th><th>예</th><th>채택 문턱</th><th>이유</th></tr></thead><tbody><tr><td>행동을 <strong>줄이는</strong> 규칙</td><td>&quot;이 종류 숫자는 판단 근거로 안 쓴다&quot;</td><td>독립 증거 2건이면 채택</td><td>최악이라도 아무것도 안 하게 될 뿐</td></tr><tr><td>행동을 <strong>늘리는</strong> 규칙</td><td>&quot;이런 신호면 움직인다&quot;</td><td>훨씬 높게 (반복 관측 누적)</td><td>틀리면 실제로 손해가 나고 되돌리기 어렵다</td></tr></tbody></table></div>
 <p>오늘 찾은 구멍을 조건에 넣으면 경보가 더 자주 켜집니다. 즉 <strong class="u">행동을 늘리는 쪽</strong>이에요. 증거는 오늘 하루치고요. 그래서 규칙이 아니라 관찰 목록에 한 줄로 올렸습니다.</p>
 <pre><code># 관찰 목록에 오늘 추가된 항목 (문구는 익명화)
 ㉨ [신설] 경보 조건이 당사자 양자 구도로만 짜여

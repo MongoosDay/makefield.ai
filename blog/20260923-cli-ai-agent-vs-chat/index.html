@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -114,23 +126,11 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>그래서 복붙 왕복이 사라집니다. 붙여넣고 → 답 받고 → 다시 내 파일에 옮겨 붙이고 → 다음 대화에서 또 처음부터 설명하고. 이 네 박자가 통째로 없어지는 거예요.</p>
 <p>저는 제조 현장에서 제어·자동화로 15년을 보냈고 개발자는 아닙니다. 코드는 필요할 때 겨우 짜는 정도예요. 그런 사람 기준으로 터미널 처음 여는 것부터 쌓아가는 연재의 첫 편입니다. 오늘은 설치 전에 <strong>뭐가 다른지</strong>만 잡고 갈게요.</p>
 <p>먼저 전제입니다. 2026년 9월 기준이에요.</p>
-<p>| 항목 | 값 |<br>
-|---|---|<br>
-| OS | Windows 10/11 (맥·리눅스도 구조 동일) |<br>
-| 도구 | Claude Code 기준 (Codex CLI·Gemini CLI도 방식 같음) |<br>
-| 필요한 것 | 해당 서비스 유료 구독 또는 API 키 |<br>
-| 사전 지식 | 터미널 명령 두 개 — 폴더 이동, 실행 |<br>
-| 필요 없는 것 | 프로그래밍 언어 지식 |</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>값</th></tr></thead><tbody><tr><td>OS</td><td>Windows 10/11 (맥·리눅스도 구조 동일)</td></tr><tr><td>도구</td><td>Claude Code 기준 (Codex CLI·Gemini CLI도 방식 같음)</td></tr><tr><td>필요한 것</td><td>해당 서비스 유료 구독 또는 API 키</td></tr><tr><td>사전 지식</td><td>터미널 명령 두 개 — 폴더 이동, 실행</td></tr><tr><td>필요 없는 것</td><td>프로그래밍 언어 지식</td></tr></tbody></table></div>
 <h2>1. 채팅창이 못 하는 건 읽기가 아니라 &#x27;쓰기&#x27;예요</h2>
 <p>CLI AI 에이전트란 <strong>터미널에서 실행되어, 지정한 폴더의 파일을 직접 읽고 고칠 수 있는 AI</strong>입니다. 요즘은 웹 채팅도 파일을 올리면 읽기는 해요. 차이는 결과를 돌려주는 자리에서 갈립니다.</p>
 <p>채팅은 답을 <strong>화면에</strong> 줍니다. 내 파일에 반영하는 건 제 일이에요. CLI 에이전트는 답을 <strong>파일에</strong> 씁니다. 제가 하는 일은 그 변경을 승인하는 것뿐이고요.</p>
-<p>| | 웹 채팅 | CLI 에이전트 |<br>
-|---|---|---|<br>
-| 입력 | 내가 붙여 넣은 만큼만 | 폴더에 있는 파일 그대로 |<br>
-| 파일 여러 개 | 하나씩 올리고 설명 | 폴더만 지정하면 전부 |<br>
-| 결과 | 화면에 텍스트 | 파일에 저장됨 |<br>
-| 반영 | 내가 다시 옮겨 붙이기 | 이미 반영돼 있음 |<br>
-| 맥락 | 새 대화마다 다시 설명 | 폴더에 둔 규칙 파일을 읽고 시작 |</p>
+<div class="table-wrap"><table class="rowhead"><thead><tr><th></th><th>웹 채팅</th><th>CLI 에이전트</th></tr></thead><tbody><tr><td>입력</td><td>내가 붙여 넣은 만큼만</td><td>폴더에 있는 파일 그대로</td></tr><tr><td>파일 여러 개</td><td>하나씩 올리고 설명</td><td>폴더만 지정하면 전부</td></tr><tr><td>결과</td><td>화면에 텍스트</td><td>파일에 저장됨</td></tr><tr><td>반영</td><td>내가 다시 옮겨 붙이기</td><td>이미 반영돼 있음</td></tr><tr><td>맥락</td><td>새 대화마다 다시 설명</td><td>폴더에 둔 규칙 파일을 읽고 시작</td></tr></tbody></table></div>
 <img src="img/02_roundtrip.png" alt="좌우 비교. 왼쪽 빨강 영역 제목 &#x27;웹 채팅&#x27; — 세로 3단 박스 &#x27;나&#x27; → &#x27;① 복사해서 붙여넣기&#x27; → &#x27;AI&#x27; → &#x27;② 답은 화면에만&#x27; → &#x27;내 파일에 다시 옮겨 붙이기&#x27;, 하단 캡션 &#x27;사람이 운반책&#x27;. 오른쪽 초록 영역 제목 &#x27;CLI 에이전트&#x27; — &#x27;나 — 폴더만 지정&#x27; → &#x27;① 자연어 한 줄&#x27; → &#x27;CLI 에이전트&#x27; → 양방향 화살표 &#x27;② 읽기 / 쓰기&#x27; → &#x27;내 폴더의 파일&#x27;, 하단 캡션 &#x27;파일이 직접 오간다&#x27;" loading="lazy">
 <h2>2. 실제로는 이렇게 생겼습니다</h2>
 <p>시작은 두 줄이에요. 터미널을 열고 일할 폴더로 가서 도구를 실행합니다.</p>
@@ -145,12 +145,7 @@ claude</code></pre>
 <img src="img/03_scope.png" alt="동심 사각형 2개. 바깥 회색 사각형 라벨 &#x27;PC의 나머지 전체 — 기본 접근 안 함&#x27;, 안쪽 초록 사각형 라벨 &#x27;작업 폴더 — 읽기·쓰기 허용&#x27; 안에 문서 아이콘 4개. 안쪽 사각형 아래 &#x27;실행할 때 지정한 이 경계가 전부다&#x27;, 하단 캡션 &#x27;처음엔 작업용 폴더 하나만 열어라&#x27;" loading="lazy">
 <p><strong class="u">작업 폴더</strong>를 고르는 건 곧 권한 범위를 고르는 일이에요. 도구를 실행한 그 폴더가 경계입니다. 처음엔 작업용 폴더 하나만 만들어 거기서만 돌리시길 권해요.</p>
 <p>첫 실행이 제대로 붙었는지는 이 순서로 봅니다.</p>
-<p>| 순서 | 확인할 것 | 통과 기준 |<br>
-|---|---|---|<br>
-| 1 | 실행한 폴더가 맞나 | 시작 줄에 그 경로가 떠 있음 |<br>
-| 2 | 진짜 읽고 있나 | 내가 안 알려준 파일 개수를 맞힘 |<br>
-| 3 | 쓰기가 되나 | 파일 고친 뒤 탐색기 수정 시각이 바뀜 |<br>
-| 4 | 되돌릴 수 있나 | 원본 사본이 있거나, 변경 목록을 먼저 봤음 |</p>
+<div class="table-wrap"><table><thead><tr><th>순서</th><th>확인할 것</th><th>통과 기준</th></tr></thead><tbody><tr><td>1</td><td>실행한 폴더가 맞나</td><td>시작 줄에 그 경로가 떠 있음</td></tr><tr><td>2</td><td>진짜 읽고 있나</td><td>내가 안 알려준 파일 개수를 맞힘</td></tr><tr><td>3</td><td>쓰기가 되나</td><td>파일 고친 뒤 탐색기 수정 시각이 바뀜</td></tr><tr><td>4</td><td>되돌릴 수 있나</td><td>원본 사본이 있거나, 변경 목록을 먼저 봤음</td></tr></tbody></table></div>
 <p>2번이 핵심이에요. 답이 그럴듯한 것과 파일을 실제로 읽은 것은 화면상 구분이 안 됩니다. 그래서 <strong>내가 모르는 걸 묻는 게 아니라, 내가 아는 걸 물어서</strong> 맞히는지 보는 거죠.</p>
 <h2>3. 복붙 22번이 명령 한 줄이 된 자리</h2>
 <p>2026년 4월에 개인적으로 맡아둔 작은 일이 있었어요. 부품 시리얼 번호마다 제품 페이지 주소를 만들고, 그 주소를 QR 코드 이미지로 뽑는 일입니다.</p>
@@ -170,11 +165,7 @@ AI가 하는 것 :  그 위치를 열어서 읽는다   ← 내용은 AI가 가�
 <p>그래서 원격 접속한 다른 기기의 파일은 아무리 복사해도 안 들어갑니다. 그 PC에 파일이 실재해야 하거든요. 이걸 알고 나니 붙여넣기에 매달릴 이유가 사라졌어요. 폴더에 두면 끝이니까요!</p>
 <h2>5. GPT·Gemini CLI로도 똑같이 됩니다</h2>
 <p>이 연재는 Claude Code로 설명하지만 도구를 고르는 얘기는 아닙니다. 2026년 9월 기준 주요 CLI 에이전트 셋은 구조가 같아요.</p>
-<p>| 도구 | 실행 명령 | 규칙 파일 |<br>
-|---|---|---|<br>
-| Claude Code (Anthropic) | <code>claude</code> | <code>CLAUDE.md</code> |<br>
-| Codex CLI (OpenAI) | <code>codex</code> | <code>AGENTS.md</code> |<br>
-| Gemini CLI (Google) | <code>gemini</code> | <code>GEMINI.md</code> |</p>
+<div class="table-wrap"><table><thead><tr><th>도구</th><th>실행 명령</th><th>규칙 파일</th></tr></thead><tbody><tr><td>Claude Code (Anthropic)</td><td><code>claude</code></td><td><code>CLAUDE.md</code></td></tr><tr><td>Codex CLI (OpenAI)</td><td><code>codex</code></td><td><code>AGENTS.md</code></td></tr><tr><td>Gemini CLI (Google)</td><td><code>gemini</code></td><td><code>GEMINI.md</code></td></tr></tbody></table></div>
 <p>셋 다 ①실행한 폴더를 작업 공간으로 잡고 ②파일 읽기·쓰기·명령 실행을 승인받아 하고 ③폴더에 둔 규칙 파일을 읽고 시작합니다. 이름만 다르고 뼈대가 같아요. 그래서 이 연재에서 만들 기록 구조와 규칙 파일은 도구를 갈아타도 그대로 씁니다.</p>
 <img src="img/04_tools.png" alt="상단에 나란히 3개 박스 &#x27;Claude Code&#x27;, &#x27;Codex CLI&#x27;, &#x27;Gemini CLI&#x27;. 세 박스에서 아래로 화살표가 모여 하나의 3층 스택으로 합류. 스택 위층부터 &#x27;① 실행한 폴더 = 작업 공간&#x27;, &#x27;② 읽기·쓰기·실행은 승인 후&#x27;, &#x27;③ 규칙 파일을 읽고 시작&#x27;. 하단 캡션 &#x27;도구는 갈아타도 뼈대는 같다&#x27;" loading="lazy">
 <h2>6. 시작 전에 많이 걸리는 질문 셋</h2>

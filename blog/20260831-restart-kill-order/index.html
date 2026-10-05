@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -165,10 +177,7 @@ Get-CimInstance Win32_Process -Filter &quot;Name like &#x27;python%&#x27;&quot; 
 <p>파일 맨 위에는 주석으로 이유를 적어뒀습니다. &quot;감시 루프를 먼저 죽인다. 순서가 반대면 10초 뒤에 봇이 되살아난다.&quot;<br>
 이런 주석이 있어야 반년 뒤의 제가 순서를 안 바꿉니다. 오늘의 나보다 반년 뒤의 나를 못 믿는 편이 안전하더라고요!</p>
 <p>켜는 쪽도 두 갈래로 정리했어요.</p>
-<p>| 상황 | 쓰는 방법 | 창 |<br>
-|---|---|---|<br>
-| 평소 재시작 | 숨김 실행 스크립트 | 안 뜸 |<br>
-| 오류 볼 때 | 콘솔 배치 파일 | 뜸 |</p>
+<div class="table-wrap"><table><thead><tr><th>상황</th><th>쓰는 방법</th><th>창</th></tr></thead><tbody><tr><td>평소 재시작</td><td>숨김 실행 스크립트</td><td>안 뜸</td></tr><tr><td>오류 볼 때</td><td>콘솔 배치 파일</td><td>뜸</td></tr></tbody></table></div>
 <p>평소엔 창 없는 쪽, 로그를 눈으로 봐야 할 때만 콘솔 쪽. 이 표를 만들고 나서야 &quot;창이 떴다&quot;가 <strong class="u">경로 표시등</strong>으로 읽히기 시작했습니다. 여러분 PC에서 이유 없이 뜨는 창도 사실은 그런 표시등일지 몰라요.</p>
 <h2>4. 그리고 로그에서 10초가 0.08초였습니다</h2>
 <p>정리하고 로그를 되짚다가 이상한 구간을 봤어요. 재시작이 10초 간격이어야 하는데 이렇게 찍혀 있더라고요.</p>

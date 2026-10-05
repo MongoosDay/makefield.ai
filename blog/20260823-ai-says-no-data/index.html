@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -130,9 +142,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 [2026-08-15 04:12:14] 데일리 브리핑 완료</code></pre>
 <p>그런데 AI가 마무리 점검을 하다가 그 누적 파일을 열어보고는 이렇게 보고했어요. 8월 3일부터 14일까지, 12일치가 통째로 비어 있다고요.</p>
 <p>그리고 혼자서 세 가지를 더 했습니다.</p>
-<p>- 파일 안에 ⚠️ 경고 주석을 직접 박았어요<br>
-- 그날 작업 기록에 &quot;자동화가 로그 기록 단계를 누락한 것으로 추정&quot;이라고 남겼고요<br>
-- 제 할 일 목록에 <strong>&quot;자동화 점검 필요(pending)&quot;</strong>를 올려뒀습니다</p>
+<ul><li>파일 안에 ⚠️ 경고 주석을 직접 박았어요</li><li>그날 작업 기록에 &quot;자동화가 로그 기록 단계를 누락한 것으로 추정&quot;이라고 남겼고요</li><li>제 할 일 목록에 <strong>&quot;자동화 점검 필요(pending)&quot;</strong>를 올려뒀습니다</li></ul>
 <p>여기까지만 보면 꽤 성실한 보고예요. 없어졌다고 단정하지 않고 &quot;추정, 미검증&quot;이라고 꼬리표까지 달았거든요.<br>
 그래서 저도 처음엔 그대로 믿었습니다. 아, 또 어디서 끊겼구나 하고요..</p>
 <img src="img/02_selfcheck.png" alt="그날 새벽의 처리 순서 4칸 가로 흐름 — ①브리핑 정상 종료(종료코드 0) → ②누적 파일에 하루치 기록 → ③같은 AI가 그 파일을 검사 → ④&quot;12일치 없음&quot; 경고 + 점검 안건 등록. ②와 ③ 사이에 &quot;쓴 쪽과 검사한 쪽이 같음&quot;이라는 붉은 라벨" loading="lazy">
@@ -167,11 +177,7 @@ AI가 파일을 망가뜨렸고, 몇 초 뒤에 그 망가진 파일을 다시 �
 쓰는 쪽과 검사하는 쪽이 같으면, 사고의 흔적이 사고의 증거로 안 읽혀요. 현장 검사를 시공한 사람이 직접 하면 안 되는 이유랑 같습니다.</p>
 <h2>4. 그래서 &quot;없다&quot;는 답을 받으면 이 셋을 봅니다</h2>
 <p>이번 일 이후로 제가 쓰는 순서예요. 30초면 끝나는 것들만 남겼습니다.</p>
-<p>| 확인할 것 | 어떻게 | 이번 건 결과 |<br>
-|---|---|---|<br>
-| 진짜 없나 | 목차·제목 줄만 뽑아서 전체 목록을 본다 | 12일치 전부 있었음 |<br>
-| 정렬이 깨졌나 | 뽑은 목록이 순서대로인지 눈으로 훑는다 | 15일치가 3일치 위에 있었음 |<br>
-| 방금 누가 건드렸나 | 파일 수정 시각과 직전 작업을 대조한다 | 몇 초 전 AI가 직접 수정 |</p>
+<div class="table-wrap"><table><thead><tr><th>확인할 것</th><th>어떻게</th><th>이번 건 결과</th></tr></thead><tbody><tr><td>진짜 없나</td><td>목차·제목 줄만 뽑아서 전체 목록을 본다</td><td>12일치 전부 있었음</td></tr><tr><td>정렬이 깨졌나</td><td>뽑은 목록이 순서대로인지 눈으로 훑는다</td><td>15일치가 3일치 위에 있었음</td></tr><tr><td>방금 누가 건드렸나</td><td>파일 수정 시각과 직전 작업을 대조한다</td><td>몇 초 전 AI가 직접 수정</td></tr></tbody></table></div>
 <p>세 번째가 제일 잘 잊히는데, 사실 제일 자주 걸립니다.<br>
 AI한테 파일을 맡긴 직후에 &quot;확인해봐&quot;라고 시키면, 그 확인은 절반쯤 자기 채점이에요.</p>
 <p>여러분은 AI가 &quot;해당 자료를 찾을 수 없습니다&quot;라고 답했을 때, 그 말을 그대로 믿는 편인가요?</p>
@@ -191,8 +197,8 @@ AI한테 파일을 맡긴 직후에 &quot;확인해봐&quot;라고 시키면, �
 <strong class="u">없음이 아니라 못 찾음</strong>. AI가 &quot;없습니다&quot;라고 할 때 그건 세상에 없다는 뜻이 아니라, 자기가 본 범위 안에 없었다는 뜻이에요.<br>
 그 범위를 정해주는 건 결국 사람 몫이더라고요.</p>
 <p>혹시 오늘 AI한테 &quot;그런 자료는 없습니다&quot;라는 답을 받으신 게 있다면, 목록만 한 번 뽑아보세요. 30초면 되고, 의외로 거기 있습니다.</p>
-<p>---<br>
-이렇게 헛다리 짚은 기록까지 지우지 않고 그대로 쌓아두는 곳이 makefield.ai입니다.</p>
+<hr>
+<p>이렇게 헛다리 짚은 기록까지 지우지 않고 그대로 쌓아두는 곳이 makefield.ai입니다.</p>
 <p>태그: #AI자료없다고할때 #AI가파일못찾을때 #AI오진 #AI산출물검증 #AI할루시네이션 #AI자동화점검 #로그파일확인 #AI에게일시키기 #AI검증방법 #개인AI에이전트 #무인자동화 #파이썬자동화 #AI로일하기 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

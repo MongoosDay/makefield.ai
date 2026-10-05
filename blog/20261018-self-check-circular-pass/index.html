@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -135,11 +147,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 A = B 가 모르는 것     :  더하기 전의 그 곱셈이 맞았는지</code></pre>
 <p>&quot;33일 연속 1원 단위 일치&quot;는 33일 동안 정확했다는 뜻이 아니었습니다. <strong>33일 동안 자기 자신과 비교해왔다는 뜻</strong>이었어요.</p>
 <p>여기에 하나가 더 겹쳐 있었습니다. 바깥에서 가져온 기준값이 여섯 주 넘게 안 들어오고 있었어요. 원래는 실제 화면을 캡처해서 대조하는 절차가 있는데, 그 캡처가 오랫동안 없었습니다. 안에서만 맞춰보고 바깥 표준기는 여섯 주째 안 댄 계기, 딱 그 상태였던 거예요.</p>
-<p>| 검산 방식 | 맞춰보는 두 값 | 잡히는 오류 | 못 잡는 오류 |<br>
-|---|---|---|---|<br>
-| 합계 ↔ 총액 대조 | 둘 다 내부에서 생성 | 더하기·옮겨적기 실수 | 곱셈 자체가 틀린 경우 |<br>
-| 줄별 곱셈 재계산 | 계산값 ↔ 원자료 | 곱셈 실수 | 원자료가 애초에 틀린 경우 |<br>
-| 바깥 기준값 대조 | 계산값 ↔ 외부 실물 | 위 둘 다 | 기준값을 못 구하는 기간 |</p>
+<div class="table-wrap"><table><thead><tr><th>검산 방식</th><th>맞춰보는 두 값</th><th>잡히는 오류</th><th>못 잡는 오류</th></tr></thead><tbody><tr><td>합계 ↔ 총액 대조</td><td>둘 다 내부에서 생성</td><td>더하기·옮겨적기 실수</td><td>곱셈 자체가 틀린 경우</td></tr><tr><td>줄별 곱셈 재계산</td><td>계산값 ↔ 원자료</td><td>곱셈 실수</td><td>원자료가 애초에 틀린 경우</td></tr><tr><td>바깥 기준값 대조</td><td>계산값 ↔ 외부 실물</td><td>위 둘 다</td><td>기준값을 못 구하는 기간</td></tr></tbody></table></div>
 <p>혹시 AI한테 &quot;숫자 맞는지 검산해줘&quot;라고 시켜보신 적 있으신가요? 그때 AI가 무엇과 무엇을 맞춰보는지까지 같이 물어보시면 좋겠어요. AI 자기 검증은 그 한 줄을 물어봤는지 아닌지로 갈립니다. 저는 33일 만에 물어봤어요..</p>
 <h2>3. 그래서 33일 카운터를 1일차로 되돌렸습니다</h2>
 <p>고친 건 두 가지예요. 하나는 당연한 것이고, 하나는 좀 아까운 것이었습니다.</p>

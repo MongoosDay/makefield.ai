@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -146,11 +158,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>한 소스가 그날 코스닥을 +5.32%로 전했는데, 교차확인에서 실제 값은 857.84, 상승률 +0.39%로 정리됐습니다.<br>
 재밌는 건 그 오보가 별로 이상해 보이지 않았다는 점이에요. 바로 전날 코스닥이 실제로 +6.97% 급등해서 사이드카까지 걸렸던 터라, 큰 숫자가 하나 더 나와도 &quot;그럴 수 있지&quot; 소리가 나오는 상황이었거든요..</p>
 <p>그래서 요구 출처를 값의 성격으로 나눴어요.</p>
-<p>| 값의 종류 | 예 | 요구 출처 |<br>
-|---|---|---|<br>
-| 그날그날 바뀌는 값 | 지수, 환율, 유가 | <strong>서로 다른 곳 2군데 이상</strong> |<br>
-| 잘 안 바뀌는 값 | 발표 일정, 제도 | 1차 자료 1곳 |<br>
-| 해석이 섞인 값 | 전망치, 추정 | 반드시 추정 표시 |</p>
+<div class="table-wrap"><table><thead><tr><th>값의 종류</th><th>예</th><th>요구 출처</th></tr></thead><tbody><tr><td>그날그날 바뀌는 값</td><td>지수, 환율, 유가</td><td><strong>서로 다른 곳 2군데 이상</strong></td></tr><tr><td>잘 안 바뀌는 값</td><td>발표 일정, 제도</td><td>1차 자료 1곳</td></tr><tr><td>해석이 섞인 값</td><td>전망치, 추정</td><td>반드시 추정 표시</td></tr></tbody></table></div>
 <p>여러분도 AI가 알려준 수치를 그대로 문서에 옮겨 적어보신 적 있으시죠?<br>
 그게 몇 군데서 나온 값인지 되물어보면, 대개 한 곳이더라고요.</p>
 <img src="img/04_sources.png" alt="소스 대조 판정 — 왼쪽에 소스 A &quot;+5.32%&quot; 박스(회색, X 표시), 오른쪽에 소스 B·소스 C &quot;857.84 / +0.39%&quot; 박스 두 개(초록 체크). 가운데 &#x27;2곳 이상 일치한 값만 채택&#x27; 판정 박스로 화살표가 모이고, 아래에 &#x27;전날 실제 +6.97% 급등 — 그래서 오보가 그럴듯했다&#x27; 주석줄" loading="lazy">
@@ -162,11 +170,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 하루는 발표 시각을 밤 10시 반이라고 한 시간 틀리게 적었는데, 다음 날 리포트가 그 대목을 9시 반으로 스스로 정정하고 갔어요. 빈칸을 남기는 습관이 있으니 &quot;여기 덜 확인됐다&quot;가 다음 날 눈에 들어온 겁니다.</p>
 <h2>5. 잘 돌고 있는지 확인하는 방법</h2>
 <p>AI 숫자 검증 장치는 걸어두는 것보다 살아 있는지 보는 게 더 어려워요. 그래서 셋 다 눈으로 볼 수 있는 흔적을 남기게 해뒀습니다.</p>
-<p>| 장치 | 남는 흔적 | 통과 기준 | 고장 났을 때 증상 |<br>
-|---|---|---|---|<br>
-| 역산 검산 | 본문의 검산 결과 한 줄 | 어제 값과 1원 일치 | 검산 문구가 사라짐 |<br>
-| 출처 2곳 | 하단 출처 목록 | 변동값마다 2곳 이상 | 출처가 매일 같은 한 곳 |<br>
-| 게재 보류 | &quot;미확인&quot; 표시 | 주 1건 이상 발생 | 모든 칸이 늘 꽉 참 |</p>
+<div class="table-wrap"><table><thead><tr><th>장치</th><th>남는 흔적</th><th>통과 기준</th><th>고장 났을 때 증상</th></tr></thead><tbody><tr><td>역산 검산</td><td>본문의 검산 결과 한 줄</td><td>어제 값과 1원 일치</td><td>검산 문구가 사라짐</td></tr><tr><td>출처 2곳</td><td>하단 출처 목록</td><td>변동값마다 2곳 이상</td><td>출처가 매일 같은 한 곳</td></tr><tr><td>게재 보류</td><td>&quot;미확인&quot; 표시</td><td>주 1건 이상 발생</td><td>모든 칸이 늘 꽉 참</td></tr></tbody></table></div>
 <p>마지막 칸이 제일 중요해요.<br>
 며칠 동안 아무것도 안 걸리면 자동화가 완벽해진 게 아니라 검산이 꺼진 겁니다. 사람 검사도 똑같잖아요. 불량률 0%가 며칠 이어지면 저는 검사기를 먼저 의심해요!</p>
 <h2>이런 게 궁금하실 것 같아요</h2>
@@ -180,8 +184,8 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 역산으로 어제와 맞춰보고, 출처를 두 곳 받고, 못 채운 칸은 비워두기. 이 셋이면 새벽에 혼자 도는 리포트도 어지간한 오보는 자기가 걸러냅니다!</p>
 <p>다음 글에서는 이렇게 걸러진 리포트가 매일 쌓일 때 안 읽고 넘어가는 걸 어떻게 줄였는지 써볼게요.</p>
 <p>검산 규약 원문이랑 실제로 걸렸던 오보 목록은 makefield.ai에 그대로 올려두고 있습니다.</p>
-<p>---<br>
-현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
+<hr>
+<p>현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
 <p>태그: #AI숫자검증 #AI자동화검증 #AI데이터오류 #AI팩트체크 #AI할루시네이션 #교차검증 #AI리포트 #자동화검산 #AI에이전트 #무인자동화 #파이썬자동화 #AI프롬프트작성법 #AI활용법 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

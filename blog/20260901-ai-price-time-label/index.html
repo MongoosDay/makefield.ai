@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -124,10 +136,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 문제는 AI가 그 값을 가져오면서 아무 표시 없이 종가 자리에 앉혀놨다는 겁니다. 읽는 사람은 확정된 숫자로 읽죠. 저도 그렇게 읽었고요.</p>
 <img src="img/02_three_values.png" alt="하나의 종목에 값이 세 개 — 장중 시세 / 확정 종가 / 선물 정산가, AI는 라벨 없이 하나만 집어온다" loading="lazy">
 <p>유가에서 이게 제일 크게 벌어졌어요. 유가는 <strong>지금 거래되는 스팟 시세와 그날 정산된 선물 가격이 따로 돌아다닙니다.</strong> 제가 참조하게 둔 값들은 전부 스팟 쪽이었어요.</p>
-<p>| 항목 | 리포트에 적힌 값 | 확정된 값 | 판정 |<br>
-|---|---|---|---|<br>
-| WTI | 약 $82 ~ 83.9 | $84.50 (정산가) | 범위 밖 |<br>
-| 브렌트 | 약 $89 ~ 90.3 | $90.87 (정산가) | 범위 밖 |</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>리포트에 적힌 값</th><th>확정된 값</th><th>판정</th></tr></thead><tbody><tr><td>WTI</td><td>약 $82 ~ 83.9</td><td>$84.50 (정산가)</td><td>범위 밖</td></tr><tr><td>브렌트</td><td>약 $89 ~ 90.3</td><td>$90.87 (정산가)</td><td>범위 밖</td></tr></tbody></table></div>
 <p>방향이 한쪽으로 쏠린 게 더 안 좋았습니다. 둘 다 <strong class="u">실제보다 낮게</strong> 적혀 있었어요. 유가가 오르는 국면이었으니 리포트는 시장을 실제보다 온순하게 그려준 셈이죠.<br>
 숫자가 틀리는 것보다 한쪽으로만 틀리는 게 무섭습니다. 저는 그걸 매일 같은 방향으로 오해하게 되니까요.</p>
 <h2>2. 프롬프트에 값의 종류와 시각을 못 박았어요</h2>
@@ -147,11 +156,7 @@ WTI 유가 (8/19 장중 스팟) $85.68   ← 8/18 정산 $84.94</code></pre>
 <p>라벨만으로는 부족했습니다. 장중치는 여전히 틀린 값이니까요.<br>
 그래서 다음 날 리포트 맨 앞에 어제 실은 미국 수치 전부를 확정치와 대조해 표로 싣게 했어요. 열 개 항목이면 열 개 전부요. 맞았든 틀렸든 빠짐없이요.</p>
 <p>이 규칙을 넣고 첫날 나온 표가 이랬습니다.</p>
-<p>| 항목 | 어제 게재 (장중) | 확정 | 차이 |<br>
-|---|---|---|---|<br>
-| WTI (정산가) | $84.91 | $84.94 | +$0.03 |<br>
-| 브렌트 (정산가) | $90.95 | 약 $91.02 | +$0.07 |<br>
-| 미 30년물 | 5.33% → 5.28~5.29% | 5.29% | 범위 안 |</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>어제 게재 (장중)</th><th>확정</th><th>차이</th></tr></thead><tbody><tr><td>WTI (정산가)</td><td>$84.91</td><td>$84.94</td><td>+$0.03</td></tr><tr><td>브렌트 (정산가)</td><td>$90.95</td><td>약 $91.02</td><td>+$0.07</td></tr><tr><td>미 30년물</td><td>5.33% → 5.28~5.29%</td><td>5.29%</td><td>범위 안</td></tr></tbody></table></div>
 <p>며칠 전엔 범위째 빗나가던 값이 3~7센트로 붙었습니다! 값의 종류를 못 박은 것만으로요.<br>
 지수 쪽은 좀 더 움직였어요. 사상 최고 대비 낙폭이 장중 기준 -0.55%였다가 확정치로는 -0.69%가 됐습니다. 그래도 판정은 안 바뀌었고요.</p>
 <p><strong>정정의 목적은 판정을 뒤집는 게 아니라, 틀렸을 때 반드시 말하게 만드는 데 있어요.</strong> 자동화가 조용히 틀리기 시작하면 그때부터는 고칠 방법이 없습니다.<br>

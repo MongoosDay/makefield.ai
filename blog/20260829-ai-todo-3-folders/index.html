@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -128,11 +140,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>근데 열어보면 지울 수가 없어요. 그 파일 안에는 그때 조사해둔 것, 막혔던 지점, 다음에 뭘 확인해야 하는지가 들어 있거든요. 지우면 나중에 다시 시작할 때 조사부터 처음부터 합니다.<br>
 죽은 안건이 아니라 <strong class="u">지금 안 하는</strong> 안건인 거예요. 그런데 제 목록에는 그 상태를 담을 칸이 없었습니다. 살아있음 아니면 삭제, 둘뿐이었어요.</p>
 <p>상태를 셋으로 늘리고 나서야 갈렸습니다.</p>
-<p>| 상태 | 뜻 | 어디에 두나 | 브리핑에 뜨나 |<br>
-|---|---|---|---|<br>
-| 끝남 | 결과가 다른 기록에 남아 있음 | 완료 폴더 | 안 뜸 |<br>
-| 지금 안 함 | 죽진 않았고 이번 달엔 안 건드림 | 보류 폴더 | 안 뜸 |<br>
-| 진행 중 | 이번 달에 실제로 손댈 것 | 목록 루트 | 뜸 |</p>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>뜻</th><th>어디에 두나</th><th>브리핑에 뜨나</th></tr></thead><tbody><tr><td>끝남</td><td>결과가 다른 기록에 남아 있음</td><td>완료 폴더</td><td>안 뜸</td></tr><tr><td>지금 안 함</td><td>죽진 않았고 이번 달엔 안 건드림</td><td>보류 폴더</td><td>안 뜸</td></tr><tr><td>진행 중</td><td>이번 달에 실제로 손댈 것</td><td>목록 루트</td><td>뜸</td></tr></tbody></table></div>
 <h2>3. 폴더 세 개로 갈랐습니다</h2>
 <p>구조는 이게 전부입니다. 마크다운 파일을 폴더 사이로 옮기는 것뿐이에요.</p>
 <pre><code>_이어가기/
@@ -170,7 +178,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 다만 닫는 판정은 제가 했습니다. 끝난 것처럼 보이는 일과 진짜 끝난 일은 다르고, 잘못 닫으면 조사가 통째로 사라지니까요.</p>
 <p><strong>Q. 목록은 몇 개가 적당한가요?</strong><br>
 정답은 모르겠어요. 저는 브리핑에 떴을 때 스크롤 없이 읽히는 줄 수로 잡았습니다. 제 경우엔 15줄쯤에서 다시 읽히더라고요.</p>
-<p>---</p>
+<hr>
 <p>정리하고 나서 제일 달라진 건 AI 할 일 목록의 길이가 아니라 세션 첫 1분이었어요.<br>
 15줄은 읽히거든요. 읽히니까 그중 하나를 고르게 되고, 고르니까 그날 뭐라도 하나는 끝납니다!</p>
 <p>혹시 안 끝난 일 목록을 안고 계시면, 지우려 하지 마시고 파일 날짜부터 한 번 세보세요. 어느 게 살아있고 어느 게 아닌지는 아마 거기 이미 적혀 있을 거예요.</p>

@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -115,13 +127,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>제조 현장에서 제어·자동화로 15년 밥 먹은 사람이고, 요즘은 그 일 상당 부분을 AI랑 같이 굴립니다. 이번 건은 회사 일이 아니라 순전히 제 공부 채널 얘기예요.</p>
 <p>4년 동안 쌓아둔 마크다운 문서가 500개가 넘는데, 태블릿에서는 .md가 그냥 텍스트 덩어리로 열립니다. 펜으로 밑줄 그으면서 읽으려면 PDF여야 했어요. 그래서 변환기를 직접 만들었고, 사흘 동안 버그 3건을 잡았습니다.</p>
 <p>먼저 전제입니다. 2026년 9월 기준이에요.</p>
-<p>| 항목 | 값 |<br>
-|---|---|<br>
-| OS | Windows 10/11 |<br>
-| 파이썬 | 3.12 |<br>
-| 라이브러리 | python-docx, pywin32 |<br>
-| 그 외 | MS Word 설치 필요 (PDF 내보내기에 Word COM 사용) |<br>
-| 변환 경로 | .md → .docx → .pdf |</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>값</th></tr></thead><tbody><tr><td>OS</td><td>Windows 10/11</td></tr><tr><td>파이썬</td><td>3.12</td></tr><tr><td>라이브러리</td><td>python-docx, pywin32</td></tr><tr><td>그 외</td><td>MS Word 설치 필요 (PDF 내보내기에 Word COM 사용)</td></tr><tr><td>변환 경로</td><td>.md → .docx → .pdf</td></tr></tbody></table></div>
 <img src="img/02_pipeline_traps.png" alt="md 원문이 docx를 거쳐 PDF로 나가는 3단 경로. 각 단계 아래에 세 함정이 터지는 지점 표시 — 1단 파싱에서 줄바꿈 오인, 2단 서식에서 폰트, 3단 출력에서 폭 초과" loading="lazy">
 <p>왜 굳이 docx를 한 번 거치냐면, 폰트·표 스타일을 지정하는 코드가 이미 손에 있었기 때문입니다. 새로 배우는 시간보다 재활용이 빨랐어요.</p>
 <h2>코드블록이 계단처럼 흩어지는 이유는 뭔가요</h2>
@@ -160,8 +166,7 @@ r._element.rPr.rFonts.set(qn(&quot;w:hAnsi&quot;),    &quot;DotumChe&quot;)</cod
 <h2>표랑 수식이 페이지 폭을 넘어갈 때는요</h2>
 <p>원인이 좀 얄궂습니다. 괘선 문자(<code>─│┌</code>) 같은 전각문자는 폭이 영문자의 2배예요. 편집기에서는 딱 맞아 보이는데 PDF로 나가면 오른쪽이 잘립니다.</p>
 <p>두 가지로 나눠 처리했어요.</p>
-<p>- 폰트를 8pt에서 7.5pt로 내렸습니다. 0.5pt 차이로 A4 폭 안에 들어왔어요.<br>
-- 긴 수식은 괘선 대신 ASCII 문자로 다시 썼습니다. 표로 그릴 건 마크다운 표(<code>|</code>)로 넘기고, 코드블록에는 도형만 남겼어요.</p>
+<ul><li>폰트를 8pt에서 7.5pt로 내렸습니다. 0.5pt 차이로 A4 폭 안에 들어왔어요.</li><li>긴 수식은 괘선 대신 ASCII 문자로 다시 썼습니다. 표로 그릴 건 마크다운 표(<code>|</code>)로 넘기고, 코드블록에는 도형만 남겼어요.</li></ul>
 <p>마크다운 표는 파싱할 때 두 가지를 챙겨야 합니다. 구분선 행(<code>|---|---|</code>)은 버려야 하고, 행마다 칸 수가 다를 수 있으니 가장 칸이 많은 행을 기준으로 열 개수를 잡아야 해요. 안 그러면 <code>IndexError</code>로 스크립트가 통째로 죽습니다.</p>
 <p>여러분도 메모나 기록을 .md로 쌓아두고 계신가요? 파일이 백 개를 넘어가면 어디선가 한 번은 마크다운 PDF 변환을 붙이게 되는데, 그때 이 세 개는 거의 다 만나실 거예요.</p>
 <h2>세 번 다 종료코드 0이었습니다</h2>
@@ -176,13 +181,7 @@ r._element.rPr.rFonts.set(qn(&quot;w:hAnsi&quot;),    &quot;DotumChe&quot;)</cod
 <p>거기서 끝내지 않고 사흘을 지켜봤어요. 놓친 실행(NumberOfMissedRuns) 0, 결과 0. 그때 가동으로 인정했습니다.</p>
 <h2>제대로 됐는지 확인하는 순서</h2>
 <p>저는 이 순서로 봅니다. 위에서 하나라도 걸리면 아래는 볼 필요가 없어요.</p>
-<p>| 순서 | 확인할 것 | 통과 기준 |<br>
-|---|---|---|<br>
-| 1 | PDF 파일이 생겼나 | 지정 폴더에 날짜 붙은 파일 존재 |<br>
-| 2 | 코드블록 열이 맞나 | 아스키 도형의 세로선이 일직선 |<br>
-| 3 | 문단이 온전한가 | 한 문장이 여러 문단으로 안 쪼개짐 |<br>
-| 4 | 오른쪽이 안 잘렸나 | 표·수식이 A4 폭 안에서 끝남 |<br>
-| 5 | 무인으로도 도나 | 결과 0 + 놓친 실행 0, 사흘 연속 |</p>
+<div class="table-wrap"><table><thead><tr><th>순서</th><th>확인할 것</th><th>통과 기준</th></tr></thead><tbody><tr><td>1</td><td>PDF 파일이 생겼나</td><td>지정 폴더에 날짜 붙은 파일 존재</td></tr><tr><td>2</td><td>코드블록 열이 맞나</td><td>아스키 도형의 세로선이 일직선</td></tr><tr><td>3</td><td>문단이 온전한가</td><td>한 문장이 여러 문단으로 안 쪼개짐</td></tr><tr><td>4</td><td>오른쪽이 안 잘렸나</td><td>표·수식이 A4 폭 안에서 끝남</td></tr><tr><td>5</td><td>무인으로도 도나</td><td>결과 0 + 놓친 실행 0, 사흘 연속</td></tr></tbody></table></div>
 <p>2번부터 4번은 자동으로 못 잡습니다. 저는 그냥 PDF를 엽니다. 30초면 끝나는 일입니다!</p>
 <h2>미리 답해두는 질문 셋</h2>
 <p><strong>Q. 고정폭 폰트는 꼭 DotumChe여야 하나요?</strong><br>

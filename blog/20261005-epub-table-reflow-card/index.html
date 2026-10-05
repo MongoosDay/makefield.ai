@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -116,12 +128,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>공장 자동화 쪽에서 15년 일했고, 퇴근 후엔 개인 PC에서 AI랑 이것저것 만들어요. 이번엔 그게 책이었어요. 2026년 10월 2~3일에 있었던 일입니다.</p>
 <h2>1. 전자책 PDF와 EPUB, 뭐가 다른가요</h2>
 <p><strong>PDF는 종이 한 쪽을 사진처럼 고정한 파일이고, EPUB은 화면 크기에 맞춰 글이 다시 흐르는(리플로우) 파일이에요.</strong> 차이는 폰에서 열어보면 바로 보입니다.</p>
-<p>| | PDF | EPUB |<br>
-|---|---|---|<br>
-| 화면 배치 | 종이 쪽 그대로 고정 | 화면 폭에 맞춰 다시 흐름 |<br>
-| 폰에서 읽기 | 확대·좌우 스크롤 반복 | 글자 크기 조절, 한 손으로 넘김 |<br>
-| 표·코드 | 종이 모양 그대로 | 넓으면 화면 밖으로 넘침 |<br>
-| 링크 | 쪽 번호 위주 | 장마다 바로 가는 링크 |</p>
+<div class="table-wrap"><table class="rowhead"><thead><tr><th></th><th>PDF</th><th>EPUB</th></tr></thead><tbody><tr><td>화면 배치</td><td>종이 쪽 그대로 고정</td><td>화면 폭에 맞춰 다시 흐름</td></tr><tr><td>폰에서 읽기</td><td>확대·좌우 스크롤 반복</td><td>글자 크기 조절, 한 손으로 넘김</td></tr><tr><td>표·코드</td><td>종이 모양 그대로</td><td>넓으면 화면 밖으로 넘침</td></tr><tr><td>링크</td><td>쪽 번호 위주</td><td>장마다 바로 가는 링크</td></tr></tbody></table></div>
 <p>제 원고는 표가 정말 많았어요. 그래서 첫날 판단은 &quot;PDF가 안전하다&quot;였고, 실제로 PDF로 제출했습니다. 여기까진 틀린 판단은 아니었어요. 다만 그 판단 뒤에 &quot;EPUB은 미리 만들어만 둬라&quot;는 한 줄을 붙여서 AI한테 넘기고 잤어요.</p>
 <h2>2. EPUB 표 깨짐은 왜 생기나요</h2>
 <p><strong>표가 깨지는 건 칸 수 × 글자 수가 폰 폭을 넘기 때문이에요.</strong> 폰 한 줄에 한글이 대략 24자 들어가는데, 4칸짜리 표에 칸마다 열 글자씩 들어가면 이미 넘칩니다. 그러면 표가 화면 밖으로 삐져나가거나, 낱말이 한 글자씩 세로로 끊겨요.</p>
@@ -140,14 +147,7 @@ if len(header) &gt;= CARD_MIN_COLS and not fits:
 <img src="img/02_card.png" alt="02_card.png — 좌우 전후 비교. 왼쪽 &#x27;종이책 표&#x27; 4칸 표(장·증상·원인·처방)가 폰 화면 틀 밖으로 삐져나가고 빨간 펜으로 &#x27;넘침&#x27; 표시. 오른쪽 &#x27;전자책 카드&#x27; 같은 내용이 행마다 카드 한 장(증상: … / 원인: … / 처방: …)으로 세로 배치, 폰 틀 안에 들어감. 하단 캡션 &#x27;칸 많은 표는 행마다 카드 한 장&#x27;" loading="lazy">
 <h2>3. 바꾸는 건 표만이 아니었어요</h2>
 <p><strong>종이를 전제로 쓴 문장과 장치도 전부 손봐야 했어요.</strong> 표보다 오히려 이쪽이 더 많았습니다.</p>
-<p>| 요소 | 종이책 | 전자책 |<br>
-|---|---|---|<br>
-| 코드 박스 | 고정폭 정렬 | 화면 폭에서 줄 감김 |<br>
-| 본문의 &quot;(1-2)&quot; 같은 장 참조 | 그냥 글자 | 해당 장으로 가는 링크 <strong>723개</strong> |<br>
-| &quot;책 뒤 QR&quot; 같은 문구 | 종이 문맥 | 누를 수 있는 링크로 치환 |<br>
-| 설치 명령 | 이름·명령 한 줄 정렬 | 이름과 명령 박스 분리 (복사할 때 안 섞이게) |<br>
-| 역슬래시 <code>\</code> | 그대로 | 글꼴만 영문으로 (₩로 보이는 것 방지) |<br>
-| 목차 | 차례 쪽 | 기기 목차 부→장 2단계 + 차례 링크 |</p>
+<div class="table-wrap"><table><thead><tr><th>요소</th><th>종이책</th><th>전자책</th></tr></thead><tbody><tr><td>코드 박스</td><td>고정폭 정렬</td><td>화면 폭에서 줄 감김</td></tr><tr><td>본문의 &quot;(1-2)&quot; 같은 장 참조</td><td>그냥 글자</td><td>해당 장으로 가는 링크 <strong>723개</strong></td></tr><tr><td>&quot;책 뒤 QR&quot; 같은 문구</td><td>종이 문맥</td><td>누를 수 있는 링크로 치환</td></tr><tr><td>설치 명령</td><td>이름·명령 한 줄 정렬</td><td>이름과 명령 박스 분리 (복사할 때 안 섞이게)</td></tr><tr><td>역슬래시 <code>\</code></td><td>그대로</td><td>글꼴만 영문으로 (₩로 보이는 것 방지)</td></tr><tr><td>목차</td><td>차례 쪽</td><td>기기 목차 부→장 2단계 + 차례 링크</td></tr></tbody></table></div>
 <p>설치 명령 분리는 1회차 검사에서 &quot;명령 섞임&quot;으로 걸렸어요. 종이에선 도구 이름과 명령이 한 줄에 가지런히 놓이는데, 폰에서 줄이 감기니 둘이 한 덩어리로 보였거든요. 그대로 복사하면 명령에 이름까지 섞일 수 있는 상태였어요. 종이에선 생길 일이 없는 문제죠.</p>
 <h2>4. 검사는 세 겹으로 돌렸어요</h2>
 <p><strong>기계 검사 두 개와 눈 검사 하나를 겹쳐 돌렸고, 한 바퀴로는 안 끝났어요.</strong></p>
@@ -169,9 +169,7 @@ if len(header) &gt;= CARD_MIN_COLS and not fits:
 <p>그걸 보고 제가 한 말이 &quot;EPUB이 좋아 보인다&quot;였어요.</p>
 <p>마침 PDF판은 심사가 아직 시작 전이었어요. 그래서 PDF 제출을 취소하고, 같은 초안에 EPUB을 올려 새로 심사를 요청했습니다. 비용은 0원이었고요. 승인 후에 파일만 교체해서 형식을 바꿀 수 있는지는 확인 못 했어요. 확실한 길이 앞에 있어서 그쪽으로 간 거예요.</p>
 <p>남은 숙제도 솔직히 적어둘게요.</p>
-<p>- 국내 전자책 앱 3종에서는 아직 안 열어봤어요. 검사는 PC 크롬 기준이에요<br>
-- &quot;A → B → C&quot;처럼 화살표로 이은 한 줄 도식은 폰에서 중간에 꺾여요<br>
-- 본문의 &quot;위 표&quot;라는 말이 카드로 바뀐 표를 가리키는 곳이 몇 군데 남았어요</p>
+<ul><li>국내 전자책 앱 3종에서는 아직 안 열어봤어요. 검사는 PC 크롬 기준이에요</li><li>&quot;A → B → C&quot;처럼 화살표로 이은 한 줄 도식은 폰에서 중간에 꺾여요</li><li>본문의 &quot;위 표&quot;라는 말이 카드로 바뀐 표를 가리키는 곳이 몇 군데 남았어요</li></ul>
 <img src="img/04_decision.png" alt="04_decision.png — 판단 타임라인. 10/2 밤 &#x27;PDF 제출 (표가 무너질까 봐)&#x27; → 같은 밤 &#x27;AI가 EPUB 변환기 제작 · 검사 3회&#x27; → 10/3 아침 &#x27;아이패드 실기기 확인&#x27; → &#x27;PDF 취소 · EPUB 재제출&#x27;. 빨간 펜 동그라미로 &#x27;심사 시작 전이라 비용 0&#x27; 표시" loading="lazy">
 <h2>6. 미리 답해둘게요</h2>
 <p><strong>Q. 표가 많은 책이면 그냥 PDF가 낫지 않나요?</strong><br>

@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -175,9 +187,7 @@ AI가 먼저 한 줄 적었고, 3초 뒤에 스크립트가 또 한 줄 적었�
 이번 건은 큰일 아니었어요. 리포트 열세 개는 멀쩡했고요. 다만 저 장부가 다음 날 지시문의 입력이라는 게 걸립니다. 읽기용 자료가 아니라 판단의 근거니까요. 그리고 3일 동안 못 봤다는 사실은 두 줄보다 더 마음에 걸렸습니다.</p>
 <h2>고칠 자리는 세 군데로 좁혔어요</h2>
 <p>솔직히 말하면 아직 손은 안 댔습니다. 어디를 고칠지만 정해뒀어요.</p>
-<p>- <strong>지시문에 한 줄 추가</strong>: &quot;이 목록은 <strong class="u">읽기만</strong> 해라. 장부는 스크립트가 적는다.&quot; 시키지 않은 걸 안 하길 기대하는 것보다, 하지 말라고 적는 게 빠릅니다.<br>
-- <strong>이름 형식을 하나로</strong>: 장부에 적히는 이름은 스크립트가 정한 방식 하나만 쓰게. 같은 대상이 두 이름을 가지면 검사는 못 잡아요.<br>
-- <strong>로그 마지막 줄만이라도 보기</strong>: 매일 안 읽을 거면 안 읽는 걸 전제로, 이상한 낌새만 눈에 띄게 만들어야죠.</p>
+<ul><li><strong>지시문에 한 줄 추가</strong>: &quot;이 목록은 <strong class="u">읽기만</strong> 해라. 장부는 스크립트가 적는다.&quot; 시키지 않은 걸 안 하길 기대하는 것보다, 하지 말라고 적는 게 빠릅니다.</li><li><strong>이름 형식을 하나로</strong>: 장부에 적히는 이름은 스크립트가 정한 방식 하나만 쓰게. 같은 대상이 두 이름을 가지면 검사는 못 잡아요.</li><li><strong>로그 마지막 줄만이라도 보기</strong>: 매일 안 읽을 거면 안 읽는 걸 전제로, 이상한 낌새만 눈에 띄게 만들어야죠.</li></ul>
 <p>정리하면 이렇습니다. AI가 시키지 않은 일까지 할 때 의심할 곳은 결과물이 아니라 <strong>그 파일을 누가 고칠 수 있는지</strong>예요. 읽으라고 준 자료가 고쳐도 되는 자료로 읽히지는 않는지, 그리고 그 사실을 알려주는 보고가 아무도 안 여는 폴더에 쌓이고 있지는 않은지.</p>
 <p>여러분이 돌리는 자동화에서 같은 파일에 손대는 쪽은 몇 곳인가요?</p>
 <p>makefield.ai에는 이런 자잘한 사고들이 날짜순으로 쌓여 있습니다.</p>

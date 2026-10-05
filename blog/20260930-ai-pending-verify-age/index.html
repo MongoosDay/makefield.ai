@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -128,11 +140,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <img src="img/02_material_cycle.png" alt="재료 도착 주기 타임라인. 가로축에 금·토·일·월 4칸. 금요일 칸에 파란 상자 &#x27;값 수집&#x27;, 토·일 칸은 회색 빗금에 &#x27;되짚기 재료 없음&#x27;, 월요일 칸에 초록 상자 &#x27;다음 거래일 값 도착 → 검증 가능&#x27;. 금요일 상자에서 월요일 상자로 이어지는 긴 화살표 위에 붉은 글씨 &#x27;미확정 3일&#x27;. 하단 캡션 &#x27;규칙은 매일 돌지만 재료는 주 5일만 온다&#x27;" loading="lazy">
 <h2>그래서 목록에 나이를 붙였습니다</h2>
 <p>AI 검증 대기 목록에서 고친 건 딱 한 가지예요. 미확정 항목 옆에 &quot;며칠째&quot;를 같이 적게 했습니다. 그랬더니 같은 3건이 완전히 다르게 읽히더라고요.</p>
-<p>| 보이는 것 | 진짜 원인 | 제 처방 |<br>
-|---|---|---|<br>
-| 2일째 미확정 | 재료가 아직 안 왔다 | 그대로 두고 다음 회차에 재대조 |<br>
-| 4일째 미확정 | 재료는 왔는데 대조가 안 붙었다 | 확인 경로를 하나 더 뚫는다 |<br>
-| 8일째 미확정 | 이 항목은 이 방법으로는 못 닫는다 | 방법을 바꾸거나 항목을 내린다 |</p>
+<div class="table-wrap"><table><thead><tr><th>보이는 것</th><th>진짜 원인</th><th>제 처방</th></tr></thead><tbody><tr><td>2일째 미확정</td><td>재료가 아직 안 왔다</td><td>그대로 두고 다음 회차에 재대조</td></tr><tr><td>4일째 미확정</td><td>재료는 왔는데 대조가 안 붙었다</td><td>확인 경로를 하나 더 뚫는다</td></tr><tr><td>8일째 미확정</td><td>이 항목은 이 방법으로는 못 닫는다</td><td>방법을 바꾸거나 항목을 내린다</td></tr></tbody></table></div>
 <p>기준은 제 리포트가 도는 주기에 맞춘 겁니다. 하루 한 번 도니까 사흘이 넘어가면 주말을 감안해도 재료는 왔다는 뜻이거든요. 매주 도는 자동화라면 이 숫자는 당연히 달라져야 해요.</p>
 <p>나이를 붙이고 나서 좋았던 건, 제가 <strong>규칙을 덜 만들게 됐다는 점</strong>입니다. 그전엔 목록이 안 줄면 뭔가 또 고쳐야 할 것 같아서 규칙을 자꾸 늘렸어요. 실제로 엿새 동안 방법론 규칙을 여섯 번 신설했습니다. 그중 한 번은 &quot;마감 기록을 1순위 소스로 쓴다&quot;는 규칙을 만들고 그걸 지켰는데도 다음 날 5건이 또 틀렸어요. 처방이 원인의 절반만 짚었던 거죠.. 나이 표기를 붙인 뒤로는 신설 0건인 날이 이어졌습니다. 대기 중인 걸 실패로 오독하지 않으니 고칠 일이 없었던 거예요.</p>
 <h2>재료 하나가 없어도 닫히는 길을 하나 더 뚫었습니다</h2>

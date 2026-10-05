@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -164,11 +176,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 WakeToRun                  : False   ← 21개 전부
 DisallowStartIfOnBatteries : True    ← 21개 전부</code></pre>
 <p>셋 다 만들 때 손대지 않으면 이렇게 잡히는 값들이에요. 뜻은 이렇습니다.</p>
-<p>| 설정 | False/True일 때 | 작업 스케줄러 창에서 찾을 자리 |<br>
-|---|---|---|<br>
-| StartWhenAvailable | 놓친 회차를 나중에 만회하지 않음 | 설정 탭 — &quot;예약 시간을 놓친 경우 가능한 대로 빨리 작업 시작&quot; |<br>
-| WakeToRun | 절전 중인 PC를 깨우지 않음 | 조건 탭 — &quot;이 작업을 실행하기 위해 절전 모드 해제&quot; |<br>
-| DisallowStartIfOnBatteries | 배터리로 돌고 있으면 시작 안 함 | 조건 탭 — 전원 항목 |</p>
+<div class="table-wrap"><table><thead><tr><th>설정</th><th>False/True일 때</th><th>작업 스케줄러 창에서 찾을 자리</th></tr></thead><tbody><tr><td>StartWhenAvailable</td><td>놓친 회차를 나중에 만회하지 않음</td><td>설정 탭 — &quot;예약 시간을 놓친 경우 가능한 대로 빨리 작업 시작&quot;</td></tr><tr><td>WakeToRun</td><td>절전 중인 PC를 깨우지 않음</td><td>조건 탭 — &quot;이 작업을 실행하기 위해 절전 모드 해제&quot;</td></tr><tr><td>DisallowStartIfOnBatteries</td><td>배터리로 돌고 있으면 시작 안 함</td><td>조건 탭 — 전원 항목</td></tr></tbody></table></div>
 <p>노트북이면 세 번째가 특히 아픕니다. 충전기를 안 꽂고 잔 밤은 그냥 통째로 비어요.</p>
 <p>바꾸는 건 위 표의 자리에서 체크박스 세 개면 되고, 파워셸로는 설정 묶음을 만들어 덮어씌웁니다.</p>
 <pre><code>$s = New-ScheduledTaskSettingsSet -StartWhenAvailable -WakeToRun `
@@ -181,9 +189,7 @@ Set-ScheduledTask -TaskName &quot;작업이름&quot; -Settings $s</code></pre>
 <p>고쳤는지 아닌지는 다음 날 아침에 이걸로 판정했어요.</p>
 <pre><code>Get-ScheduledTaskInfo -TaskName &quot;작업이름&quot; |
   Select-Object LastRunTime, LastTaskResult, NextRunTime, NumberOfMissedRuns</code></pre>
-<p>- LastRunTime이 <strong class="u">어제가 아니라 오늘</strong>이면 통과<br>
-- NumberOfMissedRuns가 어제보다 안 늘었으면 통과<br>
-- 그리고 산출물 폴더에 오늘 날짜 파일이 있으면 진짜 통과</p>
+<ul><li>LastRunTime이 <strong class="u">어제가 아니라 오늘</strong>이면 통과</li><li>NumberOfMissedRuns가 어제보다 안 늘었으면 통과</li><li>그리고 산출물 폴더에 오늘 날짜 파일이 있으면 진짜 통과</li></ul>
 <p>세 번째까지 봐야 해요. 앞의 두 줄은 &quot;불렸다&quot;까지만 보장하지 &quot;결과가 나왔다&quot;는 말해주지 않거든요.<br>
 얼마 전에 실행 시간 얘기를 적으면서도 같은 결론이었는데, 자동화는 결국 산출물로 확인하는 수밖에 없더라고요.</p>
 <h2>저도 한참 헷갈렸던 것들</h2>
@@ -194,11 +200,7 @@ Set-ScheduledTask -TaskName &quot;작업이름&quot; -Settings $s</code></pre>
 <p><strong>Q. 놓친 횟수는 언제 초기화되나요?</strong><br>
 저도 초기화 조건까지는 확인 못 했습니다. 실제로 그날 다시 돌린 작업은 이 값이 0으로 돌아가 있더라고요. 그래서 저는 이 숫자보다 마지막 실행 시각을 더 믿습니다. 그건 거짓말을 안 하니까요.</p>
 <h2>정리하면</h2>
-<p>- 작업 스케줄러 실행 안 됨의 첫 용의자는 스크립트가 아니라 그 시각의 PC 전원 상태다<br>
-- 예약 시각에 PC가 꺼져 있으면 그 회차는 만회되지 않고 사라진다 (기본값 기준)<br>
-- 결과 코드 0은 &quot;마지막에 돌았을 때 성공&quot;이라는 뜻이지 &quot;오늘 돌았다&quot;가 아니다<br>
-- 놓친 작업들의 마지막 실행 시각을 모으면 PC가 언제 내려갔는지가 역산된다<br>
-- 최종 판정은 상태 값이 아니라 산출물 파일의 날짜로 한다</p>
+<ul><li>작업 스케줄러 실행 안 됨의 첫 용의자는 스크립트가 아니라 그 시각의 PC 전원 상태다</li><li>예약 시각에 PC가 꺼져 있으면 그 회차는 만회되지 않고 사라진다 (기본값 기준)</li><li>결과 코드 0은 &quot;마지막에 돌았을 때 성공&quot;이라는 뜻이지 &quot;오늘 돌았다&quot;가 아니다</li><li>놓친 작업들의 마지막 실행 시각을 모으면 PC가 언제 내려갔는지가 역산된다</li><li>최종 판정은 상태 값이 아니라 산출물 파일의 날짜로 한다</li></ul>
 <p>제 상태판은 여섯 시간 늦게 도착한 작업을 성공으로 세고 있었어요. 그것도 틀린 계산은 아닌데, 제가 알고 싶었던 건 그게 아니었죠.<br>
 여러분이 예약해둔 작업 중에 마지막 실행 시각이 이번 주가 아닌 게 몇 개나 있을까요. 위의 한 줄이면 3초 만에 나옵니다.</p>
 <p>참고로 제 자동화 점검 기록은 makefield.ai 한 군데로 모읍니다. 어차피 다음에 또 까먹을 테니까요.</p>

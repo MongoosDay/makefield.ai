@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -117,12 +129,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p><strong>정리라는 말에는 기준이 없습니다.</strong> 그래서 이 한 줄을 던지는 순간 기준을 정하는 권한이 통째로 AI에게 넘어가요.</p>
 <p>AI 입장에선 정할 게 한두 개가 아닙니다. 확장자로 묶을까 날짜로 묶을까. 하위 폴더도 대상인가. <code>report_final.pdf</code>와 <code>report_final2.pdf</code>는 중복인가 아닌가. 중복이면 지워도 되나.</p>
 <p>전부 그럴듯하게 결정되고, 그 결정이 파일에 바로 반영돼요. 채팅창이면 틀린 답이 화면에 뜨고 끝이지만 CLI 에이전트는 결과가 <strong class="u">디스크에 남습니다</strong>.</p>
-<p>| 내가 안 정해준 것 | AI가 대신 정하는 것 |<br>
-|---|---|<br>
-| 대상 범위 | 하위 폴더까지 훑을지 |<br>
-| 분류 기준 | 확장자냐 날짜냐 이름이냐 |<br>
-| 삭제 권한 | 중복·임시파일을 지울지 |<br>
-| 실행 시점 | 물어보고 할지 바로 할지 |</p>
+<div class="table-wrap"><table><thead><tr><th>내가 안 정해준 것</th><th>AI가 대신 정하는 것</th></tr></thead><tbody><tr><td>대상 범위</td><td>하위 폴더까지 훑을지</td></tr><tr><td>분류 기준</td><td>확장자냐 날짜냐 이름이냐</td></tr><tr><td>삭제 권한</td><td>중복·임시파일을 지울지</td></tr><tr><td>실행 시점</td><td>물어보고 할지 바로 할지</td></tr></tbody></table></div>
 <img src="img/02_scope.png" alt="동심 사각형 2개. 바깥 회색 사각형 라벨 &#x27;작업 폴더 전체&#x27;, 안쪽 초록 사각형 라벨 &#x27;이번 작업 범위 — 루트 파일만&#x27; 안에 문서 아이콘 5개. 바깥 영역에 빨강 점선 박스 &#x27;하위 폴더 · 규칙에 없는 확장자 = 손대지 않음&#x27; 표시. 하단 캡션 &#x27;범위를 안 그리면 바깥까지 전부 대상이 된다&#x27;" loading="lazy">
 <h2>2. 그래서 프롬프트에 경계부터 씁니다</h2>
 <p><strong>정리를 잘 시키는 법은 좋은 요청 문장을 찾는 게 아니라, 하지 말 것을 먼저 적는 겁니다.</strong> 제가 쓰는 네 줄은 이래요.</p>
@@ -149,14 +156,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
     3 .jpg
     2 .png</code></pre>
 <p>그다음 4번 조건대로 계획표를 받았습니다. 일부만 옮기면 이렇게 나와요.</p>
-<p>| 원본 | 이동할 곳 | 사유 |<br>
-|---|---|---|<br>
-| 견적서_v1.xlsx | 문서\ | 확장자 규칙 |<br>
-| 회의록_0901.docx | 문서\ | 확장자 규칙 |<br>
-| 사진_001.jpg | 이미지\ | 확장자 규칙 |<br>
-| 캡처_1.png | 이미지\ | 확장자 규칙 |<br>
-| log_0901.txt | 메모\ | 확장자 규칙 |<br>
-| setup.exe | (제외) | 규칙에 없는 확장자 |</p>
+<div class="table-wrap"><table><thead><tr><th>원본</th><th>이동할 곳</th><th>사유</th></tr></thead><tbody><tr><td>견적서_v1.xlsx</td><td>문서\</td><td>확장자 규칙</td></tr><tr><td>회의록_0901.docx</td><td>문서\</td><td>확장자 규칙</td></tr><tr><td>사진_001.jpg</td><td>이미지\</td><td>확장자 규칙</td></tr><tr><td>캡처_1.png</td><td>이미지\</td><td>확장자 규칙</td></tr><tr><td>log_0901.txt</td><td>메모\</td><td>확장자 규칙</td></tr><tr><td>setup.exe</td><td>(제외)</td><td>규칙에 없는 확장자</td></tr></tbody></table></div>
 <pre><code>이동대상: 17 / 제외: 1
 실제변경: 없음 (루트 파일 18개 그대로)</code></pre>
 <p>봐야 할 건 마지막 두 줄입니다. 이동대상 17 + 제외 1 = 18로, 제 루트 파일 수와 정확히 맞아요. <strong>표에 안 나온 파일이 없다</strong>는 뜻입니다. 계획표를 받으면 예쁜 분류보다 이 합계부터 맞춰보세요.</p>
@@ -182,11 +182,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 총 파일수: 19
 md5 불일치: 0 건</code></pre>
 <p>원래대로 18개, 내용도 한 건도 안 상했습니다. 이 확인까지 해보고 나서야 진짜 폴더에 같은 작업을 시켰어요.</p>
-<p>| 확인 항목 | 통과 기준 | 실패면 |<br>
-|---|---|---|<br>
-| 총 파일 개수 | 이동 전 = 이동 후 | 삭제가 섞였다 |<br>
-| 제외 대상 | 제자리에 그대로 | 범위가 새어나갔다 |<br>
-| 되돌리기 | 원위치 + 내용 무손상 | 안전망이 없는 상태 |</p>
+<div class="table-wrap"><table><thead><tr><th>확인 항목</th><th>통과 기준</th><th>실패면</th></tr></thead><tbody><tr><td>총 파일 개수</td><td>이동 전 = 이동 후</td><td>삭제가 섞였다</td></tr><tr><td>제외 대상</td><td>제자리에 그대로</td><td>범위가 새어나갔다</td></tr><tr><td>되돌리기</td><td>원위치 + 내용 무손상</td><td>안전망이 없는 상태</td></tr></tbody></table></div>
 <h2>5. 제가 문서 187개를 날린 자리</h2>
 <p><strong>저는 이 습관을 사고 나고 나서 들였습니다.</strong> 개인 문서를 정리해주던 동기화 스크립트를 돌리던 때예요.</p>
 <p>미분류함 목록을 불러오는 명령이 문서 165개를 돌려줬어요. 저는 그걸 <strong>어디에도 안 담긴 떠돌이 문서</strong>라고 읽고 전부 삭제를 걸었습니다. 그게 아니었어요. 그 목록엔 폴더에 멀쩡히 들어 있던 문서까지 섞여 있었거든요. 이름만 &#x27;미분류함&#x27;이지 전체 목록에 가까웠던 겁니다.</p>
@@ -203,11 +199,7 @@ md5 불일치: 0 건</code></pre>
 <p><strong>Q. 승인 화면에서 &quot;항상 허용&quot;을 눌러도 되나요?</strong><br>
 읽기는 괜찮습니다. 이동과 삭제는 권하지 않아요. 파일을 만지는 동작마다 한 번씩 멈추는 게 지금 단계에선 유일한 안전장치입니다.</p>
 <p>오늘 돌려보실 분을 위한 체크리스트로 닫을게요.</p>
-<p>- [ ] 원본 말고 복사본 폴더에서 연습했다<br>
-- [ ] 프롬프트에 범위 네 줄(대상·삭제금지·제외·계획표 먼저)을 넣었다<br>
-- [ ] 계획표의 이동 + 제외 합계가 실제 파일 수와 맞는지 봤다<br>
-- [ ] 매니페스트를 대상 폴더 바깥에 남겼다<br>
-- [ ] 이동 전후 총 개수를 직접 세어 대조하고, 한 번은 되돌려봤다</p>
+<ul><li>[ ] 원본 말고 복사본 폴더에서 연습했다</li><li>[ ] 프롬프트에 범위 네 줄(대상·삭제금지·제외·계획표 먼저)을 넣었다</li><li>[ ] 계획표의 이동 + 제외 합계가 실제 파일 수와 맞는지 봤다</li><li>[ ] 매니페스트를 대상 폴더 바깥에 남겼다</li><li>[ ] 이동 전후 총 개수를 직접 세어 대조하고, 한 번은 되돌려봤다</li></ul>
 <p>정리는 AI가 하고 판정은 제가 합니다. 오늘 남길 건 명령어가 아니라 이 역할 분담 하나예요! 혹시 AI한테 파일 맡겼다가 엉뚱한 게 움직여서 놀란 적 있으신가요? 저는 그게 187개였습니다..</p>
 <p>다음 편은 기록 얘기예요. 오늘 정한 이 네 줄을 내일 AI는 하나도 기억 못 하거든요.</p>
 <p>연재에서 쓰는 프롬프트 네 줄과 확인 절차는 makefield.ai에도 순서대로 정리해두고 있어요.</p>

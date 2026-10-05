@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -172,12 +184,7 @@ AI가 문서를 뽑아내는 속도를, 그걸 읽는 제 눈이 도저히 못 �
 아무리 좋은 산출물을 많이 뽑아도, <strong class="u">읽는 사람</strong>이 0이면 곱한 값도 0이에요.<br>
 읽는 사람이 빠진 자동화는, 잘 돌수록 오히려 관리비만 먹는 짐이 되고요.</p>
 <img src="img/04_value.png" alt="가치 공식 — 가운데 큰 수식 &quot;자동화의 가치 = 산출물의 양 × 읽는 사람의 수&quot;, 그 아래 빨간 강조 줄 &quot;읽는 사람 = 0 이면 → 전체 가치 = 0&quot;" loading="lazy">
-<p>| 볼 것 | 예전의 나 | 지금의 나 |<br>
-|---|---|---|<br>
-| 판단 기준 | 잘 돌아가는가 | 읽는 사람이 있는가 |<br>
-| 성공의 정의 | 동기화 성공률 | 실제 열람·활용 |<br>
-| 많이 쌓이면 | 뿌듯 | 관리비부터 걱정 |<br>
-| 안 읽히면 | 그냥 켜둠 | 과감히 끔 |</p>
+<div class="table-wrap"><table><thead><tr><th>볼 것</th><th>예전의 나</th><th>지금의 나</th></tr></thead><tbody><tr><td>판단 기준</td><td>잘 돌아가는가</td><td>읽는 사람이 있는가</td></tr><tr><td>성공의 정의</td><td>동기화 성공률</td><td>실제 열람·활용</td></tr><tr><td>많이 쌓이면</td><td>뿌듯</td><td>관리비부터 걱정</td></tr><tr><td>안 읽히면</td><td>그냥 켜둠</td><td>과감히 끔</td></tr></tbody></table></div>
 <h2>자주 묻는 질문</h2>
 <p><strong>Q. 애써 만든 자동화를 끄는 게 아깝지 않았어요?</strong><br>
 아까웠죠. 근데 안 읽는 창고를 유지하는 비용이 더 아깝더라고요. 그리고 완전히 버린 게 아니라, 껐다가 진짜 필요한 핵심만 다시 살린 거예요. 실패한 설계도 다음 설계의 데이터가 되니까, 이 자동화도 헛수고는 아니었어요.</p>
@@ -187,14 +194,12 @@ AI가 문서를 뽑아내는 속도를, 그걸 읽는 제 눈이 도저히 못 �
 <p>AI로 자동화를 돌리기 시작하면, 어느 순간 만드는 속도가 읽는 속도를 앞질러요.<br>
 그때부터는 &#x27;잘 도는 자동화&#x27;가 곧 &#x27;좋은 자동화&#x27;가 아니에요.<br>
 잘 돌수록 아무도 안 보는 걸 더 부지런히 쌓을 수도 있거든요.</p>
-<p>- ☐ 내가 만든 자동화, 그 결과물을 최근에 다시 열어본 적 있는가<br>
-- ☐ &#x27;성공률&#x27; 같은 지표가 &#x27;쓸모&#x27;까지 재준다고 착각하고 있진 않은가<br>
-- ☐ 안 읽히는데 잘 돈다는 이유로 그냥 켜두고 있진 않은가</p>
+<ul><li>☐ 내가 만든 자동화, 그 결과물을 최근에 다시 열어본 적 있는가</li><li>☐ &#x27;성공률&#x27; 같은 지표가 &#x27;쓸모&#x27;까지 재준다고 착각하고 있진 않은가</li><li>☐ 안 읽히는데 잘 돈다는 이유로 그냥 켜두고 있진 않은가</li></ul>
 <p>하나라도 뜨끔했다면, 한 번쯤 과감히 꺼보시는 것도 방법이에요.<br>
 저는 이렇게 잘 돌지만 꺼버린 자동화들의 기록을 makefield.ai에 남기고 있어요.<br>
 그래도 공장은, 계속 만들어지고 있고요.</p>
-<p>---<br>
-태그: #노션자동화 #노션자동화후기 #AI업무자동화 #자동화정리 #세컨드브레인 #노션활용 #AI문서자동화 #빌드과잉 #자동화관리 #AI실무 #현장엔지니어 #제조업AI #AI활용법 #엔지니어AI #MakeFieldAI</p>
+<hr>
+<p>태그: #노션자동화 #노션자동화후기 #AI업무자동화 #자동화정리 #세컨드브레인 #노션활용 #AI문서자동화 #빌드과잉 #자동화관리 #AI실무 #현장엔지니어 #제조업AI #AI활용법 #엔지니어AI #MakeFieldAI</p>
 </article>
 <div class="endcard">
 <span class="stamp">MakeField AI</span>

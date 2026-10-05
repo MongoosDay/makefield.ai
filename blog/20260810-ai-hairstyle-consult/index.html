@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -139,8 +151,7 @@ AI 헤어스타일 추천이라고 검색해도 사정은 비슷하더라고요.
 <p>여기가 이번에 제일 크게 배운 부분이에요.<br>
 후보를 나열받는 대신 <strong>&quot;이거 하면 왜 안 되는지&quot;를 물으면</strong> 답이 갑자기 실행 가능해집니다.</p>
 <p>제가 던진 후보는 두 개였어요. 둘 다 <strong class="u">기각</strong>당했습니다.</p>
-<p>- <strong>긴 앞머리 내리기</strong> → 6번(앞머리 숱 적음)에 걸림. 길게 내리면 두피가 비쳐서 역효과.<br>
-- <strong>포마드</strong> → 이마 노출 + 세로 강조 + M자 노출. 2번(긴 얼굴)과 1번(역삼각형)을 동시에 악화.</p>
+<ul><li><strong>긴 앞머리 내리기</strong> → 6번(앞머리 숱 적음)에 걸림. 길게 내리면 두피가 비쳐서 역효과.</li><li><strong>포마드</strong> → 이마 노출 + 세로 강조 + M자 노출. 2번(긴 얼굴)과 1번(역삼각형)을 동시에 악화.</li></ul>
 <p>솔직히 말하면 저는 포마드가 하고 싶었어요.<br>
 그런데 아내가 진작에 &quot;그거 나이 들어 보인다&quot;고 했었거든요.<br>
 기각 논리를 읽는데, 아내가 짚은 지점이랑 정확히 같은 자리더라고요..<br>
@@ -168,11 +179,7 @@ AI 헤어스타일 추천이라고 검색해도 사정은 비슷하더라고요.
 <p>관리 계획까지 붙었어요. 4~6주 간격 다듬기 컷으로 과도기를 넘기고, 스타일링은 왁스만.<br>
 곱슬이 볼륨을 알아서 만들어주니 드라이 공정을 뺄 수 있다는 계산이었어요.<br>
 평생 단점인 줄 알았던 곱슬이 여기서 일을 하네요!</p>
-<p>| 물어본 방식 | 돌아오는 답 | 미용실에서 |<br>
-|---|---|---|<br>
-| &quot;나한테 뭐가 어울려?&quot; | 스타일 이름 | 해석은 원장님 몫 |<br>
-| &quot;이거 해도 돼?&quot; (사진+조건) | 되는 이유·안 되는 이유 | 내가 판단 가능 |<br>
-| &quot;그대로 말할 문장으로&quot; | 부위별 지시문 | 읽으면 끝 |</p>
+<div class="table-wrap"><table><thead><tr><th>물어본 방식</th><th>돌아오는 답</th><th>미용실에서</th></tr></thead><tbody><tr><td>&quot;나한테 뭐가 어울려?&quot;</td><td>스타일 이름</td><td>해석은 원장님 몫</td></tr><tr><td>&quot;이거 해도 돼?&quot; (사진+조건)</td><td>되는 이유·안 되는 이유</td><td>내가 판단 가능</td></tr><tr><td>&quot;그대로 말할 문장으로&quot;</td><td>부위별 지시문</td><td>읽으면 끝</td></tr></tbody></table></div>
 <img src="img/04_side.png" alt="옆라인 실루엣 비교 — 왼쪽 &#x27;뭉뚱그린 주문: 볼륨 살려주세요&#x27; → 정수리 솟고 뒤통수 납작(빨강 X) / 오른쪽 &#x27;부위별 주문&#x27; → 정수리 평평·뒤통수 둥글게(초록 O). 각 실루엣에 Top·Back 라벨" loading="lazy">
 <p>솔직한 한계도 적어둘게요.<br>
 결론이 &quot;자른다&quot;가 아니라 &quot;기른다&quot;라서, 이 글엔 짜잔 하고 보여줄 비포애프터가 없어요.<br>
@@ -191,8 +198,8 @@ AI 헤어스타일 추천에서 바꿀 건 AI가 아니라 질문의 순서예�
 <p>미용실에서 말문 막혔던 적, 다들 한 번쯤 있으시죠.<br>
 그거 취향이 없어서가 아니라 조건을 말로 못 만들어서더라고요.<br>
 AI를 이렇게 사소한 일에 굴려본 기록은 makefield.ai 쪽에 더 있습니다.</p>
-<p>---<br>
-태그: #AI헤어스타일추천 #얼굴형헤어스타일 #미용실주문멘트 #AI사진분석 #남자헤어스타일추천 #긴얼굴헤어스타일 #역삼각형얼굴 #뒤통수절벽 #리프컷 #프렌치크롭 #AI생활활용 #AI질문하는법 #챗GPT활용법 #현장엔지니어 #MakeFieldAI</p>
+<hr>
+<p>태그: #AI헤어스타일추천 #얼굴형헤어스타일 #미용실주문멘트 #AI사진분석 #남자헤어스타일추천 #긴얼굴헤어스타일 #역삼각형얼굴 #뒤통수절벽 #리프컷 #프렌치크롭 #AI생활활용 #AI질문하는법 #챗GPT활용법 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">
 <span class="stamp">MakeField AI</span>

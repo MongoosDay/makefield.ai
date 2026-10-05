@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -117,53 +129,28 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <h2>1. 이 논문은 무엇을 풀려 했나요</h2>
 <p><strong>&quot;왜 하필 가장자리만 부식되는가&quot;를 설명하고, 부식을 피하려면 누설 전류를 어디까지 허용할 수 있는지 계산하는 식을 만드는 것</strong>이 목표였어요 [Darling 2017, 서론·결론].</p>
 <p>용어 셋만 먼저 잡고 갈게요.</p>
-<p>- <strong>기생전류(shunt current)</strong>: 직렬로 쌓은 셀들이 전해액 공용 통로(매니폴드)로 이어져 있어서, 그 통로를 타고 셀 사이를 몰래 흐르는 전류.<br>
-- <strong>포트(port)</strong>: 전극 둘레 절연 프레임 속의 좁은 유로. 매니폴드에서 전극까지 전해액을 실어 나르고, 누설을 줄이려고 일부러 이온 저항을 크게 만든 길이에요 [Darling 2017, 서론].<br>
-- <strong>과전압</strong>: 반응을 밀어붙이는 &#x27;추가 전압&#x27;. 클수록 반응이 빨라집니다.</p>
+<ul><li><strong>기생전류(shunt current)</strong>: 직렬로 쌓은 셀들이 전해액 공용 통로(매니폴드)로 이어져 있어서, 그 통로를 타고 셀 사이를 몰래 흐르는 전류.</li><li><strong>포트(port)</strong>: 전극 둘레 절연 프레임 속의 좁은 유로. 매니폴드에서 전극까지 전해액을 실어 나르고, 누설을 줄이려고 일부러 이온 저항을 크게 만든 길이에요 [Darling 2017, 서론].</li><li><strong>과전압</strong>: 반응을 밀어붙이는 &#x27;추가 전압&#x27;. 클수록 반응이 빨라집니다.</li></ul>
 <p>논문 서론이 깔아 둔 출발점은 넷이에요 [Darling 2017, 서론].</p>
-<p>1. 매니폴드는 셀과 셀 사이의 <strong class="u">이온 합선 통로</strong>가 된다.<br>
-2. 이 전류는 저장한 에너지를 계속 갉아먹고, 부식·가스 발생 같은 부반응까지 일으킨다.<br>
-3. 유로를 길고 좁게 만들면 줄일 수 있지만 펌프 일이 늘고, 0으로 만들 수는 없다.<br>
-4. 기존 등가회로 모델은 전류의 크기는 잘 구하지만, 전극 끝에서 <strong>어떤 반응</strong>이 그 전류를 받아 주는지는 설명하지 못한다.</p>
+<ol><li>매니폴드는 셀과 셀 사이의 <strong class="u">이온 합선 통로</strong>가 된다.</li><li>이 전류는 저장한 에너지를 계속 갉아먹고, 부식·가스 발생 같은 부반응까지 일으킨다.</li><li>유로를 길고 좁게 만들면 줄일 수 있지만 펌프 일이 늘고, 0으로 만들 수는 없다.</li><li>기존 등가회로 모델은 전류의 크기는 잘 구하지만, 전극 끝에서 <strong>어떤 반응</strong>이 그 전류를 받아 주는지는 설명하지 못한다.</li></ol>
 <h2>2. 어떻게 확인했나요</h2>
 <p><strong>작은 스택을 정밀하게 시뮬레이션해서 현상을 보고, 큰 스택에도 쓸 수 있는 간단한 식을 따로 만들었어요</strong> [Darling 2017, 서론·Analytical Model].</p>
-<p>| 단계 | 내용 | 근거 |<br>
-|---|---|---|<br>
-| 수치 모델 | 유한요소 소프트웨어로 셀 2개를 정상상태 계산(요소 약 11.5만 개) | [Darling 2017, Numerical model] |<br>
-| 계산 조건 | 외부로 전류가 나가지 않는 개방회로, 25℃, 바나듐 전해액 | [Darling 2017, Table II] |<br>
-| 확장 | 음극 쪽 매니폴드 추가, 셀 5개로 확대 | [Darling 2017, Fig.12·13] |<br>
-| 해석 모델 | 반무한 전극 식으로 가장자리 과전압의 상한 계산 | [Darling 2017, Eq.20] |</p>
+<div class="table-wrap"><table><thead><tr><th>단계</th><th>내용</th><th>근거</th></tr></thead><tbody><tr><td>수치 모델</td><td>유한요소 소프트웨어로 셀 2개를 정상상태 계산(요소 약 11.5만 개)</td><td>[Darling 2017, Numerical model]</td></tr><tr><td>계산 조건</td><td>외부로 전류가 나가지 않는 개방회로, 25℃, 바나듐 전해액</td><td>[Darling 2017, Table II]</td></tr><tr><td>확장</td><td>음극 쪽 매니폴드 추가, 셀 5개로 확대</td><td>[Darling 2017, Fig.12·13]</td></tr><tr><td>해석 모델</td><td>반무한 전극 식으로 가장자리 과전압의 상한 계산</td><td>[Darling 2017, Eq.20]</td></tr></tbody></table></div>
 <p>부식 반응 자체는 모델에 넣지 않았다는 점이 중요해요. 대신 가장자리에 걸리는 과전압을 보고 <strong>부식이 일어나기 쉬운 정도</strong>를 판정합니다 [Darling 2017, Numerical model].</p>
 <img src="img/01_stack_edge.png" alt="누설 전류가 끝 셀 가장자리를 빠져나가는 경로 — 01_stack_edge.png" loading="lazy">
 <h2>3. 기생전류 부식은 어디서, 얼마나 커지나요</h2>
 <p><strong>+쪽 끝 셀의 양극 가장자리에서 과전압이 약 80 mV 높아지고, 이 때문에 탄소 부식 속도가 약 2.5배로 추정된다</strong>는 게 핵심 결과입니다 [Darling 2017, Fig.8].</p>
-<p>- 전해액 전위가 전극 가장자리에서 약 100 mV, 포트를 지나며 다시 약 200 mV 떨어져요 [Darling 2017, Fig.7].<br>
-- 산화 반응은 포트에서 500 μm 안쪽에만 갇혀 일어납니다 [Darling 2017, Fig.8].<br>
-- 탄소 산화의 타펠 기울기(반응 속도를 10배 올리는 데 드는 전압)를 약 200 mV로 잡으면, 추가 80 mV는 부식 속도 약 2.5배에 해당해요 [Darling 2017, Fig.8 본문].<br>
-- 평소엔 무해한 바나듐 반응이 이 전류를 받아 줍니다. 그런데 완충전에 가까워 받아 줄 바나듐 이온이 바닥나면 <strong>탄소 부식·산소 발생이 대신 나설 수 있어요</strong> [Darling 2017, Results].</p>
+<ul><li>전해액 전위가 전극 가장자리에서 약 100 mV, 포트를 지나며 다시 약 200 mV 떨어져요 [Darling 2017, Fig.7].</li><li>산화 반응은 포트에서 500 μm 안쪽에만 갇혀 일어납니다 [Darling 2017, Fig.8].</li><li>탄소 산화의 타펠 기울기(반응 속도를 10배 올리는 데 드는 전압)를 약 200 mV로 잡으면, 추가 80 mV는 부식 속도 약 2.5배에 해당해요 [Darling 2017, Fig.8 본문].</li><li>평소엔 무해한 바나듐 반응이 이 전류를 받아 줍니다. 그런데 완충전에 가까워 받아 줄 바나듐 이온이 바닥나면 <strong>탄소 부식·산소 발생이 대신 나설 수 있어요</strong> [Darling 2017, Results].</li></ul>
 <img src="img/02_number_chain.png" alt="80 mV가 2.5배가 되기까지 — 02_number_chain.png" loading="lazy">
 <p>셀 5개로 늘린 계산에서 포트 전류는 아래(−쪽)에서 위(+쪽)로 −5.1, −1.1, 0, 1.1, 5.1 mA였어요 [Darling 2017, Fig.13 본문]. 가운데 셀 가장자리는 나머지 부분과 구별되지 않을 만큼 조용했고, 산화는 +쪽 두 셀, 그중에서도 맨 끝 셀에서 가장 셌습니다.</p>
 <img src="img/03_port_current_5cells.png" alt="셀 5개 스택의 포트 전류 — 03_port_current_5cells.png" loading="lazy">
 <p>조건을 바꿔 본 결과는 표로 정리할게요.</p>
-<p>| 바꾼 조건 | 결과 | 근거 |<br>
-|---|---|---|<br>
-| 포트 저항 ↓ | 가장자리 과전압 ↑ | [Darling 2017, Fig.9] |<br>
-| 충전 상태(SOC) ↑ (20→99%) | 과전압 ↑, 국부 부식 위험 크게 ↑ | [Darling 2017, Fig.9] |<br>
-| 전극 길이 10배 (2 mm→2 cm) | 포트 전류 3.54→3.61 mA(2% 미만), 산화 구간 0.5→1 mm | [Darling 2017, Fig.10] |<br>
-| 음극 매니폴드 추가 | 포트 전류 3.5 mA에서 6% 감소 → 양·음극 쪽 영향은 약하게만 얽힘 | [Darling 2017, Fig.12 본문] |<br>
-| 충전 중 | 스택 전압이 높아 포트 전류·가장자리 과전압 ↑ | [Darling 2017, Analytical Model] |<br>
-| 전극을 얇게 | 포트 전류 밀도가 커져 부식에 취약(얇은 카본 페이퍼는 반응 면적이 커서 일부 상쇄) | [Darling 2017, Analytical Model] |</p>
+<div class="table-wrap"><table><thead><tr><th>바꾼 조건</th><th>결과</th><th>근거</th></tr></thead><tbody><tr><td>포트 저항 ↓</td><td>가장자리 과전압 ↑</td><td>[Darling 2017, Fig.9]</td></tr><tr><td>충전 상태(SOC) ↑ (20→99%)</td><td>과전압 ↑, 국부 부식 위험 크게 ↑</td><td>[Darling 2017, Fig.9]</td></tr><tr><td>전극 길이 10배 (2 mm→2 cm)</td><td>포트 전류 3.54→3.61 mA(2% 미만), 산화 구간 0.5→1 mm</td><td>[Darling 2017, Fig.10]</td></tr><tr><td>음극 매니폴드 추가</td><td>포트 전류 3.5 mA에서 6% 감소 → 양·음극 쪽 영향은 약하게만 얽힘</td><td>[Darling 2017, Fig.12 본문]</td></tr><tr><td>충전 중</td><td>스택 전압이 높아 포트 전류·가장자리 과전압 ↑</td><td>[Darling 2017, Analytical Model]</td></tr><tr><td>전극을 얇게</td><td>포트 전류 밀도가 커져 부식에 취약(얇은 카본 페이퍼는 반응 면적이 커서 일부 상쇄)</td><td>[Darling 2017, Analytical Model]</td></tr></tbody></table></div>
 <p>반직관적인 대목이 하나 있어요. 식만 보면 전해액 전도도를 높이면 과전압이 줄 것 같지만, 저자들은 이걸 <strong>틀린 결론</strong>이라고 못 박습니다. 전도도가 오르면 포트·매니폴드 저항이 낮아져 누설 전류 자체가 커지고, 그 영향이 더 크다는 거예요 [Darling 2017, Analytical Model].</p>
 <p>설계 쪽 제안은 두 가지입니다 [Darling 2017, Analytical Model·결론].</p>
-<p>- 포트를 빠져나온 전해액이 처음 닿는 전도성 표면은 반응 면적이 넓고 본 반응에 활성이 높아야 한다.<br>
-- 등가회로로 포트 전류를 구하고 해석식으로 가장자리 과전압 상한을 계산한다. 거꾸로 목표 수명에서 <strong>허용 최대 포트 전류</strong>를 정해 포트·매니폴드 저항을 설계한다.</p>
+<ul><li>포트를 빠져나온 전해액이 처음 닿는 전도성 표면은 반응 면적이 넓고 본 반응에 활성이 높아야 한다.</li><li>등가회로로 포트 전류를 구하고 해석식으로 가장자리 과전압 상한을 계산한다. 거꾸로 목표 수명에서 <strong>허용 최대 포트 전류</strong>를 정해 포트·매니폴드 저항을 설계한다.</li></ul>
 <h2>4. 이 결과를 어디까지 믿어야 하나요</h2>
 <p><strong>부식의 &#x27;경향&#x27;을 보여 준 연구이지 부식 &#x27;속도&#x27;를 잰 연구는 아닙니다.</strong> 한계는 이래요.</p>
-<p>- <strong>개방회로만 계산</strong>: 부하가 걸린 상태로의 확장은 &quot;간단할 것(straightforward)&quot;이라고만 했고 계산은 하지 않았어요 [Darling 2017, 서론].<br>
-- <strong>2.5배는 환산값</strong>: 문헌의 타펠 기울기로 바꾼 추정이고, 부식을 직접 측정한 값이 아니에요 [Darling 2017, Fig.8 본문].<br>
-- <strong>해석식은 상한</strong>: 1차원 가정이라 수치 모델보다 늘 크게 나와요. 보수적으로 판정하는 용도입니다 [Darling 2017, Fig.14 본문].<br>
-- <strong>바나듐 전지 기준</strong>: 모든 계산값은 바나듐 플로우 배터리 것이고, 다른 장치로의 적용은 저자들의 견해예요 [Darling 2017, 서론].<br>
-- <strong>실험 증거는 분해 사진</strong>: 사진 속 변색 폭(약 1 mm)과 모델의 산화 구간(0.5~1 mm)이 비슷해 보이지만, 논문은 둘을 수치로 맞대 비교하지 않았어요.</p>
+<ul><li><strong>개방회로만 계산</strong>: 부하가 걸린 상태로의 확장은 &quot;간단할 것(straightforward)&quot;이라고만 했고 계산은 하지 않았어요 [Darling 2017, 서론].</li><li><strong>2.5배는 환산값</strong>: 문헌의 타펠 기울기로 바꾼 추정이고, 부식을 직접 측정한 값이 아니에요 [Darling 2017, Fig.8 본문].</li><li><strong>해석식은 상한</strong>: 1차원 가정이라 수치 모델보다 늘 크게 나와요. 보수적으로 판정하는 용도입니다 [Darling 2017, Fig.14 본문].</li><li><strong>바나듐 전지 기준</strong>: 모든 계산값은 바나듐 플로우 배터리 것이고, 다른 장치로의 적용은 저자들의 견해예요 [Darling 2017, 서론].</li><li><strong>실험 증거는 분해 사진</strong>: 사진 속 변색 폭(약 1 mm)과 모델의 산화 구간(0.5~1 mm)이 비슷해 보이지만, 논문은 둘을 수치로 맞대 비교하지 않았어요.</li></ul>
 <h2>5. AI에게 읽힐 때 숫자의 &quot;출신&quot;부터 물은 이유</h2>
 <p>이번 논문의 승부처는 <strong>숫자의 &#x27;출신&#x27;을 섞지 않는 것</strong>이었어요. 측정값, 시뮬레이션값, 남의 책 숫자로 환산한 추정값이 한 문단에 같이 나오거든요.</p>
 <img src="img/04_ai_traps.png" alt="AI 판독에서 숫자 출신을 지킨 4가지 — 04_ai_traps.png" loading="lazy">
@@ -186,7 +173,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 충전 중이에요. 스택 전압이 높아 포트 전류가 커지기 때문입니다 [Darling 2017, Analytical Model]. 충전 상태(SOC)가 높을수록 위험이 커진다는 계산도 함께 나와요 [Darling 2017, Fig.9].</p>
 <p><strong>Q. 이 숫자를 수전해에 그대로 써도 되나요?</strong><br>
 숫자는 안 됩니다. 계산은 전부 바나듐 플로우 배터리 값이에요 [Darling 2017, 서론]. 옮겨 쓸 수 있는 건 &#x27;끝 셀 가장자리를 먼저 의심하라&#x27;는 관점입니다.</p>
-<p>---</p>
+<hr>
 <p>정리하면, 새는 전류는 효율만 깎는 게 아니라 <strong>끝 셀 가장자리에 부식을 몰아넣습니다.</strong> 그래서 포트 저항은 효율 문제이면서 수명 문제예요.</p>
 <p>다음 편부터는 2부로 넘어가요. 전류가 아니라 <strong>수소와 산소가 막을 넘어 섞이는 크로스오버</strong> 이야기입니다.</p>
 <p>논문 PDF를 AI에게 맡길 때 쓰는 점검 질문들은 makefield.ai에서 계속 다듬고 있어요.</p>

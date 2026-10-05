@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -138,12 +150,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 AI는 아니라고, 리눅스 계열 전용이라고 딱 잘라 답하더라고요.</p>
 <p>틀렸습니다. 정확히는 <strong>반만 맞았어요.</strong><br>
 같은 칩을 쓰는 윈도우 버전이 따로 있었거든요. 개발자용은 리눅스, 일반 사용자용은 윈도우로 갈라져 나온 겁니다.</p>
-<p>| 구분 | 개발자용 (DGX Spark) | 일반 사용자용 (RTX Spark) |<br>
-|---|---|---|<br>
-| 운영체제 | 리눅스 계열 전용 | 윈도우 (Arm) |<br>
-| 칩·메모리 | GB10 · 통합 128GB | GB10 · 통합 128GB |<br>
-| 상태 | 판매 중 | 2026년 가을 출시 예정 |<br>
-| 값 | 4,699달러 | 발표 전 (제조사별 상이) |</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>개발자용 (DGX Spark)</th><th>일반 사용자용 (RTX Spark)</th></tr></thead><tbody><tr><td>운영체제</td><td>리눅스 계열 전용</td><td>윈도우 (Arm)</td></tr><tr><td>칩·메모리</td><td>GB10 · 통합 128GB</td><td>GB10 · 통합 128GB</td></tr><tr><td>상태</td><td>판매 중</td><td>2026년 가을 출시 예정</td></tr><tr><td>값</td><td>4,699달러</td><td>발표 전 (제조사별 상이)</td></tr></tbody></table></div>
 <p>※ 2026년 8월 11일 확인 기준. 값은 제조사 발표가라 국내 가격·환율·주변기기는 별도예요.</p>
 <p>가격 줄이 특히 뜨끔했어요. 제가 기억하던 값은 3,999달러였는데, 2026년 2월에 메모리 수급 문제로 한 번 올랐더라고요. 제 머릿속 예산표는 반년 묵은 종이였던 겁니다.</p>
 <p>그래서 규칙 파일에 한 줄 박아뒀어요.</p>
@@ -164,11 +171,7 @@ AI는 아니라고, 리눅스 계열 전용이라고 딱 잘라 답하더라고�
 특정 회사 AI에 종속되는 게 무서워서 장비를 사려던 건데, 진짜 대비책은 하드웨어가 아니었어요.<br>
 제 지식이랑 작업 방식이 전부 평범한 텍스트 파일로 남아 있으니 어느 모델에 꽂아도 그대로 굴러갑니다. 장비를 사둔들 그 위에 올릴 게 없으면 그냥 <strong class="u">비싼 상자</strong>고요.</p>
 <p>로컬 AI 컴퓨터를 살지 말지, 그날 이후로 저는 이 세 줄로 정리해요.</p>
-<p>| 사기 전에 볼 것 | 통과 기준 | 제 답 (그날) |<br>
-|---|---|---|<br>
-| 그 장비로 할 작업이 정해졌나 | 이번 달 안에 돌릴 것이 있다 | 없음 |<br>
-| 대체할 물건이 이미 있나 | 서랍·창고·기존 PC 확인 | 소형 보드 2대 있음 |<br>
-| 사양·가격을 오늘자로 확인했나 | 제조사 발표 기준 직접 확인 | 반년 묵은 기억 |</p>
+<div class="table-wrap"><table><thead><tr><th>사기 전에 볼 것</th><th>통과 기준</th><th>제 답 (그날)</th></tr></thead><tbody><tr><td>그 장비로 할 작업이 정해졌나</td><td>이번 달 안에 돌릴 것이 있다</td><td>없음</td></tr><tr><td>대체할 물건이 이미 있나</td><td>서랍·창고·기존 PC 확인</td><td>소형 보드 2대 있음</td></tr><tr><td>사양·가격을 오늘자로 확인했나</td><td>제조사 발표 기준 직접 확인</td><td>반년 묵은 기억</td></tr></tbody></table></div>
 <p>세 줄 중 하나라도 막히면 장바구니에 그냥 둡니다. 사고 싶은 마음은 안 없어지는데, 결제는 안 하게 되더라고요.</p>
 <img src="img/04_buy_gate.png" alt="구매 결정 3게이트 — &quot;① 돌릴 작업이 정해졌나&quot; → &quot;② 서랍에 대체품 없나&quot; → &quot;③ 사양·가격 오늘자 확인&quot; 세로 3칸 체크리스트. 각 칸 오른쪽에서 &#x27;아니오&#x27; 화살표가 &#x27;장바구니 보류&#x27; 박스로 모이고, 세 칸을 다 통과한 아래쪽에만 &#x27;결제&#x27; 박스" loading="lazy">
 <h2>이런 것도 궁금하실 것 같아요</h2>
@@ -180,8 +183,8 @@ AI는 아니라고, 리눅스 계열 전용이라고 딱 잘라 답하더라고�
 한 달이 지났는데 그 보드는 아직 서랍에 있습니다. 대신 600만 원도 아직 제 통장에 있고요!<br>
 그래서 규칙을 하나 더 만들었어요. 그 보드를 꺼내 만진 날은 반드시 글이든 영상이든 하나를 내보내기로. 만들기만 하고 안 꺼내는 게 제 오래된 병이라서요.</p>
 <p>다음 글에서는 그 보드를 실제로 꺼내서 뭘 붙여봤는지, 되는 것과 안 되는 것을 그대로 써보겠습니다.</p>
-<p>---<br>
-사둔 장비랑 만들다 만 자동화 목록까지 다 적어두는 곳은 makefield.ai입니다.</p>
+<hr>
+<p>사둔 장비랑 만들다 만 자동화 목록까지 다 적어두는 곳은 makefield.ai입니다.</p>
 <p>태그: #로컬AI컴퓨터 #개인AI서버 #AI전용컴퓨터 #로컬LLM #AI장비구매 #온프레미스AI #엣지AI #젯슨나노 #라즈베리파이 #AI하드웨어 #AI공부장비 #AI활용법 #AI로일하기 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

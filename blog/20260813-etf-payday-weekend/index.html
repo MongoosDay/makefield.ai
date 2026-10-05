@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -160,11 +172,7 @@ AI가 날짜를 자신 있게 틀리는 걸 몇 번 봤거든요. 검산이 30�
 하루 차이의 기대값 같은 건 계산할 능력이 없습니다. 다만 계산이 되는 게 하나 있었고, 그게 4월에 건너뛴 달이었어요.</p>
 <h2>5. 지금은 이 순서 세 개로 끝냅니다</h2>
 <p>ETF 적립일 주말 문제는 이제 저한테 고민이 아니라 절차예요. 2026년 8월 기준으로 쓰는 순서인데, 3분이면 끝납니다!</p>
-<p>| 순서 | 확인할 것 | 판단 |<br>
-|---|---|---|<br>
-| 1 | 적립일이 휴일·주말인가 | 아니면 그날 그냥 실행 |<br>
-| 2 | 후보 날짜들 사이에 미국 장이 열리는가 | 휴장일은 달력·증권사 공지로 대조 |<br>
-| 3 | 안 열린다면 참조 종가가 같은가 | 같으면 기다림의 정보가치 0 |</p>
+<div class="table-wrap"><table><thead><tr><th>순서</th><th>확인할 것</th><th>판단</th></tr></thead><tbody><tr><td>1</td><td>적립일이 휴일·주말인가</td><td>아니면 그날 그냥 실행</td></tr><tr><td>2</td><td>후보 날짜들 사이에 미국 장이 열리는가</td><td>휴장일은 달력·증권사 공지로 대조</td></tr><tr><td>3</td><td>안 열린다면 참조 종가가 같은가</td><td>같으면 기다림의 정보가치 0</td></tr></tbody></table></div>
 <p>그리고 마지막 판단 기준은 가격이 아니라 이거예요.<br>
 <strong>둘 중에 내가 확실히 안 까먹는 날은 어느 쪽인가.</strong></p>
 <img src="img/04_flow.png" alt="3단계 판정 흐름도 — ①&#x27;적립일이 휴일인가&#x27; 마름모에서 &#x27;아니오&#x27;→&#x27;그날 실행&#x27;(회색 종료 박스). &#x27;예&#x27;→②&#x27;그 사이 미국장 열림?&#x27; 마름모. &#x27;아니오&#x27;→&#x27;참조 종가 동일 = 정보가치 0&#x27;(파란 박스)→&#x27;안 까먹는 날 선택&#x27;(초록 종료). &#x27;예&#x27;→&#x27;새 종가 생김, 그건 예측 영역&#x27;(노란 박스)" loading="lazy">
@@ -179,8 +187,8 @@ AI가 날짜를 자신 있게 틀리는 걸 몇 번 봤거든요. 검산이 30�
 근데 달력을 펼쳐보니, 그 기분이 참조할 새 종가가 아예 없는 달도 있더라고요..<br>
 저는 그날 이후로 타이밍을 고르는 대신 안 까먹을 날을 고릅니다.</p>
 <p>makefield.ai에는 이렇게 매달 반복되는 판단을 절차로 굳혀둔 페이지가 하나 있어요.</p>
-<p>---<br>
-현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
+<hr>
+<p>현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
 <p>태그: #ETF적립일주말 #적립식투자 #미국증시휴장일 #ETF매수타이밍 #S&amp;P500ETF #적립식매수일 #독립기념일휴장 #월급쟁이투자 #AI투자질문 #AI에게물어보기 #투자기록 #적립연속성 #AI활용법 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

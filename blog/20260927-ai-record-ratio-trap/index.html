@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -122,22 +134,14 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <pre><code>(Get-ChildItem -Path .\.history -Filter *.md -File | Measure-Object).Count
 # 841   (분석 시점엔 835)</code></pre>
 <p>안건 목록 89건은 상태가 세 가지로 갈렸습니다.</p>
-<p>| 상태 | 건수 |<br>
-|---|---|<br>
-| 완료 | 47 |<br>
-| 보류 | 19 |<br>
-| 진행 중 | 23 |</p>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>건수</th></tr></thead><tbody><tr><td>완료</td><td>47</td></tr><tr><td>보류</td><td>19</td></tr><tr><td>진행 중</td><td>23</td></tr></tbody></table></div>
 <p>첫 답이 여기서 나왔어요. 완료 47을 89로 나누면 53%. 그러니까 절반 넘게 닫았고, 예전에 스스로 내려둔 &quot;나는 뭔가를 자꾸 미룬다&quot;는 진단은 데이터로 기각된다 — 이렇게요.</p>
 <p>솔직히 듣기 좋았습니다. 그래서 더 안 따졌고요.</p>
 <h2>목록을 한 줄씩 읽었더니 뒤집혔어요</h2>
 <p>그다음에 한 게 별거 없어요. 보류 19건의 <strong>이름을 그냥 다 나열</strong>시켰습니다. 비율 말고 이름을요.</p>
 <p>19줄을 위에서 아래로 읽는데, 16줄이 한 덩어리로 보이더라고요. 글을 공개하는 일, 심사에 신청하는 일, 얼굴 나오는 영상, 값을 받고 파는 일. 표현만 다르지 전부 같은 성질이었어요.</p>
 <p>그럼 완료된 47은 뭐였냐. 대가가 미리 정해져 있었거나, 마감이 걸려 있어서 누가 기다리는 일이었습니다.</p>
-<p>| 닫힌 47건 | 열린 채 남은 19건 |<br>
-|---|---|<br>
-| 대가가 정해진 일 | 공개하는 일 |<br>
-| 마감이 걸린 일 | 심사받는 일 |<br>
-| 평가자가 없는 일 | 값을 매겨 파는 일 |</p>
+<div class="table-wrap"><table><thead><tr><th>닫힌 47건</th><th>열린 채 남은 19건</th></tr></thead><tbody><tr><td>대가가 정해진 일</td><td>공개하는 일</td></tr><tr><td>마감이 걸린 일</td><td>심사받는 일</td></tr><tr><td>평가자가 없는 일</td><td>값을 매겨 파는 일</td></tr></tbody></table></div>
 <p>두 무더기의 차이는 난이도가 아니었어요. <strong>내 이름이 걸리고 남이 점수를 매기느냐</strong>, 딱 그거 하나였습니다. 어려워서 못 닫은 게 아니라 평가받는 자리라 안 연 거였어요.</p>
 <p>그러니까 53%는 &quot;절반은 해낸다&quot;는 뜻이 아니라, &quot;평가자 없는 일만 골라 닫았다&quot;는 뜻이었습니다. 같은 숫자가 정반대를 가리키고 있었어요.</p>
 <p>기록에는 이렇게 남겼습니다.</p>
@@ -151,11 +155,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>여러분이 AI한테 받은 요약 숫자는 어떤가요? 그 밑에 깔린 목록을 한 번이라도 펼쳐보신 적 있으신지..</p>
 <h2>그래서 분석 지시를 5단계로 바꿨습니다</h2>
 <p>지금은 이 순서로만 시킵니다. 순서가 핵심이라 중간을 건너뛰면 다시 원래대로 돌아가요.</p>
-<p>1. <strong>전수로 넣는다</strong> — &quot;최근 것 몇 개만&quot;이 아니라 전부. 몇 개인지 먼저 세어서 숫자를 프롬프트에 박습니다<br>
-2. <strong>분류만 시킨다</strong> — 이 단계에서 비율 계산은 금지. &quot;세지 말고 나눠라&quot;<br>
-3. <strong>각 무더기의 항목 이름을 전부 출력시킨다</strong> — 요약 금지, 원래 이름 그대로<br>
-4. <strong>무더기마다 라벨을 붙이게 한다</strong> — &quot;이 무더기에만 있고 저쪽엔 없는 성질이 뭐냐&quot;<br>
-5. <strong>그다음에 비율을 본다</strong> — 라벨이 서로 다르면 비율은 쓰지 않습니다</p>
+<ol><li><strong>전수로 넣는다</strong> — &quot;최근 것 몇 개만&quot;이 아니라 전부. 몇 개인지 먼저 세어서 숫자를 프롬프트에 박습니다</li><li><strong>분류만 시킨다</strong> — 이 단계에서 비율 계산은 금지. &quot;세지 말고 나눠라&quot;</li><li><strong>각 무더기의 항목 이름을 전부 출력시킨다</strong> — 요약 금지, 원래 이름 그대로</li><li><strong>무더기마다 라벨을 붙이게 한다</strong> — &quot;이 무더기에만 있고 저쪽엔 없는 성질이 뭐냐&quot;</li><li><strong>그다음에 비율을 본다</strong> — 라벨이 서로 다르면 비율은 쓰지 않습니다</li></ol>
 <p>지시문은 이 정도면 충분했어요.</p>
 <pre><code>1) 전체 89건을 상태별로 분류만 해라. 비율은 계산하지 마라.
 2) 각 상태의 항목 이름을 하나도 빠뜨리지 말고 나열해라.
@@ -172,9 +172,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 저는 라벨을 받아 적고 반례를 하나 찾아봅니다. &quot;이 성질에 안 맞는 항목이 이 무더기에 있나?&quot; 이 건에선 19건 중 3건이 라벨 밖이었어요. 16 대 3이면 라벨을 채택하고, 절반쯤 어긋나면 라벨을 버립니다.</p>
 <img src="img/04_label_check.png" alt="라벨 검증 도식. 상단에 &#x27;보류 19건&#x27; 상자. 아래로 두 갈래 — 왼쪽에 붉은 사각형 16개가 격자로 묶인 블록과 라벨 &#x27;남이 평가하는 일&#x27;, 오른쪽에 회색 사각형 3개 블록과 라벨 &#x27;반례&#x27;. 두 블록 아래에 저울 아이콘과 &#x27;16 : 3&#x27; 표기. 저울 아래 판정 상자 두 개 — 초록 &#x27;한쪽으로 크게 기울면 → 라벨 채택&#x27;, 붉은 &#x27;반반이면 → 라벨 폐기&#x27;. 하단 캡션 &#x27;라벨은 반례를 세어서 채택한다&#x27;" loading="lazy">
 <h2>정리</h2>
-<p>- AI 기록 분석은 요약 숫자를 먼저 받는 순간 결론이 미리 정해집니다<br>
-- 비율보다 <strong class="u">항목 이름</strong>이 정보량이 많아요. 지저분한 쪽에 답이 있습니다<br>
-- 분모에 성질이 다른 게 섞여 있는지부터 확인하고, 섞였으면 그 비율은 버리세요</p>
+<ul><li>AI 기록 분석은 요약 숫자를 먼저 받는 순간 결론이 미리 정해집니다</li><li>비율보다 <strong class="u">항목 이름</strong>이 정보량이 많아요. 지저분한 쪽에 답이 있습니다</li><li>분모에 성질이 다른 게 섞여 있는지부터 확인하고, 섞였으면 그 비율은 버리세요</li></ul>
 <p>숫자가 틀려서 속은 게 아니라 <strong class="u">맞아서</strong> 속았습니다. 계산이 정확하면 검산할 생각이 안 들거든요. 이제는 AI가 퍼센트를 들고 오면 &quot;그 밑에 목록 펼쳐줘&quot;부터 칩니다! 한 줄 더 치는 값으로 결론이 통째로 뒤집힌 적이 벌써 한 번 있으니까요.</p>
 <p>이런 분석 지시문이랑, 제가 틀렸던 판정들은 makefield.ai에 그대로 모아두고 있습니다.</p>
 <p>태그: #AI기록분석 #AI통계착시 #AI데이터집계 #AI전수분석 #AI완료율 #AI분석지시 #AI결과물검수 #AI에게일시키기 #AI판단검증 #AI기록관리 #AI지식관리 #AI비서만들기 #AI활용법 #AI실무활용 #MakeFieldAI</p>

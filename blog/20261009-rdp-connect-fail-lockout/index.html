@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -116,13 +128,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>제 일은 공장 설비 제어예요. 15년쯤 했습니다. 장비가 안 돌면 전원부터 신호까지 순서대로 짚는 게 몸에 뱄는데, 이번엔 그 습관이 저를 엉뚱한 데로 데려갔어요.</p>
 <h2>1. 사양은 전부 멀쩡했어요</h2>
 <p>AI한테 &quot;이 PC 자원을 전수로 훑어달라&quot;고 시켰는데, 죄다 정상이었습니다.</p>
-<p>| 항목 | 실측 | 판정 |<br>
-|---|---|---|<br>
-| CPU | 부하 10~64% | 정상 |<br>
-| 메모리 32GB | 사용률 26.5% (23.3GB 여유) | 정상 |<br>
-| SSD 1TB | 상태 Healthy, 715GB 여유(77%) | 정상 |<br>
-| 배터리 | 설계 57,000mWh / 실제 58,100mWh = <strong>102%</strong> | 신품급 |<br>
-| 블루스크린 덤프 | 파일 자체가 없음 | 커널 크래시 아님 |</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>실측</th><th>판정</th></tr></thead><tbody><tr><td>CPU</td><td>부하 10~64%</td><td>정상</td></tr><tr><td>메모리 32GB</td><td>사용률 26.5% (23.3GB 여유)</td><td>정상</td></tr><tr><td>SSD 1TB</td><td>상태 Healthy, 715GB 여유(77%)</td><td>정상</td></tr><tr><td>배터리</td><td>설계 57,000mWh / 실제 58,100mWh = <strong>102%</strong></td><td>신품급</td></tr><tr><td>블루스크린 덤프</td><td>파일 자체가 없음</td><td>커널 크래시 아님</td></tr></tbody></table></div>
 <p>배터리가 설계 용량보다 더 나오는 걸 보고 허탈했어요. 몇 년 쓴 노트북이 이 정도면 하드웨어를 의심할 이유가 없죠..</p>
 <p>그래서 질문을 바꿨습니다. <strong>&quot;뭐가 고장 났나&quot; 대신 &quot;누가 로그인을 방해하나&quot;로요.</strong></p>
 <h2>2. 계정이 10분마다 잠기고 있었습니다</h2>
@@ -165,10 +171,7 @@ Get-NetFirewallRule -Direction Inbound |
 <img src="img/03_two_branches.png" alt="증상 두 갈래 분기 — 위쪽 상자 &#x27;원격 접속이 안 된다&#x27;에서 화살표 두 개. 왼쪽 &#x27;로그인 자체가 튕긴다 → 계정 잠금·차단 계열 → 보안 로그 4740/4625 확인&#x27;, 오른쪽 &#x27;붙긴 붙는데 응답이 없다 → 절전 복귀 실패 계열 → powercfg /a 확인&#x27;. 하단 캡션 &#x27;증상이 다르면 뒤질 로그도 다르다&#x27;" loading="lazy">
 <h2>4. 그대로 따라 하는 확인 순서</h2>
 <p><strong>전제조건</strong>: 윈도우 10/11, 관리자 권한 파워셸. 2026년 9월 기준이고 추가 설치는 없습니다.</p>
-<p>1. <strong>로그 용량부터 키운다.</strong> 이게 1번인 이유가 있어요. 제 경우 드라이버 하나가 7일간 <strong>8만 건</strong>을 쏟아부어 시스템 로그의 99.5%를 차지했고, 정작 사고 직전 기록은 밀려 나간 뒤였습니다.<br>
-2. <strong>잠금 이벤트를 센다.</strong> <code>Get-WinEvent</code>로 보안 로그의 ID 4740(계정 잠금)과 4625(로그온 실패)를 뽑습니다. 하루 수십 건이면 그게 답이에요.<br>
-3. <strong>열려 있는 통로를 센다.</strong> 공유기 포트포워딩 목록을 눈으로 훑으세요. 저는 여기서 <strong>원격 접속 포트가 4개</strong> 열려 있는 걸 봤습니다.<br>
-4. <strong>절전 지원 목록을 본다.</strong> <code>powercfg /a</code> 한 줄이면 이 장비가 어떤 절전을 쓰는지 나옵니다. 모던 스탠바이 전용이면 전원 옵션 설정은 믿지 마세요.</p>
+<ol><li><strong>로그 용량부터 키운다.</strong> 이게 1번인 이유가 있어요. 제 경우 드라이버 하나가 7일간 <strong>8만 건</strong>을 쏟아부어 시스템 로그의 99.5%를 차지했고, 정작 사고 직전 기록은 밀려 나간 뒤였습니다.</li><li><strong>잠금 이벤트를 센다.</strong> <code>Get-WinEvent</code>로 보안 로그의 ID 4740(계정 잠금)과 4625(로그온 실패)를 뽑습니다. 하루 수십 건이면 그게 답이에요.</li><li><strong>열려 있는 통로를 센다.</strong> 공유기 포트포워딩 목록을 눈으로 훑으세요. 저는 여기서 <strong>원격 접속 포트가 4개</strong> 열려 있는 걸 봤습니다.</li><li><strong>절전 지원 목록을 본다.</strong> <code>powercfg /a</code> 한 줄이면 이 장비가 어떤 절전을 쓰는지 나옵니다. 모던 스탠바이 전용이면 전원 옵션 설정은 믿지 마세요.</li></ol>
 <p><strong>확인 방법</strong>: 2번의 잠금 건수가 0으로 떨어지고, 4번 목록에서 절전 항목이 &quot;사용할 수 없음&quot;으로 넘어갔으면 끝난 겁니다.</p>
 <h2>5. AI가 로그를 거꾸로 읽은 대목</h2>
 <p>이 글에서 제일 남는 장면은 따로 있습니다.</p>

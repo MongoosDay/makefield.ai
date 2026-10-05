@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -136,11 +148,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>이 툴에는 기기를 IP 대신 이름으로 부를 수 있게 해주는 기능이 있어요. 그 기능이 이름과 IP를 어디에 적어두느냐 하면, 바로 hosts입니다. 악성코드가 쓰는 것과 <strong>똑같은 방법으로, 똑같은 파일에</strong> 쓴 거죠.</p>
 <img src="img/03_false_alarm_overlap.png" alt="오탐이 만들어진 삼각 구도 — 위쪽 상자 &#x27;VPN 툴: 기기 이름을 hosts에 기입 (정상 동작)&#x27;, 아래쪽 상자 &#x27;금융 보안 프로그램: hosts 변경 = 파밍 서명 (정상 동작)&#x27;, 두 상자 사이에 충돌 표시와 &#x27;부팅마다 팝업&#x27;. 오른쪽에 사람 아이콘과 말풍선 &#x27;둘 다 제 일을 했는데 왜 나만 괴롭나&#x27;. 하단 캡션 &#x27;오탐은 고장이 아니라 겹침이다&#x27;" loading="lazy">
 <p>여기서 고칠 수 있는 지점이 세 곳이었고, 저는 세 번째를 골랐습니다.</p>
-<p>| 고칠 지점 | 팝업 | 잃는 것 |<br>
-|---|---|---|<br>
-| 보안 프로그램 삭제 | 사라짐 | 은행 접속 보안 통째로 |<br>
-| 감시 예외 등록 | 사라짐 | 진짜 파밍도 통과 (구멍) |<br>
-| <strong>VPN 툴이 hosts를 안 쓰게</strong> | <strong>사라짐</strong> | <strong>거의 없음 (아래에서 검증)</strong> |</p>
+<div class="table-wrap"><table><thead><tr><th>고칠 지점</th><th>팝업</th><th>잃는 것</th></tr></thead><tbody><tr><td>보안 프로그램 삭제</td><td>사라짐</td><td>은행 접속 보안 통째로</td></tr><tr><td>감시 예외 등록</td><td>사라짐</td><td>진짜 파밍도 통과 (구멍)</td></tr><tr><td><strong>VPN 툴이 hosts를 안 쓰게</strong></td><td><strong>사라짐</strong></td><td><strong>거의 없음 (아래에서 검증)</strong></td></tr></tbody></table></div>
 <p><strong>오탐은 경보기를 부수는 게 아니라 연기를 없애야 합니다!</strong> 경보기는 이번에 옳게 짖은 거니까요.</p>
 <h2>4. &quot;그거 끄면 원격접속 못 하는 거 아냐?&quot;</h2>
 <p>설정 한 줄로 끝났다고 보고했더니 바로 반박이 돌아왔습니다. 이름 해석 기능을 끄면 밖에서 이 PC를 못 찾는 거 아니냐, 그게 더 미친짓 아니냐고요.</p>

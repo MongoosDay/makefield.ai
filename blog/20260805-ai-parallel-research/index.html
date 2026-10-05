@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -172,9 +184,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 공부할 주제를 챕터별로 갈라 정리하거나요.<br>
 공통점은 &#x27;넓지만 조각으로 쪼갤 수 있는 주제&#x27;라는 거예요.</p>
 <p>정리하면 순서는 이래요.</p>
-<p>1. <strong>주제를 안 겹치는 조각으로 나눈다.</strong> 사람 여럿한테 배분한다고 생각하면 쉬워요.<br>
-2. <strong>조각마다 AI를 하나씩 붙여 동시에 시킨다.</strong> &quot;네 영역만 깊게, 남의 영역은 건드리지 마&quot;를 지시에 박아둡니다.<br>
-3. <strong>결과를 모아 하나로 통합한다.</strong> 이 마지막 합치기가 핵심이에요. 조각만 있으면 자료가 아니거든요.</p>
+<ol><li><strong>주제를 안 겹치는 조각으로 나눈다.</strong> 사람 여럿한테 배분한다고 생각하면 쉬워요.</li><li><strong>조각마다 AI를 하나씩 붙여 동시에 시킨다.</strong> &quot;네 영역만 깊게, 남의 영역은 건드리지 마&quot;를 지시에 박아둡니다.</li><li><strong>결과를 모아 하나로 통합한다.</strong> 이 마지막 합치기가 핵심이에요. 조각만 있으면 자료가 아니거든요.</li></ol>
 <p>저도 처음엔 2번에서 걸렸어요.<br>
 영역을 대충 나눴더니 둘이 같은 걸 조사해서 겹치더라고요.<br>
 &quot;이 영역만, 나머지는 건드리지 마&quot;를 명확히 박고 나서야 깔끔하게 나뉘었어요.</p>
@@ -189,14 +199,12 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>넓은 걸 AI 하나한테 통으로 시키면 얕게 뭉개져요.<br>
 조각으로 쪼개서 여러 개를 각자 깊게 굴린 다음, 하나로 합치는 게 답이에요.<br>
 저는 그걸 취미 공략집으로 처음 제대로 해봤고, 반나절에 1,588줄이 나왔어요.</p>
-<p>- ☐ 지금 조사 중인 주제가 &#x27;넓지만 조각낼 수 있는&#x27; 것인가<br>
-- ☐ 조각끼리 안 겹치게 영역을 딱 갈랐는가<br>
-- ☐ 마지막에 하나로 합치는 단계를 빼먹지 않았는가</p>
+<ul><li>☐ 지금 조사 중인 주제가 &#x27;넓지만 조각낼 수 있는&#x27; 것인가</li><li>☐ 조각끼리 안 겹치게 영역을 딱 갈랐는가</li><li>☐ 마지막에 하나로 합치는 단계를 빼먹지 않았는가</li></ul>
 <p>이렇게 취미까지 AI로 병렬 조사한 기록은 makefield.ai에 하나씩 옮겨두고 있어요.</p>
 <p>혹시 요즘 혼자 붙들고 못 끝내는 조사, 하나쯤 있으세요.<br>
 그거 여섯 조각으로 나눠서 던져보는 것부터 해보시길요.</p>
-<p>---<br>
-태그: #AI병렬리서치 #AI에이전트 #AI리서치자동화 #동시조사 #AI활용법 #정보수집AI #AI에이전트동시실행 #나만의AI #생성형AI #AI공부법 #멀티에이전트 #AI자료조사 #제조업AI #현장엔지니어 #MakeFieldAI</p>
+<hr>
+<p>태그: #AI병렬리서치 #AI에이전트 #AI리서치자동화 #동시조사 #AI활용법 #정보수집AI #AI에이전트동시실행 #나만의AI #생성형AI #AI공부법 #멀티에이전트 #AI자료조사 #제조업AI #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">
 <span class="stamp">MakeField AI</span>

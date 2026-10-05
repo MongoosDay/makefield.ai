@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -122,22 +134,13 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>피해는 효율에서 끝나지 않아요. 전력 손실, 전류효율 저하, 셀별 성능 불균일, 부식, 수력 계통 고장, 가스 오염까지 나열돼 있습니다 [Grimes et al., Sakas et al. 2024 재인용].</p>
 <h2>그럼 배관을 셀마다 따로 빼면 되지 않나요</h2>
 <p>분리형 구조도 있습니다. 그런데도 공통 배관을 쓰는 이유는 세 가지예요 [Sakas et al. 2024].</p>
-<p>| 공통 배관을 쓰는 이유 | 대신 치르는 대가 |<br>
-|---|---|<br>
-| 모든 셀에 균일한 전해액 공급 | 셀 사이에 전류 우회로가 열림 |<br>
-| 열전달·냉각 등 열관리 효율 | 전류 분포가 불균일해짐 |<br>
-| 생성 가스의 효율적 배출 | 부식 등 2차 반응 유발 |</p>
+<div class="table-wrap"><table><thead><tr><th>공통 배관을 쓰는 이유</th><th>대신 치르는 대가</th></tr></thead><tbody><tr><td>모든 셀에 균일한 전해액 공급</td><td>셀 사이에 전류 우회로가 열림</td></tr><tr><td>열전달·냉각 등 열관리 효율</td><td>전류 분포가 불균일해짐</td></tr><tr><td>생성 가스의 효율적 배출</td><td>부식 등 2차 반응 유발</td></tr></tbody></table></div>
 <p>줄이는 방법은 알려져 있어요. 직렬 셀 수를 줄이거나, 배관을 길고 좁게 만들어 저항을 키우는 식입니다. 밸브로 흐름을 끊는 방법도 있지만 공통 배관을 쓰기로 한 이유와 정면으로 모순되죠.<br>
 그래서 길고 가는 귀환배관을 써도 <strong class="u">직렬 50셀</strong> 이 실질 한계로 인용돼 있습니다 [Swiegers et al., Sakas et al. 2024 재인용].</p>
 <h2>얼마나 새는지 논문은 어떻게 쟀나요</h2>
 <p>직접 측정이 아니라 <strong>시뮬레이션</strong>입니다. 핀란드의 실제 3 MW·16 bar 알칼라인 수전해 플랜트로 검증한 MATLAB 동적 모델을 돌렸어요. 명목 전류 9,135 A, 전해액 입구 70 ℃ 조건입니다 [Sakas et al. 2024].</p>
 <p>핵심은 계수 k예요. k = 1이 실제 플랜트 수준이고, k = 0이면 전혀 새지 않는 가상의 스택입니다.</p>
-<p>| 항목 | 정격 100% 부하 | 30% 부하 |<br>
-|---|---|---|<br>
-| 새어 나간 전력 비중 | 16.8% | 75.4% |<br>
-| 수소로 간 에너지(HHV) | 64.8% | 21.6% |<br>
-| 과전압 손실 | 17.4% | 1.7% |<br>
-| 단위 에너지 소비(SEC) | 61 kWh/kg | 182 kWh/kg |</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>정격 100% 부하</th><th>30% 부하</th></tr></thead><tbody><tr><td>새어 나간 전력 비중</td><td>16.8%</td><td>75.4%</td></tr><tr><td>수소로 간 에너지(HHV)</td><td>64.8%</td><td>21.6%</td></tr><tr><td>과전압 손실</td><td>17.4%</td><td>1.7%</td></tr><tr><td>단위 에너지 소비(SEC)</td><td>61 kWh/kg</td><td>182 kWh/kg</td></tr></tbody></table></div>
 <img src="img/02_loss_share.png" alt="부하별 손실 구성 비교 — 02_loss_share.png" loading="lazy">
 <p>직관과 어긋나는 대목이 있어요. 부하를 낮추면 전압도 내려가니 덜 샐 것 같은데 반대입니다.<br>
 설명은 기포예요. 높은 부하에선 배관 안이 가스 기포로 차서 저항이 크지만, 부하가 낮아지면 기포가 줄어 배관 저항이 전압보다 더 빨리 떨어집니다 [Sakas et al. 2024, 3.1절].</p>
@@ -168,7 +171,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 네. 배관을 길고 가늘게 해도 직렬 50개 언저리가 실질 한계로 인용돼 있어요 [Swiegers et al., Sakas et al. 2024 재인용].</p>
 <p><strong>Q. 75.4%면 전기의 4분의 3이 버려진다는 뜻인가요?</strong><br>
 그 조건에서만요. 30% 부하는 경향을 보기 위한 계산 구간이고, 안전 운전 하한은 명목 전류의 46.5%입니다 [Sakas et al. 2024].</p>
-<p>---</p>
+<hr>
 <p>정리하면 기생전류는 고장이 아니라 <strong>셀을 쌓고 배관을 공유하기로 한 설계의 청구서</strong>예요. 없앨 수 없으니 관리 대상이 됩니다.</p>
 <p>다음 편에서는 왜 하필 부분부하에서 효율이 급격히 무너지는지, 재생에너지에 물린 설비가 그 구간을 피할 수 없는 이유를 같은 논문의 최적화 결과로 이어서 보겠습니다.</p>
 <p>논문을 AI로 읽고 남긴 기록은 makefield.ai에 모아두고 있어요.</p>

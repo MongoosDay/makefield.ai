@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -173,12 +185,7 @@ AI가 헤맬 때는 말이 흐려지는 게 아니라 오히려 또박또박해�
 <p><strong>확인 방법</strong>: 새 대화의 첫 답변에서 두 가지만 봅니다. ①폐기 목록에 있는 처방이 또 나오는가 ②확정 사실과 가설과 질문을 구분해서 말하는가. 둘 다 통과하면 오염이 안 옮겨온 거예요.</p>
 <img src="img/03_reset_steps.png" alt="리셋 3단계 흐름 — &quot;① 폐기 진단 박제(⛔ 표시)&quot; → &quot;② 반려 사유 → 고정 전제 목록&quot; → &quot;③ 새 대화창에서 파일 먼저 로드&quot; → 마지막에 체크 아이콘과 &quot;확인: 폐기 처방 재등장 없음 / 확정·가설·질문 구분&quot;" loading="lazy">
 <h2>4. 증상별로 이렇게 대응합니다</h2>
-<p>| 증상 | 흔한 대응 (안 통함) | 대신 할 것 |<br>
-|---|---|---|<br>
-| 답이 계속 헛나감 | 질문을 더 길고 자세하게 | 대화 위로 올라가 첫 진단 문장 찾기 |<br>
-| 정정했는데 다음 답에 반영 안 됨 | 그 창에서 다시 설명 | 정정 내용을 파일에 적고 새 대화 |<br>
-| 반려한 제안이 또 올라옴 | 반려 사유 재설명 | &#x27;폐기 목록&#x27;으로 문서화 |<br>
-| 확신에 찬 디테일이 사실과 다름 | 틀린 부분만 짚어 고침 | &quot;확정·가설·질문 구분해 답하라&quot;를 규칙에 |</p>
+<div class="table-wrap"><table><thead><tr><th>증상</th><th>흔한 대응 (안 통함)</th><th>대신 할 것</th></tr></thead><tbody><tr><td>답이 계속 헛나감</td><td>질문을 더 길고 자세하게</td><td>대화 위로 올라가 첫 진단 문장 찾기</td></tr><tr><td>정정했는데 다음 답에 반영 안 됨</td><td>그 창에서 다시 설명</td><td>정정 내용을 파일에 적고 새 대화</td></tr><tr><td>반려한 제안이 또 올라옴</td><td>반려 사유 재설명</td><td>&#x27;폐기 목록&#x27;으로 문서화</td></tr><tr><td>확신에 찬 디테일이 사실과 다름</td><td>틀린 부분만 짚어 고침</td><td>&quot;확정·가설·질문 구분해 답하라&quot;를 규칙에</td></tr></tbody></table></div>
 <p>표로 정리하고 보니 공통점이 하나 보이더라고요.<br>
 왼쪽은 전부 <strong>그 대화창 안에서</strong> 해결하려는 시도고, 오른쪽은 전부 <strong>대화 밖에 기록을 남기는</strong> 일이에요.</p>
 <img src="img/04_reset_compare.png" alt="같은 창 이어가기 vs 리셋 비교 — 위쪽은 하나의 긴 대화창에 &#x27;첫 진단&#x27;이 계속 붙어 다니며 답변마다 따라가는 그림, 아래쪽은 파일(고정 전제·폐기 목록) 아이콘에서 화살표가 새 대화창으로 들어가고 첫 진단 박스에는 X 표시" loading="lazy">
@@ -192,8 +199,8 @@ AI가 헤맬 때는 말이 흐려지는 게 아니라 오히려 또박또박해�
 <p>AI가 헤맬 때 제가 제일 먼저 하는 일이 바뀌었어요.<br>
 예전엔 질문을 다시 썼는데, 요즘은 대화를 위로 스크롤해서 AI가 나를 뭐라고 규정했는지부터 찾습니다. 거기서 어긋나 있으면 아래는 아예 볼 필요가 없더라고요!</p>
 <p>혹시 지금 붙들고 있는 대화창이 있다면, 맨 위로 한 번 올라가 보시겠어요? AI가 여러분을 어떤 사람으로 적어놨는지가 첫 화면에 있을 겁니다.</p>
-<p>---<br>
-현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
+<hr>
+<p>현장 엔지니어를 위한 AI 도입·자동화 문의: makefield.ai</p>
 <p>태그: #AI가말귀를못알아들을때 #AI대화초기화 #AI전제설정 #AI메모리 #AI커스텀지침 #프롬프트작성법 #AI할루시네이션 #챗GPT활용법 #클로드활용법 #AI에이전트 #AI로일하기 #AI업무활용 #생성형AI #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

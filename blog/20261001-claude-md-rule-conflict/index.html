@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -116,11 +128,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <h2>1. CLAUDE.md는 한 장이 아니라 층으로 쌓입니다</h2>
 <p><strong>CLAUDE.md는 AI가 일을 시작할 때 먼저 읽는 규칙 파일이고, 한 장이 아니라 여러 층으로 겹쳐 읽힙니다.</strong> Claude Code는 작업 폴더에서 위쪽 폴더로 올라가며 보이는 CLAUDE.md를 전부 읽고, 하위 폴더의 CLAUDE.md는 그 폴더 파일을 열 때 읽어요.</p>
 <p>보통은 이렇게 세 층이 생깁니다.</p>
-<p>| 층 | 위치 (Claude Code) | 담는 것 |<br>
-|---|---|---|<br>
-| 전역 | <code>~/.claude/CLAUDE.md</code> | 모든 작업 공통 (언어, 날짜 형식) |<br>
-| 프로젝트 | <code>프로젝트폴더/CLAUDE.md</code> | 이 프로젝트 전체 규칙 |<br>
-| 폴더(역할) | <code>프로젝트폴더/scripts/CLAUDE.md</code> | 그 폴더 일에만 필요한 규칙 |</p>
+<div class="table-wrap"><table><thead><tr><th>층</th><th>위치 (Claude Code)</th><th>담는 것</th></tr></thead><tbody><tr><td>전역</td><td><code>~/.claude/CLAUDE.md</code></td><td>모든 작업 공통 (언어, 날짜 형식)</td></tr><tr><td>프로젝트</td><td><code>프로젝트폴더/CLAUDE.md</code></td><td>이 프로젝트 전체 규칙</td></tr><tr><td>폴더(역할)</td><td><code>프로젝트폴더/scripts/CLAUDE.md</code></td><td>그 폴더 일에만 필요한 규칙</td></tr></tbody></table></div>
 <p>연습 폴더에선 제 진짜 설정과 섞이지 않게, 전역 대신 <strong>한 칸 위 폴더</strong>에 CLAUDE.md를 뒀어요. 위로 올라가며 읽는 구조라 효과는 같습니다.</p>
 <pre><code>C:\ai-work\ep09-A\
 ├── CLAUDE.md               ← 전역 역할: 한국어 / 날짜 / 부피는 리터 / .history 남기기
@@ -170,12 +178,7 @@ scripts/CLAUDE.md 는 실제 문자를 한 통 보내라고 합니다.
   4) CLAUDE.md 맨 위에 규칙 파일 구조를 3줄로 설명해줘
   5) .history 남겨. 코드와 kb는 건드리지 마.</code></pre>
 <p>AI가 돌려준 표 일부예요.</p>
-<p>| 규칙 | 적는 곳 | 정리 전 |<br>
-|---|---|---|<br>
-| 부피 단위는 리터(L)만 | <code>../CLAUDE.md</code> | 세 파일에 4번 → 1곳 |<br>
-| <code>.history</code> 남기기 | <code>../CLAUDE.md</code> | 상위·프로젝트 중복 → 합침 |<br>
-| 알람 수정 후 <code>--dry-run</code>으로만 확인 | <code>CLAUDE.md §알람 문자</code> | scripts의 반대 규칙 삭제, 링크만 |<br>
-| 임계값 숫자는 thresholds/에서 읽기 | <code>scripts/CLAUDE.md</code> | 그대로 |</p>
+<div class="table-wrap"><table><thead><tr><th>규칙</th><th>적는 곳</th><th>정리 전</th></tr></thead><tbody><tr><td>부피 단위는 리터(L)만</td><td><code>../CLAUDE.md</code></td><td>세 파일에 4번 → 1곳</td></tr><tr><td><code>.history</code> 남기기</td><td><code>../CLAUDE.md</code></td><td>상위·프로젝트 중복 → 합침</td></tr><tr><td>알람 수정 후 <code>--dry-run</code>으로만 확인</td><td><code>CLAUDE.md §알람 문자</code></td><td>scripts의 반대 규칙 삭제, 링크만</td></tr><tr><td>임계값 숫자는 thresholds/에서 읽기</td><td><code>scripts/CLAUDE.md</code></td><td>그대로</td></tr></tbody></table></div>
 <p><code>scripts/CLAUDE.md</code>는 두 줄만 남았습니다.</p>
 <pre><code># scripts 폴더 규칙 (코드 담당)
 
@@ -198,9 +201,7 @@ scripts/CLAUDE.md 는 실제 문자를 한 통 보내라고 합니다.
 sent_log.txt:
 2026-10-01 05:53 (내 번호 1개) [물탱크알람] 테스트</code></pre>
 <p>규칙 한 줄을 고쳤고, 가족 번호 3개가 아니라 <strong>제 번호 하나</strong>로만 나갔어요. 정리는 이렇게 됩니다.</p>
-<p>1. 규칙마다 &quot;모든 작업 공통인가 / 이 프로젝트 전체인가 / 이 폴더만인가&quot;를 정해 <strong>한 층</strong>에만 둔다<br>
-2. 아래 층에서 짚어야 하면 &quot;정본: 파일 §제목&quot;으로 위치만 적는다<br>
-3. 규칙을 바꾸면 그 한 곳을 고치고, <code>.history</code>에 <strong>왜 바꿨는지</strong>를 같이 남긴다</p>
+<ol><li>규칙마다 &quot;모든 작업 공통인가 / 이 프로젝트 전체인가 / 이 폴더만인가&quot;를 정해 <strong>한 층</strong>에만 둔다</li><li>아래 층에서 짚어야 하면 &quot;정본: 파일 §제목&quot;으로 위치만 적는다</li><li>규칙을 바꾸면 그 한 곳을 고치고, <code>.history</code>에 <strong>왜 바꿨는지</strong>를 같이 남긴다</li></ol>
 <img src="img/05_one_edit.png" alt="05_one_edit.png — 흐름도. 위 &#x27;tank/CLAUDE.md §알람 문자 한 줄 수정 (dry-run → --to-me)&#x27;. 왼쪽 가지 붉은 &#x27;1차: .history 없음 → AI 멈춤 &quot;기록끼리 다릅니다&quot;&#x27;. 오른쪽 가지 초록 &#x27;2차: .history 추가 → scripts/ 에서 열어도 포인터 따라감 → --to-me 실행 → sent_log: 내 번호 1개&#x27;. 하단 &#x27;규칙을 바꾸면 이유도 같이 남긴다&#x27;" loading="lazy">
 <h2>6. 도구가 달라도 같고, 자주 받는 질문</h2>
 <p>이번 편의 구조는 <strong>Codex CLI(GPT)나 Gemini CLI에서도 같은 방식으로 됩니다.</strong> 규칙 파일 이름만 바뀌어요. Codex CLI는 <code>AGENTS.md</code>(전역은 <code>~/.codex/AGENTS.md</code>), Gemini CLI는 <code>GEMINI.md</code>(전역은 <code>~/.gemini/GEMINI.md</code>)이고, 전역·프로젝트·하위 폴더로 층이 쌓이는 방식도 같습니다(2026년 10월 기준).</p>

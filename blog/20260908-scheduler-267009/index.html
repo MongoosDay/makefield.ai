@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -121,13 +133,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>2026년 8월, 윈도우 10에서 매일 새벽에 도는 개인 자동화 얘기예요. 확인은 전부 파워셸과 로그 파일로 했습니다.</p>
 <h2>1. 어제의 진단 4개, 오늘 보니 전부 오답</h2>
 <p>먼저 결과부터 놓고 보겠습니다. 왼쪽이 전날 AI가 정리해준 진단이고, 오른쪽이 다음 날 제가 직접 확인한 값이에요.</p>
-<p>| 어제의 진단 | 오늘 실측 |<br>
-|---|---|<br>
-| &quot;8월 23일·24일은 스케줄러가 안 돌았다&quot; | 23일은 <strong>정상 실행됨</strong>. 04:00:01에 시작해서 04:15:01에 제한 시간 초과로 강제 종료 |<br>
-| &quot;24일도 미실행&quot; | 24일은 <strong>PC가 꺼져 있었음</strong> (23일 20:56 종료 → 24일 07:12 부팅) |<br>
-| &quot;로그 파일이 없으면 안 돈 것이다&quot; | 로그는 <strong>양쪽 다 있었음</strong>. 이 잣대로는 아무것도 못 잡음 |<br>
-| &quot;마지막 실행 결과가 0인지 보라&quot; | 실제 값은 267009. 오류가 아니라 <strong>&quot;실행 중&quot;</strong> |<br>
-| &quot;기록 공백은 소급 보완 완료&quot; | 파일의 마지막 항목은 <strong>5일 전 날짜</strong>였음 |</p>
+<div class="table-wrap"><table><thead><tr><th>어제의 진단</th><th>오늘 실측</th></tr></thead><tbody><tr><td>&quot;8월 23일·24일은 스케줄러가 안 돌았다&quot;</td><td>23일은 <strong>정상 실행됨</strong>. 04:00:01에 시작해서 04:15:01에 제한 시간 초과로 강제 종료</td></tr><tr><td>&quot;24일도 미실행&quot;</td><td>24일은 <strong>PC가 꺼져 있었음</strong> (23일 20:56 종료 → 24일 07:12 부팅)</td></tr><tr><td>&quot;로그 파일이 없으면 안 돈 것이다&quot;</td><td>로그는 <strong>양쪽 다 있었음</strong>. 이 잣대로는 아무것도 못 잡음</td></tr><tr><td>&quot;마지막 실행 결과가 0인지 보라&quot;</td><td>실제 값은 267009. 오류가 아니라 <strong>&quot;실행 중&quot;</strong></td></tr><tr><td>&quot;기록 공백은 소급 보완 완료&quot;</td><td>파일의 마지막 항목은 <strong>5일 전 날짜</strong>였음</td></tr></tbody></table></div>
 <p>네 가지를 물었는데 다섯 줄이 틀렸어요.<br>
 AI가 유난히 엉망이어서 그런 게 아닙니다. 다섯 줄의 근거가 <strong>전부 &quot;값 하나&quot;</strong>였거든요. 상태 값 하나, 파일이 있느냐 없느냐 하나. 제가 평소에 쓰던 잣대 그대로였고요.</p>
 <img src="img/02_diagnosis_vs_measured.png" alt="왼쪽 &#x27;어제의 진단&#x27; 4개 박스(미실행·미실행·로그없음=미실행·결과0확인) → 각각 X 표시 → 오른쪽 &#x27;오늘 실측&#x27; 4개 박스(강제종료·PC전원꺼짐·로그둘다있음·267009=실행중)" loading="lazy">
@@ -137,8 +143,7 @@ AI가 유난히 엉망이어서 그런 게 아닙니다. 다섯 줄의 근거가
 # 41301</code></pre>
 <p>0x41301은 윈도우가 쓰는 상태 값이고, 이름이 SCHED_S_TASK_RUNNING이에요. 뜻 그대로 <strong>작업이 아직 실행 중</strong>이라는 표시입니다. 실패가 아니라 진행 중이라는 안내죠. (마이크로소프트 Q&amp;A와 여러 기술 문서에서 &quot;오류로 오인되는 성공 코드&quot;로 정리돼 있습니다. 2026년 8월 확인)</p>
 <p>그래서 이 값이 보일 때 판단은 이렇게 갈립니다.</p>
-<p>- 시작한 지 몇 분 안 됐다 → 정상입니다. 그냥 도는 중이에요<br>
-- 몇 시간째 그대로다 → 그 프로세스가 안 끝나고 있는 겁니다. 코드를 고칠 게 아니라 무엇을 기다리는지 봐야 해요</p>
+<ul><li>시작한 지 몇 분 안 됐다 → 정상입니다. 그냥 도는 중이에요</li><li>몇 시간째 그대로다 → 그 프로세스가 안 끝나고 있는 겁니다. 코드를 고칠 게 아니라 무엇을 기다리는지 봐야 해요</li></ul>
 <p>제 경우는 후자에 가까웠고, 제한 시간 15분이 걸려 있어서 매일 04:15에 강제로 잘려나가고 있었습니다.</p>
 <h2>3. &quot;로그 파일이 있으니 돌았다&quot;는 잣대가 제일 위험했어요</h2>
 <p>가장 뼈아팠던 건 세 번째 진단이에요. 로그 파일이 있으면 돌아간 걸로 치자는 기준이요. 로그를 열어보면 왜 위험한지 바로 보입니다.</p>
@@ -171,11 +176,7 @@ AI가 유난히 엉망이어서 그런 게 아닙니다. 다섯 줄의 근거가
 <p>예약은 새벽 4시인데 PC가 전날 밤 8시 56분에 꺼져서 다음 날 아침 7시 12분에 켜졌어요. 그 사이에 4시가 들어 있으니 24일은 애초에 돌 수가 없었던 겁니다. 스크립트 문제가 아니었고요. (꺼져 있던 회차가 만회되지 않고 사라지는 얘기는 앞선 글에서 다뤘어요.)</p>
 <p>그래서 23일은 강제 종료, 24일은 전원 없음. <strong>원인이 두 개였는데 저는 하나로 묶어 보고 있었습니다.</strong></p>
 <p>세 시각을 겹쳐본 뒤로 제 점검 순서는 이렇게 바뀌었어요.</p>
-<p>- [ ] 상태 값이 아니라 <strong>마지막 실행 시각</strong>부터 본다<br>
-- [ ] 산출물 파일의 생성 시각을 로그의 종료 시각과 나란히 놓는다 (몇 초 차이가 범인일 때가 있다)<br>
-- [ ] 그날 PC가 켜져 있었는지는 이벤트 로그 1074·6005로 확인한다<br>
-- [ ] 267009 같은 값은 의미부터 확인한다. 16진수로 바꾸면 대개 답이 나온다<br>
-- [ ] &quot;완료&quot;라고 찍는 줄이 예외 처리 바깥에 있는지 코드에서 확인한다</p>
+<ul><li>[ ] 상태 값이 아니라 <strong>마지막 실행 시각</strong>부터 본다</li><li>[ ] 산출물 파일의 생성 시각을 로그의 종료 시각과 나란히 놓는다 (몇 초 차이가 범인일 때가 있다)</li><li>[ ] 그날 PC가 켜져 있었는지는 이벤트 로그 1074·6005로 확인한다</li><li>[ ] 267009 같은 값은 의미부터 확인한다. 16진수로 바꾸면 대개 답이 나온다</li><li>[ ] &quot;완료&quot;라고 찍는 줄이 예외 처리 바깥에 있는지 코드에서 확인한다</li></ul>
 <img src="img/03_three_clocks.png" alt="가운데 &#x27;원인 확정&#x27; 원, 세 방향에서 화살표 — ①실행 로그 타임스탬프 ②산출물 파일 생성 시각 ③이벤트 로그 1074/6005. 값 하나만 볼 때는 X, 세 개 겹칠 때 O" loading="lazy">
 <h2>자주 묻는 것</h2>
 <p><strong>Q. 제한 시간을 늘리면 해결되나요?</strong><br>

@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -140,11 +152,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 이건 제가 따라 하면 <strong>아무 일도 안 일어납니다.</strong> 안 하는 게 지시니까요.<br>
 반응이 없으니 반증도 없고, 그래서 틀려도 조용히 살아남습니다.</p>
 <img src="img/02_two_kinds.png" alt="왼쪽 &#x27;AI가 쓴 문장&#x27; 상자에서 두 갈래 화살표 — 위쪽 &#x27;실행 지시(하라)&#x27;는 실행→충돌→그날 발각으로 이어지고, 아래쪽 &#x27;제약 서술(안 된다·나중에)&#x27;은 미실행→무반응→미발각으로 이어지는 대비 구조" loading="lazy">
-<p>| 문장 유형 | 예시 | 틀렸을 때 | 검증 주체 |<br>
-|---|---|---|---|<br>
-| 실행 지시 | &quot;여기서 이 값을 넣어라&quot; | 그 자리에서 안 되거나 값이 틀림 | 실행하면 자동 |<br>
-| 수치·사실 | &quot;비용은 얼마다&quot; | 화면 숫자와 대조되면 드러남 | 한 번만 보면 됨 |<br>
-| <strong>제약 서술</strong> | <strong>&quot;아직 안 된다 / 그건 없다&quot;</strong> | <strong>아무 일도 안 일어남</strong> | <strong>아무도 안 함</strong> |</p>
+<div class="table-wrap"><table><thead><tr><th>문장 유형</th><th>예시</th><th>틀렸을 때</th><th>검증 주체</th></tr></thead><tbody><tr><td>실행 지시</td><td>&quot;여기서 이 값을 넣어라&quot;</td><td>그 자리에서 안 되거나 값이 틀림</td><td>실행하면 자동</td></tr><tr><td>수치·사실</td><td>&quot;비용은 얼마다&quot;</td><td>화면 숫자와 대조되면 드러남</td><td>한 번만 보면 됨</td></tr><tr><td><strong>제약 서술</strong></td><td><strong>&quot;아직 안 된다 / 그건 없다&quot;</strong></td><td><strong>아무 일도 안 일어남</strong></td><td><strong>아무도 안 함</strong></td></tr></tbody></table></div>
 <p>세 번째 줄이 <strong class="u">침묵하는 오류</strong>예요. 검수자가 따로 손대지 않으면 문서 수명 내내 안 걸립니다.</p>
 <h2>3. 그래서 검수 순서를 이렇게 바꿨습니다</h2>
 <p>전제는 단순해요. AI 산출물이 텍스트 파일(.md, .txt)로 저장돼 있고, 문자열 검색이 되는 편집기나 grep을 쓸 수 있으면 됩니다. 2026년 8월 기준으로 제가 쓰는 절차예요.</p>

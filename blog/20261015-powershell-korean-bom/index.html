@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -157,12 +169,7 @@ $c = [System.IO.File]::ReadAllText($p, [System.Text.UTF8Encoding]::new($false))
 <img src="img/04_verify_steps.png" alt="3단계 확인 흐름 — 가로로 3개 상자를 화살표로 연결. ① &#x27;저장 방식 바꾸기 (BOM 붙여 재저장)&#x27; ② &#x27;선두 3바이트 확인 → 239 187 191&#x27; ③ &#x27;다시 실행 → 한글 정상 출력&#x27;. 각 상자 아래 작은 체크박스 아이콘. ②번 상자 아래에 빨간 글씨로 &#x27;여기서 숫자가 다르면 ①로 돌아간다&#x27;. 하단 캡션 &#x27;저장했다는 말은 확인이 아니다&#x27;" loading="lazy">
 <h2>5. 배치파일(.bat)은 정반대라 헷갈립니다</h2>
 <p>여기서 한 번 더 걸렸어요. PowerShell에서 배운 걸 그대로 배치파일에 적용했다가 똑같이 깨졌거든요. 두 개는 <strong class="u">정반대</strong>입니다.</p>
-<p>| 구분 | .ps1 (PowerShell 5.1) | .bat (명령 프롬프트) |<br>
-|---|---|---|<br>
-| 기본으로 읽는 방식 | 표식 없으면 옛 한국어 코드페이지 | 항상 옛 한국어 코드페이지 |<br>
-| UTF-8로 저장하면 | BOM 있으면 정상, 없으면 깨짐 | 한글이 깨짐 |<br>
-| 한글을 쓰려면 | BOM 붙여 저장 | <strong>아예 한글을 안 쓰는 게 안전</strong> |<br>
-| 안 지켰을 때 | 문법 오류로 실행 실패 | 깨진 글자를 명령어로 실행 시도 |</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>.ps1 (PowerShell 5.1)</th><th>.bat (명령 프롬프트)</th></tr></thead><tbody><tr><td>기본으로 읽는 방식</td><td>표식 없으면 옛 한국어 코드페이지</td><td>항상 옛 한국어 코드페이지</td></tr><tr><td>UTF-8로 저장하면</td><td>BOM 있으면 정상, 없으면 깨짐</td><td>한글이 깨짐</td></tr><tr><td>한글을 쓰려면</td><td>BOM 붙여 저장</td><td><strong>아예 한글을 안 쓰는 게 안전</strong></td></tr><tr><td>안 지켰을 때</td><td>문법 오류로 실행 실패</td><td>깨진 글자를 명령어로 실행 시도</td></tr></tbody></table></div>
 <p>배치파일 쪽 마지막 칸이 제일 위험해요. 한글 주석 한 줄 넣고 UTF-8로 저장한 파일을 돌렸더니 이렇게 나왔습니다.</p>
 <pre><code>&#x27;??정&#x27; is not recognized as an internal or external command,
 operable program or batch file.

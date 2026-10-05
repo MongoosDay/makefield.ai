@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -114,13 +126,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>이번에 읽은 건 노르웨이과학기술대(NTNU)와 SINTEF가 2024년 ESREL에 낸 전해조 사고 리뷰예요 [Tuhi 외 2024]. 비교 논문이 아니라 사고 논문인데, 오히려 그래서 차이가 선명하게 나옵니다. 사고가 서로 다른 자리에서 나거든요.</p>
 <h2>1. 알칼라인 PEM 차이는 이렇게 갈립니다</h2>
 <p>논문이 1장과 2장에 적은 대비를 그대로 옮기면 이렇습니다.</p>
-<p>| 항목 | 알칼라인 | PEM |<br>
-|---|---|---|<br>
-| 성숙도 | 대규모 전해의 표준, 매우 성숙 | 더 최근 기술, 중소 규모 중심 |<br>
-| 투자·유지비 | 더 낮음 | 더 비쌈(백금·이리듐 촉매, 티타늄 부품) |<br>
-| 수명 | 더 김 | 더 짧음 |<br>
-| 전해질 | KOH 또는 NaOH 수용액, 약 30 중량% | 얇은 산성 고분자막(주로 Nafion 계열) |<br>
-| 운전 | — | 더 유연·소형·고효율, 더 높은 전류밀도·온도·압력 |</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>알칼라인</th><th>PEM</th></tr></thead><tbody><tr><td>성숙도</td><td>대규모 전해의 표준, 매우 성숙</td><td>더 최근 기술, 중소 규모 중심</td></tr><tr><td>투자·유지비</td><td>더 낮음</td><td>더 비쌈(백금·이리듐 촉매, 티타늄 부품)</td></tr><tr><td>수명</td><td>더 김</td><td>더 짧음</td></tr><tr><td>전해질</td><td>KOH 또는 NaOH 수용액, 약 30 중량%</td><td>얇은 산성 고분자막(주로 Nafion 계열)</td></tr><tr><td>운전</td><td>—</td><td>더 유연·소형·고효율, 더 높은 전류밀도·온도·압력</td></tr></tbody></table></div>
 <img src="img/01-tradeoff-axes.png" alt="01-tradeoff-axes.png — 두 방식이 맞바꾸는 축" loading="lazy">
 <p>알칼라인이 싼 대신 <strong class="u">약 30 중량%</strong> 알칼리 용액이 설비 안을 계속 돕니다. 논문은 &quot;순환하는 다량의 가성 전해액&quot;을 알칼라인의 주요 안전 이슈로 못 박아요 [Tuhi 외 2024, §2.1]. PEM은 반대쪽입니다. 얇은 고분자막이 가스가 서로 넘어가는 걸 줄여 가연성 혼합물 위험을 낮추는데 [Tuhi 외 2024, §2.2], 그 대가가 <strong class="u">백금과 이리듐</strong>, 그리고 티타늄이에요. 값을 깎으면 유연성이 깎이고, 유연성을 사면 값을 냅니다.</p>
 <h2>2. 고장 데이터가 없어서, 사고를 뒤졌습니다</h2>
@@ -135,16 +141,14 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>다만 결말은 한 곳으로 모입니다. 논문이 정리한 최악의 결과는 <strong>전해조 내부에서 수소·산소 혼합물이 만들어져 폭발하는 것</strong> 하나예요 [Tuhi 외 2024, §4.2]. 2019년 국내 사고도 막 열화로 산소가 수소 쪽에 흘러 들어간 경우로 분류돼 있고, 사망 3명·부상 6명으로 기록됩니다 [Tuhi 외 2024, Table 1].</p>
 <h2>4. &#x27;빠르다&#x27;는 게 공짜는 아니에요</h2>
 <p>재생에너지는 출력이 오르내려서 전해조가 그 변동을 따라가야 합니다. PEM이 유연하다는 게 여기서 값을 해요. 전류밀도가 수소 생산율을 직접 좌우하니까요. 그런데 논문이 바로 단서를 답니다.</p>
-<p>&gt; 전류밀도의 급격한 변화는 전해조 부품을 손상시키는 것으로 나타났으며, 이는 조작 변수로서의 사용을 제한할 수 있다. [Tuhi 외 2024, §4.4]</p>
+<blockquote>전류밀도의 급격한 변화는 전해조 부품을 손상시키는 것으로 나타났으며, 이는 조작 변수로서의 사용을 제한할 수 있다. [Tuhi 외 2024, §4.4]</blockquote>
 <p>빠르게 움직일 수 있다는 것과 빠르게 움직여도 된다는 건 다른 말입니다. 전류밀도는 크로스오버율과 전압 열화에도 함께 영향을 주고, 온도 역시 크로스오버율을 좌우하는데 <strong>특히 낮은 전류밀도에서</strong> 그렇다고 적혀 있어요 [Tuhi 외 2024, §4.4]. 부하를 낮출수록 신경 쓸 게 늘어납니다.</p>
 <p>감시 목록도 방식마다 달라요. 논문은 PEM 제어변수를 고를 때 <strong class="u">전해액 유량</strong>을 뺍니다. PEM에는 해당이 없거든요 [Tuhi 외 2024, §4.4]. 반대로 침전물 위험이 있는 알칼라인에서는 셀 온도와 전해액 유량이 감시 대상으로 남습니다 [Tuhi 외 2024, Table 2].</p>
 <img src="img/04-monitor-vars.png" alt="04-monitor-vars.png — 방식에 따라 달라지는 감시 목록" loading="lazy">
 <h2>5. AEM은 왜 안 나오나 — 이 논문을 AI에게 읽힌 방법</h2>
 <p>여기부터는 도구 이야기예요. 어느 분야 논문에나 그대로 씁니다.</p>
 <p>AI에게 &quot;이 논문 기준으로 알칼라인·PEM·AEM을 비교해 줘&quot;라고 시켰더니 세 방식이 나란히 들어간 표를 그럴듯하게 만들어 줬어요. 문제는 <strong>이 논문에 AEM이 한 번도 안 나온다</strong>는 겁니다. 전문에서 anion, AEM, alkaline exchange 세 문자열을 찾으면 0건이에요. 그래서 표를 지웠고, 그 과정에서 쓴 방법이 세 가지입니다.</p>
-<p>1. <strong>주장마다 원문 문장을 내놓게 하고, 그 문장을 문자열로 검색한다.</strong> &quot;요약해 줘&quot;가 아니라 &quot;근거 문장을 절 번호와 함께 원문 그대로 붙여라&quot;로 묻습니다. 검색에 안 걸리면 그 주장은 논문에 없는 거예요.<br>
-2. <strong>끊긴 문장을 찾아 눈으로 다시 읽는다.</strong> 이 PDF는 텍스트로 뽑으면 한 문장이 <code>temperatures, and p</code> 에서 잘리고 다음 줄이 <code>Nevertheless</code>로 시작해요. 범인은 인용 표기 <code>(Falcão et al., 2020)</code>의 <code>ã</code>였습니다. 2장 끝에서도 <code>by an electrolyte (Fal</code> 로 같은 자리가 끊기고요. 그래서 그 좌표만 이미지로 렌더링해 육안으로 읽었습니다. 잘린 문장은 AI가 조용히 이어 붙이니까, <strong>마침표 없이 끝나거나 소문자로 끝나는 줄</strong>을 추출 실패 신호로 잡으면 됩니다.<br>
-3. <strong>관측인지 인용인지, 그리고 몇 년 것인지 구분시킨다.</strong> 이 논문의 비교 서술은 대부분 남의 논문을 옮긴 거예요. 비용·수명은 (Rizwan 외 2021), 유연성·압력은 (Falcão 외 2020), 1~30 bar와 50~80 °C는 (IRENA 2020)에서 왔습니다 [Tuhi 외 2024, §1·§4.4]. 순도 기준(산소 98.8%·수소 99.7%에서 경보, 산소 98%·수소 99.5%에서 정지)은 더 멀어서, <strong>1976년 영국 공장감독국 사고 보고서</strong>를 재인용한 값이에요 [Tuhi 외 2024, §4.3]. 2024년 논문에 실렸다고 2024년 수치가 아닙니다.</p>
+<ol><li><strong>주장마다 원문 문장을 내놓게 하고, 그 문장을 문자열로 검색한다.</strong> &quot;요약해 줘&quot;가 아니라 &quot;근거 문장을 절 번호와 함께 원문 그대로 붙여라&quot;로 묻습니다. 검색에 안 걸리면 그 주장은 논문에 없는 거예요.</li><li><strong>끊긴 문장을 찾아 눈으로 다시 읽는다.</strong> 이 PDF는 텍스트로 뽑으면 한 문장이 <code>temperatures, and p</code> 에서 잘리고 다음 줄이 <code>Nevertheless</code>로 시작해요. 범인은 인용 표기 <code>(Falcão et al., 2020)</code>의 <code>ã</code>였습니다. 2장 끝에서도 <code>by an electrolyte (Fal</code> 로 같은 자리가 끊기고요. 그래서 그 좌표만 이미지로 렌더링해 육안으로 읽었습니다. 잘린 문장은 AI가 조용히 이어 붙이니까, <strong>마침표 없이 끝나거나 소문자로 끝나는 줄</strong>을 추출 실패 신호로 잡으면 됩니다.</li><li><strong>관측인지 인용인지, 그리고 몇 년 것인지 구분시킨다.</strong> 이 논문의 비교 서술은 대부분 남의 논문을 옮긴 거예요. 비용·수명은 (Rizwan 외 2021), 유연성·압력은 (Falcão 외 2020), 1~30 bar와 50~80 °C는 (IRENA 2020)에서 왔습니다 [Tuhi 외 2024, §1·§4.4]. 순도 기준(산소 98.8%·수소 99.7%에서 경보, 산소 98%·수소 99.5%에서 정지)은 더 멀어서, <strong>1976년 영국 공장감독국 사고 보고서</strong>를 재인용한 값이에요 [Tuhi 외 2024, §4.3]. 2024년 논문에 실렸다고 2024년 수치가 아닙니다.</li></ol>
 <img src="img/05-source-layers.png" alt="05-source-layers.png — 숫자가 거쳐 온 연도 계층" loading="lazy">
 <h2>6. 남는 질문들 — 이 논문이 답하지 않는 것</h2>
 <p>이 논문은 비교 논문이 아니라 사고 리뷰라 비어 있는 데가 있어요. 가격을 숫자로 대지 않고, AEM과 고체산화물을 다루지 않으며, 식별한 운전 조건을 <strong>어떤 방법으로 감시할지는 이 연구에서 논의하지 않는다</strong>고 직접 밝힙니다 [Tuhi 외 2024, §1].</p>
@@ -154,11 +158,11 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 출발점이 다르고 결말이 같아요. 알칼라인은 침전물과 부식, PEM은 막 천공에서 시작하는데 도착지는 둘 다 수소·산소 혼합입니다 [Tuhi 외 2024, §4.2].</p>
 <p><strong>Q. 논문이 꼽은 위험 요인은 몇 가지인가요?</strong><br>
 다섯입니다. 막 손상, 가스 분리기의 물리적 파손, 전극 부식, 가스 크로스오버, 침전물 생성 [Tuhi 외 2024, §4.2].</p>
-<p>---</p>
+<hr>
 <p>종류가 나뉜 건 기술이 미완이라서가 아니라 맞바꿀 게 있어서고, 사고 기록은 그 맞바꿈이 어디서 대가를 치르는지 보여 줍니다. 다음 편에서는 배터리로 안 되는 저장 이야기를 같은 방식으로 읽어 볼게요.</p>
-<p>&gt; 출처 Tuhi, F. Y., Fredriksen, M., Bucelli, M., Liu, Y. (2024). Accidents Review And Control Assessment For Reliable Operation Of PEM Water Electrolyzer Stacks. *Advances in Reliability, Safety and Security, Part 9*, ESREL 2024 Monograph Book Series. ISBN 978-83-68136-08-1.<br>
-&gt; 본문 그림은 논문 도표 전재가 아니라 개념을 직접 그린 것입니다.</p>
-<p>→ 원문과 대조하며 걸러낸 것들은 [makefield.ai](<a href="https://makefield.ai)에" target="_blank" rel="noopener">https://makefield.ai)에</a> 그대로 남겨 둡니다.</p>
+<blockquote>출처 Tuhi, F. Y., Fredriksen, M., Bucelli, M., Liu, Y. (2024). Accidents Review And Control Assessment For Reliable Operation Of PEM Water Electrolyzer Stacks. *Advances in Reliability, Safety and Security, Part 9*, ESREL 2024 Monograph Book Series. ISBN 978-83-68136-08-1.<br>
+본문 그림은 논문 도표 전재가 아니라 개념을 직접 그린 것입니다.</blockquote>
+<p>→ 원문과 대조하며 걸러낸 것들은 <a href="https://makefield.ai" target="_blank" rel="noopener">makefield.ai</a>에 그대로 남겨 둡니다.</p>
 </article>
 <div class="endcard">
 <span class="stamp">MakeField AI</span>

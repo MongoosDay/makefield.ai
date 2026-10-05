@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -216,18 +228,12 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
    기록일 2026-09-20 기준 한 달 뒤 → 대략 2026-10-20 (오늘은 2026-09-27)</code></pre>
 <p>출처를 파일명에 몇 번째 줄까지 붙여옵니다. 저는 월요일 아침에 이것만 시켜요. 할 일 관리 앱을 따로 안 씁니다. 여러분은 지난달에 바꾼 폴더 구조, 왜 그렇게 바꿨는지 지금 답할 수 있으세요?</p>
 <p>성공 판정은 이 세 개로 하세요.</p>
-<p>- [ ] 새 세션에서 &quot;지난주에 ○○ 왜 그렇게 정했지?&quot;를 물으면 <strong>이유까지</strong> 답하는가<br>
-- [ ] &quot;아직 안 끝난 일 뽑아줘&quot;에 목록이 나오는가 (안 나오면 영향범위 칸이 비어 있는 것)<br>
-- [ ] 답에 출처 파일명이 붙어 있는가 (안 붙으면 지어낸 걸로 의심하세요)</p>
+<ul><li>[ ] 새 세션에서 &quot;지난주에 ○○ 왜 그렇게 정했지?&quot;를 물으면 <strong>이유까지</strong> 답하는가</li><li>[ ] &quot;아직 안 끝난 일 뽑아줘&quot;에 목록이 나오는가 (안 나오면 영향범위 칸이 비어 있는 것)</li><li>[ ] 답에 출처 파일명이 붙어 있는가 (안 붙으면 지어낸 걸로 의심하세요)</li></ul>
 <img src="img/05_with_without.png" alt="05_with_without.png — 상단 좌우 대비 2열. 왼쪽 &#x27;기록 없음&#x27; 박스(붉은 테두리) 안에 새 세션 응답 &quot;그런 작업은 없었습니다 / 확인할 방법이 없습니다&quot;. 오른쪽 &#x27;기록 있음&#x27; 박스(초록 테두리) 안에 &quot;이유 3개 + 미결 1건 + 출처 라인번호&quot;. 하단 가로 띠에 &#x27;보너스 — 기록↔실물 대조가 성립한다: 내가 완료라 적어둔 칸이 실제로는 안 돼 있던 걸 AI가 적발&#x27;" loading="lazy">
 <h2>5. 도구가 바뀌어도 그대로고, 매번 손으로 안 적어도 됩니다</h2>
 <p>여기서 쓴 건 <code>.md</code> 텍스트 파일과 폴더 하나뿐입니다. 특정 AI 도구의 기능이 아니에요. 도구를 갈아타도 기록은 그대로 따라오고, 그 도구가 사라져도 파일은 남습니다. 제가 앱을 안 쓰고 텍스트를 고집하는 이유가 이거예요.</p>
 <p>바뀌는 건 &quot;기록을 남겨라&quot;라고 지시하는 자리, 즉 지난 편에서 만든 규칙 파일의 <strong>이름 하나</strong>뿐입니다.</p>
-<p>| 도구 | 지시를 적는 파일 | 기록이 쌓이는 곳 |<br>
-|---|---|---|<br>
-| Claude Code | <code>CLAUDE.md</code> | <code>.history/</code> (그냥 텍스트) |<br>
-| Codex CLI | <code>AGENTS.md</code> | 같음 |<br>
-| Gemini CLI | <code>GEMINI.md</code> | 같음 |</p>
+<div class="table-wrap"><table><thead><tr><th>도구</th><th>지시를 적는 파일</th><th>기록이 쌓이는 곳</th></tr></thead><tbody><tr><td>Claude Code</td><td><code>CLAUDE.md</code></td><td><code>.history/</code> (그냥 텍스트)</td></tr><tr><td>Codex CLI</td><td><code>AGENTS.md</code></td><td>같음</td></tr><tr><td>Gemini CLI</td><td><code>GEMINI.md</code></td><td>같음</td></tr></tbody></table></div>
 <p>그 파일에 아래 두 줄만 얹으면 됩니다. 이러면 매번 &quot;기록 남겨줘&quot;라고 칠 필요가 없어요.</p>
 <pre><code>## 작업 기록
 - 구조를 바꾸거나 규칙을 정하면 `.history/YYYY-MM-DD_주제.md` 한 개를 남긴다

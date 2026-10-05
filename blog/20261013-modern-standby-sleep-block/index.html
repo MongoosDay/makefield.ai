@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -138,12 +150,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
     대기 모드(S1) / (S2) / (S3)
         시스템 펌웨어에서 이 대기 모드를 지원하지 않습니다.</code></pre>
 <p>S3가 아래쪽에 있고 위에는 &quot;S0 저 전원 유휴&quot;만 남아 있죠. 이게 <strong class="u">모던 스탠바이 전용</strong> 장비라는 뜻입니다. 고를 수 있는 게 아니라 그것밖에 없는 거예요.</p>
-<p>| 구분 | 예전 절전(S3) | 요즘 절전(S0 저 전원 유휴) |<br>
-|---|---|---|<br>
-| 상태 | 메모리만 남기고 사실상 꺼짐 | 켜진 채로 저전력 유지 |<br>
-| 깨우는 신호 | 전원·키보드 정도 | 입력·네트워크·타이머 등 다양 |<br>
-| 전원 옵션 &quot;절전 안 함&quot; | 그대로 먹힘 | 무시되는 경로가 있음 |<br>
-| 복귀에 실패하면 | 대개 재시작으로 끝 | 화면·원격이 동시에 먹통 |</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>예전 절전(S3)</th><th>요즘 절전(S0 저 전원 유휴)</th></tr></thead><tbody><tr><td>상태</td><td>메모리만 남기고 사실상 꺼짐</td><td>켜진 채로 저전력 유지</td></tr><tr><td>깨우는 신호</td><td>전원·키보드 정도</td><td>입력·네트워크·타이머 등 다양</td></tr><tr><td>전원 옵션 &quot;절전 안 함&quot;</td><td>그대로 먹힘</td><td>무시되는 경로가 있음</td></tr><tr><td>복귀에 실패하면</td><td>대개 재시작으로 끝</td><td>화면·원격이 동시에 먹통</td></tr></tbody></table></div>
 <p>제 경우 &quot;절전 모드로 전환&quot;, &quot;최대 절전 모드로 전환&quot;이 둘 다 &#x27;안 함&#x27;이었는데도 유휴 시간 초과로 진입했습니다. 덮개 닫기 동작은 전원 옵션 화면에 항목조차 없었고요. 보이지도 않는 설정이 뒤에서 돌고 있었던 셈이에요. 여러분 PC는 위 목록에서 어느 쪽이던가요?</p>
 <img src="img/03_why.png" alt="왜 설정이 안 먹었나 — 좌우 두 칸 비교. 왼쪽 &quot;예전 절전(S3)&quot;: 상자 &#x27;전원 옵션 = 절전 안 함&#x27; → 화살표 → &#x27;절전 진입 차단됨 (정상)&#x27;(초록). 오른쪽 &quot;모던 스탠바이(S0ix)&quot;: 상자 &#x27;전원 옵션 = 절전 안 함&#x27; → 화살표가 점선으로 끊기며 &#x27;무시&#x27;(빨강 X), 그 아래 별도 경로로 &#x27;숨은 항목: 무인 절전 시간 제한&#x27; + &#x27;유휴 시간 초과&#x27; → &#x27;절전 진입&#x27;(빨강). 하단에 가로 막대 하나 &#x27;레지스트리 PlatformAoAcOverride = 0 → 이 경로 자체를 차단&#x27;(파랑)" loading="lazy">
 <h2>3. 숨은 설정을 꺼내고, 레지스트리 한 줄을 넣었습니다</h2>

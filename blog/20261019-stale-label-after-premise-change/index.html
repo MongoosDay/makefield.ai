@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -120,12 +132,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>저 문장에는 안 적힌 숫자가 하나 숨어 있습니다. 월 필수지출이에요. 350~400만원으로 나눠서 나온 값이 1.5개월이었어요. 그 분모는 문장 어디에도 없었고요.</p>
 <p>앞에 적은 그 고정지출이 바로 이 분모로 들어갑니다. 가족 사정이라 줄일 수 있는 항목도 아니었고요.</p>
 <p>분모가 커지면 같은 500만원이 버티는 기간은 짧아집니다. 다시 계산해봤어요.</p>
-<p>| 월 필수지출 | 500만원이 버티는 기간 | 1.5개월 확보에 필요한 금액 |<br>
-|---|---|---|<br>
-| 375만원 | 1.33개월 | 562만원 |<br>
-| 390만원 | 1.28개월 | 585만원 |<br>
-| 400만원 | 1.25개월 | 600만원 |<br>
-| 420만원 | 1.19개월 | 630만원 |</p>
+<div class="table-wrap"><table><thead><tr><th>월 필수지출</th><th>500만원이 버티는 기간</th><th>1.5개월 확보에 필요한 금액</th></tr></thead><tbody><tr><td>375만원</td><td>1.33개월</td><td>562만원</td></tr><tr><td>390만원</td><td>1.28개월</td><td>585만원</td></tr><tr><td>400만원</td><td>1.25개월</td><td>600만원</td></tr><tr><td>420만원</td><td>1.19개월</td><td>630만원</td></tr></tbody></table></div>
 <p>1.5개월이 아니라 1.2~1.3개월이었습니다. 1.5개월을 진짜로 확보하려면 562~630만원이 있어야 했고요.</p>
 <p>금액 차이보다 무서운 쪽은 이겁니다. 저는 그동안 &quot;500만원만 채우면 한 달 반은 버틴다&quot;고 알고 있었어요. 그 안심이 <strong class="u">가짜</strong>였던 겁니다. 이런 건 평소엔 티가 안 나고 진짜 급할 때만 드러나죠..</p>
 <p>저는 제조 현장 쪽 일을 15년쯤 했습니다. 설비에 붙은 명판 이야기를 하나 하면요. 기계를 개조하고 명판을 안 바꾸면, 다음 사람은 그 명판을 믿고 계산합니다. 그때 틀린 건 기계가 아니라 <strong>붙어 있는 라벨</strong>이에요. 제 문서에서 똑같은 일이 벌어져 있었습니다.</p>
@@ -144,8 +151,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>혹시 AI가 정리해준 자료에 &quot;○개월치&quot;, &quot;○배 빠름&quot; 같은 문장이 있으신가요? 그 문장 하나만 보지 마시고, 같은 기준으로 만든 다른 문장이 몇 개나 있는지 세어보시면 좋겠어요.</p>
 <h2>목표를 올릴까, 문장을 고칠까</h2>
 <p>여기서 갈림길이 나왔습니다. 둘 중 하나예요.</p>
-<p>1. 목표를 630만원으로 올린다 → &quot;1.5개월&quot;이라는 말이 다시 참이 된다<br>
-2. 목표 500만원은 그대로 두고, 문장 쪽을 고친다</p>
+<ol><li>목표를 630만원으로 올린다 → &quot;1.5개월&quot;이라는 말이 다시 참이 된다</li><li>목표 500만원은 그대로 두고, 문장 쪽을 고친다</li></ol>
 <p>저는 2번을 골랐습니다. 500만원은 달성이 코앞이었거든요. 다 와서 결승선을 뒤로 밀면, 맞는 문서를 얻는 대신 <strong>다 온 기분을 잃습니다.</strong> 그러면 다음 달에 목표를 또 안 보게 돼요. 문서를 고치려다 습관을 깨는 셈이죠.</p>
 <p>대신 고친 뒤에 한 줄을 더 붙였습니다.</p>
 <pre><code>[정정 전] 비상금 500만원 = 약 1.5개월치 필수지출

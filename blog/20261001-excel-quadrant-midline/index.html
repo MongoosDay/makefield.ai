@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -121,12 +133,7 @@ chart.y_axis.crosses = None; chart.y_axis.crossesAt = MID   # 가로선 → 나�
 <p>문제는 이게 <strong>제가 쓸 물건이 아니라 남한테 넘길 물건</strong>이었다는 겁니다. 받는 쪽 PC에는 파이썬도 없고, 그래프 라이브러리도 없고, 한글 폰트 설정도 안 돼 있어요. 스크립트를 보내봐야 실행이 안 되고, 실행이 안 되면 결국 &quot;그거 좀 대신 돌려주세요&quot;가 돌아옵니다. 그럼 자동화가 아니라 제 일이 하나 더 생긴 거죠..</p>
 <p>저는 제어·계측 쪽 일을 십오 년쯤 했습니다. 이 바닥에서 물건을 넘길 때는 동작하느냐보다 <strong>받는 사람 손에서도 동작하느냐</strong>를 먼저 봐요. 현장에 못 가져가는 장비는 아무리 좋아도 못 쓰는 물건이거든요. 정작 제가 만든 자동화에는 그 기준을 안 대고 있었습니다.</p>
 <p>그래서 통째로 엑셀 파일 하나로 옮겼어요. 수식은 시트 안에, 그래프는 차트 개체로. 여러분도 AI한테 뭘 만들게 시킬 때 &quot;결과물&quot;만 받고 계시지는 않나요? 저는 이번에 <strong>받는 쪽 환경</strong>을 먼저 적어주고 시작했습니다.</p>
-<p>| | 파이썬 스크립트로 넘기기 | 엑셀 파일 하나로 넘기기 |<br>
-|---|---|---|<br>
-| 받는 쪽 준비물 | 파이썬·라이브러리·폰트 | 엑셀만 |<br>
-| 값 바꾸기 | 코드 수정 | 칸에 입력 |<br>
-| 그림 다시 뽑기 | 재실행 | 자동 갱신 |<br>
-| 안 될 때 | 나한테 연락 | 그 자리에서 해결 |</p>
+<div class="table-wrap"><table class="rowhead"><thead><tr><th></th><th>파이썬 스크립트로 넘기기</th><th>엑셀 파일 하나로 넘기기</th></tr></thead><tbody><tr><td>받는 쪽 준비물</td><td>파이썬·라이브러리·폰트</td><td>엑셀만</td></tr><tr><td>값 바꾸기</td><td>코드 수정</td><td>칸에 입력</td></tr><tr><td>그림 다시 뽑기</td><td>재실행</td><td>자동 갱신</td></tr><tr><td>안 될 때</td><td>나한테 연락</td><td>그 자리에서 해결</td></tr></tbody></table></div>
 <img src="img/02_deploy.png" alt="배포 경로 비교 2단. 위쪽 붉은 계열 — &#x27;내 PC(파이썬 OK)&#x27; 상자에서 화살표가 &#x27;받는 PC&#x27; 상자로 가다가 붉은 X 표시와 &#x27;실행 불가: 런타임·폰트 없음&#x27;, 그 아래 되돌아오는 화살표에 &#x27;대행 요청&#x27;. 아래쪽 초록 계열 — &#x27;내 PC&#x27; 상자에서 &#x27;엑셀 파일 1개&#x27; 상자를 거쳐 &#x27;받는 PC&#x27; 상자로 곧게 이어지고 상자 안에 &#x27;열면 그대로 계산됨&#x27;. 하단 캡션 &#x27;재현 안 되는 산출물은 결국 내 일로 돌아온다&#x27;" loading="lazy">
 <h2>2. 옮기고 나니 세로선만 안 그려졌어요</h2>
 <p>엑셀 사분면 그래프는 선 두 개가 생명입니다. 가로 중앙선과 세로 중앙선이 있어야 네 구역이 갈리니까요.</p>
@@ -140,10 +147,7 @@ ln = ch.Shapes.AddLine(xmid, T, xmid, T + H)     # 세로선은 도형으로
 ln.Line.ForeColor.RGB = 0x7F7F7F
 ln.Line.Weight = 1.75</code></pre>
 <p>핵심은 세 번째 줄이에요. 축 좌표는 점수 단위(3.6 같은 값)인데 도형 좌표는 화면 단위라서, 그림 영역의 시작 위치와 폭을 가져다 비율로 환산해줘야 선이 제자리에 섭니다.</p>
-<p>| 그리려는 선 | 되는 방법 | 안 되는 방법 |<br>
-|---|---|---|<br>
-| 가로 중앙선 | 세로축 교차값 지정 | — |<br>
-| 세로 중앙선 | 도형(직선)을 좌표 환산해 추가 | 가로축 교차값 지정 |</p>
+<div class="table-wrap"><table><thead><tr><th>그리려는 선</th><th>되는 방법</th><th>안 되는 방법</th></tr></thead><tbody><tr><td>가로 중앙선</td><td>세로축 교차값 지정</td><td>—</td></tr><tr><td>세로 중앙선</td><td>도형(직선)을 좌표 환산해 추가</td><td>가로축 교차값 지정</td></tr></tbody></table></div>
 <h2>3. 중앙선 위치는 눈대중이 아니라 계산이에요</h2>
 <p>선을 어디에 그을지도 문제였습니다. 예전에 같은 그림을 그릴 땐 눈대중으로 3.5에 그었거든요.</p>
 <p>이번에 식을 세워보니 이렇게 나왔습니다.</p>
@@ -154,8 +158,7 @@ ln.Line.Weight = 1.75</code></pre>
 <h2>4. 선이 그려져도 안 보이면 소용없더라고요</h2>
 <p>선이 나오고 나서 열어봤더니, 이번엔 어디가 중앙선인지 구분이 안 됐습니다. 엑셀 기본 격자선이 중앙선이랑 굵기가 비슷해서 통째로 묻혔거든요.. 그릴 줄 몰라서 못 그린 게 아니라, 그려놓고 못 알아본 겁니다.</p>
 <p>두 가지를 갈랐습니다.</p>
-<p>1. 격자선은 연하게 — 색 <code>#E8E8E8</code>, 굵기 0.75pt<br>
-2. 중앙선과 축은 진하게 — 색 <code>#7F7F7F</code>, 굵기 1.75pt</p>
+<ol><li>격자선은 연하게 — 색 <code>#E8E8E8</code>, 굵기 0.75pt</li><li>중앙선과 축은 진하게 — 색 <code>#7F7F7F</code>, 굵기 1.75pt</li></ol>
 <p>구역 이름(★ 최우선 같은 꼬리표)을 넣을 때도 한 번 걸렸어요. 텍스트 상자 높이를 15pt로 잡고 10pt 한글을 넣었더니 <strong class="u">받침이 잘려서</strong> 나오더라고요. 높이를 22pt로 올리고 상하 여백을 0으로 두니까 해결됐습니다. 한글은 받침 때문에 같은 크기라도 영문보다 세로 공간을 더 먹어요.</p>
 <img src="img/03_quadrant.png" alt="사분면 지도 구조도. 정사각형 그림 영역 안에 회색 굵은 가로선과 세로선이 십자로 교차해 네 구역을 만들고, 교차점 옆에 &#x27;중앙선 = 참여 수 × 6 ÷ 항목 수&#x27; 라벨. 네 모서리에 작은 꼬리표 — 오른쪽 위 &#x27;★ 최우선&#x27;, 왼쪽 위 &#x27;대체로 양호&#x27;, 오른쪽 아래 &#x27;개선 필요&#x27;, 왼쪽 아래 &#x27;관심도 낮음&#x27;. 배경에 아주 옅은 격자선을 깔아 중앙선과 대비. 하단 캡션 &#x27;가로선은 축 설정, 세로선은 도형&#x27;" loading="lazy">
 <h2>5. 제대로 만들었는지는 이렇게 확인했어요</h2>

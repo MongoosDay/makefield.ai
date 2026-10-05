@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -168,11 +180,7 @@ Lv85 = 252 + 퀘스트 보상 30 = 282  ✓</code></pre>
 <p>그리고 이틀 뒤, 아홉 번째 레벨에서 실제로 찍힌 값을 거꾸로 세어봤습니다. 계획표의 목표선과 맞아떨어졌어요! 다음 레벨에서 체력을 두 점 넣으라는 권고까지 받고 끝났습니다.</p>
 <h2>AI가 짜준 계획을 앞에 놓고 물어볼 세 가지</h2>
 <p>제가 이번 일로 만든 짧은 목록이에요.</p>
-<p>| 물어볼 것 | 안 물으면 생기는 일 | 확인 방법 |<br>
-|---|---|---|<br>
-| 이 중 되돌릴 수 없는 항목은? | 되돌릴 수 있는 줄 알고 나중으로 미룸 | 항목별로 &quot;취소 비용&quot;을 적게 시킨다 |<br>
-| 병목은 무엇이고 언제 오나? | 초반에 편한 걸 먼저 하고 문턱에서 막힘 | &quot;끝에서 막히는 이유&quot;부터 답하게 한다 |<br>
-| 총량 예산 안에 들어오나? | 후반에 자원이 모자람 | 구간별 누적치를 숫자로 검산시킨다 |</p>
+<div class="table-wrap"><table><thead><tr><th>물어볼 것</th><th>안 물으면 생기는 일</th><th>확인 방법</th></tr></thead><tbody><tr><td>이 중 되돌릴 수 없는 항목은?</td><td>되돌릴 수 있는 줄 알고 나중으로 미룸</td><td>항목별로 &quot;취소 비용&quot;을 적게 시킨다</td></tr><tr><td>병목은 무엇이고 언제 오나?</td><td>초반에 편한 걸 먼저 하고 문턱에서 막힘</td><td>&quot;끝에서 막히는 이유&quot;부터 답하게 한다</td></tr><tr><td>총량 예산 안에 들어오나?</td><td>후반에 자원이 모자람</td><td>구간별 누적치를 숫자로 검산시킨다</td></tr></tbody></table></div>
 <p>세 줄이지만 순서가 있습니다. 첫 줄이 제일 위예요. 되돌릴 수 있는 계획이면 나머지 둘은 나중에 고쳐도 되거든요.</p>
 <h2>이런 게 궁금하실 것 같아서</h2>
 <p><strong>Q. 그냥 나중에 고치면 안 되나요?</strong><br>

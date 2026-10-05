@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -140,11 +152,7 @@ xterm.js가 입력을 숨은 텍스트칸으로 받는 구조라, 모바일에�
 <h2>3. 접속 경로도 하나씩 벽이었어요 (포트포워딩·Tailscale·Cloudflare)</h2>
 <p>화면 문제와 별개로, &quot;밖에서 내 PC에 어떻게 닿느냐&quot;도 각각 벽이었어요.<br>
 정리하면 이래요.</p>
-<p>| 접속 방법 | 됐나 | 걸린 벽 |<br>
-|---|---|---|<br>
-| 공유기 포트포워딩 | 부분 | 새 규칙이 재부팅 전엔 반영 안 됨, 외부 포트 번호 충돌 |<br>
-| Tailscale | ○ | 접속은 되는데, 위의 xterm.js 문제는 그대로 |<br>
-| Cloudflare 터널 | ○ | 무료판은 껐다 켜면 <strong>주소가 매번 바뀜</strong> |</p>
+<div class="table-wrap"><table><thead><tr><th>접속 방법</th><th>됐나</th><th>걸린 벽</th></tr></thead><tbody><tr><td>공유기 포트포워딩</td><td>부분</td><td>새 규칙이 재부팅 전엔 반영 안 됨, 외부 포트 번호 충돌</td></tr><tr><td>Tailscale</td><td>○</td><td>접속은 되는데, 위의 xterm.js 문제는 그대로</td></tr><tr><td>Cloudflare 터널</td><td>○</td><td>무료판은 껐다 켜면 <strong>주소가 매번 바뀜</strong></td></tr></tbody></table></div>
 <p>포트포워딩은 공유기에서 규칙을 넣었는데 반영이 안 돼서 한참 헤맸어요.<br>
 알고 보니 외부 포트 번호가 다른 기기랑 겹쳐 있었고, 규칙 자체가 재부팅 전엔 안 살아나는 상황이었어요. 원격으로 붙어 있던 터라 재부팅을 못 걸어서 그 밤엔 포기했고요.</p>
 <p>Tailscale은 좋았어요.<br>
@@ -169,11 +177,7 @@ PC랑 아이폰을 같은 사설망처럼 묶어줘서 접속 자체는 깔끔�
 그래서 서버가 답을 잠깐 들고 있고, 화면이 짧은 간격으로 &quot;다 됐어요?&quot; 하고 물어보는 방식(폴링)으로 바꿨어요. 앱을 껐다 켜도 답이 안 날아가더라고요.</p>
 <h2>5. 그대로 따라 하려면 (2026년 8월 기준 골자)</h2>
 <p>제가 착지한 구조를 재현 가능한 순서로 정리하면 이래요. 특정 유료 서비스 없이도 됩니다.</p>
-<p>1. <strong>접속 경로부터 하나 고른다.</strong> 집·회사 안에서만 쓸 거면 같은 와이파이 사설IP로 충분하고, 밖에서도 쓸 거면 Tailscale로 PC와 폰을 묶는 게 제일 속 편해요. 고정 주소가 필요하면 Cloudflare는 무료판 말고 계정 등록판(주소 고정)으로 가야 합니다.<br>
-2. <strong>화면은 터미널이 아니라 채팅으로 만든다.</strong> 검은 터미널(xterm.js)을 모바일에 이식하려는 시도 자체를 접으세요. 말풍선 입출력 페이지 하나면 됩니다.<br>
-3. <strong>서버는 CLI를 비대화형 1회 실행으로 감싼다.</strong> 대화를 계속 켜두지 말고, 요청이 올 때마다 명령을 한 번씩 실행해 결과 텍스트만 회신하게 하세요. 이어지는 맥락은 &quot;이전 대화 이어가기&quot; 옵션으로 유지하면 됩니다.<br>
-4. <strong>응답은 스트리밍 말고 폴링으로 받는다.</strong> 모바일은 언제든 백그라운드로 넘어가니까, 서버가 답을 잠깐 보관하고 화면이 주기적으로 확인하러 가는 방식이 유실이 없어요.<br>
-5. <strong>확인 방법.</strong> 아이폰을 홈으로 한번 나갔다가 다시 들어와도 (a)로그인이 유지되고 (b)조금 전 보낸 질문의 답이 그대로 붙어 있으면 성공이에요. 이 두 개가 되면 터미널 없이도 밖에서 폰으로 쓸 수 있는 상태입니다.</p>
+<ol><li><strong>접속 경로부터 하나 고른다.</strong> 집·회사 안에서만 쓸 거면 같은 와이파이 사설IP로 충분하고, 밖에서도 쓸 거면 Tailscale로 PC와 폰을 묶는 게 제일 속 편해요. 고정 주소가 필요하면 Cloudflare는 무료판 말고 계정 등록판(주소 고정)으로 가야 합니다.</li><li><strong>화면은 터미널이 아니라 채팅으로 만든다.</strong> 검은 터미널(xterm.js)을 모바일에 이식하려는 시도 자체를 접으세요. 말풍선 입출력 페이지 하나면 됩니다.</li><li><strong>서버는 CLI를 비대화형 1회 실행으로 감싼다.</strong> 대화를 계속 켜두지 말고, 요청이 올 때마다 명령을 한 번씩 실행해 결과 텍스트만 회신하게 하세요. 이어지는 맥락은 &quot;이전 대화 이어가기&quot; 옵션으로 유지하면 됩니다.</li><li><strong>응답은 스트리밍 말고 폴링으로 받는다.</strong> 모바일은 언제든 백그라운드로 넘어가니까, 서버가 답을 잠깐 보관하고 화면이 주기적으로 확인하러 가는 방식이 유실이 없어요.</li><li><strong>확인 방법.</strong> 아이폰을 홈으로 한번 나갔다가 다시 들어와도 (a)로그인이 유지되고 (b)조금 전 보낸 질문의 답이 그대로 붙어 있으면 성공이에요. 이 두 개가 되면 터미널 없이도 밖에서 폰으로 쓸 수 있는 상태입니다.</li></ol>
 <h2>자주 묻는 질문</h2>
 <p><strong>Q. ttyd나 xterm.js가 원래 아이폰에서 안 되나요?</strong><br>
 PC 브라우저에선 잘 돼요. 문제는 iOS가 웹소켓·자체서명 인증서를 까다롭게 다루고, 모바일 키보드가 xterm.js의 숨은 입력칸에 포커스를 잘 못 잡는 거예요. 데스크톱 접속용으론 그대로 두고, 모바일용만 채팅으로 따로 만드는 걸 권해요.</p>
@@ -186,8 +190,8 @@ PC 브라우저에선 잘 돼요. 문제는 iOS가 웹소켓·자체서명 인�
 필요한 건 검은 터미널이 아니라 &quot;묻고 답받기&quot;였으니, 채팅 UI로 감싸고 CLI는 한 번씩 실행하는 구조로 바꾸면 그 벽들이 통째로 사라집니다.</p>
 <p>밖에서 폰으로 내 PC를 붙여보려다 접었던 경험, 다들 한 번쯤 있으실 거예요.<br>
 그 삽질 기록은 makefield.ai에도 차곡차곡 정리해두고 있으니 편하게 구경 오세요.</p>
-<p>---<br>
-태그: #아이폰클로드터미널 #아이폰웹터미널 #ttyd아이폰 #xtermjs웹소켓 #모바일AICLI #클로드코드모바일 #Tailscale원격접속 #Cloudflare터널 #자체서명인증서 #iOS웹소켓차단 #채팅UI만들기 #nodepty #웹터미널구축 #원격PC접속 #MakeFieldAI</p>
+<hr>
+<p>태그: #아이폰클로드터미널 #아이폰웹터미널 #ttyd아이폰 #xtermjs웹소켓 #모바일AICLI #클로드코드모바일 #Tailscale원격접속 #Cloudflare터널 #자체서명인증서 #iOS웹소켓차단 #채팅UI만들기 #nodepty #웹터미널구축 #원격PC접속 #MakeFieldAI</p>
 </article>
 <div class="endcard">
 <span class="stamp">MakeField AI</span>

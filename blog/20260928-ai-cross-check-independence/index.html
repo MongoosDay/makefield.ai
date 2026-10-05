@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -130,13 +142,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <img src="img/02_two_paths.png" alt="왼쪽 &#x27;안 통한 방식&#x27; — 사람 눈 아이콘에서 화살표 3개가 시세화면A·B·C 상자로 갈라지고 세 상자가 모두 회색 &#x27;화면 읽기&#x27; 띠로 묶임, 아래 붉은 캡션 &#x27;경로가 하나. 같이 틀린다&#x27;. 오른쪽 &#x27;통한 방식&#x27; — 위쪽 &#x27;확정 후보값&#x27; 상자에서 화살표 2개가 서로 다른 색으로 갈라져 왼쪽 파란 상자 &#x27;계산: 다음날 종가 − 등락 = 역산값&#x27;, 오른쪽 초록 상자 &#x27;관측: 사람이 쓴 마감 정리 기록&#x27;으로 가고, 두 상자가 아래 &#x27;일치?&#x27; 마름모에서 만남. 마름모 아래 &#x27;일치 → 확정&#x27; 초록 화살표와 &#x27;불일치·한쪽만 → 잠정&#x27; 노란 화살표." loading="lazy">
 <h2>여섯 번의 대책은 뭐가 달랐나</h2>
 <p>되짚어보니 앞의 다섯 개 대책은 전부 <strong>소스 품질을 손보는 방향</strong>이었어요. 더 믿을 만한 데를 찾고, 순위를 매기고, 우선순위표를 만들고. 여섯 번째만 방향이 달랐습니다. 소스를 안 건드리고 <strong>확인하는 방법 자체를 두 종류로</strong> 나눴어요.</p>
-<p>| 구분 | 안 통한 대책(5회) | 통한 대책(1회) |<br>
-|---|---|---|<br>
-| 손 댄 곳 | 어디서 가져오나 | 어떻게 확인하나 |<br>
-| 검증 방식 | 값 ↔ 값 비교 | 계산값 ↔ 관측 기록 |<br>
-| 두 확인의 관계 | 같은 경로 | 서로 독립 |<br>
-| 같이 틀릴 확률 | 높음 | 낮음 |<br>
-| 결과 | 다음 날 또 정정 | 4건 확정 / 3건 잠정 |</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>안 통한 대책(5회)</th><th>통한 대책(1회)</th></tr></thead><tbody><tr><td>손 댄 곳</td><td>어디서 가져오나</td><td>어떻게 확인하나</td></tr><tr><td>검증 방식</td><td>값 ↔ 값 비교</td><td>계산값 ↔ 관측 기록</td></tr><tr><td>두 확인의 관계</td><td>같은 경로</td><td>서로 독립</td></tr><tr><td>같이 틀릴 확률</td><td>높음</td><td>낮음</td></tr><tr><td>결과</td><td>다음 날 또 정정</td><td>4건 확정 / 3건 잠정</td></tr></tbody></table></div>
 <p>기록에 남긴 문장은 이랬습니다.</p>
 <pre><code>결정적 차이는 소스 품질이 아니라 검증의 독립성.
 역산(계산)과 마감 기사(관측)는 서로 다른 경로라

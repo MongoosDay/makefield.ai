@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -129,10 +141,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>여기에 하나가 더 겹쳤습니다. 게임 안 요소들이 전부 영어 원문으로만 적혀 있었던 거예요.<br>
 문서에는 &quot;Onslaught 라인 만렙&quot;이라고 적혀 있는데, 제 폰 화면에는 한글로 나옵니다. 대조가 안 되니 찾을 수가 없어요..</p>
 <p>정리하면 원인이 둘이었습니다.</p>
-<p>| 원인 | 증상 | 독자가 겪는 일 |<br>
-|---|---|---|<br>
-| AI가 만든 축약어 | &quot;전쟁 바 32&quot;, &quot;룬바&quot; | 문서 안에서도 밖에서도 뜻을 못 찾음 |<br>
-| 원문 표기만 사용 | &quot;Onslaught&quot; | 실제 화면과 대조 불가 |</p>
+<div class="table-wrap"><table><thead><tr><th>원인</th><th>증상</th><th>독자가 겪는 일</th></tr></thead><tbody><tr><td>AI가 만든 축약어</td><td>&quot;전쟁 바 32&quot;, &quot;룬바&quot;</td><td>문서 안에서도 밖에서도 뜻을 못 찾음</td></tr><tr><td>원문 표기만 사용</td><td>&quot;Onslaught&quot;</td><td>실제 화면과 대조 불가</td></tr></tbody></table></div>
 <img src="img/02_causes.png" alt="안 읽히는 문서의 두 가지 원인" loading="lazy">
 <h2>2. &quot;더 쉽게 써줘&quot;로는 안 고쳐집니다</h2>
 <p>처음 떠오른 주문은 당연히 &quot;더 쉽게 써줘&quot;였어요. 근데 그 말엔 <strong>무엇이 안 읽히는지가 안 담깁니다.</strong><br>
@@ -161,11 +170,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p><strong>문서 첫 화면에서 뜻을 모르는 단어가 나오면 실패.</strong></p>
 <p>읽다가 막히는 걸 기다리지 말고, 받자마자 위에서부터 훑으면서 모르는 단어를 세보세요. 0개면 통과, 1개라도 있으면 그 단어를 지목해서 반려하면 됩니다. &quot;쉽게 써줘&quot;가 아니라 &quot;이 단어를 정의해줘&quot;로요.</p>
 <p>받았을 때와 고친 뒤의 표기를 나란히 놓으면 차이가 분명합니다.</p>
-<p>| 구분 | 반려된 표기 | 통과한 표기 |<br>
-|---|---|---|<br>
-| 개념 | 전쟁 바 32 | 전쟁 바(마스터리 게이지) 32 + 앞장에 정의 |<br>
-| 항목명 | Onslaught | Onslaught(맹공) — 효과 설명 병기 |<br>
-| 전문용어 | 어그로 | 어그로 = 적이 누구를 때릴지 정하는 것 |</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>반려된 표기</th><th>통과한 표기</th></tr></thead><tbody><tr><td>개념</td><td>전쟁 바 32</td><td>전쟁 바(마스터리 게이지) 32 + 앞장에 정의</td></tr><tr><td>항목명</td><td>Onslaught</td><td>Onslaught(맹공) — 효과 설명 병기</td></tr><tr><td>전문용어</td><td>어그로</td><td>어그로 = 적이 누구를 때릴지 정하는 것</td></tr></tbody></table></div>
 <img src="img/04_check.png" alt="낯선 단어 세기 판정 흐름" loading="lazy">
 <h2>자주 나오는 질문</h2>
 <p><strong>Q. 용어 사전을 앞에 두면 글이 늘어지지 않나요?</strong><br>
@@ -183,8 +188,8 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 - 외국어 항목은 영어원문(한글뜻)으로 병기하고, 뜻 번역임을 밝힐 것
 - 이름이 달라질 수 있는 항목은 효과 설명을 한 줄 붙일 것</code></pre>
 <p>AI가 만든 자료를 받아놓고 어쩐지 손이 안 가는 문서가 하나쯤 있으실 거예요. 오늘 그 파일 첫 화면만 열어서, 뜻을 모르는 단어가 몇 개인지 세보시면 어떨까요?</p>
-<p>---<br>
-반려당한 초안이 통과본보다 많이 쌓여 있는 창고, makefield.ai에 있습니다.</p>
+<hr>
+<p>반려당한 초안이 통과본보다 많이 쌓여 있는 창고, makefield.ai에 있습니다.</p>
 <p>태그: #AI가만든자료 #AI문서정리 #AI용어정리 #AI에게문서시키기 #AI결과물검수 #AI프롬프트작성법 #AI자료만들기 #용어사전 #AI활용법 #AI로일하기 #AI에게일시키기 #개인AI에이전트 #문서자동화 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

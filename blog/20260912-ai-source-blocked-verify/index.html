@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -136,7 +148,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 = 282점   ← 커뮤니티가 말하는 총 포인트와 일치</code></pre>
 <p>3점이 아니라 2점이었다면 총합이 200점 근처로 나와서 애초에 안 맞습니다.<br>
 그래서 문서에는 이렇게만 적었어요.</p>
-<p>&gt; 만렙 85 = 3×84 = 252점 + 퀘스트 약 30점 = 282점, 공식치와 일치</p>
+<blockquote>만렙 85 = 3×84 = 252점 + 퀘스트 약 30점 = 282점, 공식치와 일치</blockquote>
 <p><strong>출처를 못 열어도, 그 값으로 계산한 결과가 이미 알려진 다른 숫자와 맞으면 그건 확정입니다.</strong> 원문 열람은 값을 확인하는 여러 방법 중 하나일 뿐이에요.</p>
 <p>같은 자리에서 두 번째 사다리도 한 칸 썼습니다. 새로 조사한 수치를 제 폴더에 이미 있던 다른 문서와 맞춰보는 거요. 그 대조에서 오래된 문서 하나가 틀린 값을 붙들고 있던 걸 잡았습니다. 이 얘기는 지난 글에서 한 번 했으니 여기서는 넘어갈게요.</p>
 <h2>3. 끝내 못 채운 값은 &quot;확인하는 법&quot;으로 바꿔 적었어요</h2>
@@ -153,15 +165,11 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
    화면과 차이가 나면 그 차이만큼 평행이동해서 볼 것.</code></pre>
 <p>두 번째 항목이 특히 마음에 들었어요. 전제를 밝혀놓으니까 <strong>값이 틀려도 표 전체가 못 쓰게 되지는 않습니다.</strong> 기준점만 옮기면 되니까요.</p>
 <p>같은 문서의 다른 항목에는 아예 실험 절차를 적어뒀습니다. 커뮤니티 자료가 −40과 −50으로 엇갈리던 값이었는데, 이렇게요.</p>
-<p>&gt; 확인 방법 — 이전 난이도에서 저항이 X%였던 장비를 그대로 두고 다음 난이도에 진입해 화면을 본다. 숫자가 X−40으로 떨어져 있으면 이미 반영된 것이고, 그대로면 별도 적용이다.</p>
+<blockquote>확인 방법 — 이전 난이도에서 저항이 X%였던 장비를 그대로 두고 다음 난이도에 진입해 화면을 본다. 숫자가 X−40으로 떨어져 있으면 이미 반영된 것이고, 그대로면 별도 적용이다.</blockquote>
 <p>한 번만 보면 끝나는 일이에요. <strong>모르는 값을 적을 자리에 &quot;한 번 보면 답이 나오는 절차&quot;를 적어두는 것.</strong> 이게 미검증을 살려두는 방법이더라고요.</p>
 <img src="img/03_unverified.png" alt="미검증을 적는 두 가지 방식 비교 — 왼쪽 &quot;미검증&quot; 한 단어만 / 오른쪽 미검증 + 전제 + 한 번에 판정되는 확인 절차" loading="lazy">
 <h2>그래서 지시문을 이렇게 세 줄로 바꿨어요</h2>
-<p>| 상황 | 시키는 것 | 문서에 남는 모양 |<br>
-|---|---|---|<br>
-| 원문 열람 성공 | 그대로 인용 + 링크 | 값 + 출처 |<br>
-| 원문 막힘, 계산 가능 | 검산식을 같이 적게 | 값 + &quot;◯◯와 일치&quot; |<br>
-| 계산도 대조도 불가 | 미검증 표시 + 전제 + 확인 절차 | 미검증 + 내가 볼 방법 |</p>
+<div class="table-wrap"><table><thead><tr><th>상황</th><th>시키는 것</th><th>문서에 남는 모양</th></tr></thead><tbody><tr><td>원문 열람 성공</td><td>그대로 인용 + 링크</td><td>값 + 출처</td></tr><tr><td>원문 막힘, 계산 가능</td><td>검산식을 같이 적게</td><td>값 + &quot;◯◯와 일치&quot;</td></tr><tr><td>계산도 대조도 불가</td><td>미검증 표시 + 전제 + 확인 절차</td><td>미검증 + 내가 볼 방법</td></tr></tbody></table></div>
 <p>세 줄이 없으면 AI는 둘 중 하나를 합니다. 조용히 그럴듯한 값을 채우거나, &quot;확인 불가&quot;라고만 적고 멈추거나.<br>
 둘 다 문서를 못 쓰게 만들어요. 앞엣것은 틀린 채로, 뒤엣것은 빈 채로요.</p>
 <img src="img/04_instruction.png" alt="지시문 3줄에 따라 갈리는 결말 — 지어냄 / 멈춤 / 확인 가능한 문서" loading="lazy">

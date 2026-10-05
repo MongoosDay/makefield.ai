@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -156,21 +168,13 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>봇 티가 안 나게 실행 시각을 랜덤하게 미루는 장치를 넣어뒀는데(지터라고 부릅니다), 하필 그 대기 시간이 점검과 실행 사이에 끼어 있었던 겁니다. <strong class="u">점검은 스냅샷</strong>이에요. 11분 전에 찍은 사진을 보고 지금을 판단한 거죠.</p>
 <h2>4. 실패 12건을 세어보니 전부 초록불 다음이었습니다</h2>
 <p>로그 37일치를 전부 열어서 실패를 유형별로 세어봤어요.</p>
-<p>| 실패 유형 | 건수 | 로그에 찍힌 문구 |<br>
-|---|---|---|<br>
-| 브라우저가 사라짐 | 7 | connect ECONNREFUSED 127.0.0.1:9222 |<br>
-| 클릭할 버튼이 없음 | 2 | locator.click: Timeout 30000ms exceeded |<br>
-| 브라우저 팝업에 걸림 | 2 | Page.handleJavaScriptDialog |<br>
-| 게시 버튼이 잠김 | 1 | element is not enabled |</p>
+<div class="table-wrap"><table><thead><tr><th>실패 유형</th><th>건수</th><th>로그에 찍힌 문구</th></tr></thead><tbody><tr><td>브라우저가 사라짐</td><td>7</td><td>connect ECONNREFUSED 127.0.0.1:9222</td></tr><tr><td>클릭할 버튼이 없음</td><td>2</td><td>locator.click: Timeout 30000ms exceeded</td></tr><tr><td>브라우저 팝업에 걸림</td><td>2</td><td>Page.handleJavaScriptDialog</td></tr><tr><td>게시 버튼이 잠김</td><td>1</td><td>element is not enabled</td></tr></tbody></table></div>
 <p>37일 중 10일에서 12건이 실패했고, <strong>그 10일 전부 직전 점검 결과가 로그인 정상이었습니다.</strong> 자동화 점검 통과했는데 실패한 날이 열흘인데, 점검은 한 번도 그걸 예고하지 못한 거예요..</p>
 <p>이건 제가 전에 적었던 &quot;끝나고 나서 성공이라고 찍힌 로그&quot;와는 다른 축입니다. 그때는 사후 기록이 거짓말을 했고, 이번엔 사전 점검이 거짓말을 했어요. 방향만 반대지 원인은 같습니다. <strong>판정 기준이 실제 동작과 따로 놀았다</strong>는 것.</p>
 <h2>5. 그래서 이렇게 고치려고 합니다 (아직 안 고쳤어요)</h2>
 <p>솔직히 적자면 오늘 기준으로 코드는 아직 그대로입니다. 원인만 잡아둔 상태예요. 손볼 순서는 이렇게 정했습니다.</p>
 <img src="img/03_check_order.png" alt="기존 순서(로그인 여부 점검 → 11분 대기 → 실행)와 고칠 순서(대기 → 실행 경로 그대로 점검 → 바로 실행) 전후 비교" loading="lazy">
-<p>1. 점검이 보는 조건과 실행이 쓰는 조건을 <strong class="u">같은 셀렉터</strong>로 통일합니다. 또는(<code>||</code>)은 뺍니다. 실행이 A만 쓰면 점검도 A만 봐야죠.<br>
-2. 점검을 대기 시간 뒤로 옮깁니다. 지금은 점검하고 11분 쉬고 실행인데, 쉬고 나서 점검하고 바로 실행이 맞아요.<br>
-3. 점검을 &quot;있나 없나&quot;가 아니라 &quot;열리나&quot;로 바꿉니다. 창을 실제로 띄워보고 닫는 데까지 가봐야 진짜 점검이에요.<br>
-4. 실패하면 알림이 오게 합니다. 이번엔 이틀이 지나서야 로그를 뒤지다 알았거든요..</p>
+<ol><li>점검이 보는 조건과 실행이 쓰는 조건을 <strong class="u">같은 셀렉터</strong>로 통일합니다. 또는(<code>||</code>)은 뺍니다. 실행이 A만 쓰면 점검도 A만 봐야죠.</li><li>점검을 대기 시간 뒤로 옮깁니다. 지금은 점검하고 11분 쉬고 실행인데, 쉬고 나서 점검하고 바로 실행이 맞아요.</li><li>점검을 &quot;있나 없나&quot;가 아니라 &quot;열리나&quot;로 바꿉니다. 창을 실제로 띄워보고 닫는 데까지 가봐야 진짜 점검이에요.</li><li>실패하면 알림이 오게 합니다. 이번엔 이틀이 지나서야 로그를 뒤지다 알았거든요..</li></ol>
 <h2>이런 게 궁금하실 것 같아서</h2>
 <p><strong>Q. 그냥 재시도를 넣으면 되지 않나요?</strong><br>
 브라우저가 잠깐 없었던 경우엔 그게 맞습니다. 다만 8월 24일처럼 화면 구조 자체가 다르게 그려진 날은 백 번 재시도해도 같은 자리에서 30초씩 기다리다 끝나요. 재시도는 일시적인 문제를 덮는 장치지, 조건이 어긋난 걸 고쳐주지는 못합니다.</p>

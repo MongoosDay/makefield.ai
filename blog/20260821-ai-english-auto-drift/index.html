@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -139,13 +151,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
     plan[&#x27;new_words_count&#x27;] = 3         # 새 단어 5개 → 3개로 축소
     plan[&#x27;note&#x27;] = f&#x27;정답률 {accuracy*100:.0f}%. 복습 강화, 새 단어 축소.&#x27;</code></pre>
 <p>정리하면 이런 사다리예요.</p>
-<p>| 어제 상태 | 오늘 새 단어 | 모드 |<br>
-|---|---|---|<br>
-| 정답률 90% 초과 | 7개 | 난이도 상향 |<br>
-| 보통 | 5개 | 평소대로 |<br>
-| 정답률 50% 미만 | 3개 | 복습 강화 |<br>
-| 3일 연속 안 함 | 2개 | 가볍게 |<br>
-| 7일 연속 안 함 | 0개 | 리셋, 5분 복습만 |</p>
+<div class="table-wrap"><table><thead><tr><th>어제 상태</th><th>오늘 새 단어</th><th>모드</th></tr></thead><tbody><tr><td>정답률 90% 초과</td><td>7개</td><td>난이도 상향</td></tr><tr><td>보통</td><td>5개</td><td>평소대로</td></tr><tr><td>정답률 50% 미만</td><td>3개</td><td>복습 강화</td></tr><tr><td>3일 연속 안 함</td><td>2개</td><td>가볍게</td></tr><tr><td>7일 연속 안 함</td><td>0개</td><td>리셋, 5분 복습만</td></tr></tbody></table></div>
 <p>어제 제 성적은 퀴즈 3문항 중 1개였어요. 33%니까 사다리 세 번째 칸입니다.<br>
 그러면 오늘 레슨엔 새 단어가 3개여야 하잖아요.</p>
 <p>열어봤더니 5개였습니다.</p>
@@ -172,9 +178,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <img src="img/04_words.png" alt="단어 322개의 상태 — 큰 상자 &quot;등록 322개&quot; 안에 &quot;복습 처리 0 / 마스터 0&quot;. 오른쪽에 복습 대기줄 그림, 맨 앞 세 칸(system·control·panel)만 반복해서 뽑히는 순환 화살표. 캡션 &quot;사람 체크 0건 → 줄이 안 줄어듦&quot;" loading="lazy">
 <h2>5. 그날 밤에 정한 세 가지</h2>
 <p>고칠 목록을 길게 적으면 하나도 안 하게 되더라고요. 그래서 셋만 남겼습니다.</p>
-<p>1. <strong>주 1회 눈으로 대조하기.</strong> 오늘 산출물 한 장을 열어 데이터베이스 값과 맞는지 두 군데만 봅니다. 저는 단어 개수랑 복습 퀴즈 단어로 정했어요.<br>
-2. <strong>계산한 값이 쓰이는지 역추적하기.</strong> 저장한 계획 파일 이름을 코드 전체에서 검색해보면 끝납니다. 읽는 쪽이 0곳이면 그 로직은 없는 거예요.<br>
-3. <strong>비어 있는 입력도 지표로 만들기.</strong> 체크박스가 사흘 연속 0건이면 성실한 0이 아니라 고장 신호니까요.</p>
+<ol><li><strong>주 1회 눈으로 대조하기.</strong> 오늘 산출물 한 장을 열어 데이터베이스 값과 맞는지 두 군데만 봅니다. 저는 단어 개수랑 복습 퀴즈 단어로 정했어요.</li><li><strong>계산한 값이 쓰이는지 역추적하기.</strong> 저장한 계획 파일 이름을 코드 전체에서 검색해보면 끝납니다. 읽는 쪽이 0곳이면 그 로직은 없는 거예요.</li><li><strong>비어 있는 입력도 지표로 만들기.</strong> 체크박스가 사흘 연속 0건이면 성실한 0이 아니라 고장 신호니까요.</li></ol>
 <h2>이런 게 궁금하실 것 같아요</h2>
 <p><strong>Q. 그러면 이 자동화, 실패한 건가요?</strong><br>
 절반은 성공이라고 봅니다. 출석률 71%는 제 의지로는 못 만든 숫자예요. 매일 뭔가가 도착하고 안 하면 잔소리가 오는 구조는 값을 했습니다. 다만 &quot;성적에 맞춰 똑똑해진다&quot;는 부분이 15주 동안 한 번도 작동한 적이 없었던 거죠..</p>
@@ -183,8 +187,8 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <p>AI 영어공부 자동화를 넉 달 돌리고 배운 건 결국 이거예요. 초록불은 잘 굴러간다는 뜻이 아니었습니다.<br>
 로그는 &quot;프로그램이 죽지 않았다&quot;까지만 말해줘요. 계산된 값이 실제로 쓰였는지는 산출물을 열어봐야 알 수 있고요.<br>
 오늘 저녁에 배선부터 이어놓을 참입니다. 다음 달에 성적표를 다시 열어서 322개 중 몇 개가 0을 벗어났는지 세어볼게요. 그 숫자가 이 시스템의 진짜 점수겠죠!</p>
-<p>---<br>
-혼자 만든 자동화를 이렇게 뜯어보는 기록들, 같이 보고 싶으시면 makefield.ai로 오세요.</p>
+<hr>
+<p>혼자 만든 자동화를 이렇게 뜯어보는 기록들, 같이 보고 싶으시면 makefield.ai로 오세요.</p>
 <p>태그: #AI영어공부자동화 #AI영어학습 #AI학습자동화 #개인AI에이전트 #자동화점검 #무인자동화 #파이썬자동화 #AI에이전트 #AI로공부하기 #스페이스드리피티션 #작업스케줄러 #AI산출물검증 #AI업무활용 #현장엔지니어 #MakeFieldAI</p>
 </article>
 <div class="endcard">

@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -166,11 +178,7 @@ AI가 일을 제대로 했는지 옆에서 감시하고, 잘했는지 못했는�
 대신 그 영상에서 뽑아낸 방법 두 개, 그러니까 문제를 잘게 쪼개는 법과 채점 기준을 세우는 법만 가져다가,<br>
 제 원가 추정 과정에 그대로 적용했어요. 화면 없이, 그냥 문서와 규칙으로요.</p>
 <img src="img/03_two_paths.png" alt="두 갈래 길 — 출발점 &quot;유튜브에서 멋진 AI를 봤다&quot;에서 두 화살표. 왼쪽 &quot;도구를 갖고 싶다 → 화면부터 따라 짓기 → 며칠 쓰고 반쯤 완성&quot;(빨강), 오른쪽 &quot;방법을 쓰고 싶다 → 문제정의·채점기준만 훔치기 → 내 과제에 바로 적용&quot;(초록 강조). 아래 라벨 &quot;목적이 화면이면 왼쪽, 목적이 문제풀이면 오른쪽&quot;" loading="lazy">
-<p>| 물어볼 것 | 도구를 갖고 싶다 | 방법을 쓰고 싶다 |<br>
-|---|---|---|<br>
-| 목적 | 결과물(화면) 소유 | 문제 해결 |<br>
-| 먼저 하는 일 | 화면부터 따라 그림 | 문제정의·채점기준 추출 |<br>
-| 결과 | 반쯤 만들다 지침 | 오늘 바로 써먹음 |</p>
+<div class="table-wrap"><table><thead><tr><th>물어볼 것</th><th>도구를 갖고 싶다</th><th>방법을 쓰고 싶다</th></tr></thead><tbody><tr><td>목적</td><td>결과물(화면) 소유</td><td>문제 해결</td></tr><tr><td>먼저 하는 일</td><td>화면부터 따라 그림</td><td>문제정의·채점기준 추출</td></tr><tr><td>결과</td><td>반쯤 만들다 지침</td><td>오늘 바로 써먹음</td></tr></tbody></table></div>
 <h2>자주 묻는 질문</h2>
 <p><strong>Q. 그래도 눈에 보이는 화면이 있어야 팀에 보여주고 설득하죠?</strong><br>
 맞아요, 보여줄 물건이 필요한 순간은 분명 있어요. 근데 순서가 중요해요. 방법으로 먼저 문제가 풀리는 걸 확인한 다음에 화면을 얹으면, 그 화면은 진짜 알맹이를 담는 그릇이 돼요. 반대로 화면부터 만들면, 정작 안에 담을 알맹이가 없어서 빈 껍데기를 붙들고 있게 되더라고요. 저는 &quot;먼저 풀고, 필요하면 나중에 보여준다&quot;로 순서를 고정했어요.</p>
@@ -182,8 +190,8 @@ AI가 일을 제대로 했는지 옆에서 감시하고, 잘했는지 못했는�
 <p>혹시 요즘 유튜브나 뉴스에서 멋진 AI를 보고 &quot;나도 저거 만들래&quot; 싶으셨다면, 딱 한 번만 자문해 보세요.<br>
 나는 저 화면을 갖고 싶은 걸까, 저 방법으로 내 문제를 풀고 싶은 걸까.<br>
 이렇게 만들다 돌아오고, 뜯어보고 훔친 기록들은 makefield.ai에 하나씩 남겨두고 있어요.</p>
-<p>---<br>
-태그: #AI서비스만들기 #AI프로젝트시작 #AI따라만들기 #AI만들고싶을때 #AI데모 #AI자동화 #현장엔지니어 #제조업AI #빌드과잉 #AI실무 #AI프롬프트 #문제정의 #AI활용법 #엔지니어AI #MakeFieldAI</p>
+<hr>
+<p>태그: #AI서비스만들기 #AI프로젝트시작 #AI따라만들기 #AI만들고싶을때 #AI데모 #AI자동화 #현장엔지니어 #제조업AI #빌드과잉 #AI실무 #AI프롬프트 #문제정의 #AI활용법 #엔지니어AI #MakeFieldAI</p>
 </article>
 <div class="endcard">
 <span class="stamp">MakeField AI</span>

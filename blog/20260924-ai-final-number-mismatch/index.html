@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -147,13 +159,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
 <img src="img/03_backcalc.png" alt="왼쪽 &#x27;대조 방식&#x27;(회색 박스) — 세 개의 값 카드가 나란히 놓이고 서로를 향한 양방향 화살표, 아래 캡션 &#x27;같은 계열이면 같이 틀린다&#x27;. 오른쪽 &#x27;역산 방식&#x27;(초록 박스) — 세 개의 오늘 기사 카드에서 각각 &#x27;오늘 값 − 전일 대비 등락&#x27; 계산식 화살표가 왼쪽으로 뻗어 하나의 점에 모임, 그 점에 &#x27;어제 종가 = 확정&#x27; 라벨. 하단 캡션 &#x27;독립적으로 계산해 같은 자리에 도착하면 그게 참값&#x27;" loading="lazy">
 <h2>알고 보니 다섯 번째였어요</h2>
 <p>리포트를 거슬러 읽어보니, 이 종류의 어긋남이 처음이 아니었습니다.</p>
-<p>| 날짜 | 어긋난 것 | 성격 |<br>
-|---|---|---|<br>
-| 8/29 | 같은 확률이 하루 만에 24%p 반전 | 예측값 |<br>
-| 8/31 | 같은 시점인데 31%p 격차 | 예측값 |<br>
-| 9/1 | 같은 날 세 소스가 6%p 차이 | 예측값 |<br>
-| 9/2 | 같은 도구를 인용했는데 8%p 차이 | 예측값 |<br>
-| 9/3 | 이미 마감된 확정 종가가 6.69포인트 차이 | <strong>과거 사실</strong> |</p>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>어긋난 것</th><th>성격</th></tr></thead><tbody><tr><td>8/29</td><td>같은 확률이 하루 만에 24%p 반전</td><td>예측값</td></tr><tr><td>8/31</td><td>같은 시점인데 31%p 격차</td><td>예측값</td></tr><tr><td>9/1</td><td>같은 날 세 소스가 6%p 차이</td><td>예측값</td></tr><tr><td>9/2</td><td>같은 도구를 인용했는데 8%p 차이</td><td>예측값</td></tr><tr><td>9/3</td><td>이미 마감된 확정 종가가 6.69포인트 차이</td><td><strong>과거 사실</strong></td></tr></tbody></table></div>
 <p>앞의 네 개는 전부 예측값이라 &quot;그럴 수 있지&quot; 하고 넘겼어요. 예측은 원래 사람마다 다르니까요.</p>
 <p>마지막 줄만 성격이 다릅니다. <strong>이미 끝난 과거 사실인데도 소스마다 다른 값을 말하고 있었어요.</strong> 예측이 갈리는 건 자연스럽지만, 과거가 갈리면 그건 수집 방법이 잘못된 겁니다.</p>
 <p>그리고 이 표를 만들고 나서야 알았어요. 앞의 네 건을 그때그때 &quot;예측이니까&quot;로 닫아버리는 바람에, 같은 뿌리를 다섯 번째에 가서야 본 거예요. 개별 사건으로 보면 다 사소한데 세로로 쌓으면 패턴이 보입니다.</p>

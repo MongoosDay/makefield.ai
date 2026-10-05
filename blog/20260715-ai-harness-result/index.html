@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -182,9 +194,7 @@ IO 리스트 수정하고,<br>
 그래서 아무 일에나 하네스를 붙이면 오히려 손해예요.<br>
 쓸수록 이득이 쌓이는 <strong class="u">복리가 되려면 세 가지 조건</strong>을 통과해야 하더라고요.</p>
 <p><strong class="u">하네스 ROI 3요건 체크리스트</strong></p>
-<p>- ☐ <strong>반복되는 일인가</strong> — 일회성이면 그냥 손으로 하는 게 빨라요<br>
-- ☐ <strong>결과를 채점할 방법이 있는가</strong> — 맞고 틀림을 판정할 장치(2번의 채점기)가 있어야 해요<br>
-- ☐ <strong>틀렸을 때 사람이 잡아줄 장치가 있는가</strong> — 앞의 STOP_3FAIL처럼 사람을 부르는 회로요</p>
+<ul><li>☐ <strong>반복되는 일인가</strong> — 일회성이면 그냥 손으로 하는 게 빨라요</li><li>☐ <strong>결과를 채점할 방법이 있는가</strong> — 맞고 틀림을 판정할 장치(2번의 채점기)가 있어야 해요</li><li>☐ <strong>틀렸을 때 사람이 잡아줄 장치가 있는가</strong> — 앞의 STOP_3FAIL처럼 사람을 부르는 회로요</li></ul>
 <p>이 셋을 통과하면 쓸수록 이득이 쌓여요.<br>
 반대로 부실한 하네스는 비용만 태우면서 그럴듯한 오답을 대량 생산해요. 마이너스 ROI도 얼마든지 나오는 거죠.<br>
 무한이 아니라 <strong class="u">조건부 복리</strong>예요.</p>

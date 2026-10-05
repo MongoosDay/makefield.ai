@@ -51,6 +51,18 @@ article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:
 article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
 article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
 article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
 article strong{font-weight:800}
 article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
 article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
@@ -154,11 +166,7 @@ AI한테 준 지시는 이 순서였습니다. 눈으로 확인 가능한 값부
 <p>여기가 이 방법의 전부입니다.<br>
 역산 결과는 <strong class="u">딱 떨어지는지</strong>로 판정해요. 788이나 793처럼 어중간하게 나왔으면 그건 답이 아니라 근사값이고, 근사값은 버려야 합니다.</p>
 <p>그다음에 공략 문서의 목표치 표와 대조했어요.</p>
-<p>| 레벨 | 목표 힘 | 목표 민첩 | 목표 체력 | 현재 |<br>
-|---:|---:|---:|---:|---|<br>
-| 8 | 119 | 72 | 695 | 통과 (체력 790) |<br>
-| 10 | 130 | 78 | 880 | 이대로면 90 부족 |<br>
-| 15 | 168 | 90 | 1,170 | — |</p>
+<div class="table-wrap"><table><thead><tr><th style="text-align:right">레벨</th><th style="text-align:right">목표 힘</th><th style="text-align:right">목표 민첩</th><th style="text-align:right">목표 체력</th><th>현재</th></tr></thead><tbody><tr><td style="text-align:right">8</td><td style="text-align:right">119</td><td style="text-align:right">72</td><td style="text-align:right">695</td><td>통과 (체력 790)</td></tr><tr><td style="text-align:right">10</td><td style="text-align:right">130</td><td style="text-align:right">78</td><td style="text-align:right">880</td><td>이대로면 90 부족</td></tr><tr><td style="text-align:right">15</td><td style="text-align:right">168</td><td style="text-align:right">90</td><td style="text-align:right">1,170</td><td>—</td></tr></tbody></table></div>
 <p>레벨 8 목표선은 넘겼습니다. 여기까지는 잘 온 거예요.<br>
 문제는 레벨 10이었어요. 목표 체력이 880인데 지금 790이라 90이 모자랍니다. 체력 투자 1점이 40을 주니까 다음 레벨에서 체력에 2점을 넣으면 870이 되고, 마스터리 바가 주는 몫까지 더하면 선에 닿아요.<br>
 결론은 한 줄이었습니다. <strong>레벨 10에서 체력 2점.</strong> 이 한 줄을 얻자고 계산식을 다시 꺼내 붙든 거예요.</p>
@@ -170,11 +178,7 @@ AI한테 준 지시는 이 순서였습니다. 눈으로 확인 가능한 값부
 <img src="img/03_checksum.png" alt="체력 790을 만드는 분해 막대 그래프 — 왼쪽부터 &#x27;기본 300&#x27; 회색, &#x27;전쟁 바 10 × 28 = 280&#x27; 파랑, &#x27;방어 바 6 × 35 = 210&#x27; 초록, &#x27;체력 투자 0점 × 40 = 0&#x27; 빈칸. 막대 오른쪽 끝에 &#x27;= 790 화면 값과 일치&#x27; 초록 라벨. 기본 300 블록에만 &#x27;미검증(통설)&#x27; 노란 점선 테두리" loading="lazy">
 <h2>4. 이 방법이 통하는 조건은 세 개였어요</h2>
 <p>이번에 해보고 정리한 건 이겁니다. 셋 중 하나라도 없으면 역산은 추측이 됩니다.</p>
-<p>| 조건 | 없으면 생기는 일 |<br>
-|---|---|<br>
-| 규칙이 확정돼 있을 것 | 계산식이 추정이면 답도 추정. 검산이 통과해도 의미 없음 |<br>
-| 아는 값이 모르는 값보다 많거나 같을 것 | 답이 하나로 안 좁혀짐. 그럴듯한 조합 중 하나를 고르게 됨 |<br>
-| 합계가 딱 떨어질 것 | 어긋나면 규칙이나 가정이 틀린 것. 반올림으로 넘기면 안 됨 |</p>
+<div class="table-wrap"><table><thead><tr><th>조건</th><th>없으면 생기는 일</th></tr></thead><tbody><tr><td>규칙이 확정돼 있을 것</td><td>계산식이 추정이면 답도 추정. 검산이 통과해도 의미 없음</td></tr><tr><td>아는 값이 모르는 값보다 많거나 같을 것</td><td>답이 하나로 안 좁혀짐. 그럴듯한 조합 중 하나를 고르게 됨</td></tr><tr><td>합계가 딱 떨어질 것</td><td>어긋나면 규칙이나 가정이 틀린 것. 반올림으로 넘기면 안 됨</td></tr></tbody></table></div>
 <p>세 번째가 제일 중요합니다.<br>
 검산이 안 맞을 때 &quot;거의 맞으니까 됐다&quot;로 넘어가는 순간, 역산은 계산이 아니라 그냥 소망이 돼요.</p>
 <img src="img/04_conditions.png" alt="세 조건을 세로 게이트 세 칸으로 그린 흐름도 — &#x27;현재 값 + 규칙&#x27; 입력 박스에서 ①규칙 확정 ②아는 값 ≥ 모르는 값 ③검산 일치 순서로 통과. 각 칸에서 옆으로 빠지는 빨간 화살표 라벨 &#x27;추정&#x27;, &#x27;조합 중 하나를 찍음&#x27;, &#x27;근사값&#x27;. 세 칸을 다 통과한 출구에만 초록 &#x27;확정&#x27; 박스" loading="lazy">
