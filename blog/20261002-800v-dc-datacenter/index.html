@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>800V 직류 데이터센터란? 엔비디아가 전기 배선부터 바꾸는 이유 | Field Notes · MakeField AI</title>
+<meta name="description" content="한 줄 요약: 800V 직류 데이터센터는 AI 서버 선반 한 대가 1메가와트(MW)를 먹는 시대에 대비해, 건물 안 전기를 &#x27;낮은 전압 교류&#x27;에서 &#x27;높은 전압 직류&#x27;로 갈아타는 설계입니다. 엔비디아는 2027년부터 이 방식을 본격 적용한다고 밝혔고(NVIDIA 기술 블로그, 2">
+<link rel="canonical" href="https://makefield.ai/blog/20261002-800v-dc-datacenter/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="800V 직류 데이터센터란? 엔비디아가 전기 배선부터 바꾸는 이유 | Field Notes · MakeField AI">
+<meta property="og:description" content="한 줄 요약: 800V 직류 데이터센터는 AI 서버 선반 한 대가 1메가와트(MW)를 먹는 시대에 대비해, 건물 안 전기를 &#x27;낮은 전압 교류&#x27;에서 &#x27;높은 전압 직류&#x27;로 갈아타는 설계입니다. 엔비디아는 2027년부터 이 방식을 본격 적용한다고 밝혔고(NVIDIA 기술 블로그, 2">
+<meta property="og:url" content="https://makefield.ai/blog/20261002-800v-dc-datacenter/">
+<meta property="og:image" content="https://makefield.ai/blog/20261002-800v-dc-datacenter/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "800V 직류 데이터센터란? 엔비디아가 전기 배선부터 바꾸는 이유", "datePublished": "2026-10-06", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261002-800v-dc-datacenter/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-10-06</span></div>
+<h1>800V 직류 데이터센터란? 엔비디아가 전기 배선부터 바꾸는 이유</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="타이틀카드 — &quot;800V 직류 데이터센터란? / 엔비디아가 전기 배선부터 바꾸는 이유&quot;" loading="lazy">
+<p><strong>한 줄 요약: 800V 직류 데이터센터는 AI 서버 선반 한 대가 1메가와트(MW)를 먹는 시대에 대비해, 건물 안 전기를 &#x27;낮은 전압 교류&#x27;에서 &#x27;높은 전압 직류&#x27;로 갈아타는 설계입니다.</strong> 엔비디아는 2027년부터 이 방식을 본격 적용한다고 밝혔고(NVIDIA 기술 블로그, 2025), 2026년 7월에는 구글·마이크로소프트와 함께 관련 부품 규격 초안까지 내놨어요(NVIDIA 블로그, 2026).</p>
+<p>AI 얘기는 보통 칩 성능으로 시작하죠. 그런데 지금 업계가 붙잡고 있는 문제는 칩이 아니라 <strong>전선</strong>입니다. 2026년 10월 기준으로, 왜 전기 배선이 AI의 다음 병목이 됐는지 쉽게 풀어볼게요.</p>
+<h2>1. 800V 직류 데이터센터란 무엇인가요</h2>
+<p><strong>800V 직류 데이터센터란, 전력망에서 받은 전기를 일찍 800볼트 직류로 바꿔 서버 선반까지 그대로 보내는 데이터센터다.</strong> 지금까지는 교류로 건물 안을 돌다가 선반 바로 앞에서 54볼트 직류로 낮춰 쓰는 구조였어요.</p>
+<blockquote>💡 교류(AC) / 직류(DC) — 교류는 1초에 수십 번 방향이 바뀌는 전기(벽 콘센트), 직류는 한 방향으로만 흐르는 전기(건전지).</blockquote>
+<blockquote>💡 랙 — 서버를 층층이 꽂는 냉장고만 한 철제 선반 한 대.</blockquote>
+<p>문제는 랙 한 대가 쓰는 전기가 너무 커졌다는 점입니다. 엔비디아는 <strong>1MW급 랙</strong>을 2027년부터 지원하겠다고 했어요(NVIDIA 기술 블로그, 2025). 지금 AI 랙이 200kW대라는 점을 생각하면 선반 하나의 전기 먹성이 몇 배로 뛰는 셈입니다(Data Center Richness, 2026).</p>
+<blockquote>💡 MW(메가와트) — 전력 크기 단위. 1MW = 1,000kW.</blockquote>
+<h2>2. 왜 하필 지금, 전압을 올려야 하나요</h2>
+<p><strong>같은 전력을 보내려면 전압이 낮을수록 전류가 커지고, 전류가 크면 굵은 구리가 필요하기 때문이다.</strong> 전력 = 전압 × 전류라서, 전압을 약 15배 올리면 전류는 약 15분의 1로 줄어요.</p>
+<p>단순 계산으로 보면 차이가 확 보입니다(손계산, 손실 무시).</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>54V 직류</th><th>800V 직류</th></tr></thead><tbody><tr><td>1MW 보낼 때 전류</td><td>약 18,500A</td><td>약 1,250A</td></tr><tr><td>랙 1대 구리 버스바</td><td>최대 200kg (NVIDIA)</td><td>대폭 감소</td></tr><tr><td>출처</td><td>NVIDIA 기술 블로그(2025)</td><td>전류는 단순 계산</td></tr></tbody></table></div>
+<p>엔비디아 설명에 따르면 54V로 1MW 랙을 먹이려면 <strong>구리 버스바가 최대 200kg</strong> 필요합니다(NVIDIA 기술 블로그, 2025). 선반 하나에 성인 남자 세 명 무게의 구리가 들어가는 셈이에요.</p>
+<blockquote>💡 버스바 — 굵은 전선 대신 쓰는 넓적한 구리 막대. 큰 전류를 나르는 &#x27;전기 고속도로&#x27;.</blockquote>
+<blockquote>💡 A(암페어) — 전류의 크기 단위. 수도로 치면 물이 흐르는 양.</blockquote>
+<img src="img/02_.png" alt="좌우 비교. 왼쪽 &#x27;54V&#x27; 칸에 아주 굵은 주황 구리 막대와 &#x27;약 18,500A · 구리 최대 200kg&#x27; 라벨. 오른쪽 &#x27;800V&#x27; 칸에 가는 구리 막대와 &#x27;약 1,250A&#x27; 라벨. 가운데 &#x27;같은 1MW&#x27; 화살표, 하단 캡션 &#x27;전압을 올리면 전선이 가늘어진다&#x27;" loading="lazy">
+<p>수요 쪽 압력도 큽니다. 국제에너지기구(IEA)는 전 세계 데이터센터 전력 사용량이 2024년 415TWh에서 <strong>2030년 약 945TWh로 두 배 넘게</strong> 늘고, 그중 AI 전용 데이터센터 전력은 <strong>4배 이상</strong> 커질 것으로 봤어요(IEA &quot;Energy and AI&quot;, 2025). 945TWh는 일본 한 나라가 1년에 쓰는 전기와 비슷한 양입니다.</p>
+<blockquote>💡 TWh — 1년 동안 쓴 전기의 &#x27;양&#x27;. 1TWh = 10억kWh.</blockquote>
+<h2>3. 무엇이 바뀌나요 — 반도체 변압기(SST)</h2>
+<p><strong>바뀌는 핵심은 전력망과 서버 사이의 &#x27;변환 단계 수&#x27;다.</strong> 기존에는 고압 교류 → 저압 교류 → 서버 전원장치에서 직류로, 여러 번 갈아탔어요. 800V 구조는 이 환승을 줄입니다.</p>
+<img src="img/03_.png" alt="위아래 두 줄 흐름도. 위 &#x27;기존&#x27; 줄: 전력망(고압 AC) → 변압기 → 저압 AC 배전 → 무정전 장치 → 랙 전원장치(AC→54V DC) → GPU, 변환 박스 4개는 빨간색. 아래 &#x27;800V&#x27; 줄: 전력망(고압 AC) → 반도체 변압기 SST(AC→800V DC) → 800V DC 배전 → 랙 안 DC 변환 → GPU, 변환 박스 2개는 초록색. 하단 캡션 &#x27;갈아타는 횟수가 줄면 손실도 준다&#x27;" loading="lazy">
+<p>여기서 등장하는 주인공이 <strong>반도체 변압기(SST)</strong>예요.</p>
+<blockquote>💡 SST(Solid-State Transformer, 반도체 변압기) — 쇠와 구리 덩어리 대신 전력반도체로 전압을 바꾸는 작고 똑똑한 변압기. 교류를 받아 바로 직류로 내보낼 수 있다.</blockquote>
+<blockquote>💡 전력반도체 — 전기를 켜고 끄고 바꾸는 반도체. SiC(탄화규소)·GaN(질화갈륨)이 차세대 소재로 꼽힌다.</blockquote>
+<p>엔비디아가 밝힌 기대 효과는 이렇습니다(NVIDIA 기술 블로그, 2025).</p>
+<ul><li>전력망에서 칩까지 전체 전력 손실: 54V 방식보다 <strong>최대 5% 개선</strong></li><li>구리 사용량: 415V 교류 배전 대비 <strong>45% 감소</strong></li><li>유지보수 비용: 전원장치 고장이 줄어 <strong>최대 70% 감소</strong></li></ul>
+<p>5%가 작아 보이지만, 랙 수천 대가 24시간 도는 대형 AI 데이터센터에서는 그 5%가 통째로 전기요금과 냉각 부담으로 돌아와요.</p>
+<h2>4. 돈의 흐름 — 누가 사고, 누가 파나요</h2>
+<p><strong>사는 쪽은 빅테크(하이퍼스케일러), 파는 쪽은 전력반도체·전원장치·전력설비 업체다.</strong> 표준이 공개 규격으로 정리되면서 공급망이 빠르게 붙고 있어요.</p>
+<blockquote>💡 하이퍼스케일러 — 구글·마이크로소프트·아마존처럼 초대형 데이터센터를 직접 짓는 기업.</blockquote>
+<blockquote>💡 OCP(Open Compute Project) — 빅테크들이 데이터센터 하드웨어 설계를 공개 표준으로 함께 만드는 협의체.</blockquote>
+<div class="table-wrap"><table><thead><tr><th>층</th><th>역할</th><th>엔비디아가 밝힌 협력사 예시</th></tr></thead><tbody><tr><td>전력반도체</td><td>800V를 빠르게 켜고 끄는 칩</td><td>Infineon, TI, ST, onsemi, ROHM, Navitas 등</td></tr><tr><td>전원장치</td><td>랙 안 전원 선반·변환기</td><td>Delta, LiteOn, Flex Power, Megmeet 등</td></tr><tr><td>전력 인프라</td><td>배전·무정전·건물 설비</td><td>Eaton, Schneider Electric, Vertiv</td></tr><tr><td>표준·구매</td><td>규격 작성, 대량 구매</td><td>NVIDIA, Google, Microsoft (OCP)</td></tr></tbody></table></div>
+<p>(출처: NVIDIA 기술 블로그 2025, NVIDIA 블로그 2026)</p>
+<p>엔비디아는 <strong>80개가 넘는 장비·인프라 업체</strong>가 이미 이 규격에 맞춰 제품을 만들고 있다고 밝혔어요(NVIDIA 블로그, 2026-08). 일정도 나왔습니다. 800V 전원 랙은 2026년 하반기, 한 줄(row)당 최대 2MW를 맡는 배전 설비는 2027년 출시 예정이에요.</p>
+<img src="img/04_.png" alt="3단 피라미드형 돈 흐름도. 맨 위 &#x27;구매자: 하이퍼스케일러&#x27; 박스에서 아래로 돈 화살표. 가운데 &#x27;전력 인프라·전원장치&#x27; 박스, 맨 아래 &#x27;전력반도체(SiC·GaN)&#x27; 박스. 옆에 &#x27;OCP 공개 규격 v0.3&#x27;이 세 층을 세로로 관통하는 띠. 하단 캡션 &#x27;표준이 공개되면 부품사가 줄을 선다&#x27;" loading="lazy">
+<p>시장 규모는 아직 초기입니다. 시장조사업체 MarketsandMarkets는 <strong>미국 데이터센터용 SST 시장</strong>이 2025년 4,030만 달러에서 2030년 1억 5,400만 달러로, 연평균 30.8% 성장할 것으로 추정했어요(MarketsandMarkets, 2026-05, 추정치). 성장률은 가파르지만 절대 규모는 아직 작아요. 지금은 &#x27;돈이 쏟아지는 시장&#x27;이 아니라 &#x27;자리 잡기 경쟁&#x27;이 벌어지는 시장이라는 뜻입니다(추정).</p>
+<h2>5. 언제 오나요, 그리고 걸림돌은</h2>
+<p><strong>본격 적용은 2027년이 기준점이지만, 안전 기준이 아직 비어 있다는 게 가장 큰 숙제다.</strong> 직류는 교류와 달리 전류가 0을 지나는 순간이 없어서, 사고 때 생긴 불꽃(아크)이 잘 꺼지지 않아요.</p>
+<blockquote>💡 아크 — 전기가 공기 중으로 튀며 생기는 불꽃 방전. 용접 불꽃과 같은 원리.</blockquote>
+<blockquote>💡 보호협조 — 사고가 나면 가장 가까운 차단기만 끊기도록 차단기 순서를 맞추는 설계.</blockquote>
+<p>반대 근거와 찬성 근거가 같이 나와 있습니다.</p>
+<ul><li><strong>걸림돌</strong>: 슈나이더일렉트릭은 2026년 8월 연구에서 이 구조의 전기 안전에 대한 &quot;업계 공통 지침이 현재 없다&quot;고 짚었어요(Schneider Electric, 2026).</li><li><strong>완화 근거</strong>: 같은 연구는 아크 위험이 &quot;관리 가능하며 기존 교류 시스템과 비슷한 수준인 경우가 많다&quot;고 결론 냈고, 기존 계산법은 오히려 위험을 과대평가한다고 봤어요(Schneider Electric, 2026).</li><li><strong>미정 사항</strong>: 엔비디아도 기존 변압기 방식과 SST 방식의 비용·안전을 아직 비교 검토 중이라고 밝혔습니다(NVIDIA 기술 블로그, 2025). 규격도 아직 &#x27;v0.3&#x27;, 즉 초안이에요.</li></ul>
+<p>정리하면, 방향은 정해졌고 세부 규칙은 지금 쓰이는 중입니다.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 800V 직류면 감전 위험이 더 큰 것 아닌가요?</strong><br>
+전압이 높을수록 위험한 건 맞아요. 다만 업계는 차단 속도와 설계로 위험을 관리하는 쪽으로 가고 있고, 슈나이더 연구는 설계에 따라 교류와 비슷한 수준까지 낮출 수 있다고 봤습니다(Schneider Electric, 2026).</p>
+<p><strong>Q. 일반 데이터센터도 다 바뀌나요?</strong><br>
+당장은 아니에요. 엔비디아가 겨냥한 건 랙 한 대가 수백 kW~1MW를 쓰는 AI 전용 시설이에요. 일반 서버실은 기존 교류 구조로도 충분합니다(추정).</p>
+<p><strong>Q. 한국 기업에도 기회가 있나요?</strong><br>
+핵심은 규격이 OCP 공개 표준이라는 점이에요. 특정 회사 전용 사양이 아니라서, 전력반도체·전원장치·배전 설비를 만드는 곳이라면 누구나 규격에 맞춰 제품을 낼 수 있습니다(NVIDIA 블로그, 2026). 다만 공급망 진입은 결국 빅테크 인증을 통과해야 해서 시간이 걸려요(추정).</p>
+<h2>오늘의 용어 정리</h2>
+<ul><li><strong>800V 직류(800VDC)</strong> — 800볼트의 한 방향 전기</li><li><strong>랙</strong> — 서버를 꽂는 철제 선반 한 대</li><li><strong>버스바</strong> — 큰 전류를 나르는 넓적한 구리 막대</li><li><strong>SST(반도체 변압기)</strong> — 전력반도체로 전압을 바꾸는 작은 변압기</li><li><strong>전력반도체(SiC·GaN)</strong> — 전기를 켜고 끄고 바꾸는 반도체</li><li><strong>OCP</strong> — 빅테크의 데이터센터 하드웨어 공개 표준 협의체</li><li><strong>하이퍼스케일러</strong> — 초대형 데이터센터를 직접 짓는 기업</li><li><strong>아크</strong> — 공기 중으로 튀는 불꽃 방전</li><li><strong>보호협조</strong> — 사고 지점 가까운 차단기만 끊기게 맞추는 설계</li><li><strong>TWh</strong> — 1년 동안 쓴 전기의 양(10억kWh)</li></ul>
+<p>다음 Next Field 글에서는 이 전기를 &#x27;어디서 끌어오느냐&#x27;, 즉 데이터센터가 전력망을 기다리지 않고 직접 발전기를 붙이는 흐름을 다뤄볼게요. 여러분은 AI의 진짜 병목이 칩이라고 보시나요, 전기라고 보시나요?</p>
+<h2>출처</h2>
+<p>본문 괄호 속 출처를 번호로 정리했어요. 원문은 아래 링크에서 바로 확인할 수 있습니다.</p>
+<ul><li>[1] NVIDIA 기술 블로그(2025) — 800V 직류 구조 첫 발표, 1MW 랙·구리 200kg·효율 수치</li><li>[2] NVIDIA 블로그(2026-08) — 협력사 80여 곳, 규격 초안 v0.3, 출시 일정</li><li>[3] IEA(2025) — 「에너지와 AI」 보고서, 데이터센터 전력 2030년 전망</li><li>[4] MarketsandMarkets(2026) — 미국 데이터센터 SST 시장 규모 전망(추정치)</li><li>[5] Data Center Richness(2026-08) — 랙 전력 200kW대 현황 해설</li><li>[6] Schneider Electric 연구(Techzine 보도, 2026-08) — 800V 직류 아크 위험 평가</li></ul>
+<p><strong>원문 링크</strong></p>
+<ul><li>[1] <a href="https://developer.nvidia.com/blog/nvidia-800-v-hvdc-architecture-will-power-the-next-generation-of-ai-factories/" target="_blank" rel="noopener">https://developer.nvidia.com/blog/nvidia-800-v-hvdc-architecture-will-power-the-next-generation-of-ai-factories/</a></li><li>[2] <a href="https://blogs.nvidia.com/blog/800-vdc-power-architecture-ai-factory" target="_blank" rel="noopener">https://blogs.nvidia.com/blog/800-vdc-power-architecture-ai-factory</a></li><li>[3] <a href="https://www.iea.org/reports/energy-and-ai/executive-summary" target="_blank" rel="noopener">https://www.iea.org/reports/energy-and-ai/executive-summary</a></li><li>[4] <a href="https://www.marketsandmarkets.com/Market-Reports/us-data-centers-solid-state-transformers-market-51807964.html" target="_blank" rel="noopener">https://www.marketsandmarkets.com/Market-Reports/us-data-centers-solid-state-transformers-market-51807964.html</a></li><li>[5] <a href="https://datacenterrichness.substack.com/p/tech-titans-outline-their-vision" target="_blank" rel="noopener">https://datacenterrichness.substack.com/p/tech-titans-outline-their-vision</a></li><li>[6] <a href="https://www.techzine.eu/news/infrastructure/143506/study-on-800v-dc-risks-comparable-to-conventional-ac/" target="_blank" rel="noopener">https://www.techzine.eu/news/infrastructure/143506/study-on-800v-dc-risks-comparable-to-conventional-ac/</a></li></ul>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224432465871" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261005-gas-crossover-partial-load/"><div class="d">← 이전 노트</div><div class="t">가스 크로스오버, 왜 부분부하에서 더 위험할까? (수전해 논문 해설)</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
