@@ -5,7 +5,7 @@
  * - 부록 PDF/ZIP 다운로드는 GA4 기본 측정(file_download)이 잡는다
  */
 (function () {
-  var GA_ID = '';
+  var GA_ID = 'G-Q4KJQ4TZ7W'; // 2026-10-05 makefield.ai@gmail.com 소유 속성
   if (!GA_ID) return;
   var s = document.createElement('script');
   s.async = true;
