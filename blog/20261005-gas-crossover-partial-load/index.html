@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가스 크로스오버, 왜 부분부하에서 더 위험할까? (수전해 논문 해설) | Field Notes · MakeField AI</title>
+<meta name="description" content="가스 크로스오버는 음극에서 만든 수소가 격막을 넘어 양극의 산소 쪽으로 섞여 들어가는 현상이에요. 위험한 이유는 효율보다 폭발성 혼합물이 생길 수 있다는 데 있습니다 [Martinho 2025, 2장]. 그리고 이 비율은 전류를 낮출수록 커져요. 산소 속 수소 비율이 전류밀도가">
+<link rel="canonical" href="https://makefield.ai/blog/20261005-gas-crossover-partial-load/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="가스 크로스오버, 왜 부분부하에서 더 위험할까? (수전해 논문 해설) | Field Notes · MakeField AI">
+<meta property="og:description" content="가스 크로스오버는 음극에서 만든 수소가 격막을 넘어 양극의 산소 쪽으로 섞여 들어가는 현상이에요. 위험한 이유는 효율보다 폭발성 혼합물이 생길 수 있다는 데 있습니다 [Martinho 2025, 2장]. 그리고 이 비율은 전류를 낮출수록 커져요. 산소 속 수소 비율이 전류밀도가">
+<meta property="og:url" content="https://makefield.ai/blog/20261005-gas-crossover-partial-load/">
+<meta property="og:image" content="https://makefield.ai/blog/20261005-gas-crossover-partial-load/img/00_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "가스 크로스오버, 왜 부분부하에서 더 위험할까? (수전해 논문 해설)", "datePublished": "2026-10-05", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261005-gas-crossover-partial-load/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">논문 읽는 AI</span><span>2026-10-05</span></div>
+<h1>가스 크로스오버, 왜 부분부하에서 더 위험할까? (수전해 논문 해설)</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/00_title.png" alt="타이틀카드 — 00_title.png" loading="lazy">
+<p>가스 크로스오버는 음극에서 만든 수소가 격막을 넘어 양극의 산소 쪽으로 섞여 들어가는 현상이에요. 위험한 이유는 효율보다 <strong>폭발성 혼합물</strong>이 생길 수 있다는 데 있습니다 [Martinho 2025, 2장].<br>
+그리고 이 비율은 전류를 낮출수록 커져요. 산소 속 수소 비율이 전류밀도가 올라가면 줄어든다는 실험 결과가 PEM·알칼라인 양쪽에서 나왔거든요 [Martinho 2025, 3~4쪽 — Trinke 인용].</p>
+<p>&#x27;논문 읽는 AI&#x27; 11편, 2부의 첫 글입니다. EP05~10은 <strong>전류가 새는</strong> 이야기였죠. 이번부터는 <strong>가스가 섞이는</strong> 이야기예요.<br>
+읽은 논문은 덴마크 연구진(올보르대 등)이 2025년 7월 Membranes에 낸 8쪽짜리 단신(Communication)입니다(Martinho·Berning, doi: 10.3390/membranes15070206, 오픈액세스).</p>
+<h2>1. 가스 크로스오버란 무엇이고, 왜 위험한가요</h2>
+<p><strong>크로스오버란 만들어진 수소·산소가 격막을 넘어 반대편으로 섞여 드는 것</strong>입니다. 이 논문은 이것을 알칼라인 수전해의 운전 범위(전류밀도·압력)를 심하게 묶는 핵심 요인으로 꼽아요 [Martinho 2025, Abstract].</p>
+<p>용어 셋만 먼저 잡을게요.</p>
+<ul><li><strong>격막(diaphragm)</strong>: 양극과 음극 사이의 칸막이. 수산화 이온(OH-)은 통과시키고, 수소와 산소는 섞이지 않게 막아야 해요. 흔히 Zirfon이라는 다공성 막을 씁니다 [Martinho 2025, 서론].</li><li><strong>과포화(ψ)</strong>: 액체에 가스가 평형 농도보다 몇 배나 더 녹아 있는 상태. 가스는 먼저 액체에 녹고, 일정 수준 이상 과포화돼야 비로소 기포가 생겨요 [Martinho 2025, 식5 설명].</li><li><strong>HTO</strong>: 산소 대비 수소 비율(hydrogen to oxygen ratio). 섞임 정도를 나타내는 지표입니다.</li></ul>
+<img src="img/01_crossover_concept.png" alt="크로스오버 개념도 — 01_crossover_concept.png" loading="lazy">
+<p>손해는 두 갈래예요.</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>내용</th><th>근거</th></tr></thead><tbody><tr><td>효율 손실</td><td>넘어간 수소는 잃어버린 수소. 패러데이 효율 식의 손실 항목 중 하나</td><td>[Martinho 2025, 식4]</td></tr><tr><td>손실 크기</td><td>패러데이 효율은 표준 조건에서 보통 90% 이상</td><td>[Martinho 2025, 2장]</td></tr><tr><td>더 큰 문제</td><td>양극 산소에 수소가 너무 많이 섞이면 폭발성 혼합물 가능</td><td>[Martinho 2025, 2장]</td></tr></tbody></table></div>
+<p>격막에는 맞바꿈이 있어요. 구멍이 많으면(다공도↑) 저항이 낮아지지만 크로스오버도 늘어납니다 [Martinho 2025, 서론]. Zirfon은 두께가 500 μm로 비교적 두껍고, 저항은 상온에서 0.25 Ωcm² 초과, 80℃에서 0.15 Ωcm² 미만이었어요 [Martinho 2025, 서론 — Vermeiren 인용].</p>
+<h2>2. 부분부하에서 크로스오버가 왜 더 심해지나요</h2>
+<p><strong>전류를 낮추면 넘어오는 수소의 &#x27;양&#x27;은 줄지만, 산소 대비 &#x27;비율&#x27;은 오히려 올라갑니다.</strong> 이 구분이 이번 편의 핵심이에요.</p>
+<p>논문에 인용된 실험 결과는 이래요 [Martinho 2025, 3~4쪽 — Trinke 인용].</p>
+<ol><li>수소 크로스오버 양은 전류밀도에 거의 비례해 늘고, 1 A/cm²에서 3~5 mA/cm² 수준이다(온도에 따라 다름).</li><li>온도가 높을수록 크로스오버가 확실히 늘어난다.</li><li>PEM과 알칼라인 모두 산소 속 수소 비율은 전류밀도가 올라갈수록 줄어든다. PEM 쪽 크로스오버가 더 컸다.</li></ol>
+<p>논문 Fig.2의 실험 기반 곡선도 같은 모양이에요. 그래프를 눈으로 읽으면 전류가 0에 가까울 때 HTO가 약 0.3%대로 가장 높고, 1 A/cm²에서는 0.02% 안팎까지 내려갑니다 [Martinho 2025, Fig.2 — 판독 근사].</p>
+<img src="img/02_partial_load_hto.png" alt="저부하와 고전류의 산소 속 수소 비율 — 02_partial_load_hto.png" loading="lazy">
+<p>그럼 왜 비율이 커질까요. 여기서 정직하게 짚을 점이 있어요. <strong>논문은 &#x27;왜&#x27;를 한 문장으로 직접 쓰지 않습니다.</strong> 원문에 있는 두 사실을 산수로 이으면 이렇게 됩니다.</p>
+<ul><li>만들어지는 가스 양은 전류에 비례해요(식4의 I/2F) [Martinho 2025, 식4].</li><li>비율 = 넘어온 수소 ÷ 만들어진 산소. 전류를 낮추면 분모는 전류만큼 줄어드는데, 비율이 커졌다는 건 분자가 그만큼 줄지 않았다는 뜻이에요.</li></ul>
+<p>즉 저부하에서는 <strong>같은 섞임이 더 진하게</strong> 나타납니다. 이 연결은 원문 문장이 아니라 원문 두 서술과 정의를 이은 해석이라는 점을 밝혀 둘게요.</p>
+<h2>3. 이 논문은 무엇을 풀려 했고, 어떻게 했나요</h2>
+<p><strong>크로스오버가 실험값보다 훨씬 많은 원인을 &#x27;과포화&#x27;로 보고, 격막에 미세균열을 내 기포를 만들어 과포화를 낮추자는 개념을 제안</strong>했어요 [Martinho 2025, Abstract].</p>
+<p>출발점은 측정이 평형 가정으로 예상한 값보다 크로스오버가 훨씬 크다는 사실이었습니다. 액체가 과포화돼 있다고 봐야만 설명된다는 거죠 [Martinho 2025, 3~4쪽 — Trinke 인용]. 다른 연구는 과포화 정도를 직접 수치로 냈어요 [Martinho 2025, 4쪽 — Barros 인용].</p>
+<div class="table-wrap"><table><thead><tr><th>구성</th><th>과포화 ψ</th><th>조건</th></tr></thead><tbody><tr><td>무간격(zero-gap)</td><td>20~60, 경계면 최대 80</td><td>상온, KOH 12%</td></tr><tr><td>전극-격막 간격 있음</td><td>약 2~4</td><td>상온, KOH 12%</td></tr></tbody></table></div>
+<p>연구진의 방법은 전산유체해석(CFD)이에요. 상용 해석 프로그램으로 액체·가스 두 상의 수송 방정식을 모두 풀고, 입력값은 약 20개입니다 [Martinho 2025, 2장]. 검증엔 성능 곡선 대신 크로스오버 값을 썼어요. 같은 셀에서도 성능 곡선이 크게 달라질 수 있어서라고 합니다 [Martinho 2025, 2장].</p>
+<p>80℃, KOH 30 wt% 조건에서 모델이 실험과 잘 맞으려면 <strong>과포화를 ψ = 20까지 올려야</strong> 했어요 [Martinho 2025, Fig.2 본문].</p>
+<img src="img/03_supersaturation_idea.png" alt="과포화에서 미세균열 제안까지 — 03_supersaturation_idea.png" loading="lazy">
+<p>해법 아이디어는 단순해요. 표면에 홈이 있으면 기포가 잘 생긴다는 건 알려진 현상이고, 홈 크기로 기포 크기도 조절할 수 있다는 겁니다. Zirfon의 기공은 약 0.15 μm라서, 제안하는 균열은 이보다 100배 이상 커요 [Martinho 2025, 3장].</p>
+<h2>4. 무엇을 알아냈나요 — 기포 크기의 효과</h2>
+<p><strong>기포가 클수록 전해액 저항이 낮아져, 같은 2.1 V에서 전류밀도가 0.96에서 1.06 A/cm²로 약 10% 올라갔어요</strong> [Martinho 2025, Fig.6·결론].</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>기포 50 μm</th><th>기포 150 μm</th><th>근거</th></tr></thead><tbody><tr><td>격막 근처 가스 부피분율</td><td>71% 초과</td><td>훨씬 낮음</td><td>[Martinho 2025, Fig.4 본문]</td></tr><tr><td>가장 낮은 전해액 전도도</td><td>약 12 S/m</td><td>약 50 S/m</td><td>[Martinho 2025, Fig.5 본문]</td></tr><tr><td>2.1 V에서 전류밀도</td><td>0.96 A/cm²</td><td>1.06 A/cm²</td><td>[Martinho 2025, Fig.6 본문]</td></tr></tbody></table></div>
+<p>기포가 없는 입구 쪽 액체의 전도도는 약 80 S/m예요 [Martinho 2025, Fig.5 본문]. 작은 기포는 격막 근처를 가스로 채워 전류 길을 막는다는 뜻입니다.</p>
+<img src="img/04_bubble_size_result.png" alt="기포 50 μm vs 150 μm — 04_bubble_size_result.png" loading="lazy">
+<h2>5. 한계는 무엇인가요</h2>
+<p><strong>크로스오버를 줄였다는 결과가 아니라, 줄일 수 있을 것이라는 개념 제안입니다.</strong></p>
+<ul><li><strong>기포 크기만 계산</strong>: 시뮬레이션은 기포 지름을 50·150 μm로 &#x27;가정&#x27;해 바꾼 것이에요. 균열 자체나 크로스오버 감소량은 계산하지 않았습니다 [Martinho 2025, 4장].</li><li><strong>빠진 물리</strong>: 기포 뭉침·압력 불안정이 모델에 없어 저자 스스로 &quot;결정적이지 않다&quot;고 했어요 [Martinho 2025, 4장].</li><li><strong>인용 조건 차이</strong>: 과포화 수치는 상온·KOH 12% 실험값이라, 흔히 쓰는 30%와 다릅니다 [Martinho 2025, 4쪽].</li><li><strong>실험 없음</strong>: 균열 격막을 만들어 측정한 결과는 없어요. 다른 연구에서 균열로 보이는 구조가 관찰됐다는 인용이 출발점입니다 [Martinho 2025, 서론·3장].</li></ul>
+<h2>6. AI에게 읽힐 때 &#x27;주어&#x27;부터 가른 이유</h2>
+<p>이 논문의 함정은 <strong>문장마다 주어가 다르다</strong>는 거예요. 저자 실험, 남의 실험 인용, 가정으로 돌린 계산이 한 문단에 섞여 있습니다.</p>
+<img src="img/05_ai_traps.png" alt="이 논문을 AI로 읽을 때 걸리는 4가지 — 05_ai_traps.png" loading="lazy">
+<p><strong>분수식이 한 줄로 무너진다.</strong> PDF에서 패러데이 효율 식을 뽑으니 이렇게 나왔어요.</p>
+<pre><code>ηH2 = 1 −
+Ncross
+H2
++ Nrecomb
+H2
++ Ishort
+2F
+I
+2F</code></pre>
+<p>분자·분모가 사라져 덧셈 나열처럼 보입니다. 식 바로 아래 정의 문장(&quot;I/2F는 전류 I로 만든 가스 몰수&quot;)으로 η = 1 − (N_cross + N_recomb + I_short/2F) ÷ (I/2F)를 다시 세웠어요.</p>
+<p><strong>인용 숫자의 출신을 놓친다.</strong> &quot;1 A/cm²에서 3~5 mA/cm²&quot;는 알칼라인 논문 본문에 있지만, 각주 번호를 참고문헌 목록에서 따라가면 제목이 PEM 수전해 연구예요. 그래서 본문에 &#x27;Trinke 인용&#x27;을 붙였습니다.</p>
+<p><strong>시뮬레이션 범위를 부풀린다.</strong> &quot;균열로 크로스오버를 줄이고 성능 10% 향상&quot;으로 요약하기 쉬워요. 실제 10%는 기포 크기 가정의 결과이고, 균열 효과는 계산되지 않았습니다.</p>
+<p><strong>원문끼리 어긋난 표기.</strong> Fig.2 캡션은 HTO를 &quot;cathode outlet(음극 출구)&quot;에서 계산했다고 써요. 그런데 본문은 수소가 넘어가 섞이는 곳을 양극 산소라고 설명합니다. 어느 쪽이 맞는지 판정하지 않고 원문 표기 그대로 두었어요.</p>
+<p>여러분은 AI 요약 속 숫자가 &#x27;누구의&#x27; 결과인지 확인해 보신 적 있나요? 위 함정을 잡은 질문을 그대로 옮겨 둡니다.</p>
+<pre><code>1) 수치마다 [저자 실험 / 저자 시뮬레이션 / 다른 논문 인용] 중 하나로 분류하고, 인용이면 참고문헌 제목까지 적어.
+2) 줄바꿈으로 깨진 수식은 식 아래 정의 문장과 대조해 다시 세워.
+3) 결론 문장이 실제로 계산·측정한 범위를 넘는지 점검해 (가정한 값인지, 직접 모델링한 것인지).
+4) 논문이 &#x27;왜&#x27;를 직접 쓰지 않은 부분은 &#x27;원문 없음&#x27;으로 표시하고 네 해석과 분리해.
+5) 캡션과 본문이 어긋나면 고치지 말고 둘 다 원문 그대로 보여 줘.</code></pre>
+<h2>7. 자주 묻는 질문</h2>
+<p><strong>Q. 가스 크로스오버는 효율 문제인가요, 안전 문제인가요?</strong><br>
+둘 다지만 논문은 안전을 더 큰 문제로 봐요. 패러데이 효율은 보통 90% 이상이지만, 수소가 산소에 너무 많이 섞이면 폭발성 혼합물이 될 수 있습니다 [Martinho 2025, 2장].</p>
+<p><strong>Q. 격막을 얇고 성기게 만들면 되지 않나요?</strong><br>
+저항은 줄지만 크로스오버가 늘어요. 그래서 격막은 두께·다공도·투과도·기포점(bubble point)을 함께 맞춰야 한다는 게 결론입니다 [Martinho 2025, 결론].</p>
+<p><strong>Q. 전극과 격막 사이에 간격을 두면 나아지나요?</strong><br>
+인용된 실험에서 과포화는 무간격일 때 20~60, 간격이 있을 때 약 2~4였어요 [Martinho 2025, 4쪽 — Barros 인용]. 다만 무간격은 저항을 줄이려고 쓰는 구조라 맞바꿈이 있습니다 [Martinho 2025, 2쪽].</p>
+<hr>
+<p>정리하면, 크로스오버는 전류를 낮출 때 <strong>비율로 더 위험해지고</strong>, 그 뿌리에는 전해액의 과포화가 있습니다. 이 논문은 그 과포화를 기포로 빼내자는 첫 그림을 그렸어요.</p>
+<p>다음 편은 3부, 안전입니다. 수소 설비는 얼마나 떨어뜨려 놓아야 하는지 다뤄요.</p>
+<p>논문을 AI에게 맡길 때 쓰는 점검 질문 모음은 makefield.ai에 정리해 두고 있어요.</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224432191002" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261005-epub-table-reflow-card/"><div class="d">← 이전 노트</div><div class="t">EPUB 표 깨짐, 전자책을 PDF로 냈다가 하루 만에 EPUB으로 바꾼 이유</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
