@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hosts 파일 위치, 메모장에서 안 보이면 &#x27;모든 파일&#x27;로 바꾸세요 | Field Notes · MakeField AI</title>
+<meta name="description" content="윈도우 10·11의 hosts 파일 위치는 C:\Windows\System32\drivers\etc\hosts 한 곳이고, 확장자가 없는 파일이라 메모장 열기 창에서는 &#x27;모든 파일(.)&#x27;로 바꿔야 보입니다. 수정해서 저장하려면 관리자 권한도 필요해요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261006-hosts-file-location/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hosts 파일 위치, 메모장에서 안 보이면 &#x27;모든 파일&#x27;로 바꾸세요 | Field Notes · MakeField AI">
+<meta property="og:description" content="윈도우 10·11의 hosts 파일 위치는 C:\Windows\System32\drivers\etc\hosts 한 곳이고, 확장자가 없는 파일이라 메모장 열기 창에서는 &#x27;모든 파일(.)&#x27;로 바꿔야 보입니다. 수정해서 저장하려면 관리자 권한도 필요해요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261006-hosts-file-location/">
+<meta property="og:image" content="https://makefield.ai/blog/20261006-hosts-file-location/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "hosts 파일 위치, 메모장에서 안 보이면 '모든 파일'로 바꾸세요", "datePublished": "2026-10-06", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261006-hosts-file-location/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 실전기</span><span>2026-10-06</span></div>
+<h1>hosts 파일 위치, 메모장에서 안 보이면 &#x27;모든 파일&#x27;로 바꾸세요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="타이틀카드 — &quot;hosts 파일 위치 / 메모장에서 안 보이면 &#x27;모든 파일&#x27;로 바꾸세요&quot;" loading="lazy">
+<p><strong>윈도우 10·11의 hosts 파일 위치는 <code>C:\Windows\System32\drivers\etc\hosts</code> 한 곳이고, 확장자가 없는 파일이라 메모장 열기 창에서는 &#x27;모든 파일(*.*)&#x27;로 바꿔야 보입니다.</strong> 수정해서 저장하려면 관리자 권한도 필요해요.</p>
+<p>&quot;폴더엔 갔는데 파일이 없다&quot;, &quot;고쳤는데 저장이 안 된다&quot;는 이 두 가지로 거의 풀려요. 2026년 10월 기준 마이크로소프트 공식 문서로 확인했습니다.</p>
+<p>저는 공장 자동화 쪽에서 15년 일한 엔지니어예요. 지난달 노트북 보안 팝업 원인을 쫓다 이 파일을 직접 열었는데, 그때 쓴 방법만 추렸습니다.</p>
+<h2>1. hosts 파일 위치는 딱 한 곳이에요</h2>
+<p>hosts는 도메인 이름과 IP를 짝지어 적어두는 윈도우 기본 텍스트 파일입니다. 사이트에 접속할 때 PC는 DNS 서버보다 이 파일을 <strong>먼저</strong> 확인해요(→ <a href="https://learn.microsoft.com/en-us/windows/powertoys/hosts-file-editor)." target="_blank" rel="noopener">https://learn.microsoft.com/en-us/windows/powertoys/hosts-file-editor).</a></p>
+<p>경로는 이렇습니다.</p>
+<pre><code>C:\Windows\System32\drivers\etc\hosts</code></pre>
+<p>윈도우가 C 드라이브가 아닌 곳에 깔렸다면 <code>%WinDir%\System32\Drivers\Etc</code> 로 쓰면 됩니다. 지원 문서도 두 표기를 같이 안내해요(→ <a href="https://support.microsoft.com/en-us/topic/how-to-reset-the-hosts-file-back-to-the-default-c2a43f9d-e176-c6f3-e4ef-3500277a6dae)." target="_blank" rel="noopener">https://support.microsoft.com/en-us/topic/how-to-reset-the-hosts-file-back-to-the-default-c2a43f9d-e176-c6f3-e4ef-3500277a6dae).</a></p>
+<img src="img/02_.png" alt="hosts 파일까지 가는 폴더 계단 — C: → Windows → System32 → drivers → etc → hosts 상자 6개를 화살표로 연결, 마지막 hosts 상자만 빨간 테두리. 손글씨 메모 &#x27;확장자 없음&#x27;. 하단 &#x27;윈도우 10·11 공통&#x27;" loading="lazy">
+<h2>2. 폴더까지 갔는데 파일이 안 보이는 이유</h2>
+<p>제일 많이 막히는 데가 여기예요. 증상은 보통 이렇습니다.</p>
+<ul><li>메모장에서 <strong>파일 &gt; 열기</strong>로 etc 폴더에 들어갔는데 목록이 텅 비어 보인다</li><li>고쳐서 저장하려니 거부되고, 다른 이름으로 저장하라고 한다</li></ul>
+<p>원인은 두 가지예요. 첫째, <strong>hosts 파일은 확장자를 가질 수 없습니다</strong>(지원 문서 원문 &quot;A hosts file can&#x27;t have a file extension&quot;). 메모장 열기 창은 기본 필터가 텍스트 문서(*.txt)라서 확장자 없는 hosts를 걸러버려요. 둘째, System32 아래 파일은 일반 권한으로 고칠 수 없어서 관리자 권한이 필요합니다.</p>
+<img src="img/03_.png" alt="메모장에서 안 보이는 이유 비교 — BEFORE(빨간 칩): &#x27;파일 형식: 텍스트 문서(*.txt)&#x27; → &#x27;etc 폴더가 비어 보임&#x27;(빨간 테두리). AFTER(잉크 칩): &#x27;파일 형식: 모든 파일(*.*)&#x27; → &#x27;hosts 보임&#x27;(체크 표시). 손글씨 메모 &#x27;파일은 원래 거기 있었다&#x27;" loading="lazy">
+<p>마이크로소프트 PowerToys hosts 편집기도 관리자가 아니면 <code>Failed to save hosts file</code> 을 띄운다고 공식 문서에 나와요. 도구를 바꿔도 권한 문제는 같습니다.</p>
+<h2>3. 여는 법과 고치는 법, 순서대로</h2>
+<p>보기만 할 거면 1번, 고칠 거면 2번부터 하면 됩니다.</p>
+<ol><li><strong>탐색기로 위치 확인</strong>: 주소창에 아래를 붙여넣고 Enter. <code>hosts</code>라는 확장자 없는 파일이 보이면 정상이에요.</li></ol>
+<pre><code>%WinDir%\System32\Drivers\Etc</code></pre>
+<ol start="2"><li><strong>고치기 전에 백업부터</strong>: 저는 날짜를 붙여 복사본을 남겼어요. 실제로 남긴 이름이 <code>hosts.bak_20260913</code> 이었습니다. 되돌릴 일이 생기면 이 파일 하나로 끝나요.</li></ol>
+<pre><code>Copy-Item C:\Windows\System32\drivers\etc\hosts &quot;$env:USERPROFILE\Desktop\hosts.bak_$(Get-Date -Format yyyyMMdd)&quot;</code></pre>
+<ol start="3"><li><strong>관리자 권한으로 열기</strong>: 시작 버튼 우클릭 → Windows PowerShell(관리자), 윈도우 11은 터미널(관리자). 그 창에서 띄운 메모장은 저장이 막히지 않아요.</li></ol>
+<pre><code>notepad C:\Windows\System32\drivers\etc\hosts</code></pre>
+<ol start="4"><li><strong>수정 후 캐시 비우기</strong>: 윈도우는 hosts 내용을 DNS 캐시에 미리 올려두기 때문에(→ <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig)," target="_blank" rel="noopener">https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig),</a> 고친 직후엔 캐시를 한 번 비워주는 게 확실합니다.</li></ol>
+<pre><code>ipconfig /flushdns</code></pre>
+<div class="table-wrap"><table><thead><tr><th>방법</th><th>열기</th><th>저장</th><th>이럴 때</th></tr></thead><tbody><tr><td>탐색기 주소창</td><td>위치만 확인</td><td>—</td><td>파일이 있는지만 볼 때</td></tr><tr><td>일반 메모장</td><td>가능(&#x27;모든 파일&#x27; 필요)</td><td>막힘</td><td>내용만 읽을 때</td></tr><tr><td>관리자 창에서 메모장</td><td>가능</td><td>가능</td><td>항목을 고칠 때</td></tr><tr><td>PowerToys hosts 편집기</td><td>가능</td><td>관리자일 때만</td><td>항목이 많을 때, 자동 백업 원할 때</td></tr></tbody></table></div>
+<h2>4. 제대로 열었는지, 누가 건드렸는지 확인하는 법</h2>
+<p>위치를 찾는 이유가 &quot;이 파일이 바뀌었나&quot;라면, 열어보기 전에 아래 두 줄이 더 빨라요. 저도 그렇게 확인했습니다.</p>
+<pre><code>Get-Item C:\Windows\System32\drivers\etc\hosts | Select-Object LastWriteTime
+Select-String -Path C:\Windows\System32\drivers\etc\hosts -Pattern &#x27;^\s*(#|$)&#x27; -NotMatch</code></pre>
+<p>첫 줄은 <strong>마지막 수정 시각</strong>, 둘째 줄은 주석(#)과 빈 줄을 뺀 <strong>실제로 작동하는 줄</strong>만 뽑아요.</p>
+<p>제 노트북에서 정리 작업을 마친 뒤 찍은 값은 마지막 수정 2026-09-13 18:13:49, 작동하는 줄 0줄이었어요. 재부팅이 19:03:48이었으니 <strong>부팅 뒤로는 아무도 안 건드렸다</strong>는 뜻이었죠.</p>
+<p>0줄이 이상해 보일 수 있는데, 그게 정상입니다. 윈도우 기본 hosts는 <code>localhost</code> 줄까지 전부 <code>#</code>으로 주석 처리돼 있고, localhost 처리는 DNS 쪽에서 한다고 공식 문서에 나와 있어요. 그러니까 <strong>주석 아닌 줄이 한 줄이라도 나오면 누군가 써넣은 것</strong>이에요. 제 경우엔 처음 열었을 때 직접 깐 VPN 툴이 자기 구역을 만들어 기기 이름 네 개를 적어두고 있었고요..</p>
+<img src="img/04_.png" alt="hosts 점검 3단계 — 상자 1 &#x27;마지막 수정 시각(LastWriteTime)&#x27; → 상자 2 &#x27;주석 뺀 작동 줄 수(0줄이 기본)&#x27; → 상자 3 &#x27;캐시에 올라간 항목(ipconfig /displaydns)&#x27;. 상자 2 아래 손글씨 &#x27;1줄이라도 있으면 누가 썼다&#x27;. 하단 &#x27;열기 전에 숫자부터&#x27;" loading="lazy">
+<p>캐시 쪽은 <code>ipconfig /displaydns</code> 로 봐요. hosts에서 올라온 항목이 같이 나옵니다.</p>
+<h2>5. 같은 증상, 다른 경우</h2>
+<p>hosts 파일 위치를 찾게 된 계기별로 이어지는 글을 묶어둡니다.</p>
+<ul><li><strong>보안 프로그램이 &quot;hosts 파일 변경이 탐지됐다, 복원할까요?&quot;를 부팅마다 띄운다</strong> → 제가 이 파일을 열게 된 사건이에요. 범인은 악성코드가 아니라 제가 깐 원격접속용 VPN 툴이었고, 프로그램을 지우지 않고 설정 한 줄로 끝냈습니다. 경위와 검증 과정은 따로 썼어요 → <a href="https://blog.naver.com/makefield_ai/224410743445" target="_blank" rel="noopener">https://blog.naver.com/makefield_ai/224410743445</a></li><li><strong>밖에서 집 PC로 원격 데스크톱이 안 붙는다</strong> → hosts가 아니라 계정 잠금과 절전이 원인이었던 건이에요. 원인을 사양에서 찾다가 헛걸음한 과정까지 적었습니다 → <a href="https://blog.naver.com/makefield_ai/224410366627" target="_blank" rel="noopener">https://blog.naver.com/makefield_ai/224410366627</a></li><li><strong>위 명령을 .ps1 파일로 저장해 돌렸더니 한글이 깨진다</strong> → 글꼴 문제가 아니라 파일 저장 방식(BOM) 문제예요 → <a href="https://blog.naver.com/makefield_ai/224414114233" target="_blank" rel="noopener">https://blog.naver.com/makefield_ai/224414114233</a></li></ul>
+<h2>이런 질문이 나올 것 같아서</h2>
+<p><strong>Q. host 파일 위치랑 hosts 파일 위치, 다른 건가요?</strong><br>
+같은 파일이에요. 실제 파일 이름은 끝에 s가 붙은 <code>hosts</code>이고, 확장자는 없습니다. 검색할 땐 어느 쪽으로 쳐도 같은 <code>C:\Windows\System32\drivers\etc\hosts</code> 를 가리켜요.</p>
+<p><strong>Q. etc 폴더에 hosts가 아예 없어요.</strong><br>
+&#x27;모든 파일&#x27;로 바꿔도 없다면 파일이 지워졌거나 이름이 바뀐 경우예요. 마이크로소프트 지원 문서에 기본 내용을 메모장에 붙여 <code>&quot;hosts&quot;</code> 처럼 따옴표를 씌워 저장한 뒤 그 폴더로 옮기는 절차가 있습니다. 옮길 때 관리자 권한이 필요할 수 있어요.</p>
+<p><strong>Q. 고쳤는데 사이트가 그대로예요.</strong><br>
+캐시에 예전 결과가 남아 있을 수 있어요. <code>ipconfig /flushdns</code> 후 브라우저를 껐다 켜 보세요. 그래도 같다면 위의 <code>LastWriteTime</code> 으로 저장이 실제로 됐는지부터 확인하는 게 빠릅니다.</p>
+<p>경로 한 줄이지만, 저는 눈으로 훑기보다 <strong>수정 시각과 작동 줄 수를 숫자로 먼저 보는 것</strong>이 이번에 남은 소득이었어요. 여러분 hosts 파일엔 지금 주석 아닌 줄이 몇 줄 있나요?</p>
+<p>PC 문제를 AI와 같이 짚어본 기록은 makefield.ai에서 이어서 볼 수 있어요.</p>
+<h2>출처</h2>
+<ul><li>Microsoft 지원, How to reset the Hosts file back to the default (Windows 10·11 — 경로, 확장자 없음, 모든 파일 저장, 기본 내용, 관리자 권한) → <a href="https://support.microsoft.com/en-us/topic/how-to-reset-the-hosts-file-back-to-the-default-c2a43f9d-e176-c6f3-e4ef-3500277a6dae" target="_blank" rel="noopener">https://support.microsoft.com/en-us/topic/how-to-reset-the-hosts-file-back-to-the-default-c2a43f9d-e176-c6f3-e4ef-3500277a6dae</a></li><li>Microsoft Learn, PowerToys Hosts File Editor (DNS보다 hosts 먼저 확인, 관리자 아니면 읽기 전용, &quot;Failed to save hosts file&quot;, 백업 위치) → <a href="https://learn.microsoft.com/en-us/windows/powertoys/hosts-file-editor" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/windows/powertoys/hosts-file-editor</a></li><li>Microsoft Learn, ipconfig (/displaydns에 hosts 항목 포함, /flushdns) → <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig</a></li><li>Microsoft Learn, Select-String (-NotMatch) → <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-string" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-string</a></li></ul>
+<p>태그: #hosts파일위치 #host파일위치 #hosts파일열기 #hosts파일수정 #hosts파일관리자권한 #hosts파일메모장 #hosts파일안보임 #driversetc #윈도우hosts #윈도우11hosts #윈도우10hosts #ipconfigflushdns #PC보안점검 #AI로PC점검 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224433332191" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261002-800v-dc-datacenter/"><div class="d">← 이전 노트</div><div class="t">800V 직류 데이터센터란? 엔비디아가 전기 배선부터 바꾸는 이유</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
