@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>클로드 코드 이미지 붙여넣기 안 될 때, Alt+V가 화면 분할로 새던 이유 | Field Notes · MakeField AI</title>
+<meta name="description" content="윈도우에서 클로드 코드(Claude Code) 이미지 붙여넣기 기본 단축키는 Alt+V입니다. 눌렀는데 화면만 반으로 갈라진다면, 터미널 프로그램이 같은 키를 &#x27;창 분할&#x27;로 먼저 가로채고 있는 거예요. 터미널 쪽 분할 키를 다른 자리로 옮기면 바로 돌아옵니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261007-claude-code-alt-v-image-paste/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="클로드 코드 이미지 붙여넣기 안 될 때, Alt+V가 화면 분할로 새던 이유 | Field Notes · MakeField AI">
+<meta property="og:description" content="윈도우에서 클로드 코드(Claude Code) 이미지 붙여넣기 기본 단축키는 Alt+V입니다. 눌렀는데 화면만 반으로 갈라진다면, 터미널 프로그램이 같은 키를 &#x27;창 분할&#x27;로 먼저 가로채고 있는 거예요. 터미널 쪽 분할 키를 다른 자리로 옮기면 바로 돌아옵니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261007-claude-code-alt-v-image-paste/">
+<meta property="og:image" content="https://makefield.ai/blog/20261007-claude-code-alt-v-image-paste/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "클로드 코드 이미지 붙여넣기 안 될 때, Alt+V가 화면 분할로 새던 이유", "datePublished": "2026-10-07", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261007-claude-code-alt-v-image-paste/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 구축 가이드</span><span>2026-10-07</span></div>
+<h1>클로드 코드 이미지 붙여넣기 안 될 때, Alt+V가 화면 분할로 새던 이유</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;클로드 코드 이미지 붙여넣기 안 될 때 / Alt+V가 화면 분할로 새던 이유&quot;" loading="lazy">
+<p><strong>윈도우에서 클로드 코드(Claude Code) 이미지 붙여넣기 기본 단축키는 Alt+V입니다. 눌렀는데 화면만 반으로 갈라진다면, 터미널 프로그램이 같은 키를 &#x27;창 분할&#x27;로 먼저 가로채고 있는 거예요.</strong> 터미널 쪽 분할 키를 다른 자리로 옮기면 바로 돌아옵니다.</p>
+<p>공식 문서 기준(2026년 10월 확인)으로 이미지 붙여넣기(<code>chat:imagePaste</code>)는 맥·리눅스가 Ctrl+V, <strong>윈도우와 WSL은 Alt+V</strong>예요. 그래서 윈도우 사용자는 Ctrl+V를 눌러보고 &quot;안 되네&quot; 하기 쉽고, Alt+V까지 갔는데도 안 되면 대부분 터미널 키 충돌입니다.</p>
+<p>저는 제조 현장에서 제어 일을 15년째 하고 있고, 퇴근 후엔 개인 PC에서 클로드 코드로 이것저것 자동화를 굴려요. 지난 9월에 이 증상을 직접 겪었고, 고치다가 함정을 하나 더 밟았습니다. 따라 하실 수 있게 순서대로 적어볼게요.</p>
+<h2>1. 증상: Alt+V를 누르면 터미널이 반으로 쪼개져요</h2>
+<p>화면 캡처를 떠서 클로드 코드 입력창에 붙이려고 Alt+V를 눌렀어요.<br>
+그런데 이미지는 안 들어가고 터미널 창이 옆으로 하나 더 열렸습니다.<br>
+다시 눌러도 또 분할.. 창만 늘어나요.</p>
+<p>원리는 단순해요. 키를 누르면 <strong>터미널 프로그램이 먼저 받고</strong>, 터미널이 쓰지 않는 키만 그 안의 클로드 코드로 넘어갑니다. 터미널에 Alt+V가 &#x27;창 분할&#x27;로 잡혀 있으면 클로드 코드는 그 키를 구경도 못 해요.</p>
+<img src="img/02_key_two_owners.png" alt="키 하나에 주인 둘 — &#x27;Alt+V 누름&#x27; 상자 → &#x27;터미널(Windows Terminal·WezTerm)&#x27; 상자에서 빨간 화살표가 &#x27;창 분할&#x27;로 꺾임(빨간 테두리), 점선 화살표로 &#x27;클로드 코드: 이미지 붙여넣기&#x27; 상자에는 도달 못 함. 손글씨 메모 &#x27;터미널이 먼저 먹는다&#x27;" loading="lazy">
+<h2>2. 원인 확인: 제 터미널 두 개가 다 감염돼 있었어요</h2>
+<p>저는 Windows Terminal과 WezTerm을 둘 다 써요. 설정 파일을 열어 <code>alt+v</code>로 검색해 보니 두 곳 모두 분할 키로 잡혀 있었습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>터미널</th><th>설정 파일</th><th>Alt+V에 걸려 있던 동작</th></tr></thead><tbody><tr><td>Windows Terminal</td><td>settings.json</td><td><code>Terminal.SplitPaneRight</code> (오른쪽 분할)</td></tr><tr><td>WezTerm</td><td>~/.wezterm.lua</td><td><code>act.SplitHorizontal</code> (가로 분할)</td></tr></tbody></table></div>
+<p>Windows Terminal은 설정 화면 왼쪽 아래 &#x27;JSON 파일 열기&#x27;로 settings.json을 열 수 있어요.</p>
+<p>황당한 건 이걸 넣은 사람이 저였다는 겁니다. 작업 기록을 뒤져 보니 반년 전(2026-03-25)에 <strong>Ctrl+Shift+V(일반 붙여넣기)와 충돌</strong>이 나서, 분할 키를 Alt+V/Alt+H로 &#x27;피신&#x27;시켜 둔 거였어요. 그 피난처가 이번엔 이미지 붙여넣기 자리였고요. 키 충돌을 피하려다 다른 키 충돌을 만든, 같은 유형의 함정을 두 번 밟은 셈이죠..</p>
+<img src="img/03_refuge_trap.png" alt="피난처 함정 타임라인 — 왼쪽 &#x27;3월: 분할 키가 Ctrl+Shift+V와 충돌&#x27; → 가운데 &#x27;분할을 Alt+V로 피신&#x27;(잉크) → 오른쪽 &#x27;9월: Alt+V = 클로드 코드 이미지 붙여넣기&#x27;(빨간 테두리). 손글씨 메모 &#x27;피난처가 남의 집&#x27;" loading="lazy">
+<h2>3. 해결: 분할 키를 옮길 자리부터 먼저 확인했어요</h2>
+<p>이번엔 &quot;어디로 옮길까&quot;를 먼저 따졌어요. 고른 자리는 <strong>Alt+Shift+V / Alt+Shift+H</strong>입니다. 옮기기 전에 이 조합이 Windows Terminal·WezTerm·클로드 코드 세 곳 기본값과 겹치지 않는지 확인했어요. 참고로 Windows Terminal 공식 문서 기본값을 보면 Alt+Shift 조합은 D·마이너스·플러스(창 분할)와 방향키(창 크기 조절)에 쓰이고, V와 H는 비어 있습니다.</p>
+<p>Windows Terminal은 settings.json의 <code>keys</code> 값만 바꾸면 끝이에요.</p>
+<pre><code>{ &quot;id&quot;: &quot;Terminal.SplitPaneRight&quot;, &quot;keys&quot;: &quot;alt+shift+v&quot; },
+{ &quot;id&quot;: &quot;Terminal.SplitPaneDown&quot;,  &quot;keys&quot;: &quot;alt+shift+h&quot; }</code></pre>
+<p>고치기 전에 원본은 날짜를 붙여 <code>.bak_20260922</code> 로 복사해 뒀어요.</p>
+<h2>4. 두 번째 함정: WezTerm은 고쳤는데도 그대로였어요</h2>
+<p>WezTerm도 같은 식으로 고쳤어요. 그런데 다시 Alt+V를 누르니 <strong>여전히 분할</strong>됩니다. 에러 메시지도 없었어요.</p>
+<pre><code>{ key = &#x27;v&#x27;,      mods = &#x27;ALT|SHIFT&#x27;, ... }  -- 실패: 제 환경에선 SHIFT가 문자에 흡수돼 ALT+V로 등록됨
+{ key = &#x27;phys:V&#x27;, mods = &#x27;ALT|SHIFT&#x27;, ... }  -- 정답: 물리 키 위치로 지정</code></pre>
+<p>WezTerm은 기본적으로 &#x27;그 키가 만들어내는 문자&#x27;로 키를 맞추고(<code>key_map_preference</code> 기본값 Mapped), <code>phys:</code> 를 붙이면 &#x27;키보드의 물리 위치&#x27;로 맞춥니다(WezTerm 공식 문서). 제 경우엔 <code>key = &#x27;v&#x27;</code> 에 SHIFT를 더한 조합이 의도대로 안 잡혔고, <code>phys:V</code> 로 바꾸자 해결됐어요.</p>
+<p>이걸 잡은 건 <strong><code>wezterm show-keys</code></strong> 였습니다. 실제로 등록된 키 목록을 출력해 주는 명령이라, 설정 파일이 아니라 결과를 보고 판단할 수 있어요. 오늘 다시 돌려 본 제 PC 출력에서 분할 줄만 옮겼어요(작업 폴더 경로는 가렸어요).</p>
+<pre><code>&gt; wezterm show-keys   (분할 줄 2개만 발췌)
+	SHIFT | ALT          h (Physical)       -&gt;   SplitVertical(SpawnCommand domain=CurrentPaneDomain cwd=C:\작업폴더)
+	SHIFT | ALT          v (Physical)       -&gt;   SplitHorizontal(SpawnCommand domain=CurrentPaneDomain cwd=C:\작업폴더)</code></pre>
+<p><code>(Physical)</code> 이 붙어 있고 ALT 단독 v 줄이 없으면 성공이에요.</p>
+<img src="img/04_wezterm_phys.png" alt="WezTerm 키 지정 비교 — BEFORE(빨간 칩): &quot;key=&#x27;v&#x27; + ALT|SHIFT&quot; → &#x27;show-keys: ALT v → 분할&#x27;(빨간 테두리, 고친 줄 알았는데 그대로). AFTER(잉크 칩): &quot;key=&#x27;phys:V&#x27; + ALT|SHIFT&quot; → &#x27;show-keys: SHIFT|ALT v (Physical)&#x27;(체크). 손글씨 메모 &#x27;설정 말고 결과를 본다&#x27;" loading="lazy">
+<h2>5. 예비 키를 걸어두면 클로드 코드 이미지 붙여넣기가 다시 안 막혀요</h2>
+<p>터미널을 재설치하거나 설정이 초기화되면 같은 일이 또 생길 수 있어요. 그래서 클로드 코드 쪽에 예비 키를 하나 더 걸었습니다. 클로드 코드에서 <code>/keybindings</code> 를 입력하면 <code>~/.claude/keybindings.json</code> 이 만들어지거나 열려요.</p>
+<pre><code>{
+  &quot;bindings&quot;: [
+    {
+      &quot;context&quot;: &quot;Chat&quot;,
+      &quot;bindings&quot;: { &quot;ctrl+alt+v&quot;: &quot;chat:imagePaste&quot; }
+    }
+  ]
+}</code></pre>
+<p>공식 문서상 이 파일은 저장하면 자동 감지돼서 클로드 코드를 다시 켤 필요가 없어요. 이제 Alt+V가 막혀도 Ctrl+Alt+V가 남습니다.</p>
+<p>고려했던 다른 방법도 적어둘게요.</p>
+<ol><li><strong>클로드 코드 키만 바꾸기</strong>: 가장 빠르지만 터미널에 Alt+V 분할이 그대로 남아 다음에 또 헷갈려요.</li><li><strong>터미널 분할 키를 아예 해제</strong>: 분할을 자주 써서 포기했어요.</li><li><strong>분할 키 이동 + 예비 키 추가</strong>: 손이 두 번 가지만 원인 제거와 대비를 같이 할 수 있어 이걸 골랐습니다.</li></ol>
+<p>결과적으로 Alt+V 이미지 붙여넣기는 실측으로 정상 확인했어요. 다만 Alt+V를 여러 번 눌러 이미지를 여러 장 쌓는 건 아직 직접 검증 못 했습니다.</p>
+<h2>6. 자주 묻는 질문</h2>
+<p><strong>Q. 윈도우에서 Ctrl+V로는 이미지가 왜 안 붙나요?</strong><br>
+클로드 코드 공식 문서상 윈도우의 이미지 붙여넣기 기본키는 Alt+V예요. Ctrl+V가 이미지 붙여넣기인 건 맥·리눅스 기준이고, WSL은 둘 다 기본으로 잡혀 있습니다.</p>
+<p><strong>Q. 캡처가 아니라 PC에 있는 파일을 주고 싶으면요?</strong><br>
+탐색기에서 파일을 터미널 창으로 끌어다 놓으면 경로가 자동으로 입력돼요. 저는 PDF·CSV·엑셀 세 개를 한 번에 끌어다 놓는 것까지 확인했습니다.</p>
+<p><strong>Q. 키를 고쳤는데 그대로면 뭘 먼저 보나요?</strong><br>
+설정 파일이 아니라 실제 등록 결과를 보세요. WezTerm은 <code>wezterm show-keys</code>, 클로드 코드는 <code>claude --debug</code> 로 키 설정 경고를 확인할 수 있어요.</p>
+<p>이번 일로 남은 교훈은 두 가지예요. 단축키를 옮길 땐 <strong>옮겨 갈 자리</strong>가 다른 도구의 기본값인지 먼저 보고, 고친 뒤엔 <strong class="u">결과 목록</strong>으로 확인한다. 이 일화는 예전에 CLI AI 에이전트를 소개하는 글(<a href="https://blog.naver.com/makefield_ai/224421231773)에서" target="_blank" rel="noopener">https://blog.naver.com/makefield_ai/224421231773)에서</a> 몇 줄로만 언급했는데, 이번에 해결 순서까지 정리해 봤어요.</p>
+<p>여러분 터미널엔 Alt 키 조합이 몇 개나 잡혀 있나요? 한 번 검색해 보면 의외의 손님이 있을지도 모릅니다.</p>
+<p>개인 PC에서 AI 도구를 굴리며 막혔던 지점들은 makefield.ai에 차곡차곡 정리하고 있습니다.</p>
+<h2>출처</h2>
+<ul><li>Claude Code 공식 문서, Customize keyboard shortcuts (chat:imagePaste 기본키 &quot;Ctrl+V (Alt+V on Windows and WSL)&quot;, keybindings.json 위치·자동 감지) → <a href="https://code.claude.com/docs/en/keybindings" target="_blank" rel="noopener">https://code.claude.com/docs/en/keybindings</a></li><li>WezTerm 공식 문서, Keyboard Concepts (phys:/mapped:, key_map_preference) → <a href="https://wezterm.org/config/keys.html" target="_blank" rel="noopener">https://wezterm.org/config/keys.html</a></li><li>Microsoft Learn, Windows Terminal Actions (기본 Alt+Shift 분할·크기 조절 키) → <a href="https://learn.microsoft.com/en-us/windows/terminal/customize-settings/actions" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/windows/terminal/customize-settings/actions</a></li></ul>
+<p>태그: #클로드코드이미지붙여넣기 #클로드코드AltV #ClaudeCode #클로드코드단축키 #이미지붙여넣기안됨 #캡처붙여넣기 #윈도우터미널 #WindowsTerminal #윈도우터미널단축키 #WezTerm #wezterm단축키 #keybindings #단축키충돌 #AI코딩도구 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224433655581" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261006-hosts-file-location/"><div class="d">← 이전 노트</div><div class="t">hosts 파일 위치, 메모장에서 안 보이면 &#x27;모든 파일&#x27;로 바꾸세요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
