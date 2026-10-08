@@ -23,7 +23,7 @@
 {"@context":"https://schema.org","@graph":[
  {"@type":"Organization","@id":"https://makefield.ai/#org","name":"MakeField AI","url":"https://makefield.ai/","slogan":"AI가 일할 현장을 만든다","description":"현장 엔지니어와 함께 하는 AI","sameAs":["https://blog.naver.com/makefield_ai"]},
  {"@type":"Blog","name":"Field Notes — MakeField AI","url":"https://makefield.ai/blog/","publisher":{"@id":"https://makefield.ai/#org"},"inLanguage":"ko"},
- {"@type":"Book","name":"직장인의 AI 오답 노트","alternativeHeadline":"AI에게 잘 묻는 법이 아니라, AI가 내 일을 알게 만드는 법","inLanguage":"ko","numberOfPages":438,"bookFormat":"https://schema.org/Paperback","image":"https://makefield.ai/assets/book-cover.jpg"}
+ {"@type":"Book","name":"직장인의 AI 오답 노트","alternativeHeadline":"AI에게 잘 묻는 법이 아니라, AI가 내 일을 알게 만드는 법","inLanguage":"ko","image":"https://makefield.ai/assets/book-cover.jpg","url":"https://makefield.ai/book_1st/","datePublished":"2026-10-07","publisher":{"@type":"Organization","name":"부크크"},"workExample":[{"@type":"Book","bookFormat":"https://schema.org/Paperback","isbn":"9791112314116","numberOfPages":438,"offers":{"@type":"Offer","price":26800,"priceCurrency":"KRW","availability":"https://schema.org/InStock","url":"https://bookk.co.kr/bookStore/6ac4db0965e94aef5d1b317d"}},{"@type":"Book","bookFormat":"https://schema.org/EBook","isbn":"9791112314017","offers":{"@type":"Offer","price":16800,"priceCurrency":"KRW","availability":"https://schema.org/InStock","url":"https://bookk.co.kr/bookStore/6ac4dbaf22437bb21fda67d5"}}]}
 ]}
 </script>
 <style>
@@ -263,6 +263,7 @@ section{padding:110px 0;border-bottom:1px solid var(--line)}
 .spec dl{display:grid;grid-template-columns:auto 1fr;gap:9px 16px;font-size:.92rem}
 .spec dt{color:var(--muted);font-weight:600}
 .spec dd{font-weight:800}
+.spec .buy{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 .spec .status{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);font-size:.88rem;color:var(--ink-2)}
 .spec .status a{font-weight:800;color:var(--red);text-decoration:none}
 
@@ -568,7 +569,8 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
         </ul>
         <aside class="spec">
           <dl><dt>판형</dt><dd>A5 · 438쪽</dd><dt>종이책</dt><dd>26,800원</dd><dt>전자책</dt><dd>16,800원</dd></dl>
-          <div class="status">서점 등록 심사 중입니다. 구매 링크는 승인되는 대로 이곳에 올립니다.<br><br>책을 가진 분은 <a href="/book_1st/">다운로드 부록 →</a></div>
+          <div class="buy"><a class="btn btn-ink" data-track="buy_paper" href="https://bookk.co.kr/bookStore/6ac4db0965e94aef5d1b317d" target="_blank" rel="noopener">종이책 구매</a><a class="btn btn-line" data-track="buy_ebook" href="https://bookk.co.kr/bookStore/6ac4dbaf22437bb21fda67d5" target="_blank" rel="noopener">전자책 구매</a></div>
+          <div class="status">2026년 10월 7일 발행 · 부크크 서점 판매 중<br>ISBN 979-11-12-31411-6(종이) · 979-11-12-31401-7(전자)<br><br>책을 가진 분은 <a href="/book_1st/">다운로드 부록 →</a></div>
         </aside>
       </div>
     </div>
