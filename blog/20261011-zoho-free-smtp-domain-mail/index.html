@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zoho 메일 무료 SMTP 안 돼요, 도메인 메일 옮기기 전에 멈춘 이유 | Field Notes · MakeField AI</title>
+<meta name="description" content="개인 도메인 주소로 메일을 보내고 싶어서 &quot;Zoho 무료로 옮기자&quot;를 할 일 목록에 석 달 가까이 올려 두고 있었어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261011-zoho-free-smtp-domain-mail/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zoho 메일 무료 SMTP 안 돼요, 도메인 메일 옮기기 전에 멈춘 이유 | Field Notes · MakeField AI">
+<meta property="og:description" content="개인 도메인 주소로 메일을 보내고 싶어서 &quot;Zoho 무료로 옮기자&quot;를 할 일 목록에 석 달 가까이 올려 두고 있었어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261011-zoho-free-smtp-domain-mail/">
+<meta property="og:image" content="https://makefield.ai/blog/20261011-zoho-free-smtp-domain-mail/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Zoho 메일 무료 SMTP 안 돼요, 도메인 메일 옮기기 전에 멈춘 이유", "datePublished": "2026-10-11", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261011-zoho-free-smtp-domain-mail/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">막힐 때 해결</span><span>2026-10-11</span></div>
+<h1>Zoho 메일 무료 SMTP 안 돼요, 도메인 메일 옮기기 전에 멈춘 이유</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;Zoho 메일 무료 SMTP 안 돼요 / 도메인 메일 옮기기 전에 멈춘 이유&quot;" loading="lazy">
+<p>개인 도메인 주소로 메일을 보내고 싶어서 &quot;Zoho 무료로 옮기자&quot;를 할 일 목록에 석 달 가까이 올려 두고 있었어요.</p>
+<p><strong>결론부터 말하면, Zoho 메일 무료(Forever Free) 플랜은 IMAP·POP를 지원하지 않아서 Gmail 같은 외부 메일 앱에 붙여 쓸 수 없고, 무료 플랜의 외부 SMTP 발신도 막혀 있어요(2026년 10월 Zoho 공식 요금표 확인).</strong> 거기에 수신 서버(MX)를 Zoho로 옮기는 순간, 지금 멀쩡히 돌던 무료 포워딩까지 끊길 판이었습니다. 그래서 옮기지 않았어요.</p>
+<p>공장 자동화 쪽에서 15년 굴러먹은 엔지니어예요. 일이 끝나면 개인 도메인이나 AI 비서 같은 걸 만지작거리는데, 이번엔 실행 버튼 누르기 직전에 AI랑 같이 &quot;지금 되는 것&quot;부터 확인한 덕에 퇴보를 피했습니다.</p>
+<h2>1. 무엇을 하려고 했나요</h2>
+<p>상황은 이랬어요.</p>
+<ul><li>도메인 주소로 오는 메일은 도메인 등록업체의 <strong>무료 메일 포워딩</strong>으로 Gmail에서 받는 중</li><li>보내는 메일은 Gmail 주소로 나감</li><li>그래서 7월 12일에 &quot;Zoho 무료로 옮겨서 보내기까지 도메인 주소로&quot; 계획을 세워 할 일에 등록</li></ul>
+<p>다음 날인 7월 13일엔 제가 직접 메일을 보내 Gmail에 도착하는 것까지 확인해 뒀어요. 받기는 이미 되고 있었던 거죠.<br>
+그리고 계획은 그대로 할 일 목록에 머물렀습니다.. 10월 5일에 드디어 꺼내 들었어요.</p>
+<p>혹시 여러분도 &quot;언젠가 옮기자&quot; 하고 묵혀 둔 메일 설정 계획이 있으신가요? 저는 이게 그런 계획이었어요.</p>
+<h2>2. 옮기기 전에 &#x27;받기&#x27;부터 증명했어요</h2>
+<p>이날 AI랑 맨 먼저 한 일은 Zoho 조사가 아니었어요. <strong>바꾸기 전에, 지금 동작 중인 것부터 증거로 남기기.</strong> 옮긴 뒤에 뭔가 안 되면 원래 됐던 건지 아닌지 모르게 되니까요.</p>
+<p>확인은 세 단계였어요. DNS 설정은 하나도 건드리지 않고 조회만 했습니다.</p>
+<ol><li><strong>MX 레코드 조회</strong>: 수신 서버가 어디인지. 등록업체 포워딩 서버 5대가 잡혀 있었어요</li><li><strong>SPF·DMARC 조회</strong>: SPF는 포워딩 서버를 허용하는 줄이 딱 1줄, DMARC는 아예 없었어요</li><li><strong>SMTP RCPT 프로브</strong>: 포워딩 서버에 &quot;이 주소로 받을 수 있냐&quot;고만 묻고 실제 메일은 안 보내는 방식</li></ol>
+<p>세 번째 결과가 제일 확실했어요. 결과만 정리하면 이렇습니다(도메인은 가렸어요).</p>
+<pre><code>RCPT TO:&lt;쓰는주소@내도메인&gt;    → 250 2.1.5 Ok        (받는다)
+RCPT TO:&lt;없는주소@내도메인&gt;    → 554 5.1.1 거절       (모른다)</code></pre>
+<p>있는 주소는 받고, 없는 주소는 거절해요. <strong>포워딩 규칙이 실제로 살아 있다는 뜻</strong>이에요. 마지막 Gmail 도착은 이날 다시 보내 보지 않았고, 7월 13일 직접 확인 기록으로 갈음했습니다.</p>
+<img src="img/02_verify_steps.png" alt="받기부터 증명하는 3단계 — ① MX 조회(수신 서버 어디?) → ② SPF·DMARC 조회(허용 목록 몇 줄?) → ③ RCPT 프로브(있는 주소 250 초록 체크 / 없는 주소 554 빨간 X). 하단 손글씨 메모 &#x27;설정 변경 0, 조회만&#x27;" loading="lazy">
+<h2>3. 전환점: Zoho 무료 플랜엔 외부 연결이 없어요</h2>
+<p>그다음에 Zoho 무료 플랜을 확인했는데, 여기서 계획이 무너졌어요.</p>
+<p>Zoho 공식 요금표 기준으로 Forever Free는 최대 5명, 1인당 메일 저장공간 5GB이고 <strong>&quot;IMAP/POP/ActiveSync 미포함&quot;</strong>이에요. 웹메일과 Zoho 앱으로만 쓰는 구조죠. 무료 플랜에서 IMAP·POP·SMTP를 끊었다는 이용자 글도 Zoho 커뮤니티에 남아 있었고요.</p>
+<p>제가 원한 건 &quot;Gmail에서 쓰던 대로 쓰면서 보낼 때만 도메인 주소&quot;였어요. Gmail의 &#x27;다른 주소에서 메일 보내기&#x27;로 도메인 주소를 붙이려면 그 주소를 내보낼 SMTP 서버가 필요한데, 무료 Zoho로는 그 자리를 채울 수 없었어요.</p>
+<p>더 큰 문제는 반대쪽이었어요. Zoho로 받으려면 MX를 Zoho로 바꿔야 하고, 그러면 <strong>지금 정상인 포워딩이 끊겨요.</strong> 정리하면 이렇습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>지금 (포워딩 유지)</th><th>Zoho 무료로 이전</th></tr></thead><tbody><tr><td>받기</td><td>Gmail에서 정상</td><td>Zoho 웹메일로 따로 확인</td></tr><tr><td>보내기</td><td>Gmail 주소로 나감</td><td>웹메일에서만 도메인 주소</td></tr><tr><td>Gmail 한 곳에서 처리</td><td>됨</td><td>안 됨(IMAP/POP 미포함)</td></tr><tr><td>결과</td><td>발신만 아쉬움</td><td>수신 악화 + 발신 미해결</td></tr></tbody></table></div>
+<img src="img/03_move_risk.png" alt="옮기면 생기는 일 — 왼쪽 &#x27;지금&#x27;: 도메인 메일 → 등록업체 포워딩 → Gmail(초록 체크). 오른쪽 &#x27;Zoho 무료 이전&#x27;: 도메인 메일 → Zoho 웹메일(빨간 테두리) → Gmail 연결 끊김(빨간 X, &#x27;IMAP/POP 없음&#x27;). 가운데 빨간 펜 &#x27;개선이 아니라 퇴보&#x27;" loading="lazy">
+<p>석 달 동안 할 일 목록에 있던 계획은 그날 바로 <strong>폐기</strong>됐어요.</p>
+<h2>4. 그럼 도메인 메일 Gmail로 보내기는 어떻게 하나요</h2>
+<p>AI가 찾아온 대안은 &quot;받기는 그대로 두고 보내기만 따로 붙이는&quot; 구조였어요.</p>
+<ul><li>수신: 등록업체 무료 포워딩 <strong>그대로 유지</strong></li><li>발신: Brevo 무료 SMTP(공식 안내 기준 하루 300통) + Gmail &#x27;다른 주소에서 메일 보내기&#x27;</li></ul>
+<p>여기서 겪은 사람만 아는 함정이 하나 있어요. <strong>SPF 레코드는 반드시 한 줄로 합쳐야 해요.</strong> 포워딩용 SPF가 이미 있는데 Brevo용 SPF를 새 줄로 하나 더 넣으면, 규격(RFC 7208)상 SPF 검사 결과가 오류(permerror)가 돼서 오히려 메일이 스팸함으로 갈 수 있습니다.</p>
+<pre><code>❌ 두 줄 (검사 오류)
+v=spf1 include:(포워딩 서버) ~all
+v=spf1 include:spf.brevo.com ~all
+
+⭕ 한 줄로 병합
+v=spf1 include:(포워딩 서버) include:spf.brevo.com ~all</code></pre>
+<p>DMARC도 없으니 감시 모드(p=none)로 하나 새로 만드는 게 좋겠다는 정리까지 했어요.</p>
+<img src="img/04_alt_structure.png" alt="대안 구조 — 받기 화살표: 도메인 메일 → 포워딩(그대로, 잉크) → Gmail. 보내기 화살표: Gmail → Brevo SMTP → 상대방(초록). 하단 빨간 박스 &#x27;SPF는 1줄만! 2줄=오류&#x27;" loading="lazy">
+<h2>5. 결말: 발신은 보류했어요</h2>
+<p>솔직히 말하면 Brevo 셋업은 아직 안 했어요. 가입하고, DNS 값 넣고, 인증 메일 받고.. 단계를 펼쳐 보니 &quot;지금은 복잡하다&quot;는 판단이 나왔습니다. 답장이 Gmail 주소로 나가는 건 원래 의도한 구조로 받아들이고 그대로 두기로 했어요.</p>
+<p>그래서 이 글의 절차는 &#x27;해 본 것&#x27;과 &#x27;찾아만 둔 것&#x27;이 섞여 있어요. 받기 검증과 Zoho 판단은 실제로 한 것이고, Brevo 발신은 계획 단계입니다.</p>
+<p><strong>Q. Zoho 무료 플랜으로 Gmail 앱에서 메일 받는 방법은 없나요?</strong><br>
+요금표 기준 IMAP·POP가 빠져 있어서 외부 메일 앱으로 가져오는 길은 막혀 있어요. 무료로 쓰려면 Zoho 웹메일이나 Zoho 앱을 따로 열어야 합니다.</p>
+<p><strong>Q. 메일 설정을 바꾸기 전에 최소한 뭘 봐야 하나요?</strong><br>
+MX가 지금 어디를 가리키는지, SPF가 몇 줄인지 두 가지만 먼저 보세요. MX를 바꾸면 기존 수신 경로가 통째로 바뀌고, SPF는 한 줄 원칙만 어겨도 보내는 메일이 흔들려요.</p>
+<p>옮기는 게 항상 개선은 아니더라고요. 이번에 바뀐 건 순서 하나예요. <strong>이전 계획을 실행하기 전에 지금 되는 것을 먼저 증명하고, 새 플랜에서 빠진 기능을 확인한다.</strong> 할 일 목록에 오래 묵은 계획일수록 그 사이 조건이 바뀌었을 가능성이 크니 한 번 더 열어 보시길 권해요.</p>
+<p>개인 도메인·메일처럼 혼자 굴리는 IT 살림을 AI랑 정리한 기록은 makefield.ai에도 남겨 두고 있어요.</p>
+<h2>출처</h2>
+<ul><li>Zoho Mail 공식 요금표(Forever Free: Up to 5 users, 5 GB mail storage per user, &quot;IMAP/ POP/ Active Sync not included&quot;) → <a href="https://www.zoho.com/mail/zohomail-pricing.html" target="_blank" rel="noopener">https://www.zoho.com/mail/zohomail-pricing.html</a> (2026-10-11 확인)</li><li>RFC 7208 Sender Policy Framework §3.2·§4.5 (SPF 레코드가 둘 이상이면 permerror) → <a href="https://datatracker.ietf.org/doc/html/rfc7208" target="_blank" rel="noopener">https://datatracker.ietf.org/doc/html/rfc7208</a></li><li>Brevo 공식 안내(무료 하루 300통) → <a href="https://www.brevo.com/newsletter-software/" target="_blank" rel="noopener">https://www.brevo.com/newsletter-software/</a></li><li>수신 검증·판단 과정: 개인 작업 기록(2026-07-12·07-13·10-05)</li></ul>
+<p>태그: #Zoho메일무료SMTP #Zoho메일 #조호메일 #도메인메일 #도메인메일Gmail #지메일다른주소에서보내기 #메일포워딩 #MX레코드 #SPF레코드 #DMARC #Brevo #무료SMTP #개인도메인 #메일설정오류 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224437662729" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261010-pc-file-to-phone-discord-bot/"><div class="d">← 이전 노트</div><div class="t">PC 파일 폰으로 받기, 앱 만들 뻔하다 디스코드 봇에 붙였어요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
