@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>휴머노이드 로봇 액추에이터란? 로봇 관절 부품이 병목이 된 이유 | Field Notes · MakeField AI</title>
+<meta name="description" content="한 줄 요약: 휴머노이드 로봇 액추에이터는 로봇 관절을 움직이는 &#x27;근육&#x27; 부품으로, 로봇 한 대 제조원가의 30~50%를 차지하고(Interact Analysis, 코리아중앙데일리 2026-02 인용) 테슬라 옵티머스 한 대에만 28개가 들어갑니다. 로봇을 대량으로 만들겠다는 ">
+<link rel="canonical" href="https://makefield.ai/blog/20261012-humanoid-robot-actuator/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="휴머노이드 로봇 액추에이터란? 로봇 관절 부품이 병목이 된 이유 | Field Notes · MakeField AI">
+<meta property="og:description" content="한 줄 요약: 휴머노이드 로봇 액추에이터는 로봇 관절을 움직이는 &#x27;근육&#x27; 부품으로, 로봇 한 대 제조원가의 30~50%를 차지하고(Interact Analysis, 코리아중앙데일리 2026-02 인용) 테슬라 옵티머스 한 대에만 28개가 들어갑니다. 로봇을 대량으로 만들겠다는 ">
+<meta property="og:url" content="https://makefield.ai/blog/20261012-humanoid-robot-actuator/">
+<meta property="og:image" content="https://makefield.ai/blog/20261012-humanoid-robot-actuator/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "휴머노이드 로봇 액추에이터란? 로봇 관절 부품이 병목이 된 이유", "datePublished": "2026-10-12", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261012-humanoid-robot-actuator/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-10-12</span></div>
+<h1>휴머노이드 로봇 액추에이터란? 로봇 관절 부품이 병목이 된 이유</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="타이틀카드 — &quot;휴머노이드 로봇 액추에이터란? / 로봇 관절 부품이 병목이 된 이유&quot;" loading="lazy">
+<p><strong>한 줄 요약: 휴머노이드 로봇 액추에이터는 로봇 관절을 움직이는 &#x27;근육&#x27; 부품으로, 로봇 한 대 제조원가의 30~50%를 차지하고(Interact Analysis, 코리아중앙데일리 2026-02 인용) 테슬라 옵티머스 한 대에만 28개가 들어갑니다.</strong> 로봇을 대량으로 만들겠다는 계획은 쏟아지는데, 이 관절 부품을 그만큼 찍어 낼 공장이 아직 모자라다는 게 2026년 로봇 산업의 핵심 병목이에요.</p>
+<p>휴머노이드 로봇 뉴스는 보통 &quot;얼마나 사람처럼 걷나&quot;에 쏠려 있어요. 그런데 돈과 공장의 관점에서 보면 질문이 바뀝니다. &quot;관절 부품을 누가, 몇 개나, 얼마에 만드나.&quot; 2026년 10월 기준으로 이 질문을 쉬운 말로 풀어 볼게요.</p>
+<h2>1. 휴머노이드 액추에이터란 무엇인가요</h2>
+<p><strong>휴머노이드 액추에이터란 전기 신호를 받아 로봇 관절을 실제로 돌리고 밀어 주는 구동 부품 묶음이다.</strong> 사람으로 치면 뼈와 뼈를 잇는 관절에 붙은 근육이에요. 로봇 팔꿈치 하나를 굽히는 데도 액추에이터가 하나 필요합니다.</p>
+<blockquote>💡 액추에이터 — 전기를 받아 &#x27;움직임&#x27;으로 바꾸는 부품. 로봇의 근육이다.</blockquote>
+<p>하나의 액추에이터 안에는 보통 네 가지가 같이 들어가요.</p>
+<div class="table-wrap"><table><thead><tr><th>구성 부품</th><th>하는 일</th><th>사람 몸에 비유하면</th></tr></thead><tbody><tr><td>모터</td><td>전기로 축을 빠르게 돌린다</td><td>근육 섬유</td></tr><tr><td>감속기</td><td>빠른 회전을 느리지만 센 힘으로 바꾼다</td><td>힘줄·지렛대</td></tr><tr><td>엔코더(센서)</td><td>얼마나 돌았는지 잰다</td><td>관절 감각</td></tr><tr><td>드라이버</td><td>모터에 전기를 얼마나 줄지 정한다</td><td>운동 신경</td></tr></tbody></table></div>
+<blockquote>💡 감속기 — 기어를 여러 단 맞물려 &#x27;빠르고 약한 회전&#x27;을 &#x27;느리고 센 회전&#x27;으로 바꾸는 장치. 자전거 기어를 낮추면 페달이 가벼워지는 원리와 같다.</blockquote>
+<blockquote>💡 엔코더 — 모터가 몇 도 돌았는지 재는 센서. 이게 없으면 로봇은 자기 팔이 어디 있는지 모른다.</blockquote>
+<img src="img/02_.png" alt="왼쪽에서 오른쪽으로 &#x27;드라이버&#x27; → &#x27;모터&#x27; → &#x27;감속기&#x27; → &#x27;관절 출력축&#x27; 잉크 박스 4개를 화살표로 연결. 모터 아래에 &#x27;엔코더&#x27; 박스가 위쪽 드라이버로 되돌아가는 잉크 화살표(측정값 전달). 네 박스를 감싸는 큰 점선 테두리에 &#x27;액추에이터 1개&#x27;. 오른쪽 빨간 손글씨 &#x27;이게 로봇 한 대에 28~31개&#x27;. 하단 캡션 &#x27;로봇의 근육 = 네 부품의 묶음&#x27;" loading="lazy">
+<p>몇 개가 들어갈까요? 테슬라 옵티머스(2022년 공개형)에는 28개가 들어가고, 일론 머스크는 다음 세대가 50개 넘게 쓸 수 있다고 말했어요(코리아중앙데일리 2026-02). 보스턴다이내믹스의 아틀라스 한 대에는 몸체 액추에이터 31개가 들어간다는 증권사 분석이 있습니다(파이낸셜뉴스 2026-09, LS증권 인용). 관절이 많을수록 움직임이 자연스러워지는데, 아틀라스는 56자유도로 소개됐어요(Repairer Driven News 2026-01).</p>
+<blockquote>💡 자유도(DoF) — 로봇이 독립적으로 움직일 수 있는 방향의 개수. 손목이 위아래·좌우·비틀기로 움직이면 3자유도다.</blockquote>
+<h2>2. 왜 지금 휴머노이드 액추에이터가 병목이 됐나요</h2>
+<p><strong>로봇 완성품 회사들의 양산 목표를 더하면 필요한 관절 부품 수가 지금 세계 생산능력을 크게 넘기 때문이다.</strong> 로봇 한 대에 수십 개가 들어가니, 로봇 생산 목표가 조금만 커져도 부품 수요는 몇십 배로 뛰어요.</p>
+<ul><li><strong>수요 대 공급</strong>: 미국 분석 매체 Live in the Future는 2028년까지 정밀 액추에이터 수요가 <strong>연 700만 개 이상</strong>인데, 알려진 세계 공급능력은 <strong>200만 개 미만</strong>이라고 봤어요(Live in the Future 2026-07). 다만 이 수요치는 기업들이 발표한 생산 목표에 대당 부품 수를 곱해 더한 <strong>추정</strong>이고, 공개된 단일 통계가 아닙니다.</li><li><strong>시장 규모 전망</strong>: 업계에서는 휴머노이드용 액추에이터 수요가 <strong>2024년 1억 5,000만 달러에서 2031년 98억 6,000만 달러</strong>로, 연평균 80%씩 늘 것으로 본다고 보도됐어요(코리아중앙데일리 2026-02, 업계 전망 인용 — <strong>추정</strong>).</li><li><strong>원가에서 차지하는 몫</strong>: 영국 조사기관 Interact Analysis는 액추에이터가 휴머노이드 재료비의 30~50%라고 봤고(코리아중앙데일리 2026-02), 국내 보도에서는 40~60%(더인베스터 2026-03), 60~70%(한국경제 2026-09)까지 나와요. 기준(재료비냐 전체 제조원가냐)이 달라 숫자가 갈리지만, <strong>로봇 원가에서 가장 비싼 부품</strong>이라는 데는 이견이 없습니다.</li></ul>
+<blockquote>💡 연평균 성장률(CAGR) — 매년 평균 몇 %씩 커지는지 나타낸 값.</blockquote>
+<img src="img/03_.png" alt="가로 막대 2개 비교. 위 막대 &#x27;2028년 필요 수요 700만 개 이상&#x27;은 긴 잉크 막대, 아래 막대 &#x27;알려진 공급능력 200만 개 미만&#x27;은 짧은 빨간 막대. 두 막대 끝 사이 빈 구간에 빨간 손글씨 &#x27;모자라는 칸&#x27;. 막대 아래 작은 글씨 &#x27;추정 — 기업 발표 목표 합산&#x27;과 시장 전망 한 줄. 하단 캡션 &#x27;로봇보다 관절이 먼저 모자란다&#x27;" loading="lazy">
+<h2>3. 돈의 흐름 — 누가 사고, 누가 파나요</h2>
+<p><strong>사는 쪽은 로봇 완성품 회사이고, 파는 쪽은 액추에이터 조립사와 그 밑의 모터·감속기·센서 회사다.</strong> 자동차로 치면 완성차 회사와 부품 회사(1차·2차 협력사) 구조가 로봇에서도 똑같이 생기고 있어요.</p>
+<div class="table-wrap"><table><thead><tr><th>단계</th><th>누가(예시)</th><th>무엇을 하나</th></tr></thead><tbody><tr><td>사는 쪽(로봇 완성품)</td><td>테슬라, 보스턴다이내믹스, LG전자(가정용 로봇)</td><td>액추에이터를 사서 로봇을 조립</td></tr><tr><td>파는 쪽(액추에이터)</td><td>현대모비스, LG전자 &#x27;악시움&#x27;</td><td>모터·감속기·센서를 묶어 관절 모듈로 공급</td></tr><tr><td>그 아래(부품)</td><td>소형 모터·감속기·센서 업체(삼성전기가 투자한 노르웨이 모터사 Alva Industries 등)</td><td>액추에이터 속 핵심 부품 공급</td></tr></tbody></table></div>
+<p>규모는 숫자로 보면 감이 옵니다.</p>
+<ul><li><strong>로봇 한 대의 관절 값</strong>: LS증권은 액추에이터 양산 단가를 개당 800~1,100달러로 가정하면, 아틀라스 한 대당 현대모비스 매출이 약 3,500만~5,000만 원이 된다고 추산했어요. 5,000대를 만들면 1,736억~2,387억 원입니다(파이낸셜뉴스 2026-09, <strong>증권사 추정</strong>).</li><li><strong>목표 물량</strong>: 보스턴다이내믹스는 2028년까지 연 3만 대 로봇 생산을 목표로 하고, 미국 조지아 공장부터 투입한다고 밝혔어요(Repairer Driven News 2026-01). 단순 계산하면 3만 대 × 31개 = 연 약 93만 개의 액추에이터가 됩니다(<strong>추정</strong> — 단순 곱이며 실제 계획과 다를 수 있음).</li></ul>
+<blockquote>💡 1차 협력사 — 완성품 회사에 직접 부품 모듈을 공급하는 회사. 그 아래에 세부 부품을 대는 2차·3차 협력사가 있다.</blockquote>
+<img src="img/04_.png" alt="3단 돈 흐름도. 맨 위 &#x27;로봇 완성품 회사&#x27; 박스, 가운데 &#x27;액추에이터 조립사&#x27; 박스, 맨 아래에 &#x27;모터&#x27;·&#x27;감속기&#x27;·&#x27;센서&#x27; 작은 박스 3개. 위에서 아래로 &#x27;구매 대금&#x27; 잉크 화살표, 아래에서 위로 &#x27;부품·관절 모듈&#x27; 잉크 화살표. 가운데 박스 옆 빨간 손글씨 &#x27;로봇 원가의 30~50%&#x27;. 하단 캡션 &#x27;돈은 위에서 아래로, 관절은 아래에서 위로&#x27;" loading="lazy">
+<blockquote>※ 위 기업명과 증권사 추정치는 산업 구조를 설명하기 위한 예시입니다. 특정 종목의 매수·매도를 권하는 글이 아닙니다.</blockquote>
+<h2>4. 누가 만들고 있나요 — 한국 기업 현황</h2>
+<p><strong>한국에서는 현대모비스가 아틀라스용 액추에이터를 전량 수주했고, LG전자는 자체 브랜드 &#x27;악시움&#x27;으로 창원에서 초도 양산에 들어갔다.</strong></p>
+<div class="table-wrap"><table><thead><tr><th>기업</th><th>현황</th><th>출처</th></tr></thead><tbody><tr><td>현대모비스</td><td>보스턴다이내믹스 아틀라스 액추에이터 전량 수주, 2027년부터 로봇 부품 매출 가능성</td><td>파이낸셜뉴스 2026-09(LS증권 인용)</td></tr><tr><td>LG전자</td><td>액추에이터 &#x27;악시움(AXIUM)&#x27;을 2026년 6월부터 경남 창원 스마트파크에서 생산, 연내 대규모 양산 체제 구축 계획</td><td>뉴시스 2026-07</td></tr><tr><td>LG전자</td><td>규격별 9종 제품군, &quot;복수의 빅테크와 논의 중&quot;, 경쟁사보다 무게 30% 이상 가볍다고 주장</td><td>한국경제 2026-09</td></tr><tr><td>삼성전기</td><td>노르웨이 초소형 모터사 Alva Industries에 투자, 양산 일정은 미공개</td><td>Live in the Future 2026-07</td></tr></tbody></table></div>
+<p>LG전자 사업본부장은 독일 IFA 2026 간담회에서 &quot;로봇 제조사, 물류 기업 등을 비롯한 복수의 빅테크와 논의 중&quot;이라고 말했어요(한국경제 2026-09). 가전 모터를 대량으로 만들던 공장 경험이 로봇 관절로 옮겨 가는 그림입니다. LG전자는 가전용 모터를 연 4,500만 개 만든다는 점을 양산 기반으로 내세웠어요(더인베스터 2026-03).</p>
+<h2>5. 언제 오나요, 그리고 한계</h2>
+<p><strong>양산은 2026~2028년에 시작되지만, 국산화율과 실제 로봇 수요라는 두 가지 벽이 남아 있다.</strong> 낙관만 할 수 없는 근거도 같이 봐야 해요.</p>
+<ul><li><strong>아직 외산 의존</strong>: 한국 로봇 소재·부품 국산화율은 40%대에 머물고, CES 2026에 나온 아틀라스와 LG 클로이드 시제품도 외산 액추에이터를 썼어요(코리아중앙데일리 2026-02, 한국무역협회 인용).</li><li><strong>수요치는 &#x27;목표의 합&#x27;</strong>: 700만 개 수요는 기업들이 발표한 생산 목표를 더한 추정이에요(Live in the Future 2026-07). 로봇이 목표만큼 안 팔리면 병목도 그만큼 줄어듭니다.</li><li><strong>원가 숫자가 제각각</strong>: 액추에이터 비중이 30~70%로 출처마다 달라요. 로봇 회사들이 부품 명세를 공개하지 않기 때문에 외부 추정에 기댈 수밖에 없다는 한계가 있습니다(Live in the Future 2026-07).</li><li><strong>단가 하락 압력</strong>: 개당 800~1,100달러라는 가정은 증권사 추정이에요(파이낸셜뉴스 2026-09). 대량 생산이 시작되면 단가는 내려가고, 부품 회사 매출은 물량과 단가의 줄다리기가 됩니다(<strong>추정</strong>).</li></ul>
+<p>정리하면, &#x27;시제품(2026 CES) → 초도 양산(2026 하반기) → 대량 생산(2028 목표)&#x27; 순서에서 지금은 두 번째 단계에 들어선 참이에요. 2027년 부품 매출 발생 여부와 2028년 연 3만 대 목표 달성 여부가 다음 확인 지점입니다.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 액추에이터는 산업용 로봇 팔에도 쓰이는 거 아닌가요?</strong><br>
+맞아요. 공장 로봇 팔도 관절마다 모터·감속기를 씁니다. 휴머노이드는 관절 수가 훨씬 많고, 사람 몸 크기 안에 넣어야 해서 더 작고 가벼워야 한다는 점이 달라요. LG전자가 &quot;무게 30% 이상 감소&quot;를 강점으로 내세운 이유입니다(한국경제 2026-09).</p>
+<p><strong>Q. 왜 로봇 회사가 직접 만들지 않고 부품 회사에 맡기나요?</strong><br>
+수십만 개 단위로 같은 부품을 정밀하게 찍어 내는 일은 자동차·가전 부품 회사가 이미 해 온 일이에요. 한국에서 먼저 나선 현대모비스(자동차 부품)와 LG전자(가전 모터, 연 4,500만 개 양산 — 더인베스터 2026-03)도 모두 대량 양산 경험을 가진 회사라는 공통점이 있어요. 다만 어떤 로봇 회사가 관절을 직접 만들고 어떤 회사가 외부에서 사는지는 공개 자료가 적어, 이 글에서 확인한 범위는 위 두 사례까지예요.</p>
+<p><strong>Q. 한국에서 휴머노이드 부품 시장은 언제 커지나요?</strong><br>
+증권사 분석으로는 2027년부터 로봇 부품 매출이 생길 가능성이 있고(파이낸셜뉴스 2026-09), 보스턴다이내믹스의 연 3만 대 목표 시점은 2028년이에요(Repairer Driven News 2026-01). 실제 규모는 그때 확인해야 합니다.</p>
+<h2>오늘의 용어 정리</h2>
+<ul><li><strong>액추에이터</strong> — 전기를 움직임으로 바꾸는 로봇 관절 부품(&#x27;근육&#x27;)</li><li><strong>감속기</strong> — 빠르고 약한 회전을 느리고 센 회전으로 바꾸는 기어 장치</li><li><strong>엔코더</strong> — 모터 회전량을 재는 센서</li><li><strong>드라이버</strong> — 모터에 전기를 얼마나 줄지 정하는 장치</li><li><strong>자유도(DoF)</strong> — 로봇이 독립적으로 움직이는 방향의 수</li><li><strong>CAGR</strong> — 연평균 성장률</li><li><strong>1차 협력사</strong> — 완성품 회사에 직접 모듈을 공급하는 회사</li><li><strong>국산화율</strong> — 부품 중 국내에서 만든 것의 비율</li></ul>
+<p>지난 Next Field에서는 전기트럭을 채우는 메가와트 충전을 다뤘는데, 이번엔 &#x27;부품 하나가 산업 전체의 속도를 정하는&#x27; 이야기였어요. 데이터센터의 변압기처럼, 휴머노이드에선 관절이 그 자리에 있습니다. 여러분은 휴머노이드 대량 보급의 진짜 병목이 관절 부품일까요, 로봇을 똑똑하게 만드는 AI일까요?</p>
+<h2>출처</h2>
+<p><strong>[1] 코리아중앙데일리(2026-02)</strong> — 액추에이터 원가 비중 30~50%(Interact Analysis), 옵티머스 28개·차기 50개 이상, 수요 1억 5,000만→98억 6,000만 달러(2024→2031), 국산화율 40%대, CES 2026 시제품 외산 액추에이터<br>
+→ <a href="https://www.koreajoongangdaily.com/business/actuators-become-new-battleground-in-humanoid-robot-race/12288658" target="_blank" rel="noopener">https://www.koreajoongangdaily.com/business/actuators-become-new-battleground-in-humanoid-robot-race/12288658</a></p>
+<p><strong>[2] 파이낸셜뉴스(2026-09)</strong> — LS증권 분석: 현대모비스 아틀라스 액추에이터 전량 수주, 대당 31개, 개당 800~1,100달러 가정 시 대당 3,500만~5,000만 원, 5,000대 1,736억~2,387억 원, 2027년 부품 매출 가능성<br>
+→ <a href="https://www.fnnews.com/news/202609020840218266" target="_blank" rel="noopener">https://www.fnnews.com/news/202609020840218266</a></p>
+<p><strong>[3] Repairer Driven News(2026-01)</strong> — 보스턴다이내믹스 2028년 연 3만 대 생산 목표, 조지아 공장 투입, 아틀라스 56자유도<br>
+→ <a href="https://www.repairerdrivennews.com/2026/01/07/hyundai-showcases-humanoid-at-ces-plans-30000-units-by-2028/" target="_blank" rel="noopener">https://www.repairerdrivennews.com/2026/01/07/hyundai-showcases-humanoid-at-ces-plans-30000-units-by-2028/</a></p>
+<p><strong>[4] 뉴시스(2026-07)</strong> — LG전자 악시움 창원 스마트파크 생산(6월부터), 연내 대규모 양산 체제 구축 계획<br>
+→ <a href="https://mobile.newsis.com/view/NISX20260728_0003725911" target="_blank" rel="noopener">https://mobile.newsis.com/view/NISX20260728_0003725911</a></p>
+<p><strong>[5] 한국경제(2026-09)</strong> — LG전자 IFA 2026 간담회: 빅테크 공급 논의, 원가 비중 60~70%, 9종 제품군, 무게 30% 이상 감소<br>
+→ <a href="https://www.hankyung.com/article/2026090668691" target="_blank" rel="noopener">https://www.hankyung.com/article/2026090668691</a></p>
+<p><strong>[6] 더인베스터(2026-03)</strong> — 액추에이터 원가 비중 40~60%, LG전자 가전 모터 연 4,500만 개 양산 기반<br>
+→ <a href="https://m.theinvestor.co.kr/article/10701643" target="_blank" rel="noopener">https://m.theinvestor.co.kr/article/10701643</a></p>
+<p><strong>[7] Live in the Future(2026-07)</strong> — 2028년 정밀 액추에이터 수요 연 700만 개 이상 대 공급 200만 개 미만(기업 목표 합산 추정), 삼성전기의 Alva Industries 투자<br>
+→ <a href="https://liveinthefuture.org/stories/actuator-bottleneck-humanoid-robot-supply-gap" target="_blank" rel="noopener">https://liveinthefuture.org/stories/actuator-bottleneck-humanoid-robot-supply-gap</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224438519956" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261012-eu-cyber-resilience-act/"><div class="d">← 이전 노트</div><div class="t">EU 사이버복원력법(CRA)이란? 2027년 12월부터 보안 없는 제품은 EU에서 못 판다</div></a><a class="next" href="/blog/20261012-megawatt-charging-mcs/"><div class="d">다음 노트 →</div><div class="t">메가와트 충전(MCS)이란? 전기트럭을 30분 만에 채우는 충전 규격</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
