@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>메가와트 충전(MCS)이란? 전기트럭을 30분 만에 채우는 충전 규격 | Field Notes · MakeField AI</title>
+<meta name="description" content="한 줄 요약: 메가와트 충전(MCS)은 대형 전기트럭용 충전 규격으로, 최대 3.75MW(1,250V·3,000A 직류)까지 설계됐고 국제 기술사양 IEC TS 63379가 2026년 1월 발행됐습니다(IEC 웹스토어 2026-01, EV Infrastructure News 2">
+<link rel="canonical" href="https://makefield.ai/blog/20261012-megawatt-charging-mcs/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="메가와트 충전(MCS)이란? 전기트럭을 30분 만에 채우는 충전 규격 | Field Notes · MakeField AI">
+<meta property="og:description" content="한 줄 요약: 메가와트 충전(MCS)은 대형 전기트럭용 충전 규격으로, 최대 3.75MW(1,250V·3,000A 직류)까지 설계됐고 국제 기술사양 IEC TS 63379가 2026년 1월 발행됐습니다(IEC 웹스토어 2026-01, EV Infrastructure News 2">
+<meta property="og:url" content="https://makefield.ai/blog/20261012-megawatt-charging-mcs/">
+<meta property="og:image" content="https://makefield.ai/blog/20261012-megawatt-charging-mcs/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "메가와트 충전(MCS)이란? 전기트럭을 30분 만에 채우는 충전 규격", "datePublished": "2026-10-12", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261012-megawatt-charging-mcs/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-10-12</span></div>
+<h1>메가와트 충전(MCS)이란? 전기트럭을 30분 만에 채우는 충전 규격</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="타이틀카드 — &quot;메가와트 충전(MCS)이란? / 전기트럭을 30분 만에 채우는 충전 규격&quot;" loading="lazy">
+<p><strong>한 줄 요약: 메가와트 충전(MCS)은 대형 전기트럭용 충전 규격으로, 최대 3.75MW(1,250V·3,000A 직류)까지 설계됐고 국제 기술사양 IEC TS 63379가 2026년 1월 발행됐습니다(IEC 웹스토어 2026-01, EV Infrastructure News 2026-04).</strong> 승용차 급속충전의 수 배에 이르는 전기를 꽂아, 큰 배터리를 단 트럭도 운전기사 휴식 시간 안에 20%에서 80%까지 채우는 게 목표예요.</p>
+<p>전기 승용차는 이미 흔하지만, 고속도로를 달리는 대형 화물트럭은 아직 거의 경유차입니다. 가장 큰 걸림돌은 &quot;그 큰 배터리를 어디서, 얼마나 빨리 채우나&quot;였어요. 2026년 10월 기준으로 이 문제를 풀려는 충전 규격이 무엇이고, 그 사이 돈이 어디로 흐르는지 쉽게 풀어볼게요.</p>
+<h2>1. 메가와트 충전(MCS)이란 무엇인가요</h2>
+<p><strong>MCS(메가와트 충전 시스템)란 대형 트럭·버스를 위해 만든 초고출력 직류 충전 규격이다.</strong> 충전 커넥터·케이블·차량 쪽 충전구 모양부터 안전·발열 관리까지 정해 둔 &#x27;공통 플러그 규칙&#x27;이에요.</p>
+<blockquote>💡 MCS(Megawatt Charging System) — &#x27;메가와트급으로 충전하는 시스템&#x27;. 1메가와트(MW)는 1,000킬로와트(kW)다.</blockquote>
+<blockquote>💡 직류(DC) — 한 방향으로만 흐르는 전기. 배터리는 직류로만 채울 수 있어서, 급속충전기는 직류로 바꿔서 바로 넣어 준다.</blockquote>
+<p>얼마나 센지는 승용차 급속충전(CCS)과 비교하면 잘 보여요.</p>
+<blockquote>💡 CCS — 지금 전기 승용차가 고속도로 급속충전에 주로 쓰는 규격.</blockquote>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>승용차 급속충전(CCS)</th><th>MCS</th></tr></thead><tbody><tr><td>주 사용 차량</td><td>승용차</td><td>대형 트럭·버스</td></tr><tr><td>출력</td><td>보통 50~400kW</td><td>설계 최대 3.75MW(지금 설치분은 약 1~1.4MW대)</td></tr><tr><td>전압·전류</td><td>—</td><td>최대 1,250V·3,000A(직류)</td></tr><tr><td>국제 사양</td><td>기존 표준</td><td>IEC TS 63379(2026-01 발행)</td></tr></tbody></table></div>
+<p>(출처: EV Infrastructure News 2026-04, IEC 웹스토어 2026-01, Milence·Fraunhofer ISI 2025)</p>
+<img src="img/02_.png" alt="가로 막대 비교. 위 막대 &#x27;승용차 급속충전 CCS 50~400kW&#x27;는 짧은 잉크 막대, 아래 막대 &#x27;MCS 설계 최대 3.75MW&#x27;는 긴 잉크 막대에 &#x27;지금 설치분 1~1.4MW&#x27; 구간을 진하게 표시. 오른쪽 빨간 손글씨 &#x27;약 10배&#x27;. 하단 캡션 &#x27;같은 직류 충전, 다른 체급&#x27;" loading="lazy">
+<p>IEC 웹스토어에 따르면 이 사양은 직류 1,500V 이하, 3,000A 이하의 커넥터·케이블을 다루고, 업계 단체 CharIN이 2026년 2월 공식 발행을 알렸어요(IEC 웹스토어 2026-01, CharIN 2026-02). 다만 &#x27;기술 사양(TS)&#x27;은 정식 국제표준 직전 단계라는 점도 기억해 둘 만합니다.</p>
+<blockquote>💡 IEC TS — 국제전기기술위원회(IEC)가 내는 &#x27;기술 사양&#x27;. 정식 표준(IS)이 되기 직전의 공식 문서.</blockquote>
+<blockquote>💡 CharIN — 전기차 충전 규격을 함께 만드는 자동차·충전기 업계 연합체.</blockquote>
+<h2>2. 왜 지금 메가와트 충전이 필요해졌나요</h2>
+<p><strong>대형 트럭은 배터리가 승용차보다 훨씬 커서, 기존 급속충전기로는 운전기사 휴식 시간 안에 다 채울 수 없기 때문이다.</strong> 유럽 화물차 기사는 4시간 반 운전하면 최소 45분을 쉬어야 해요(EU 집행위원회, 운전시간 규정 561/2006 요약). 이 45분 안에 충전을 끝내야 트럭이 경유차처럼 쉬지 않고 일할 수 있습니다.</p>
+<p>트럭 제조사들이 내놓은 숫자가 바로 이 시간에 맞춰져 있어요. 다임러 트럭은 eActros 600이 MCS로 20%→80%를 약 30분, 볼보는 FH Aero Electric이 약 40분에 충전한다고 밝혔습니다(EV Infrastructure News 2026-04, 제조사 발표 인용). 독일 첫 공공 MCS 충전소 개통 때 프라운호퍼 연구소 측은 &quot;대형 트럭을 30~45분 만에 수백 km 달릴 만큼 충전할 수 있게 됐다&quot;고 설명했어요(Fraunhofer ISI 2025-09).</p>
+<blockquote>💡 SOC(충전 상태) — 배터리가 몇 % 차 있는지를 나타내는 값. 휴대폰 배터리 잔량 표시와 같다.</blockquote>
+<p>규제도 수요를 밀어 올립니다. EU 대체연료 인프라 규정(AFIR)은 2030년까지 핵심 도로망에 <strong>60km마다 총 3,600kW 이상의 트럭 충전소(350kW 이상 충전기 2기 포함)</strong>를 두도록 했어요(Transport Community AFIR 요약표, 2023-10).</p>
+<blockquote>💡 AFIR — EU가 고속도로·도시에 충전소를 의무로 깔게 한 규정. &#x27;주유소 간격&#x27;을 법으로 정한 셈.</blockquote>
+<h2>3. 돈의 흐름 — 누가 사고, 누가 파나요</h2>
+<p><strong>사는 쪽은 충전 사업자와 물류 회사, 파는 쪽은 충전기·부품 제조사이고, 초기 구축에는 정부 보조금이 크게 들어간다.</strong> 구조를 표로 정리했어요.</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>누가(예시)</th><th>무엇을 하나</th></tr></thead><tbody><tr><td>돈을 대는 쪽(공공)</td><td>EU, 독일 연방 교통부</td><td>충전망 구축 보조금</td></tr><tr><td>사는 쪽(충전 사업자)</td><td>Milence, EnBW, 테슬라</td><td>고속도로·물류 거점에 충전소 설치·운영</td></tr><tr><td>쓰는 쪽(요금 지불)</td><td>운송·물류 회사</td><td>충전 요금 지불</td></tr><tr><td>파는 쪽(장비)</td><td>ABB E-mobility, Kempower, Siemens 등</td><td>MCS 충전기 제조</td></tr><tr><td>파는 쪽(부품)</td><td>파워모듈·커넥터 업체</td><td>충전기 속 전력변환 모듈, 커넥터·케이블</td></tr></tbody></table></div>
+<img src="img/03_.png" alt="4단 돈 흐름도. 맨 위 &#x27;EU·정부 보조금&#x27; 박스 → 아래 &#x27;충전 사업자(설치·운영)&#x27; 박스로 화살표 &#x27;구축비 지원&#x27;. 옆에서 &#x27;운송·물류 회사&#x27; 박스가 &#x27;충전 요금&#x27; 화살표로 충전 사업자에게 연결. 충전 사업자 → 아래 &#x27;충전기 제조사&#x27; 박스로 &#x27;장비 구매&#x27; 화살표, 다시 그 아래 &#x27;파워모듈·커넥터&#x27; 박스로 &#x27;부품 구매&#x27; 화살표. 오른쪽 빨간 손글씨 메모 &#x27;많이 써야 본전&#x27;. 하단 캡션 &#x27;보조금이 첫 삽, 이용률이 수익&#x27;" loading="lazy">
+<p>규모를 숫자로 보면 이래요.</p>
+<ul><li><strong>EU 보조금</strong>: 트럭 충전 합작사 Milence는 EU 대체연료 인프라 지원 사업에서 <strong>최대 1억 1,154만 유로</strong>를 받아, 10개국 71곳에 MCS 충전 지점 284개와 CCS 264개를 2027년 말까지 짓기로 했어요(Milence 2025-02).</li><li><strong>트럭 회사가 직접 충전 사업에</strong>: Milence의 주주는 다임러 트럭·트라톤 그룹·볼보 그룹이에요(Milence 2025-02). 트럭을 파는 회사들이 &#x27;충전소가 없어서 안 팔리는&#x27; 문제를 직접 풀러 나선 거죠.</li><li><strong>독일 시범</strong>: 독일 HoLa 프로젝트는 연방 교통부 지원 <strong>1,200만 유로</strong>로 고속도로 4곳에 MCS를 깔고 있고, 첫 곳(A2 고속도로 립퍼란트 쥐트)은 ABB 장비·EnBW 운영으로 1.2MW급이에요(Fraunhofer ISI 2025-09).</li><li><strong>장비 시장</strong>: 한 시장조사 보고서는 트럭용 MCS 장비 시장이 2025년 약 1억 7,510만 달러에서 2035년 약 28억 8,000만 달러로 연평균 29.6% 커질 것으로 봤어요(Global Market Insights 2026-09, <strong>추정</strong>). 같은 보고서는 ABB E-mobility·Kempower·Siemens·Stäubli·Cavotec 5개사가 2025년 시장의 57.7%를 차지했다고 집계했습니다.</li></ul>
+<blockquote>💡 연평균 성장률(CAGR) — 매년 평균 몇 %씩 커지는지 나타낸 값.</blockquote>
+<blockquote>💡 파워모듈 — 전력망의 교류 전기를 배터리용 직류로 바꿔 주는 충전기 속 핵심 부품. 레고 블록처럼 여러 개를 묶어 출력을 키운다.</blockquote>
+<p>한국 기업은 주로 부품 쪽에서 보입니다. 솔루엠은 파워모듈을 넣어 공동 개발한 충전 플랫폼이 한 캐비닛에서 50kW부터 최대 1.6MW까지 늘릴 수 있고 MCS도 지원하며, 포르투갈에 첫 상용 출하를 했다고 밝혔어요(디지털데일리 2026-07).</p>
+<blockquote>※ 위 기업명은 산업 구조를 설명하기 위한 예시입니다. 특정 종목의 매수·매도를 권하는 글이 아닙니다.</blockquote>
+<h2>4. 어디까지 깔렸나요 — 유럽·미국·한국</h2>
+<p><strong>유럽은 보조금 기반 공공 충전망, 미국은 테슬라 중심의 자체 충전망, 한국은 2028년 1MW급 목표 단계다.</strong></p>
+<div class="table-wrap"><table><thead><tr><th>지역</th><th>현황</th><th>출처</th></tr></thead><tbody><tr><td>독일</td><td>2025-09-29 첫 공공 MCS 충전소 개통(1.2MW)</td><td>Fraunhofer ISI 2025-09</td></tr><tr><td>유럽 10개국</td><td>71곳·MCS 284개 구축 중(2027년 말 목표)</td><td>Milence 2025-02</td></tr><tr><td>미국</td><td>테슬라, 2026-03 고객용 첫 메가차저 개통(초기 750kW 제한, 최대 1.2MW), 15개 주 66곳 계획</td><td>Electrek 2026-03</td></tr><tr><td>한국</td><td>급속충전기를 지금의 350kW급에서 단계적으로 높여 2028년까지 1MW 이상으로 끌어올리는 계획</td><td>전자신문 2025-05</td></tr></tbody></table></div>
+<p>한국 계획에서 눈여겨볼 대목은 설비 구조예요. 환경부는 충전소 운영 효율을 위해 일체형 대신 &#x27;파워뱅크-디스펜서 분리 구조&#x27;로 개발하고, 한전 인입 비용과 기본요금 부담 때문에 부하를 나눠 쓰는 관리 기술이 필요하다고 봤습니다(전자신문 2025-05).</p>
+<blockquote>💡 파워뱅크-디스펜서 분리 — 전기를 만드는 큰 장치(파워뱅크)는 한 곳에 두고, 운전자가 잡는 충전 기둥(디스펜서)만 여러 개 세우는 방식. 주유소의 지하탱크와 주유기처럼.</blockquote>
+<blockquote>💡 기본요금 — 실제로 쓴 양과 상관없이 &#x27;이만큼까지 쓸 수 있게 해 달라&#x27;고 계약한 용량에 매달 붙는 전기요금.</blockquote>
+<h2>5. 언제 오나요, 그리고 한계</h2>
+<p><strong>규격과 첫 충전소는 2026년에 갖춰졌지만, 대규모 보급은 전력망 연결과 이용률이라는 두 벽을 넘어야 한다.</strong> 낙관만 할 수 없는 근거도 같이 볼게요.</p>
+<ul><li><strong>메가와트가 다가 아니다</strong>: 국제청정교통위원회(ICCT)는 2030년 EU 전기트럭에 22~28GW의 충전 용량이 필요하다고 보면서도, MCS급 충전기는 <strong>전체 충전 용량의 약 15%, 충전기 수로는 약 2%(4,000~5,300기)</strong>에 그칠 것으로 봤어요. 대부분은 밤사이 차고지 충전이고, 장거리 트럭의 공공 급속충전도 절반 이상은 350kW급으로 감당할 수 있다는 분석입니다(electrive 2025-10, ICCT 연구 요약).</li><li><strong>규제만으로는 모자란다</strong>: 같은 분석에서 AFIR가 2030년 EU 공공 충전 수요의 50~70%만 채울 것으로 나왔어요(electrive 2025-10).</li><li><strong>전기를 끌어오는 일</strong>: 한국 계획에서도 한전 인입 비용과 기본요금이 첫 과제로 꼽혔어요(전자신문 2025-05). 메가와트급 충전소 한 곳이 작은 공장만큼 전기를 당기기 때문입니다.</li><li><strong>출력 제한 운영</strong>: 테슬라의 첫 고객용 메가차저도 하드웨어는 1.2MW까지 되지만 초기엔 750kW로 제한해 열었어요(Electrek 2026-03).</li></ul>
+<p>정리하면, &#x27;규격 확정 → 시범 충전소 → 고속도로 충전망&#x27; 순서에서 유럽은 세 번째 단계로 넘어가는 중이고, 한국은 첫 번째와 두 번째 사이에 있어요. 2027년 말 Milence 충전망 완공과 2028년 국내 1MW 목표가 다음 확인 지점입니다(추정).</p>
+<img src="img/04_.png" alt="왼쪽→오른쪽 타임라인. &#x27;2025-09 독일 첫 공공 MCS(1.2MW)&#x27; → &#x27;2026-01 IEC TS 63379 발행&#x27; → &#x27;2026-03 미국 고객용 첫 메가차저&#x27; → &#x27;2027 말 유럽 71곳 목표&#x27; → &#x27;2028 한국 1MW 목표&#x27;. 앞 세 점 초록(완료), 뒤 두 점 빈 잉크 원(예정). 아래 빨간 박스 두 개 &#x27;전력망 연결·기본요금&#x27;, &#x27;이용률이 낮으면 적자&#x27;와 손글씨 &#x27;보급까지 넘어야 할 두 벽&#x27;. 하단 캡션 &#x27;규격은 왔고, 남은 건 전기와 손님&#x27;" loading="lazy">
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. MCS 충전기로 승용차도 충전할 수 있나요?</strong><br>
+MCS는 커넥터 모양부터 대형 차량용으로 따로 만든 규격이라, 승용차 충전구(CCS)와는 플러그가 달라요(IEC 웹스토어 2026-01). 그래서 Milence처럼 한 충전소에 MCS와 CCS를 함께 두는 곳이 많습니다(Milence 2025-02).</p>
+<p><strong>Q. 3.75MW 충전기가 실제로 있나요?</strong><br>
+3.75MW는 규격이 허용하는 설계 최대치예요. 이 글에서 확인한 실제 설치 사례는 1.2MW(독일 립퍼란트, 테슬라 메가차저 하드웨어)와 1.44MW(Milence 앤트워프-브뤼헤 항)급입니다(Fraunhofer ISI 2025-09, Electrek 2026-03, EV Infrastructure News 2026-04).</p>
+<p><strong>Q. 한국에서는 언제 쓸 수 있나요?</strong><br>
+환경부는 2028년까지 1MW 이상 충전기를 단계적으로 공급하겠다고 밝혔어요(전자신문 2025-05). 이번에 확인한 출처로는 국내 공공 MCS 충전소가 이미 개통됐는지는 확인되지 않았습니다.</p>
+<h2>오늘의 용어 정리</h2>
+<ul><li><strong>MCS(메가와트 충전 시스템)</strong> — 대형 트럭·버스용 초고출력 직류 충전 규격</li><li><strong>MW(메가와트)</strong> — 1,000kW</li><li><strong>직류(DC)</strong> — 한 방향으로 흐르는 전기, 배터리 충전에 쓰는 형태</li><li><strong>CCS</strong> — 전기 승용차 급속충전 규격</li><li><strong>IEC TS</strong> — 정식 국제표준 직전 단계의 기술 사양</li><li><strong>CharIN</strong> — 충전 규격을 만드는 업계 연합체</li><li><strong>SOC(충전 상태)</strong> — 배터리 잔량(%)</li><li><strong>AFIR</strong> — EU 충전소 의무 설치 규정</li><li><strong>CAGR</strong> — 연평균 성장률</li><li><strong>파워모듈</strong> — 교류를 직류로 바꾸는 충전기 속 부품</li><li><strong>파워뱅크-디스펜서 분리</strong> — 전력 장치는 한 곳, 충전 기둥은 여러 곳에 두는 구조</li><li><strong>기본요금</strong> — 계약 용량에 매달 붙는 전기요금</li></ul>
+<p>지난 Next Field에서는 AI 데이터센터에 전기를 넣는 길목(800V 직류 배선, 변압기 부족)을 다뤘는데, 이번엔 같은 &#x27;대전력 직류&#x27;가 도로 위 트럭으로 옮겨 가는 이야기였어요. 여러분은 대형 트럭 전동화의 진짜 병목이 충전기일까요, 전기를 끌어오는 전력망일까요?</p>
+<h2>출처</h2>
+<p><strong>[1] IEC 웹스토어(2026-01)</strong> — IEC TS 63379 발행일(2026-01-28), 적용 범위(직류 1,500V·3,000A 이하 커넥터·케이블)<br>
+→ <a href="https://webstore.iec.ch/en/publication/67975" target="_blank" rel="noopener">https://webstore.iec.ch/en/publication/67975</a></p>
+<p><strong>[2] CharIN(2026-02)</strong> — IEC TS 63379 공식 발행 발표<br>
+→ <a href="https://www.charin.global/news/iec-ts-63379-for-megawatt-charging-system-mcs/" target="_blank" rel="noopener">https://www.charin.global/news/iec-ts-63379-for-megawatt-charging-system-mcs/</a></p>
+<p><strong>[3] EV Infrastructure News(2026-04)</strong> — MCS 설계 최대 3.75MW·1,250V·3,000A, CCS 출력 비교, 제조사별 20→80% 충전 시간, 앤트워프-브뤼헤 1.44MW<br>
+→ <a href="https://www.evinfrastructurenews.com/ev-fleet-charging/megawatt-charging-for-trucks-the-complete-guide-to-mcs-charging-infrastructure-in-2026" target="_blank" rel="noopener">https://www.evinfrastructurenews.com/ev-fleet-charging/megawatt-charging-for-trucks-the-complete-guide-to-mcs-charging-infrastructure-in-2026</a></p>
+<p><strong>[4] Milence(2025-02)</strong> — EU 보조금 1억 1,154만 유로, 10개국 71곳 MCS 284·CCS 264, 2027년 말 완료, 주주 구성<br>
+→ <a href="https://milence.com/newsroom/milence-was-selected-for-over-e111-million-in-eu-funding-to-accelerate-the-development-of-charging-infrastructure-and-create-europes-electric-corridors/" target="_blank" rel="noopener">https://milence.com/newsroom/milence-was-selected-for-over-e111-million-in-eu-funding-to-accelerate-the-development-of-charging-infrastructure-and-create-europes-electric-corridors/</a></p>
+<p><strong>[5] Fraunhofer ISI(2025-09)</strong> — 독일 첫 공공 MCS 충전소 개통(1.2MW), HoLa 1,200만 유로·4곳, 30~45분 충전 발언<br>
+→ <a href="https://www.isi.fraunhofer.de/en/presse/2025/presseinfo-16-megawattladen-hochleistungsladepunkt-e-lkw.html" target="_blank" rel="noopener">https://www.isi.fraunhofer.de/en/presse/2025/presseinfo-16-megawattladen-hochleistungsladepunkt-e-lkw.html</a></p>
+<p><strong>[6] electrive(2025-10)</strong> — ICCT 연구 요약: 2030년 22~28GW, MCS급 충전기 4,000~5,300기(용량 15%·수량 2%), 350kW로 절반 이상 감당, AFIR 수요 충족률 50~70%<br>
+→ <a href="https://www.electrive.com/2025/10/09/icct-study-shows-5300-mcs-chargers-in-the-eu-sufficient-for-electric-trucks" target="_blank" rel="noopener">https://www.electrive.com/2025/10/09/icct-study-shows-5300-mcs-chargers-in-the-eu-sufficient-for-electric-trucks</a></p>
+<p><strong>[7] Transport Community AFIR 요약표(2023-10)</strong> — 2030년 핵심망 60km마다 트럭 충전소 3,600kW(350kW 2기)<br>
+→ <a href="https://www.transport-community.org/wp-content/uploads/2023/10/TABLE-AFIR-EN-version.pdf" target="_blank" rel="noopener">https://www.transport-community.org/wp-content/uploads/2023/10/TABLE-AFIR-EN-version.pdf</a></p>
+<p><strong>[8] EU 집행위원회(운전시간·휴식 규정 안내)</strong> — 4시간 반 운전 후 최소 45분 휴식<br>
+→ <a href="https://transport.ec.europa.eu/transport-modes/road/social-provisions/driving-time-and-rest-periods_en" target="_blank" rel="noopener">https://transport.ec.europa.eu/transport-modes/road/social-provisions/driving-time-and-rest-periods_en</a></p>
+<p><strong>[9] Electrek(2026-03)</strong> — 테슬라 첫 고객용 메가차저 개통, 초기 750kW 제한·최대 1.2MW, 15개 주 66곳 계획<br>
+→ <a href="https://electrek.co/2026/03/08/tesla-opens-first-megacharger-ontario-california-semi-customers/" target="_blank" rel="noopener">https://electrek.co/2026/03/08/tesla-opens-first-megacharger-ontario-california-semi-customers/</a></p>
+<p><strong>[10] 전자신문(2025-05)</strong> — 환경부 급속충전기 350kW급→2028년 1MW 이상 단계적 상향 계획, 파워뱅크-디스펜서 분리 구조, 한전 인입비·기본요금 과제<br>
+→ <a href="https://www.etnews.com/20250509000200" target="_blank" rel="noopener">https://www.etnews.com/20250509000200</a></p>
+<p><strong>[11] 디지털데일리(2026-07)</strong> — 솔루엠 파워모듈 적용 충전 플랫폼, 50kW~1.6MW 확장·MCS 지원, 포르투갈 첫 출하<br>
+→ <a href="https://www.ddaily.co.kr/page/view/2026072110220126760" target="_blank" rel="noopener">https://www.ddaily.co.kr/page/view/2026072110220126760</a></p>
+<p><strong>[12] Global Market Insights(2026-09)</strong> — 트럭용 MCS 시장 2025년 1억 7,510만 달러→2035년 28억 8,000만 달러(연 29.6%, 추정), 상위 5개사 점유율 57.7%<br>
+→ <a href="https://www.gminsights.com/industry-analysis/truck-megawatt-charging-system-market" target="_blank" rel="noopener">https://www.gminsights.com/industry-analysis/truck-megawatt-charging-system-market</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224438481739" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261011-zoho-free-smtp-domain-mail/"><div class="d">← 이전 노트</div><div class="t">Zoho 메일 무료 SMTP 안 돼요, 도메인 메일 옮기기 전에 멈춘 이유</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
