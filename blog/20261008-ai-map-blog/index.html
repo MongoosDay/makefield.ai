@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>클로드 코드 사용량 조회, 숫자 말고 7개월 기록을 지도로 그려봤더니 | Field Notes · MakeField AI</title>
+<meta name="description" content="클로드 코드 사용량은 /usage 한 줄이면 보여요. 그런데 &#x27;얼마나&#x27; 썼는지는 보여도, &#x27;어디에&#x27; 썼는지는 안 보이더라고요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261008-ai-map-blog/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="클로드 코드 사용량 조회, 숫자 말고 7개월 기록을 지도로 그려봤더니 | Field Notes · MakeField AI">
+<meta property="og:description" content="클로드 코드 사용량은 /usage 한 줄이면 보여요. 그런데 &#x27;얼마나&#x27; 썼는지는 보여도, &#x27;어디에&#x27; 썼는지는 안 보이더라고요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261008-ai-map-blog/">
+<meta property="og:image" content="https://makefield.ai/blog/20261008-ai-map-blog/img/01_dashboard.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "클로드 코드 사용량 조회, 숫자 말고 7개월 기록을 지도로 그려봤더니", "datePublished": "2026-10-08", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261008-ai-map-blog/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">자동화 만들기</span><span>2026-10-08</span></div>
+<h1>클로드 코드 사용량 조회, 숫자 말고 7개월 기록을 지도로 그려봤더니</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_dashboard.png" alt="img_1_dashboard_v2.png — 공개판 AI 활용 지도 전체 화면" loading="lazy">
+<p><strong>클로드 코드 사용량은 /usage 한 줄이면 보여요. 그런데 &#x27;얼마나&#x27; 썼는지는 보여도, &#x27;어디에&#x27; 썼는지는 안 보이더라고요.</strong></p>
+<p>그래서 7개월 동안 AI와 쌓은 기록 2,377건을 지도로 그려봤어요. 올해 셋째가 태어났는데, &#x27;육아&#x27;가 나온 기록은 3건이었습니다. 38초 영상으로 먼저 보여드릴게요.</p>
+<h2>1. 클로드 코드 사용량 조회: /usage로 &#x27;얼마나&#x27;는 보여요</h2>
+<p>클로드 코드 터미널에서 /usage를 입력하면 지금 세션의 토큰 사용량과 예상 비용이 나와요(API 키 사용자 기준). Pro·Max 같은 구독 요금제라면 같은 화면에 플랜 사용량 막대와 활동 통계, 그리고 스킬·서브에이전트·MCP 서버가 사용량에서 차지한 비중까지 보여요. d와 w 키로 최근 24시간과 최근 7일을 바꿔 볼 수 있고요.</p>
+<p>/insights라는 명령도 있어요. 최근 세션을 분석해서 무슨 일을 했는지, 어디서 헛돌았는지를 HTML 리포트로 만들어 줘요.</p>
+<p>다만 둘 다 이 PC의 최근 기록 기준이에요. 기본 설정이면 30일 지난 기록은 지워지고요. 7개월 동안 내가 AI를 어디에 쓰고, 어디엔 안 썼는지는 이걸로는 안 보였어요.</p>
+<h2>2. 그래서 지도를 그렸어요</h2>
+<p>요즘 직장인 대부분이 업무에 AI를 쓴다고 하죠. 그런데 &quot;내가 AI를 어디에 쓰고, 어디엔 안 쓰고 있나?&quot;를 보여주는 건 거의 없어요.</p>
+<p>OpenAI가 공개한 연구를 보면 ChatGPT 메시지의 73%는 일과 무관하고, 약 77%가 실용 안내·정보 검색·글쓰기 세 가지에 몰려 있어요. 프로그래밍은 4.2%뿐이고요(OpenAI·NBER, 2025).</p>
+<p>그럼 제조 현장에서 15년 일한 엔지니어인 나는 어디에 쓰고 있을까? 숫자 결산이 아니라, <strong>어디에 쓰고 어디가 비었는지 한눈에 보이는 그림</strong>이 필요했어요.</p>
+<p>재료는 두 가지예요.</p>
+<ul><li>클로드 코드(Claude Code) 세션 로그: 제가 AI에게 보낸 질문</li><li>작업 기록 파일: 작업이 끝날 때마다 AI가 남겨온 기록</li></ul>
+<h2>3. 지도 읽는 법</h2>
+<img src="img/02_map_full.png" alt="img_2_map_full_v2.png — 영역별 색 군집이 이어진 전체 지도" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>요소</th><th>의미</th></tr></thead><tbody><tr><td>큰 원 (색깔별)</td><td>일의 영역 — 업무·블로그·책·투자 등 9개. 클수록 AI와 그 일을 많이 함</td></tr><tr><td>작은 원</td><td>키워드, 크기 = 그 키워드가 나온 기록 수</td></tr><tr><td>선</td><td>같은 기록에 함께 나온 키워드 (빛이 흐르는 선 = 영역에서 자주 나온 말)</td></tr><tr><td>흰 원</td><td>AI가 쓴 도구</td></tr></tbody></table></div>
+<p>분류는 영역마다 키워드 사전을 만들어 맞췄어요. 처음엔 &#x27;기타&#x27;가 30%나 나왔는데, &quot;그래 진행해&quot; 같은 후속 대화에 키워드가 없어서였어요. 같은 세션의 직전 주제를 이어받게 바꾸자 기타가 2%로 줄었습니다.</p>
+<h2>4. 7개월 2,377건, AI를 어디에 썼나</h2>
+<img src="img/03_zoom_eng.png" alt="img_3_zoom_eng_v2.png — 가장 큰 영역 &#x27;설비 제어·설계&#x27; 확대(PLC·HMI·도면·IO)" loading="lazy">
+<p>2026년 3월 19일부터 10월 7일까지 작업 기록 1,113건과 직접 질문 1,264건, 합쳐서 2,377건이에요. 한 건마다 가장 많이 걸린 영역 하나로 셌어요.</p>
+<div class="table-wrap"><table><thead><tr><th>순위</th><th>영역</th><th>건수</th><th>비중</th></tr></thead><tbody><tr><td>1</td><td>설비 제어·설계</td><td>723</td><td>30.4%</td></tr><tr><td>2</td><td>AI 시스템 구축</td><td>505</td><td>21.2%</td></tr><tr><td>3</td><td>업무 문서·보고</td><td>316</td><td>13.3%</td></tr><tr><td>4</td><td>블로그</td><td>277</td><td>11.7%</td></tr><tr><td>5</td><td>책 출간</td><td>178</td><td>7.5%</td></tr><tr><td>6</td><td>투자·생활</td><td>131</td><td>5.5%</td></tr><tr><td>7</td><td>커리어·자기분석</td><td>124</td><td>5.2%</td></tr></tbody></table></div>
+<p>본업이 1등인 건 예상대로였어요. 의외는 2등이에요. <strong>AI를 잘 쓰려고 AI 시스템(에이전트·기억 장치·자동화)을 만드는 데 5분의 1을 썼더라고요.</strong> 도구를 위한 도구.. 엔지니어 병이죠.</p>
+<img src="img/04_zoom_system.png" alt="img_4_zoom_system_v2.png — &#x27;AI 시스템 구축&#x27; 영역 확대" loading="lazy">
+<h2>5. 육아 3건·건강 34건, AI를 안 쓰는 곳</h2>
+<img src="img/05_life_gap.png" alt="map_life_gap.png — 투자·생활 영역 확대, &#x27;육아&#x27; 키워드에 표시" loading="lazy">
+<p>이번엔 키워드 하나하나가 나온 기록 수를 봤어요.</p>
+<div class="table-wrap"><table><thead><tr><th>키워드</th><th>기록 수</th></tr></thead><tbody><tr><td>PLC</td><td>224</td></tr><tr><td>도면</td><td>133</td></tr><tr><td>HMI</td><td>130</td></tr><tr><td>건강</td><td>34</td></tr><tr><td>가족</td><td>11</td></tr><tr><td>육아</td><td>3</td></tr></tbody></table></div>
+<p><strong>정작 요즘 제가 챙겨야 할 건 육아와 건강인데, 지도에선 점 하나 크기였어요.</strong> 투자·생활 영역 전체가 5.5%고, 그 안에서도 육아는 거의 보이지 않아요.</p>
+<p>AI가 일을 못 도와줘서가 아니라, 제가 그쪽으로 AI를 데려간 적이 없었던 거죠. 많이 쓴 곳과 지금 가야 할 곳은 다를 수 있다는 걸, 지도를 그리기 전엔 몰랐어요.</p>
+<h2>6. 만들면서 밟은 함정 두 개</h2>
+<p>첫째, 활동일이 35~40일밖에 안 나왔어요. 원인은 <strong>클로드 코드가 대화 로그를 기본 30일 뒤 자동 삭제</strong>하는 설정이었어요(공식 문서: &quot;for 30 days by default&quot;). 오래된 건 작업 기록 파일로 채우고, 앞으로는 지우지 않게 설정을 늘렸어요. 직접 질문이 8월 중순부터만 잡힌 이유도 이거예요.</p>
+<pre><code>// ~/.claude/settings.json
+{ &quot;cleanupPeriodDays&quot;: 3650 }</code></pre>
+<p>둘째, 영역 비중 합계가 100%를 넘었어요. 작업 기록을 합친 뒤에도 분모를 &#x27;질문 수&#x27;로 두고 있었던 거죠. 분모를 전체 건수로 고쳤어요.</p>
+<p>공개용으로 바꿀 때는 회사·고객사 이름과 프로젝트 규모처럼 <strong>남의 정보만</strong> 지도에서 빼고, 나머지 키워드는 그대로 뒀어요. 지도를 공유하실 분들은 이 단계를 꼭 넣으세요.</p>
+<h2>7. /insights·연말 결산과 뭐가 다른가요</h2>
+<p>ChatGPT도 2025년 12월 &#x27;Your Year with ChatGPT&#x27;라는 연말 결산을 냈어요. 다만 일부 영어권 국가 대상이고, 메모리와 대화 기록 참조를 켜야 볼 수 있어요(OpenAI 도움말).</p>
+<p>/insights와 연말 결산은 최근 또는 1년을 정리해 주는 리포트예요. 이 지도는 7개월 기록을 한 장에 놓고 <strong>어디가 비어 있는지</strong>를 봐요. 어떤 영역이 서로 이어지는지, 그리고 어디에 길이 없는지요.</p>
+<p><strong>Q. 클로드 코드가 아니어도 만들 수 있나요?</strong><br>
+재료만 있으면 돼요. ChatGPT와 Claude 웹 모두 설정에서 대화 데이터 내보내기를 지원해요(Claude는 메일 링크, 유효 24시간).</p>
+<p><strong>Q. 분류는 AI가 자동으로 하나요?</strong><br>
+아니요. 영역별 키워드 사전을 제가 정했어요. 사전에 없는 주제는 &#x27;기타&#x27;로 빠지니, 아직 손이 가요.</p>
+<p>정리하면, /usage는 &#x27;얼마나&#x27;를, 지도는 &#x27;어디에&#x27;를 보여줘요. 그리고 지도는 어디 있는지보다 <strong>어디로 가야 할지 알려주는 이정표</strong>였어요. 지도에 그려진 길은 지나온 길이고, 지도에 없는 길이 제가 살필 길이었습니다.</p>
+<p>당신의 AI는 지금 어디로 가고 있나요? <strong>내 대화 기록으로 그린 지도가 궁금하다면 댓글로 &#x27;지도&#x27;라고 남겨주세요.</strong> 반응을 보고 다음 글에서 직접 만드는 방법을 정리해 볼게요.</p>
+<h2>출처</h2>
+<ul><li>OpenAI·NBER, How People Use ChatGPT (Working Paper 34255) (nber.org/papers/w34255)</li><li>Claude Code 공식 문서, Manage costs effectively (/usage·/insights) (code.claude.com/docs/en/costs)</li><li>Claude Code 공식 문서, Explore the .claude directory (세션 기록 기본 30일 보관, cleanupPeriodDays) (code.claude.com/docs/en/claude-directory)</li><li>OpenAI 도움말, Your Year with ChatGPT FAQs (help.openai.com/en/articles/20001042)</li><li>Claude 도움말, How can I export my Claude data? (support.claude.com/en/articles/9450526)</li></ul>
+<p>태그: #클로드코드사용량 #클로드코드 #AI대화기록분석 #AI활용지도 #AI사용패턴 #ClaudeCode #ChatGPT사용통계 #대화기록시각화 #업무자동화 #엔지니어AI활용 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224434715899" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261007-claude-code-alt-v-image-paste/"><div class="d">← 이전 노트</div><div class="t">클로드 코드 이미지 붙여넣기 안 될 때, Alt+V가 화면 분할로 새던 이유</div></a><a class="next" href="/blog/20261008-bookk-min-price-page-cut/"><div class="d">다음 노트 →</div><div class="t">부크크 최소정가 계산법, 772쪽 원고를 438쪽으로 줄인 기록</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
