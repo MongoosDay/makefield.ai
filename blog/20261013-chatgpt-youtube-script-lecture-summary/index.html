@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>챗지피티에서 유튜브 스크립트 추출 강의 요약, 영상 말고 자막 텍스트를 넣어야 돼요 | Field Notes · MakeField AI</title>
+<meta name="description" content="챗지피티에서 유튜브 스크립트 추출 강의 요약은 유튜브에서 &#x27;스크립트 표시&#x27;로 자막을 꺼내 TXT 파일로 ChatGPT에 넣고, &quot;요약&quot;이 아니라 &quot;순서와 판단 기준&quot;을 달라고 시키면 됩니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261013-chatgpt-youtube-script-lecture-summary/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="챗지피티에서 유튜브 스크립트 추출 강의 요약, 영상 말고 자막 텍스트를 넣어야 돼요 | Field Notes · MakeField AI">
+<meta property="og:description" content="챗지피티에서 유튜브 스크립트 추출 강의 요약은 유튜브에서 &#x27;스크립트 표시&#x27;로 자막을 꺼내 TXT 파일로 ChatGPT에 넣고, &quot;요약&quot;이 아니라 &quot;순서와 판단 기준&quot;을 달라고 시키면 됩니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261013-chatgpt-youtube-script-lecture-summary/">
+<meta property="og:image" content="https://makefield.ai/blog/20261013-chatgpt-youtube-script-lecture-summary/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "챗지피티에서 유튜브 스크립트 추출 강의 요약, 영상 말고 자막 텍스트를 넣어야 돼요", "datePublished": "2026-10-13", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261013-chatgpt-youtube-script-lecture-summary/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">자동화 만들기</span><span>2026-10-13</span></div>
+<h1>챗지피티에서 유튜브 스크립트 추출 강의 요약, 영상 말고 자막 텍스트를 넣어야 돼요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;챗지피티에서 유튜브 스크립트 추출 강의 요약 / 영상 말고 자막 텍스트를 넣어야 돼요&quot;" loading="lazy">
+<p>챗지피티에서 유튜브 스크립트 추출 강의 요약은 <strong>유튜브에서 &#x27;스크립트 표시&#x27;로 자막을 꺼내 TXT 파일로 ChatGPT에 넣고, &quot;요약&quot;이 아니라 &quot;순서와 판단 기준&quot;을 달라고 시키면</strong> 됩니다.</p>
+<p>OpenAI 도움말 기준(2026년 10월 13일 확인) ChatGPT 업로드 형식에 동영상은 없고, 유튜브 링크를 읽는다는 안내도 없어요. 그래서 확인 가능한 길은 자막을 글로 바꿔 넣는 것 하나예요.</p>
+<p>현장 설비 자동화를 15년째 해 온 엔지니어예요. 영상을 AI 지식으로 옮기는 이유는 <a href="https://blog.naver.com/makefield_ai/224365395274" target="_blank" rel="noopener">예전 글</a>에 썼으니, 오늘은 <strong>ChatGPT 화면에서 어디에 뭘 넣느냐</strong>만 다룰게요.</p>
+<h2>1. 링크만 붙였더니 이런 답이 와요</h2>
+<p>이 검색어로 들어오시는 분들은 대개 이 장면에서 멈춰요.</p>
+<ul><li>유튜브 주소만 붙이고 &quot;이 강의 요약해 줘&quot; → 답은 오는데, <strong>강의 본문을 읽고 쓴 건지 확인할 길이 없다</strong></li><li>영상 파일을 끌어다 놓았더니 <strong>올라가지 않는다</strong></li><li>스크립트를 붙였더니 <strong>매끈한 3줄 요약</strong>만 나와서 막상 쓸 데가 없다</li></ul>
+<p>저도 세 번째에서 걸렸어요. 이건 3절 지시문에서 풉니다.</p>
+<h2>2. 원인: ChatGPT는 영상이 아니라 &#x27;글&#x27;을 읽어요</h2>
+<p><strong>ChatGPT에 강의를 먹이는 확실한 입구는 텍스트예요.</strong> 동영상으로 식별된 MP4·WebM은 오디오 업로드로도 안 받고, 링크 처리 설명도 없으니 링크만 주면 근거를 검증할 수 없어요.</p>
+<p>참고로 저는 이 작업을 ChatGPT가 아니라 제미나이로 처음 했어요. 아래 ChatGPT 쪽 조건은 제가 겪은 게 아니라 OpenAI 도움말 원문으로 확인한 내용입니다.</p>
+<img src="img/02_.png" alt="02_.png ChatGPT에 넣을 수 있는 것 — 왼쪽 &#x27;영상 파일 MP4&#x27; 빨간 X / 가운데 &#x27;유튜브 링크&#x27; 물음표(공식 안내 없음) / 오른쪽 &#x27;TXT·DOCX·PDF 자막 텍스트&#x27; 체크" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>넣는 방법</th><th>공식 근거</th><th>강의 요약에 쓸 만한가</th></tr></thead><tbody><tr><td>영상 파일 업로드</td><td>동영상으로 식별된 MP4·WebM 미지원</td><td>안 됨</td></tr><tr><td>유튜브 링크만 붙이기</td><td>OpenAI 도움말에 안내 없음</td><td>근거 확인 불가</td></tr><tr><td>스크립트를 대화창에 붙여넣기</td><td>텍스트 입력</td><td>짧은 강의는 가장 빠름</td></tr><tr><td>스크립트를 TXT 파일로 첨부</td><td>TXT 지원, 파일당 200만 토큰</td><td>긴 강의에 안정적</td></tr></tbody></table></div>
+<h2>3. 해결: 스크립트 추출부터 강의 요약까지 5단계</h2>
+<p>유튜브 쪽 버튼 위치는 <a href="https://blog.naver.com/makefield_ai/224438232417" target="_blank" rel="noopener">형제 글</a>에 그림으로 정리해 뒀어요. 여기선 ChatGPT까지 한 줄로 이어 볼게요.</p>
+<ol><li>유튜브 영상 아래 <strong>설명란</strong>을 펼치고 <strong>&#x27;스크립트 표시&#x27;</strong>를 누른다. 자막이 있는 영상에서만 나와요(→ <a href="https://support.google.com/youtube/answer/15930243?hl=ko)." target="_blank" rel="noopener">https://support.google.com/youtube/answer/15930243?hl=ko).</a></li><li>스크립트를 처음부터 끝까지 긁어 복사한다.</li><li>메모장에 붙여 <code>강의제목_스크립트.txt</code>로 저장한다.</li><li>ChatGPT 대화창에 그 TXT 파일을 첨부한다. 무료 계정은 파일 업로드가 하루 3개까지예요(→ <a href="https://help.openai.com/en/articles/8555545-file-uploads-faq)." target="_blank" rel="noopener">https://help.openai.com/en/articles/8555545-file-uploads-faq).</a></li><li>아래처럼 <strong>결과의 형태</strong>를 콕 집어 지시한다.</li></ol>
+<pre><code>첨부한 파일은 유튜브 강의 스크립트야.
+3줄 요약 말고, 내가 나중에 그대로 따라 할 수 있게 정리해줘.
+1) 강의가 다루는 작업 순서 (번호)
+2) 각 단계에서 강사가 말한 판단 기준 (&quot;이럴 땐 이렇게&quot;)
+3) 강사가 경고한 실수 목록
+스크립트에 없는 내용은 지어내지 말고 &quot;스크립트에 없음&quot;이라고 적어줘.</code></pre>
+<img src="img/03_.png" alt="03_.png 5단계 흐름 — 스크립트 표시 → 복사 → 메모장 .txt 저장 → ChatGPT 첨부 → &#x27;순서·판단기준·실수&#x27; 지시. 마지막 칸에 빨간 펜 &quot;여기서 형태를 지정&quot;" loading="lazy">
+<p>강의가 여러 편짜리 시리즈라면 <strong>프로젝트</strong>를 쓰세요. 사이드바 <strong>New project</strong>로 만들고, ••• 메뉴 → <strong>Project settings</strong>에 위 지시문을 넣어 두면 그 프로젝트 안 대화에 매번 적용돼요. 프로젝트 지침은 전역 맞춤 지침보다 우선합니다(→ <a href="https://help.openai.com/en/articles/10169521-projects-in-chatgpt)." target="_blank" rel="noopener">https://help.openai.com/en/articles/10169521-projects-in-chatgpt).</a> 정리된 답은 메시지 메뉴의 <strong>Save to project</strong>로 소스에 저장돼요. 프로젝트당 파일은 무료 5개, Go·Plus 25개까지예요.</p>
+<img src="img/04_.png" alt="04_.png 강의 시리즈 프로젝트 구조 — 위 &#x27;Project settings 지침(순서·판단기준·실수)&#x27; 한 칸 → 아래 &#x27;1강.txt / 2강.txt / 3강.txt&#x27; → 오른쪽 &#x27;Save to project로 저장한 정리본&#x27;. 무료 5개·Plus 25개 메모" loading="lazy">
+<h2>4. 제대로 추출·요약됐는지 확인하는 법</h2>
+<p>결과를 받으면 세 가지만 보세요.</p>
+<ul><li><strong>번호 붙은 단계</strong>가 있는가. 없으면 그냥 요약이에요</li><li>&quot;스크립트에 없음&quot; 표시가 있는가. 하나도 없는데 내용이 매끈하면 원문에 없는 말이 섞였는지 의심해 보세요</li><li>자막 오타로 엉뚱해진 용어가 없는가. 자동 자막이 틀리면 AI도 헷갈려서, 저는 뽑은 텍스트를 한 번 훑고 넣어요</li></ul>
+<p>제가 걸린 지점도 여기였어요. 처음엔 지시를 대충 줬더니 매끈한 요약만 나왔고, &quot;순서와 판단 기준을 살려라&quot;를 명시하고 나서야 쓸 만한 지시서가 나왔어요. 말 없이 화면만 보여 주는 시연 영상은 자막만으론 반쪽이고요.</p>
+<h2>5. 같은 증상, 다른 경우</h2>
+<ul><li>정리한 강의를 내 AI 지식으로 심는 이유와 흐름 → <a href="https://blog.naver.com/makefield_ai/224365395274" target="_blank" rel="noopener">유튜브 강의 AI로 정리하는 법</a></li><li>&#x27;스크립트 표시&#x27; 버튼이 안 보이거나 NotebookLM·제미나이로 하고 싶을 때 → <a href="https://blog.naver.com/makefield_ai/224438232417" target="_blank" rel="noopener">유튜브 ai정리하는법</a></li></ul>
+<p><strong>Q. 스크립트를 대화창에 그냥 붙여도 되나요?</strong><br>
+짧은 강의는 그게 제일 빨라요. 긴 강의는 TXT로 넣어 두면 같은 파일로 다시 물을 수 있어요. 무료 계정도 텍스트 업로드가 되고, 하루 3개까지예요.</p>
+<p><strong>Q. 영상에서 바로 음성을 뽑아 ChatGPT에 넣으면 안 되나요?</strong><br>
+ChatGPT는 유료 플랜에서 MP3·M4A 같은 오디오 파일 전사를 지원하지만, 동영상으로 식별된 MP4·WebM은 받지 않아요. 직접 녹음한 강의 파일이라면 이 길도 있습니다. 유튜브 영상을 내려받는 방법은 이 글에서 다루지 않아요.</p>
+<p>정리하면 스크립트 표시 → TXT → ChatGPT 첨부 → 형태를 지정한 지시, 이 순서예요. 지금 다시 보려고 열어 둔 강의 탭이 있다면 그게 첫 번째 재료예요.</p>
+<p>이렇게 정리한 지식으로 실제 일을 돌리는 기록은 makefield.ai에서 이어 갑니다.</p>
+<h2>출처</h2>
+<ul><li>OpenAI 도움말, Uploading files and audio to ChatGPT (지원 형식·동영상 미지원·200만 토큰·업로드 횟수·프로젝트 파일 수) → <a href="https://help.openai.com/en/articles/8555545-file-uploads-faq" target="_blank" rel="noopener">https://help.openai.com/en/articles/8555545-file-uploads-faq</a></li><li>OpenAI 도움말, Projects in ChatGPT (New project·Project settings 지침·Save to project) → <a href="https://help.openai.com/en/articles/10169521-projects-in-chatgpt" target="_blank" rel="noopener">https://help.openai.com/en/articles/10169521-projects-in-chatgpt</a></li><li>유튜브 고객센터, 동영상 스크립트 보기 → <a href="https://support.google.com/youtube/answer/15930243?hl=ko" target="_blank" rel="noopener">https://support.google.com/youtube/answer/15930243?hl=ko</a></li><li>2026년 10월 13일 원문 확인</li></ul>
+<hr>
+<p>태그: #챗지피티유튜브요약 #ChatGPT유튜브요약 #유튜브스크립트추출 #유튜브스크립트표시 #유튜브강의요약 #강의요약AI #챗지피티강의요약 #ChatGPT프로젝트 #챗지피티파일업로드 #유튜브자막추출 #AI공부법 #AI활용법 #생성형AI #AI지식관리 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224439665653" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261012-megawatt-charging-mcs/"><div class="d">← 이전 노트</div><div class="t">메가와트 충전(MCS)이란? 전기트럭을 30분 만에 채우는 충전 규격</div></a><a class="next" href="/blog/20261013-local-llm-hallucination-test/"><div class="d">다음 노트 →</div><div class="t">로컬 LLM 할루시네이션 실험, 틀린 문장을 30번 중 2번만 잡아냈어요</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
