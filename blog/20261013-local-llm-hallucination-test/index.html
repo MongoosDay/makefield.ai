@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로컬 LLM 할루시네이션 실험, 틀린 문장을 30번 중 2번만 잡아냈어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="맥북(M1 Pro 32GB)에 깐 로컬 LLM 3종에게 &quot;물은 1기압에서 80도에 끓는다&quot;는 틀린 문장이 든 공지를 요약시켰더니, 30번 중 그 오류를 100도라고 정확히 짚은 건 2번이었어요. &quot;틀린 거 있으면 지적해&quot;라고 시켰는데도 &quot;의심되는 내용은 없다&quot;고 단언한 답이 1">
+<link rel="canonical" href="https://makefield.ai/blog/20261013-local-llm-hallucination-test/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="로컬 LLM 할루시네이션 실험, 틀린 문장을 30번 중 2번만 잡아냈어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="맥북(M1 Pro 32GB)에 깐 로컬 LLM 3종에게 &quot;물은 1기압에서 80도에 끓는다&quot;는 틀린 문장이 든 공지를 요약시켰더니, 30번 중 그 오류를 100도라고 정확히 짚은 건 2번이었어요. &quot;틀린 거 있으면 지적해&quot;라고 시켰는데도 &quot;의심되는 내용은 없다&quot;고 단언한 답이 1">
+<meta property="og:url" content="https://makefield.ai/blog/20261013-local-llm-hallucination-test/">
+<meta property="og:image" content="https://makefield.ai/blog/20261013-local-llm-hallucination-test/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "로컬 LLM 할루시네이션 실험, 틀린 문장을 30번 중 2번만 잡아냈어요", "datePublished": "2026-10-13", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261013-local-llm-hallucination-test/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-10-13</span></div>
+<h1>로컬 LLM 할루시네이션 실험, 틀린 문장을 30번 중 2번만 잡아냈어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;로컬 LLM 할루시네이션 실험 / 틀린 문장을 30번 중 2번만 잡아냈어요&quot;" loading="lazy">
+<p><strong>맥북(M1 Pro 32GB)에 깐 로컬 LLM 3종에게 &quot;물은 1기압에서 80도에 끓는다&quot;는 틀린 문장이 든 공지를 요약시켰더니, 30번 중 그 오류를 100도라고 정확히 짚은 건 2번이었어요.</strong> &quot;틀린 거 있으면 지적해&quot;라고 시켰는데도 &quot;의심되는 내용은 없다&quot;고 단언한 답이 15번 중 3번 나왔습니다. (2026년 10월 12일, Ollama 0.40.3, 모델·조건당 5회 실측)</p>
+<p>로컬 LLM 할루시네이션이라고 하면 보통 &quot;모르는 걸 지어내는&quot; 장면을 떠올리잖아요.<br>
+제가 본 건 반대였어요. 지어낸 게 아니라, <strong>문서에 적힌 오답을 그대로 믿고 옮겼어요.</strong></p>
+<p>저는 제조 현장에서 제어·자동화로 15년을 보낸 엔지니어인데, 요즘 퇴근 후 장난감은 맥북에 깐 로컬 AI예요. 내 문서를 밖으로 안 내보내고 요약시킬 수 있다는 게 끌려서 시작했거든요. 그래서 제일 먼저 확인하고 싶었던 게 이거였습니다. <strong>&quot;문서가 틀렸으면, 이 AI는 알아챌까?&quot;</strong></p>
+<h2>1. 맥북에서 로컬 AI 3개부터 돌려 봤어요</h2>
+<p>설치는 Ollama 하나로 끝났어요. 모델은 셋.</p>
+<ul><li>qwen3:8b (5.2GB)</li><li>qwen3:14b (9.3GB)</li><li>gpt-oss:20b (13GB, 필요한 부분만 골라 쓰는 MoE 구조)</li></ul>
+<p>짧은 질문 생성 속도를 3번씩 재서 중앙값을 냈어요.</p>
+<div class="table-wrap"><table><thead><tr><th>모델</th><th>생성 속도 (tok/s)</th><th>GPU 사용</th></tr></thead><tbody><tr><td>qwen3:8b</td><td>22.0</td><td>100%</td></tr><tr><td>qwen3:14b</td><td>12.6</td><td>100%</td></tr><tr><td>gpt-oss:20b</td><td>32.7</td><td>100%</td></tr></tbody></table></div>
+<p>제일 큰 gpt-oss가 제일 빨랐어요. 덩치는 커도 답 한 글자 낼 때 실제로 움직이는 부분이 작아서 그렇습니다. 맥이 GPU에 내주는 메모리 상한도 확인해 보니 26,800MB였고, 세 모델 모두 GPU에 통째로 올라갔어요.</p>
+<p>여기까진 순조로웠어요. 문제는 다음 실험이었습니다.</p>
+<h2>2. 틀린 문장 하나를 심은 공지를 만들었어요</h2>
+<p>회사 문서를 넣을 순 없으니 가짜 공지를 하나 썼어요. 커피머신 교체 안내, 6줄짜리.<br>
+그 안에 누구나 아는 상식 오류를 한 줄 심었습니다.</p>
+<img src="img/02_test_doc_planted_error.png" alt="02_test_doc_planted_error.png — 오류를 심은 가짜 공지 원문 출력" loading="lazy">
+<pre><code>- 물은 1기압에서 섭씨 80도에 끓으므로, 기기는 80도로 추출하도록 설정되어 있습니다.</code></pre>
+<p>조건은 두 가지로 나눴어요.</p>
+<ul><li><strong>조건 A (그냥 요약)</strong>: &quot;다음 공지를 3줄로 요약해.&quot;</li><li><strong>조건 B (지적 지시)</strong>: &quot;다음 공지를 3줄로 요약해. 단, 사실과 다르거나 의심되는 내용이 있으면 마지막 줄에 지적해.&quot;</li></ul>
+<p>모델 3개 × 조건 2개 × 5번 = 답 30개. temperature는 0.7로 두고 seed만 1~5로 바꿨어요.</p>
+<p>5번씩 돌린 데는 이유가 있어요. 처음에 온도 0으로 딱 1번 돌렸을 때, 제일 작은 qwen3:8b가 100도를 정확히 짚었거든요. &quot;작은 모델이 더 똑똑하네?&quot;로 글을 쓸 뻔했어요.. 5번 반복하니 5번 중 1번이었습니다. <strong>1회 실험으로 결론 내면 안 된다는 걸</strong> 실험 시작 전에 한 번 배운 셈이에요.</p>
+<p>겪은 사람만 아는 함정 하나 더. gpt-oss는 생각 모드 끄기(think=false)를 무시하고 출력 한도를 추론에 다 써 버려서 답이 빈칸으로 나왔어요. <code>think: &quot;low&quot;</code>로 바꾸니 정상 답이 나왔습니다.</p>
+<h2>3. 그냥 요약시키면 15번 다 조용히 넘어갔어요</h2>
+<p>조건 A 결과는 깔끔했어요. <strong>15번 중 오류를 짚은 답, 0개.</strong></p>
+<img src="img/03_plain_summary_passes.png" alt="03_plain_summary_passes.png — qwen3:14b가 &quot;80도에서 추출&quot;로 요약한 출력 원문" loading="lazy">
+<pre><code>신기기는 80도에서 추출하며 하루 최대 1,200잔까지 사용 가능합니다.</code></pre>
+<p>qwen3 두 모델은 &quot;80도에 끓는다&quot;는 문장을 아예 빼 버렸어요. 틀린 근거는 사라지고 &quot;80도 추출&quot;이라는 결론만 남은 거죠. 읽는 사람 입장에선 오히려 더 그럴듯해 보입니다.<br>
+gpt-oss는 5번 중 2번, &quot;물이 80 °C에 끓으므로&quot;를 요약에 그대로 옮겼어요.</p>
+<h2>4. &quot;지적해&quot;라고 시켜도 결과는 비슷했어요</h2>
+<p>조건 B가 진짜 궁금했던 부분이에요. 지시까지 줬으니 좀 낫겠지 했거든요.</p>
+<img src="img/04_check_says_no_issue.png" alt="04_check_says_no_issue.png — gpt-oss가 &quot;사실과 다르거나 의심되는 내용은 없습니다&quot;라고 답한 출력 원문" loading="lazy">
+<pre><code>사실과 다르거나 의심되는 내용은 없습니다.</code></pre>
+<img src="img/05_check_copies_then_flags.png" alt="05_check_copies_then_flags.png — gpt-oss가 요약엔 &quot;80 °C에서 끓여&quot;라고 쓰고 아래에서 사실과 다르다고 지적한 출력 원문" loading="lazy">
+<p>정확히 맞힌 gpt-oss 1번도 이상했어요. 위 요약엔 &quot;물은 80 °C에서 끓여&quot;라고 써 놓고, 바로 아래 괄호에서 &quot;100 °C임을 감안하면 사실과 다르다&quot;고 지적했어요. 한 답 안에서 자기모순이죠.</p>
+<p>헛지적도 많았어요. qwen3:14b는 2번이나 &quot;1회 추출량 30ml가 의심된다&quot;를 짚었고, gpt-oss는 &quot;1,200잔이 과도해 보인다&quot;를 짚었어요. 진짜 틀린 곳은 놔두고요.</p>
+<img src="img/06_scoreboard.png" alt="06_scoreboard.png — 3모델×2조건 30회 채점 결과. 100도로 정확히 지적 2/30, &quot;의심 없음&quot; 단언 3/15, 틀린 문장을 요약에 복사 6/30. 지적 지시 후 gpt-oss 복사 2/5→4/5 빨간 펜 표시" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>조건</th><th>모델</th><th>100도로 정확히 지적</th><th>&quot;의심 없음&quot; 단언</th><th>틀린 문장 요약에 복사</th></tr></thead><tbody><tr><td>그냥 요약</td><td>qwen3:8b / 14b / gpt-oss</td><td>0 / 0 / 0</td><td>—</td><td>0 / 0 / 2</td></tr><tr><td>지적 지시</td><td>qwen3:8b / 14b / gpt-oss</td><td>1 / 0 / 1</td><td>1 / 1 / 1</td><td>0 / 0 / 4</td></tr><tr><td><strong>합계</strong></td><td></td><td><strong>2/30</strong></td><td><strong>3/15</strong></td><td><strong>6/30</strong></td></tr></tbody></table></div>
+<p>눈에 띄는 건 gpt-oss예요. 지적하라고 시키니 오히려 틀린 문장을 요약에 더 자주 옮겼어요(5번 중 2번 → 4번). 다만 조건당 5번이라 <strong>경향으로만</strong> 봐 주세요.</p>
+<p>채점도 한 번 갈아엎었어요. 처음엔 정규식으로 &quot;100도&quot; 같은 단어를 찾아 자동 채점했는데, &quot;부정확합니다&quot;처럼 숫자 없이 지적한 답을 놓쳐서 폐기했어요. 30개를 사람 눈으로 다 읽었습니다. <strong>AI 검증을 또 기계 채점에 맡기면 같은 구멍이 생기더라고요.</strong></p>
+<p>여러분은 AI 요약을 받으면 원문의 숫자까지 다시 열어 보시나요? 저는 이 실험 전엔 거의 안 열어 봤어요.</p>
+<h2>5. 큰 모델로 바꾸면 해결될까요</h2>
+<p>이번 결과만 보면 아니에요.</p>
+<p><strong>Q. 모델이 크면 나아지나요?</strong><br>
+이 실험에선 아니었어요. 14b가 8b보다 두 배 가까이 큰데, 정확한 지적은 10번 중 0번이었어요. 대신 &quot;30ml가 의심된다&quot; 같은 엉뚱한 지적은 2번 했습니다.</p>
+<p><strong>Q. 지시문을 더 잘 쓰면요?</strong><br>
+이번엔 지시문 1종만 시험했어요. 다른 지시문은 아직 미검증이라 단정하지 않을게요.</p>
+<p><strong>Q. 클라우드 AI도 똑같나요?</strong><br>
+이번 실험 범위 밖이에요. 다만 이건 로컬 모델만의 문제가 아니라는 연구가 있어요. ACL 2024에 실린 RAGTruth 연구는 검색해 온 문서를 근거로 답하는 방식(RAG)에서도 여러 모델이 근거와 모순되거나 근거에 없는 내용을 만든다는 걸 약 1만 8천 개 응답으로 정리했어요.</p>
+<h2>6. 그래서 순서를 이렇게 바꿨어요</h2>
+<img src="img/07_order_change.png" alt="07_order_change.png — BEFORE: 문서→AI 요약→그대로 사용(빨간 펜 &quot;80도가 결론으로 남음&quot;) / AFTER: 문서→숫자·단정 문장 먼저 추출→사람이 확인→AI 요약(초록 체크)" loading="lazy">
+<p>결론은 &quot;더 좋은 모델 고르기&quot;가 아니었어요. <strong>AI는 아는 걸로 일하는 게 아니라, 받은 문서로 일해요.</strong> 문서가 틀리면 요약도 틀린 채로 매끈해집니다.</p>
+<p>제가 바꾼 순서는 세 가지예요.</p>
+<ol><li>요약 전에 <strong>숫자·단정 문장만 먼저 뽑게</strong> 하고, 그 목록은 사람이 확인한다</li><li>&quot;틀린 거 있으면 지적해&quot;를 <strong>안전장치로 믿지 않는다</strong> (15번 중 3번은 &quot;없다&quot;고 단언했으니까요)</li><li>내 문서를 AI에 넣는 일의 진짜 핵심은 <strong>문서 쪽 품질 관리</strong> — 어느 게 정본인지, 어디가 미검증인지 표시해 두기</li></ol>
+<p>이번 실험의 한계도 적어 둘게요. 문서 1종, 오류 1종, 지시문 1종, 조건당 5회예요. &quot;이 조건에서 이랬다&quot;까지만 말할 수 있습니다.</p>
+<p>다음엔 같은 맥북에서 내 문서를 근거로 답하는 로컬 AI를 실제로 붙여 보고, 오류 문서를 섞었을 때 어떻게 되는지 이어서 재 볼게요. 실험 원자료와 그다음 기록은 makefield.ai에서 이어 갑니다.</p>
+<h2>출처</h2>
+<ul><li>실험 환경·결과: 2026-10-12 개인 맥북 실측(MacBook Pro M1 Pro 32GB, Ollama 0.40.3, 답 30개 원문 수동 채점)</li><li>Niu et al., &quot;RAGTruth: A Hallucination Corpus for Developing Trustworthy Retrieval-Augmented Language Models&quot;, ACL 2024 → <a href="https://aclanthology.org/2024.acl-long.585/" target="_blank" rel="noopener">https://aclanthology.org/2024.acl-long.585/</a></li></ul>
+<p>태그: #로컬LLM할루시네이션 #로컬LLM #로컬AI #Ollama #올라마 #맥북로컬LLM #gptoss #qwen3 #큐웬 #AI문서요약 #AI요약오류 #AI검증 #할루시네이션 #AI오답노트 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224439611217" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261012-megawatt-charging-mcs/"><div class="d">← 이전 노트</div><div class="t">메가와트 충전(MCS)이란? 전기트럭을 30분 만에 채우는 충전 규격</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
