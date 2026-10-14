@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>웹 애니메이션 안 보일 때, 원격 데스크톱 PC에서만 멈춰 있던 이유 | Field Notes · MakeField AI</title>
+<meta name="description" content="웹 애니메이션 안 보일 때, 그것도 내 PC에서만 안 보일 때 이야기예요. AI랑 스크롤하면 움직이는 홈페이지를 만들어 올렸는데, 정작 제 모니터에서는 그냥 평범한 홈페이지로 보였어요. 테스트는 데스크톱·모바일 둘 다 통과한 상태였고요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261015-web-animation-rdp-reduced-motion/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="웹 애니메이션 안 보일 때, 원격 데스크톱 PC에서만 멈춰 있던 이유 | Field Notes · MakeField AI">
+<meta property="og:description" content="웹 애니메이션 안 보일 때, 그것도 내 PC에서만 안 보일 때 이야기예요. AI랑 스크롤하면 움직이는 홈페이지를 만들어 올렸는데, 정작 제 모니터에서는 그냥 평범한 홈페이지로 보였어요. 테스트는 데스크톱·모바일 둘 다 통과한 상태였고요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261015-web-animation-rdp-reduced-motion/">
+<meta property="og:image" content="https://makefield.ai/blog/20261015-web-animation-rdp-reduced-motion/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "웹 애니메이션 안 보일 때, 원격 데스크톱 PC에서만 멈춰 있던 이유", "datePublished": "2026-10-15", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261015-web-animation-rdp-reduced-motion/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">막힐 때 해결</span><span>2026-10-15</span></div>
+<h1>웹 애니메이션 안 보일 때, 원격 데스크톱 PC에서만 멈춰 있던 이유</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;웹 애니메이션 안 보일 때 / 원격 데스크톱 PC에서만 멈춰 있던 이유&quot;" loading="lazy">
+<p>웹 애니메이션 안 보일 때, 그것도 내 PC에서만 안 보일 때 이야기예요.<br>
+AI랑 스크롤하면 움직이는 홈페이지를 만들어 올렸는데, 정작 제 모니터에서는 <strong>그냥 평범한 홈페이지</strong>로 보였어요.<br>
+테스트는 데스크톱·모바일 둘 다 통과한 상태였고요.</p>
+<p><strong>원인은 한 줄로 정리돼요. 윈도우에서 &#x27;애니메이션 효과&#x27;가 꺼져 있으면 크롬은 웹페이지에 <code>prefers-reduced-motion: reduce</code>(움직임 줄이기)를 알리고, 이 신호를 받으면 연출을 통째로 끄도록 짠 코드는 아무것도 안 움직입니다.</strong> 제 PC는 원격 데스크톱 세션에서 이 값이 꺼져 있었어요(2026년 10월 4일 실측, 윈도우 + 크롬).</p>
+<p>15년 넘게 현장 설비를 만져 온 엔지니어인데, 웹은 전공이 아니라서 화면 코드는 거의 AI한테 맡겨 만들었어요. 그래서 &quot;AI가 친절하게 넣어 둔 기본값&quot;이 저를 막을 줄은 몰랐습니다.</p>
+<h2>1. 증상: 테스트는 통과, 내 화면만 멈춤</h2>
+<p>상황부터 적을게요.</p>
+<p>스크롤에 맞춰 화면이 기울고 다가가는 3D 연출을 넣었어요.<br>
+배포 전에 자동 렌더 검사를 돌렸고요.<br>
+가로 1440 데스크톱, 가로 390 모바일 둘 다 정상.<br>
+페이지 오류 0건.</p>
+<p>그런데 제 PC로 열면 연출이 하나도 없었어요.<br>
+스크롤을 내려도 글과 그림만 순서대로 지나가는 정적인 페이지..</p>
+<p>&quot;내 PC에서만&quot;이라는 게 힌트였어요. 그날 제 PC 상태를 찍어 보니 이랬습니다.</p>
+<pre><code>SESSIONNAME=RDP-Tcp
+ClientAreaAnimation=False</code></pre>
+<p>첫 줄은 원격 데스크톱(RDP)으로 접속한 세션이라는 뜻이고, 둘째 줄은 윈도우의 &#x27;창 안 애니메이션&#x27; 설정이 꺼져 있다는 뜻이에요. 저는 평소 다른 자리에서 원격 데스크톱으로 이 PC에 붙어서 일하거든요.</p>
+<h2>2. 원인: 윈도우 설정이 크롬을 거쳐 CSS까지 내려와요</h2>
+<img src="img/02_signal_chain.png" alt="02_signal_chain.png — 윈도우 &#x27;애니메이션 효과&#x27; 꺼짐(원격 세션) → 크롬이 SPI_GETCLIENTAREAANIMATION 읽음 → 웹페이지에 prefers-reduced-motion: reduce → 내 코드 &quot;reduce면 연출 전부 끔&quot;(빨강) → 평범한 홈페이지" loading="lazy">
+<p><code>prefers-reduced-motion</code>은 사용자가 운영체제에서 &quot;움직임을 줄여 달라&quot;고 설정했는지를 웹페이지가 알 수 있게 해 주는 CSS 미디어 조건이에요. 멀미나 어지럼을 느끼는 사람을 위한 접근성 장치죠.</p>
+<p>크롬이 윈도우에서 이 값을 정하는 코드는 공개돼 있어요(크로미움 소스 <code>animation_win.cc</code>).</p>
+<pre><code>BOOL win_anim_enabled = true;
+has_reduced_motion_platform_parameter_.emplace(::SystemParametersInfo(
+    SPI_GETCLIENTAREAANIMATION, 0, &amp;win_anim_enabled, 0));
+prefers_reduced_motion_ = !win_anim_enabled;</code></pre>
+<p>윈도우 애니메이션이 꺼져 있으면 → 크롬은 &quot;움직임 줄이기 원함&quot;으로 본다. 그게 전부예요.</p>
+<p>윈도우 설정 위치는 MDN 문서 기준으로 이렇습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>윈도우 버전</th><th>설정 경로</th></tr></thead><tbody><tr><td>윈도우 10</td><td>설정 &gt; 접근성(Ease of Access) &gt; 디스플레이 &gt; Windows에 애니메이션 표시</td></tr><tr><td>윈도우 11</td><td>설정 &gt; 접근성 &gt; 시각 효과 &gt; 애니메이션 효과</td></tr></tbody></table></div>
+<p>한 가지는 솔직히 적어 둘게요. 제 PC가 원격 세션에서 이 값이 꺼져 있었던 건 실측이지만, <strong>원격 데스크톱이 항상 이 값을 끈다는 공식 근거는 못 찾았어요.</strong> 그래서 &quot;원격이라서&quot;라고 단정하기보다 값을 직접 확인하는 게 맞습니다. 확인법은 4번에 적어 뒀어요.</p>
+<h2>3. 해결: 다 끄지 말고, 저절로 움직이는 것만 끄기</h2>
+<p>처음 코드는 <code>reduce</code>가 감지되면 연출 전체를 끄는 구조였어요. AI 입장에선 접근성을 챙긴 안전한 선택이었죠.</p>
+<img src="img/03_before_after.png" alt="03_before_after.png — 왼쪽 &#x27;고치기 전: reduce → 연출 전부 OFF&#x27;(빨강, 원격 사용자에겐 평범한 페이지) / 오른쪽 &#x27;고친 후: 스크롤 연동 연출 유지 + 흐르는 띠·깜빡임만 OFF&#x27;(초록)" loading="lazy">
+<p>고를 수 있는 길은 셋이었어요.</p>
+<ol><li><strong>reduce면 전부 끄기</strong> — 가장 안전하지만, 저처럼 원격으로 일하는 사람에겐 사이트 절반이 사라져요</li><li><strong>reduce 무시하기</strong> — 연출은 다 보이지만, 정말 움직임이 불편한 사람의 설정을 짓밟는 거라 제외</li><li><strong>스크롤에 붙은 연출은 유지, 저절로 움직이는 것만 끄기</strong> — 이걸 골랐어요</li></ol>
+<p>3번을 고른 이유는 간단해요. 스크롤 연출은 사용자가 손을 움직일 때만 따라 움직이고, 멈추면 같이 멈춰요. 반면 혼자 흐르는 띠나 깜빡이는 안내선은 사용자가 아무것도 안 해도 계속 움직이죠. 실제 배포된 코드 주석과 줄이 이래요.</p>
+<pre><code>// 움직임 줄이기(Windows 애니메이션 끔·원격 데스크톱 포함)여도 스크롤 연출은 유지 — 사용자가 스크롤할 때만 움직이므로.
+// 저절로 움직이는 것(흐르는 띠, 안내선 깜빡임)만 끈다. ?static 이면 정적 페이지.
+var reduce = window.matchMedia &amp;&amp; window.matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;).matches;
+
+// 흐르는 띠: reduce면 자동 이동 속도 0, 스크롤로 준 힘(vel)만 남김
+tx -= (reduce ? 0 : 1.1) + vel;</code></pre>
+<p>이게 정답이라고는 못 해요. 웹 접근성 기준(WCAG 2.3.3, 가장 높은 AAA 등급)은 상호작용으로 생기는 움직임도 끌 수 있게 하라고 권하거든요. 그래서 주소 뒤에 <code>?static</code>을 붙이면 완전 정적 페이지로 보는 길은 남겨 뒀어요.</p>
+<h2>4. 테스트가 못 잡은 이유, 그리고 확인 순서</h2>
+<p>진짜 문제는 사실 여기였어요.<br>
+<strong>자동 테스트를 연출이 켜지는 우회 옵션으로만 돌렸던 거예요.</strong> reduce 조건은 한 번도 안 본 거죠. 테스트 환경이 실제 사용자 조건과 다르면, 통과는 아무 의미가 없더라고요.</p>
+<img src="img/04_test_gap.png" alt="04_test_gap.png — 위 &#x27;테스트 조건: 우회 옵션 → 연출 ON → 통과&#x27;(초록 체크, 빨간 펜 &#x27;실제 사용자와 다름&#x27;) / 아래 &#x27;실제 조건: 원격 세션 + 애니메이션 꺼짐 → reduce → 연출 OFF&#x27;(빨강) / 처방 &#x27;검사에 reduced_motion=reduce 1회 추가&#x27;" loading="lazy">
+<p>그 뒤로 검사 스크립트에는 이 한 줄이 들어갔어요(Playwright 파이썬).</p>
+<pre><code>g = b.new_page(viewport=vp, reduced_motion=&#x27;reduce&#x27;)</code></pre>
+<p>웹 애니메이션이 내 PC에서만 안 보일 때 제가 이제 보는 순서예요.</p>
+<div class="table-wrap"><table><thead><tr><th>순서</th><th>확인할 것</th><th>방법</th></tr></thead><tbody><tr><td>1</td><td>브라우저가 reduce를 받고 있나</td><td>개발자도구 콘솔에 <code>matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;).matches</code> → true면 범인 후보</td></tr><tr><td>2</td><td>윈도우 애니메이션이 꺼져 있나</td><td>위 표의 설정 경로, 또는 아래 PowerShell</td></tr><tr><td>3</td><td>원격 세션인가</td><td>PowerShell에서 <code>$env:SESSIONNAME</code> (RDP-Tcp면 원격)</td></tr><tr><td>4</td><td>코드가 reduce일 때 뭘 끄나</td><td><code>prefers-reduced-motion</code> 검색 → 전부 끄는지, 자율 모션만 끄는지</td></tr></tbody></table></div>
+<p>2번을 PowerShell로 보는 방법이에요. 결과가 <code>False</code>면 꺼진 상태입니다.</p>
+<pre><code>$sig = &#x27;[DllImport(&quot;user32.dll&quot;)] public static extern bool SystemParametersInfo(uint a, uint b, ref bool c, uint d);&#x27;
+$t = Add-Type -MemberDefinition $sig -Name SPI -Namespace W -PassThru
+$v = $false
+[void]$t::SystemParametersInfo(0x1042, 0, [ref]$v, 0)   # 0x1042 = SPI_GETCLIENTAREAANIMATION
+&quot;ClientAreaAnimation=$v&quot;</code></pre>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 내 PC 설정만 켜면 끝나는 거 아닌가요?</strong><br>
+내 화면은 그걸로 해결돼요. 하지만 방문자 중에도 애니메이션을 꺼 둔 사람, 원격으로 접속한 사람이 있어요. 그분들 화면에선 여전히 멈춰 있으니, 고칠 곳은 내 설정이 아니라 코드였어요.</p>
+<p><strong>Q. 원격 데스크톱이 아닌 PC에서 이 상황을 재현하려면요?</strong><br>
+크롬 개발자도구의 Rendering 탭에서 <code>prefers-reduced-motion</code>을 reduce로 흉내 낼 수 있어요. 자동 검사라면 위 Playwright 옵션 한 줄이면 됩니다.</p>
+<p>AI가 짜 준 코드는 대체로 &#x27;안전한 쪽&#x27;으로 기울어요. 그 안전이 누구 기준인지는 제 사용 환경을 아는 사람만 따질 수 있더라고요. 원격 데스크톱 쪽에서 막혔던 다른 일은 <a href="https://blog.naver.com/makefield_ai/224410366627" target="_blank" rel="noopener">원격 데스크톱 연결 안 됨, 계정이 하루 38번 잠기던 글</a>에 있어요.</p>
+<p>웹 전공 아닌 사람이 AI랑 무언가 만들다 걸린 지점들은 makefield.ai에서 이어서 보실 수 있어요.</p>
+<h2>출처</h2>
+<ul><li>Chromium 소스 <code>ui/gfx/animation/animation_win.cc</code> (<code>Animation::UpdatePrefersReducedMotion</code>) → <a href="https://chromium.googlesource.com/chromium/src.git/+/HEAD/ui/gfx/animation/animation_win.cc" target="_blank" rel="noopener">https://chromium.googlesource.com/chromium/src.git/+/HEAD/ui/gfx/animation/animation_win.cc</a> (2026-10-15 확인)</li><li>W3C WCAG 2.2, 2.3.3 Animation from Interactions (AAA) → <a href="https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions" target="_blank" rel="noopener">https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions</a></li><li>MDN, prefers-reduced-motion (윈도우 10·11 설정 경로) → <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion</a> (2026-10-15 확인)</li><li>증상·실측값·코드: 2026-10-04 개인 홈페이지 작업 기록(주소·저장소 정보 제외)</li></ul>
+<p>태그: #웹애니메이션안보임 #애니메이션안될때 #prefersreducedmotion #움직임줄이기 #원격데스크톱 #RDP #윈도우애니메이션효과 #크롬애니메이션 #CSS애니메이션 #GSAP #ScrollTrigger #Playwright #웹접근성 #AI코딩 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224441977648" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261014-water-utility-plc-hacking/"><div class="d">← 이전 노트</div><div class="t">정수장 해킹은 어떻게 일어나나? 인터넷에 열린 PLC와 커지는 수도시설 보안 시장</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
