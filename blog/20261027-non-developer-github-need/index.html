@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>비개발자 깃허브 꼭 배워야 하나, 혼자 쓰는 저는 보류했습니다 | Field Notes · MakeField AI</title>
+<meta name="description" content="혼자 작업하는 비개발자라면, 깃허브는 지금 당장 배우지 않아도 됩니다. 깃허브 학습량의 대부분은 여러 사람이 같이 코드를 고칠 때 쓰는 기능이라서요. 다만 AI가 내 코드를 고쳐주는 사람이라면 따로 따져볼 자리가 하나 남습니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261027-non-developer-github-need/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="비개발자 깃허브 꼭 배워야 하나, 혼자 쓰는 저는 보류했습니다 | Field Notes · MakeField AI">
+<meta property="og:description" content="혼자 작업하는 비개발자라면, 깃허브는 지금 당장 배우지 않아도 됩니다. 깃허브 학습량의 대부분은 여러 사람이 같이 코드를 고칠 때 쓰는 기능이라서요. 다만 AI가 내 코드를 고쳐주는 사람이라면 따로 따져볼 자리가 하나 남습니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261027-non-developer-github-need/">
+<meta property="og:image" content="https://makefield.ai/blog/20261027-non-developer-github-need/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "비개발자 깃허브 꼭 배워야 하나, 혼자 쓰는 저는 보류했습니다", "datePublished": "2026-10-16", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261027-non-developer-github-need/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-10-16</span></div>
+<h1>비개발자 깃허브 꼭 배워야 하나, 혼자 쓰는 저는 보류했습니다</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;비개발자 깃허브 꼭 배워야 하나 / 혼자 쓰는 저는 보류했습니다&quot;" loading="lazy">
+<p><strong>혼자 작업하는 비개발자라면, 깃허브는 지금 당장 배우지 않아도 됩니다.</strong> 깃허브 학습량의 대부분은 여러 사람이 같이 코드를 고칠 때 쓰는 기능이라서요. 다만 AI가 내 코드를 고쳐주는 사람이라면 따로 따져볼 자리가 하나 남습니다.</p>
+<p>저는 개발자가 아니에요. 공장 설비 쪽에서 15년 일한 엔지니어인데, 지난 1년 동안 AI한테 시켜서 개인 자동화 스크립트를 꽤 많이 쌓았습니다. 기차표 취소표 잡는 것, 매일 공부 자료 뽑아주는 것, 문서 자동으로 만드는 것..</p>
+<p>그러다 2026년 9월 어느 날, AI한테 이렇게 물었어요.</p>
+<pre><code>내가 깃허브를 쓰면 좋을까? 다들 쓰는데 난 쓸 줄을 모르네</code></pre>
+<p>솔직히 반쯤은 &quot;배우세요&quot;라는 답을 기대했습니다. 코딩 좀 한다는 사람은 다 깃허브 주소를 갖고 있잖아요. 그런데 돌아온 답은 배우냐 마냐가 아니라, 질문부터 둘로 쪼개는 거였어요.</p>
+<h2>1. 깃허브랑 git은 같은 건가요</h2>
+<p><strong>아닙니다. git은 내 PC에서 파일 변경 이력을 기록하는 도구이고, 깃허브는 그 기록을 인터넷에 올려 남과 나누는 서비스예요.</strong> 이 둘을 한 덩어리로 놓고 판단하면 답이 틀어진다는 게 AI의 첫마디였습니다.</p>
+<p>공식 설명도 그렇게 나눠 둡니다. GitHub 공식 문서는 git을 &quot;파일의 변경을 추적하는 버전 관리 시스템&quot;으로, 깃허브를 &quot;git 프로젝트(저장소)를 클라우드에 올려 두는 곳&quot;으로 설명해요. 깃허브는 git 위에 얹힌 서비스입니다.</p>
+<img src="img/02_git_vs_github.png" alt="왼쪽 박스 &#x27;내 PC — git&#x27; 안에 &#x27;파일 변경 기록 / 이전 상태로 되돌리기 / 혼자서도 씀&#x27;, 오른쪽 박스 &#x27;인터넷 — 깃허브&#x27; 안에 &#x27;기록을 올려 공유 / 여러 명이 같이 고침 / 공개 프로필(잔디)&#x27;. 가운데 화살표 &#x27;올리기(선택)&#x27;. 하단 빨간 펜 메모 &#x27;둘을 붙여서 판단하면 답이 틀어진다&#x27;" loading="lazy">
+<p>저는 여기서 한 번 멈칫했어요. &quot;깃허브를 모른다&quot;고 생각했는데, 정확히는 git이 뭔지도, 깃허브가 뭔지도 구분 못 하고 있었던 거죠.</p>
+<h2>2. 혼자 쓰는 사람이 깃허브를 쓰는 이유는 뭔가요</h2>
+<p><strong>사람들이 깃허브를 쓰는 이유는 크게 협업·백업·포트폴리오 세 가지이고, 혼자 일하는 비개발자에게는 셋 다 약했습니다.</strong> AI가 이유를 하나씩 꺼내서 제 상황에 대보게 했어요.</p>
+<div class="table-wrap"><table><thead><tr><th>깃허브를 쓰는 이유</th><th>제 상황</th><th>판정</th></tr></thead><tbody><tr><td>협업 (브랜치·PR·머지·리뷰)</td><td>혼자 작업</td><td>해당 없음</td></tr><tr><td>백업</td><td>작업 폴더가 집 NAS로 이미 동기화 중</td><td>실효는 있지만 중복</td></tr><tr><td>포트폴리오 (잔디)</td><td>개발자 채용에서 보는 신호</td><td>제 분야 판단자는 안 봄</td></tr></tbody></table></div>
+<p>첫 줄에서 머리가 좀 시원해졌습니다. 깃허브 강좌를 열면 나오는 브랜치, 풀 리퀘스트, 머지, 코드 리뷰.. 이게 전부 <strong>여러 명이 같은 코드를 동시에 만질 때</strong> 쓰는 기능이에요. 저는 그걸 &quot;못 배운 것&quot;이라고 자책했는데, 실은 <strong class="u">필요가 없었던 것</strong>이었습니다.</p>
+<p>세 번째 줄은 AI가 꽤 단호했어요. 잔디(커밋 기록 달력)는 웹·앱 개발자 채용에서 작동하는 신호이고, 제가 일하는 판에서 사람을 보는 사람은 그걸 들여다보지 않는다고요. 기분 좋으라고 &quot;포트폴리오에 도움 돼요&quot;라고 해줄 법도 한데 안 해주더라고요.</p>
+<img src="img/03_three_reasons.png" alt="세로로 놓인 체크리스트 카드 3장. &#x27;협업&#x27; 옆 빨간 X &#x27;혼자 작업&#x27;, &#x27;백업&#x27; 옆 잉크 세모 &#x27;NAS와 중복&#x27;, &#x27;포트폴리오&#x27; 옆 빨간 X &#x27;내 분야는 안 봄&#x27;. 하단 캡션 &#x27;이유 3개를 내 상황에 하나씩 대본다&#x27;" loading="lazy">
+<p>여러분도 &quot;다들 쓰니까&quot;로 배우려던 도구가 하나쯤 있지 않으신가요? 이유를 세 줄로만 적어봐도 절반은 정리됩니다.</p>
+<h2>3. 그럼 비개발자에게 git이 이득인 자리는 어디인가요</h2>
+<p><strong>AI가 고친 코드를 줄 단위로 보고 되돌려야 하는 자리, 딱 거기입니다.</strong> 깃허브는 필요 없어도 git 쪽은 얘기가 달랐어요.</p>
+<p>AI가 짚은 시나리오는 이거였습니다. &quot;어제까지 잘 돌던 스크립트가 오늘 깨졌는데, 뭘 건드렸는지 모르겠다.&quot; AI한테 코드를 맡기는 사람이면 한 번은 꼭 만나는 장면이죠. 제 작업 폴더 상태를 보면 바로 답이 나옵니다.</p>
+<pre><code>Is a git repository: false</code></pre>
+<p>AI가 제 폴더를 열 때마다 보는 환경 정보 한 줄이에요. git 저장소가 아니라는 뜻입니다. 그러니까 AI가 제 코드를 어디서 몇 줄 고쳤는지 확인할 수단이 지금은 <strong class="u">파일 날짜뿐</strong>이에요. 날짜는 &quot;바뀌었다&quot;까지만 알려주지, 어느 줄이 바뀌었는지는 안 알려줍니다.</p>
+<p>반대로 git을 써도 이득이 거의 없는 파일도 있었어요.</p>
+<div class="table-wrap"><table><thead><tr><th>파일 종류</th><th>git 이득</th><th>이유</th></tr></thead><tbody><tr><td>파이썬 스크립트 (.py)</td><td>큼</td><td>줄 단위로 바뀐 곳을 보고 되돌릴 수 있음</td></tr><tr><td>워드·파워포인트·엑셀</td><td>작음</td><td>속이 압축된 묶음이라 줄 비교가 안 됨. 이미 <code>_v1</code>, <code>_v2</code> 파일명 + <code>_old</code> 폴더 규칙으로 관리 중</td></tr><tr><td>데이터베이스 파일</td><td>작음</td><td>계속 바뀌는 한 덩어리 파일</td></tr><tr><td>대용량 로그·PDF</td><td>작음</td><td>크고, 비교해도 읽을 게 없음</td></tr></tbody></table></div>
+<img src="img/04_folder_map.png" alt="작업 폴더 지도. 큰 테두리 &#x27;작업 폴더&#x27; 안에 작은 칸 4개 — &#x27;스크립트&#x27; 칸만 초록 테두리 &#x27;여기만 이득&#x27;, &#x27;문서(docx·pptx)&#x27; &#x27;데이터베이스&#x27; &#x27;로그·PDF&#x27; 칸은 잉크 회색. 바깥에 빨간 펜 &#x27;폴더 전체 통째로 git 금지&#x27;" loading="lazy">
+<p>그리고 금지선도 같이 정했습니다. <strong>작업 폴더 전체를 통째로 git에 넣지 않는다.</strong> 업무 자료, 개인 자료, 데이터베이스, 대용량 파일이 한 덩어리로 묶여버리거든요. 회사 자료는 비공개 저장소라도 올리지 않는다는 것도 같은 자리에 적어뒀어요.</p>
+<h2>4. 그래서 깃허브 배웠나요</h2>
+<p><strong>안 배웠습니다. 폐기가 아니라 보류로 결정했어요.</strong> 제가 한 말을 그대로 옮기면 이렇습니다.</p>
+<pre><code>굳이 아직 잘 모르겠다. 진짜 필요하면 다시 얘기하자</code></pre>
+<p>코드도 설정도 하나도 안 바꿨어요. 대신 AI 작업 기록에 &quot;이 건은 사용자가 먼저 꺼낼 때만 다시 연다&quot;는 줄을 남겼습니다. AI는 새 대화마다 &#x27;좋아 보이는 것&#x27;을 또 권하려는 경향이 있어서, 이렇게 안 적어두면 다음 대화에서 같은 제안이 또 나올 수 있거든요..</p>
+<p>돌아보면 이번에 AI가 해준 일은 답을 준 게 아니었어요. &quot;다들 쓴다&quot;라는 압박을 이유 세 개로 쪼개고, 남은 이득 한 자리를 제 폴더에서 찾아준 거죠. 판정은 제가 했습니다.</p>
+<h2>댓글로 받을 것 같은 질문 둘</h2>
+<p><strong>Q. 그래도 언젠가는 배워두는 게 좋지 않나요?</strong><br>
+필요가 생기는 순간이 오면 그때가 제일 빨리 배워집니다. 저한테 그 순간은 &quot;AI가 고친 코드가 깨졌는데 되돌릴 방법이 없을 때&quot;일 거예요. 그때는 깃허브가 아니라 내 PC의 git부터 볼 생각입니다.</p>
+<p><strong>Q. 백업만 하고 싶으면 깃허브가 편하지 않나요?</strong><br>
+편할 수 있어요. 다만 저는 작업 폴더가 이미 집 NAS로 동기화되고 있어서 같은 일을 두 번 하게 됩니다. 백업이 아예 없는 분이면 판정이 달라질 수 있어요.</p>
+<p>정리하면, 깃허브를 배울지 말지 고민될 때는 협업·백업·포트폴리오 세 줄에 내 상황을 대보고, 셋 다 아니면 &quot;AI가 내 코드를 고치는가&quot; 한 줄만 더 보면 됩니다. 저는 그 한 줄 때문에 git을 보류 목록 맨 위에 올려뒀어요.</p>
+<p>다음에 실제로 스크립트가 깨지는 날이 오면, 그날 git을 처음 켜본 기록으로 다시 쓰겠습니다. 이렇게 &quot;안 하기로 한 결정&quot;까지 남겨둔 기록은 makefield.ai에도 따로 모으는 중이에요.</p>
+<p>여러분은 혼자 쓰는 코드, 지금 어떤 방법으로 되돌리고 계세요?</p>
+<p>태그: #비개발자깃허브 #깃허브필요성 #깃허브혼자 #git과GitHub차이 #버전관리 #깃허브배워야하나 #AI코드되돌리기 #로컬git #개인자동화 #비개발자코딩 #AI코딩 #파이썬자동화 #AI에게일시키기 #AI오답노트 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224443163764" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261015-web-animation-rdp-reduced-motion/"><div class="d">← 이전 노트</div><div class="t">웹 애니메이션 안 보일 때, 원격 데스크톱 PC에서만 멈춰 있던 이유</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
