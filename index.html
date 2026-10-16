@@ -23,7 +23,7 @@
 {"@context":"https://schema.org","@graph":[
  {"@type":"Organization","@id":"https://makefield.ai/#org","name":"MakeField AI","url":"https://makefield.ai/","slogan":"AI가 일할 현장을 만든다","description":"현장 엔지니어와 함께 하는 AI","sameAs":["https://blog.naver.com/makefield_ai"]},
  {"@type":"Blog","name":"Field Notes — MakeField AI","url":"https://makefield.ai/blog/","publisher":{"@id":"https://makefield.ai/#org"},"inLanguage":"ko"},
- {"@type":"Book","name":"직장인의 AI 오답 노트","alternativeHeadline":"AI에게 잘 묻는 법이 아니라, AI가 내 일을 알게 만드는 법","inLanguage":"ko","image":"https://makefield.ai/assets/book-cover.jpg","url":"https://makefield.ai/book_1st/","datePublished":"2026-10-07","publisher":{"@type":"Organization","name":"부크크"},"workExample":[{"@type":"Book","bookFormat":"https://schema.org/Paperback","isbn":"9791112314116","numberOfPages":438,"offers":{"@type":"Offer","price":26800,"priceCurrency":"KRW","availability":"https://schema.org/InStock","url":"https://bookk.co.kr/bookStore/6ac4db0965e94aef5d1b317d"}},{"@type":"Book","bookFormat":"https://schema.org/EBook","isbn":"9791112314017","offers":{"@type":"Offer","price":16800,"priceCurrency":"KRW","availability":"https://schema.org/InStock","url":"https://bookk.co.kr/bookStore/6ac4dbaf22437bb21fda67d5"}}]}
+ {"@type":"Book","name":"직장인의 AI 오답 노트","alternativeHeadline":"AI에게 잘 묻는 법이 아니라, AI가 내 일을 알게 만드는 법","inLanguage":"ko","image":"https://makefield.ai/assets/book-cover.jpg","url":"https://makefield.ai/book_1st/","datePublished":"2026-10-07","publisher":{"@type":"Organization","name":"부크크"},"workExample":[{"@type":"Book","bookFormat":"https://schema.org/Paperback","isbn":"9791112314116","numberOfPages":438,"offers":[{"@type":"Offer","price":26800,"priceCurrency":"KRW","availability":"https://schema.org/InStock","url":"https://www.yes24.com/product/goods/198006547"},{"@type":"Offer","price":26800,"priceCurrency":"KRW","availability":"https://schema.org/InStock","url":"https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=404397482"},{"@type":"Offer","price":26800,"priceCurrency":"KRW","availability":"https://schema.org/InStock","url":"https://bookk.co.kr/bookStore/6ac4db0965e94aef5d1b317d"}]},{"@type":"Book","bookFormat":"https://schema.org/EBook","isbn":"9791112314017","offers":[{"@type":"Offer","price":16800,"priceCurrency":"KRW","availability":"https://schema.org/InStock","url":"https://www.yes24.com/product/goods/197975471"},{"@type":"Offer","price":16800,"priceCurrency":"KRW","availability":"https://schema.org/InStock","url":"https://bookk.co.kr/bookStore/6ac4dbaf22437bb21fda67d5"}]}]}
 ]}
 </script>
 <style>
@@ -266,6 +266,9 @@ section{padding:110px 0;border-bottom:1px solid var(--line)}
 .spec dt{color:var(--muted);font-weight:600}
 .spec dd{font-weight:800}
 .spec .buy{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.spec .stores{display:grid;gap:10px;margin-top:18px}
+.spec .stores .st{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.spec .stores .lb{min-width:48px;font-size:.85rem;font-weight:800;color:var(--muted)}
 .spec .status{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);font-size:.88rem;color:var(--ink-2)}
 .spec .status a{font-weight:800;color:var(--red);text-decoration:none}
 
@@ -382,7 +385,7 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
   <div class="nav-links">
     <a href="#notes">Field Notes</a><a href="#fieldbook">Field Book</a><a href="#session">Field Session</a><a href="#method">일하는 방식</a><a href="#author">만든 사람</a>
   </div>
-  <div class="nav-r"><a class="nav-cta nav-buy" data-track="buy_nav" href="https://bookk.co.kr/bookStore/6ac4db0965e94aef5d1b317d" target="_blank" rel="noopener">책 구매</a><a class="nav-cta" href="#session">함께 만들기</a></div>
+  <div class="nav-r"><a class="nav-cta nav-buy" data-track="buy_nav" href="#buy">책 구매</a><a class="nav-cta" href="#session">함께 만들기</a></div>
 </div></nav>
 
 <!-- ===== JOURNEY ===== -->
@@ -499,7 +502,7 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
 
     <!-- overlay: captions per zone -->
     <div class="ov cap" id="cap1"><div class="k"><span class="mono">N-01</span>Field Notes · 매일의 현장 노트</div><div class="t">해 봤더니, 로 시작하는 글.</div><div class="s">AI를 실무에 붙이며 된 것과 안 된 것, 논문으로 확인한 것을 매일 남깁니다</div></div>
-    <div class="ov cap" id="cap2"><div class="k"><span class="mono">B-01</span>Field Book · 『직장인의 AI 오답 노트』</div><div class="t">틀린 자리마다 남긴 규칙을 한 권으로.</div><div class="s">1년 동안 현장을 만들며 실제로 틀렸던 기록, 438쪽</div><div class="btns"><a class="btn btn-ink" data-track="buy_hero" href="https://bookk.co.kr/bookStore/6ac4db0965e94aef5d1b317d" target="_blank" rel="noopener">책 구매</a><a class="btn btn-line" href="#fieldbook">책 소개</a></div></div>
+    <div class="ov cap" id="cap2"><div class="k"><span class="mono">B-01</span>Field Book · 『직장인의 AI 오답 노트』</div><div class="t">틀린 자리마다 남긴 규칙을 한 권으로.</div><div class="s">1년 동안 현장을 만들며 실제로 틀렸던 기록, 438쪽</div><div class="btns"><a class="btn btn-ink" data-track="buy_hero" href="#buy">책 구매</a><a class="btn btn-line" href="#fieldbook">책 소개</a></div></div>
     <div class="ov cap" id="cap3"><div class="k"><span class="mono">S-01</span>Field Session · 같이 만드는 하루</div><div class="t">당신의 업무에, AI가 일할 자리를.</div><div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다 · 소규모 기업 방문 강의도 합니다</div></div>
     <div class="ov cap" id="cap4"><div class="k"><span class="mono">MF</span>MakeField AI</div><div class="t">기록하고, 묶고, 같이 만듭니다.</div>
       <div class="btns"><a class="btn btn-ink" href="#notes">Field Notes</a><a class="btn btn-line" href="#fieldbook">Field Book</a><a class="btn btn-line" href="#session">Field Session</a></div></div>
@@ -571,8 +574,8 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
         </ul>
         <aside class="spec">
           <dl><dt>판형</dt><dd>A5 · 438쪽</dd><dt>종이책</dt><dd>26,800원</dd><dt>전자책</dt><dd>16,800원</dd></dl>
-          <div class="buy"><a class="btn btn-ink" data-track="buy_paper" href="https://bookk.co.kr/bookStore/6ac4db0965e94aef5d1b317d" target="_blank" rel="noopener">종이책 구매</a><a class="btn btn-line" data-track="buy_ebook" href="https://bookk.co.kr/bookStore/6ac4dbaf22437bb21fda67d5" target="_blank" rel="noopener">전자책 구매</a></div>
-          <div class="status">2026년 10월 7일 발행 · 부크크 서점 판매 중<br>ISBN 979-11-12-31411-6(종이) · 979-11-12-31401-7(전자)<br><br>책을 가진 분은 <a href="/book_1st/">다운로드 부록 →</a></div>
+          <div class="stores" id="buy"><div class="st"><span class="lb">종이책</span><a class="btn btn-ink" data-track="buy_paper_yes24" href="https://www.yes24.com/product/goods/198006547" target="_blank" rel="noopener">예스24</a><a class="btn btn-ink" data-track="buy_paper_aladin" href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=404397482" target="_blank" rel="noopener">알라딘</a><a class="btn btn-line" data-track="buy_paper" href="https://bookk.co.kr/bookStore/6ac4db0965e94aef5d1b317d" target="_blank" rel="noopener">부크크</a></div><div class="st"><span class="lb">전자책</span><a class="btn btn-ink" data-track="buy_ebook_yes24" href="https://www.yes24.com/product/goods/197975471" target="_blank" rel="noopener">예스24</a><a class="btn btn-line" data-track="buy_ebook" href="https://bookk.co.kr/bookStore/6ac4dbaf22437bb21fda67d5" target="_blank" rel="noopener">부크크</a></div></div>
+          <div class="status">2026년 10월 7일 발행 · 예스24·알라딘·부크크 판매 중 (교보 등 입점 진행 중)<br>ISBN 979-11-12-31411-6(종이) · 979-11-12-31401-7(전자)<br><br>책을 가진 분은 <a href="/book_1st/">다운로드 부록 →</a></div>
         </aside>
       </div>
     </div>
@@ -614,7 +617,7 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
         <div class="tags"><span>소규모 기업 환영</span><span>방문 강의</span><span>우리 업무 맞춤</span><span>문의는 언제든</span></div>
         <div class="row"><a class="btn btn-paper" data-track="home_visit_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><span class="pen">&gt; 인원·업무 한두 줄이면 충분해요</span></div>
       </div>
-      <div class="textbook" data-rv><img src="assets/book-cover.jpg" alt="" width="44" height="62">교재는 Field Book 01 『직장인의 AI 오답 노트』 — 끝나고도 혼자 이어 갈 수 있게 <a data-track="buy_session" href="https://bookk.co.kr/bookStore/6ac4db0965e94aef5d1b317d" target="_blank" rel="noopener" style="color:var(--red);white-space:nowrap">구매 →</a></div>
+      <div class="textbook" data-rv><img src="assets/book-cover.jpg" alt="" width="44" height="62">교재는 Field Book 01 『직장인의 AI 오답 노트』 — 끝나고도 혼자 이어 갈 수 있게 <a data-track="buy_session" href="#buy" style="color:var(--red);white-space:nowrap">구매 →</a></div>
       <div class="contact-line" data-rv>
         <a class="btn btn-ink" data-track="home_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20Field%20Session%20%EB%AC%B8%EC%9D%98">contact@makefield.ai</a>
         <span class="pen">&gt; 견적·일정 문의도 편하게</span>
@@ -683,7 +686,7 @@ footer{padding:48px 0 56px;font-size:.85rem;color:var(--muted)}
 <footer><div class="wrap">
   <div class="foot">
     <div>© 2026 MakeField AI · AI가 일할 현장을 만든다</div>
-    <div><a href="/blog/">Field Notes</a> &nbsp;·&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;·&nbsp; <a data-track="buy_footer" href="https://bookk.co.kr/bookStore/6ac4db0965e94aef5d1b317d" target="_blank" rel="noopener">책 구매</a> &nbsp;·&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;·&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;·&nbsp; <a href="mailto:contact@makefield.ai">메일</a> &nbsp;·&nbsp; <a href="/privacy.html">개인정보처리방침</a></div>
+    <div><a href="/blog/">Field Notes</a> &nbsp;·&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;·&nbsp; <a data-track="buy_footer" href="#buy">책 구매</a> &nbsp;·&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;·&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;·&nbsp; <a href="mailto:contact@makefield.ai">메일</a> &nbsp;·&nbsp; <a href="/privacy.html">개인정보처리방침</a></div>
   </div>
   <div class="family">With love and grace — MSEO, JHOON, JWON, JNA</div>
 </div></footer>

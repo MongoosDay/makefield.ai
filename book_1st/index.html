@@ -69,6 +69,9 @@ ul.files{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:12
 .btn-ghost{border:1.5px solid rgba(242,237,227,.5);color:var(--paper)}
 .btn-ink{background:var(--ink);color:var(--paper);margin-top:12px}
 .head .buy{display:flex;gap:10px;flex-wrap:wrap}
+.head .stores{display:grid;gap:10px;margin-top:18px}
+.head .stores .st{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.head .stores .lb{min-width:48px;font-size:.85rem;font-weight:800;color:var(--muted)}
 .btn-ink:hover{background:var(--red)}
 .news p+p{margin-top:6px}
 .news .fine{font-size:.85rem;color:var(--muted)}
@@ -92,7 +95,7 @@ footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{
     <h1>직장인의 AI <em>오답 노트</em></h1>
     <p class="subtitle">AI에게 잘 묻는 법이 아니라, AI가 내 일을 알게 만드는 법</p>
     <div class="note pen">&gt; 책을 펼친 분께 — 부록은 여기서 받아 가세요</div>
-    <div class="buy"><a class="btn btn-ink" data-track="buy_paper" href="https://bookk.co.kr/bookStore/6ac4db0965e94aef5d1b317d" target="_blank" rel="noopener">종이책 구매</a> <a class="btn btn-ink" data-track="buy_ebook" href="https://bookk.co.kr/bookStore/6ac4dbaf22437bb21fda67d5" target="_blank" rel="noopener">전자책 구매</a></div>
+    <div class="stores" id="buy"><div class="st"><span class="lb">종이책</span><a class="btn btn-ink" data-track="buy_paper_yes24" href="https://www.yes24.com/product/goods/198006547" target="_blank" rel="noopener">예스24</a><a class="btn btn-ink" data-track="buy_paper_aladin" href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=404397482" target="_blank" rel="noopener">알라딘</a><a class="btn btn-ink" data-track="buy_paper" href="https://bookk.co.kr/bookStore/6ac4db0965e94aef5d1b317d" target="_blank" rel="noopener">부크크</a></div><div class="st"><span class="lb">전자책</span><a class="btn btn-ink" data-track="buy_ebook_yes24" href="https://www.yes24.com/product/goods/197975471" target="_blank" rel="noopener">예스24</a><a class="btn btn-ink" data-track="buy_ebook" href="https://bookk.co.kr/bookStore/6ac4dbaf22437bb21fda67d5" target="_blank" rel="noopener">부크크</a></div></div>
   </div>
 </div></header>
 
