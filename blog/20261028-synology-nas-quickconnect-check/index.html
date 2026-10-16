@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시놀로지 NAS 외부 접속 경로 없다던 AI 진단, QuickConnect가 이미 켜져 있었어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="시놀로지 NAS 외부 접속 경로가 &quot;하나도 없다&quot;는 진단을 받았다면, 새 프로그램을 깔기 전에 지금 쓰고 있는 동기화 앱의 접속 설정부터 열어 보세요. 제 경우엔 AI가 &quot;외부에서 들어갈 길이 0개니 원격 접속 도구부터 깔자&quot;고 했는데, 동기화 앱 설정 파일 안에 QuickCo">
+<link rel="canonical" href="https://makefield.ai/blog/20261028-synology-nas-quickconnect-check/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="시놀로지 NAS 외부 접속 경로 없다던 AI 진단, QuickConnect가 이미 켜져 있었어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="시놀로지 NAS 외부 접속 경로가 &quot;하나도 없다&quot;는 진단을 받았다면, 새 프로그램을 깔기 전에 지금 쓰고 있는 동기화 앱의 접속 설정부터 열어 보세요. 제 경우엔 AI가 &quot;외부에서 들어갈 길이 0개니 원격 접속 도구부터 깔자&quot;고 했는데, 동기화 앱 설정 파일 안에 QuickCo">
+<meta property="og:url" content="https://makefield.ai/blog/20261028-synology-nas-quickconnect-check/">
+<meta property="og:image" content="https://makefield.ai/blog/20261028-synology-nas-quickconnect-check/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "시놀로지 NAS 외부 접속 경로 없다던 AI 진단, QuickConnect가 이미 켜져 있었어요", "datePublished": "2026-10-17", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261028-synology-nas-quickconnect-check/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-10-17</span></div>
+<h1>시놀로지 NAS 외부 접속 경로 없다던 AI 진단, QuickConnect가 이미 켜져 있었어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;시놀로지 NAS 외부 접속 / 경로 없다던 AI 진단, QuickConnect가 이미 켜져 있었어요&quot;" loading="lazy">
+<p>시놀로지 NAS 외부 접속 경로가 &quot;하나도 없다&quot;는 진단을 받았다면, 새 프로그램을 깔기 전에 <strong>지금 쓰고 있는 동기화 앱의 접속 설정부터 열어 보세요.</strong><br>
+제 경우엔 AI가 &quot;외부에서 들어갈 길이 0개니 원격 접속 도구부터 깔자&quot;고 했는데, 동기화 앱 설정 파일 안에 QuickConnect 주소가 이미 들어 있었어요.</p>
+<p><strong>핵심만 한 줄로: 시놀로지 QuickConnect는 포트포워딩이나 공유기 설정 없이 PC·모바일 앱을 NAS에 연결해 주는 기능이고(Synology DSM 7.4 공식 사양), Synology Drive를 QuickConnect로 연결해 쓰고 있다면 외부 접속 경로는 이미 하나 열려 있는 상태입니다.</strong></p>
+<p>제 본업은 제조 현장 자동화·제어 쪽이에요. 집에서는 AI한테 시켜서 개인 자동화를 이것저것 굴리고요.<br>
+2026년 9월, 그 자동화 하나를 만들다가 AI랑 같이 헛다리를 짚은 얘기입니다.</p>
+<h2>1. 태블릿 공부 자료를 NAS로 보내려다 생긴 일</h2>
+<p>만들던 건 단순했어요.<br>
+매일 새벽에 공부할 PDF를 몇 개 골라서,<br>
+태블릿에서 열어 볼 수 있는 폴더에 떨궈 주는 스크립트.</p>
+<p>처음엔 AI가 클라우드 드라이브(OneDrive)를 권했어요.<br>
+그런데 집에 시놀로지 NAS가 있잖아요. 그래서 한마디 했죠.</p>
+<pre><code>시놀로지 나스 쓰면 되지</code></pre>
+<p>여기서 AI가 진단을 하나 내놨습니다.<br>
+VPN 툴(Tailscale)에 등록된 기기 목록에 NAS가 없다,<br>
+게다가 며칠 전에 공유기에서 NAS 파일공유 포트(445) 포워딩도 지웠다,<br>
+그러니 <strong>&quot;외부 경로 0개, NAS에 Tailscale부터 설치해야 한다.&quot;</strong></p>
+<p>듣고 보면 그럴듯하죠. 근거도 두 개나 있고요.<br>
+그대로 갔으면 NAS에 프로그램 하나를 더 깔고, 관리할 것도 하나 더 늘었을 거예요.</p>
+<h2>2. 왜 그 진단이 틀렸나요</h2>
+<p><strong>AI가 확인한 건 &#x27;자기가 아는 경로 목록&#x27; 두 개뿐이었고, 실제로 매일 돌고 있던 동기화 앱의 접속 방식은 보지 않았어요.</strong></p>
+<p>445 포트 포워딩을 지운 건 사실이에요. 파일공유 포트가 인터넷에 열려 있는 건 랜섬웨어가 주로 들어오는 길이라서, 공유기 정리하면서 일부러 닫았거든요. 그 정리 과정은 <a href="https://blog.naver.com/makefield_ai/224411999114" target="_blank" rel="noopener">포트포워딩 삭제 전 확인 3가지</a> 글에 따로 적어 뒀어요.</p>
+<p>그런데 빠진 게 하나 있었어요.<br>
+제 작업 폴더는 매일 Synology Drive로 NAS랑 동기화되고 있었거든요.<br>
+그 앱이 NAS에 <strong>어떤 주소로</strong> 붙는지는 아무도 안 봤던 거예요.</p>
+<p>그래서 Synology Drive 클라이언트가 접속 정보를 저장해 두는 파일을 들여다봤어요. 윈도우에서는 여기 있었습니다(제 PC 기준, Drive 클라이언트 3.5).</p>
+<pre><code>%LOCALAPPDATA%\SynologyDrive\data\db\sys.sqlite</code></pre>
+<p>안의 <code>connection_table</code>이라는 표를 읽어 보니 이랬어요. 값은 가렸습니다.</p>
+<pre><code>server_name = (QuickConnect ID)
+server_ip   = 192.168.x.x
+server_port = 6690
+use_ssl     = 1
+domain_name = (IP).(QuickConnect ID).direct.quickconnect.to</code></pre>
+<p><code>quickconnect.to</code>로 끝나는 주소가 그대로 들어 있었어요.<br>
+QuickConnect가 이미 켜져 있었고, 동기화 앱은 그걸로 붙고 있었던 거죠..<br>
+Tailscale 추가 설치는 필요 없었습니다.</p>
+<img src="img/02_ai_view_vs_real.png" alt="왼쪽 &#x27;AI가 본 것&#x27; — 체크리스트 2줄 &#x27;445 포트포워딩: 삭제됨(X)&#x27;, &#x27;Tailscale 목록: NAS 없음(X)&#x27; → 빨간 결론 박스 &#x27;외부 경로 0개&#x27;. 오른쪽 &#x27;실제로 있던 것&#x27; — &#x27;Synology Drive 클라이언트&#x27; → &#x27;QuickConnect 주소(…quickconnect.to)&#x27; → &#x27;NAS&#x27; 초록 선. 하단 빨간 펜 메모 &#x27;안 본 곳에 길이 있었다&#x27;" loading="lazy">
+<h2>3. NAS 외부 접속, 고를 수 있던 방법은 네 가지였어요</h2>
+<p><strong>결론부터: 저는 이미 켜져 있던 QuickConnect를 쓰고, 클라우드 드라이브는 예비로 남겼어요.</strong> 고려했던 방법을 표로 정리하면 이렇습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>방법</th><th>장점</th><th>걸린 점</th><th>결정</th></tr></thead><tbody><tr><td>445 포트포워딩 되살리기</td><td>설정이 단순</td><td>파일공유 포트가 인터넷에 노출(랜섬웨어 주 경로)</td><td>안 함</td></tr><tr><td>NAS에 Tailscale 설치</td><td>내 기기끼리만 통하는 길</td><td>설치·관리할 게 하나 늘어남</td><td>필요 없어짐</td></tr><tr><td>QuickConnect</td><td>포트포워딩 없이 연결(공식 설명)</td><td>직접 연결이 안 되면 릴레이로 돌아 느릴 수 있음</td><td><strong>채택(이미 켜져 있었음)</strong></td></tr><tr><td>클라우드 드라이브</td><td>NAS가 꺼져도 동작</td><td>파일이 외부 서버로 나감</td><td>예비 경로로 코드에 남김</td></tr></tbody></table></div>
+<p>QuickConnect에도 단점은 있어요. 시놀로지 공식 사양에 &quot;릴레이로 연결된 QuickConnect는 포트포워딩 연결보다 느릴 수 있다&quot;고 적혀 있어요. 저는 하루 몇 개 PDF만 옮기니까 상관이 없었고요. 큰 영상 파일을 자주 옮긴다면 판단이 달라질 수 있습니다.</p>
+<p>그리고 NAS가 꺼져 있는 날을 위해, 스크립트에는 NAS 경로가 안 보이면 클라우드 드라이브 폴더로 자동 전환하는 줄을 남겨 뒀어요. 길을 하나로만 두지 않으려고요.<br>
+이렇게 만든 배급 스크립트는 9월 20·21·22일 사흘 연속 무인으로 정상 실행됐습니다.</p>
+<h2>4. 시놀로지 NAS 외부 접속 경로, 이 순서로 확인해요</h2>
+<p>이번 일로 순서를 바꿨어요. &quot;경로가 없다&quot;는 결론은 맨 마지막에 내립니다.</p>
+<img src="img/03_check_order.png" alt="세로 3단 흐름 &#x27;① 지금 동작 중인 앱의 접속 설정 읽기(Drive 클라이언트 sys.sqlite)&#x27; → &#x27;② 공유기 포트포워딩·UPnP 목록 보기&#x27; → &#x27;③ VPN 기기 목록 보기&#x27; → 마지막 박스 &#x27;셋 다 없을 때만 &quot;경로 없음&quot;&#x27;. ①번 옆 빨간 펜 &#x27;여기를 건너뛰었다&#x27;" loading="lazy">
+<ol><li><strong>지금 실제로 동작 중인 앱의 접속 설정</strong>부터 봅니다. 동기화가 되고 있다면 어딘가 길이 있는 거예요.</li><li>공유기 관리 화면의 포트포워딩·UPnP 목록을 봅니다. 제 공유기 UPnP 목록에는 Drive용 6690 포트가 자동으로 열려 있었어요. 시놀로지 공식 사양에도 &quot;UPnP를 지원하는 공유기에는 필요한 포트포워딩 규칙을 자동으로 적용한다&quot;고 나와 있고요.</li><li>마지막으로 VPN 기기 목록을 봅니다.</li></ol>
+<p>NAS 쪽에서 직접 보고 싶다면 DSM의 <strong>제어판 &gt; 외부 액세스 &gt; QuickConnect</strong> 메뉴에서 켜짐 여부와 릴레이 옵션을 확인할 수 있어요(시놀로지 도움말 기준, 저는 이번엔 클라이언트 쪽에서 확인했습니다).</p>
+<h2>이런 질문이 나올 것 같아요</h2>
+<p><strong>Q. sys.sqlite 파일을 그냥 열어도 되나요?</strong><br>
+동기화 앱이 쓰고 있는 파일이라, 저는 <strong>복사본을 만들어서</strong> 그 사본을 읽었어요. 원본을 직접 열어 고치면 동기화 설정이 꼬일 수 있습니다. 안에 로그인 세션 값도 들어 있으니 화면 캡처나 공유할 때는 꼭 가리세요.</p>
+<p><strong>Q. QuickConnect가 켜져 있으면 보안상 위험한 거 아닌가요?</strong><br>
+시놀로지 공식 사양은 &quot;SSL을 켜면 종단 간 암호화를 쓴다&quot;고 설명해요. 제 설정 파일에도 <code>use_ssl = 1</code>이 찍혀 있었고요. 다만 어떤 외부 경로든 열려 있는 길이니, NAS 계정 비밀번호와 2단계 인증은 따로 챙기는 게 맞습니다.</p>
+<p>AI 진단이 틀린 건 게을러서가 아니었어요. 손에 든 목록 두 개로는 맞는 결론이었거든요. 문제는 그 목록 밖을 안 봤다는 거예요. 그래서 작업 기록에 &quot;경로가 없다고 단정하기 전에 클라이언트 설정 파일부터 읽어라&quot;는 줄을 남겼어요.<br>
+여러분 NAS는 지금 어떤 길로 바깥이랑 연결돼 있는지, 한 번 확인해 보셨나요?</p>
+<p>집 장비에 AI를 붙여 보다 헛다리 짚은 기록은 makefield.ai에서도 이어 보실 수 있어요.</p>
+<h2>출처</h2>
+<ul><li>Synology, DSM 7.4 Network and External Access 사양(QuickConnect: 포트포워딩·공유기 설정 불필요, UPnP 공유기 자동 포트포워딩, 릴레이 연결은 지연으로 느릴 수 있음, SSL 사용 시 종단 간 암호화) → <a href="https://www.synology.com/en-global/dsm/7.4/software_spec/network_external_access" target="_blank" rel="noopener">https://www.synology.com/en-global/dsm/7.4/software_spec/network_external_access</a> (2026-10-17 확인)</li><li>Synology 지식센터, QuickConnect 도움말(제어판 &gt; 외부 액세스 &gt; QuickConnect, 릴레이 서비스 옵션) → <a href="https://kb.synology.com/en-global/DSM/help/DSM/AdminCenter/connection_quickconnect" target="_blank" rel="noopener">https://kb.synology.com/en-global/DSM/help/DSM/AdminCenter/connection_quickconnect</a></li><li>증상·실측값: 2026-09-19~22 개인 태블릿 공부 자료 배급 스크립트 구축 기록 + 2026-10-17 본인 PC 설정 파일 재확인(QuickConnect ID·IP·계정명 제외)</li></ul>
+<p>태그: #시놀로지NAS외부접속 #시놀로지QuickConnect #퀵커넥트 #NAS원격접속 #NAS외부접속방법 #SynologyDrive #시놀로지드라이브 #NAS포트포워딩 #테일스케일 #Tailscale #홈NAS #집NAS활용 #AI진단오류 #AI오답노트 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224444240363" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261027-non-developer-github-need/"><div class="d">← 이전 노트</div><div class="t">비개발자 깃허브 꼭 배워야 하나, 혼자 쓰는 저는 보류했습니다</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
