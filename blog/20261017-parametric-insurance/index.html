@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>지수형 보험이란? 영수증 없이 보험금이 나오는 파라메트릭 보험의 원리와 돈 흐름 | Field Notes · MakeField AI</title>
+<meta name="description" content="한 줄 요약: 지수형 보험이란 실제 손해를 조사하지 않고 &#x27;비가 몇 mm 왔나, 비행기가 몇 시간 늦었나&#x27; 같은 숫자(지수)가 기준을 넘으면 정해진 보험금을 바로 주는 보험이에요. 국내에서는 2025년 2월 삼성화재의 항공기 지연 특약이 업계 첫 상품으로 나왔고(헤럴드경제 20">
+<link rel="canonical" href="https://makefield.ai/blog/20261017-parametric-insurance/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="지수형 보험이란? 영수증 없이 보험금이 나오는 파라메트릭 보험의 원리와 돈 흐름 | Field Notes · MakeField AI">
+<meta property="og:description" content="한 줄 요약: 지수형 보험이란 실제 손해를 조사하지 않고 &#x27;비가 몇 mm 왔나, 비행기가 몇 시간 늦었나&#x27; 같은 숫자(지수)가 기준을 넘으면 정해진 보험금을 바로 주는 보험이에요. 국내에서는 2025년 2월 삼성화재의 항공기 지연 특약이 업계 첫 상품으로 나왔고(헤럴드경제 20">
+<meta property="og:url" content="https://makefield.ai/blog/20261017-parametric-insurance/">
+<meta property="og:image" content="https://makefield.ai/blog/20261017-parametric-insurance/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "지수형 보험이란? 영수증 없이 보험금이 나오는 파라메트릭 보험의 원리와 돈 흐름", "datePublished": "2026-10-17", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261017-parametric-insurance/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-10-17</span></div>
+<h1>지수형 보험이란? 영수증 없이 보험금이 나오는 파라메트릭 보험의 원리와 돈 흐름</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="타이틀카드 — &quot;지수형 보험이란? / 영수증 없이 보험금이 나오는 파라메트릭 보험&quot;" loading="lazy">
+<p><strong>한 줄 요약: 지수형 보험이란 실제 손해를 조사하지 않고 &#x27;비가 몇 mm 왔나, 비행기가 몇 시간 늦었나&#x27; 같은 숫자(지수)가 기준을 넘으면 정해진 보험금을 바로 주는 보험이에요.</strong> 국내에서는 2025년 2월 삼성화재의 항공기 지연 특약이 업계 첫 상품으로 나왔고(헤럴드경제 2026-03), 2026년 여름에는 폭염으로 공사가 멈춘 건설 일용직에게 시간당 17,210원을 주는 제주 기후보험이 시작됐습니다(파이낸셜뉴스 2026-07).</p>
+<p>보험금을 받으려고 영수증을 모으고, 손해사정사의 현장 조사를 기다려 본 사람이라면 &quot;숫자만 보고 바로 준다&quot;는 말이 낯설게 들릴 거예요. 이 글은 그 구조가 어떻게 돌아가는지, 누가 돈을 내고 누가 버는지, 그리고 어디서 틀어질 수 있는지를 2026년 10월 기준으로 풀어 봅니다.</p>
+<h2>1. 지수형 보험은 일반 보험과 무엇이 다른가요</h2>
+<p><strong>일반 보험(실손형)은 &#x27;얼마나 잃었나&#x27;를 따지고, 지수형은 &#x27;약속한 숫자가 넘었나&#x27;만 따집니다.</strong> 영어로는 파라메트릭(parametric) 보험이라고 해요.</p>
+<blockquote>💡 파라메트릭 보험 — 손해 조사 없이 강수량·풍속·지연 시간 같은 숫자(지수)가 기준을 넘으면 미리 정한 금액을 자동으로 주는 보험. &quot;비가 100mm 넘으면 10만 원&quot; 같은 약속이다.</blockquote>
+<blockquote>💡 손해사정 — 사고가 났을 때 실제 피해가 얼마인지 조사해 보험금을 정하는 절차. 시간이 걸리고 다툼이 생기기 쉽다.</blockquote>
+<p>항공기 지연 보험으로 비교하면 차이가 선명해요.</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>실손형</th><th>지수형</th></tr></thead><tbody><tr><td>지급 조건</td><td>지연 중 실제로 쓴 식비·숙박비</td><td>2시간 이상 지연 또는 결항이라는 사실</td></tr><tr><td>내야 할 서류</td><td>영수증</td><td>항공 지연 증명만(별도 비용 증빙 없음)</td></tr><tr><td>보험금</td><td>쓴 만큼(한도 안에서)</td><td>지연 시간별 정액</td></tr><tr><td>예시 금액</td><td>사람마다 다름</td><td>출국편 최대 10만 원, 귀국·경유편 최대 20만 원(6시간 이상 지연·결항)</td></tr></tbody></table></div>
+<p>*(금액: 삼성화재 특약 기준 — 딜사이트 2025-07, 헤럴드경제 2026-03. 가입 전에는 해당 시점 약관을 확인해야 합니다.)*</p>
+<img src="img/02_.png" alt="위아래 두 줄 흐름 비교. 위 줄 &#x27;실손형&#x27;(빨간 칩) — &#x27;사고&#x27; → &#x27;영수증 모으기&#x27; → &#x27;손해사정 조사&#x27; → &#x27;보험금&#x27; 박스 4개, &#x27;손해사정 조사&#x27; 박스 빨간 테두리에 빨간 손글씨 &#x27;시간, 다툼&#x27;. 아래 줄 &#x27;지수형&#x27;(잉크 칩) — &#x27;사고&#x27; → &#x27;공공 데이터 확인(지연 시간·기상 특보)&#x27; → &#x27;정액 보험금&#x27; 박스 3개, 끝에 초록 체크. 하단 캡션 &#x27;손해를 재지 않고, 숫자를 잰다&#x27;" loading="lazy">
+<p>위 그림처럼 지수형은 중간의 &#x27;손해를 재는 단계&#x27;를 통째로 건너뜁니다. 그래서 빠르지만, 대신 &#x27;숫자&#x27;가 믿을 만해야 해요.</p>
+<h2>2. 왜 지금 지수형이 뜨나요</h2>
+<p><strong>이유는 두 가지예요. 날씨 피해가 잦아졌고, 그 피해를 숫자로 잴 공공 데이터가 쌓였기 때문입니다.</strong></p>
+<p>첫째, 폭염·폭우처럼 피해는 넓게 퍼지는데 한 건 한 건 금액은 작은 손해가 늘었어요. 이런 손해를 일일이 조사하면 조사비가 보험금보다 커집니다. 제주 기후보험이 대표 사례예요. 폭염 중대경보가 오후 1시 전에 내려지고 현장 작업이 전면 중단되면, 쉬게 된 시간만큼 최대 4시간까지 시간당 17,210원을 줍니다. 4시간을 다 채우면 하루 68,840원이에요(파이낸셜뉴스 2026-07). 이 금액은 보통인부 일당 172,068원을 시급으로 바꾼 뒤 80%를 적용해 정했어요.</p>
+<p>둘째, 숫자를 확인할 데이터가 공개돼 있어요. 손해보험협회는 기상청·한국지질자원연구원과 데이터 표준화·API 연동을 논의했고, 보험개발원은 지수형 상품의 첫 참조순보험요율을 산출했습니다(딜사이트 2025-07).</p>
+<blockquote>💡 API — 프로그램끼리 데이터를 주고받는 통로. 보험사 시스템이 기상청 특보를 사람 손 없이 바로 받아 볼 수 있게 해 준다.</blockquote>
+<blockquote>💡 참조순보험요율 — 보험개발원이 통계로 계산해 보험사들에 제공하는 &#x27;기준 보험료율&#x27;. 새 상품의 가격표 밑그림이 된다.</blockquote>
+<p>경향신문(2026-06)은 제주 건설현장 기후보험과 KB손해보험의 전통시장 날씨피해 보상보험(2025-10)을 공공·민간이 도입한 국내 첫 지수형 날씨보험으로 소개했어요.</p>
+<h2>3. 돈의 흐름 — 누가 내고, 누가 받고, 누가 버나요</h2>
+<p><strong>이 보험의 돈은 &#x27;가입자 → 보험사 → 재보험사·채권 투자자&#x27;로 위험을 넘기며 흐르고, 그 사이에 데이터 제공자와 계산 대행사가 들어갑니다.</strong></p>
+<div class="table-wrap"><table><thead><tr><th>역할</th><th>하는 일</th><th>예시</th></tr></thead><tbody><tr><td>보험료를 내는 쪽</td><td>개인, 기업, 지자체·정부</td><td>여행객, 제주도(상생기금 9억 원+도비 1억 원, 3년 10억 원 — 파이낸셜뉴스 2026-07)</td></tr><tr><td>위험을 받는 쪽</td><td>보험사가 상품을 팔고 큰 위험은 재보험사에 넘김</td><td>국내 손해보험사, 해외 대형 재보험사</td></tr><tr><td>더 큰 재난 위험</td><td>재해채권으로 투자자에게 넘김</td><td>세계은행이 발행한 자메이카 재해채권</td></tr><tr><td>숫자를 대는 쪽</td><td>지수 데이터 제공·지급 여부 계산</td><td>공항공사·기상청 데이터, 허리케인 판정 대행사</td></tr></tbody></table></div>
+<blockquote>💡 재보험 — 보험사가 드는 보험. 큰 사고가 나면 보험사 혼자 감당하지 않도록 위험을 나눈다.</blockquote>
+<blockquote>💡 재해채권(캣본드) — 정해진 재난이 일어나면 투자자가 원금을 잃고 그 돈이 피해국·보험사에 가는 채권. 재난이 없으면 투자자는 높은 이자를 받는다.</blockquote>
+<p>시장 규모는 조사기관마다 크게 달라요. 글로벌마켓인사이츠는 2025년 세계 지수형 보험 시장을 194억 달러로 추정하고 2035년 638억 달러를 전망했습니다(Global Market Insights 2026-08). 반면 모르도르 인텔리전스는 2025년을 34억 8,000만 달러로 잡았어요(Mordor Intelligence 2026-08). <strong>두 추정이 5배 이상 차이 나는 것은 &#x27;어디까지를 지수형으로 셀지&#x27; 정의가 아직 굳지 않았다는 신호</strong>로 읽는 게 안전합니다. 둘 다 추정치예요.</p>
+<img src="img/03_.png" alt="왼쪽부터 &#x27;가입자(개인·기업·지자체)&#x27; → &#x27;보험사&#x27; → &#x27;재보험사&#x27; → &#x27;재해채권 투자자&#x27; 박스 4개를 잉크 화살표(보험료 방향)로 연결. 아래쪽에 반대 방향 초록 화살표 &#x27;조건 충족 시 보험금&#x27;. 위쪽에 떨어져 있는 &#x27;데이터·계산 대행(기상청·공항·판정사)&#x27; 박스에서 점선 화살표가 화살표 줄 중앙으로 내려옴, 그 박스만 빨간 테두리에 빨간 손글씨 &#x27;숫자가 틀리면 전부 틀림&#x27;. 하단 캡션 &#x27;위험은 오른쪽으로, 보험금은 왼쪽으로&#x27;" loading="lazy">
+<h2>4. 누가 하고 있나요 — 국가·기업 사례</h2>
+<p><strong>가장 큰 판은 &#x27;나라가 드는 재난 보험&#x27;이고, 기업 쪽에서는 데이터로 상품을 설계하는 보험 스타트업이 커지고 있어요.</strong></p>
+<ul><li><strong>자메이카(세계은행 재해채권)</strong>: 2025년 11월 허리케인 멜리사가 미리 정한 조건(중심기압·경로)을 충족해 1억 5,000만 달러 전액이 지급됐어요. 판정은 미국 국립허리케인센터 자료를 바탕으로 제3자 계산 대행사가 했습니다(세계은행 2025-11).</li><li><strong>데카르트 언더라이팅(프랑스, 예시)</strong>: 기후 위험을 지수로 보장하는 파리의 보험 스타트업으로, 2022년 1억 2,000만 달러를 투자받았고 기업 고객이 200곳을 넘는다고 밝혔어요(tech.eu 2022-01).</li><li><strong>대형 보험·재보험사</strong>: 글로벌마켓인사이츠는 AXA·알리안츠·뮌헨리 등을 시장 상위로, 국내 KB손해보험·삼성화재를 신흥 참여자로 분류했습니다(Global Market Insights 2026-08).</li></ul>
+<p>기업 이름은 구조를 보여 주는 예시일 뿐, 투자 판단의 근거가 아니에요.</p>
+<h2>5. 언제 오나요, 그리고 한계 — 베이시스 리스크</h2>
+<p><strong>가장 큰 약점은 &#x27;숫자와 실제 피해가 어긋나는 것&#x27;이고, 이를 베이시스 리스크라고 부릅니다.</strong></p>
+<blockquote>💡 베이시스 리스크 — 지수가 가리키는 결과와 가입자가 실제로 입은 피해가 어긋날 위험. 피해는 컸는데 숫자가 기준에 못 미쳐 한 푼도 못 받는 경우가 대표적이다.</blockquote>
+<p>자메이카가 그 예예요. 멜리사보다 앞서 4등급 허리케인 베릴이 자메이카에 큰 피해를 냈지만, 재해채권의 기준선을 간발의 차로 넘지 못해 지급되지 않았습니다(Insurance Business 2025-11). 그래서 업계에서도 &quot;가능하면 실손형이 낫고, 지수형은 빠른 구호용 보완재&quot;라는 의견이 함께 나와요.</p>
+<img src="img/04_.png" alt="2x2 표. 가로축 &#x27;지수 기준 넘음 / 못 넘음&#x27;, 세로축 &#x27;실제 피해 큼 / 작음&#x27;. 왼쪽 위 &#x27;피해 큼+기준 넘음&#x27;=초록 체크 &#x27;정상 지급(멜리사)&#x27;. 오른쪽 위 &#x27;피해 큼+기준 못 넘음&#x27;=빨간 테두리, 빨간 손글씨 &#x27;못 받음(베릴)&#x27;. 왼쪽 아래 &#x27;피해 작음+기준 넘음&#x27;=잉크 &#x27;피해보다 많이 받음&#x27;. 오른쪽 아래 &#x27;피해 작음+못 넘음&#x27;=잉크 &#x27;지급 없음&#x27;. 하단 캡션 &#x27;베이시스 리스크 = 빨간 칸과 그 대각선&#x27;" loading="lazy">
+<p>국내에서는 과제가 더 있어요. 딜사이트(2025-07)는 지표의 정확성·데이터 신뢰성 확보, 데이터 설비 투자, 그리고 소비자가 지급 조건을 오해하는 불완전판매 우려를 꼽았습니다. 정리하면 이렇습니다.</p>
+<ul><li><strong>이미 온 것</strong>: 항공기 지연(2025~), 전통시장 날씨피해(2025-10), 건설 일용직 폭염(2026 여름)</li><li><strong>아직 남은 것</strong>: 농작물·중소기업 휴업처럼 피해와 숫자를 잇기 어려운 분야, 소비자 설명 기준과 감독 지침</li></ul>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 지수형 보험은 피해가 없어도 보험금을 주나요?</strong><br>
+네, 원칙적으로 지수가 기준을 넘으면 실제 손해와 상관없이 정해진 금액을 줍니다. 다만 제주 기후보험처럼 &#x27;실제 작업 중단&#x27;을 함께 요구하는 상품도 있어요.</p>
+<p><strong>Q. 실손형보다 항상 유리한가요?</strong><br>
+아니에요. 빠르고 서류가 적은 대신, 피해가 커도 숫자가 기준에 못 미치면 못 받습니다(베이시스 리스크). 실손형과 함께 드는 보완재로 보는 게 맞아요.</p>
+<p><strong>Q. 파라메트릭 보험과 지수형 보험은 다른 건가요?</strong><br>
+같은 말이에요. 파라메트릭(parametric)을 우리말로 옮긴 것이 지수형입니다.</p>
+<h2>오늘의 용어 정리</h2>
+<ul><li><strong>지수형(파라메트릭) 보험</strong> — 숫자가 기준을 넘으면 정액을 자동 지급하는 보험</li><li><strong>실손형 보험</strong> — 실제로 잃은 만큼 따져서 주는 보험</li><li><strong>손해사정</strong> — 피해 금액을 조사해 보험금을 정하는 절차</li><li><strong>API</strong> — 프로그램끼리 데이터를 주고받는 통로</li><li><strong>참조순보험요율</strong> — 보험개발원이 계산해 주는 기준 보험료율</li><li><strong>재보험</strong> — 보험사가 드는 보험</li><li><strong>재해채권(캣본드)</strong> — 재난이 나면 투자자 원금이 피해 보상으로 가는 채권</li><li><strong>베이시스 리스크</strong> — 지수와 실제 피해가 어긋날 위험</li></ul>
+<p>지난 Next Field에서는 정수장 해킹과 갈륨 공급망처럼 &#x27;물건과 설비의 병목&#x27;을 봤어요. 이번엔 위험을 숫자로 바꿔 사고파는 금융 쪽 병목을 봤습니다. 여러분이라면 폭우·폭염 같은 날씨 위험 중 어떤 것을 지수형으로 보장받고 싶으신가요?</p>
+<h2>출처</h2>
+<p><strong>[1] 딜사이트(2025-07)</strong> — 삼성화재·KB손보 지수형 특약 출시, 손해보험협회의 기상청·지질자원연구원 데이터 연동 논의, 보험개발원 첫 참조순보험요율, 데이터 신뢰성·불완전판매 과제<br>
+→ <a href="https://dealsite.co.kr/articles/145236" target="_blank" rel="noopener">https://dealsite.co.kr/articles/145236</a></p>
+<p><strong>[2] 헤럴드경제(2026-03)</strong> — 삼성화재 2025년 2월 업계 첫 출국 항공기 지연 지수형 특약, 귀국·경유편 특약 추가(6시간 이상 지연·결항 시 최대 20만 원), 영수증 없이 지연 증명만으로 지급<br>
+→ <a href="https://www.heraldk.com/article/2026031514351433221" target="_blank" rel="noopener">https://www.heraldk.com/article/2026031514351433221</a></p>
+<p><strong>[3] 파이낸셜뉴스(2026-07)</strong> — 제주 건설노동자 기후보험 지급 조건(오후 1시 전 폭염 중대경보·작업 전면 중단, 최대 4시간), 시간당 17,210원·하루 68,840원, 산정 기준, 3년 10억 원 재원<br>
+→ <a href="https://www.fnnews.com/news/202607091402472990" target="_blank" rel="noopener">https://www.fnnews.com/news/202607091402472990</a></p>
+<p><strong>[4] 경향신문(2026-06)</strong> — 제주 건설현장 기후보험·KB손보 전통시장 날씨피해 보상보험(2025-10)을 국내 첫 공공·민간 지수형 날씨보험으로 소개<br>
+→ <a href="https://www.khan.co.kr/article/202606021604001" target="_blank" rel="noopener">https://www.khan.co.kr/article/202606021604001</a></p>
+<p><strong>[5] 세계은행(2025-11)</strong> — 허리케인 멜리사가 중심기압·경로 조건을 충족해 자메이카 재해채권 1억 5,000만 달러 전액 지급, 제3자 계산 대행사 판정<br>
+→ <a href="https://www.worldbank.org/en/news/press-release/2025/11/07/hurricane-melissa-triggers-100-payout-of-150-million-world-bank-catastrophe-bond-for-jamaica" target="_blank" rel="noopener">https://www.worldbank.org/en/news/press-release/2025/11/07/hurricane-melissa-triggers-100-payout-of-150-million-world-bank-catastrophe-bond-for-jamaica</a></p>
+<p><strong>[6] Insurance Business(2025-11)</strong> — 허리케인 베릴이 기준선을 간발의 차로 넘지 못해 미지급, 베이시스 리스크 논쟁, 실손형 선호·지수형 보완재 의견<br>
+→ <a href="https://www.insurancebusinessmag.com/us/news/breaking-news/jamaicas-150-million-payout-rekindles-parametric-concerns-but-ils-market-holds-firm-556986.aspx" target="_blank" rel="noopener">https://www.insurancebusinessmag.com/us/news/breaking-news/jamaicas-150-million-payout-rekindles-parametric-concerns-but-ils-market-holds-firm-556986.aspx</a></p>
+<p><strong>[7] Global Market Insights(2026-08)</strong> — 세계 지수형 보험 시장 2025년 194억 달러 추정, 2035년 638억 달러 전망, 상위 보험·재보험사와 국내 신흥 참여자<br>
+→ <a href="https://www.gminsights.com/industry-analysis/parametric-insurance-market" target="_blank" rel="noopener">https://www.gminsights.com/industry-analysis/parametric-insurance-market</a></p>
+<p><strong>[8] Mordor Intelligence(2026-08)</strong> — 세계 지수형 보험 시장 2025년 34억 8,000만 달러 추정(다른 조사와의 편차 근거)<br>
+→ <a href="https://www.mordorintelligence.com/industry-reports/parametric-insurance-market" target="_blank" rel="noopener">https://www.mordorintelligence.com/industry-reports/parametric-insurance-market</a></p>
+<p><strong>[9] tech.eu(2022-01)</strong> — 데카르트 언더라이팅 1억 2,000만 달러 시리즈 B, 기후 위험 지수형 보험, 기업 고객 200곳 이상<br>
+→ <a href="https://tech.eu/2022/01/31/index-based-insurance-provider-descartes-underwriting-triggers-120-million-in-new-funding/" target="_blank" rel="noopener">https://tech.eu/2022/01/31/index-based-insurance-provider-descartes-underwriting-triggers-120-million-in-new-funding/</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224444311434" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261027-non-developer-github-need/"><div class="d">← 이전 노트</div><div class="t">비개발자 깃허브 꼭 배워야 하나, 혼자 쓰는 저는 보류했습니다</div></a><a class="next" href="/blog/20261028-synology-nas-quickconnect-check/"><div class="d">다음 노트 →</div><div class="t">시놀로지 NAS 외부 접속 경로 없다던 AI 진단, QuickConnect가 이미 켜져 있었어요</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
