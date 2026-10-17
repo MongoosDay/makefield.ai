@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>유튜브 영상 가장 정리 잘하는 ai, 도구보다 영상 종류가 답을 갈라요 | Field Notes · MakeField AI</title>
+<meta name="description" content="유튜브 영상 가장 정리 잘하는 ai는 영상 종류에 따라 다릅니다. 말로 하는 강의는 어떤 AI든 자막만 들어가면 실력이 비슷하고 승부는 지시문에서 나요. 화면 시연이 핵심인 영상은 화면까지 읽는 AI, 지금 공식 문서로 확인되는 건 제미나이(Gemini) API예요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261018-youtube-best-ai-summary/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="유튜브 영상 가장 정리 잘하는 ai, 도구보다 영상 종류가 답을 갈라요 | Field Notes · MakeField AI">
+<meta property="og:description" content="유튜브 영상 가장 정리 잘하는 ai는 영상 종류에 따라 다릅니다. 말로 하는 강의는 어떤 AI든 자막만 들어가면 실력이 비슷하고 승부는 지시문에서 나요. 화면 시연이 핵심인 영상은 화면까지 읽는 AI, 지금 공식 문서로 확인되는 건 제미나이(Gemini) API예요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261018-youtube-best-ai-summary/">
+<meta property="og:image" content="https://makefield.ai/blog/20261018-youtube-best-ai-summary/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "유튜브 영상 가장 정리 잘하는 ai, 도구보다 영상 종류가 답을 갈라요", "datePublished": "2026-10-18", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261018-youtube-best-ai-summary/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-10-18</span></div>
+<h1>유튜브 영상 가장 정리 잘하는 ai, 도구보다 영상 종류가 답을 갈라요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;유튜브 영상 가장 정리 잘하는 ai / 도구보다 영상 종류가 답을 갈라요&quot;" loading="lazy">
+<p>유튜브 영상 가장 정리 잘하는 ai는 <strong>영상 종류에 따라 다릅니다. 말로 하는 강의는 어떤 AI든 자막만 들어가면 실력이 비슷하고 승부는 지시문에서 나요. 화면 시연이 핵심인 영상은 화면까지 읽는 AI, 지금 공식 문서로 확인되는 건 제미나이(Gemini) API예요.</strong></p>
+<p>2026년 10월 18일 공식 문서 기준, Gemini API는 유튜브 링크를 넣으면 소리와 함께 화면을 초당 1장씩 읽고, NotebookLM은 텍스트 자막만 가져옵니다. 이 차이가 답을 갈라요.</p>
+<p>저는 공장 자동화랑 제어 코드를 15년째 만지는 사람이에요. 영상을 내 AI 지식으로 옮기는 방식은 예전 글(5절 첫 링크)에 썼으니, 오늘은 <strong>&quot;어떤 AI가 제일 잘하냐&quot;</strong>만 다룹니다.</p>
+<h2>1. &quot;제일 잘하는 AI&quot;를 찾다가 제가 먼저 틀렸어요</h2>
+<p>저도 처음엔 똑같이 물었어요.</p>
+<ul><li>링크 넣으면 3줄, 10줄로 정리해 주는 요약 도구부터 썼고</li><li>빠르긴 했는데 남은 건 결론 뼈대뿐이었어요</li><li>정작 쓰고 싶던 <strong>작업 순서와 판단 기준</strong>은 다 빠져 있었거든요</li></ul>
+<p>그다음엔 제미나이한테 영상 내용을 뽑게 해서 제 로컬 AI에 심었어요. 지시를 대충 줬더니 또 매끈한 요약이 나왔고, &quot;순서와 판단 기준을 살려라&quot;를 콕 집어 주고 나서야 쓸 만한 지시서가 나왔죠. 그래도 <strong>말 없이 화면으로 보여 주는 시연 영상은 자막만으론 반쪽</strong>이었어요.</p>
+<p>돌아보면 질문이 틀렸던 거예요. &quot;어떤 AI가 제일 잘하냐&quot;가 아니라 <strong>&quot;그 AI가 영상의 어디까지를 읽느냐&quot;</strong>를 물었어야 했죠.</p>
+<h2>2. 원인: 유튜브 영상 가장 정리 잘하는 ai는 &#x27;읽는 범위&#x27;에서 갈려요</h2>
+<p>정리 품질을 가르는 건 문장 실력이 아니라 입력이에요. 자막만 받은 AI는 화면에만 나온 내용을 알 수 없거든요.</p>
+<img src="img/02_.png" alt="02_.png 같은 영상, 읽는 범위 비교 — 왼쪽 &#x27;자막만&#x27;(말한 내용만, 화면 시연 구간 빈칸·빨간 X) / 오른쪽 &#x27;자막+화면 1fps&#x27;(말+화면 장면, 체크)" loading="lazy">
+<p>공식 문서로 확인되는 범위만 표로 정리하면 이래요.</p>
+<div class="table-wrap"><table><thead><tr><th>도구</th><th>유튜브 영상에서 읽는 것</th><th>공식 조건</th></tr></thead><tbody><tr><td>NotebookLM</td><td>텍스트 자막만</td><td>자막 있는 공개 영상, 업로드 72시간 지나야, 음성 없는 영상 불가</td></tr><tr><td>Gemini 앱</td><td>영상을 찾고 내용에 답함 (화면을 읽는지는 문서에 없음)</td><td>로그인, 활동 기록 켜기, Live 대화 불가</td></tr><tr><td>Gemini API</td><td>소리 + 화면(초당 1프레임, 문서의 영상 처리 설명 기준)</td><td>공개 영상만, 무료 등급 하루 8시간, 요청당 최대 10개, 기능은 preview</td></tr><tr><td>스크립트 복사 → 아무 AI</td><td>붙여 넣은 자막 텍스트</td><td>자막 있는 영상에서만</td></tr></tbody></table></div>
+<p>(→ <a href="https://ai.google.dev/gemini-api/docs/video-understanding" target="_blank" rel="noopener">https://ai.google.dev/gemini-api/docs/video-understanding</a> , → <a href="https://support.google.com/gemininotebook/answer/16215270)" target="_blank" rel="noopener">https://support.google.com/gemininotebook/answer/16215270)</a></p>
+<ul><li><strong>말 위주 강의</strong>: 어느 AI든 입력이 자막이라 비슷해요. 쓰던 AI에 자막을 넣고 지시문을 다듬는 게 가장 빨라요.</li><li><strong>화면 시연 영상</strong>(프로그램 조작, 설정 화면): 화면까지 읽는 Gemini API로 보내요.</li></ul>
+<h2>3. 해결: 화면 시연 영상을 Gemini API로 정리하는 4단계</h2>
+<p>미리 말씀드리면, <strong>이 API 경로는 제가 직접 돌려 본 게 아니라 Google 공식 문서 예제를 옮긴 거예요.</strong> &#x27;반쪽&#x27; 문제 때문에 찾아서 문서로 확인한 단계입니다.</p>
+<ol><li>Google AI Studio의 <strong>API keys</strong> 페이지에서 <strong>Create API key</strong>로 키를 만든다(→ <a href="https://ai.google.dev/gemini-api/docs/quickstart)." target="_blank" rel="noopener">https://ai.google.dev/gemini-api/docs/quickstart).</a></li><li>파이썬 라이브러리를 설치한다.</li></ol>
+<pre><code>pip install -U google-genai</code></pre>
+<ol start="3"><li>키를 환경 변수에 넣는다. 윈도우 PowerShell은 <code>$env:</code> 문법을 써요(→ <a href="https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_environment_variables)." target="_blank" rel="noopener">https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_environment_variables).</a></li></ol>
+<pre><code>$env:GEMINI_API_KEY=&quot;여기에_발급받은_키&quot;</code></pre>
+<p>이렇게 넣은 값은 지금 열린 PowerShell 창에서만 유지돼요. 창을 닫으면 다시 넣어야 합니다.</p>
+<ol start="4"><li>공식 예제 구조에 지시문만 바꿔 넣고 실행한다.</li></ol>
+<pre><code>from google import genai
+
+client = genai.Client()
+interaction = client.interactions.create(
+    model=&#x27;gemini-3.8-flash&#x27;,
+    input=[
+        {&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;이 영상을 내가 그대로 따라 할 수 있는 단계별 지시서로 바꿔줘. &quot;
+                                 &quot;요약 말고 작업 순서와 판단 기준을 살리고, &quot;
+                                 &quot;말없이 화면으로만 보여준 조작은 MM:SS 시각과 함께 따로 적어줘.&quot;},
+        {&quot;type&quot;: &quot;video&quot;, &quot;uri&quot;: &quot;https://www.youtube.com/watch?v=영상ID&quot;}
+    ]
+)
+print(interaction.output_text)</code></pre>
+<img src="img/03_.png" alt="03_.png 어떤 AI로 보낼지 고르는 흐름 — &#x27;영상에 말 없는 화면 시연이 있나?&#x27; → 아니오: 쓰던 AI + 자막 + 지시문 / 예: Gemini API(공개 영상인가? 확인) → 지시서로 받아 저장" loading="lazy">
+<h2>4. 확인 방법: 화면을 정말 읽었는지 시각으로 물어보세요</h2>
+<p>공식 문서는 <code>MM:SS</code> 형식으로 특정 시점을 물을 수 있다고 적어 둡니다. 이걸 검증에 써요.</p>
+<pre><code>03:20에 화면에 떠 있는 메뉴 이름과 눌린 버튼을 알려줘.</code></pre>
+<ul><li>자막에 없는 화면 요소(메뉴 이름, 버튼)를 맞히면 화면까지 읽은 거예요</li><li>말한 내용만 되풀이하면 자막만 쓴 결과예요</li><li><strong>번호 붙은 단계와 판단 기준</strong>이 없으면 도구가 아니라 지시문 문제예요. 제가 매끈한 요약만 받았던 원인도 이거였어요</li></ul>
+<h2>5. 같은 증상, 다른 경우</h2>
+<ul><li>영상을 왜 요약이 아니라 &#x27;내 AI 지식&#x27;으로 심는지 → <a href="https://blog.naver.com/makefield_ai/224365395274" target="_blank" rel="noopener">유튜브 강의 AI로 정리하는 법</a></li><li>&#x27;스크립트 표시&#x27; 버튼 위치, NotebookLM에 링크가 안 들어갈 때 → <a href="https://blog.naver.com/makefield_ai/224438232417" target="_blank" rel="noopener">유튜브 ai정리하는법</a></li><li>쓰던 ChatGPT로 강의 자막을 정리하고 싶을 때 → <a href="https://blog.naver.com/makefield_ai/224439665653" target="_blank" rel="noopener">챗지피티에서 유튜브 스크립트 추출 강의 요약</a></li></ul>
+<p><strong>Q. 그래서 딱 하나만 고르면요?</strong><br>
+말 위주 강의가 대부분이면 쓰던 AI 그대로 두세요. 바꿀 건 도구가 아니라 &quot;순서와 판단 기준을 살려라&quot; 한 줄이에요. 화면 시연 영상이 많을 때만 Gemini API를 더하면 됩니다.</p>
+<p><strong>Q. 일부 공개 영상도 되나요?</strong><br>
+Gemini API와 NotebookLM 모두 공식 문서상 공개 영상만 돼요.</p>
+<p><strong>Q. 돈이 드나요?</strong><br>
+공식 문서 기준 유튜브 URL 기능은 preview 단계이고 무료예요. 무료 등급은 하루 8시간 분량까지고, 정책은 바뀔 수 있어요.</p>
+<p>유튜브 영상 가장 정리 잘하는 ai를 찾고 계셨다면, 먼저 그 영상에 말 없는 화면 구간이 있는지부터 보세요. 화면 시연 때문에 반쪽으로 남겨 둔 영상이 있다면 그게 첫 번째 재료예요. 영상 한 편을 실제 일에 붙여 쓰는 과정은 makefield.ai에서 이어서 적고 있습니다.</p>
+<h2>출처</h2>
+<ul><li>Google AI for Developers, Video understanding (YouTube URL·공개 영상·하루 8시간·요청당 10개·1fps·MM:SS·Python 예제) → <a href="https://ai.google.dev/gemini-api/docs/video-understanding" target="_blank" rel="noopener">https://ai.google.dev/gemini-api/docs/video-understanding</a></li><li>Google AI for Developers, Gemini API quickstart (google-genai 설치·API 키·GEMINI_API_KEY) → <a href="https://ai.google.dev/gemini-api/docs/quickstart" target="_blank" rel="noopener">https://ai.google.dev/gemini-api/docs/quickstart</a></li><li>NotebookLM 고객센터, 노트북에 새 소스 추가 또는 찾기 → <a href="https://support.google.com/gemininotebook/answer/16215270" target="_blank" rel="noopener">https://support.google.com/gemininotebook/answer/16215270</a></li><li>Gemini 앱 고객센터, Gemini 앱에서 YouTube 콘텐츠 찾기 및 질문하기 → <a href="https://support.google.com/gemini/answer/16622858" target="_blank" rel="noopener">https://support.google.com/gemini/answer/16622858</a></li><li>Microsoft Learn, about_Environment_Variables (PowerShell <code>$Env:</code> 문법, 변경은 현재 세션에만 적용) → <a href="https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_environment_variables" target="_blank" rel="noopener">https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_environment_variables</a></li><li>2026년 10월 18일 원문 확인</li></ul>
+<hr>
+<p>태그: #유튜브영상가장정리잘하는ai #유튜브요약AI #유튜브정리AI #유튜브요약AI추천 #제미나이유튜브 #Gemini영상분석 #GeminiAPI #NotebookLM #노트북LM유튜브 #유튜브자막 #영상AI정리 #AI공부법 #AI활용법 #생성형AI #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224445127425" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261018-ai-book-copyright-label/"><div class="d">← 이전 노트</div><div class="t">AI로 쓴 책 저작권, 부크크 &#x27;AI 사용&#x27; 칸에 &#x27;본문 일부&#x27;를 고른 이유</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
