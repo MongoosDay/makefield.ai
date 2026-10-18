@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수소 폭발 사고 원인, 수전해 사고 8건이 가리킨 공통점 3가지 | Field Notes · MakeField AI</title>
+<meta name="description" content="수소 폭발 사고 원인을 수전해 설비 사고 기록에서 찾아보면, 출발점은 제각각인데 끝은 하나로 모입니다. 1975~2021년 사고 8건을 검토한 2024년 논문은, 가장 나쁜 결과인 폭발이 대부분 장비 안에서 수소와 산소가 섞이면서 시작됐고, 여러 사고에서 가스 순도나 셀 전압에">
+<link rel="canonical" href="https://makefield.ai/blog/20261019-electrolyzer-accident-causes/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="수소 폭발 사고 원인, 수전해 사고 8건이 가리킨 공통점 3가지 | Field Notes · MakeField AI">
+<meta property="og:description" content="수소 폭발 사고 원인을 수전해 설비 사고 기록에서 찾아보면, 출발점은 제각각인데 끝은 하나로 모입니다. 1975~2021년 사고 8건을 검토한 2024년 논문은, 가장 나쁜 결과인 폭발이 대부분 장비 안에서 수소와 산소가 섞이면서 시작됐고, 여러 사고에서 가스 순도나 셀 전압에">
+<meta property="og:url" content="https://makefield.ai/blog/20261019-electrolyzer-accident-causes/">
+<meta property="og:image" content="https://makefield.ai/blog/20261019-electrolyzer-accident-causes/img/00_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "수소 폭발 사고 원인, 수전해 사고 8건이 가리킨 공통점 3가지", "datePublished": "2026-10-19", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261019-electrolyzer-accident-causes/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">현장 AI 실험실</span><span>2026-10-19</span></div>
+<h1>수소 폭발 사고 원인, 수전해 사고 8건이 가리킨 공통점 3가지</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/00_title.png" alt="타이틀카드 — 00_title.png" loading="lazy">
+<p>수소 폭발 사고 원인을 수전해 설비 사고 기록에서 찾아보면, 출발점은 제각각인데 끝은 하나로 모입니다. <strong>1975~2021년 사고 8건을 검토한 2024년 논문은, 가장 나쁜 결과인 폭발이 대부분 장비 안에서 수소와 산소가 섞이면서 시작됐고, 여러 사고에서 가스 순도나 셀 전압에 이상 신호가 먼저 나타났다고 정리했어요</strong> [Tuhi 2024, 4.2~4.3절].</p>
+<p>&#x27;논문 읽는 AI&#x27; 13편, 3부 &#x27;안전&#x27;의 두 번째 글입니다. 지난 편이 &quot;사고가 나면 얼마나 떨어져 있어야 하나&quot;였다면, 이번엔 <strong>사고가 왜 났는지</strong>를 봅니다.</p>
+<p>읽은 문헌은 두 편이에요. 노르웨이 NTNU·SINTEF 연구진이 ESREL 2024에 낸 「Accidents Review and Control Assessment for Reliable Operation of PEM Water Electrolyzer Stacks」와, 유럽 FCH 2 JU가 2020년 11월 18일 연 &#x27;전해 안전&#x27; 온라인 워크숍 회의록(2021년 1월 작성)입니다 [Azkarate 2021].</p>
+<h2>1. 이 논문은 무엇을 풀려 했고, 어떻게 했나요</h2>
+<p><strong>전해 설비는 고장 통계가 부족해서, 과거 사고를 하나씩 뜯어보는 것이 위험을 파악하는 현실적인 방법</strong>이라는 게 출발점이에요 [Tuhi 2024, 1장]. 화학·석유화학·원자력 분야에서 오래 써 온 방식이라고 덧붙입니다.</p>
+<p>자료가 정말 적어요. 유럽 공동연구센터(JRC)의 수소 사고 데이터베이스 HIAD 2.1에 등록된 수소 관련 사고 713건 가운데, 물 전해 설비의 전해조와 직접 관련된 것은 8건뿐이었습니다 [Tuhi 2024, 4.1절].</p>
+<p>워크숍 회의록도 같은 말을 해요. 데이터베이스 속 전해 사고는 대부분 수소가 부산물로 나오는 <strong>염소 전해</strong> 공장 사고이고, 수소 생산용 물 전해 사고는 &quot;일반적 경향을 끌어내기엔 너무 적다&quot;고 적었습니다 [Azkarate 2021, Session 1].</p>
+<p>그래서 이 논문의 목표는 두 가지였어요 [Tuhi 2024, Abstract].</p>
+<ul><li>사고 기록에서 <strong>위험요인</strong>(hazard)을 뽑는다</li><li>그 위험요인이 어떤 <strong>운전 변수</strong>에 먼저 드러나는지 연결해, PEM 스택 제어 구조 설계에 쓴다</li></ul>
+<p>방법은 사고 → 위험요인 → 감시 변수의 세 단계입니다 [Tuhi 2024, 3장].</p>
+<ol><li>HIAD 2.1에서 물 전해 관련 사고를 모으고, 과학 문헌 데이터베이스에서 추가 사고를 찾는다</li><li>사고 설명·주원인·교훈을 읽고, 전해조를 파괴할 수 있는 원인을 <strong>위험요인</strong>으로 묶는다</li><li>위험요인과 <strong>운전 변수</strong>(가스 조성·셀 전압·온도 등)의 관계를 표로 세우고, 이를 바탕으로 PEM 스택의 기초 제어층을 설계한다</li></ol>
+<p>알칼라인과 PEM은 구조가 비슷해서 두 방식의 사고를 함께 봤어요 [Tuhi 2024, 3장]. 정리된 사고는 다음 8건입니다 [Tuhi 2024, Table 1].</p>
+<img src="img/01_accident_timeline.png" alt="수전해 사고 8건 연표 — 01_accident_timeline.png" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>연도·장소</th><th>방식</th><th>무슨 일이</th><th>피해</th></tr></thead><tbody><tr><td>1975 영국</td><td>알칼라인</td><td>슬러지로 전극·분리막 부식 → 수소·산소 혼합 폭발</td><td>사망 1</td></tr><tr><td>1998 프랑스</td><td>언급 없음</td><td>산소 저장탱크에 수소 유입 → 폭발</td><td>사망 0</td></tr><tr><td>2003 일본</td><td>PEM</td><td>수위 저하로 수소가 산소 분리탱크로 → 폭발</td><td>언급 없음</td></tr><tr><td>2005 일본</td><td>PEM</td><td>티타늄 전극 연소 → 폭발</td><td>사망 0</td></tr><tr><td>2012 실험실</td><td>PEM</td><td>막에 구멍 → 고장 감지 후 정지</td><td>사망 0</td></tr><tr><td>2012 실험실</td><td>PEM</td><td>수소·산소 혼합 연소로 스택 소실</td><td>사망 0</td></tr><tr><td>2019 한국</td><td>알칼라인</td><td>막 열화로 혼합 → 수소 버퍼탱크 폭발</td><td>사망 3·부상 6</td></tr><tr><td>2021 독일</td><td>알칼라인</td><td>유로에 슬러지 침착 → KOH(수산화칼륨) 누출</td><td>사망 0</td></tr></tbody></table></div>
+<p>몇 건은 규모가 숫자로 남아 있어요. 1975년 영국 라포르테 사고는 1,690 L 산소 드럼에 수소가 약 13.5% 섞여 있었고, 폭발 충격파가 TNT 22 kg에 해당했습니다 [Tuhi 2024, 4.1절]. 1998년 프랑스 사고에선 저장탱크 돔이 135 m 날아갔어요 [Tuhi 2024, 4.1절].</p>
+<h2>2. 공통 원인 ① — 결국 수소와 산소가 섞였다</h2>
+<p><strong>사고 설명을 다 모아 보면 최악의 결과는 장비 안 수소·산소 혼합에 의한 폭발이고, 그 혼합을 만든 원인이 위험요인</strong>이라는 게 논문의 첫 결론이에요 [Tuhi 2024, 4.2절].</p>
+<p>논문이 뽑은 위험요인은 다섯 가지입니다 [Tuhi 2024, 4.2절].</p>
+<ul><li>셀 막 손상(구멍·열화)</li><li>기체 분리막(separator)의 물리적 파손</li><li>전극 부식</li><li>가스 크로스오버(막을 넘어 반대쪽으로 새는 현상)</li><li>슬러지(찌꺼기) 생성</li></ul>
+<img src="img/02_accident_chain.png" alt="다섯 갈래 원인이 하나의 결과로 모이는 사고 사슬 — 02_accident_chain.png" loading="lazy">
+<p>라포르테 사고가 이 사슬을 그대로 보여 줘요. 슬러지가 전해액 통로를 막자 유량이 줄고 셀 온도와 전해액 농도가 올라갔습니다. 그게 전극과 분리막을 부식시켰고, 분리막이 무너지자 수소가 산소 드럼으로 넘어가 터졌어요 [Tuhi 2024, 4.1절].</p>
+<p>PEM 쪽은 조금 다릅니다. 워크숍 회의록은 실험실 사고 2건을 <strong>두 단계 과정</strong>으로 설명해요. 먼저 고분자 막에 국소적으로 구멍이 나고, 이어서 칸 안에 있던 수소와 산소가 촉매 위에서 재결합하며 스택과 연결부까지 파괴한다는 거예요 [Azkarate 2021, Session 1]. 2012년 사고에선 스택이 <strong>몇 초 만에</strong> 연소로 파괴됐고, 연구진은 상압 스택에도 스스로를 파괴할 만큼의 연소 에너지가 있다고 결론 냈습니다 [Azkarate 2021, Table 2 — Millet 2012 인용].</p>
+<h2>3. 공통 원인 ② — 신호는 먼저 왔는데 놓쳤다</h2>
+<p><strong>과거 사고들을 보면 위험이 터지기 전에 운전 변수에 이상이 먼저 나타났고, 대부분의 사고에서 폭발 전에 가스 조성이 기준값을 넘었다</strong>고 논문은 적었어요 [Tuhi 2024, 4.3절].</p>
+<p>가장 오래된 기준은 1975년 라포르테 사고 보고서에서 나왔습니다. 논문이 인용한 경보·정지 기준은 이렇습니다 [Tuhi 2024, 4.3절 — HM Factory Inspectorate 1976 인용].</p>
+<div class="table-wrap"><table><thead><tr><th>감시 대상</th><th>경보(시각·청각)</th><th>설비 정지</th></tr></thead><tbody><tr><td>산소 순도</td><td>98.8%로 떨어질 때</td><td>98%로 떨어질 때</td></tr><tr><td>수소 순도</td><td>99.7%로 떨어질 때</td><td>99.5%로 떨어질 때</td></tr></tbody></table></div>
+<p>뼈아픈 대목은 회의록 표에 있어요. 라포르테 공장엔 <strong>시간마다 가스를 분석하는 체계가 있었지만, 분석이 늘 이뤄지지는 않았고 운전일지에 가정값이 적혀 있었다</strong>고 합니다 [Azkarate 2021, Table 2]. 셀 내부 손상도 사고 한참 전부터 시작됐을 것으로 봤어요.</p>
+<p>셀 전압도 신호였습니다. 2012년 실험실 사고에서는 개별 셀 전압이 기준값 <strong>1.5 V 아래로 갑자기 떨어지고</strong> 산소 속 수소가 급증한 것을 보고 전원을 바로 끊었어요 [Tuhi 2024, 4.1·4.3절]. 2005년 일본 사고에서도 폭발 전 셀 전압 급락과 전류 증가가 관측됐습니다 [Tuhi 2024, 4.1절].</p>
+<p>논문은 이렇게 위험요인과 감시 변수를 짝지었어요 [Tuhi 2024, Table 2].</p>
+<img src="img/03_hazard_signal_map.png" alt="위험요인별로 먼저 움직이는 운전 변수 — 03_hazard_signal_map.png" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>위험요인</th><th>먼저 볼 운전 변수</th></tr></thead><tbody><tr><td>셀 막 손상</td><td>셀 전압, 산소 속 수소 농도</td></tr><tr><td>분리막 파손</td><td>산소 속 수소, 수소 속 산소 농도</td></tr><tr><td>전극 부식</td><td>산소 속 수소, 수소 속 산소 농도</td></tr><tr><td>가스 크로스오버</td><td>셀 전압, 셀 전류, 셀 압력</td></tr><tr><td>슬러지 생성</td><td>셀 온도, 전해액 유량</td></tr></tbody></table></div>
+<p>전압이 <strong>오르면</strong> 물 분배 이상, <strong>떨어지면</strong> 셀 단락이나 막 구멍을 의심하라는 해석도 붙어 있어요 [Tuhi 2024, 4.3절 — Azkarate 2020 인용]. 다만 회의록은 반대편 사례도 적었습니다. 막에 구멍이 나도 나머지 면이 여전히 분리막 역할을 해서 <strong>곧바로 단락이 일어나지 않을 수 있고, 그래서 제때 잡아내기 어렵다</strong>는 거예요 [Azkarate 2021, Table 2].</p>
+<h2>4. 공통 원인 ③ — 평소와 다른 조건에서 터졌다</h2>
+<p><strong>두 문서의 사례를 겹쳐 보면 저출력 운전, 정비·재기동, 시험 운전처럼 &#x27;평소와 다른 조건&#x27;에서 사고가 반복됩니다.</strong> 회의록도 &quot;비정상 운전 조건과 아차사고는 사고의 중요한 전조&quot;라고 적었어요 [Azkarate 2021, Session 1].</p>
+<img src="img/04_off_normal_conditions.png" alt="사고가 난 &#x27;평소와 다른&#x27; 조건 3가지 — 04_off_normal_conditions.png" loading="lazy">
+<ul><li><strong>저출력 운전 — 2019년 강릉</strong>: 태양광과 연계한 알칼라인 전해조(생산량 40 Nm³/h, 1.2 MPa 공급)의 수소 버퍼탱크 3기가 폭발했어요. 저출력에서 생긴 대량 크로스오버는 감지되지 않았고, 보통 다는 촉매식 산소 제거 장치(deoxo)도 빠져 있었습니다 [Azkarate 2021, Session 1·Table 2]. 사망 3명, 부상 6명이에요 [Tuhi 2024, Table 1].</li><li><strong>정비·재기동 — 염소 전해 사고들</strong>: 회의록은 염소 전해 사고가 <strong>정비·수리 중이거나 압축기·펌프가 멈춘 뒤</strong> 자주 났다고 정리했어요 [Azkarate 2021, Session 1]. 2010년 사례에선 정비 중 셀 전원을 다시 끊지 않았는데, 셀 전압이 0으로 잘못 읽혀 아무도 몰랐습니다 [Azkarate 2021, Table 1].</li><li><strong>시험 운전 — 2005년 일본</strong>: 2년 전 사고 뒤 물 보유량을 늘린 새 장비가 가동 <strong>며칠 만에</strong> 다시 폭발했어요. 전해조를 멈춘 뒤에도 배관·탱크로 반응이 이어졌습니다. 교훈은 &quot;시험·임시 운전이라도 위험성 평가를 하라&quot;였어요 [Azkarate 2021, Table 2].</li></ul>
+<p>강릉 사고에서 회의록이 끌어낸 결론은 <strong>부분부하·저부하 반복 조건을 더 현실적으로 시험하고, 산소 검지 요건을 강화하자</strong>는 것이었습니다. 수전해 수소 발생기 국제표준 ISO 22734 개정에서 다룰 수 있다고 적었어요 [Azkarate 2021, Session 1]. 그래서 아차사고(near miss)와 비정상 운전도 보고 범위에 넣자는 제안이 나왔습니다 [Azkarate 2021, Session 1].</p>
+<h2>5. 그래서 무엇을 제어하라고 했나요 — 그리고 이 논문의 한계</h2>
+<p>논문은 사고 교훈을 PEM 스택 기초 제어층 설계로 옮겼어요. <strong>제어할 변수 5개는 산소극 압력, 양극 간 압력차, 셀 온도, 수소극 수소 조성, 산소극 산소 조성</strong>입니다 [Tuhi 2024, 5장].</p>
+<div class="table-wrap"><table><thead><tr><th>제어 변수</th><th>짝지은 조작 변수</th></tr></thead><tbody><tr><td>셀 온도</td><td>급수 온도</td></tr><tr><td>산소극 압력</td><td>급수 유량</td></tr><tr><td>양극 간 압력차</td><td>전류밀도</td></tr><tr><td>수소극 수소 조성</td><td>산소극 배출 밸브</td></tr><tr><td>산소극 산소 조성</td><td>수소극 배출 밸브</td></tr></tbody></table></div>
+<p>짝은 상대이득배열(RGA) 계산으로 골랐고, 기초층은 변수별로 따로 도는 <strong>PID 피드백 제어</strong>를 권했어요 [Tuhi 2024, 4.4절·Table 3]. 운전 범위로는 압력 1~30 bar, 온도 50~80℃를 인용했습니다 [Tuhi 2024, 4.4절 — IRENA 2020 인용].</p>
+<p>한계도 분명합니다.</p>
+<ul><li><strong>표본이 작다</strong>: 물 전해 사고는 8건뿐이고, 회의록은 이 정도로는 일반 경향을 말하기 어렵다고 했어요 [Azkarate 2021, Session 1].</li><li><strong>강릉 사고는 최종 보고서 전</strong>: 두 문서 모두 조사 중이라고 적었습니다 [Tuhi 2024, 4.1절].</li><li><strong>감시 방법은 범위 밖</strong>: 어떤 센서로 어떻게 재는지는 다루지 않는다고 밝혔어요 [Tuhi 2024, 1장].</li><li><strong>단순 모델</strong>: 셀 전압을 일정하다고 놓고 발열만 고려한 단순 모델로 짝을 정했습니다 [Tuhi 2024, 3장]. 동특성 시뮬레이션 결과는 없어요.</li></ul>
+<h2>6. 이 논문을 AI에게 읽힐 때 걸린 세 군데</h2>
+<p>이번 함정은 <strong>두 문서가 같은 사고를 다르게 적었다</strong>는 점이었어요. 한 문서만 요약시키면 그 문서의 문장 하나가 정답처럼 굳습니다.</p>
+<img src="img/05_ai_reading_traps.png" alt="사고 리뷰 논문을 AI로 읽을 때 걸리는 3가지 — 05_ai_reading_traps.png" loading="lazy">
+<p><strong>① 같은 사고, 세 가지 원인 문장.</strong> &quot;강릉 사고 원인이 뭐야?&quot;를 두 문서에 따로 물으면 답이 달라져요. 원문을 나란히 놓으면 이렇습니다.</p>
+<pre><code>[ESREL 본문] degradation of the electrolyzer membrane caused oxygen to flow into the hydrogen stream
+[회의록 본문] was not caused by membrane perforation, but gases cross-over under low power operating conditions
+[회의록 표]   defective functioning of the electrolyser&#x27;s membrane, at lower power</code></pre>
+<p>셋을 겹치면 <strong>&quot;막 구멍이 아니라 저출력에서의 크로스오버, 최종 보고서는 미발간&quot;</strong>까지가 두 문서가 함께 받쳐 주는 범위예요. 그래서 원인을 단정하지 않고 문서별 문장을 따로 인용했습니다.</p>
+<p><strong>② 흐름 방향이 두 개.</strong> 2005년 일본 사고를 ESREL 표는 &quot;수소를 머금은 물이 산소 탱크로&quot;, 같은 논문 본문은 &quot;산소가 수소 흐름으로&quot;라고 적었어요. 회의록에도 두 표현이 다 나옵니다. 요약에서 한쪽만 고르면 틀린 문장이 되니, <strong>방향이 갈리는 대목은 두 문장을 모두 남겨 두라</strong>고 따로 지시해야 했어요.</p>
+<p><strong>③ 숫자와 표가 어긋난다.</strong> ESREL 본문은 &quot;HIAD에서 8건, 문헌에서 3건 더&quot;라고 쓰는데, 표 1은 <strong>8행</strong>이고 그중 HIAD 번호가 붙은 건 5행입니다. 본문 숫자만 읽은 요약은 &quot;11건&quot;이 되기 쉬워요. 회의록도 라포르테 사고를 본문에선 1974년, 표에선 1975년으로 적었습니다. 텍스트로 뽑은 표는 &#x27;Franc / e&#x27;, &#x27;Germ / any&#x27;처럼 칸 안 글자까지 줄이 갈라져 나왔고요. 그래서 이 글의 사고 목록은 <strong>표의 행을 기준</strong>으로 세웠습니다.</p>
+<p>여러분 분야의 사고·결함 보고서를 AI로 읽을 때 그대로 쓸 수 있는 질문을 옮겨 둡니다.</p>
+<pre><code>1) 같은 사건이 나오는 문서가 둘 이상이면, 사건마다 각 문서의 원인 문장을 원문 그대로 나란히 뽑아.
+2) 문서끼리 원인·방향·연도·인명피해가 다르면 &#x27;불일치&#x27;로 표시하고, 어느 쪽도 고르지 마.
+3) 본문에 나온 건수와 표의 행 수를 따로 세어 맞는지 확인해.
+4) &quot;조사 중&quot;, &quot;추정&quot;, &quot;unknown&quot; 같은 단서가 붙은 원인은 확정 원인과 섞지 말고 따로 적어.
+5) 표가 텍스트로 깨져 보이면 해당 쪽을 이미지로 보고 행·열을 다시 세워.</code></pre>
+<h2>7. 자주 묻는 질문</h2>
+<p><strong>Q. 수전해 설비에서 수소 폭발 사고 원인은 주로 무엇인가요?</strong><br>
+검토된 사고들에서 최악의 결과는 장비 안에서 수소와 산소가 섞여 터지는 것이었어요. 그 혼합을 만든 원인으로 막 손상, 분리막 파손, 전극 부식, 크로스오버, 슬러지 생성 다섯 가지가 꼽혔습니다 [Tuhi 2024, 4.2절].</p>
+<p><strong>Q. 사고 전에 미리 알아챌 수 있는 신호가 있나요?</strong><br>
+가스 순도와 셀 전압이 대표적이에요. 산소 순도 98.8%·수소 순도 99.7%에서 경보, 98%·99.5%에서 정지가 1975년 사고 보고서의 권고였고, 2012년 실험실 사고는 셀 전압이 1.5 V 아래로 급락한 것으로 감지됐습니다 [Tuhi 2024, 4.3절]. 다만 막 구멍은 바로 단락으로 이어지지 않아 놓칠 수 있다고 해요 [Azkarate 2021, Table 2].</p>
+<p><strong>Q. 염소 전해 공장 사고도 참고가 되나요?</strong><br>
+회의록은 데이터베이스 속 전해 사고 대부분이 염소 전해이고, 그 분야의 넓은 경험을 활용하자고 제안했어요. 정비·수리 중이나 펌프·압축기 정지 뒤에 사고가 자주 났다는 점이 공통 교훈입니다 [Azkarate 2021, Session 1].</p>
+<hr>
+<p>정리하면, 수소 폭발 사고 원인을 기록으로 따라가면 세 갈래가 겹칩니다. <strong>수소와 산소가 섞였고, 그 전에 순도·전압 신호가 있었고, 평소와 다른 조건에서 터졌다.</strong> 그래서 두 문서의 처방도 같은 곳을 가리켜요. 가스 조성을 연속으로 재고, 경보와 정지를 자동으로 묶고, 저부하·정비·시험 운전을 위험성 평가에 넣으라는 겁니다.</p>
+<p>다음 편부터는 4부 &#x27;닳는 것&#x27;으로 넘어가, 스택이 어디부터 늙는지 PEM 산화극 촉매의 실패를 읽어 볼게요.</p>
+<p>여러분이 읽는 사고 보고서에도 &quot;같은 사고인데 문서마다 원인이 다른&quot; 경우가 있었나요?</p>
+<p>사고·결함 보고서를 AI로 대조하는 질문 모음은 makefield.ai에 모으고 있어요.</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224446020933" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261019-ai-book-plan-four-rewrites/"><div class="d">← 이전 노트</div><div class="t">AI로 책 기획서 쓰기, 4일 동안 4번 엎고 남은 판정 기준 3가지</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
