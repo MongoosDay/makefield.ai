@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI로 책 기획서 쓰기, 4일 동안 4번 엎고 남은 판정 기준 3가지 | Field Notes · MakeField AI</title>
+<meta name="description" content="AI로 책 기획서 쓰기를 해 보면 그럴듯한 안이 끝도 없이 나와요. 문제는 그게 매번 그럴듯하다는 거예요. 저는 2026년 9월 24일부터 27일까지 나흘 동안 AI와 책 기획서를 4판 만들었고, 앞의 3판은 전부 버렸습니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261019-ai-book-plan-four-rewrites/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI로 책 기획서 쓰기, 4일 동안 4번 엎고 남은 판정 기준 3가지 | Field Notes · MakeField AI">
+<meta property="og:description" content="AI로 책 기획서 쓰기를 해 보면 그럴듯한 안이 끝도 없이 나와요. 문제는 그게 매번 그럴듯하다는 거예요. 저는 2026년 9월 24일부터 27일까지 나흘 동안 AI와 책 기획서를 4판 만들었고, 앞의 3판은 전부 버렸습니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261019-ai-book-plan-four-rewrites/">
+<meta property="og:image" content="https://makefield.ai/blog/20261019-ai-book-plan-four-rewrites/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI로 책 기획서 쓰기, 4일 동안 4번 엎고 남은 판정 기준 3가지", "datePublished": "2026-10-19", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261019-ai-book-plan-four-rewrites/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-10-19</span></div>
+<h1>AI로 책 기획서 쓰기, 4일 동안 4번 엎고 남은 판정 기준 3가지</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;AI로 책 기획서 쓰기 / 4일 동안 4번 엎고 남은 판정 기준 3가지&quot;" loading="lazy">
+<p>AI로 책 기획서 쓰기를 해 보면 <strong>그럴듯한 안이 끝도 없이 나와요.</strong> 문제는 그게 매번 그럴듯하다는 거예요.<br>
+저는 2026년 9월 24일부터 27일까지 나흘 동안 AI와 책 기획서를 4판 만들었고, 앞의 3판은 전부 버렸습니다.</p>
+<p><strong>결론부터 적을게요. AI가 낸 책 기획안은 ①독자에게 좋은 건지 저자에게 편한 건지 ②저자가 실제로 겪은 일과 맞는지 ③독자가 손에 쥘 결과(출력)를 약속하는지, 이 세 가지로 걸러야 해요.</strong> 제가 버린 3판이 정확히 이 셋에 하나씩 걸려 떨어졌거든요.</p>
+<p>저는 산업 설비 제어 시스템을 15년 넘게 설계해 온 엔지니어예요. 퇴근하고 나면 AI한테 말로 시켜서 개인 자동화를 만들고, 그 기록을 모아 첫 책까지 냈어요. 이 글은 그 책의 기획 단계에서 나흘을 헛돈 이야기입니다.</p>
+<h2>1. &quot;잘되든 말든 하나 내자&quot;로 시작했어요</h2>
+<p>시작은 제 이 한마디였어요.</p>
+<pre><code>이제 책을 써야할거같다. 일단 잘되든말든 발간 하나 하자</code></pre>
+<p>재료는 넉넉해 보였어요. AI가 직접 세어 보니 그동안 써 둔 글이 108편, 42만 6천여 자(원고지 2,132매)였거든요. 단행본 몇 권은 나올 분량이었죠.<br>
+그래서 기획서도 술술 나왔어요.<br>
+1판, 2판, 3판..<br>
+나올 때마다 그럴듯했고, 나올 때마다 틀린 이유가 하나씩 있었어요.</p>
+<img src="img/02_.png" alt="02_.png 기획 4판 변천 — 왼쪽부터 카드 4장 &#x27;1판 오류 검증 에세이집&#x27; → &#x27;2판 조직 AI 도입서&#x27; → &#x27;3판 개인 AI 만들기(입력)&#x27; → &#x27;4판 결과물이 달라지는 책(출력)&#x27;. 1~3판 카드 아래 빨간 펜으로 버린 이유 한 줄씩(&#x27;저자 편의&#x27;, &#x27;안 해 본 일&#x27;, &#x27;축이 반대&#x27;), 4판 카드에 초록 체크 &#x27;확정&#x27;" loading="lazy">
+<h2>2. AI 책 기획 1~3판, 왜 버렸나요?</h2>
+<p><strong>세 판 모두 문장은 멀쩡했어요. 걸린 건 &quot;누구 좋으라고 만든 안이냐&quot;였어요.</strong> 표로 정리하면 이래요.</p>
+<div class="table-wrap"><table><thead><tr><th>판</th><th>기획 방향</th><th>버린 이유</th></tr></thead><tbody><tr><td>1판</td><td>AI 오류 검증 에세이집</td><td>장점이 &quot;이미 다 써 놨다&quot;(신규 집필 10%, 4주면 발간)뿐. 저자 편의지 독자 가치가 아님</td></tr><tr><td>2판</td><td>중소기업 조직에 AI를 들이는 책</td><td>독자가 좁고 구매에 예산·품의·보안 검토가 걸림. 저는 조직에 깔아 준 적이 없음. 사례 주인공이 가상 인물</td></tr><tr><td>3판</td><td>회사원이 자기 일을 아는 AI 만들기</td><td>축이 입력(&quot;AI에게 내 지식을 가르친다&quot;). 독자가 궁금한 건 출력</td></tr><tr><td>4판</td><td>결과물이 달라지는 책(출력 중심)</td><td>확정</td></tr></tbody></table></div>
+<p><strong>1판은 &quot;만들기 쉬운 안&quot;이었어요.</strong> 새로 쓸 게 10%뿐이고 4주면 낸다니 솔깃하죠. 그런데 그건 제 사정이지, 독자가 돈 내고 살 이유는 아니었어요.</p>
+<p><strong>2판은 &quot;제가 안 해 본 일&quot;이었어요.</strong> 조직 구축서는 시장이 커 보였지만, 저는 회사에 AI를 깔아 준 사람이 아니라 혼자 만들어 쓴 사람이에요. 그러다 보니 책을 관통하는 사례가 가상 인물 &#x27;김 과장&#x27;으로 채워졌어요. 1년 동안 실제로 잰 숫자가 있는데, 그걸 지어낸 사람 입으로 말하게 된 거죠.</p>
+<p><strong>3판은 방향이 반대였어요.</strong> &quot;AI에게 내 지식을 가르친다&quot;는 입력 이야기였거든요. 읽다가 제가 짚었어요. 독자가 궁금한 건 가르치는 과정이 아니라 &quot;그래서 내 결과물이 어떻게 달라지냐&quot;라고요.</p>
+<p>여러분이 AI랑 만든 기획서에도 혹시 가상 인물이 주인공으로 서 있지 않나요?</p>
+<h2>3. AI가 혼자서는 못 찾은 정보 3가지</h2>
+<p>3판에서 4판으로 넘어갈 때 목차가 크게 움직였어요. 계기는 AI가 아니라 제가 준 정보 세 개였어요. AI가 작업 기록에 &quot;내가 추측할 수 없었던 3가지&quot;라고 적어 둔 것들이에요.</p>
+<img src="img/03_.png" alt="03_.png 사람이 준 정보 3개가 목차를 바꾼 흐름 — 왼쪽 &#x27;내가 준 정보&#x27; 3칸(독자 회사는 보안 규정 느슨·공유 폴더 / 자동화보다 가진 파일로 수월하게 / 비전문가도 전문가처럼) → 오른쪽 &#x27;바뀐 목차&#x27; 3칸(보안 장 3,600자 → 칼럼 / 자동화 5장 17,500자 → 2장 / 결과물 품질 6장 신설, 초록). 하단 빨간 펜 &#x27;스크립트 778개가 목차에서 통째로 빠져 있었다&#x27;" loading="lazy">
+<ol><li><strong>제가 생각한 독자들의 회사는 보안 규정이 촘촘하지 않고, 파일을 공유 폴더로 주고받아요.</strong> → 대기업 기준으로 잡았던 보안 장 3,600자를 짧은 칼럼으로 줄였어요.</li><li><strong>독자가 원하는 건 자동화보다 &quot;가진 파일로 일을 수월하게&quot;예요.</strong> → 자동화 5장, 17,500자를 2장으로 줄였어요.</li><li><strong>책의 핵심 약속은 &quot;비전문가도 전문가처럼 보이는 결과물&quot;이에요.</strong> → 결과물 품질을 다루는 부를 6장짜리로 새로 만들었어요.</li></ol>
+<p>3번이 제일 아팠어요. 저한테는 문서를 만들어 주는 스크립트가 778개나 있었는데, 3판 목차에는 그게 통째로 빠져 있었거든요. 1년 동안 제일 많이 만든 게 그건데요..</p>
+<p>AI는 제 폴더에 있는 파일은 셀 수 있어도, 독자 회사의 분위기나 제가 독자한테 하고 싶은 약속은 몰라요. 그건 제가 말해 줘야 기획서에 들어가는 정보였어요.</p>
+<h2>4. AI 책 기획안 걸러내는 체크리스트</h2>
+<p>이번에 쓴 기준을 표로 남겨 둘게요. 다음 기획 때 그대로 꺼내 쓰려고요.</p>
+<div class="table-wrap"><table><thead><tr><th>물어볼 것</th><th>걸리면 보이는 신호</th><th>제 경우</th></tr></thead><tbody><tr><td>독자 가치인가, 저자 편의인가</td><td>장점이 &quot;빨리·쉽게 낸다&quot;뿐</td><td>1판</td></tr><tr><td>내가 실제로 겪은 일인가</td><td>사례 주인공이 가상 인물</td><td>2판</td></tr><tr><td>독자가 얻을 결과(출력)를 약속하나</td><td>목차가 &quot;AI에게 가르치는 과정&quot; 위주</td><td>3판</td></tr><tr><td>AI가 모르는 정보를 넣었나</td><td>독자 환경을 대기업 기준으로 가정</td><td>3판 → 4판</td></tr></tbody></table></div>
+<p>4판을 확정하면서 쓰는 규칙도 몇 개 같이 정했어요.</p>
+<ul><li>장마다 글자수 상한은 없앴어요. 기준은 <strong>&quot;이 장만 읽고 따라 할 수 있는가&quot;</strong> 하나예요.</li><li>처음부터 다 읽을 필요 없는 레퍼런스형으로 짜고, 증상별 찾아보기를 붙였어요.</li><li>넣고 싶은 게 생기면 &quot;이건 다음 권에서&quot;로 덜어냈어요. 후속 권 계획은 더 넣는 핑계가 아니라 <strong>1권을 덜어내는 칼</strong>로만 쓰기로요.</li><li>경쟁서 7권 목차를 직접 확인했고, 각 장에 넣을 실패 사례 44건이 전부 실제 기록에 있는지 대조했어요. 실존 100%, 중복 0건이었어요.</li></ul>
+<h2>5. 기획 말고 엉뚱한 데서 터진 실수 하나</h2>
+<p>나흘 사이 가제가 4번 바뀌면서, 작업 메모 파일 이름도 제목 따라 4번 바꿨어요. 그러다 옛 판 메모 파일 하나를 지워 버렸어요. 지우지 말고 보류 폴더로 옮기는 게 제 규칙인데도요.<br>
+바로 복원은 했지만, 그 뒤로는 <strong>작업 파일 이름을 제목과 상관없이 고정</strong>했어요. 제목은 또 바뀔 수 있으니까요.</p>
+<p>실제로 또 바뀌었어요. 4판 확정 며칠 뒤 제목 후보 36개를 놓고 다시 골라서 지금 제목이 됐고, 분량도 크게 깎았거든요. 쪽수를 줄인 얘기는 <a href="https://blog.naver.com/makefield_ai/224434794442" target="_blank" rel="noopener">부크크 최소정가 계산법 글</a>에 따로 적었어요.<br>
+다행히 <strong>기획 구조는 4판에서 더 움직이지 않았어요.</strong> 처음 12월 17일로 박아 뒀던 출간은 10월 7일로 당겨졌고요.</p>
+<p>나흘째 작업 기록 맨 끝에는 이렇게 적혀 있어요.</p>
+<pre><code>⚠ 최대 리스크
+기획 재변경. 4일 4판으로 끝. 이후 구조 요구는 2권으로 이관한다.
+다음 산출물은 기획서가 아니라 본문이어야 한다.</code></pre>
+<img src="img/04_.png" alt="04_.png 기획 마감선 — 가로 시간선 9/24 &#x27;착수&#x27; → 9/27 &#x27;4판 확정&#x27;(굵은 세로 마감선, 빨간 펜 &#x27;여기서 기획 끝&#x27;) → 이후 &#x27;제목 다시 고름·분량 감축&#x27;(구조는 그대로, 잉크) → 10/7 &#x27;출간&#x27;(초록 체크). 마감선 오른쪽 메모 &#x27;구조 요구 → 다음 권으로&#x27;" loading="lazy">
+<h2>기획 단계에서 남는 질문 두 개</h2>
+<p><strong>Q. AI가 써 준 기획서는 버리고 처음부터 직접 쓰는 게 낫나요?</strong><br>
+저는 버리지 않고 판을 계속 돌리는 쪽이 나았어요. 버린 3판마다 이유가 한 줄씩 남아서, 그게 그대로 4판의 거름망이 됐거든요. 대신 판을 버릴 때마다 &quot;왜 버리는지&quot;를 꼭 적어 두세요.</p>
+<p><strong>Q. 기획은 몇 판까지 돌려야 하나요?</strong><br>
+정답은 없지만 끝나는 날은 미리 정하는 게 좋아요. 저는 4판에서 끊고 이후 구조 요구는 다음 권으로 넘겼어요. 기획서를 고치는 동안에는 본문이 한 줄도 늘지 않으니까요.</p>
+<p>AI로 책 기획서 쓰기를 해 보니, AI는 기획서를 몇 판이든 그럴듯하게 써 줘요. 그중에 내 책을 고르는 건 결국 &quot;독자에게 좋은가, 내가 겪은 일인가, 독자가 뭘 얻나&quot; 세 질문이었어요.</p>
+<p>AI로 문서와 기획을 만들면서 걸러 낸 기준들은 makefield.ai에도 차곡차곡 모아 두고 있습니다.</p>
+<h2>출처</h2>
+<ul><li>사례: 2026-09-24~09-27 개인 출간 기획 작업 기록(기획 4판 변천·폐기 사유·실측값·작업 파일 삭제 사고), 2026-09-29 제목 연구·분량 감축 기록. 책 제목·가제 원문 제외</li><li>같은 책의 등록 과정: <a href="https://blog.naver.com/makefield_ai/224445082494" target="_blank" rel="noopener">AI로 쓴 책 저작권, 부크크 &#x27;AI 사용&#x27; 칸 글</a></li></ul>
+<p>태그: #AI로책기획서쓰기 #AI책기획 #책기획서 #책기획서쓰는법 #책목차짜기 #자가출판 #부크크출간 #첫책쓰기 #책쓰기AI #생성형AI글쓰기 #AI글쓰기 #기획서작성 #AI협업 #AI오답노트 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224445965897" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261018-youtube-best-ai-summary/"><div class="d">← 이전 노트</div><div class="t">유튜브 영상 가장 정리 잘하는 ai, 도구보다 영상 종류가 답을 갈라요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
