@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ai들 말귀 못 알아듣는 이유, 다른 AI가 대화 로그를 보고 세 줄로 짚었어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="ai들 말귀가 어두운 건 특정 회사 AI만의 버릇이 아니에요. 대화가 길어질수록 앞쪽에서 굳은 규정이 매 답변에 다시 들어가고, 중간에 한 정정은 그 밑에 묻히는 구조라서 어느 AI든 같은 식으로 헤맵니다. 그래서 같은 창에서 설득하는 대신, 그 대화 로그를 다른 AI에게 통째">
+<link rel="canonical" href="https://makefield.ai/blog/20261020-ai-malgwi-cross-check/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ai들 말귀 못 알아듣는 이유, 다른 AI가 대화 로그를 보고 세 줄로 짚었어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="ai들 말귀가 어두운 건 특정 회사 AI만의 버릇이 아니에요. 대화가 길어질수록 앞쪽에서 굳은 규정이 매 답변에 다시 들어가고, 중간에 한 정정은 그 밑에 묻히는 구조라서 어느 AI든 같은 식으로 헤맵니다. 그래서 같은 창에서 설득하는 대신, 그 대화 로그를 다른 AI에게 통째">
+<meta property="og:url" content="https://makefield.ai/blog/20261020-ai-malgwi-cross-check/">
+<meta property="og:image" content="https://makefield.ai/blog/20261020-ai-malgwi-cross-check/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ai들 말귀 못 알아듣는 이유, 다른 AI가 대화 로그를 보고 세 줄로 짚었어요", "datePublished": "2026-10-20", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261020-ai-malgwi-cross-check/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-10-20</span></div>
+<h1>ai들 말귀 못 알아듣는 이유, 다른 AI가 대화 로그를 보고 세 줄로 짚었어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="01_.png 타이틀카드 — &quot;ai들 말귀 못 알아듣는 이유 / 다른 AI가 대화 로그를 보고 세 줄로 짚었어요&quot;" loading="lazy">
+<p>ai들 말귀가 어두운 건 특정 회사 AI만의 버릇이 아니에요.<br>
+<strong>대화가 길어질수록 앞쪽에서 굳은 규정이 매 답변에 다시 들어가고, 중간에 한 정정은 그 밑에 묻히는 구조</strong>라서 어느 AI든 같은 식으로 헤맵니다.<br>
+그래서 같은 창에서 설득하는 대신, 그 대화 로그를 <strong>다른 AI에게 통째로 보여주고 고장 부위를 진단받는 쪽</strong>이 빨랐어요.</p>
+<p>Anthropic 공식 문서도 &quot;토큰 수가 늘수록 정확도와 회상(recall)이 떨어지며, 이를 컨텍스트 로트(context rot)라 부른다&quot;고 적어 두었습니다(→ <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows," target="_blank" rel="noopener">https://platform.claude.com/docs/en/build-with-claude/context-windows,</a> 2026년 10월 확인).</p>
+<p>저는 현장에서 자동화·제어 일을 15년째 해요. 기계가 이상하면 로그부터 뜯어보는 버릇이 AI 대화에서도 통했습니다.</p>
+<h2>1. 증상 — &quot;알겠습니다&quot; 다음 답에 정정이 없어요</h2>
+<p>2026년 8월 8일, 개인적인 장기 계획을 AI 하나와 길게 상의했어요.<br>
+AI는 초반에 저를 한 문장으로 규정했습니다.</p>
+<pre><code>&quot;이 사람은 만드는 건 잘하는데 파는 걸 피한다.&quot;</code></pre>
+<p>사실과 다른 규정이라 대화 중에 반증 이력을 말했는데, 화면에는 이런 패턴이 반복됐어요.</p>
+<ul><li>제가 정정하면 AI는 &quot;알겠습니다&quot;라고 답한다</li><li>다음 답변에는 그 정정이 빠져 있다</li><li>처방은 여섯 번 바뀌었는데, 여섯 개 다 같은 규정 위에 서 있다</li><li>틀린 내용일수록 말투가 더 또박또박하다</li></ul>
+<p>여섯 개를 전부 반려했어요. 이 장면과 리셋 3단계(틀린 진단을 &#x27;폐기&#x27;로 적기 → 반려 사유를 고정 전제로 바꾸기 → 새 대화창에서 그 파일부터 읽히기)는 <a href="https://blog.naver.com/makefield_ai/224374694605" target="_blank" rel="noopener">AI가 말귀를 못 알아들을 때, 대화를 리셋하는 3단계</a>에 자세히 적어 뒀습니다.<br>
+이 글은 그 앞 단계, <strong>&quot;도대체 어디가 고장 났는지&quot;를 어떻게 알아냈는지</strong>만 다룰게요.</p>
+<h2>2. 원인 — 한 AI 안에서는 고장이 안 보여요</h2>
+<p>같은 Anthropic 문서에 따르면 대화가 이어지는 동안 <strong>이전 턴은 전부 그대로 보존되고, 매 턴의 입력에는 그때까지의 대화 기록 전체 + 지금 메시지가 들어갑니다.</strong> 내 답변도 다음 턴의 입력이 되고요.</p>
+<p>제 사례에 대입하면 이렇습니다.</p>
+<ol><li>초반의 &quot;파는 걸 피한다&quot; 한 줄이 이후 <strong>모든 턴의 입력에 다시 들어간다</strong></li><li>제 정정은 그 위에 얹힌 한 줄일 뿐, 앞의 규정을 지우지 못한다</li><li>대화가 길어질수록 정확도·회상이 떨어진다(컨텍스트 로트)</li><li>결과: 규정은 매번 보이고, 정정은 묻힌다</li></ol>
+<img src="img/02_.png" alt="02_.png 매 턴 입력이 쌓이는 구조 — 턴1~턴4 막대가 오른쪽으로 갈수록 길어지고, 모든 막대 맨 앞에 빨간 &#x27;첫 규정&#x27; 칸이 반복, 중간의 &#x27;정정&#x27; 칸은 작고 흐리게. 아래 손글씨 &quot;정정은 묻히고 규정은 매번 들어간다&quot;" loading="lazy">
+<p>문제는 이걸 <strong>그 AI 자신에게 물으면 잘 안 보인다</strong>는 거예요. 진단을 요청하는 질문조차 같은 대화 기록, 같은 규정 위에서 처리되니까요.</p>
+<h2>3. 해결 — 다른 AI에게 로그를 넘겨 교차 진단</h2>
+<p>그 뒤에 제가 한 건 단순했어요. 대화 로그를 통째로 떠서 <strong>다른 회사 AI</strong>에게 넘기고 사후 분석을 맡겼습니다. 돌아온 진단은 세 줄이었어요.</p>
+<pre><code>- 알아들은 내용을 다음 추론에 보존하지 못함
+- 근거 없는 정밀함 (확신에 찬 디테일)
+- 확인 질문 부재 (물어봐야 할 걸 추측으로 채움)</code></pre>
+<p>여섯 번 반려하는 동안 제가 못 붙인 이름을, 그 대화에 없던 AI가 세 줄로 붙이더라고요..<br>
+순서로 정리하면 이렇습니다.</p>
+<p><strong>1단계. 꼬인 대화를 원문 그대로 복사합니다.</strong> 요약하면 내 해석이 섞여요.</p>
+<p><strong>2단계. 다른 회사 AI의 새 대화창에 붙이고 &#x27;고장 진단&#x27;만 시킵니다.</strong> 해결책은 아직 묻지 않아요. 아래는 이런 진단을 받아 내기 좋은 요청을 템플릿으로 정리한 예시예요(그날 쓴 문장 원문은 아닙니다).</p>
+<pre><code>아래는 다른 AI와 나눈 대화 로그다.
+1) 이 AI가 대화 초반에 나를 어떻게 규정했는지 한 문장으로 찾아라
+2) 내가 정정했는데 다음 답에 반영 안 된 지점을 모두 표시하라
+3) 대화가 실패한 원인을 3줄 이내로 진단하라
+해결책은 아직 쓰지 마라.</code></pre>
+<p><strong>3단계. 진단을 받은 AI에게 &#x27;리셋 프롬프트&#x27;를 짜게 합니다.</strong> 저는 그 AI가 짜준 8단계 순서(사실원장 → 리서치 → 역량지도 → 과거 사후검증 → 장기 설계 → 포트폴리오 → 90일 계획 → 반대심문)를 그대로 채택했어요. 첫 단계인 사실원장, 그러니까 &quot;확정된 사실 목록&quot;부터 만들어 같은 날 통과시켰습니다.</p>
+<p><strong>4단계. 역할을 나눕니다.</strong> 다음 세션부터 진단한 AI는 방향·가드레일, 원래 AI는 리서치·실행을 맡겼어요. 한 AI가 다 하면 자기 규정을 자기가 검사하게 되거든요.</p>
+<img src="img/03_.png" alt="03_.png 교차 진단 흐름 — 왼쪽 &#x27;AI ① 대화창(오염)&#x27;에서 &#x27;로그 원문 복사&#x27; 화살표 → 가운데 &#x27;AI ② 새 창: 고장 진단 3줄&#x27; → 오른쪽 &#x27;리셋 프롬프트·사실원장&#x27; → 아래로 &#x27;새 대화: AI ② 방향·가드레일 / AI ① 리서치·실행&#x27; 두 칸, 마지막에 체크" loading="lazy">
+<h2>4. 고정 전제는 서비스의 &#x27;지침 칸&#x27;에 넣습니다</h2>
+<p>진단과 리셋 프롬프트가 나오면, 그 결과를 <strong>새 대화에 자동으로 붙는 자리</strong>에 넣어야 다시 안 꼬여요. 2026년 10월 기준 공식 도움말에서 확인한 위치입니다.</p>
+<div class="table-wrap"><table><thead><tr><th>서비스</th><th>위치</th><th>적용 범위 (공식 문서)</th></tr></thead><tbody><tr><td>ChatGPT 맞춤 지침</td><td>웹·데스크톱: 설정 → 개인 맞춤 설정(Personalization) → 맞춤 지침</td><td>모든 대화에 적용</td></tr><tr><td>ChatGPT 프로젝트</td><td>프로젝트의 ••• 메뉴 → Project settings</td><td>그 프로젝트 안에서만, 전역 맞춤 지침보다 우선</td></tr><tr><td>Claude 프로젝트</td><td>프로젝트에서 &#x27;Set project instructions&#x27; → 저장</td><td>그 프로젝트의 모든 대화</td></tr></tbody></table></div>
+<p>저는 AI가 매 대화 시작 때 자동으로 읽는 메모 파일에 넣었어요. 일반 채팅 서비스라면 장기 계획 하나에만 쓰는 전제는 <strong>프로젝트 지침</strong>이 맞습니다. 전역 맞춤 지침에 넣으면 다른 대화까지 그 전제를 끌고 다니니까요.<br>
+ChatGPT 맞춤 지침은 무료·Go 요금제 기준 1,500자까지라, &quot;폐기된 진단 + 고정 전제&quot;만 남기는 게 맞아요.</p>
+<img src="img/04_.png" alt="04_.png 고정 전제를 넣는 세 자리 — 세 장의 카드 &#x27;ChatGPT 맞춤 지침(모든 대화)&#x27;, &#x27;ChatGPT 프로젝트(프로젝트 안, 전역보다 우선)&#x27;, &#x27;Claude 프로젝트(프로젝트 내 모든 대화)&#x27;. &#x27;프로젝트&#x27; 두 장에 화살표와 손글씨 &quot;계획 하나에만 쓸 전제면 이 두 곳&quot;" loading="lazy">
+<h2>5. 확인 방법 — 진단한 AI에게 다시 채점시키기</h2>
+<p>새 대화의 첫 답이 나오면, 그 답을 <strong>진단해 준 AI에게 다시 보여주고</strong> 세 줄 고장이 재발했는지만 물어봅니다.</p>
+<ul><li>정정한 내용이 답에 반영됐나 (보존 실패 여부)</li><li>확정 사실과 가설이 구분돼 있나 (근거 없는 정밀함 여부)</li><li>모르는 건 추측 대신 질문했나 (확인 질문 여부)</li></ul>
+<p>세 개 다 통과하면 그 대화는 써도 됩니다. 하나라도 걸리면 지침 칸의 전제부터 고쳐요.</p>
+<h2>같은 증상, 다른 경우</h2>
+<ul><li>정정한 내용이 다음 답에서 사라지고 같은 처방이 반복된다 → <a href="https://blog.naver.com/makefield_ai/224374694605" target="_blank" rel="noopener">AI가 말귀를 못 알아들을 때, 대화를 리셋하는 3단계</a></li><li>AI가 틀린 내용을 사실처럼 기억하고 있다 → <a href="https://blog.naver.com/makefield_ai/224383694035" target="_blank" rel="noopener">AI가 잘못 기억할 때</a></li><li>새 대화에서 어제 한 일을 통째로 잊었다 → <a href="https://blog.naver.com/makefield_ai/224422867066" target="_blank" rel="noopener">AI가 어제 대화를 기억 못 할 때</a></li></ul>
+<h2>이런 것도 궁금하실 것 같아요</h2>
+<p><strong>Q. ai들 말귀 문제, 더 좋은 모델로 바꾸면 해결되나요?</strong><br>
+공식 문서는 컨텍스트 로트를 긴 대화에서 생기는 현상으로 설명해요. 모델을 바꿔도 같은 창에서 규정이 굳으면 같은 일이 납니다. 다른 AI는 갈아타기보다 &#x27;바깥 눈&#x27;으로 쓸 때 쓸모가 컸어요.</p>
+<p><strong>Q. 같은 AI의 새 대화창에서 진단시키면 안 되나요?</strong><br>
+새 창이면 기존 기록이 빠지니 어느 정도는 됩니다. 저는 다른 회사 AI만 써 봤고 같은 AI 새 창과 비교한 적은 없어서, 우열은 말씀드리기 어려워요.</p>
+<p><strong>Q. 로그를 다른 AI에 붙여도 괜찮을까요?</strong><br>
+이름·금액·소속은 지우고 넘기세요. 진단에 필요한 건 &quot;AI가 뭐라고 규정했고 내가 뭐라고 정정했는가&quot;뿐이에요.</p>
+<p>같은 정정을 세 번째 하고 있다면, 설명을 더 길게 쓰기보다 로그를 복사할 때라는 신호로 보시면 됩니다.<br>
+여러분이 지금 붙들고 있는 그 대화창도, 다른 AI가 보면 첫 줄에서 바로 고장 부위를 찾을지 몰라요!</p>
+<p>AI를 굴리다 깨진 장면과 고친 순서는 makefield.ai에도 모아 두고 있어요.</p>
+<h2>출처</h2>
+<ul><li>Anthropic 공식 문서, Context windows (토큰이 늘수록 정확도·회상 저하 = context rot, 이전 턴 전체 보존·매 턴 입력에 이전 대화 기록 포함) → <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows" target="_blank" rel="noopener">https://platform.claude.com/docs/en/build-with-claude/context-windows</a></li><li>OpenAI 도움말, ChatGPT Custom Instructions (설정 → Personalization → Custom Instructions, 모든 대화에 적용, 무료·Go 1,500자) → <a href="https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions" target="_blank" rel="noopener">https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions</a></li><li>OpenAI 도움말, Projects in ChatGPT (••• → Project settings, 프로젝트 지침은 그 프로젝트 안에서만 적용되며 전역 맞춤 지침보다 우선) → <a href="https://help.openai.com/en/articles/10169521-projects-in-chatgpt" target="_blank" rel="noopener">https://help.openai.com/en/articles/10169521-projects-in-chatgpt</a></li><li>Claude 도움말, How can I create and manage projects? (&#x27;Set project instructions&#x27;, 프로젝트 내 모든 대화에 사용) → <a href="https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects" target="_blank" rel="noopener">https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects</a></li><li>사례: 2026-08-08 개인 장기 계획 상의 기록(첫 규정·반려 6건·다른 AI 사후 분석 3줄·8단계 리셋 프롬프트·역할 분담). 금액·소속 정보 제외. 2026년 10월 20일 원문 확인</li></ul>
+<hr>
+<p>태그: #ai들말귀 #AI말귀 #AI가말귀를못알아들을때 #AI대화초기화 #AI교차검증 #컨텍스트창 #컨텍스트로트 #챗GPT맞춤지침 #챗GPT프로젝트 #클로드프로젝트 #프롬프트작성법 #챗GPT활용법 #클로드활용법 #AI업무활용 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224447198454" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261019-electrolyzer-accident-causes/"><div class="d">← 이전 노트</div><div class="t">수소 폭발 사고 원인, 수전해 사고 8건이 가리킨 공통점 3가지</div></a><a class="next" href="/blog/20261020-ga4-setup-day-one/"><div class="d">다음 노트 →</div><div class="t">GA4 설치 후 꼭 할 설정 2가지, 보관 기간 14개월과 맞춤 측정기준</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
