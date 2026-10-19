@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLC AI 에이전트란? 지멘스·CODESYS가 내놓은 &#x27;AI가 짜는 PLC 코드&#x27;와 돈의 흐름 | Field Notes · MakeField AI</title>
+<meta name="description" content="한 줄 요약: 2026년 4월 지멘스는 PLC 코드·HMI 화면·장치 설정을 스스로 계획하고 실행·검증하는 &#x27;Eigen Engineering Agent&#x27;를 상용 출시했고(itwire, 2026-04-21), PLC 개발 도구 CODESYS는 AI가 개발 환경에 직접 들어가 코드">
+<link rel="canonical" href="https://makefield.ai/blog/20261019-plc-ai-agent/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PLC AI 에이전트란? 지멘스·CODESYS가 내놓은 &#x27;AI가 짜는 PLC 코드&#x27;와 돈의 흐름 | Field Notes · MakeField AI">
+<meta property="og:description" content="한 줄 요약: 2026년 4월 지멘스는 PLC 코드·HMI 화면·장치 설정을 스스로 계획하고 실행·검증하는 &#x27;Eigen Engineering Agent&#x27;를 상용 출시했고(itwire, 2026-04-21), PLC 개발 도구 CODESYS는 AI가 개발 환경에 직접 들어가 코드">
+<meta property="og:url" content="https://makefield.ai/blog/20261019-plc-ai-agent/">
+<meta property="og:image" content="https://makefield.ai/blog/20261019-plc-ai-agent/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "PLC AI 에이전트란? 지멘스·CODESYS가 내놓은 'AI가 짜는 PLC 코드'와 돈의 흐름", "datePublished": "2026-10-20", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261019-plc-ai-agent/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-10-20</span></div>
+<h1>PLC AI 에이전트란? 지멘스·CODESYS가 내놓은 &#x27;AI가 짜는 PLC 코드&#x27;와 돈의 흐름</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="타이틀카드 — &quot;PLC AI 에이전트란? / 지멘스·CODESYS가 내놓은 &#x27;AI가 짜는 PLC 코드&#x27;와 돈의 흐름&quot;" loading="lazy">
+<p><strong>한 줄 요약: 2026년 4월 지멘스는 PLC 코드·HMI 화면·장치 설정을 스스로 계획하고 실행·검증하는 &#x27;Eigen Engineering Agent&#x27;를 상용 출시했고(itwire, 2026-04-21), PLC 개발 도구 CODESYS는 AI가 개발 환경에 직접 들어가 코드를 읽고 고치는 MCP 서버를 내놓았습니다(CODESYS 데이터시트, 2026-05).</strong> 공장 기계 프로그램을 AI가 짜는 &#x27;PLC AI 에이전트&#x27;는 이제 시험 단계가 아니라 &#x27;사는 제품&#x27;이 됐어요.</p>
+<p>&quot;챗GPT가 코딩한다는 건 알겠는데, 공장 기계 프로그램도 짠다고?&quot; 궁금했던 분, 그리고 이 변화로 누가 돈을 벌게 되는지 알고 싶은 분을 위한 글입니다. 2026년 10월 기준 공개 자료로 차례로 풀어볼게요.</p>
+<h2>1. PLC AI 에이전트란 무엇인가요</h2>
+<p><strong>PLC AI 에이전트란 공장 자동화 프로그램(PLC 코드)을 사람이 말로 지시하면, AI가 개발 도구 안에서 직접 코드를 쓰고 오류를 확인하고 고치는 프로그램이다.</strong> 질문에 답만 하는 챗봇과 달리 &#x27;도구를 직접 만지는 손&#x27;이 있다는 점이 핵심이에요.</p>
+<blockquote>💡 PLC(프로그래머블 로직 컨트롤러) — 컨베이어·모터·밸브를 정해진 순서대로 켜고 끄는 산업용 소형 컴퓨터. 기계의 &#x27;반사신경&#x27;이다.</blockquote>
+<blockquote>💡 AI 에이전트 — 시키면 답만 하는 게 아니라, 계획을 세우고 도구를 써서 일을 끝까지 해내는 AI. &#x27;말하는 비서&#x27;가 아니라 &#x27;손이 있는 조수&#x27;다.</blockquote>
+<p>지금까지 PLC 프로그램은 엔지니어가 개발 도구 앞에 앉아 한 줄씩 쓰고, 컴파일 오류를 보고, 다시 고치는 일이었어요. 2026년 상반기 두 회사가 이 반복을 AI에게 맡기는 제품을 냈습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>지멘스 Eigen Engineering Agent</th><th>CODESYS MCP 서버</th></tr></thead><tbody><tr><td>붙는 도구</td><td>지멘스 PLC 개발 도구 TIA Portal(V19·V20·V21)</td><td>CODESYS 개발 환경(V3.5.22.1 이상)</td></tr><tr><td>하는 일</td><td>PLC 코드(SCL·LAD) 생성, 컴파일 오류 수정, HMI 화면, 드라이브·네트워크 설정</td><td>프로젝트 탐색·읽기, ST 코드 작성·수정, 오류 검사, 라이브러리 문서 조회</td></tr><tr><td>언어 제한</td><td>글자 언어·그림 언어 모두 언급</td><td>글자 언어(ST)만 쓰기 가능, 그림 언어는 읽기만</td></tr><tr><td>파는 방식</td><td>구독, 지멘스 마켓플레이스(DEX), 1개월 무료 체험</td><td>1년 구독 묶음(PDE)에 포함, 30일 데모</td></tr></tbody></table></div>
+<p>(출처: 지멘스 제품 페이지, CODESYS 데이터시트·도움말 2026)</p>
+<blockquote>💡 TIA Portal — 지멘스 PLC를 프로그래밍하는 공식 개발 도구.</blockquote>
+<blockquote>💡 CODESYS — 여러 제조사 PLC에 공통으로 쓰이는 개발 도구. 특정 회사에 묶이지 않는 &#x27;PLC계의 공용 운영체제&#x27;에 가깝다.</blockquote>
+<blockquote>💡 ST·SCL·LAD — ST(구조화 텍스트)는 글자로 쓰는 PLC 언어(파이썬·C와 비슷), SCL은 지멘스판 ST, LAD(래더)는 전기 회로처럼 사다리 그림으로 그리는 언어다.</blockquote>
+<h2>2. 어떻게 작동하나요 — &#x27;MCP&#x27;라는 콘센트</h2>
+<p><strong>CODESYS MCP 서버는 AI 언어 모델이 공개 규격인 모델 컨텍스트 프로토콜(MCP)을 통해 CODESYS 개발 환경과 직접 대화하게 해 주는 추가 기능이다(CODESYS 데이터시트, 2026-05-04).</strong> AI가 쓸 수 있는 도구로 &#x27;프로젝트 트리 보기&#x27;, &#x27;ST 코드 읽기&#x27;, &#x27;ST 코드 부분 교체&#x27;, &#x27;입출력 구성 보기&#x27;, &#x27;오류 검사&#x27; 등이 열려 있어요.</p>
+<blockquote>💡 MCP(모델 컨텍스트 프로토콜) — AI가 다른 프로그램을 직접 조작하도록 이어 주는 표준 &#x27;콘센트&#x27;. 프로그램 쪽에 이 콘센트가 있으면 어떤 AI든 꽂아서 손발처럼 쓸 수 있다.</blockquote>
+<img src="img/02_.png" alt="왼쪽 &#x27;엔지니어(말로 지시)&#x27; → &#x27;AI 언어 모델&#x27; → 가운데 &#x27;MCP 서버(콘센트)&#x27; → 오른쪽 &#x27;CODESYS 개발 환경&#x27; 박스 안에 4칸(프로젝트 읽기 / ST 코드 쓰기 / 오류 검사 / 라이브러리 문서). 아래 줄: 지멘스 Eigen — &#x27;TIA Portal 안에서 계획 → 실행 → 자체 검증&#x27; 순환 화살표. 손글씨 &#x27;도구 안에 손이 들어갔다&#x27;" loading="lazy">
+<p>그림 속 내용을 글로 옮기면 이렇습니다. 엔지니어가 말로 지시하면 AI가 MCP라는 콘센트를 통해 개발 도구 안으로 들어가, 기존 코드를 읽고 새 코드를 쓰고 오류 검사 결과를 받아 다시 고쳐요. 데이터시트는 쓰임새로 &quot;방대한 기존 프로그램을 이해하기 쉽게 설명하기&quot;와 &quot;버그 수정·새 기능 구현&quot;을 들었습니다.</p>
+<p>눈에 띄는 대목이 하나 있어요. CODESYS 공식 도움말은 <strong>&quot;내부 시험에서 Claude 모델이 ST 코드 품질이 가장 좋았다&quot;</strong>고 적었고, 다른 MCP 호환 모델은 품질이 낮을 수 있다고 덧붙였습니다(CODESYS 온라인 도움말). 도구 회사가 특정 AI 모델을 공개적으로 1위로 꼽은 셈이에요.</p>
+<h2>3. 왜 지금 뜨나요 — 사용자 60만 명이라는 판</h2>
+<p><strong>지멘스는 Eigen Engineering Agent를 TIA Portal 사용자 60만 명 이상이 쓸 수 있고, 출시 전 19개국 100개 이상 기업이 파일럿에 참여했다고 밝혔다(itwire, 2026-04-21).</strong> 일반 소프트웨어에서 먼저 퍼진 AI 코딩 도구의 흐름이 공장 소프트웨어로 넘어온 것으로 볼 수 있어요(추정).</p>
+<p>지멘스가 내세운 효과는 &quot;수작업보다 2~5배 빠른 실행&quot;, &quot;전체 품질 최대 80% 향상&quot;, &quot;엔지니어링 효율을 50% 향상&quot;입니다. 다만 이 숫자는 <strong>회사가 직접 밝힌 주장</strong>이고, 독립 기관이 검증한 수치는 찾지 못했어요.</p>
+<p>수요 쪽 배경은 단순합니다. PLC 프로그램은 기계마다 새로 짜고, 고치고, 오래된 코드를 해석하는 일이 끝없이 반복돼요. CODESYS가 첫 쓰임새로 &#x27;남이 짠 대량의 기존 코드를 설명하기&#x27;를 꼽은 것도 이 때문으로 보입니다(추정 — 데이터시트 쓰임새 기술 기반 해석).</p>
+<h2>4. 돈의 흐름 — 누가 사고, 누가 파나요</h2>
+<p><strong>시장조사업체 글로벌 마켓 인사이트(GMI, 2026-09)는 전 세계 PLC 시장을 2025년 117억 달러, 2035년 약 342억 달러(연평균 약 11.4%)로 추정했다.</strong> PLC AI 에이전트는 이 하드웨어 위에 얹히는 &#x27;소프트웨어 구독&#x27; 층이에요. 조사 기관마다 기준값이 달라서 한 곳의 추정치로만 보는 게 안전합니다.</p>
+<blockquote>💡 연평균 성장률(CAGR) — 매년 평균 몇 %씩 커지는지 나타내는 숫자. 11% 안팎이면 약 6~7년에 두 배가 되는 속도다.</blockquote>
+<img src="img/03_.png" alt="왼쪽 &#x27;사는 쪽&#x27; 박스(기계 제작사 · 자동화 시스템 통합사 · 공장 운영사) — 가운데 화살표 위 &#x27;구독료&#x27; — 오른쪽 &#x27;파는 쪽&#x27; 3칸(자동화 도구 회사: 에이전트·검증 도구 구독 / AI 모델 회사: 클라우드 사용료 / 로컬 AI 장비: 보안용 자체 서버). 아래 막대 2개: PLC 시장 2025 $117억 → 2035 $342억(초록). 손글씨 &#x27;AI만 팔지 않고 안전장치를 같이 판다&#x27;" loading="lazy">
+<p>이하 기업명은 산업 구조 설명용 예시이며 투자 판단과 무관합니다. 돈이 흐르는 길은 세 갈래로 정리돼요.</p>
+<div class="table-wrap"><table><thead><tr><th>파는 쪽</th><th>무엇을 파나</th><th>공개 자료에서 확인된 것</th></tr></thead><tbody><tr><td>자동화 도구 회사</td><td>에이전트 구독 + 검증 도구 묶음</td><td>지멘스: DEX 마켓플레이스 구독·1개월 무료 체험 / CODESYS: 1년 자동 갱신 구독(PDE)</td></tr><tr><td>AI 모델 회사</td><td>클라우드 모델 사용료</td><td>CODESYS가 Claude를 ST 품질 1위로 명시</td></tr><tr><td>로컬 AI 장비·서비스</td><td>사내에서 돌리는 모델</td><td>CODESYS가 민감 프로젝트엔 로컬 모델 권장</td></tr></tbody></table></div>
+<p>(출처: 지멘스 제품 페이지, CODESYS 데이터시트·도움말 2026)</p>
+<p>흥미로운 건 CODESYS의 판매 방식이에요. MCP 서버를 따로 팔지 않고 <strong>정적 분석(코드 규칙 검사)·테스트 매니저(자동 시험)·Git 연동(버전 관리)과 한 묶음 구독(PDE)</strong>으로 넣었습니다(CODESYS PDE 데이터시트). AI가 코드를 쓰는 도구와, 그 코드를 검사·시험·되돌리는 도구를 같이 판다는 뜻이에요. 구독 가격은 두 회사 모두 공개 자료에서 확인하지 못했습니다.</p>
+<blockquote>💡 정적 분석 — 프로그램을 돌려 보지 않고 코드만 읽어서 규칙 위반·실수를 찾는 검사. 원고의 맞춤법 검사기 같은 것.</blockquote>
+<blockquote>💡 Git(버전 관리) — 파일을 고칠 때마다 이전 상태를 저장해 언제든 되돌릴 수 있게 하는 도구.</blockquote>
+<h2>5. 언제 오나요, 한계는 무엇인가요</h2>
+<p><strong>제품은 이미 나왔지만, 공식 문서가 스스로 밝힌 한계가 분명하다.</strong> 도입 속도는 이 한계를 누가 먼저 메우느냐에 달려 있어요.</p>
+<img src="img/04_.png" alt="위 줄(빨강) — &#x27;클라우드 AI 모델&#x27; 경로: CODESYS 프로젝트 → 인터넷 → 모델 회사 서버, 빨간 글씨 &#x27;접근 가능한 프로젝트 데이터 전부 전송&#x27;. 아래 줄(초록) — &#x27;로컬 모델&#x27; 경로: CODESYS 프로젝트 → 사내 서버(외부 전송 없음) + 체크 표시. 손글씨 &#x27;민감하면 안에서 돌려라&#x27;" loading="lazy">
+<ul><li><strong>데이터가 밖으로 나간다</strong>: CODESYS 도움말은 클라우드 모델을 쓰면 &quot;사용자가 접근할 수 있는 모든 프로젝트 데이터가 제공사 서버로 전송된다&quot;고 적고, 민감한 프로젝트에는 로컬 모델을 권해요. 그림의 위 줄(빨강)이 클라우드, 아래 줄(초록)이 로컬 경로입니다.</li><li><strong>되돌리기가 약하다</strong>: 같은 도움말은 &quot;CODESYS V3는 변경을 되돌리는 방법이 제한적&quot;이라며 Git 같은 버전 관리를 권합니다.</li><li><strong>언어가 반쪽이다</strong>: CODESYS MCP 서버는 현재 ST만 쓸 수 있고, 현장에서 많이 쓰는 래더 같은 그림 언어는 읽기만 돼요.</li><li><strong>사람의 검토 단계가 안 보인다</strong>: 지멘스 제품 페이지는 에이전트가 TIA Portal에서 &#x27;자율적으로&#x27; 일하고 &#x27;내장 자체 점검&#x27;으로 품질을 확보한다고 설명하지만, 사람이 승인하는 단계는 적혀 있지 않아요.</li><li><strong>책임 규정은 아직 공사 중</strong>: EU는 규정 (EU) 2026/1744(2026-07-27 발효)로 기계에 들어가는 고위험 AI의 기술 요건을 AI법이 아니라 기계류 규정 안으로 옮기기로 했고, 세부 요건은 2028-08-02까지 위임법으로 정합니다(Eurogip). 기계류 규정 자체는 2027-01-20 시행이에요. 엄밀히 이 규정은 &#x27;AI가 들어간 기계&#x27;를 다루며 &#x27;AI가 짠 코드&#x27;를 직접 다루지는 않지만, 기계 안전 책임이 결국 제조사에 있다는 큰 틀은 그대로입니다.</li></ul>
+<blockquote>💡 위임법 — 법 본문은 큰 틀만 정하고, 세부 기술 요건은 EU 집행위원회가 나중에 따로 정해 붙이는 하위 규칙.</blockquote>
+<p>정리하면 &#x27;언제 오나&#x27;의 답은 &quot;이미 왔다, 다만 검증·데이터 보호·책임 문제를 푼 곳부터 쓴다&quot;에 가깝습니다(추정 — 공개 문서의 한계 서술 기반 해석).</p>
+<h2>자주 묻는 질문(FAQ)</h2>
+<p><strong>Q. AI가 짠 PLC 코드를 바로 기계에 넣어도 되나요?</strong><br>
+A. 공식 문서도 그렇게 권하지 않아요. CODESYS는 되돌리기가 제한적이라 Git 버전 관리를 권하고, 검사·시험 도구를 같은 구독에 묶어 팝니다. 기계 안전 책임은 여전히 제조사·엔지니어에게 있어요.</p>
+<p><strong>Q. 래더(그림 언어)로 짠 프로그램도 AI가 고쳐 주나요?</strong><br>
+A. CODESYS MCP 서버는 2026년 기준 ST만 작성·수정할 수 있고, 그림 언어는 읽기만 됩니다. 지멘스 Eigen은 제품 페이지에 SCL과 LAD 생성을 함께 적어 두었어요.</p>
+<p><strong>Q. 회사 프로젝트를 클라우드 AI에 연결해도 괜찮나요?</strong><br>
+A. CODESYS 도움말은 클라우드 모델 사용 시 접근 가능한 프로젝트 데이터 전부가 제공사 서버로 간다고 명시했어요. 기밀 계약이나 사내 보안 규정을 먼저 확인하고, 민감하면 로컬 모델을 쓰라는 게 공식 권고입니다.</p>
+<h2>오늘의 용어 정리</h2>
+<ul><li><strong>PLC</strong> — 기계를 정해진 순서대로 움직이는 산업용 소형 컴퓨터.</li><li><strong>AI 에이전트</strong> — 계획을 세우고 도구를 직접 써서 일을 끝까지 하는 AI.</li><li><strong>TIA Portal</strong> — 지멘스 PLC 개발 도구.</li><li><strong>CODESYS</strong> — 여러 제조사 PLC에 공통으로 쓰이는 개발 도구.</li><li><strong>ST·SCL·LAD</strong> — 글자 PLC 언어 / 지멘스판 ST / 사다리 그림 언어.</li><li><strong>MCP</strong> — AI가 다른 프로그램을 직접 조작하게 이어 주는 표준 콘센트.</li><li><strong>연평균 성장률(CAGR)</strong> — 해마다 평균 몇 %씩 커지는지 나타내는 숫자.</li><li><strong>정적 분석</strong> — 돌려 보지 않고 코드만 읽어 실수를 찾는 검사.</li><li><strong>Git</strong> — 고칠 때마다 이전 상태를 저장해 되돌릴 수 있게 하는 도구.</li><li><strong>위임법</strong> — 집행위가 나중에 정해 붙이는 세부 기술 규칙.</li></ul>
+<p>AI가 PLC 코드를 쓰는 시대는 왔지만, 도구 회사가 AI와 함께 &#x27;검사기와 되돌리기 버튼&#x27;을 묶어 판다는 사실이 이 시장의 현재 위치를 보여 줘요. 다음 Next Field에서는 또 다른 &#x27;다음 현장&#x27;을 가 볼게요. 여러분이 기계 프로그램을 AI에게 맡긴다면, 가장 먼저 확인하고 싶은 건 무엇인가요?</p>
+<h2>출처</h2>
+<p><strong>[1] itwire(2026-04-21)</strong> — 지멘스 Eigen Engineering Agent 상용 출시, 계획·실행·검증 수행, TIA Portal 사용자 60만 명 이상, 19개국 100개사 이상 파일럿, 회사 주장 2~5배 빠름·품질 최대 80%·엔지니어링 효율을 50% 향상<br>
+→ <a href="https://itwire.com/business-it-news/data/siemens-brings-ai-to-the-physical-world-with-eigen-engineering-agent" target="_blank" rel="noopener">https://itwire.com/business-it-news/data/siemens-brings-ai-to-the-physical-world-with-eigen-engineering-agent</a></p>
+<p><strong>[2] 지멘스 Eigen Engineering Agent 제품 페이지(2026)</strong> — DEX 마켓플레이스 구독·1개월 무료 체험, TIA Portal V19·V20·V21, SCL·LAD 코드 생성·컴파일 오류 수정·HMI·드라이브·네트워크 설정, 자율 실행·내장 자체 점검<br>
+→ <a href="https://www.siemens.com/en-us/products/tia-portal/eigen-engineering-agent" target="_blank" rel="noopener">https://www.siemens.com/en-us/products/tia-portal/eigen-engineering-agent</a></p>
+<p><strong>[3] CODESYS 온라인 도움말 — MCP 서버(2026)</strong> — ST만 작성 가능·그림 언어 읽기 전용, 내부 시험에서 Claude 모델 ST 품질 1위, 클라우드 사용 시 프로젝트 데이터 전부 전송·민감 프로젝트는 로컬 모델 권장, 되돌리기 제한으로 Git 권장<br>
+→ <a href="https://content.helpme-codesys.com/en/CODESYS%20Development%20System%20MCP%20Server/_idemcp_start_page.html" target="_blank" rel="noopener">https://content.helpme-codesys.com/en/CODESYS%20Development%20System%20MCP%20Server/_idemcp_start_page.html</a></p>
+<p><strong>[4] CODESYS MCP 서버 데이터시트(2026-05-04)</strong> — MCP로 AI 모델과 개발 환경 연결, 프로젝트 탐색·ST 읽기·교체·입출력 구성·오류 검사 도구, V3.5.22.1 이상·PDE 구독 필요, 쓰임새(기존 코드 설명·버그 수정)<br>
+→ <a href="https://us.store.codesys.com/media/n98_media_assets/files/2101000023/2/CODESYS%20Development%20System%20MCP%20Server_en.pdf" target="_blank" rel="noopener">https://us.store.codesys.com/media/n98_media_assets/files/2101000023/2/CODESYS%20Development%20System%20MCP%20Server_en.pdf</a></p>
+<p><strong>[5] CODESYS PDE 데이터시트(2026)</strong> — 1년 자동 갱신 구독에 정적 분석·프로파일러·테스트 매니저·Git·SVN·MCP 서버 묶음, 30일 데모<br>
+→ <a href="https://us.store.codesys.com/media/n98_media_assets/files/2101000010/2/CODESYS%20Professional%20Developer%20Edition_en.pdf" target="_blank" rel="noopener">https://us.store.codesys.com/media/n98_media_assets/files/2101000010/2/CODESYS%20Professional%20Developer%20Edition_en.pdf</a></p>
+<p><strong>[6] 글로벌 마켓 인사이트 GMI(2026-09)</strong> — 전 세계 PLC 시장 2025년 117억 달러→2035년 약 342억 달러(연 약 11.4%), 주요 기업 지멘스·로크웰·슈나이더·미쓰비시·ABB<br>
+→ <a href="https://www.gminsights.com/industry-analysis/programmable-logic-controller-market" target="_blank" rel="noopener">https://www.gminsights.com/industry-analysis/programmable-logic-controller-market</a></p>
+<p><strong>[7] Eurogip(2026)</strong> — 규정 (EU) 2026/1744 2026-07-27 발효, 기계 내 고위험 AI 요건을 기계류 규정으로 이관, 위임법 기한 2028-08-02, 기계류 규정 2027-01-20 시행<br>
+→ <a href="https://eurogip.fr/en/machinery-regulation-2023-1230-what-the-digital-omnibus-on-ai-changes/" target="_blank" rel="noopener">https://eurogip.fr/en/machinery-regulation-2023-1230-what-the-digital-omnibus-on-ai-changes/</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224447218675" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261019-electrolyzer-accident-causes/"><div class="d">← 이전 노트</div><div class="t">수소 폭발 사고 원인, 수전해 사고 8건이 가리킨 공통점 3가지</div></a><a class="next" href="/blog/20261020-ai-malgwi-cross-check/"><div class="d">다음 노트 →</div><div class="t">ai들 말귀 못 알아듣는 이유, 다른 AI가 대화 로그를 보고 세 줄로 짚었어요</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
