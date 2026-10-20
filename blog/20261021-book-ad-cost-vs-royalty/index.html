@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>책 광고 효과 계산해 보니, 1권 파는 광고비가 인세의 13배였어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="첫 책을 내고 나면 누구나 한 번은 &quot;광고 좀 돌려 볼까?&quot; 하잖아요. 저도 그랬는데, 책 광고 효과를 AI랑 숫자로 맞춰 보고 나서 광고비 0원, 서평단만으로 정했어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261021-book-ad-cost-vs-royalty/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="책 광고 효과 계산해 보니, 1권 파는 광고비가 인세의 13배였어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="첫 책을 내고 나면 누구나 한 번은 &quot;광고 좀 돌려 볼까?&quot; 하잖아요. 저도 그랬는데, 책 광고 효과를 AI랑 숫자로 맞춰 보고 나서 광고비 0원, 서평단만으로 정했어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261021-book-ad-cost-vs-royalty/">
+<meta property="og:image" content="https://makefield.ai/blog/20261021-book-ad-cost-vs-royalty/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "책 광고 효과 계산해 보니, 1권 파는 광고비가 인세의 13배였어요", "datePublished": "2026-10-21", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261021-book-ad-cost-vs-royalty/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-10-21</span></div>
+<h1>책 광고 효과 계산해 보니, 1권 파는 광고비가 인세의 13배였어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;책 광고 효과 계산해 보니 / 1권 파는 광고비가 인세의 13배였어요&quot;" loading="lazy">
+<p>첫 책을 내고 나면 누구나 한 번은 &quot;광고 좀 돌려 볼까?&quot; 하잖아요.<br>
+저도 그랬는데, 책 광고 효과를 AI랑 숫자로 맞춰 보고 나서 <strong>광고비 0원, 서평단만</strong>으로 정했어요.</p>
+<p><strong>핵심 사실 한 줄. 네이버 검색광고 평균 클릭당 비용 약 530원에, 서점 밖 광고의 구매 전환율 참고치 1%를 넣으면 책 1권을 광고로 파는 데 약 5만 3천 원이 들어요(2026년 10월 조사, 계산 추정).</strong> 2만 6,800원짜리 제 종이책을 외부 서점에서 1권 팔면 제 손에 들어오는 인세는 약 4,020원이고요. 대략 13배 차이예요.</p>
+<h2>1. &quot;광고 돌릴까?&quot;를 AI 조사원들에게 쪼개 맡겼어요</h2>
+<p>2026년 10월 4일 밤이었어요.<br>
+평일엔 공장 설비 제어를 만지고, 퇴근하면 AI 에이전트 여러 개를 동시에 굴리는 게 제 일상인데요. 책 홍보도 그 방식으로 물어봤습니다.</p>
+<p>질문 하나를 갈래로 쪼개서 조사 에이전트 7개에 나눠 맡겼어요.<br>
+무명 저자 실사례, 서점 광고 제도, 마케팅 실험 비용..<br>
+그리고 조사원 전원에게 같은 규칙을 걸었어요.</p>
+<pre><code>규칙: 출처 없는 숫자 없음.
+확인 못 한 것은 미확인, 계산·해석은 (추론) 표기</code></pre>
+<p>이 세 줄이 나중에 제일 큰 일을 했어요. 그 얘기는 5번에서 할게요.</p>
+<h2>2. 책 광고 효과, 숫자 네 개를 한 줄에 세우니 끝났어요</h2>
+<p>조사 결과에서 제 결정에 쓴 숫자만 추리면 이 넷이에요.</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>숫자</th><th>성격</th></tr></thead><tbody><tr><td>1권당 인세</td><td>약 4,020원 (외부 서점 인세 15% 가정)</td><td>추론</td></tr><tr><td>서점 배너 광고 최저가</td><td>50만 원(VAT 별도), 주 단위</td><td>서점 광고 단가표</td></tr><tr><td>그 광고비 회수에 필요한 판매</td><td>약 124권</td><td>추론</td></tr><tr><td>검색광고로 1권 파는 비용</td><td>약 5만 3천 원</td><td>추론</td></tr></tbody></table></div>
+<p>여기에 현실 판매량을 겹쳐 봤어요. 블로그 연재를 바탕으로 부크크에서 IT 실용서를 낸 한 저자는 <strong>첫 달 22권(종이 16권, 전자책 6권), 매출 58만 3천 원</strong>을 공개해 뒀더라고요. 무명 저자 첫 책은 수십 권 단위가 현실이라는 거죠.</p>
+<p>한 주 광고비를 뽑으려면 124권인데, 잘된 사례가 첫 달 22권. 계산은 거기서 끝났습니다.</p>
+<img src="img/02_.png" alt="02_.png 1권당 비교 막대 — 왼쪽 짧은 잉크 막대 &#x27;인세 약 4,020원&#x27;, 오른쪽 긴 빨간 막대 &#x27;광고로 1권 파는 비용 약 53,000원&#x27;, 빨간 펜 메모 &#x27;약 13배&#x27;. 막대 아래 작은 글씨 &#x27;외부 서점 인세 15% 가정 · 계산 추정&#x27;" loading="lazy">
+<h2>3. 1권 파는 광고비 5만 3천 원은 어떻게 나왔나요?</h2>
+<p><strong>클릭당 비용을 구매 전환율로 나누면 1권당 광고비가 나와요.</strong> 산식은 이게 전부예요.</p>
+<pre><code>네이버 파워링크 평균 클릭당 비용   ≈ 530원
+서점 밖 광고 → 구매 전환율        ≈ 1%  (100클릭에 1권)
+1권 판매 광고비 = 530 ÷ 0.01     ≈ 53,000원   (추론)</code></pre>
+<p>전환율 1%는 아무렇게나 고른 숫자가 아니에요.<br>
+해외 인디 저자가 페이스북 광고를 직접 돌려 공개한 기록이 있는데, 캠페인 4개 합계 <strong>80.81달러를 써서 296클릭, 3권 판매</strong>였어요. 나눠 보면 1.01%예요.<br>
+조사 노트에 정리된 인디 저자 일반 참고치도 1~2% 수준이었고요.</p>
+<p>겪어 보니 알게 된 함정이 하나 있어요. 광고 링크를 서점 상품 페이지로 바로 걸면 <strong>클릭은 세어도 구매는 못 세요.</strong> 판매는 서점 판매지수나 출판 플랫폼 정산으로 나중에 짐작할 수밖에 없죠. 측정이 안 되는 광고는 실험도 아니더라고요.</p>
+<img src="img/03_.png" alt="03_.png 광고 깔때기 — 위에서 아래로 &#x27;검색광고 클릭 100번(약 5.3만 원)&#x27; → &#x27;서점 상품 페이지 도착&#x27; → &#x27;구매 1권&#x27;. 맨 아래 칸만 빨간 테두리, 옆에 빨간 펜 &#x27;여기는 내가 못 센다&#x27;, 깔때기 오른쪽에 잉크 글씨 &#x27;인세 약 4,020원 회수&#x27;" loading="lazy">
+<h2>4. 그럼 돈은 아예 안 쓰나요? 서평단만 남긴 이유</h2>
+<p>결과를 보고 제가 AI한테 던진 말은 이거였어요.</p>
+<pre><code>돈 써도 효과 없는 거냐</code></pre>
+<p>그때 정리된 답은 &quot;효과가 없다&quot;가 아니라 <strong>&quot;지금 광고를 사면 판매가 아니라 데이터를 사는 거다&quot;</strong>였어요. 광고는 이미 있는 반응을 키우는 증폭기라서, 리뷰도 독자 명단도 전환 데이터도 0인 지금은 키울 게 없다는 거죠.<br>
+리뷰 0개 상태에서 광고부터 돌리면 전환율이 1%보다 더 낮게 나올 가능성이 높다는 게 조사 노트의 판단이었어요.</p>
+<p>그래서 같은 돈을 &quot;데이터 구입비&quot;로 놓고 다시 비교했어요.</p>
+<div class="table-wrap"><table><thead><tr><th>선택지</th><th>비용</th><th>얻는 것</th></tr></thead><tbody><tr><td>검색광고</td><td>10만 원이면 약 190클릭(추론)</td><td>클릭 수·클릭률. 구매는 못 셈</td></tr><tr><td>서점 배너</td><td>주 50만 원~</td><td>노출. 무명 1권엔 회수 불가</td></tr><tr><td>예스24 리뷰어클럽</td><td>1명당 3,500원 + 책, 20명이면 7만 원 + 책 20권</td><td>서점 리뷰, 독자가 실제로 꼽은 장</td></tr></tbody></table></div>
+<p><strong>결정은 광고 0원, 서평단 약 7만 원 + 책값만.</strong> 광고는 조건이 생기면 다시 계산하기로 했어요. 조건은 하나예요. 전환율을 내가 직접 측정할 수 있게 됐을 때.</p>
+<img src="img/04_.png" alt="04_.png 데이터 구입비 비교 카드 3장 — &#x27;검색광고: 클릭만 셈&#x27;(잉크), &#x27;서점 배너: 주 50만 원~&#x27;(빨간 테두리, 빨간 펜 &#x27;회수 불가&#x27;), &#x27;서평단 20명: 7만 원+책&#x27;(초록 테두리와 체크, &#x27;리뷰가 남는다&#x27;). 하단 잉크 글씨 &#x27;광고는 증폭기 — 키울 반응부터&#x27;" loading="lazy">
+<h2>5. AI 조사에서 제일 쓸모 있었던 건 &#x27;미확인&#x27; 칸이었어요</h2>
+<p>7개 조사 결과를 다 읽고 나니, 제 판단을 지켜 준 건 숫자보다 <strong>&quot;미확인&quot; 목록</strong>이었어요.</p>
+<ul><li>책·도서 키워드 전용 클릭당 비용 → 미확인 (키워드 도구는 광고주 로그인 후 조회)</li><li>국내 도서 광고 전환율 → 미확인</li><li>예스24 리뷰어클럽에 POD 책을 저자가 직접 신청할 수 있는지 → 미확인</li></ul>
+<p>AI한테 &quot;숫자 줘&quot;라고만 하면 이 칸들이 그럴듯한 숫자로 채워져서 와요. 그럼 저는 근거 없는 숫자를 믿고 광고 결제 버튼을 눌렀을지도 모르죠..<br>
+<strong class="u">미확인 표기</strong>를 규칙으로 걸어 두니, 어디까지가 근거고 어디부터가 제 베팅인지 선이 보였어요.</p>
+<p>실제로 리뷰어클럽은 POD 가능 여부가 아직 확인 전이라 일정만 잡아 뒀어요. 그 사이 <a href="https://blog.naver.com/makefield_ai/224436488517" target="_blank" rel="noopener">블로그에서 직접 선착순 서평 이벤트</a>를 먼저 열었고요.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 리뷰가 몇 개쯤 쌓이면 광고를 다시 보나요?</strong><br>
+개수보다 조건으로 정했어요. 랜딩 페이지에서 서점으로 넘어간 클릭을 제가 직접 셀 수 있게 되면, 그 숫자로 1권당 광고비를 다시 계산합니다.</p>
+<p><strong>Q. 광고를 꼭 해 보고 싶다면 얼마부터 시작하나요?</strong><br>
+네이버 파워링크는 비즈머니 최소 충전 1만 원, 최소 입찰가 70원부터라 소액 실험은 가능해요. 다만 판매 측정이 아니라 &quot;어떤 문구가 클릭을 받나&quot;를 보는 데이터 구입비로 생각하는 게 맞았어요.</p>
+<p>책 홍보 예산은 &quot;얼마 쓸까&quot;보다 &quot;1권당 광고비 대 1권당 인세&quot;를 먼저 놓고 보면 답이 빨리 나와요. 그 두 숫자만 나란히 세워도 대부분 결론이 나니까요.</p>
+<p>AI 조사원들에게 건 규칙과 판단 기록은 makefield.ai에서 다른 실험들과 함께 보실 수 있어요.</p>
+<h2>출처</h2>
+<ul><li>네이버 검색광고 평균 클릭당 비용 약 530원·최소 입찰가 70원 (업계 정리 글, 2025-04-16 게시) → <a href="https://inside.ampm.co.kr/insight/10257" target="_blank" rel="noopener">https://inside.ampm.co.kr/insight/10257</a></li><li>비즈머니 최소 충전 1만 원 → <a href="https://inside.ampm.co.kr/insight/8143" target="_blank" rel="noopener">https://inside.ampm.co.kr/insight/8143</a></li><li>부크크 IT 실용서 첫 달 판매 기록(종이 16·전자 6권, 매출 58만 3천 원) → <a href="https://brunch.co.kr/@linecard/63" target="_blank" rel="noopener">https://brunch.co.kr/@linecard/63</a></li><li>인디 저자 페이스북 광고 실험(캠페인 4개 합 80.81달러·296클릭·3권, 전환율은 계산값) → <a href="https://selftaughtjapanese.com/2025/09/09/an-independent-book-publisher-tries-out-facebook-advertising/" target="_blank" rel="noopener">https://selftaughtjapanese.com/2025/09/09/an-independent-book-publisher-tries-out-facebook-advertising/</a></li><li>서점 광고 단가표(최저 500,000원, VAT 별도) → <a href="https://image.aladin.co.kr/img/files/aladinAd_ver202304.pdf" target="_blank" rel="noopener">https://image.aladin.co.kr/img/files/aladinAd_ver202304.pdf</a></li><li>예스24 리뷰어클럽 안내(1명당 3,500원) → <a href="https://m.yes24.com/Company/Publish/Reviewer" target="_blank" rel="noopener">https://m.yes24.com/Company/Publish/Reviewer</a></li><li>사례: 2026-10-04 책 홍보 조사(조사 에이전트 7건)·결정 기록. 2026년 10월 21일 원문 재확인</li></ul>
+<p>태그: #책광고효과 #책광고비 #자가출판홍보 #책홍보방법 #부크크홍보 #첫책홍보 #인세계산 #서평단비용 #예스24리뷰어클럽 #네이버파워링크 #책마케팅 #POD출판 #AI리서치 #AI오답노트 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224448339448" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261020-ga4-setup-day-one/"><div class="d">← 이전 노트</div><div class="t">GA4 설치 후 꼭 할 설정 2가지, 보관 기간 14개월과 맞춤 측정기준</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
