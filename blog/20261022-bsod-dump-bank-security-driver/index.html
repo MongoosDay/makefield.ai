@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>블루스크린 원인 찾기, 덤프 파일 열어보니 은행 보안 프로그램이었어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="블루스크린 원인 찾기, 저는 &quot;PC를 바꿔야 하나&quot;부터 생각했어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261022-bsod-dump-bank-security-driver/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="블루스크린 원인 찾기, 덤프 파일 열어보니 은행 보안 프로그램이었어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="블루스크린 원인 찾기, 저는 &quot;PC를 바꿔야 하나&quot;부터 생각했어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261022-bsod-dump-bank-security-driver/">
+<meta property="og:image" content="https://makefield.ai/blog/20261022-bsod-dump-bank-security-driver/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "블루스크린 원인 찾기, 덤프 파일 열어보니 은행 보안 프로그램이었어요", "datePublished": "2026-10-22", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261022-bsod-dump-bank-security-driver/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">막힐 때 해결</span><span>2026-10-22</span></div>
+<h1>블루스크린 원인 찾기, 덤프 파일 열어보니 은행 보안 프로그램이었어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;블루스크린 원인 찾기 / 덤프 파일 열어보니 은행 보안 프로그램이었어요&quot;" loading="lazy">
+<p>블루스크린 원인 찾기, 저는 &quot;PC를 바꿔야 하나&quot;부터 생각했어요.</p>
+<p>&quot;노트북이 종종 혼자 재부팅되네. 스케줄러 탓이야, 노후화야? 안 되면 그냥 PC 바꿀까.&quot;</p>
+<p>지난주에 제가 AI한테 던진 말이에요. 반쯤은 진심이었습니다. 2021년식 노트북이었거든요.</p>
+<p>결론부터 말하면, <strong>노트북은 멀쩡했고 범인은 은행 사이트 들어갈 때 깔리는 보안 프로그램의 드라이버</strong>였어요. 그걸 알아내는 데 PC 교체 비용은커녕 무료 도구 하나랑 명령 한 줄이면 충분했습니다.</p>
+<p><strong>블루스크린 원인 찾기의 핵심 한 줄. 윈도우가 블루스크린으로 재부팅되면 C:\Windows\Minidump 폴더에 덤프 파일이 남고, 무료 디버거 WinDbg에서 <code>!analyze -v</code>를 돌리면 문제를 일으킨 드라이버 이름(MODULE_NAME)이 찍혀 나와요(2026년 10월, Windows 10 기준).</strong></p>
+<p>설비가 멈추면 알람 이력부터 여는 게 몸에 밴 15년차 제어 엔지니어인데요. 정작 제 노트북한테는 &quot;늙었나 보다&quot;부터 의심하고 있었네요..</p>
+<h2>1. 컴퓨터가 혼자 재부팅될 때, 덤프 파일이 있는지부터 보세요</h2>
+<p>시작은 블루스크린이 아니었어요.<br>
+아침에 돌아야 할 예약 작업 두 개가 안 돌아서 이유를 쫓다가, 그 시각에 PC가 한 번 죽었다는 걸 알게 됐습니다.<br>
+08:20에 블루스크린이 났고, 제가 다시 로그인한 게 17:18이었어요. 로그인해야 도는 작업들이라 그 사이 일정이 통째로 날아간 거죠.</p>
+<p>이벤트 뷰어 시스템 로그에 이렇게 남아 있었어요.</p>
+<pre><code>이벤트 ID 1001 (WER-SystemErrorReporting)
+The computer has rebooted from a bugcheck.
+The bugcheck was: 0x00000139 (0x0000000000000003, ...)
+A dump was saved in: C:\WINDOWS\Minidump\101426-21359-01.dmp</code></pre>
+<p>여기서 중요한 건 마지막 줄이에요. <strong>덤프가 저장됐다</strong>는 거요.</p>
+<p>예전에 같은 노트북이 먹통이 됐을 땐 덤프가 하나도 없었어요. 그땐 &quot;커널이 죽은 게 아니다&quot;가 단서였고요. 이번엔 반대로 덤프가 있으니, 추측할 필요 없이 열어보면 되는 상황이었습니다.</p>
+<h2>2. AI의 첫 추정은 썬더볼트였어요</h2>
+<p>근데 덤프를 열기 전에 저희(저랑 AI)는 한 번 헛다리를 짚었어요.</p>
+<p>AI가 이벤트 로그를 훑더니 썬더볼트 포트의 절전 전환 이벤트가 10월 8일부터 14일까지 <strong>하루 3만 회</strong>씩 반복되고 있다는 걸 찾아냈거든요. 숫자가 워낙 커서 그럴듯했어요. &quot;이게 원인일 가능성이 높다&quot;는 쪽으로 이야기가 흘러갔고요.</p>
+<p>덤프를 열고 나서 이 가설은 바로 내려놨습니다. 덤프에 찍힌 이름이 전혀 다른 드라이버였으니까요.</p>
+<p>로그에서 <strong>제일 많이 찍힌 것</strong>이 범인이라는 보장은 없더라고요. 시끄러운 이벤트는 눈에 잘 띌 뿐이고, 블루스크린의 범인은 덤프가 이름으로 알려줍니다.</p>
+<img src="img/02_dump_vs_noise.png" alt="왼쪽 회색 경로 &#x27;이벤트 로그 훑기 → 하루 3만 회 반복 이벤트 발견 → 썬더볼트 가설&#x27; 끝에 빨간 엑스, 오른쪽 경로 &#x27;1001 이벤트 확인 → Minidump 덤프 → WinDbg !analyze -v → MODULE_NAME&#x27; 끝에 초록 체크. 하단 캡션 &#x27;많이 찍힌 것 ≠ 범인&#x27;" loading="lazy">
+<h2>3. 블루스크린 덤프 분석, 이 순서로 했어요</h2>
+<p>절차는 생각보다 짧았어요.</p>
+<ol><li><strong>이벤트 뷰어 → Windows 로그 → 시스템</strong>에서 ID 1001을 찾아 덤프 경로 확인</li><li>Minidump 폴더는 관리자 권한이 필요해서, 관리자 PowerShell로 덤프를 작업 폴더에 <strong>복사</strong>부터 (원본은 건드리지 않기)</li><li>WinDbg 설치: <code>winget install Microsoft.WinDbg</code></li><li>덤프를 열고 <code>!analyze -v</code> 실행 (저는 명령줄 버전인 cdb로 돌려 결과를 텍스트 파일로 저장했어요)</li></ol>
+<pre><code>cdb -z 101426-21359-01.dmp -c &quot;!analyze -v; q&quot; &gt; analyze.txt</code></pre>
+<p>결과는 900줄 가까이 나오는데, 실제로 읽은 건 이 정도예요.</p>
+<pre><code>KERNEL_SECURITY_CHECK_FAILURE (139)
+Arg1: 0000000000000003, A LIST_ENTRY has been corrupted (i.e. double remove).
+PROCESS_NAME:  date.exe
+MODULE_NAME: MeDVpDrv
+IMAGE_NAME:  MeDVpDrv.sys
+FAILURE_BUCKET_ID:  0x139_3_CORRUPT_LIST_ENTRY_MeDVpDrv!unknown_function</code></pre>
+<div class="table-wrap"><table><thead><tr><th>줄</th><th>뜻</th><th>제 경우</th></tr></thead><tbody><tr><td>첫 줄 (139)</td><td>커널이 핵심 자료구조 손상을 감지함</td><td>0x139</td></tr><tr><td>Arg1</td><td>손상 종류 (3 = 연결 목록 손상)</td><td>3</td></tr><tr><td>PROCESS_NAME</td><td>죽는 순간 돌던 프로세스</td><td>date.exe</td></tr><tr><td>MODULE_NAME / IMAGE_NAME</td><td>문제 지점의 드라이버</td><td>MeDVpDrv.sys</td></tr></tbody></table></div>
+<p>MeDVpDrv.sys를 추적해 보니 5월 18일에 은행 사이트 접속하면서 깔린 보안 프로그램의 <strong>행위 감시 드라이버</strong>(버전 2.28.1.5)였어요.</p>
+<p>재밌는 건 PROCESS_NAME이에요. date.exe는 Git Bash에 딸린 날짜 출력 프로그램이에요. 제 PC에선 이런 셸 스크립트가 예약 작업으로 여러 개 돌고 있고요. 보안 드라이버는 새 프로세스가 뜰 때마다 감시하니까, <strong>짧은 프로세스를 많이 띄우는 PC일수록 그 감시 경로를 자주 밟는다</strong>고 봤어요. 이건 덤프 하나로 단정할 수 없는 추정이고요.</p>
+<h2>4. 노후화가 아니라는 근거, 그리고 고른 방법</h2>
+<p>&quot;오래됐으니 바꿀 때&quot;라는 가설도 숫자로 확인했어요.</p>
+<ul><li>하드웨어 오류 이벤트(WHEA): 0건</li><li>SSD 상태: Healthy</li><li>덤프가 가리킨 곳: 하드웨어가 아니라 서드파티 드라이버</li></ul>
+<p>선택지는 이렇게 놓고 봤습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>방법</th><th>장점</th><th>안 고른 이유</th></tr></thead><tbody><tr><td>PC 교체</td><td>깔끔해 보임</td><td>새 PC에도 같은 프로그램을 깔면 그대로 따라옴</td></tr><tr><td>예약 작업 줄이기</td><td>감시 경로를 덜 밟음</td><td>원인은 그대로, 내 일만 줄어듦</td></tr><tr><td>업데이트 기다리기</td><td>손 안 댐</td><td>언제 나올지 모름</td></tr><tr><td><strong>보안 프로그램 제거</strong></td><td>원인 드라이버가 사라짐</td><td>은행 접속 때 다시 깔아야 함</td></tr></tbody></table></div>
+<p>예전에 이 보안 프로그램이 hosts 파일 팝업을 띄웠을 땐 일부러 안 지웠어요. 그땐 원인이 다른 쪽에 있어서 그쪽을 고치는 게 맞았거든요. 이번엔 덤프가 드라이버 자체를 가리켰으니 판단이 달랐습니다.</p>
+<p>마이크로소프트 공식 문서도 0x139에 대해 &quot;최근 추가한 드라이버나 서비스가 있으면 제거하거나 업데이트해 보라&quot;고 안내해요. 그래서 관리자 승인으로 제거하고 이렇게 확인했어요.</p>
+<ul><li>프로그램 제거 목록에서 사라짐</li><li>드라이버 서비스 2종 없음</li><li>관련 프로세스 없음</li><li>메모리에 올라가 있던 드라이버는 <strong>재부팅해야 완전히 내려감</strong></li></ul>
+<p>은행 사이트가 다시 설치하라고 하면 그때 깔아 쓰고 다시 지우기로 정했습니다.</p>
+<img src="img/03_four_step_check.png" alt="세로 4단 판정 흐름. ①&#x27;1001 이벤트에 덤프 경로 있음?&#x27; ②&#x27;!analyze -v → MODULE_NAME 확인&#x27; ③&#x27;WHEA 0건·SSD Healthy → 하드웨어 배제&#x27; ④&#x27;드라이버 제거 → 재부팅 → 서비스·프로세스 0 확인&#x27;. 각 단 오른쪽 초록 체크, ③ 옆에 빨간 펜 메모 &#x27;PC 교체 X&#x27;" loading="lazy">
+<h2>5. 덤프 파일을 그대로 보내면 안 되는 이유</h2>
+<p>원인을 찾고 나서 제조사 고객센터에 문의를 넣었어요. 덤프 분석 결과, 재현 조건(짧은 프로세스를 수천 번 연속 생성), 그리고 질문 네 개를 적었습니다. 알려진 결함인지, 수정 버전이 언제 나오는지, 회피책이 있는지, 비슷한 사례가 있는지요.</p>
+<p>그런데 덤프 파일은 <strong>첨부하지 않았어요</strong>. 열어보니 제 윈도우 사용자명이랑 휴대폰 핫스팟 이름 같은 개인 식별 정보가 들어 있었거든요. 미니덤프라도 5MB 안에 그런 게 섞여 있습니다. 요청이 오면 보안 경로로만 보내기로 했어요. (문의 답변은 이 글을 쓰는 시점까지 아직 못 받았습니다.)</p>
+<p>제거하고 오늘까지 7일, 재부팅은 3번 있었고 비정상 종료 기록(이벤트 41·6008·1001)은 <strong>0건</strong>이에요.</p>
+<img src="img/04_timeline.png" alt="가로 타임라인. 9/13 &#x27;먹통 2회 · 덤프 없음 · 원인 미확정&#x27;(회색 물음표) → 10/14 08:20 &#x27;블루스크린 0x139 · 덤프 1개&#x27;(빨간 점) → 10/15 &#x27;드라이버 제거 · 재부팅&#x27;(잉크 점) → 10/22 &#x27;7일 · 부팅 3회 · 비정상 종료 0건&#x27;(초록 체크). 끝에 빨간 펜 메모 &#x27;덤프 1개 = 아직 판정 보류&#x27;" loading="lazy">
+<p>다만 이걸로 &quot;해결&quot;이라고 못 박진 않을게요. 공식 문서에 따르면 이 유형은 손상이 생긴 순간에 바로 잡히지 않을 수 있고, <strong>덤프 여러 개를 비교해 보라</strong>고 되어 있어요. 저는 덤프가 한 개뿐이에요. 9월에 있었던 먹통 두 번은 덤프가 없어서 원인을 끝내 확정하지 못했고요.</p>
+<h2>이것도 많이들 물어보세요</h2>
+<p><strong>Q. Minidump 폴더가 비어 있으면요?</strong><br>
+덤프가 안 남은 재부팅이면 블루스크린이 아닐 가능성부터 봐야 해요. 전원이 끊긴 건지, 업데이트 재시작인지, 절전에서 못 깨어난 건지요. 이벤트 41만 있고 1001이 없으면 저는 그쪽부터 의심합니다.</p>
+<p><strong>Q. 보안 프로그램을 지워도 괜찮나요?</strong><br>
+은행 사이트는 필요할 때 다시 설치를 요구하니까 그때 깔면 돼요. 저는 &quot;상시 설치&quot;를 &quot;필요할 때만 설치&quot;로 바꾼 셈입니다. 다만 백신까지 지우라는 얘기는 아니에요. 이번에 지운 건 은행 접속용 보조 프로그램 하나예요.</p>
+<p>PC 바꿀 뻔했던 일이 명령 한 줄로 정리됐어요. 블루스크린 원인 찾기에서 &quot;늙어서 그래&quot;는 덤프를 열어본 다음에 해도 늦지 않더라고요. 여러분 PC의 Minidump 폴더에는 지금 몇 개가 쌓여 있나요?</p>
+<p>PC가 이상할 때 AI랑 원인을 좁혀간 다른 기록들도 makefield.ai에 차곡차곡 모아두고 있습니다.</p>
+<h2>출처</h2>
+<ul><li>Microsoft Learn, Bug Check 0x139 KERNEL_SECURITY_CHECK_FAILURE (2026-10-22 원문 확인) → <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/bug-check-0x139--kernel-security-check-failure" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/bug-check-0x139--kernel-security-check-failure</a></li><li>사례: 2026-10-14 개인 노트북 블루스크린 덤프 분석·조치 기록, 2026-10-22 이벤트 로그 재확인</li></ul>
+<p>태그: #블루스크린원인찾기 #블루스크린덤프분석 #컴퓨터혼자재부팅 #KERNEL_SECURITY_CHECK_FAILURE #블루스크린0x139 #WinDbg사용법 #미니덤프 #이벤트뷰어1001 #은행보안프로그램 #드라이버충돌 #윈도우10블루스크린 #PC노후화확인 #AI로PC진단 #막힐때해결 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224449564312" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261021-pem-anode-degradation/"><div class="d">← 이전 노트</div><div class="t">PEM 수전해 열화 원인은? 산화극 촉매가 무너지는 4가지 고리</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
