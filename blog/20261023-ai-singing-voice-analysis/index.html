@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI로 노래 분석해 보니, 폰 녹음 다섯 번에 호흡이 8.9초에서 12.7초까지 갈렸어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="AI로 노래 분석을 해 보니, 제 목소리에서 먼저 보인 건 음정이 아니라 숨을 쓰는 버릇이었어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261023-ai-singing-voice-analysis/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI로 노래 분석해 보니, 폰 녹음 다섯 번에 호흡이 8.9초에서 12.7초까지 갈렸어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="AI로 노래 분석을 해 보니, 제 목소리에서 먼저 보인 건 음정이 아니라 숨을 쓰는 버릇이었어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261023-ai-singing-voice-analysis/">
+<meta property="og:image" content="https://makefield.ai/blog/20261023-ai-singing-voice-analysis/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI로 노래 분석해 보니, 폰 녹음 다섯 번에 호흡이 8.9초에서 12.7초까지 갈렸어요", "datePublished": "2026-10-23", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261023-ai-singing-voice-analysis/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">자동화 만들기</span><span>2026-10-23</span></div>
+<h1>AI로 노래 분석해 보니, 폰 녹음 다섯 번에 호흡이 8.9초에서 12.7초까지 갈렸어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;AI로 노래 분석해 보니 / 폰 녹음 다섯 번, 호흡 8.9초 vs 12.7초&quot;" loading="lazy">
+<p>AI로 노래 분석을 해 보니, 제 목소리에서 먼저 보인 건 음정이 아니라 <strong>숨을 쓰는 버릇</strong>이었어요.</p>
+<p><strong>핵심 사실 한 줄. 휴대폰으로 &quot;스~&quot; 소리를 다섯 번 녹음해 3~10kHz 대역 세기로 재 보니, 한 번에 낼 수 있는 숨 길이가 같은 날 안에서도 8.9초에서 12.7초까지 갈렸고, 다섯 번 모두 첫 1초에 숨을 쏟은 뒤 내리막을 탔어요(2026년 10월 실측).</strong></p>
+<p>평일엔 공장 자동화·제어 일을 하는 15년차 엔지니어입니다. 노래는 그냥 좋아하는 사람이고요.<br>
+맨정신으로 부르면 목이 조이고 긴 음 끝에서 숨이 모자라서, 10월부터 게임하던 시간을 돌려 하루 15분 차 안에서 연습하기로 했어요.</p>
+<h2>1. AI의 첫 진단은 제 소리를 한 번도 안 듣고 나왔어요</h2>
+<p>처음엔 AI한테 말로만 설명했어요. &quot;목이 조이고, 바이브레이션이 약하고, 숨이 딸린다.&quot;<br>
+돌아온 진단은 그럴듯했어요. 목 긴장, 호흡 공급 부족, 바이브레이션은 그 결과.</p>
+<p>근데 기록을 다시 보니 진단 옆에 이렇게 적혀 있더라고요.</p>
+<pre><code>진단(소리 미청취, 설명 기반 추정)</code></pre>
+<p>제 설명을 그대로 돌려준 것에 가까웠던 거죠.<br>
+그래서 순서를 바꿨어요. <strong>진단보다 측정 먼저.</strong> 노래 말고 제일 단순한 소리부터요.</p>
+<h2>2. &quot;스~&quot; 하나로 숨을 숫자로 바꾸는 법</h2>
+<p>&quot;스~&quot;는 성대를 거의 안 쓰는 바람 소리라, 숨이 얼마나 길고 고르게 나가는지만 보기 좋아요. ㅅ 같은 마찰음은 높은 주파수 쪽에 소리가 몰려서, AI가 짜 준 파이썬 스크립트는 3~10kHz만 걸러 세기를 쟀습니다.</p>
+<pre><code>b,a = ss.butter(4, [3000,10000], &#x27;band&#x27;, fs=sr)   # 3~10kHz만 통과
+y = ss.filtfilt(b, a, x)
+# 20ms 단위 세기(dB) → 배경보다 6dB 큰 구간 = 숨이 나간 시간
+idx = np.where(sm &gt; floor + 6)[0]</code></pre>
+<p>기준은 두 개예요. <strong>지속 시간</strong>(배경보다 6dB 이상 큰 구간 길이)과 <strong>일정성</strong>(가운데 60% 구간 중앙값 ±2dB 안에 머문 비율).</p>
+<img src="img/02_attempts.png" alt="다섯 번 시도의 &quot;스~&quot; 지속 시간 막대 — 1차 8.9초·2차 9.5초·3차 12.7초(최고, 초록)·4차 9.7초(일정성 67%, 빨강)·5차 12.1초, 막대 위에 일정성 %" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>시도</th><th>지속</th><th>일정성(±2dB)</th><th>첫 1초</th><th>마지막 2초</th></tr></thead><tbody><tr><td>1차</td><td>8.9초</td><td>77%</td><td>-0.5dB</td><td>-0.1dB</td></tr><tr><td>2차</td><td>9.5초</td><td>91%</td><td>+1.3dB</td><td>-1.2dB</td></tr><tr><td>3차</td><td><strong>12.7초</strong></td><td><strong>94%</strong></td><td>-0.5dB</td><td>-1.6dB</td></tr><tr><td>4차</td><td>9.7초</td><td>67%</td><td>+2.1dB</td><td>-4.5dB</td></tr><tr><td>5차</td><td>12.1초</td><td>85%</td><td>+2.1dB</td><td>-2.8dB</td></tr></tbody></table></div>
+<p>솔직히 말하면 꾸준히 늘어난 게 아니에요. 3차에 12.7초가 나왔다가 4차에 9.7초로 다시 떨어졌거든요.<br>
+&quot;몇 번 만에 늘었다&quot;보다 <strong>&quot;제 숨은 8.9초에서 12.7초 사이를 오간다&quot;</strong>가 정확한 표현입니다.</p>
+<h2>3. 숫자가 보여준 버릇: 시작에 쏟고 내리막</h2>
+<p>제일 심한 4차는 첫 1초가 평균보다 +2.1dB 크고 마지막 2초는 -4.5dB까지 떨어졌어요. 시작에 숨을 쏟고 아껴 쓰다 바닥나는 모양이죠.</p>
+<img src="img/03_curve.png" alt="세기 곡선 비교 — 빨강 선은 시작에 솟았다가 오른쪽으로 내려가는 &#x27;분출 후 내리막&#x27;, 초록 띠는 ±2dB 목표 구간, 초록 점선은 평평하게 유지되는 목표 모양" loading="lazy">
+<p>이어서 다섯 번을 쉬지 않고 붙여서 불러 봤어요(71초).<br>
+1회차는 11.3초에 일정성 97%로 그날 최고였는데, 2회차부터는 9초 안팎으로 줄었어요.<br>
+원인은 숨 들이쉬는 데 회차마다 <strong>4~5초</strong>를 쓰고 있었던 거고요.</p>
+<p>그래서 연습 메뉴가 바뀌었습니다.</p>
+<ul><li>숨을 2초 안에 들이쉬고 다시 내기</li><li>첫소리를 중간 세기로 시작하기</li><li>립트릴은 빼고 빨대 &quot;우~&quot;로 교체 (입술이 마르거나 볼 받치는 손가락 위치에 따라 됐다 안 됐다 해서 결과를 비교할 수가 없었어요)</li></ul>
+<p>같은 날 &quot;우~&quot;로 바꿔 녹음하니 한 숨에 14.8초, 들숨은 1.2~2.2초까지 줄었어요.<br>
+대신 시작 1초 튐은 여전히 +2.6~+5.9dB. 휴대폰 녹음 앱 파형에서도 앞머리가 툭 솟아 있었어요..</p>
+<h2>4. 그런데 분석기도 세 번 틀렸어요</h2>
+<p>디스코드에 녹음을 올리면 봇이 채점해 주게 붙였는데, 이 분석기가 틀린 장면이 셋 나왔어요.</p>
+<p>① <strong>소음을 소리로 읽었어요.</strong> 차 안 기계음이 큰 녹음에서 성대 울림이 12~21%로 나왔는데, 배경 소음 탓일 가능성이 커서 판정에서 뺐어요. 반대로 다른 녹음 하나는 봇이 소리 자체를 소음으로 잘못 읽었고요.</p>
+<p>② <strong>음높이를 한 옥타브 틀리게 읽었어요.</strong> 800Hz 넘게 찍힌 점들은 제 음역이 아니라 추적 오류였어요.</p>
+<p>③ <strong>바이브레이션을 너무 후하게 줬어요.</strong> 분석기는 &#x27;바이브레이션 있음&#x27;이라고 했는데, 제 귀엔 &quot;엄청 불안정하고 소심했어요&quot;. 다시 열어보니 떨림 속도가 음마다 초당 4.1~8.5회로 제각각, 폭은 평균 69~79센트로 목표(50~150센트) 아래쪽이었어요. 분석기는 &#x27;범위 안&#x27;인지만 봤지 일정한지는 안 본 거죠. (센트는 음높이 단위로, 반음 하나가 100센트예요.)</p>
+<img src="img/04_gate.png" alt="채점 흐름 — 녹음 → &#x27;소리가 배경보다 8dB 이상 큰가?&#x27; 분기 → 아니오(빨강): 판정 보류·재녹음 요청 / 예(초록): 구간 나누기·숨·음높이 채점. 옆에 오판 3건 메모(소음 오판·옥타브 오판·느슨한 바이브레이션)" loading="lazy">
+<p>그래서 고친 건 두 가지예요.<br>
+첫째, 확실하지 않으면 점수를 안 내도록 품질 게이트를 넣었어요. 채점 코드에 실제로 들어간 줄이에요.</p>
+<pre><code>quality_ok = max(snr_lo, snr_hi) &gt;= 8   # 소리가 배경보다 8dB 이상 커야 채점
+# 아니면 결과 맨 위에: &quot;⛔ 판정 보류: 녹음 품질 부족 … 조용한 곳에서
+#  폰을 입 30~50cm 앞에 두고 다시 녹음 요청. 아래 값은 참고용&quot;</code></pre>
+<p>둘째, 분석기를 믿기 전에 <strong>정답을 아는 가짜 소리</strong>로 시험했어요. 음정을 일부러 -35센트 틀리게, 끝음을 -60센트 처지게, 초당 5.5회로 떨리게 합성한 소리를 넣었더니 전부 그 값으로 돌아왔고, 일부러 넣은 가짜 떨림 12개는 하나도 바이브레이션으로 잡지 않았어요.<br>
+음높이 추적엔 음성학 연구용 프로그램 Praat(&quot;doing Phonetics by Computer&quot;)를 파이썬에서 부르는 Parselmouth 라이브러리를 썼어요.</p>
+<h2>5. 15분 취미가 프로젝트가 될 뻔했어요</h2>
+<p>이건 AI 쪽 과실로 기록에 남겨둔 부분이에요.<br>
+하루 15분짜리 취미에 폴더 만들고, 스크립트 짜고, 봇까지 붙이고.. 연습보다 측정이 커지고 있었어요.</p>
+<p>그래서 규칙을 하나 박았습니다. <strong>측정은 4주차와 8주차, 딱 두 번.</strong> 나머지 날은 그냥 불러요.<br>
+오히려 턱을 내밀지 않고 살짝 당기니 목구멍 힘이 빠진다는 건, 그래프보다 몸이 먼저 알려줬습니다.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 노래 분석 앱 없이도 이게 되나요?</strong><br>
+네. 휴대폰 녹음 앱으로 녹음하고, 파이썬(ffmpeg·numpy·scipy·Parselmouth)으로 재면 돼요. 코드는 AI한테 &quot;3~10kHz 세기로 &#x27;스~&#x27; 지속 시간과 ±2dB 일정성을 재 줘&quot;처럼 기준을 숫자로 주고 짜게 했어요.</p>
+<p><strong>Q. 어디서 녹음해야 숫자가 맞나요?</strong><br>
+조용한 곳, 폰은 입에서 30~50cm, 녹음 시작 후 2~3초는 무음으로 두세요. 배경 소음이 크면 성대 울림·또렷함 값이 흔들려서 저는 그런 녹음은 판정을 보류해요.</p>
+<p><strong>Q. AI 분석 결과를 그대로 믿어도 되나요?</strong><br>
+제 경험상 &#x27;있다/없다&#x27; 판정은 후하게 나오기 쉬웠어요. 정답을 아는 합성음으로 먼저 시험하고, 귀로 들은 느낌과 숫자가 다르면 숫자 쪽 기준부터 의심해 보세요.</p>
+<p>정리하면 AI로 노래 분석을 해서 얻은 건 점수가 아니라 <strong>&quot;시작에 숨을 쏟는 버릇&quot;과 &quot;들숨 4~5초&quot;라는 고칠 지점 두 개</strong>였어요. 4주차 녹음에서 이 두 숫자가 어떻게 움직였는지는 측정한 날 그대로 올리겠습니다.</p>
+<p>취미든 일이든 &quot;감&quot;을 숫자로 바꿔 보는 작은 도구들은 makefield.ai에 하나씩 모으고 있어요.</p>
+<h2>출처</h2>
+<ul><li>Praat: doing Phonetics by Computer (Paul Boersma, David Weenink 외) → <a href="https://www.fon.hum.uva.nl/praat/" target="_blank" rel="noopener">https://www.fon.hum.uva.nl/praat/</a></li><li>Parselmouth 문서 (&quot;a Python library for the Praat software&quot;) → <a href="https://parselmouth.readthedocs.io/en/stable/" target="_blank" rel="noopener">https://parselmouth.readthedocs.io/en/stable/</a></li><li>사례: 2026-10-08 개인 노래 연습 녹음 측정·분석 기록. 공식 페이지는 2026년 10월 23일 원문 확인</li></ul>
+<hr>
+<p>태그: #AI로노래분석 #노래분석 #노래호흡늘리기 #호흡길이측정 #노래녹음분석 #음정분석 #바이브레이션연습 #노래연습기록 #파이썬음성분석 #Praat #취미데이터분석 #직장인취미 #AI활용법 #자동화만들기 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224450714648" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261022-video-lecture-ai-while-watching/"><div class="d">← 이전 노트</div><div class="t">동영상 강의 들을때 쓰기 좋은 ai, 보는 중엔 크롬 제미나이 보고 나선 지시서로 남겨요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
