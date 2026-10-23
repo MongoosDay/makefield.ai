@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>윈도우 SSH 끊기면 작업 날아갈 때, tmux 깔고 AI가 &quot;살아남는다&quot; 했는데 또 죽은 이유 | Field Notes · MakeField AI</title>
+<meta name="description" content="윈도우 SSH 끊김 때문에 작업이 통째로 날아간다면, tmux를 까는 것까지는 다들 아는 답이에요. 저는 그다음에서 두 번 더 넘어졌습니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261023-windows-ssh-tmux-session-dies/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="윈도우 SSH 끊기면 작업 날아갈 때, tmux 깔고 AI가 &quot;살아남는다&quot; 했는데 또 죽은 이유 | Field Notes · MakeField AI">
+<meta property="og:description" content="윈도우 SSH 끊김 때문에 작업이 통째로 날아간다면, tmux를 까는 것까지는 다들 아는 답이에요. 저는 그다음에서 두 번 더 넘어졌습니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261023-windows-ssh-tmux-session-dies/">
+<meta property="og:image" content="https://makefield.ai/blog/20261023-windows-ssh-tmux-session-dies/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "윈도우 SSH 끊기면 작업 날아갈 때, tmux 깔고 AI가 \"살아남는다\" 했는데 또 죽은 이유", "datePublished": "2026-10-23", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261023-windows-ssh-tmux-session-dies/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">막힐 때 해결</span><span>2026-10-23</span></div>
+<h1>윈도우 SSH 끊기면 작업 날아갈 때, tmux 깔고 AI가 &quot;살아남는다&quot; 했는데 또 죽은 이유</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;윈도우 SSH 끊기면 작업 날아갈 때 / tmux 깔고 &#x27;살아남는다&#x27; 했는데 또 죽은 이유&quot;" loading="lazy">
+<p>윈도우 SSH 끊김 때문에 작업이 통째로 날아간다면, tmux를 까는 것까지는 다들 아는 답이에요. 저는 그다음에서 두 번 더 넘어졌습니다.</p>
+<p><strong>핵심 사실 한 줄. 폰 SSH 앱(Termius)을 끄면 연결이 깔끔하게 끊기는 게 아니라 &#x27;반쯤 열린 채&#x27; 남고, 이때 윈도우용(MSYS) tmux 서버는 화면을 쓰다 막혀 멈추거나 죽을 수 있어요. 제 PC에선 4번 중 2번 죽었고, WSL 안의 tmux로 옮기고 sshd의 ClientAliveInterval을 켜서 해결했습니다(2026년 10월, Windows 10 + OpenSSH 기준).</strong></p>
+<p>시험대에서 멀쩡하던 장비가 설치한 자리에서 서는 일을 15년 동안 겪어 온 제어 엔지니어예요. 이번엔 제가 그 함정에 AI랑 같이 빠졌네요..</p>
+<h2>1. 맥은 되는데 윈도우만 Termius 끄면 다 날아가요</h2>
+<pre><code>윈도우 PC는 터미너스 앱 끄면 다 날라가네? 맥쪽은 안날라가던데</code></pre>
+<p>밖에서 폰으로 집 PC에 SSH로 들어가 AI(Claude Code)를 돌리는데, 앱만 끄면 하던 작업이 사라졌어요.<br>
+맥은 SSH로 들어오면 tmux <code>ai</code> 세션으로 자동 진입하게 해 뒀고, 윈도우는 OpenSSH → cmd → bash → AI로 바로 이어져 있었거든요. SSH가 끊기면 밑의 프로세스가 전부 같이 끝나요.</p>
+<p>tmux는 <strong>터미널 세션을 서버 쪽에 붙잡아 두는 프로그램</strong>이에요. 연결이 끊겨도 안의 작업은 계속 돌고, 다시 접속하면 같은 화면에 붙습니다.</p>
+<img src="img/02_mac_vs_windows.png" alt="맥과 윈도우의 SSH 접속 경로 비교 — 맥: SSH→tmux ai→AI(끊겨도 유지, 초록) / 윈도우: SSH→cmd→bash→AI(끊기면 전부 종료, 빨강)" loading="lazy">
+<p>그래서 관리자 권한 없이 도는 MSYS2용 tmux를 설치하고, <code>~/.bash_profile</code> 맨 위에 SSH로 들어올 때만 tmux로 들어가는 줄을 넣었어요.</p>
+<pre><code># SSH 대화형 접속일 때만 tmux &#x27;ai&#x27; 세션에 붙거나 새로 만든다
+tmux new -A -s ai &amp;&amp; exit</code></pre>
+<p>AI가 PC 안에서 자기 자신에게 SSH로 접속한 뒤 ssh를 강제 종료해 보니 <code>ai</code> 세션은 유지됐어요. 여기까진 교과서대로였죠.</p>
+<h2>2. AI의 판정은 두 번 틀렸어요</h2>
+<p><strong>첫 번째, 오진.</strong> 다시 접속하니 안 이어졌어요. AI는 &quot;윈도우 OpenSSH가 연결을 닫을 때 tmux 서버까지 정리한다&quot;고 진단하고 예약 작업까지 만들었는데, 실측해 보니 tmux는 멀쩡했어요. 진단 기각, 수정은 전부 되돌렸습니다.<br>
+진짜 원인은 허무했어요. 이어가려던 대화가 <strong>tmux를 깔기 전에 시작된 대화</strong>라 애초에 tmux 밖에 있었던 거예요. 대화 기록의 마지막 시각과 SSH가 끊긴 시각이 22:46:57로 똑같았습니다.</p>
+<p><strong>두 번째, 오판.</strong> &quot;너는 시뮬레이션 해봤나&quot; 하고 다시 시험을 시켰어요. AI는 실제 접속과 같은 경로로 들어가 ssh를 강제 종료했고, 두 번 다 살아남았다고 보고했어요.<br>
+그 보고 10분쯤 뒤, 폰 앱을 끄고 다시 들어갔어요.</p>
+<pre><code>안이어진다 최악이네</code></pre>
+<p>tmux 서버는 죽어 있었고, 그 안의 AI는 화면 없이 고아로 남아 있었어요. 재접속하자마자 새 <code>ai</code> 서버가 생겼고요(접속 23:40:59 → 새 서버 23:41:03).</p>
+<h2>3. 진짜 원인: 폰 앱을 끄면 연결이 &#x27;반쯤 열린 채&#x27; 남는다</h2>
+<p>시험이 틀린 게 아니라 <strong>시험 조건이 실제 끊김과 달랐어요.</strong></p>
+<ul><li>PC 안에서 ssh를 kill하면 연결이 그 자리에서 깔끔하게 닫혀요. tmux는 끊긴 손님만 정리하면 끝이에요.</li><li>아이폰에서 Termius를 끄면 앱이 멈출 뿐, 연결은 <strong class="u">반쯤 열린 채</strong> 남아요. 아무도 화면을 안 읽는 상태죠.</li><li>MSYS tmux 서버는 그 손님에게 화면을 쓰다 막혀 <strong>통째로 멈췄어요.</strong> 4초 만에 명령에 응답이 없었고, AI도 같이 멈췄어요.</li><li>sshd 설정이 <code>ClientAliveInterval 0</code>(꺼짐)이라 죽은 연결이 몇 시간이고 남을 수 있었어요.</li><li>그 사이 재접속하면 멈춘 서버 대신 새 서버가 생기고, 옛 서버는 회복하거나 죽었어요. <strong>4번 중 2번이 죽었습니다.</strong></li></ul>
+<p>이 상태는 kill로는 안 나오고, ssh를 죽이지 않고 <strong>일시정지</strong>시켜야 재현됐어요.</p>
+<pre><code># 재구성 예시: 폰 앱이 멈춘 상황 흉내 — 클라이언트를 죽이지 않고 얼린다
+kill -STOP &lt;ssh 클라이언트 PID&gt;</code></pre>
+<p>여러분이 돌려 본 시험도 혹시 &quot;실제로 끊기는 방식&quot;이 아니라 &quot;끊기 편한 방식&quot;이지 않았나요?</p>
+<img src="img/03_test_vs_real.png" alt="시험 끊김 vs 실제 끊김 — 왼쪽 kill: 연결 즉시 닫힘→tmux가 손님 정리→생존(초록) / 오른쪽 폰 앱 종료: 반쯤 열린 연결→tmux가 화면 쓰다 멈춤→재접속 시 새 서버, 4회 중 2회 사망(빨강) / 펜 글씨 &quot;재현은 kill -STOP으로&quot;" loading="lazy">
+<h2>4. 해본 방법 4가지, 남긴 건 하나</h2>
+<div class="table-wrap"><table><thead><tr><th>시도</th><th>결과</th><th>판정</th></tr></thead><tbody><tr><td>콘솔(ConPTY)에 묶여 죽는다는 가설</td><td>깔끔하게 끊으면 4가지 변형 모두 생존</td><td>기각</td></tr><tr><td>접속마다 일회용 중계 tmux</td><td>서버는 4/4 생존, 유령 손님이 쌓여 화면이 간헐적으로 멈춤</td><td>안 씀</td></tr><tr><td>WSL 안에서 Git Bash 실행</td><td>화면 출력 자체가 안 됨</td><td>안 씀</td></tr><tr><td><strong>WSL(Ubuntu) tmux + 그 안에서 윈도우용 AI 실행</strong></td><td>손님을 80초 얼려도 서버 응답, AI 생존</td><td><strong>채택</strong></td></tr></tbody></table></div>
+<p>WSL을 처음에 피한 이유는 리눅스용 AI를 따로 깔면 경로·기억·로그인이 따로 놀기 때문이었어요. 그래서 tmux만 WSL에서 돌리고, 창 안에서는 <strong>윈도우용 실행 파일을 그대로</strong> 불러요.</p>
+<p>함정이 하나 더 있었어요. WSL은 붙잡는 프로그램이 하나도 없으면 tmux까지 정리해 버려요. 그래서 로그온 때 작업 스케줄러가 작은 상주 스크립트를 띄워 tmux 서버를 붙잡게 했어요.</p>
+<p>죽은 연결을 오래 두지 않게 sshd 설정도 바꿨어요.</p>
+<pre><code># C:\ProgramData\ssh\sshd_config
+ClientAliveInterval 10
+ClientAliveCountMax 3</code></pre>
+<p>OpenBSD sshd_config 공식 설명서에는 &quot;ClientAliveInterval을 15로, ClientAliveCountMax를 기본값(3)으로 두면 응답 없는 SSH 클라이언트는 약 45초 뒤 끊긴다&quot;고 나와요. 기본값 0은 확인 메시지를 아예 안 보낸다는 뜻이고요. 저는 10초 × 3회라 대략 30~50초 안에 정리돼요. sshd를 재시작해도 이미 접속한 세션은 안 끊겼어요.</p>
+<img src="img/04_final_setup.png" alt="최종 구성 — 폰 Termius → sshd(10초×3회 확인) → Git Bash 프로필 → WSL tmux &#x27;ai&#x27;(상주 스크립트가 붙잡음) → 윈도우용 AI 실행 / 점선 &#x27;예비: MSYS tmux&#x27; / 초록 체크 &quot;경로·기억·로그인 그대로&quot;" loading="lazy">
+<p>옛 MSYS tmux는 지우지 않고 WSL 쪽이 안 뜰 때 들어가는 예비 길로 남겼어요. 하나만 믿는 구조는 그 하나가 서면 끝이니까요.</p>
+<h2>5. 자주 묻는 것</h2>
+<p><strong>Q. tmux 안에 있는데도 재접속하면 이전 대화가 안 보여요.</strong><br>
+그 대화가 tmux 밖에서 시작된 건 아닌지부터 보세요. 제 첫 &quot;안 이어짐&quot;이 그거였어요. tmux를 깔기 전에 띄운 프로그램은 tmux가 지켜 주지 않습니다.</p>
+<p><strong>Q. 시험할 때 조심할 건요?</strong><br>
+자동으로 tmux에 붙게 해 두면 시험용 접속도 실사용 세션에 그대로 붙어요. 이번에도 시험 중 제 세션에 세 번 붙었어요(입력은 안 보냈어요). 대화형 시험은 세션이 비어 있을 때 하거나 <code>ssh -n</code>처럼 화면 없는 접속으로 하세요.</p>
+<h2>6. AI가 &quot;통과&quot;라고 할 때 이제 먼저 묻는 것</h2>
+<p>AI는 두 번 자신 있게 틀렸어요. 한 번은 원인을 잘못 짚었고, 한 번은 시험 조건이 실제와 달랐어요.<br>
+그래서 순서를 바꿨어요. &quot;통과&quot; 보고를 받으면 결과보다 먼저 <strong>&quot;그 시험, 실제로 실패하는 방식이랑 같은 조건이야?&quot;</strong>를 물어요. 실패 조건을 먼저 재현하지 못하면 통과는 아무 의미가 없더라고요.</p>
+<p>시험대에서 통과한 장비도 설치한 자리에서 다시 봐야 하듯, AI 보고서도 똑같았습니다.</p>
+<p>AI한테 맡긴 작업이 진짜 돌고 있는지 확인해 본 기록들은 makefield.ai에 계속 쌓는 중이에요.</p>
+<h2>출처</h2>
+<ul><li>OpenBSD manual page, sshd_config(5) — ClientAliveInterval·ClientAliveCountMax 항목 (2026-10-23 원문 확인) → <a href="https://man.openbsd.org/sshd_config" target="_blank" rel="noopener">https://man.openbsd.org/sshd_config</a></li><li>사례: 2026-10-11~12 개인 PC 윈도우 SSH·tmux 세션 유지 설정, 오진·원복, WSL 전환 작업 기록</li></ul>
+<p>태그: #윈도우SSH끊김 #윈도우tmux #tmux세션유지 #Termius #터미어스 #SSH세션유지 #ClientAliveInterval #sshd_config #WSL #WSLtmux #윈도우OpenSSH #원격접속끊김 #ClaudeCode #AI테스트검증 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224451766827" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261023-sic-power-semiconductor-oversupply/"><div class="d">← 이전 노트</div><div class="t">SiC 공급과잉이란? 세계 1위 울프스피드가 파산보호까지 간 탄화규소 가격전쟁과 돈의 흐름</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
