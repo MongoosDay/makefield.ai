@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dns변경 탐지, hosts인지 DNS 서버인지 두 곳부터 보세요 | Field Notes · MakeField AI</title>
+<meta name="description" content="dns변경 탐지 경고가 뜨면, 먼저 내 PC 안에서 이름 해석이 바뀔 수 있는 두 자리, hosts 파일과 네트워크 어댑터의 DNS 서버 주소 중 어디가 바뀌었는지부터 갈라야 해요. 어디가 바뀌었는지 알면 &quot;누가 바꿨는지&quot;가 보이고, 고치는 법은 거기서 정해집니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261024-dns-change-detect/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dns변경 탐지, hosts인지 DNS 서버인지 두 곳부터 보세요 | Field Notes · MakeField AI">
+<meta property="og:description" content="dns변경 탐지 경고가 뜨면, 먼저 내 PC 안에서 이름 해석이 바뀔 수 있는 두 자리, hosts 파일과 네트워크 어댑터의 DNS 서버 주소 중 어디가 바뀌었는지부터 갈라야 해요. 어디가 바뀌었는지 알면 &quot;누가 바꿨는지&quot;가 보이고, 고치는 법은 거기서 정해집니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261024-dns-change-detect/">
+<meta property="og:image" content="https://makefield.ai/blog/20261024-dns-change-detect/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "dns변경 탐지, hosts인지 DNS 서버인지 두 곳부터 보세요", "datePublished": "2026-10-24", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261024-dns-change-detect/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">막힐 때 해결</span><span>2026-10-24</span></div>
+<h1>dns변경 탐지, hosts인지 DNS 서버인지 두 곳부터 보세요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="01_.png 타이틀카드 — &quot;dns변경 탐지 / hosts인지 DNS 서버인지 두 곳부터&quot;" loading="lazy">
+<p>dns변경 탐지 경고가 뜨면, 먼저 <strong>내 PC 안에서 이름 해석이 바뀔 수 있는 두 자리</strong>, hosts 파일과 네트워크 어댑터의 DNS 서버 주소 중 어디가 바뀌었는지부터 갈라야 해요.<br>
+어디가 바뀌었는지 알면 &quot;누가 바꿨는지&quot;가 보이고, 고치는 법은 거기서 정해집니다.</p>
+<p><strong>핵심만 한 줄로: 윈도우에서 hosts 파일은 <code>Get-Content</code>로, 어댑터별 DNS 서버 주소는 <code>Get-DnsClientServerAddress</code>로 각각 확인할 수 있고, 둘 중 바뀐 쪽을 쓴 프로그램 설정을 먼저 되돌리는 게 순서입니다</strong>(→ <a href="https://learn.microsoft.com/en-us/powershell/module/dnsclient/get-dnsclientserveraddress)." target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/dnsclient/get-dnsclientserveraddress).</a></p>
+<p>설비 자동화 일을 15년쯤 하다 보니, 경보가 울리면 &quot;어느 센서가 무엇을 봤나&quot;부터 따지는 버릇이 있어요. 2026년 9월, 윈도우 10 노트북에서 비슷한 경고를 만났을 때도 그 순서로 AI랑 같이 짚었습니다.</p>
+<h2>1. &#x27;DNS가 바뀌었다&#x27;는 말이 가리킬 수 있는 자리</h2>
+<p>DNS는 주소 이름을 IP로 바꿔주는 장치예요. 그 변환 결과를 바꿀 수 있는 자리가 내 PC 안에 두 곳, 밖에 한 곳 있습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>자리</th><th>어디 있나</th><th>확인 방법</th><th>바뀌는 경로</th></tr></thead><tbody><tr><td>hosts 파일</td><td><code>C:\Windows\System32\drivers\etc\hosts</code></td><td>주석 아닌 줄 보기</td><td>프로그램이 파일에 직접 기입 (제 경우 VPN 툴)</td></tr><tr><td>어댑터 DNS 서버</td><td>네트워크 어댑터 설정</td><td><code>Get-DnsClientServerAddress</code></td><td>수동 지정 시 공유기가 주는(DHCP) 값을 덮어씀</td></tr><tr><td>공유기 DNS</td><td>공유기 관리 페이지</td><td>관리 페이지 DNS 항목</td><td>공유기 설정 변경</td></tr></tbody></table></div>
+<img src="img/02_.png" alt="이름 해석이 바뀔 수 있는 세 자리 — 왼쪽 큰 상자 &#x27;내 PC&#x27; 안에 작은 상자 두 개 &#x27;① hosts 파일&#x27;(빨간 테두리)과 &#x27;② 어댑터 DNS 서버 주소&#x27;, 오른쪽 바깥 상자 &#x27;③ 공유기 DNS&#x27;. ①과 ② 사이, ②와 ③ 사이에 이름 해석 순서 화살표. 하단 손글씨 &#x27;경고가 어느 자리를 봤는지부터&#x27;" loading="lazy">
+<p>두 번째 줄은 마이크로소프트 공식 문서에 그대로 적혀 있어요. DNS 서버를 손으로 지정하면 그 어댑터의 DHCP 설정을 덮어쓴다고요(→ <a href="https://learn.microsoft.com/en-us/powershell/module/dnsclient/set-dnsclientserveraddress)." target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/dnsclient/set-dnsclientserveraddress).</a> 세 번째는 한 백신 제조사 공식 도움말이 &quot;라우터가 사용하는 DNS 서버가 악성&quot;인 경우로 따로 경고하는 자리입니다.</p>
+<h2>2. 제 화면에 뜬 건 hosts 쪽이었어요</h2>
+<p>제 노트북은 재부팅할 때마다 금융 보안 프로그램이 &quot;hosts 파일 변경이 탐지되었다, 복원할까요?&quot;라고 물었어요. 범인은 며칠 전 제가 깐 원격접속용 VPN 툴이었고, 악성코드가 아니라고 판정한 과정은 이전 글에 정리해 뒀습니다(→ <a href="https://blog.naver.com/makefield_ai/224410743445)." target="_blank" rel="noopener">https://blog.naver.com/makefield_ai/224410743445).</a></p>
+<p>이 글에서 짚고 싶은 건 그다음이에요. 고친 설정의 이름에 <strong>DNS</strong>가 들어 있었거든요.</p>
+<pre><code>(vpn-cli) set --accept-dns=false</code></pre>
+<p>이 툴의 &quot;DNS 설정 받기&quot; 옵션이 켜져 있으면, 툴이 기기 이름을 hosts에 적어 넣었어요. 이름은 DNS 옵션인데 보안 프로그램 눈에 걸린 자리는 hosts였던 거죠. 옵션을 끄자 hosts 구역이 통째로 사라졌고, 실측해 보니 <strong>바뀐 설정 항목은 DNS 수용 여부 하나뿐</strong>이었습니다.</p>
+<p>그래서 DNS 변경 탐지류 경고를 보면 저는 문구보다 자리를 먼저 봐요. &quot;DNS&quot;라는 단어가 hosts를 가리킬 수도, 어댑터 설정을 가리킬 수도 있으니까요.</p>
+<h2>3. 어디가 바뀌었는지 가르는 순서</h2>
+<p>관리자 권한 PowerShell에서 위에서부터 차례로 하면 됩니다.</p>
+<p><strong>① hosts에 살아 있는 줄이 있는지</strong></p>
+<pre><code>Get-Content C:\Windows\System32\drivers\etc\hosts | Select-String -NotMatch &#x27;^\s*(#|$)&#x27;</code></pre>
+<p>아무것도 안 나오면 hosts는 기본 상태예요. 줄이 나오면 그 이름을 보세요. 내가 깐 프로그램 이름의 구역이면 그 프로그램 설정을, 처음 보는 도메인과 IP면 감염 쪽을 먼저 의심합니다.</p>
+<p><strong>② 어댑터마다 DNS 서버가 뭘로 잡혀 있는지</strong></p>
+<pre><code>Get-DnsClientServerAddress -AddressFamily IPv4
+ipconfig /all</code></pre>
+<p>내가 넣은 적 없는 주소가 있는지, 처음 보는 가상 어댑터가 끼어 있는지 봅니다. <code>ipconfig /all</code>은 모든 어댑터의 전체 TCP/IP 구성을 보여줘요.</p>
+<p><strong>③ hosts를 빼고 DNS만으로 물어보기</strong></p>
+<pre><code>Resolve-DnsName naver.com
+Resolve-DnsName naver.com -NoHostsFile</code></pre>
+<p><code>-NoHostsFile</code>은 hosts를 건너뛰고 묻는 옵션이에요(→ <a href="https://learn.microsoft.com/en-us/powershell/module/dnsclient/resolve-dnsname)." target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/dnsclient/resolve-dnsname).</a> 두 결과가 다르면 hosts가 끼어든 거고, 같은데도 이상하면 DNS 서버 쪽을 봐야 합니다.</p>
+<img src="img/03_.png" alt="바뀐 자리 가르는 흐름 — 시작 &#x27;경고가 떴다&#x27; → 갈림 &#x27;hosts에 주석 아닌 줄?&#x27; 예 → 상자 &#x27;그 줄을 쓴 프로그램 설정부터&#x27;(빨간 체크) / 아니오 → 갈림 &#x27;어댑터 DNS에 낯선 주소?&#x27; 예 → &#x27;수동값 확인 후 DHCP로 되돌리기&#x27; / 아니오 → &#x27;공유기 관리 페이지 DNS 확인&#x27;. 하단 손글씨 &#x27;파일 → 어댑터 → 공유기&#x27;" loading="lazy">
+<p><strong>④ 되돌리기는 쓴 쪽부터</strong></p>
+<p>저는 hosts 파일을 직접 고치지 않았어요. 쓴 프로그램 옵션을 끄자 툴이 자기 구역을 스스로 걷어냈습니다. 보안 프로그램을 지우거나 예외로 등록하는 길도 있었지만 안 골랐어요. 그러면 팝업은 사라져도 진짜 변조까지 같이 통과하거든요. 어댑터 DNS가 손으로 지정돼 있었다면, 공식 문서 기준으로 이 명령이 DHCP 기본값으로 되돌립니다(12는 공식 문서의 예시 번호, 내 어댑터 번호는 ②의 결과에서 확인).</p>
+<pre><code>Set-DnsClientServerAddress -InterfaceIndex 12 -ResetServerAddresses
+ipconfig /flushdns</code></pre>
+<p>공유기 쪽이 의심되면 관리 페이지에 들어가 DNS 설정이 익숙하지 않은 IP를 가리키는지 보라는 게 앞서 말한 백신 제조사 도움말의 안내예요.</p>
+<h2>4. 확인할 때 &#x27;정상인 실패&#x27;에 속지 마세요</h2>
+<p>설정을 바꾼 뒤 AI랑 확인하다가 기록에 박아둔 장면이 있어요. 툴 전용 리졸버에 <code>-Server</code>로 <strong>직접</strong> 물으면 다른 기기 이름이 정상으로 풀렸습니다. 리졸버는 살아 있고, 시스템 DNS 경로에 등록된 것만 빠진 상태였던 거예요.</p>
+<pre><code>Resolve-DnsName (다른 기기 이름) -Server (툴 리졸버)   → IP 정상 응답
+Resolve-DnsName (다른 기기 이름) -Server (다른 주소)   → DNS name does not exist   ← 정상</code></pre>
+<p>두 번째 줄은 장애가 아니었어요. 그 주소는 애초에 밖에서 직접 묻는 서버가 아니었거든요. 기록에 &quot;이 실패를 장애 신호로 오독하지 말 것&quot;이라고 따로 적어 뒀습니다. <strong>어느 서버에 물었는지 모르고 실패만 보면 멀쩡한 걸 고치게 돼요.</strong></p>
+<img src="img/04_.png" alt="같은 질문, 다른 길 — 위쪽 &#x27;시스템 DNS 경로로 질의&#x27; → &#x27;hosts·어댑터 DNS 순서로 찾음&#x27;, 아래쪽 &#x27;-Server로 특정 서버에 직접 질의&#x27; → &#x27;그 서버만 답함&#x27;(빨간 테두리). 오른쪽 메모 &#x27;실패 = 고장이 아니라 물은 곳이 다름&#x27;. 하단 캡션 &#x27;결과보다 먼저, 어디에 물었는지&#x27;" loading="lazy">
+<p>종결은 숫자로 봤어요.</p>
+<pre><code>hosts 마지막 수정 : 18:13   ← 재부팅(19:03) 이전
+hosts 유효 라인   : 0줄 (주석 제외)
+보안 프로그램     : 19:04 기동 = 감시는 살아 있음
+팝업             : 재부팅 2회 모두 안 뜸</code></pre>
+<p>보안 프로그램 로그는 암호화돼 있어 읽을 수 없었고, 팝업이 떴는지는 제 눈이 유일한 증거였어요. 감시가 살아 있는데 조용하다는 것까지 봐야 끝입니다.</p>
+<h2>5. 같은 증상, 다른 경우</h2>
+<ul><li><strong>경고가 hosts 파일을 콕 집어 말한다</strong> → 팝업이 악성코드인지 오탐인지 가른 과정은 이전 글에 있어요(→ <a href="https://blog.naver.com/makefield_ai/224410743445)" target="_blank" rel="noopener">https://blog.naver.com/makefield_ai/224410743445)</a></li><li><strong>hosts를 원래대로 돌리는 방법이 궁금하다</strong> → 백업·기본값 초기화까지 네 가지 방법을 정리했어요(→ <a href="https://blog.naver.com/makefield_ai/224442025364)" target="_blank" rel="noopener">https://blog.naver.com/makefield_ai/224442025364)</a></li><li><strong>hosts 파일이 어디 있는지, 메모장에서 왜 안 보이는지</strong> → 위치와 여는 법은 따로 있습니다(→ <a href="https://blog.naver.com/makefield_ai/224433332191)" target="_blank" rel="noopener">https://blog.naver.com/makefield_ai/224433332191)</a></li></ul>
+<h2>이런 질문이 나올 것 같아서</h2>
+<p><strong>Q. DNS 변경 탐지 경고가 뜨면 이미 감염된 건가요?</strong><br>
+그렇다고 단정할 근거는 경고 하나로는 부족해요. 제 경우엔 제가 깐 VPN 툴의 정상 동작이었습니다. ①의 명령으로 살아 있는 줄을 보고, ②로 어댑터 DNS를 본 다음 판단하는 게 순서예요.</p>
+<p><strong>Q. <code>ipconfig /flushdns</code>만 하면 해결되나요?</strong><br>
+아니요. 공식 문서 기준으로 이 명령은 DNS 캐시를 비울 뿐이에요. hosts에 적힌 줄이나 손으로 지정한 DNS 서버는 그대로 남습니다. 바뀐 자리를 되돌린 <strong>다음에</strong> 캐시를 비우는 용도입니다.</p>
+<p><strong>Q. VPN 툴의 DNS 옵션을 끄면 원격접속이 끊기나요?</strong><br>
+제 경우엔 안 끊겼어요. 재부팅 두 번 뒤 새로 맺힌 원격 연결까지 확인했습니다. 이름을 IP로 바꾸는 일은 접속하는 쪽 기기에서 일어나서예요. 대신 이 PC에서 다른 기기를 이름으로 부르는 건 시스템 DNS 경로로는 안 될 수 있어요.</p>
+<p>여러분 화면의 경고문에는 hosts와 DNS 중 어느 단어가 적혀 있었나요? 그 단어가 첫 번째 단서예요.</p>
+<p>경보 하나를 끝까지 따라간 기록들, makefield.ai에서 이어서 보실 수 있어요.</p>
+<h2>출처</h2>
+<ul><li>Microsoft Learn, Get-DnsClientServerAddress (인터페이스별 DNS 서버 IP 주소 조회) → <a href="https://learn.microsoft.com/en-us/powershell/module/dnsclient/get-dnsclientserveraddress" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/dnsclient/get-dnsclientserveraddress</a></li><li>Microsoft Learn, Set-DnsClientServerAddress (수동 지정 DNS는 DHCP 설정을 덮어씀, -ResetServerAddresses로 DHCP 기본값 복귀) → <a href="https://learn.microsoft.com/en-us/powershell/module/dnsclient/set-dnsclientserveraddress" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/dnsclient/set-dnsclientserveraddress</a></li><li>Microsoft Learn, Resolve-DnsName (-NoHostsFile: hosts 건너뜀, -Server: 지정 서버에 질의, 미지정 시 인터페이스 DNS 서버) → <a href="https://learn.microsoft.com/en-us/powershell/module/dnsclient/resolve-dnsname" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/dnsclient/resolve-dnsname</a></li><li>Microsoft Learn, ipconfig (/all 전체 구성, /displaydns에 hosts 항목 포함, /flushdns 캐시 비우기) → <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig</a></li><li>ESET 도움말, 홈 네트워크 알림 (라우터 DNS 서버가 악성일 수 있음, 관리자 페이지에서 DNS 설정 확인) → <a href="https://help.eset.com/essp/19/ko-KR/idh_page_homenetwork_notifications.html" target="_blank" rel="noopener">https://help.eset.com/essp/19/ko-KR/idh_page_homenetwork_notifications.html</a></li><li>증상·실측값: 2026-09-13 개인 노트북 점검 기록(제품명·기기명·IP 제외)</li></ul>
+<p>태그: #dns변경탐지 #DNS변경 #DNS변경경고 #DNS서버확인 #DNS설정확인 #DNS원래대로 #hosts파일변경탐지 #GetDnsClientServerAddress #ResolveDnsName #ipconfigall #ipconfigflushdns #공유기DNS #파밍경고 #PC보안점검 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224451840741" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261024-ai-business-idea-score-one-price/"><div class="d">← 이전 노트</div><div class="t">AI로 사업 아이디어 검증할 때, 96점 가설이 강사료 공고 한 장에 64점 된 이유</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
