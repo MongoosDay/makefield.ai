@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>데이터센터 커미셔닝이란? Level 1~5 시운전 단계와 액체냉각이 판을 바꾼 이유 | Field Notes · MakeField AI</title>
+<meta name="description" content="한 줄 요약: 데이터센터 커미셔닝은 장비를 공장에서 시험하는 Level 1부터 정전까지 일부러 일으켜 건물 전체를 시험하는 Level 5까지, 데이터센터가 설계대로 버티는지 다섯 단계로 확인하는 과정이에요. 시장조사 기준으로 이 시운전·시험 서비스 시장은 2025년 22억 달러">
+<link rel="canonical" href="https://makefield.ai/blog/20261025-datacenter-commissioning-levels/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="데이터센터 커미셔닝이란? Level 1~5 시운전 단계와 액체냉각이 판을 바꾼 이유 | Field Notes · MakeField AI">
+<meta property="og:description" content="한 줄 요약: 데이터센터 커미셔닝은 장비를 공장에서 시험하는 Level 1부터 정전까지 일부러 일으켜 건물 전체를 시험하는 Level 5까지, 데이터센터가 설계대로 버티는지 다섯 단계로 확인하는 과정이에요. 시장조사 기준으로 이 시운전·시험 서비스 시장은 2025년 22억 달러">
+<meta property="og:url" content="https://makefield.ai/blog/20261025-datacenter-commissioning-levels/">
+<meta property="og:image" content="https://makefield.ai/blog/20261025-datacenter-commissioning-levels/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "데이터센터 커미셔닝이란? Level 1~5 시운전 단계와 액체냉각이 판을 바꾼 이유", "datePublished": "2026-10-25", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261025-datacenter-commissioning-levels/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-10-25</span></div>
+<h1>데이터센터 커미셔닝이란? Level 1~5 시운전 단계와 액체냉각이 판을 바꾼 이유</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="타이틀카드 — &quot;데이터센터 커미셔닝이란? / Level 1~5 시운전과 액체냉각&quot;" loading="lazy">
+<p><strong>한 줄 요약: 데이터센터 커미셔닝은 장비를 공장에서 시험하는 Level 1부터 정전까지 일부러 일으켜 건물 전체를 시험하는 Level 5까지, 데이터센터가 설계대로 버티는지 다섯 단계로 확인하는 과정이에요.</strong> 시장조사 기준으로 이 시운전·시험 서비스 시장은 2025년 22억 달러에서 2035년 100억 달러로 커질 것으로 추정됩니다(Astute Analytica, 추정).</p>
+<blockquote>💡 커미셔닝(Commissioning, 시운전) — 새로 지은 설비를 실제로 켜 보고, 설계한 대로 돌아가는지 단계별로 확인해 넘겨받는 과정. 새 아파트 입주 전 수도·보일러·전기를 하나씩 다 틀어 보는 &#x27;사전 점검&#x27;의 데이터센터판이다.</blockquote>
+<p>그런데 AI 서버를 물로 식히는 액체냉각이 들어오면서 이 익숙한 절차가 흔들리고 있어요. 데이터센터 평가 기관 업타임 인스티튜트는 &quot;직접 액체냉각은 커미셔닝의 모든 단계에서 어려움을 만든다&quot;고 썼습니다(Uptime Institute, 2026-01). 2026년 10월 기준으로 커미셔닝이 무엇이고, 왜 지금 다시 주목받으며, 돈은 어디로 흐르는지 풀어 볼게요.</p>
+<h2>1. 데이터센터 커미셔닝 Level 1~5는 무엇인가요</h2>
+<p><strong>데이터센터 커미셔닝은 보통 다섯 단계(Level 1~5)로 나누고, 단계가 올라갈수록 시험 범위가 장비 하나에서 건물 전체로 넓어진다.</strong> 업계 자료마다 이름은 조금씩 다르지만 사다리 모양은 같아요(Archdesk, 2026-06 / HorizonIQ, 2015-09).</p>
+<div class="table-wrap"><table><thead><tr><th>단계</th><th>이름</th><th>무엇을 보나</th></tr></thead><tbody><tr><td>Level 1</td><td>공장 입회 시험</td><td>장비가 출하 전 공장에서 성능을 내는지</td></tr><tr><td>Level 2</td><td>현장 반입 검사</td><td>도착한 장비가 공장 시험 때와 같고, 사양대로 설치됐는지</td></tr><tr><td>Level 3</td><td>설치·시동 점검</td><td>장비 하나하나가 따로 켜 봤을 때 제대로 도는지</td></tr><tr><td>Level 4</td><td>기능 성능 시험(FPT)</td><td>각 시스템이 정해진 동작 순서대로 움직이는지</td></tr><tr><td>Level 5</td><td>통합 시스템 시험(IST)</td><td>전기+냉각+제어가 한 덩어리로 고장 상황을 버티는지</td></tr></tbody></table></div>
+<blockquote>💡 FPT(Functional Performance Test, 기능 성능 시험) — 장비별로 &quot;이 경보가 뜨면 이렇게 움직여야 한다&quot;는 시나리오를 하나씩 돌려 보는 시험.</blockquote>
+<blockquote>💡 IST(Integrated Systems Test, 통합 시스템 시험) — 전기·냉각·제어를 모두 연결한 뒤 정전 같은 고장을 일부러 만들어 건물 전체가 버티는지 보는 마지막 시험.</blockquote>
+<p>Level 5가 가장 극적이에요. HorizonIQ는 IST에 &quot;주 전원을 끊어 예비 시스템이 작동하는지 확인하는 것&quot;이 들어간다고 설명했습니다(HorizonIQ, 2015-09). Archdesk는 Level 5를 &quot;전력+냉각+제어가 하나의 사슬로 고장을 버티는지&quot; 보는 단계로 정리했어요(Archdesk, 2026-06).</p>
+<img src="img/02_.png" alt="왼쪽 아래에서 오른쪽 위로 올라가는 5칸 계단. 각 칸에 &#x27;L1 공장 입회 시험&#x27; &#x27;L2 현장 반입 검사&#x27; &#x27;L3 설치·시동 점검&#x27; &#x27;L4 기능 성능 시험&#x27; &#x27;L5 통합 시스템 시험&#x27;. 아래 화살표 &#x27;장비 하나 → 건물 전체&#x27;. L5 칸 옆에 빨간 손글씨 &#x27;정전을 일부러 낸다&#x27;. 하단 캡션 &#x27;단계가 오를수록 시험 범위가 넓어진다&#x27;" loading="lazy">
+<p>단계 이름과 범위는 건물주(발주 측) 사양에 따라 달라질 수 있어요. 실제 현장은 계약서의 시운전 사양이 정본입니다.</p>
+<h2>2. 왜 지금 커미셔닝이 다시 뜨나요 — 액체냉각이 바꾼 것</h2>
+<p><strong>공기로 식히던 데이터센터에 물이 들어오면서, 기존 커미셔닝 절차에 없던 시험이 생겼고 그 모범 관행은 아직 정리 중이다.</strong> 업타임 인스티튜트는 그 문제의 중심에 CDU가 있고, 액체냉각 시설의 커미셔닝 모범 관행은 &quot;아직 성숙 중&quot;이라고 진단했어요(Uptime Institute, 2026-01).</p>
+<blockquote>💡 CDU(Coolant Distribution Unit, 냉각수 분배 장치) — 건물 쪽 냉수와 서버 쪽 냉각수를 열교환기로 나누고, 펌프·밸브로 온도·압력·유량을 맞춰 서버마다 나눠 주는 장치. 액체냉각의 &#x27;심장&#x27;.</blockquote>
+<p>그럼 무엇이 정리돼 있고 무엇이 비어 있을까요. <strong>장비 쪽 시험 방법은 이미 공개돼 있어요.</strong> 빅테크가 데이터센터 설계를 공유하는 OCP는 2024년 8월 &#x27;CDU 시험 방법·성능 등급&#x27; 백서(Rev 1.0)를 냈습니다. 인텔·CoolIT·메타가 썼고, 출처만 밝히면 누구나 고쳐 쓸 수 있는 공개 라이선스예요(OCP, 2024-08).</p>
+<blockquote>💡 OCP(Open Compute Project) — 메타·마이크로소프트 등 빅테크가 데이터센터 장비 설계를 공개 표준으로 나누는 모임.</blockquote>
+<p>이 백서에는 수압 시험, 화학 호환성 시험, 진동 시험, 온도 순환 시험, 세척·충전·플러싱 같은 제품 시험이 목차로 정리돼 있어요. &quot;펌프 이중화(N+1 이상)는 필수&quot;라는 문장도 있습니다(OCP, 2024-08).</p>
+<blockquote>💡 플러싱 — 처음 냉각수를 채우기 전에 배관 안 먼지·쇳가루를 씻어 내는 작업.</blockquote>
+<blockquote>💡 N+1 — 필요한 대수(N)에 1대를 더 두는 이중화. 펌프 2대가 필요하면 3대를 둔다.</blockquote>
+<p><strong>반면 제어 쪽은 한 문단뿐이에요.</strong> 같은 백서의 &#x27;센서·제어기&#x27; 절은 설정값을 벗어나면 경보를 내고, 누수 때 펌프 전원을 끊거나 밸브를 여닫는 자동 보호가 있다고 기능만 적었어요(OCP, 2024-08). 펌프가 멈췄을 때 대기 펌프로 넘어가는 절체나 경보 순서를 현장에서 어떤 합격 기준으로 검증할지는 나오지 않습니다.</p>
+<blockquote>💡 절체 — 운전 중인 펌프가 고장 나면 대기 펌프로 자동으로 넘겨 운전을 잇는 동작.</blockquote>
+<blockquote>💡 인터록 — 위험 조건이 되면 기계를 자동으로 멈추게 묶어 둔 안전 장치. 누수가 감지되면 펌프를 세우는 식이다.</blockquote>
+<img src="img/03_.png" alt="좌우 두 칸 비교. 왼쪽 초록 테두리 칸 &#x27;공개됨 — 장비 시험(OCP 2024-08)&#x27;: 수압 시험 / 화학 호환성 / 진동·온도 순환 / 세척·플러싱, 초록 체크. 오른쪽 빨간 테두리 칸 &#x27;아직 초안 — 현장 제어 검증&#x27;: 펌프 절체 / 누수 인터록 / 경보 순서 / 건물 관리 시스템 연동, 빨간 손글씨 &#x27;합격 기준이 비어 있다&#x27;. 하단 캡션 &#x27;액체냉각 커미셔닝, 어디까지 정리됐나&#x27;" loading="lazy">
+<p>이 빈칸을 채우는 움직임이 2025년에 나왔어요. 세계 슈퍼컴퓨팅 학회 SC25에서는 미국 국립연구소(ORNL·LLNL·Sandia)와 Vertiv·Glumac·T5DataCenters 관계자가 <strong>&#x27;액체냉각 커미셔닝 지침 초안&#x27;을 참석자 의견으로 다듬는 세션</strong>을 열었습니다(SC25 BoF, 2025-11). 아직 &#x27;초안&#x27; 단계라는 점이 핵심이에요.</p>
+<h2>3. 커미셔닝 돈의 흐름 — 누가 사고, 누가 파나요</h2>
+<p><strong>커미셔닝 비용은 데이터센터를 짓는 소유주·운영사가 내고, 시운전 대행사·시험 장비 렌탈사·장비 제조사가 나눠 가진다.</strong> Astute Analytica는 이 시장을 &quot;공장 출하 시 입회 테스트부터 통합 시스템 테스트 및 재시운전&quot;까지로 정의하고, 건설·설계·상시 시설 관리는 뺐어요(Astute Analytica, 추정).</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>누가</th><th>무엇을 사고파나</th></tr></thead><tbody><tr><td>사는 쪽</td><td>데이터센터 소유주·AI 클라우드 운영사</td><td>단계별 시험 수행, 시험 결과 문서, 운영팀 인수인계</td></tr><tr><td>파는 쪽①</td><td>시운전 대행·검증 회사</td><td>시험 시나리오 작성, 입회, 고장 상황 시험 진행</td></tr><tr><td>파는 쪽②</td><td>부하시험기 판매·렌탈사</td><td>서버 대신 열을 내는 &#x27;가짜 서버&#x27; 장비와 운영 인력</td></tr><tr><td>파는 쪽③</td><td>장비 제조사</td><td>Level 1 공장 시험, 자체 검증 설비</td></tr></tbody></table></div>
+<blockquote>💡 부하시험기(Load Bank) — 진짜 서버 대신 전기를 먹고 같은 양의 열을 내는 &#x27;가짜 서버&#x27;. 비싼 GPU를 꽂기 전에 전기·냉각이 버티는지 미리 확인한다.</blockquote>
+<p>시장 규모는 조사마다 범위가 달라요.</p>
+<ul><li><strong>시운전·시험 서비스 전체</strong>: 2025년 22억 달러 → 2035년 100억 달러, 2026~2035년 연 16.3% 성장(Astute Analytica, <strong>추정</strong>)</li><li><strong>전기 시운전만</strong>: 2026년 30억 7,000만 달러 → 2034년 65억 달러, 연 10% 성장(Stratistics MRC, 2026-02, <strong>추정</strong>)</li></ul>
+<p>두 조사는 시장을 정의하는 범위가 달라서 숫자를 직접 비교할 수 없어요. &#x27;전기만&#x27;이 &#x27;전체&#x27;보다 큰 것도 그 때문입니다. 두 조사 모두 시장이 커진다고 보는 방향만 같다고 읽는 편이 안전해요.</p>
+<img src="img/04_.png" alt="3단 돈 흐름도. 맨 위 잉크 박스 &#x27;사는 쪽 — 데이터센터 소유주·AI 클라우드&#x27;. 아래로 화살표 3개가 초록 박스 3개로 내려감: &#x27;시운전 대행·검증&#x27; / &#x27;부하시험기 렌탈&#x27; / &#x27;장비 제조사 공장 시험&#x27;. 오른쪽 빨간 손글씨 &#x27;2025년 22억 달러 / 2035년 100억 달러(추정)&#x27;. 하단 캡션 &#x27;커미셔닝 돈은 세 갈래로 흐른다&#x27;" loading="lazy">
+<p>사람값에서도 수요가 보여요. 미국 AI 클라우드 회사 Fluidstack은 &#x27;CDU 커미셔닝 배치 매니저&#x27;를 연봉 15만~20만 달러에 모집했습니다(Fluidstack 채용 공고, 현재 마감). 필수 요건은 데이터센터 운영·기계설비·HVAC·액체냉각 경력 5년 이상과 기계 계열 학위였고, ASHRAE·BCxA 시운전 지침 지식은 &#x27;우대&#x27;였어요. 자격증을 필수로 요구한 항목은 없었습니다.</p>
+<blockquote>💡 HVAC — 냉난방·환기·공조 설비.</blockquote>
+<blockquote>💡 ASHRAE / BCxA — 각각 미국 냉난방공조학회, 미국 건물 시운전 협회. 둘 다 시운전 실무 지침을 낸다.</blockquote>
+<blockquote>※ 이 글에 나온 기업명과 시장 전망치는 산업 구조를 설명하기 위한 예시입니다. 특정 종목의 매수·매도를 권하는 글이 아닙니다.</blockquote>
+<h2>4. 누가 액체냉각 커미셔닝을 하고 있나요</h2>
+<p><strong>장비 회사는 검증 설비를 직접 짓고, 연구기관은 제어 시나리오 시험법을 공개하는 쪽으로 움직이고 있다.</strong> 공개된 사례를 모으면 이래요.</p>
+<div class="table-wrap"><table><thead><tr><th>누가</th><th>무엇을</th><th>출처</th></tr></thead><tbody><tr><td>LG전자</td><td>600kW CDU로 엔비디아 인증, 평택 &#x27;Chip-to-Chiller&#x27; 검증 사이트에서 과도 응답·저부하 안정성 시험, 메가와트급 대형 모델로 인증 확대 추진</td><td>Cooling Post(2026-07)</td></tr><tr><td>Aggreko</td><td>인도 벵갈루루 데이터센터의 CDU를 가동 전 시험, 600kW 전기 보일러로 450kW 부하를 걸어 7일간 진행</td><td>Aggreko 사례(회사 자료)</td></tr><tr><td>엔비디아·UT 알링턴</td><td>인로우 CDU 특성 연구: 펌프 1대를 일부러 고장 낸 절체 시험, 누수 감지, 저·고부하 온도 유지, 정차압·정유량 모드</td><td>ASME(2026)</td></tr><tr><td>ORNL·LLNL·Sandia 등</td><td>액체냉각 커미셔닝 지침 초안을 공개 세션에서 보완</td><td>SC25 BoF(2025-11)</td></tr></tbody></table></div>
+<blockquote>💡 칠러 — 건물 쪽 냉수를 만드는 대형 냉동기. &#x27;Chip-to-Chiller&#x27;는 칩부터 칠러까지 냉각 사슬 전체를 한 번에 본다는 뜻이다.</blockquote>
+<blockquote>💡 정차압·정유량 모드 — 배관 양 끝 압력 차를 일정하게 지키거나(정차압), 흐르는 물의 양을 일정하게 지키도록(정유량) 펌프 속도를 자동으로 바꾸는 두 가지 제어 방식.</blockquote>
+<p>엔비디아·UT 알링턴 연구는 25kW 랙 8개, 냉각 루프 32개 규모 설비에서 진행됐고 Journal of Electronic Packaging 2025년 12월호에 실렸어요(ASME, 2026). 다만 기사에는 절체 회복 시간 같은 결과 수치가 나오지 않습니다. Aggreko 사례에서는 서버 쪽 냉각액이 PG25%였고, CDU가 오염에 매우 민감해 이물질 관리가 핵심이었다고 적었어요(Aggreko 사례).</p>
+<blockquote>💡 PG25% — 물에 프로필렌글리콜을 25% 섞은 냉각액. 잘 얼지 않고 세균이 덜 자란다.</blockquote>
+<p>국내에서는 인력이 먼저 거론돼요. 한국냉난방공조신문은 &quot;CDU, 냉각액, 배관부품, 설치인력, 운영경험은 아직 충분하지 않기 때문&quot;이라며 액체냉각이 병목이 될 수 있다고 썼습니다(한국냉난방공조신문, 2026-08). 기사에 구체적인 인력 수치는 없어요.</p>
+<h2>5. 액체냉각 커미셔닝은 언제 표준이 되나요 — 한계와 반대 근거</h2>
+<p><strong>장비 시험은 이미 공개 문서가 있지만, 현장 통합 커미셔닝 지침은 2026년 10월 현재 커뮤니티 초안 단계다.</strong> 낙관도 비관도 근거를 나눠 볼게요.</p>
+<ul><li><strong>빠르게 정리된다는 근거</strong>: OCP가 제품 시험 방법을 공개 라이선스로 풀었고(OCP, 2024-08), 국립연구소와 장비·시운전 회사가 함께 지침 초안을 다듬고 있어요(SC25 BoF, 2025-11). 엔비디아 연구진도 절체·누수 시험을 논문으로 냈습니다(ASME, 2026).</li><li><strong>천천히 온다는 근거</strong>: 업타임은 모범 관행이 &quot;아직 성숙 중&quot;이라고 했고(Uptime Institute, 2026-01), 국내는 설치인력·운영경험 부족이 병목으로 거론돼요(한국냉난방공조신문, 2026-08).</li><li><strong>숫자의 한계</strong>: 시장 규모는 조사업체 추정이고, 두 조사의 범위가 달라 교차 확인이 안 돼요(<strong>추정</strong>). 연봉·요건은 미국 공고 1건 기준이라 대표성이 제한적입니다.</li><li><strong>장비 회사의 내재화</strong>: 대형 장비 회사가 자체 검증 설비를 갖추면, 일부 시험은 외부 대행 대신 Level 1 공장 시험 안으로 들어갈 수 있어요(Cooling Post, 2026-07을 바탕으로 한 해석).</li></ul>
+<p>정리하면 데이터센터 커미셔닝의 &#x27;사다리&#x27;는 이미 있어요. 액체냉각이 그 사다리의 Level 4~5에 새 칸, 곧 펌프 절체·누수 인터록·경보 순서 검증을 끼워 넣는 중이라고 볼 수 있어요(위 출처를 바탕으로 한 해석). 다음으로 볼 신호는 SC 학회 지침의 후속판, 그리고 대형 CDU의 인증 소식이에요.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 커미셔닝에 건설이나 설계도 들어가나요?</strong><br>
+들어가지 않아요. 커미셔닝은 다 지은 설비가 설계 의도대로 움직이는지 공장 시험부터 통합 시험까지 확인하는 과정이에요(Archdesk, 2026-06). 시장조사에서도 건설·설계 엔지니어링·상시 시설 관리는 커미셔닝 시장에서 빼고 봅니다(Astute Analytica).</p>
+<p><strong>Q. 통합 시스템 시험(IST)에서는 실제로 정전을 내나요?</strong><br>
+HorizonIQ 설명에 따르면 IST에는 주 전원을 끊어 예비 시스템이 작동하는지 확인하는 시험이 들어가요(HorizonIQ, 2015-09). 정확한 시나리오는 프로젝트 시운전 사양에 따라 달라집니다.</p>
+<p><strong>Q. 액체냉각 커미셔닝을 하려면 자격증이 필요한가요?</strong><br>
+이 글에서 확인한 미국 공고 1건에는 필수 자격증이 없었고, 기계·HVAC·액체냉각 경력 5년 이상이 핵심 요건이었어요(Fluidstack 채용 공고). 공고 1건 기준이라 업계 전체로 일반화하기는 어렵습니다.</p>
+<h2>오늘의 용어 정리</h2>
+<ul><li><strong>커미셔닝(시운전)</strong> — 새 설비를 켜서 설계대로 도는지 단계별로 확인하고 넘겨받는 과정</li><li><strong>Level 1~5</strong> — 공장 입회 시험 → 현장 반입 검사 → 설치·시동 점검 → 기능 성능 시험 → 통합 시스템 시험</li><li><strong>FPT(기능 성능 시험)</strong> — 장비별 동작·경보 시나리오를 하나씩 돌려 보는 시험</li><li><strong>IST(통합 시스템 시험)</strong> — 전기·냉각·제어를 다 연결하고 고장 상황까지 만들어 보는 마지막 시험</li><li><strong>CDU(냉각수 분배 장치)</strong> — 건물 냉수와 서버 냉각수를 나누고 온도·압력·유량을 맞추는 장치</li><li><strong>OCP</strong> — 빅테크가 데이터센터 장비 설계를 공개 표준으로 나누는 모임</li><li><strong>플러싱</strong> — 배관 속 이물질을 씻어 내는 작업</li><li><strong>N+1</strong> — 필요한 대수에 1대를 더 둔 이중화</li><li><strong>절체 / 인터록</strong> — 고장 펌프에서 대기 펌프로 넘기는 동작 / 위험하면 자동으로 멈추게 묶은 안전 장치</li><li><strong>부하시험기</strong> — 서버 대신 열을 내는 &#x27;가짜 서버&#x27;</li><li><strong>정차압·정유량 모드</strong> — 압력 차 또는 유량을 일정하게 지키는 펌프 제어 방식</li><li><strong>PG25%</strong> — 프로필렌글리콜 25% 냉각액</li></ul>
+<p>지난 Next Field에서 CDU라는 장치 자체를 다뤘다면, 오늘은 그 장치를 처음 켜는 &#x27;커미셔닝&#x27; 쪽을 봤어요. 여러분은 액체냉각 커미셔닝이 장비 회사 안으로 들어갈까요, 아니면 독립된 검증 서비스로 커질까요?</p>
+<h2>출처</h2>
+<p><strong>[1] Uptime Institute(2026-01)</strong> — 직접 액체냉각은 커미셔닝의 모든 단계에서 어려움을 만들고, 그 중심에 CDU가 있으며, 액체냉각 시설의 커미셔닝 모범 관행은 아직 성숙 중<br>
+→ <a href="https://intelligence.uptimeinstitute.com/resource/coolant-distribution-units-can-complicate-commissioning" target="_blank" rel="noopener">https://intelligence.uptimeinstitute.com/resource/coolant-distribution-units-can-complicate-commissioning</a></p>
+<p><strong>[2] Archdesk(2026-06)</strong> — 커미셔닝 Level 1~5 정의: 공장 시험, 현장 반입·설치 확인, 개별 장비 점검, 시스템 기능 시험, 전력·냉각·제어 통합 시험<br>
+→ <a href="https://archdesk.com/blog/data-center-commissioning-levels" target="_blank" rel="noopener">https://archdesk.com/blog/data-center-commissioning-levels</a></p>
+<p><strong>[3] HorizonIQ(2015-09)</strong> — 커미셔닝 5단계 이름(공장 입회 시험~통합 시스템 시험), IST에 주 전원을 끊어 예비 시스템 작동을 확인하는 시험 포함<br>
+→ <a href="https://www.horizoniq.com/blog/integrated-systems-testing-for-data-centers/" target="_blank" rel="noopener">https://www.horizoniq.com/blog/integrated-systems-testing-for-data-centers/</a></p>
+<p><strong>[4] OCP 백서(2024-08)</strong> — CDU 시험 방법·성능 등급 Rev 1.0: 인텔·CoolIT·메타 공저, 공개 라이선스, 수압·화학 호환성·진동·온도 순환·세척·충전·플러싱 항목, 펌프 이중화(N+1 이상) 필수, 센서·제어 절은 경보·자동 보호 기능만 서술<br>
+→ <a href="https://www.opencompute.org/documents/ocp-wp-l-lcdu-test-methodology-performance-rating-r1-pdf/" target="_blank" rel="noopener">https://www.opencompute.org/documents/ocp-wp-l-lcdu-test-methodology-performance-rating-r1-pdf/</a></p>
+<p><strong>[5] SC25 BoF(2025-11)</strong> — ORNL·LLNL·Sandia 국립연구소와 Glumac·Vertiv·T5DataCenters가 액체냉각 커미셔닝 지침 초안을 사례와 참석자 의견으로 보완하는 세션<br>
+→ <a href="https://sc25.supercomputing.org/proceedings/bof/bof_pages/bof185.html" target="_blank" rel="noopener">https://sc25.supercomputing.org/proceedings/bof/bof_pages/bof185.html</a></p>
+<p><strong>[6] ASME(2026)</strong> — 엔비디아·UT 알링턴의 인로우 CDU 특성 연구: 펌프 고장 절체, 누수 감지, 저·고부하 온도 유지, 정차압·정유량 모드, 25kW 랙 8개·냉각 루프 32개, Journal of Electronic Packaging 2025-12호, 결과 수치는 기사에 없음<br>
+→ <a href="https://www.asme.org/membership/r-d-pulse/april-june-2026/critical-cool-down" target="_blank" rel="noopener">https://www.asme.org/membership/r-d-pulse/april-june-2026/critical-cool-down</a></p>
+<p><strong>[7] Astute Analytica</strong> — 데이터센터 시운전·시험 서비스 시장 2025년 22억 달러 → 2035년 100억 달러, 2026~2035년 연 16.3% 성장 추정, 시장 정의(공장 입회 시험~통합 시스템 시험·재시운전, 건설·설계 제외)<br>
+→ <a href="https://www.astuteanalytica.com/ko/industry-report/data-center-commissioning-and-testing-services-market" target="_blank" rel="noopener">https://www.astuteanalytica.com/ko/industry-report/data-center-commissioning-and-testing-services-market</a></p>
+<p><strong>[8] Stratistics MRC(2026-02)</strong> — 데이터센터 전기 시운전 시장 2026년 30억 7,000만 달러 → 2034년 65억 달러, 연 10% 성장 추정<br>
+→ <a href="https://www.giikorea.co.kr/report/smrc1945970-data-center-electrical-commissioning-market.html" target="_blank" rel="noopener">https://www.giikorea.co.kr/report/smrc1945970-data-center-electrical-commissioning-market.html</a></p>
+<p><strong>[9] Fluidstack 채용 공고</strong> — CDU 커미셔닝 배치 매니저, 연봉 15만~20만 달러, 경력 5년 이상·기계 계열 학위, ASHRAE·BCxA 지침 지식 우대, Level 1~5 전 단계 담당, 필수 자격증 없음(현재 마감)<br>
+→ <a href="https://jobs.dukecapitalpartners.duke.edu/companies/fluidstack/jobs/72954007-commissioning-cdu-deployment-manager-data-centers" target="_blank" rel="noopener">https://jobs.dukecapitalpartners.duke.edu/companies/fluidstack/jobs/72954007-commissioning-cdu-deployment-manager-data-centers</a></p>
+<p><strong>[10] Cooling Post(2026-07)</strong> — LG전자 600kW CDU 엔비디아 인증, 평택 Chip-to-Chiller 검증 사이트에서 과도 응답·저부하 안정성 시험, 메가와트급 대형 모델로 인증 확대 추진<br>
+→ <a href="https://www.coolingpost.com/world-news/lg-cdu-gains-nvidia-ai-factory-validation/" target="_blank" rel="noopener">https://www.coolingpost.com/world-news/lg-cdu-gains-nvidia-ai-factory-validation/</a></p>
+<p><strong>[11] Aggreko 사례</strong> — 인도 벵갈루루 데이터센터 CDU 가동 전 시험, 600kW 전기 보일러·450kW 시험 부하·7일 진행, 서버 쪽 냉각액 PG25%, 오염에 매우 민감<br>
+→ <a href="https://www.aggreko.com/en-in/case-studies/data-centres/enabling-one-of-a-kind-cdu-commissioning" target="_blank" rel="noopener">https://www.aggreko.com/en-in/case-studies/data-centres/enabling-one-of-a-kind-cdu-commissioning</a></p>
+<p><strong>[12] 한국냉난방공조신문(2026-08)</strong> — CDU·냉각액·배관부품·설치인력·운영경험이 아직 충분하지 않아 액체냉각이 병목이 될 수 있다는 분석<br>
+→ <a href="https://www.kharn.kr/mobile/article.html?no=31457" target="_blank" rel="noopener">https://www.kharn.kr/mobile/article.html?no=31457</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224452712969" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261024-solid-state-circuit-breaker-sscb/"><div class="d">← 이전 노트</div><div class="t">반도체 차단기(SSCB)란? 직류는 왜 끊기 어렵고, AI 데이터센터가 새 차단기를 찾는 이유</div></a><a class="next" href="/blog/20261025-solar-pem-degradation/"><div class="d">다음 노트 →</div><div class="t">태양광 연계 수전해는 왜 빨리 늙을까? 정전류 50 vs 태양광 87.7 µV/h</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
