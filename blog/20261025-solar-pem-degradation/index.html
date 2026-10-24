@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>태양광 연계 수전해는 왜 빨리 늙을까? 정전류 50 vs 태양광 87.7 µV/h | Field Notes · MakeField AI</title>
+<meta name="description" content="태양광 연계 수전해 열화는 &quot;출력이 오르내리면 조금 더 닳겠지&quot; 정도가 아니었습니다. 같은 PEM 단일 셀을 80 °C에서 시험했을 때, 3 A/cm² 기준 열화율이 정전류 운전은 50.0 µV/h, 태양광 하루 출력을 흉내 낸 변동 운전은 87.7 µV/h로 약 1.75배였어">
+<link rel="canonical" href="https://makefield.ai/blog/20261025-solar-pem-degradation/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="태양광 연계 수전해는 왜 빨리 늙을까? 정전류 50 vs 태양광 87.7 µV/h | Field Notes · MakeField AI">
+<meta property="og:description" content="태양광 연계 수전해 열화는 &quot;출력이 오르내리면 조금 더 닳겠지&quot; 정도가 아니었습니다. 같은 PEM 단일 셀을 80 °C에서 시험했을 때, 3 A/cm² 기준 열화율이 정전류 운전은 50.0 µV/h, 태양광 하루 출력을 흉내 낸 변동 운전은 87.7 µV/h로 약 1.75배였어">
+<meta property="og:url" content="https://makefield.ai/blog/20261025-solar-pem-degradation/">
+<meta property="og:image" content="https://makefield.ai/blog/20261025-solar-pem-degradation/img/00_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "태양광 연계 수전해는 왜 빨리 늙을까? 정전류 50 vs 태양광 87.7 µV/h", "datePublished": "2026-10-25", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261025-solar-pem-degradation/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">현장 AI 실험실</span><span>2026-10-25</span></div>
+<h1>태양광 연계 수전해는 왜 빨리 늙을까? 정전류 50 vs 태양광 87.7 µV/h</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/00_title.png" alt="타이틀카드 — 00_title.png" loading="lazy">
+<p>태양광 연계 수전해 열화는 &quot;출력이 오르내리면 조금 더 닳겠지&quot; 정도가 아니었습니다. <strong>같은 PEM 단일 셀을 80 °C에서 시험했을 때, 3 A/cm² 기준 열화율이 정전류 운전은 50.0 µV/h, 태양광 하루 출력을 흉내 낸 변동 운전은 87.7 µV/h로 약 1.75배였어요</strong> [Su 2024, Table 2].</p>
+<p>&#x27;논문 읽는 AI&#x27; 15편, 4부 &#x27;닳는 것&#x27;의 두 번째 글입니다. 지난 편이 &quot;산화극 어디서 무엇이 무너지나&quot;였다면, 이번엔 <strong>어떻게 돌리느냐가 늙는 속도를 얼마나 바꾸나</strong>를 숫자로 봅니다.</p>
+<p>읽은 논문은 중국과학원 고체물리연구소·안후이대 Zhengquan Su 등 4명이 학술지 Materials(2024, 17권, 1331)에 낸 실험 논문이에요. 정전류, 사각파, 태양광 모사라는 세 가지 가속열화시험(AST)을 같은 조건에서 돌려 비교했습니다 [Su 2024, Abstract].</p>
+<h2>1. 열화율 &#x27;µV/h&#x27;는 어떻게 읽나요</h2>
+<p><strong>µV/h는 같은 전류를 흘리는 데 필요한 전압이 1시간에 몇 마이크로볼트(100만분의 1 볼트)씩 오르는지를 뜻하는 열화 단위예요.</strong> 숫자가 클수록 빨리 늙는다는 뜻입니다.</p>
+<p>용어부터 풀어 둘게요.</p>
+<ul><li><strong>PEM 수전해</strong>: 양성자만 통과시키는 고분자 막을 사이에 두고 물을 수소와 산소로 나누는 장치</li><li><strong>MEA(막-전극 접합체)</strong>: 막 양쪽에 촉매를 붙인 핵심 부품. 장치 성능 저하는 주로 MEA에서 온다고 논문은 설명해요 [Su 2024, 1장]</li><li><strong>가속열화시험(AST)</strong>: 수만 시간을 기다릴 수 없으니, 일부러 가혹한 조건을 걸어 늙는 모습을 짧은 시간에 끌어내는 시험 [Su 2024, 1장]</li></ul>
+<p>전압이 오르면 왜 문제일까요. 논문은 티타늄 부품의 부동태화(표면 산화막)를 설명하며, 같은 전류밀도를 유지하려면 더 높은 전압이 필요해지고 <strong>전해 과정의 에너지 소비와 전압이 늘어난다</strong>고 적었어요 [Su 2024, 3.1절]. 같은 수소를 만드는 데 전기가 더 든다는 얘기죠.</p>
+<img src="img/01_ast_design.png" alt="µV/h를 볼트로 환산해 읽는 법 — 04_uvh_reading.png" loading="lazy">
+<p>감을 잡으려고 단순 곱셈을 해 보면, 87.7 µV/h로 1,000시간을 돌면 약 87.7 mV(0.09 V), 50.0 µV/h면 50 mV가 오릅니다. 이건 <strong>논문에 없는 환산</strong>이고, 논문의 열화율은 직선을 맞춘 기울기(평균)라는 점을 같이 기억해 두세요 [Su 2024, Fig.2 설명].</p>
+<h2>2. 무엇을 풀려 했고, 어떻게 시험했나요</h2>
+<p><strong>재생에너지의 간헐성과 출력 변동이 PEM 수전해 성능을 떨어뜨릴 수 있는데, 실험실에서 어떤 동적 조건이 열화를 빠르게 하는지는 아직 잘 정리되지 않았다</strong>는 게 출발점이에요 [Su 2024, 1장]. 정전류 시험만으로는 실제 운전 조건을 정확히 반영하지 못한다는 문제의식도 밝혔습니다 [Su 2024, 1장].</p>
+<p>시험 장치는 활성 면적 30.624 cm²의 단일 셀이고, 80 °C에서 탈이온수를 분당 100 mL로 흘렸어요 [Su 2024, 2.1절]. 바꾼 건 전류 파형뿐입니다.</p>
+<img src="img/02_rate_at_3A.png" alt="네 갈래 가속열화시험과 사각파 한 주기 — 01_ast_design.png" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>시험</th><th>전류 조건</th><th>시험 시간</th><th>보려는 것</th></tr></thead><tbody><tr><td>정전류 C1·C2·C3</td><td>1 / 2 / 3 A/cm² 고정</td><td>600 h</td><td>전류 크기</td></tr><tr><td>좁은 사각파 N02·N12·N22</td><td>1↔2 A/cm²</td><td>600 h</td><td>변동 속도</td></tr><tr><td>넓은 사각파 W02·W12·W22</td><td>1↔3 A/cm²</td><td>600 h</td><td>변동 폭 × 속도</td></tr><tr><td>태양광 모사 Solar</td><td>0~3 A/cm²</td><td>약 1,430 h</td><td>실제 하루 출력 곡선</td></tr></tbody></table></div>
+<p>출처: [Su 2024, Table 1·2.2절]</p>
+<p>사각파 이름의 숫자는 <strong>스텝 시간</strong>, 즉 전류가 낮은 값에서 높은 값으로 바뀌는 데 걸리는 시간(2·12·22초)이에요. 한 주기는 28초 유지 구간과 전류가 바뀌는 구간으로 이뤄집니다 [Su 2024, 2.2절]. 스텝 시간이 짧을수록 전류가 급하게 꺾이는 셈이죠. 태양광 모사는 2022년 6월 중국 칭하이의 하루 발전량을 바탕으로 만든 곡선이에요 [Su 2024, 2.2절].</p>
+<h2>3. 무엇을 알아냈나요 — 세 가지 결과</h2>
+<p><strong>정전류에선 전류가 클수록, 사각파에선 변동 폭에 따라 해로운 쪽이 뒤집히고, 태양광 모사가 모든 시험 중 가장 빨리 늙었다</strong>는 게 결론이에요 [Su 2024, 4장].</p>
+<p><strong>① 정전류: 세게 돌릴수록 빨리 늙는다.</strong> 1 A/cm²에서 22.7, 2 A/cm²에서 26.1, 3 A/cm²에서 50.0 µV/h였어요 [Su 2024, Table 2]. 2→3 A/cm² 구간에서 거의 두 배로 뛴 점이 눈에 띕니다. 3 A/cm²로 600시간 돈 뒤엔 산화극 촉매층 표면에 균열과 돌기가 늘었고, 원소 분석에서 이리듐 비율이 86.62%에서 81.71%로 줄었다고 해요 [Su 2024, 3.1절].</p>
+<p><strong>② 사각파: 폭이 좁으면 &#x27;급변&#x27;이, 넓으면 &#x27;고전류에 머문 시간&#x27;이 범인.</strong></p>
+<img src="img/03_square_wave_flip.png" alt="변동 폭에 따라 뒤집히는 스텝 시간 효과 — 03_square_wave_flip.png" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>시험</th><th>스텝 2초</th><th>스텝 12초</th><th>스텝 22초</th><th>경향</th></tr></thead><tbody><tr><td>좁은 1↔2 (2 A/cm² 기준)</td><td>47.3</td><td>36.6</td><td>24.9</td><td>급할수록 빨리 늙음</td></tr><tr><td>넓은 1↔3 (3 A/cm² 기준)</td><td>46.2</td><td>52.7</td><td>52.8</td><td>느릴수록 빨리 늙음, 상한 보임</td></tr></tbody></table></div>
+<p>출처: 단위 µV/h [Su 2024, Table 2]</p>
+<p>저자들의 해석은 이래요. 좁은 폭에선 낮은 전류의 충격이 작아 <strong>전류가 빠르게 바뀌는 것 자체</strong>가 주된 요인이 되고, 넓은 폭에선 스텝이 길수록 <strong>높은 전류에 더 오래 노출</strong>되는데 그 영향이 전류 전환보다 크다는 거예요 [Su 2024, 3.1절]. 논문은 이 대목을 &quot;추정(speculation)&quot;이라고 표현했습니다.</p>
+<p><strong>③ 태양광 모사: 가장 빠른 열화.</strong> 1 A/cm² 기준 39.7, 2 A/cm² 기준 52.4, 3 A/cm² 기준 87.7 µV/h로, 모든 시험 중 최고였어요 [Su 2024, Table 2]. 논문은 태양광 모사가 정전류와 사각파를 여러 개 섞은 형태이고, <strong>높은 전류밀도와 긴 스텝 시간이 겹칠 때</strong> 가장 심한 열화가 나온다고 정리했습니다 [Su 2024, 4장].</p>
+<img src="img/04_uvh_reading.png" alt="3 A/cm² 기준 열화율 비교 — 02_rate_at_3A.png" loading="lazy">
+<p>같은 3 A/cm² 기준으로만 줄 세우면 정전류 C3 50.0, 넓은 사각파 46.2~52.8, 태양광 모사 87.7 µV/h입니다 [Su 2024, Table 2]. 태양광 연계 수전해가 효율 문제를 넘어 <strong>내구성 문제</strong>와 직결되는 이유가 이 막대 하나에 담겨 있어요.</p>
+<h2>4. 왜 그렇게 늙나요, 그리고 이 논문의 한계</h2>
+<p><strong>논문은 고주파 저항(HFR) 증가를 티타늄 판의 부식·부동태화 몫으로 보고, 전체 열화에서 이 몫을 빼서 나머지를 분리했어요</strong> [Su 2024, 3.2절].</p>
+<ul><li><strong>초기 100시간은 계산에서 제외</strong>: 모든 시험에서 처음엔 저항이 살짝 줄었는데, 저자들은 활성화가 덜 된 탓으로 보고 첫 100시간을 활성화 기간으로 처리했어요 [Su 2024, 3.2절]</li><li><strong>태양광 모사가 티타늄을 가장 심하게 상하게 함</strong>: HFR 증가로 드러났다고 해요 [Su 2024, 3.2절, Fig.6]</li><li><strong>반대 방향의 신호</strong>: 전체 열화와 달리, 저항 몫의 열화는 스텝 시간이 길수록 <strong>줄었어요</strong>. 전류가 급변하면 촉매층에서 생긴 기체가 제때 빠지지 못하고 확산층에 남아 물질 교환을 막는다는 추정을 내놨습니다 [Su 2024, 3.2절, Fig.7]</li></ul>
+<p>즉 &quot;급변&quot;과 &quot;고전류 체류&quot;가 서로 다른 경로로 셀을 상하게 하고, 태양광 곡선은 두 가지를 다 갖고 있는 셈이에요.</p>
+<p><strong>이 논문의 한계도 짚어 둘게요.</strong></p>
+<ul><li><strong>단일 셀 하나의 결과</strong>: 활성 면적 약 30 cm² 셀, 한 업체의 MEA, 80 °C 고정 조건이에요 [Su 2024, 2.1절]. 조건별 반복 시험 횟수는 본문에 적혀 있지 않습니다.</li><li><strong>시험 시간이 다르다</strong>: 태양광 모사는 약 1,430시간, 나머지는 600시간이라 열화율을 같은 저울에 올리는 데 주의가 필요해요 [Su 2024, Table 1].</li><li><strong>기전은 추정이다</strong>: 사각파 역전, 기체 잔류 같은 설명은 저자 스스로 &quot;추정&quot;이라고 적었고, 셀 내부 변화를 정확히 기술한 연구가 없다고도 밝혔어요 [Su 2024, 3.1·3.2절].</li><li><strong>이상치 하나</strong>: W12가 같은 폭에서 더 빠르게 열화한 구간을 &quot;다른 요인 때문(Due to other factors)&quot;이라고만 적었습니다 [Su 2024, 3.1절].</li><li><strong>변동이 늘 나쁜 건 아니다</strong>: N22의 1 A/cm² 기준 열화율 21.7 µV/h는 정전류 C1의 22.7보다 오히려 낮아요 [Su 2024, Table 2].</li></ul>
+<h2>5. 이 실험 논문을 AI로 읽으며 원문과 대조한 세 곳</h2>
+<p>실험 논문은 관점 논문과 함정이 다릅니다. 문장보다 <strong>표와 숫자의 &#x27;기준&#x27;</strong>에서 어긋나요. 이번엔 PDF를 텍스트로 뽑아 AI에게 넘긴 뒤, 아래 세 군데를 원문과 맞췄습니다.</p>
+<img src="img/05_ai_crosscheck.png" alt="실험 논문을 AI로 읽을 때 대조한 3곳 — 05_ai_crosscheck.png" loading="lazy">
+<p><strong>① 표는 텍스트가 아니라 이미지로.</strong> 열화율 표를 텍스트로 뽑으면 숫자가 쪼개지고 행 짝이 풀립니다.</p>
+<pre><code>[텍스트 추출] C1 C2 C3 / 22. 7 µV/h @ 1 A/cm2 / 26.1 µV/h @ 2 A/cm2 ...
+[페이지 이미지] C1 = 22.7 µV/h @ 1 A/cm²</code></pre>
+<p>초록(Abstract)은 이 값을 &quot;22 µV/h&quot;로 반올림해 적었어요. 초록만 넘겨 요약시키면 22가, 표를 보면 22.7이 나옵니다. 그래서 <strong>표가 있는 쪽은 페이지를 이미지로 열어 칸 단위로 확인</strong>했어요.</p>
+<p><strong>② 같은 숫자의 다른 판본.</strong> 태양광 모사 시험 시간이 한 논문 안에서 세 번 다르게 적혀 있었어요.</p>
+<pre><code>Abstract        : Over 1400 h
+Table 1 캡션    : 1430 h
+Table 1 칸      : 1540 h</code></pre>
+<p>일조 시간도 초록은 &quot;11 h&quot;, 2.2절은 &quot;13 h of sunshine&quot;이고, 파형 그림의 가로축은 0~11시간이에요 [Su 2024, Abstract·2.2절·Fig.1]. AI 요약은 이 중 하나만 골라 자신 있게 씁니다. 이 글에선 본문과 캡션이 같은 1,430시간을 &#x27;약&#x27;을 붙여 썼어요.</p>
+<p><strong>③ &#x27;@ 전류밀도&#x27;를 맞춰서만 비교.</strong> 표의 @ 뒤 숫자는 그 열화율을 어느 전류밀도에서 계산했는지를 가리켜요. 논문은 시점별 분극곡선(전류-전압 곡선)에서 열화율을 뽑았습니다 [Su 2024, Table 2·Fig.7 설명]. 좁은 사각파 N02의 47.3(@2 A/cm²)과 정전류 C3의 50.0(@3 A/cm²)을 나란히 놓고 &quot;비슷하다&quot;고 하면 반칙입니다. 그래서 막대그래프는 3 A/cm² 기준끼리만 세웠어요.</p>
+<p>여러분 분야의 실험 논문을 AI로 읽을 때 그대로 붙여 쓸 수 있는 지시문입니다.</p>
+<pre><code>1) 표의 모든 수치를 &#x27;조건 이름 / 측정 기준(@ 뒤 값) / 단위&#x27;로 다시 표로 만들어.
+2) 같은 물리량(시험 시간·온도·기간)이 초록·본문·표·캡션에 각각 어떻게 적혔는지 위치별로 나열하고, 다르면 표시해.
+3) 비교 문장을 만들 땐 측정 기준이 같은 값끼리만 비교해. 기준이 다르면 비교하지 마.
+4) 저자가 &#x27;speculate/speculation/probably&#x27;로 쓴 설명은 &#x27;추정&#x27;으로 따로 표시해.
+5) 표가 있는 쪽은 페이지 이미지로 다시 읽고, 텍스트 추출 값과 다르면 이미지 값을 써.</code></pre>
+<h2>6. 자주 묻는 질문</h2>
+<p><strong>Q. 태양광 연계 수전해는 정전류보다 얼마나 빨리 열화하나요?</strong><br>
+이 논문의 단일 셀 시험에선 3 A/cm² 기준 정전류 50.0 µV/h, 태양광 모사 87.7 µV/h로 약 1.75배였어요 [Su 2024, Table 2]. 다만 태양광 모사는 약 1,430시간, 정전류는 600시간 시험이라 단순 비교라는 점을 감안해야 합니다.</p>
+<p><strong>Q. 출력 변동은 무조건 수전해 수명을 깎나요?</strong><br>
+아니에요. 좁은 폭(1↔2 A/cm²)에서 스텝 22초인 N22는 1 A/cm² 기준 21.7 µV/h로 정전류 C1(22.7)보다 낮았어요 [Su 2024, Table 2]. 변동의 폭과 속도, 높은 전류에 머무는 시간이 함께 결정한다는 게 논문의 결과입니다.</p>
+<p><strong>Q. 사각파에서 빠른 변동과 느린 변동 중 어느 쪽이 더 해롭나요?</strong><br>
+폭에 따라 달라요. 1↔2 A/cm²에선 스텝 2초가 가장 빨리(47.3 µV/h), 1↔3 A/cm²에선 스텝 22초가 가장 빨리(52.8 µV/h) 열화했어요 [Su 2024, Table 2]. 저자들은 각각 급변 자체와 고전류 체류 시간이 주된 요인이라고 추정했습니다.</p>
+<hr>
+<p>한 줄로 줄이면, 같은 셀이라도 <strong>태양광처럼 고전류와 변동이 섞인 운전에서 전압이 가장 빨리 올랐고</strong>, 사각파의 위험은 변동 폭에 따라 &#x27;급변&#x27; 쪽에서 &#x27;고전류 체류&#x27; 쪽으로 옮겨 갔습니다. 재생에너지에 수전해를 붙이는 순간, 열화는 계산에서 뺄 수 없는 변수가 된다는 얘기예요.</p>
+<p>다음 편에서는 알칼라인 수전해를 껐다 켤 때 거꾸로 흐르는 전류가 니켈 전극을 어떻게 망가뜨리는지 읽어 볼게요.</p>
+<p>여러분이 읽은 실험 논문에도 초록과 표의 숫자가 서로 달랐던 적이 있었나요?</p>
+<p>실험 논문을 AI로 읽을 때 쓰는 표·숫자 대조 지시문은 makefield.ai에 모아 두고 있어요.</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224452687399" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261024-solid-state-circuit-breaker-sscb/"><div class="d">← 이전 노트</div><div class="t">반도체 차단기(SSCB)란? 직류는 왜 끊기 어렵고, AI 데이터센터가 새 차단기를 찾는 이유</div></a><a class="next" href="/blog/20261025-wti-continuous-futures-rollover/"><div class="d">다음 노트 →</div><div class="t">WTI 유가 다를 때, AI가 &#x27;해소됐다&#x27;고 덮은 연속 선물 월물 교체 함정</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
