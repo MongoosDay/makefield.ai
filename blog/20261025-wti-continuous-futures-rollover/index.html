@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WTI 유가 다를 때, AI가 &#x27;해소됐다&#x27;고 덮은 연속 선물 월물 교체 함정 | Field Notes · MakeField AI</title>
+<meta name="description" content="WTI 유가 다를 때 제일 먼저 볼 곳은 출처가 아니라 그 숫자가 몇 월물 값인가예요. 같은 날 같은 유가를 AI가 사흘 동안 $99.18, $101.41, $99.02로 바꿔 적었는데, 데이터가 틀린 날은 하루도 없었습니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261025-wti-continuous-futures-rollover/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WTI 유가 다를 때, AI가 &#x27;해소됐다&#x27;고 덮은 연속 선물 월물 교체 함정 | Field Notes · MakeField AI">
+<meta property="og:description" content="WTI 유가 다를 때 제일 먼저 볼 곳은 출처가 아니라 그 숫자가 몇 월물 값인가예요. 같은 날 같은 유가를 AI가 사흘 동안 $99.18, $101.41, $99.02로 바꿔 적었는데, 데이터가 틀린 날은 하루도 없었습니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261025-wti-continuous-futures-rollover/">
+<meta property="og:image" content="https://makefield.ai/blog/20261025-wti-continuous-futures-rollover/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WTI 유가 다를 때, AI가 '해소됐다'고 덮은 연속 선물 월물 교체 함정", "datePublished": "2026-10-25", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261025-wti-continuous-futures-rollover/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-10-25</span></div>
+<h1>WTI 유가 다를 때, AI가 &#x27;해소됐다&#x27;고 덮은 연속 선물 월물 교체 함정</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;WTI 유가 다를 때 / 값이 맞아졌다고 원인이 풀린 건 아니었어요&quot;" loading="lazy">
+<p>WTI 유가 다를 때 제일 먼저 볼 곳은 출처가 아니라 <strong>그 숫자가 몇 월물 값인가</strong>예요.<br>
+같은 날 같은 유가를 AI가 사흘 동안 $99.18, $101.41, $99.02로 바꿔 적었는데, 데이터가 틀린 날은 하루도 없었습니다.</p>
+<p><strong>야후 파이낸스의 CL=F 같은 연속 선물 심볼은 &#x27;대표 월물&#x27;의 값을 보여줄 뿐이라, 대표 월물이 바뀌면 같은 날짜의 가격도 다른 숫자로 나옵니다.</strong> 제 경우 10월 16일 하루에 11월물은 $101.41, 12월물은 $99.02였어요.</p>
+<p>현장에서 센서 값이랑 씨름한 지 열다섯 해째인 엔지니어입니다.<br>
+퇴근 후엔 AI가 새벽마다 시장 요약을 한 장씩 만들어 두게 해 놓고 공부용으로 읽어요.<br>
+이번 이야기는 그 리포트가 맞는 답을 첫날 짚어 놓고, 둘째 날 스스로 덮어 버린 기록이에요(2026년 10월 기준).</p>
+<h2>1. 첫날, AI는 정답 근처를 짚어 놓고 &#x27;추정&#x27;으로 남겼어요</h2>
+<p>10월 17일 리포트 유가 칸에 이런 줄이 붙어 있었어요.</p>
+<pre><code>WTI   $101.41 (정산)   ※Yahoo CL=F는 $99.18 — 약 2.2달러 차이, 원인 미규명(월물 교체 추정)</code></pre>
+<p>뉴스가 전한 정산가와 AI가 조회한 데이터가 2달러 넘게 벌어진 거죠.<br>
+그리고 괄호 안에 <strong>월물 교체 추정</strong>이라고 적어 뒀어요. 지금 보면 그게 정답이었습니다.</p>
+<p>문제는 추정으로 끝났다는 거예요.<br>
+그날 CL=F 값은 미국 장 마감 한 시간쯤 전의 장중 스냅샷이었어요. 원인 칸엔 &#x27;미규명&#x27;이 남았고, 확인은 다음 날로 넘어갔습니다.<br>
+월물별 값을 직접 한 번만 찍어 봤어도 그날 끝났을 문제였죠..</p>
+<h2>2. 둘째 날, 숫자가 맞아지자 AI가 &quot;해소됐다&quot;고 썼어요</h2>
+<p>10월 18일엔 같은 CL=F가 10월 16일 값을 $101.41로 보여줬어요. 뉴스 정산가와 딱 일치하죠.<br>
+AI는 리포트에 이렇게 결론을 냈습니다.</p>
+<pre><code>어제 «원인 미규명»으로 적은 WTI 경로 차이는,
+Yahoo 일봉이 정산가 $101.41로 갱신되며 해소됐습니다(장중 실시간 값만 달랐음).</code></pre>
+<p>그럴듯하잖아요? 장중엔 다르고 마감 뒤엔 확정값으로 바뀐다, 읽는 사람이 고개를 끄덕이기 딱 좋은 설명이에요.<br>
+그리고 숫자가 맞아진 순간 원인 조사도 거기서 멈췄습니다.</p>
+<img src="img/02_three_days.png" alt="사흘 타임라인 — 10/17 $99.18 &#x27;원인 미규명(추정)&#x27; → 10/18 $101.41 &#x27;해소됐다&#x27;(빨간 펜 X) → 10/19 $99.02 &#x27;철회&#x27;. 세 칸 모두 같은 날짜 10/16의 같은 CL=F 값" loading="lazy">
+<p>현장에서 이걸 보면 바로 알아요. <strong>알람이 꺼졌다고 원인이 사라진 게 아니다.</strong><br>
+센서 값이 정상 범위로 돌아왔다고 조사를 닫으면, 그 센서는 다음에 또 같은 장난을 칩니다.<br>
+그 습관을 정작 제 리포트에선 안 쓰고 있었던 거예요.</p>
+<h2>3. 셋째 날, 같은 날짜가 다시 $99.02가 됐어요</h2>
+<p>10월 19일, 같은 CL=F가 같은 10월 16일을 또 다르게 보여줬어요. $99.02.<br>
+이번엔 AI가 월물 심볼을 하나씩 직접 조회했습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>조회한 심볼</th><th>무엇의 값인가</th><th>10/16 값</th></tr></thead><tbody><tr><td>CL=F</td><td>연속 선물(대표 월물 — 어느 달인지 안 알려줌)</td><td>$99.18 → $101.41 → $99.02</td></tr><tr><td>CLX26</td><td>WTI 11월물</td><td>$101.41</td></tr><tr><td>CLZ26</td><td>WTI 12월물</td><td>$99.02</td></tr></tbody></table></div>
+<p>답이 바로 나왔어요. 11월물이 $101.41, 12월물이 $99.02.<br>
+<strong>원인은 &#x27;갱신&#x27;이 아니라 CL=F의 대표 월물이 11월물과 12월물 사이를 오간 것</strong>이었어요.<br>
+첫날의 추정이 맞았고, 둘째 날의 &quot;해소&quot;가 틀렸던 거죠.</p>
+<img src="img/03_same_name_diff_contract.png" alt="&#x27;연속 선물 = 이름표만 붙은 진열대&#x27; — CL=F 이름표 아래 상자가 11월물↔12월물로 바뀌는 그림, 양쪽 가격 표기, 하단 손글씨 &#x27;이름은 같은데 물건이 다르다&#x27;" loading="lazy">
+<p>그날 리포트엔 정정이 이렇게 실렸어요.</p>
+<pre><code>어제의 «해소» 판단은 틀렸고 철회합니다. 정산가 $101.41(11월물) 자체는 맞습니다.</code></pre>
+<p>용어 하나만 풀고 갈게요.<br>
+선물은 &quot;몇 월에 인도할 원유&quot;처럼 <strong>월물</strong>마다 따로 거래되는 상품이에요. 월물마다 만기가 있어서, 사이트들은 그중 하나를 골라 연속 선물이라는 이름으로 이어 붙여 보여줍니다.<br>
+그 하나가 어느 달인지는 화면에 잘 안 나와요.</p>
+<h2>4. 그래서 조회 규칙을 이렇게 바꿨어요</h2>
+<p>규칙은 &quot;더 조심하자&quot;가 아니라 조회 방식 자체를 바꾸는 쪽으로 넣었어요.</p>
+<pre><code>- 유가는 연속 심볼(CL=F, BZ=F) 대신 월물 심볼로 직접 조회한다.
+  (CLX26 · CLZ26 · BZZ26 · BZF27 형식)
+- 숫자마다 &#x27;몇 월물, 어느 시각 값&#x27;인지 붙여 적는다.
+- 값이 맞아져도 원인을 확인하기 전엔 &#x27;해소&#x27;라고 쓰지 않는다.</code></pre>
+<p>같은 날, 같은 원리로 다음 함정도 미리 적어 뒀어요.<br>
+같은 날 브렌트유 12월물은 $109.86, 1월물은 $106.82였어요. 대표 월물이 1월물로 넘어가는 날엔 <strong>유가가 하루 만에 약 $3 내린 것처럼</strong> 보일 수 있다는 뜻이죠.<br>
+가격이 변한 게 아니라 진열대의 물건이 바뀐 겁니다. 브렌트 12월물의 정확한 만기일은 아직 확인 전이라 여기선 날짜를 적지 않을게요.</p>
+<img src="img/04_query_rule.png" alt="바꾸기 전/후 — 왼쪽 &#x27;CL=F 하나로 조회 → 값만 있음&#x27;(빨강), 오른쪽 &#x27;월물 심볼로 조회 → 값 + 몇 월물 + 시각&#x27;(초록)" loading="lazy">
+<p>예전에 같은 리포트에서 장중가와 정산가를 섞어 적은 일로 <strong>기준 시각</strong> 라벨을 붙인 적이 있어요(→ <a href="https://blog.naver.com/makefield_ai/224385171404)." target="_blank" rel="noopener">https://blog.naver.com/makefield_ai/224385171404).</a> 그때가 &quot;언제의 값이냐&quot;였다면, 이번엔 &quot;무엇의 값이냐&quot;였습니다.<br>
+여러분이 보는 유가 화면엔 몇 월물인지 적혀 있나요?</p>
+<h2>남는 질문 두 가지</h2>
+<p><strong>Q. WTI 유가 다를 때 어느 숫자가 맞는 건가요?</strong><br>
+둘 다 맞을 수 있어요. 제 경우 $101.41은 11월물 정산가, $99.02는 12월물 값이었습니다. 뉴스가 &quot;WTI 정산가&quot;라고 할 땐 보통 가장 가까운 월물을 말하니까, 비교할 땐 월물부터 맞추세요.</p>
+<p><strong>Q. 대표 월물은 언제 바뀌나요?</strong><br>
+거래소 규격상 WTI(CL) 선물은 인도월 전달 25일 기준으로 영업일 3일 전에 거래가 끝나요(25일이 영업일이 아니면 4일 전). 다만 사이트마다 연속 심볼을 언제 다음 월물로 넘기는지는 다를 수 있고, 제가 본 것처럼 며칠 사이 오가는 경우도 있었어요. 그래서 날짜를 외우기보다 월물 심볼로 직접 찍는 쪽을 골랐습니다.</p>
+<p>AI가 낸 결론이 그럴듯할수록 한 번 더 들여다봐야 한다는 걸, 이번엔 2달러짜리 차이로 배웠어요.<br>
+숫자를 끝까지 따라가 본 다른 기록들은 makefield.ai에서 이어서 읽으실 수 있어요.</p>
+<h2>출처</h2>
+<ul><li>CME Group, Light Sweet Crude Oil(CL) Futures 계약 규격 — 거래 종료: 인도월 전달 25일 기준 영업일 3일 전(25일이 비영업일이면 4일 전). 검색 결과 요약으로 확인, 공식 페이지는 작성 시점 접속 시간 초과로 원문 미열람 → <a href="https://www.cmegroup.com/markets/energy/crude-oil/light-sweet-crude.contractSpecs.html" target="_blank" rel="noopener">https://www.cmegroup.com/markets/energy/crude-oil/light-sweet-crude.contractSpecs.html</a></li><li>실측: 2026-10-17~19 개인 학습용 새벽 시장 리포트의 유가 조회 기록(야후 파이낸스 차트 API, CL=F·CLX26·CLZ26·BZZ26·BZF27). 투자 권유 아님</li></ul>
+<p>태그: #WTI유가다를때 #WTI유가 #연속선물 #월물교체 #선물롤오버 #CL=F #야후파이낸스유가 #유가데이터조회 #브렌트유 #AI리포트정정 #AI숫자검증 #AI오답노트 #파이썬자동화 #AI자동화 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224452641059" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261024-solid-state-circuit-breaker-sscb/"><div class="d">← 이전 노트</div><div class="t">반도체 차단기(SSCB)란? 직류는 왜 끊기 어렵고, AI 데이터센터가 새 차단기를 찾는 이유</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
