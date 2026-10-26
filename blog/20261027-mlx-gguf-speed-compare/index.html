@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MLX GGUF 속도 비교, 같은 qwen3 8B로 재 보니 채팅만 32% 빨랐어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="MLX GGUF 속도 비교, 제 맥북에서 직접 재 본 결론부터 적을게요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261027-mlx-gguf-speed-compare/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MLX GGUF 속도 비교, 같은 qwen3 8B로 재 보니 채팅만 32% 빨랐어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="MLX GGUF 속도 비교, 제 맥북에서 직접 재 본 결론부터 적을게요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261027-mlx-gguf-speed-compare/">
+<meta property="og:image" content="https://makefield.ai/blog/20261027-mlx-gguf-speed-compare/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "MLX GGUF 속도 비교, 같은 qwen3 8B로 재 보니 채팅만 32% 빨랐어요", "datePublished": "2026-10-27", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261027-mlx-gguf-speed-compare/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">로컬 AI 실험실</span><span>2026-10-27</span></div>
+<h1>MLX GGUF 속도 비교, 같은 qwen3 8B로 재 보니 채팅만 32% 빨랐어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;MLX GGUF 속도 비교 / 같은 qwen3 8B, 채팅만 32% 빨랐어요&quot;" loading="lazy">
+<p>MLX GGUF 속도 비교, 제 맥북에서 직접 재 본 결론부터 적을게요.</p>
+<p><strong>같은 qwen3 8B 모델을 MLX 4bit(LM Studio)와 GGUF Q4_K_M(Ollama)으로 돌리면, 짧은 질문에 답을 쓰는 속도는 MLX가 초당 29.5토큰 대 22.3토큰으로 32% 빨랐습니다. 하지만 1만 토큰짜리 문서를 붙여 넣고 물으면 총 시간이 94.2초 대 93.6초로 사실상 같았어요.</strong> (2026년 10월 12일, MacBook Pro M1 Pro 32GB, 3회 중앙값)</p>
+<p>그런데 이 표가 나오기 전에, 먼저 엉터리 숫자가 하나 나왔어요.<br>
+문서 읽는 속도가 <strong>초당 26,000토큰.</strong><br>
+대박이 아니라 측정 사고였습니다.</p>
+<p>저는 현장에서 계측값이 갑자기 좋게 튀면 공정보다 계측기부터 의심하는 버릇이 있는 엔지니어예요. 그 버릇이 이번엔 맥북 앞에서 쓸모가 있었습니다.</p>
+<h2>1. MLX와 GGUF, 뭐가 다른 건가요</h2>
+<p><strong>MLX는 애플이 만든 애플 실리콘 전용 머신러닝 프레임워크이고, GGUF는 llama.cpp 계열 엔진(Ollama 포함)이 쓰는 모델 파일 형식입니다.</strong> 같은 모델이라도 어느 쪽으로 압축해 돌리느냐에 따라 속도가 달라질 수 있어요.</p>
+<p>MLX 공식 저장소는 스스로를 이렇게 소개합니다.</p>
+<pre><code>MLX is an array framework for machine learning on Apple silicon,
+brought to you by Apple machine learning research.</code></pre>
+<p>LM Studio를 깔고 엔진 목록을 보면 이 차이가 바로 보여요.</p>
+<pre><code>$ lms runtime ls
+LLM ENGINE                                        SELECTED    MODEL FORMAT
+llama.cpp-mac-arm64-apple-metal-advsimd@2.55.0       ✓            GGUF
+mlx-llm-mac-arm64-apple-metal-advsimd@1.13.1         ✓            MLX</code></pre>
+<p>엔진이 두 개예요. GGUF용(Ollama와 같은 계열)과 MLX용. Ollama만 쓰던 저한테는 이게 LM Studio를 깔 이유였습니다.</p>
+<p>설치는 <code>brew install --cask lm-studio</code> 한 줄, 57초면 끝났어요. 첫 화면에서 다른 모델을 받으라고 권하길래 &quot;skip 하면 되나?&quot; 하고 그냥 Skip을 눌렀습니다. 문제는 모델 다운로드였죠.</p>
+<h2>2. 4.62GB 받는 데 1시간 22분</h2>
+<pre><code>[█████▍                ] 24.10% | 1.11 GB / 4.62 GB | 29.80 MB/s
+Error: Download failed: aborted - You can try to resume the download within LM Studio.</code></pre>
+<p>24%에서 끊기고<br>
+다시 받으니 1시간 19분 만에 88%에서 또 끊기고<br>
+또 받으니 97%에서 끊기고..<br>
+네 번째에 겨우 끝났어요. 속도는 초당 30MB에서 0.6MB까지 들쭉날쭉했습니다.</p>
+<p>겪은 사람만 아는 팁 하나. <strong>끊겨도 같은 명령(<code>lms get qwen/qwen3-8b --mlx -y</code>)을 다시 치면 이어받습니다.</strong> 받다 만 파일이 <code>.part</code>로 남아 있으니 절대 지우지 마세요. 저도 처음엔 지우고 새로 받을 뻔했어요.</p>
+<h2>3. 초당 26,000토큰이 나왔을 때 무엇부터 의심하나요</h2>
+<p><strong>벤치마크 숫자가 말이 안 되게 좋으면 캐시를 먼저 의심해야 합니다.</strong> 같은 입력을 반복하는 측정은 캐시가 있는 시스템에서 측정이 아니에요.</p>
+<p>측정은 이렇게 짰어요. 짧은 질문 하나, 그리고 제 AI 공부 노트(26KB, 약 1만 토큰)를 통째로 붙인 긴 질문 하나. 각 3회, 답은 512토큰까지, 온도 0. 한쪽 엔진을 잴 땐 다른 쪽은 메모리에서 내렸습니다. 명령 정리와 실행은 AI(Claude Code)에게 맡겼고요.</p>
+<p>회차를 구분하려고 질문 <strong>끝에</strong> <code>(#1)</code>, <code>(#2)</code>를 붙였더니 이렇게 나왔어요.</p>
+<pre><code>lmstudio long  #1  생성 511tok 19.5 tok/s | 프롬프트 10347tok   146.3 tok/s | 총 95.3s
+lmstudio long  #2  생성 511tok 19.3 tok/s | 프롬프트 10347tok 26530.8 tok/s | 총 25.2s
+lmstudio long  #3  생성 511tok 18.6 tok/s | 프롬프트 10347tok 26194.9 tok/s | 총 25.7s</code></pre>
+<p>2회차부터 문서 읽는 속도가 180배로 뛰었죠. 원인은 <strong class="u">접두 캐시</strong>(prefix cache)였어요. 질문 앞부분 1만 토큰이 매번 똑같으니, LM Studio가 지난번에 읽은 결과를 그대로 꺼내 쓴 겁니다. 회차 표시가 맨 끝에 있어서 &#x27;다른 질문&#x27;으로 보이지도 않았고요.</p>
+<img src="img/02_prefix_cache.png" alt="02_prefix_cache.png — 위: 질문 끝에 (#2) 표시 → 앞 1만 토큰이 지난번과 같음 → 캐시 적중 → 26,000 tok/s(빨간 펜 &#x27;측정 무효&#x27;) / 아래: 맨 앞에 [측정 long-2] 표시 → 첫 토큰부터 다름 → 캐시 못 씀 → 148 tok/s(초록 체크 &#x27;실제 읽기&#x27;)" loading="lazy">
+<p>그래서 1차 결과는 전부 버렸어요. 표시를 질문 <strong>맨 앞</strong>(<code>[측정 long-1]</code> + 문서)으로 옮기고 다시 쟀더니 3회 모두 147~149 tok/s로 고르게 나왔습니다.</p>
+<p>재미있는 건, 실제로 쓸 때는 이 캐시가 진짜 이득이라는 거예요. 같은 문서에 질문을 이어서 하면 두 번째부터 95초가 25초로 줄어요. <strong>측정에선 함정, 사용에선 선물.</strong> 여러분 벤치마크엔 혹시 같은 입력이 반복되고 있지 않나요?</p>
+<h2>4. MLX GGUF 속도 비교, 다시 재 보니 MLX가 빠른 건 어디까지인가요</h2>
+<div class="table-wrap"><table><thead><tr><th>항목 (3회 중앙값)</th><th>MLX 4bit (LM Studio)</th><th>GGUF Q4_K_M (Ollama)</th><th>차이</th></tr></thead><tbody><tr><td>짧은 질문 — 답 쓰는 속도</td><td><strong>29.5 tok/s</strong></td><td>22.3 tok/s</td><td>MLX +32%</td></tr><tr><td>긴 문서 — 답 쓰는 속도</td><td><strong>19.8 tok/s</strong></td><td>17.0 tok/s</td><td>MLX +16%</td></tr><tr><td>긴 문서 — 문서 읽는 속도</td><td>148 tok/s</td><td><strong>163 tok/s</strong></td><td>GGUF +10%</td></tr><tr><td>긴 문서 — 총 시간</td><td>94.2초</td><td>93.6초</td><td>사실상 같음</td></tr><tr><td>파일 크기</td><td>4.62GB</td><td>5.2GB</td><td>MLX 11% 작음</td></tr></tbody></table></div>
+<img src="img/03_speed_compare.png" alt="03_speed_compare.png — 4개 항목 가로 막대 비교(MLX 잉크 / GGUF 회색). 짧은 질문 29.5 vs 22.3 옆 초록 &#x27;+32%&#x27;, 문서 읽기 148 vs 163 옆 빨간 펜 &#x27;GGUF가 빠름&#x27;, 총 시간 94.2 vs 93.6 옆 &#x27;동률&#x27;" loading="lazy">
+<p>한 줄씩 풀면 이래요.</p>
+<ul><li><strong>채팅처럼 짧게 묻고 길게 받는 일은 MLX가 확실히 빠릅니다.</strong> 512토큰 답이 23초에서 17초로 줄었어요.</li><li><strong>긴 문서를 붙이는 일에선 차이가 사라집니다.</strong> 94초 중 약 70초가 &#x27;문서 읽기&#x27;인데, 거기선 GGUF가 10% 빨라요. 쓰기에서 번 시간을 읽기에서 잃는 셈이죠.</li><li>파일이 작아서만 빠른 것도 아니었어요. M1 Pro의 메모리 대역폭은 애플 공식 사양으로 200GB/s인데, 초당 읽어 들인 양으로 환산하면 MLX 29.5×4.62 = 136GB/s(68%), GGUF 22.3×5.2 = 116GB/s(58%)입니다.</li><li>하루 전 Ollama 측정값 22.0 tok/s와 이번 22.3이 거의 같아서, 측정 자체는 재현된다고 봤어요.</li></ul>
+<p>⚠ 두 파일은 같은 모델을 <strong>다른 방식으로 압축한 것</strong>이라 답의 품질까지 같다고 할 수 없어요. 이번엔 속도만 쟀고, 품질은 미검증으로 남겼습니다.</p>
+<h2>5. 다시 잰다면 지킬 것 4가지</h2>
+<img src="img/04_bench_checklist.png" alt="04_bench_checklist.png — 카드 &#x27;로컬 LLM 속도 잴 때 4문&#x27; ①회차 표시는 맨 앞에(초록 체크) ②한 엔진만 메모리에 ③짧은 질문·긴 문서 따로 ④엔진 버전 기록. 하단 빨간 펜 &#x27;너무 좋은 숫자 = 축하 전에 의심&#x27;" loading="lazy">
+<ol><li><strong>회차 표시는 질문 맨 앞에</strong> — 끝에 붙이면 캐시가 다 받아먹어요.</li><li><strong>한 엔진만 메모리에 올리고 재기</strong> — <code>lms unload --all</code> 후 Ollama를 쟀습니다.</li><li><strong>짧은 질문과 긴 문서를 따로 재기</strong> — 하나만 재면 &quot;MLX가 무조건 빠르다&quot; 같은 반쪽 결론이 나와요.</li><li><strong>엔진 버전을 같이 적기</strong> — 앱을 여는 사이 llama.cpp 엔진이 2.54.0에서 2.55.0으로 저절로 올라가 있더라고요. 몇 달 뒤 숫자가 다르면 버전부터 보세요.</li></ol>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 맥북이면 무조건 MLX가 낫나요?</strong><br>
+제 측정에선 채팅형 사용이면 MLX, 긴 문서를 통째로 붙이는 작업이면 어느 쪽이든 비슷했어요. 품질은 아직 비교 전이라, 속도만 보고 갈아타진 않았습니다.</p>
+<p><strong>Q. LM Studio 화면을 AI가 직접 조작할 수 있나요?</strong><br>
+저도 물어봤는데, 맥 화면 제어 권한이 없어서 안 됐어요. 대신 터미널의 <code>lms</code> 명령으로 모델을 올리면 LM Studio 창에도 그대로 반영됩니다. 캡처는 제가 Cmd+Shift+4로 찍었어요.</p>
+<p><strong>Q. 같은 맥에서 모델별 속도는 어느 정도인가요?</strong><br>
+Ollama 기준 qwen3:8b 22.0, qwen3:14b 12.6, gpt-oss:20b 32.7 tok/s였어요. 그 측정과 할루시네이션 실험은 <a href="https://blog.naver.com/makefield_ai/224439611217" target="_blank" rel="noopener">로컬 LLM 할루시네이션 실험</a>에 정리해 뒀습니다.</p>
+<p>다음엔 같은 질문을 두 형식에 똑같이 던져서, 빨라진 만큼 답이 나빠지진 않는지 품질 쪽을 재 볼게요. 측정 스크립트 뼈대와 그 결과는 makefield.ai 실험 기록에도 올려 둡니다.</p>
+<h2>출처</h2>
+<ul><li>Apple, ml-explore/mlx 공식 저장소 → <a href="https://github.com/ml-explore/mlx" target="_blank" rel="noopener">https://github.com/ml-explore/mlx</a> (2026-10-27 확인)</li><li>Apple 지원, MacBook Pro (14-inch, 2021) 기술 사양 — M1 Pro 200GB/s → <a href="https://support.apple.com/en-us/111902" target="_blank" rel="noopener">https://support.apple.com/en-us/111902</a> (2026-10-27 확인)</li><li>측정 환경: 2026-10-12 개인 맥북 실측(MacBook Pro M1 Pro 32GB, macOS 26.6.2, LM Studio 0.4.26, Ollama 0.40.3)</li></ul>
+<p>태그: #MLXGGUF속도비교 #MLX #GGUF #LMStudio #Ollama #올라마 #맥북로컬LLM #로컬LLM속도 #qwen3 #큐웬 #애플실리콘 #양자화 #프롬프트캐시 #로컬AI실험실 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224454757928" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261026-robot-friendly-building/"><div class="d">← 이전 노트</div><div class="t">로봇친화형 건축물이란? 로봇이 엘리베이터를 타는 건물, 국토부 180억 R&amp;D와 돈의 흐름</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
