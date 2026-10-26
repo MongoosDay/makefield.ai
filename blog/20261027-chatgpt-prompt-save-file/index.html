@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>챗GPT 프롬프트 저장, 잘 먹힌 요청문을 다시 쓰려는데 적어둔 데가 없을 때 | Field Notes · MakeField AI</title>
+<meta name="description" content="지난주에 꽤 잘 먹힌 요청문이 있었는데, 오늘 다시 쓰려니 어디 있는지 모르겠죠. 대화 목록을 스크롤하다 결국 처음부터 다시 씁니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261027-chatgpt-prompt-save-file/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="챗GPT 프롬프트 저장, 잘 먹힌 요청문을 다시 쓰려는데 적어둔 데가 없을 때 | Field Notes · MakeField AI">
+<meta property="og:description" content="지난주에 꽤 잘 먹힌 요청문이 있었는데, 오늘 다시 쓰려니 어디 있는지 모르겠죠. 대화 목록을 스크롤하다 결국 처음부터 다시 씁니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261027-chatgpt-prompt-save-file/">
+<meta property="og:image" content="https://makefield.ai/blog/20261027-chatgpt-prompt-save-file/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "챗GPT 프롬프트 저장, 잘 먹힌 요청문을 다시 쓰려는데 적어둔 데가 없을 때", "datePublished": "2026-10-27", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261027-chatgpt-prompt-save-file/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-10-27</span></div>
+<h1>챗GPT 프롬프트 저장, 잘 먹힌 요청문을 다시 쓰려는데 적어둔 데가 없을 때</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;챗GPT 프롬프트 저장 / 잘 먹힌 요청문을 다시 못 찾을 때, 파일 하나로&quot;" loading="lazy">
+<p>지난주에 꽤 잘 먹힌 요청문이 있었는데, 오늘 다시 쓰려니 어디 있는지 모르겠죠. 대화 목록을 스크롤하다 결국 처음부터 다시 씁니다.</p>
+<p><strong>챗GPT 프롬프트 저장은 대화창이 아니라 내 폴더의 텍스트 파일 하나로 하는 게 가장 오래 갑니다. 파일에는 요청문과 함께 &quot;맞았는지 무엇과 대조할지&quot;까지 적어 두세요. 다만 결과는 모델 역량 × 일터 품질의 곱셈이라, 저장한 요청문이 약한 모델의 한계까지 올려 주지는 않습니다.</strong> (2026년 10월 기준, 챗GPT·Claude·Gemini 공통)</p>
+<p>장비와 데이터 사이에서 15년을 보낸 엔지니어고, 퇴근 후엔 맥북에 AI를 올려 이것저것 시험해 봅니다.<br>
+<a href="https://blog.naver.com/makefield_ai/224450748250" target="_blank" rel="noopener">지난 편</a>에서 요청문 네 덩어리로 보고서 한 장을 바꿨죠. 이번 편(책 0-3장)은 그 요청문을 <strong>남기는</strong> 법입니다.</p>
+<h2>1. 대화창에 둔 프롬프트는 왜 남지 않을까요</h2>
+<p>대화창은 일회용 책상이라서예요. 창을 닫으면 책상째 치워집니다.</p>
+<p>책에서는 모델을 감싸 실제로 일하게 만드는 둘레 전체를 <strong>일터</strong>라고 불러요. 일터란 자료를 넣는 통로, 도구, 작업 절차, 결과를 검사하는 장치를 합친 것이다. 업계 말로는 하네스(harness)고요.</p>
+<p>프롬프트는 이 일터의 가장 얇은 층이에요. 프롬프트만으로는 안 되는 게 다섯 가지 있습니다.</p>
+<ol><li><strong>지속</strong> — 창을 닫으면 사라져요</li><li><strong>내 파일</strong> — &quot;그 폴더 좀 봐 줘&quot;가 안 돼요</li><li><strong>검증</strong> — &quot;검산해 줘&quot; 하면 했다고 답해요. 맞는지는 모르고요</li><li><strong>누적</strong> — 어제 알려 준 걸 오늘 또 알려 줘야 해요</li><li><strong>규모</strong> — 파일 300개 중에서 찾는 건 못 해요</li></ol>
+<p>오늘 고칠 건 1번 하나예요. 이 다섯 가지를 층으로 쌓으면 이런 지도가 나옵니다.</p>
+<img src="img/02_five_floors.png" alt="02_five_floors.png — 아래부터 1F 프롬프트 / 2F 지침 파일(초록, &#x27;오늘 여기&#x27;) / 3F 내 파일 접근 / 4F 내 지식과 검색 / 5F 역할 분담과 검증, 오른쪽에 층마다 얻는 것, 빨간 펜 &#x27;대화창에만 두면 1층에서 끝&#x27;" loading="lazy">
+<p>글로 옮기면 1층 프롬프트, 2층 지침 파일, 3층 내 파일 접근, 4층 내 지식과 검색, 5층 역할 분담과 검증이에요. 요청문을 파일로 옮기면 2층이고, 거기서 이미 본전입니다.</p>
+<h2>2. 따라 해 보기: 챗GPT 프롬프트 저장을 파일로, 불러 쓰기까지 (10분)</h2>
+<p>Claude Code 기준으로 할게요.</p>
+<p><strong>① 폴더를 만듭니다.</strong> 윈도우 PowerShell이든 맥 터미널이든 똑같아요.</p>
+<pre><code>mkdir 내AI일터
+cd 내AI일터
+mkdir 요청문</code></pre>
+<p><strong>② 요청문 하나 = 파일 하나.</strong> 메모장으로 <code>요청문/분기매출보고.md</code>를 만들고 이 틀을 채웁니다.</p>
+<pre><code># 분기 매출 보고 요청문
+- 언제 쓰나: 분기가 끝나고 거래처별 매출 표가 나왔을 때
+- 마지막으로 잘 된 날: 2026-10-23 / 쓴 AI: (모델 이름)
+
+[요청문]
+(대화창에서 잘 먹혔던 요청문을 그대로 붙여 넣기)
+
+[채점 기준] 다 쓰고 나서 대조할 것
+1. 표 합계가 원본 csv 숫자와 같은가
+2. 양식 항목이 빠짐없이 채워졌는가
+3. 지난 분기 보고서와 순서가 같은가</code></pre>
+<p>핵심은 <strong>채점 기준</strong> 칸이에요. 책에서 일터의 심장으로 꼽는 채점기가 이거예요. 거창한 프로그램이 아니라 &quot;무엇과 대조해서 맞다고 할지&quot; 사람이 정한 규칙이면 됩니다.</p>
+<p><strong>③ 폴더에서 AI를 켜고 파일을 가리킵니다.</strong></p>
+<pre><code>claude
+&gt; 요청문/분기매출보고.md 를 읽고 그대로 따라서 3분기매출.csv 로 보고서 써줘.
+  다 쓰면 &#x27;채점 기준&#x27; 3개를 하나씩 대조해서 통과/불통과를 표로 보여줘.</code></pre>
+<p>붙여 넣기가 사라져요. GPT 쪽 Codex CLI(<code>codex</code>), Gemini CLI(<code>gemini</code>)에서도 같은 방식으로 됩니다. 폴더 안 파일을 읽는 구조는 셋이 같아요.</p>
+<p><strong>④ 확인 방법.</strong> 대조 표에 세 줄이 다 나왔는지 보고, 합계 숫자 하나만 원본 csv에서 직접 찍어 보세요. 맞으면 &#x27;마지막으로 잘 된 날&#x27;을 오늘로 고칩니다.</p>
+<img src="img/03_prompt_file_flow.png" alt="03_prompt_file_flow.png — BEFORE(빨강): 대화창에서 잘 먹힘 → 창 닫음 → 다음 분기 처음부터 / AFTER(초록): 요청문/분기매출보고.md → CLI가 파일을 직접 읽음 → 채점 기준으로 대조 후 저장, 빨간 펜 &#x27;요청문 + 채점 기준 = 한 파일&#x27;" loading="lazy">
+<p>여러 번 쓰는 규칙은 나중에 매번 자동으로 읽히는 지침 파일로 올립니다. Claude Code는 <code>CLAUDE.md</code>, Codex CLI는 <code>AGENTS.md</code>, Gemini CLI는 <code>GEMINI.md</code>를 폴더에서 찾아 읽어요(책 2부 내용).</p>
+<h2>3. 여기서 이렇게 틀립니다: 잘 저장해 두면 어떤 AI에서도 잘 나올까요</h2>
+<p>아니에요. <strong>결과물 품질 = 모델 역량 × 일터 품질</strong>이라, 일터는 모델을 대신하지 못하고 키워 줄 뿐이에요.</p>
+<p>저도 이걸 숫자로 맞았습니다. 2026년 10월 12일 새벽, 맥북에 올린 작은 모델 셋(gpt-oss:20b, qwen3:8b, qwen3:14b)에 제 불만을 담은 지침 7줄을 붙여 &#x27;튜닝판&#x27;을 만들었어요. &quot;자료에 없으면 없다고 해라&quot;, &quot;결론 먼저&quot; 같은 규칙이요. 제 자료로 만든 30문항 시험지로 재실행까지 8구성 240번, 자는 동안 7시간 20분 돌렸습니다.</p>
+<p>아침에 본 종합 점수(10점 만점)는 이랬어요.</p>
+<div class="table-wrap"><table><thead><tr><th>모델</th><th>지침 없음</th><th>지침 7줄</th></tr></thead><tbody><tr><td>gpt-oss:20b</td><td>7.86</td><td>7.45</td></tr><tr><td>qwen3:8b</td><td>7.67</td><td>7.15</td></tr><tr><td>qwen3:14b</td><td>7.77</td><td>7.84</td></tr></tbody></table></div>
+<img src="img/04_multiply_test.png" alt="04_multiply_test.png — 모델 셋의 막대 두 개씩(지침 없음/지침 7줄), 둘은 빨간 막대로 내려감, 빨간 펜 &#x27;같은 구성 재실행만 해도 문항당 평균 1.0점 출렁 = 지침이 모델 천장을 올리진 못했다&#x27;" loading="lazy">
+<p>같은 구성을 한 번 더 돌리기만 해도 문항당 평균 1.0점이 출렁였으니, 이 차이는 &quot;떨어졌다&quot;보다 <strong>&quot;못 올렸다&quot;</strong>가 정확해요. 공들인 지침 7줄이 작은 모델의 천장을 못 뚫은 거죠.</p>
+<p>부작용도 있었어요. &quot;모르면 모른다고 해라&quot;를 넣은 qwen3:8b 튜닝판은 이렇게 끝냈습니다(파일명은 가렸어요).</p>
+<pre><code>🔧 search {&quot;path&quot;: &quot;문서A.md&quot;, &quot;pattern&quot;: &quot;미검증\\·실기 확인 필요&quot;}  → 일치 없음
+🔧 search {&quot;path&quot;: &quot;문서B.md&quot;, &quot;pattern&quot;: &quot;미검증\\·실기 확인 필요&quot;}  → 일치 없음
+✅ finish   (파일 저장 안 함)</code></pre>
+<p>제 지시문 문구를 글자 그대로 검색하고, 0건이 나오자 파일을 열어 보지도 않고 끝냈어요. 정직하라는 규칙이 확인을 건너뛸 핑계가 된 겁니다.</p>
+<p>그래서 요청문 파일에 <strong>&quot;쓴 AI&quot;</strong> 칸을 둔 거예요. AI를 바꾸면 그 파일의 채점 기준으로 한 번 다시 대조하세요. 저장한 요청문은 증폭기라서, 곱할 모델이 바뀌면 결과도 바뀝니다.</p>
+<h2>4. 자주 묻는 질문</h2>
+<p><strong>Q. 챗GPT 안에도 맞춤 설정이 있는데, 챗GPT 프롬프트 저장을 굳이 파일로 해야 하나요?</strong><br>
+대화창 안 설정은 그 서비스 안에서만 살아요. 파일로 두면 Claude·Gemini·로컬 모델로 옮겨도 그대로 가져가고, 무엇과 대조할지까지 같이 남습니다.</p>
+<p><strong>Q. 인터넷의 챗GPT 프롬프트 모음을 받아 쓰면 안 되나요?</strong><br>
+틀은 참고가 돼요. 다만 거기엔 내 자료와 내 채점 기준이 없어요. 모델과 요청문 기법은 누구나 빌리는 거라, 남는 건 내 자료와 그걸 골라 넣는 안목 쪽이더라고요.</p>
+<p><strong>Q. 어떤 요청문부터 저장하나요?</strong><br>
+제 기준은 두 번 쓴 것부터예요. 세 번째 쓰기 전에 파일로 옮기면 됩니다.</p>
+<p>지금 여러분 요청문은 몇 층에 있나요? 다음 편에선 그 일터를 모델처럼 빌릴지, 내 것으로 가질지 이야기해 볼게요.</p>
+<p>이 글은 『직장인의 AI 오답 노트』 0-3장을 블로그용으로 다시 쓴 것입니다. 같은 증상의 원인과 점검표 전체는 책에 있어요. 종이책 예스24 <a href="https://www.yes24.com/product/goods/198006547" target="_blank" rel="noopener">https://www.yes24.com/product/goods/198006547</a> · 종이책 알라딘 <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=404397482" target="_blank" rel="noopener">https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=404397482</a> · 전자책 예스24 <a href="https://www.yes24.com/product/goods/197975471" target="_blank" rel="noopener">https://www.yes24.com/product/goods/197975471</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224454810318" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261026-robot-friendly-building/"><div class="d">← 이전 노트</div><div class="t">로봇친화형 건축물이란? 로봇이 엘리베이터를 타는 건물, 국토부 180억 R&amp;D와 돈의 흐름</div></a><a class="next" href="/blog/20261027-mlx-gguf-speed-compare/"><div class="d">다음 노트 →</div><div class="t">MLX GGUF 속도 비교, 같은 qwen3 8B로 재 보니 채팅만 32% 빨랐어요</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
