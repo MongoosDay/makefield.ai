@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAG 검색 결과 이상할 때, 문서 644개 중 516개가 벡터 없이 빠져 있었어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="RAG 검색 결과 이상할 때, 모델이나 질문을 고치기 전에 먼저 할 일이 하나 있어요. 검색 대상에 벡터가 붙은 문서가 실제로 몇 개인지 세는 것.">
+<link rel="canonical" href="https://makefield.ai/blog/20261028-rag-vector-missing-after-reindex/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RAG 검색 결과 이상할 때, 문서 644개 중 516개가 벡터 없이 빠져 있었어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="RAG 검색 결과 이상할 때, 모델이나 질문을 고치기 전에 먼저 할 일이 하나 있어요. 검색 대상에 벡터가 붙은 문서가 실제로 몇 개인지 세는 것.">
+<meta property="og:url" content="https://makefield.ai/blog/20261028-rag-vector-missing-after-reindex/">
+<meta property="og:image" content="https://makefield.ai/blog/20261028-rag-vector-missing-after-reindex/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "RAG 검색 결과 이상할 때, 문서 644개 중 516개가 벡터 없이 빠져 있었어요", "datePublished": "2026-10-28", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261028-rag-vector-missing-after-reindex/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">막힐 때 해결</span><span>2026-10-28</span></div>
+<h1>RAG 검색 결과 이상할 때, 문서 644개 중 516개가 벡터 없이 빠져 있었어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;RAG 검색 결과 이상할 때 / 644개 중 516개가 벡터 없이 빠져 있었어요&quot;" loading="lazy">
+<p>RAG 검색 결과 이상할 때, 모델이나 질문을 고치기 전에 먼저 할 일이 하나 있어요.<br>
+<strong>검색 대상에 벡터가 붙은 문서가 실제로 몇 개인지 세는 것.</strong></p>
+<p><strong>제 개인 지식베이스는 문서 644개 중 128개에만 벡터가 붙어 있었습니다. 한 달 전 전체 재색인 한 번에 문서 번호가 새로 매겨졌는데 벡터는 다시 만들지 않아서, 516개가 의미 검색에서 조용히 빠져 있었어요.</strong> (2026년 10월 27일 실측, 로컬 임베딩 모델 기준)</p>
+<p>그리고 516개를 다 채워 넣은 뒤에, 더 기막힌 게 보였어요.<br>
+장비 관련 질문을 던졌는데 1등으로 <strong>사주팔자 정리 문서</strong>를 가져오더라고요.</p>
+<p>15년째 제조 현장에서 설비와 데이터를 붙들고 사는 엔지니어입니다. 퇴근 후엔 제 문서를 통째로 넣어 둔 AI 비서를 키우고 있는데, 이번 글은 그 비서의 검색 창고가 반쯤 비어 있던 이야기예요.</p>
+<h2>1. 시작은 봇이 남긴 한 줄이었어요</h2>
+<p>RAG란 AI가 답하기 전에 내 문서에서 관련 내용을 먼저 찾아 붙여 주는 방식이에요. 저는 여기에 두 가지 검색을 섞어 두었습니다.</p>
+<ul><li><strong>키워드 검색</strong>: 단어가 그대로 들어간 문서를 찾음</li><li><strong>의미(벡터) 검색</strong>: 문장을 숫자 묶음(벡터)으로 바꿔, 뜻이 가까운 문서를 찾음</li><li><strong>하이브리드 검색</strong>: 두 결과 순위를 섞음</li></ul>
+<p>7월에 만들어 두고 한동안 잊고 있었어요. 그러다 10월 26일 밤, 디스코드 봇에게 어떤 RAG 정리 자료를 분석시켰는데 이런 보고가 왔습니다.</p>
+<pre><code>네 시스템에는 하이브리드 검색이 이미 들어가 있는데,
+실제로 쓰는 곳이 없고, 돌려보니 성능도 나빠.</code></pre>
+<p>다음 날 아침에 제가 물었어요. &quot;RAG도 정상동작 안한다는 디스코드 보고가 있던데 한번 확인해볼래?&quot;</p>
+<h2>2. RAG 검색 결과가 이상하면 뭐부터 세야 하나요</h2>
+<p><strong>문서 수와 벡터 수, 그리고 짝이 안 맞는 개수부터 셉니다.</strong> 질문 6개를 세 방식으로 돌려 보니 봇 보고는 사실이었어요. 그런데 숫자를 세 보니 보고에도 없던 근본 원인이 나왔습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>조치 전 (10-27)</th><th>조치 후</th></tr></thead><tbody><tr><td>지식 문서</td><td>644</td><td>644</td></tr><tr><td>벡터가 붙은 문서</td><td>128</td><td>644</td></tr><tr><td>벡터 없는 문서</td><td><strong>516</strong></td><td>0</td></tr><tr><td>주인 없는 고아 벡터</td><td>540</td><td>0</td></tr></tbody></table></div>
+<p>원인은 9월 26일에 돌린 전체 재색인이었어요. 재색인은 문서 목록을 비우고 처음부터 다시 등록하면서 <strong>번호를 새로 매깁니다.</strong> 그런데 벡터는 옛 번호에 묶인 채 남았어요. 옛 번호 벡터 540개는 주인을 잃었고, 새 번호 문서 대부분은 벡터가 없었죠.</p>
+<p>그 뒤로 새로 들어온 문서만 하나씩 벡터를 받아서 128개까지 왔던 거예요. 한 달 동안 아무도 몰랐습니다.</p>
+<img src="img/02_reindex_vector_break.png" alt="재색인 전후 비교 — 왼쪽 &quot;문서 번호 1~644 ↔ 벡터 연결&quot; / 가운데 &quot;전체 재색인: 번호 새로 매김&quot; 화살표 / 오른쪽 &quot;새 번호 문서 516개 벡터 없음(빨강)·옛 번호 벡터 540개 고아(빨강)·이후 신규 문서만 연결 128개(잉크)&quot;" loading="lazy">
+<p>제가 쓰는 점검 쿼리는 이 정도예요. 이름은 일반화했습니다.</p>
+<pre><code>SELECT COUNT(*) FROM docs;                                   -- 문서 수
+SELECT COUNT(*) FROM vectors;                                -- 벡터 수
+SELECT COUNT(*) FROM docs d
+ WHERE NOT EXISTS (SELECT 1 FROM vectors v WHERE v.doc_id = d.id);   -- 벡터 없는 문서
+SELECT COUNT(*) FROM vectors v
+ WHERE NOT EXISTS (SELECT 1 FROM docs d WHERE d.id = v.doc_id);     -- 고아 벡터</code></pre>
+<p>오늘(10월 28일) 다시 돌린 결과는 이렇습니다.</p>
+<pre><code>knowledge 644
+vectors 644
+missing 0
+orphan 0</code></pre>
+<p>조치는 단순했어요. 임베딩 일괄 재생성, 516건에 104.5초. 원본 파일은 하나도 안 건드리고 인덱스만 다시 만들었습니다.</p>
+<h2>3. 경고문은 코드 주석에만 있었어요</h2>
+<p>황당한 건, 이 사고를 막는 문장이 이미 코드 안에 있었다는 거예요. 7월에 검색 기능을 만들면서 남긴 주석입니다.</p>
+<pre><code># - reindex() 후에는 kb_id가 바뀌므로 embed_all()을 다시 실행할 것</code></pre>
+<p>주석은 사람이 읽어야 일을 해요. 그런데 재색인을 돌린 날 이 줄을 읽은 사람이 없었고, 임베딩 재생성은 예약 작업에도 없었습니다. 의미 검색 함수를 실제로 부르는 자동화도 <strong>0곳</strong>이라, 결과가 이상해도 알아챌 통로가 없었어요.</p>
+<p>예전에 「<a href="https://blog.naver.com/makefield_ai/224349953770" target="_blank" rel="noopener">AI 지식관리, 문서 500개 쌓고 절반을 못 찾은 이유</a>」에서 분류 축 얘기를 했었죠. 그땐 제가 못 찾는 문제였고, 이번엔 검색기 자체가 절반을 못 보는 문제였어요.</p>
+<h2>4. 다 채웠는데도 사주팔자를 가져왔어요</h2>
+<p>커버리지 644/644. 이제 되겠지 했는데, 질문 6개를 다시 돌려 보니 의미 검색은 여전히 엉터리였어요.</p>
+<div class="table-wrap"><table><thead><tr><th>방식</th><th>결과 (질문 6개)</th></tr></thead><tbody><tr><td>키워드 검색</td><td><strong>6개 모두 정답권</strong></td></tr><tr><td>의미 검색</td><td>장비 질문 → 사주팔자 정리 문서 / 다른 업무 질문 → 정부 보고서·종합소득세 메모</td></tr><tr><td>하이브리드</td><td>매번 2위 자리에 엉뚱한 문서가 끼어듦</td></tr></tbody></table></div>
+<p>&quot;의미 검색을 섞으면 더 똑똑해진다&quot;는 기대와 반대였어요. 지금 상태의 의미 검색은 검색을 <strong>돕는 게 아니라 오염</strong>시키고 있었습니다. 덤으로 구버전 보관 폴더까지 색인돼서, 같은 문서가 본판·구판 두 건으로 잡히는 것도 나왔고요.</p>
+<img src="img/03_search_compare.png" alt="같은 질문 6개 세 방식 비교 — 키워드 검색 6/6 정답권(초록 체크) / 의미 검색 엉뚱한 1위(빨강 X, &quot;사주팔자 문서&quot;) / 하이브리드 2위 오염(빨강 표시)" loading="lazy">
+<p>봇이 짚은 원인 후보는 세 가지였어요. 문서 하나를 벡터 하나로만 만든다, 소형 모델이다, 본문 앞 1,500자만 넣는다.</p>
+<p>모델 카드를 직접 열어 봤어요. 제가 쓰는 공개 다국어 모델 <code>paraphrase-multilingual-MiniLM-L12-v2</code>는 문장을 <strong>384차원</strong> 벡터로 바꾸고, 입력 한도(max_seq_length)가 <strong>128토큰</strong>으로 적혀 있습니다. 1,500자를 넣어도 실제로는 그보다 훨씬 앞부분만 반영됐을 수 있다는 뜻이에요. 다만 이게 오답의 주원인인지는 아직 재 보지 않았어요(추정).</p>
+<h2>5. 그래서 지금은 이 순서로 봅니다</h2>
+<p>아직 의미 검색을 살릴지 뗄지는 결정 전이에요. 대신 확인 순서는 바꿨습니다.</p>
+<ol><li><strong>세기</strong>: 문서 수 = 벡터 수인지, 벡터 없는 문서·고아 벡터가 0인지</li><li><strong>재색인 뒤 묶기</strong>: 전체 재색인을 했으면 임베딩 재생성을 같은 날 바로 이어서</li><li><strong>빼기</strong>: 구버전 폴더는 색인 대상에서 제외</li><li><strong>나란히 비교</strong>: 평가 질문으로 키워드·의미·하이브리드를 같은 표에 놓고 보기</li></ol>
+<img src="img/04_check_order.png" alt="점검 4단계 흐름 — 세기 → 재색인 뒤 묶기 → 구버전 빼기 → 나란히 비교, 마지막 칸 &quot;그래도 지면 의미 검색 떼기도 정답&quot;(초록)" loading="lazy">
+<p>고민 중인 선택지는 넷이에요.</p>
+<div class="table-wrap"><table><thead><tr><th>선택지</th><th>기대</th><th>지금 판단</th></tr></thead><tbody><tr><td>평가 세트 (질문 20~30개 + 정답 문서)</td><td>고쳤는지 숫자로 판정</td><td>가장 먼저. 없으면 뭘 바꿔도 좋아졌는지 모름</td></tr><tr><td>리랭커 (상위 결과 재정렬)</td><td>순위 개선</td><td>효과 미검증, CPU 속도부터 재야 함</td></tr><tr><td>문서 쪼개기 + 모델 교체</td><td>긴 문서 반영</td><td>미착수</td></tr><tr><td>의미 검색 떼고 키워드만</td><td>오염 제거</td><td>측정 후에도 지면 이것도 정답</td></tr></tbody></table></div>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. RAG 검색 결과 이상할 때, 모델부터 바꾸면 안 되나요?</strong><br>
+바꿔도 되지만 순서가 문제예요. 저처럼 벡터가 반쯤 비어 있으면 어떤 모델로 바꿔도 결과가 이상합니다. 개수 세는 데 1분이면 끝나요.</p>
+<p><strong>Q. 규칙 파일이나 메모(md)를 고치면 RAG가 또 꼬이나요?</strong><br>
+저도 이걸 물었어요. 제 구성에선 아니었습니다. 위험한 건 파일 수정이 아니라 <strong>전체 재색인 명령</strong>이었어요. 그래서 지금은 바뀐 파일만 하나씩 색인하고, 반영 후에 &quot;벡터 없는 문서 0&quot;을 확인합니다. 10월 27일 규칙 정리 뒤에도 644개, 누락 0이었어요.</p>
+<p><strong>Q. 의미 검색이 키워드 검색보다 항상 나은 거 아닌가요?</strong><br>
+제 문서 644개, 질문 6개에선 반대였어요. 표본이 작아서 일반화는 못 하지만, 평가 질문으로 나란히 비교해 보기 전엔 &quot;AI 검색이라 더 낫다&quot;고 믿지 않기로 했습니다.</p>
+<p>위의 개수 세기 쿼리 네 줄은 1분이면 돌아가요. 저는 그 네 줄을 안 돌려서 한 달 동안 반쪽짜리 검색을 쓰고 있었습니다.</p>
+<p>평가 세트 결과가 나오면 의미 검색을 살렸는지 뗐는지, makefield.ai에 숫자로 적어 둘게요.</p>
+<h2>출처</h2>
+<ul><li>Hugging Face, sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 모델 카드 — &quot;maps sentences &amp; paragraphs to a 384 dimensional dense vector space&quot;, max_seq_length 128 → <a href="https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2" target="_blank" rel="noopener">https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2</a> (2026-10-28 확인)</li><li>측정 환경: 2026-10-27 개인 PC 실측(개인 지식베이스 문서 644개, 로컬 CPU 임베딩, 질문 6개)</li></ul>
+<p>태그: #RAG검색결과이상할때 #RAG #RAG임베딩 #임베딩누락 #벡터검색 #시맨틱검색 #하이브리드검색 #키워드검색 #재색인 #개인지식베이스 #로컬임베딩 #sentencetransformers #AI검색오류 #막힐때해결 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224456005036" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261027-mlx-gguf-speed-compare/"><div class="d">← 이전 노트</div><div class="t">MLX GGUF 속도 비교, 같은 qwen3 8B로 재 보니 채팅만 32% 빨랐어요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
