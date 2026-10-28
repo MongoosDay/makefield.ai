@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 비서가 제안을 못 할 때, 규칙 414줄 중 165줄은 제 말이 아니었어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="몇 달 동안 공들여 키운 AI 비서가 어느 날부터 새로운 걸 하나도 못 꺼내더라고요. 새 사업 아이디어를 달라고 하면, 이미 해 본 일의 변형만 계속 돌아왔어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261029-ai-assistant-rules-not-my-words/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 비서가 제안을 못 할 때, 규칙 414줄 중 165줄은 제 말이 아니었어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="몇 달 동안 공들여 키운 AI 비서가 어느 날부터 새로운 걸 하나도 못 꺼내더라고요. 새 사업 아이디어를 달라고 하면, 이미 해 본 일의 변형만 계속 돌아왔어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261029-ai-assistant-rules-not-my-words/">
+<meta property="og:image" content="https://makefield.ai/blog/20261029-ai-assistant-rules-not-my-words/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 비서가 제안을 못 할 때, 규칙 414줄 중 165줄은 제 말이 아니었어요", "datePublished": "2026-10-29", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261029-ai-assistant-rules-not-my-words/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-10-29</span></div>
+<h1>AI 비서가 제안을 못 할 때, 규칙 414줄 중 165줄은 제 말이 아니었어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;AI 비서가 제안을 못 할 때 / 규칙 414줄 중 165줄은 제 말이 아니었어요&quot;" loading="lazy">
+<p>몇 달 동안 공들여 키운 AI 비서가 어느 날부터 새로운 걸 하나도 못 꺼내더라고요.<br>
+새 사업 아이디어를 달라고 하면, 이미 해 본 일의 변형만 계속 돌아왔어요.</p>
+<p>결론부터 적을게요. <strong>AI 비서가 제안을 못 할 때, 원인은 모델이 아니라 규칙 파일일 수 있습니다. 제 경우 방향을 못 박는 규칙 414줄 중 165줄(약 40%)에는 제가 한 말도, 이유도 적혀 있지 않았어요.</strong> (2026년 10월 26일, 메모리 파일 265개 전수 집계)</p>
+<p>저는 제조 현장에서 15년을 일한 엔지니어고, 요즘은 퇴근 뒤에 AI 비서 하나를 몇 달째 길들이고 있습니다. 대화가 시작될 때마다 AI가 읽는 규칙 파일과 메모리를 쌓아 가면서요.<br>
+이번 글은 그 규칙들이 결국 비서를 가둬 버린 이야기예요.</p>
+<h2>1. &quot;아무것도 제안도 못하는 멍청이가 되었네?&quot;</h2>
+<p>10월 27일, 새 아이디어 얘기를 하다가 제가 이렇게 보냈어요. 원문 그대로입니다.</p>
+<pre><code>너무 갇혀있어서 아무것도 제안도 못하는 멍청이가 되었네?
+
+[이미 해 본 업무 자동화]같이 경험에 갇혀있어서 새로운 비지니스
+창출이 안된다. … 계속 갇힌상태에서 다람쥐 챗바퀴 돌듯이
+계속 돌고있으니.. 이게 되겠냐..?</code></pre>
+<p>(대괄호 부분은 본업 용어라 바꿔 적었어요)</p>
+<p>AI의 첫 진단은 이랬어요.<br>
+&quot;아이디어 재료가 당신 기록과 제 메모리, 즉 과거뿐이라서 그렇다.&quot;<br>
+틀린 말은 아니었어요. 그런데 재료만 바꾸면 풀릴까 싶어서, 제안을 막고 있는 규칙을 하나씩 짚어 보자고 했습니다.</p>
+<h2>2. 걸림돌 규칙 5개, 누가 만들었는지 물었어요</h2>
+<p>나온 건 다섯 묶음이었어요. 메모리에 적힌 원문 일부를 옮기면 이런 식입니다.</p>
+<pre><code>- 집중 분야 밖의 신규 프로젝트 제안 시 → 이 메모리를 근거로 반려
+- 어느 축에도 안 들어가는 신규 과제는 먼저 꺼내지 않는 한 제안 금지
+- 제품화·플랫폼: 만드는 게 10%, 유지·CS가 90% → 탈락
+- 웹 리서치로 새로 만들지 말고 이 KB들을 기반으로 할 것</code></pre>
+<p>하나하나는 다 그럴듯했어요. 문제는 이게 겹겹이 쌓이니까, 바깥에서 새 후보가 들어와도 꺼내지도 못하고 탈락하는 구조가 됐다는 거예요.</p>
+<p>그래서 규칙마다 &quot;이거 누가 세운 거야?&quot;를 물었고, 제 판정은 이랬어요.</p>
+<blockquote>&quot;1번 네가 세운거고(내가 많이 공장을 찍어내니 네가 잔소리해서 수긍하니 그냥 규칙으로 만들어버렸네?) 2번도 네가 세운거, 3번도 네가 세운거(이건 대화중에 네가 그냥 정립한듯), 4번 리서치는 내가 kb 오염될까바 그런거긴한데 막아버리면 어떻게하냐?&quot;</blockquote>
+<p>다섯 중 셋이 AI가 대화 중에 정리해 둔 규칙이었어요. 제가 &quot;응&quot; 하고 넘어간 순간, 그게 다음 대화부터는 지켜야 할 규칙이 된 거죠.<br>
+제가 직접 만든 4번조차 원래 걱정(자료 오염)보다 훨씬 넓게 막고 있었고요..</p>
+<img src="img/02_.png" alt="규칙이 쌓이는 경로 — 대화 중 AI가 정리·제안 → 내가 &quot;응&quot; 하고 넘어감 → 규칙 파일에 기록 → 다음 대화 시작 때 자동으로 읽힘 → 제안 범위가 좁아짐 → 다시 대화… 순환 고리(빨강)" loading="lazy">
+<h2>3. 414줄을 세어 보니 165줄이 근거 없음이었어요</h2>
+<p>다섯 개만의 문제인지 궁금했어요. 마침 전날 AI에게 방향을 고정하는 규칙을 전부 뽑아 목록으로 만들게 해 둔 게 있었거든요.<br>
+메모리 파일 265개에 기본 규칙 파일과 지식 문서 둘을 더한 268개를 줄 단위로 읽은 목록이에요. 각 줄에는 이런 칸이 붙어 있습니다.</p>
+<pre><code>근거 전제 = 원문에 Why·이유·내 발언이 있으면 인용,
+            없으면 (원문 없음)</code></pre>
+<p>(목록 머리말 원문 그대로, 제 이름 자리만 &#x27;내&#x27;로 바꿨어요)</p>
+<p>결과는 <strong>414줄 중 165줄이 &#x27;(원문 없음)&#x27;</strong>이었어요.<br>
+그 규칙이 왜 생겼는지, 제가 뭐라고 했는지가 파일 어디에도 없다는 뜻이에요.</p>
+<p>물론 165줄이 전부 AI가 멋대로 만든 규칙이라고 단정할 순 없어요. 제가 말했는데 기록이 안 됐을 수도 있죠. 그래서 이 숫자는 &#x27;확인 안 된 규칙&#x27;의 크기로만 봤습니다.<br>
+그래도 열 줄 중 네 줄이 출처 불명인 채로, 매 대화 시작 때마다 AI를 붙잡고 있었던 거예요.</p>
+<p>여러분이 쓰는 AI의 메모리나 커스텀 지침도, 지금 열어 보면 기억 안 나는 문장이 몇 줄쯤 있지 않으세요?</p>
+<img src="img/03_.png" alt="규칙 출처 집계 막대 — 방향 고정 규칙 414줄 전체 막대 중 &#x27;(원문 없음)&#x27; 165줄(약 40%)을 빨강으로, 나머지 249줄을 잉크로 표시, &#x27;매 대화 시작 때 전부 읽힘&#x27; 메모" loading="lazy">
+<h2>4. 지우지 않고, 출처를 붙였어요</h2>
+<p>이런 상황에서 떠올릴 만한 방법을 나란히 놓으면, 제 선택은 이랬어요.</p>
+<div class="table-wrap"><table><thead><tr><th>방법</th><th>이번에 본 결과</th></tr></thead><tbody><tr><td>재료(바깥 자료)만 바꾼다 — AI의 첫 진단</td><td>필요했어요. 다만 규칙이 그대로면 들여온 재료도 &#x27;내 경험과 안 겹친다&#x27;며 탈락해서, 규칙과 같이 손봐야 했어요</td></tr><tr><td>규칙을 하나 더 얹는다 — 예전에 쓴 방법</td><td>쌓이는 문제는 그대로 남음</td></tr><tr><td>출처 모르는 규칙을 한꺼번에 정리</td><td>이번엔 안 함. 한 줄씩 판정하는 중</td></tr><tr><td><strong>출처 표시 + AI 출처 규칙에 유효기간</strong></td><td>지우지 않고 누가 말했는지만 드러냄 → 채택</td></tr></tbody></table></div>
+<p>10월 27일, 제 답은 &quot;수정할거 없음. 진행바람&quot; 한 줄이었고 이렇게 확정했어요.</p>
+<ol><li><strong>제안은 자유, 착수는 내가 고른다</strong>: 분야 밖 제안 금지 2건과 제품화 일괄 탈락은 폐기</li><li><strong>바깥 자료는 2층으로</strong>: 1층은 웹·기사·보고서를 원문·출처·날짜만 붙여 막지 않고 쌓는 칸(검색 색인 제외, 미검증 표시), 2층 지식베이스엔 검증된 것만 올림. 제 원래 걱정이던 자료 오염은 이걸로 막았어요</li><li><strong>규칙마다 출처 3종 표시</strong>: [내 원문] / [AI 제안→내가 수긍] / [AI 정리]. 뒤의 두 종류는 <strong>3개월이 지나면 내가 다시 채택하지 않는 한 내려감</strong></li></ol>
+<p>예전에 <a href="https://blog.naver.com/makefield_ai/224380504445" target="_blank" rel="noopener">AI 비서 규칙 끄는 법</a>에서는 3주짜리 규칙을 위에 얹어 잠깐 끈 적이 있어요. 그땐 제가 직접 만든 규칙이었고요. 이번엔 반대로, <strong class="u">누가 말했는지</strong>부터 따져야 했습니다.</p>
+<p>솔직히 아직 끝난 건 아니에요. 165줄에 태그를 한 번에 붙이지 않고, 지금 한 줄씩 판정하는 중입니다. 애매하다고 분류된 146줄이 다음 차례예요.</p>
+<img src="img/04_.png" alt="고친 구조 — 왼쪽 &#x27;바깥 자료 1층(무차단·미검증)&#x27; → 검증 → &#x27;지식베이스 2층(검증만)&#x27;(초록), 오른쪽 규칙 출처 태그 3칸 [내 원문]=유지(초록) / [AI 제안→수긍]·[AI 정리]=3개월 만료(빨강 펜 표시)" loading="lazy">
+<h2>5. 이건 제 비서만의 일이 아니더라고요</h2>
+<p>Claude Code 공식 문서는 메모리를 두 종류로 나눠요. 사람이 쓰는 지침 파일, 그리고 <strong>&quot;Auto memory: notes Claude writes itself based on your corrections and preferences&quot;</strong>, 즉 AI가 내 교정과 선호를 보고 스스로 적는 메모예요. 그리고 <strong>&quot;Both are loaded at the start of every conversation.&quot;</strong> 둘 다 매 대화 시작 때 읽힌다고 적혀 있습니다. (code.claude.com/docs/en/memory, 2026-10-29 확인)</p>
+<p>AI가 스스로 적는 메모리가 있는 도구라면, 제가 겪은 일은 구조상 언제든 생길 수 있다는 얘기예요. 같은 문서에 &quot;Auto memory files are plain markdown you can edit or delete at any time.&quot;이라고, 언제든 열어서 고치거나 지울 수 있다는 안내도 있고요.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. AI 비서가 제안을 못 할 때, 규칙부터 의심해야 하나요?</strong><br>
+제 경우엔 그랬어요. 같은 모델인데 몇 달 사이 제안 폭만 좁아졌다면, 그동안 바뀐 건 규칙과 메모리뿐이니까요. 제안을 막는 문장(&#x27;~밖은 금지&#x27;, &#x27;~면 탈락&#x27;)부터 찾아보세요.</p>
+<p><strong>Q. 출처를 모르는 규칙은 그냥 지우면 되지 않나요?</strong><br>
+저는 안 지웠어요. 165줄 중엔 제가 말해 놓고 잊은 것도 섞여 있을 수 있거든요. 출처 표시를 붙이고, AI 쪽 출처만 기한이 지나면 내려가게 했습니다.</p>
+<p><strong>Q. 앞으로 규칙이 또 쌓이는 건 어떻게 막나요?</strong><br>
+새 규칙을 적을 때 출처 표시를 같이 적게 했어요. AI가 정리한 문장은 [AI 정리]가 붙고, 3개월 안에 제가 다시 &quot;그래, 이건 유지&quot; 하지 않으면 내려가요.</p>
+<p>AI에게 규칙을 많이 줄수록 똑똑해질 줄 알았는데, 누가 한 말인지 모르는 규칙은 결국 AI를 소극적으로 만들더라고요.</p>
+<p>AI 비서를 길들이며 부딪힌 장면들은 makefield.ai에도 차곡차곡 모아 두고 있습니다.</p>
+<p>태그: #AI비서가제안을못할때 #AI비서 #AI메모리정리 #AI규칙파일 #AI커스텀지침 #클로드메모리 #ClaudeCode #CLAUDEmd #챗GPT메모리 #AI에이전트 #프롬프트관리 #AI사용법 #직장인AI #AI오답노트 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224457211463" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261028-rag-vector-missing-after-reindex/"><div class="d">← 이전 노트</div><div class="t">RAG 검색 결과 이상할 때, 문서 644개 중 516개가 벡터 없이 빠져 있었어요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
