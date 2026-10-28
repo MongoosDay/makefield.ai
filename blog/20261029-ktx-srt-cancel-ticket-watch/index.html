@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KTX SRT 취소표 감시, 예약대기가 끝난 전날부터는 직접 조회해야 합니다 | Field Notes · MakeField AI</title>
+<meta name="description" content="KTX SRT 취소표 감시는 출발 2일 전까지는 공식 &#x27;예약대기&#x27;에 맡기고, 예약대기가 닫힌 전날부터는 직접 조회하는 게 맞습니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261029-ktx-srt-cancel-ticket-watch/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KTX SRT 취소표 감시, 예약대기가 끝난 전날부터는 직접 조회해야 합니다 | Field Notes · MakeField AI">
+<meta property="og:description" content="KTX SRT 취소표 감시는 출발 2일 전까지는 공식 &#x27;예약대기&#x27;에 맡기고, 예약대기가 닫힌 전날부터는 직접 조회하는 게 맞습니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261029-ktx-srt-cancel-ticket-watch/">
+<meta property="og:image" content="https://makefield.ai/blog/20261029-ktx-srt-cancel-ticket-watch/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "KTX SRT 취소표 감시, 예약대기가 끝난 전날부터는 직접 조회해야 합니다", "datePublished": "2026-10-29", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261029-ktx-srt-cancel-ticket-watch/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">자동화 만들기</span><span>2026-10-29</span></div>
+<h1>KTX SRT 취소표 감시, 예약대기가 끝난 전날부터는 직접 조회해야 합니다</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="01_.png 타이틀카드 — &quot;KTX SRT 취소표 감시 / 예약대기가 끝난 전날부터는 직접 조회해야 합니다&quot;" loading="lazy">
+<p>KTX SRT 취소표 감시는 출발 2일 전까지는 공식 &#x27;예약대기&#x27;에 맡기고, 예약대기가 닫힌 전날부터는 직접 조회하는 게 맞습니다.</p>
+<p><strong>SRT는 출발 2일 전까지 매진 열차에 예약대기를 받고, 출발 1일 전부터는 접수하지 않습니다. 배정 결과는 다음 날 오전 9시에 알림으로 오고, 배정 당일 자정까지 결제해야 합니다.</strong> (SRT 공지 원문, 2020-03-10 등록)</p>
+<p>제가 직접 감시 프로그램을 돌린 건 2026년 8월 17일, 다음 날 새벽 SRT 표를 구할 때였어요. 출발 전날이라 공지 기준으로는 예약대기 대상이 아닌 날이었습니다. 281번 조회 끝에 잡았고, 그 과정에서 &#x27;감시&#x27;가 조회만으로는 끝나지 않는다는 걸 배웠어요.</p>
+<p>공장 설비 제어를 15년째 하다 보니 무언가를 계속 지켜보는 프로그램은 손에 익은 편인데요. 기차표 감시도 결국 조회, 예약, 알림, 결제 네 칸이 다 이어져야 표가 남더라고요.</p>
+<h2>1. 취소표 감시 화면에서 실제로 보이는 것</h2>
+<p>매진된 열차를 조회하면 좌석 칸에 &#x27;매진&#x27;이 뜨고, 그 옆에 &#x27;예약대기&#x27; 칸이 따로 있습니다. 코레일 안내에도 &quot;열차 조회 결과에서 예약대기 상태의 열차 선택 시 예약대기를 신청하실 수 있습니다&quot;라고 적혀 있어요.</p>
+<p>직접 감시를 돌리면 로그에는 이런 상태 문자열이 반복됩니다. 아래는 제 로그에서 열차 정보와 시도 번호를 빼고 흐름만 줄여 옮긴 재구성이에요(마지막 두 줄은 61번째 조회 원문).</p>
+<pre><code>일반실: 매진 / 특실: 매진
+일반실: 매진 / 특실: 매진
+일반실: 예약가능 / 특실: 매진
+   [예약 실패] 잔여석없음</code></pre>
+<p>매진, 매진, 매진.. 그러다 한 번 &#x27;예약가능&#x27;이 떠도 이미 다른 사람이 가져가 있는 경우가 많습니다. 저는 61번째 조회에서 이걸 겪었어요. 조회 간격을 어떻게 잡고 실패 직후를 어떻게 노렸는지는 부모 글에 자세히 적어 뒀습니다. → <a href="https://blog.naver.com/makefield_ai/224381734266" target="_blank" rel="noopener">SRT 취소표 자동 예약, 1초마다 조회했더니 IP가 차단됐습니다</a></p>
+<h2>2. 감시를 돌려도 표를 놓치는 네 가지 원인</h2>
+<p>놓치는 지점은 조회 속도보다 그 앞뒤에 있었어요.</p>
+<ol><li><strong>예약대기 마감을 모름</strong>: 출발 1일 전부터는 SRT 예약대기 접수가 닫힙니다. 그 전이면 공식 기능이 순번대로 배정해 주는데, 굳이 서버를 두드릴 이유가 없어요.</li><li><strong>상태 문자열을 좁게 읽음</strong>: 제가 쓴 비공식 라이브러리의 좌석 판정 함수는 &#x27;입석+좌석&#x27; 상태를 빈자리로 보지 않았습니다. 앉을 자리가 섞여 있는데 감시가 그냥 지나친 거예요.</li><li><strong>알림이 묻힘</strong>: 감시 현황을 매번 새 메시지로 보내면 정작 성공 알림이 그 사이에 파묻힙니다.</li><li><strong>결제기한을 넘김</strong>: SRT 앱 예약은 예약 후 10분 안에 결제해야 합니다(2023-05-03 SRT 공지). 제 예약도 12시 31분에 잡혔고 구입기한이 12시 41분이었어요.</li></ol>
+<img src="img/02_.png" alt="출발일 기준 타임라인 — 왼쪽 &#x27;출발 2일 전까지: 공식 예약대기(다음날 09시 배정 알림, 배정 당일 24시까지 결제)&#x27;, 오른쪽 빨간 구간 &#x27;출발 전날~당일: 예약대기 접수 없음 → 직접 감시(조회→예약→알림→결제 10분)&#x27;" loading="lazy">
+<h2>3. 취소표 감시, 이 순서로 세웠습니다</h2>
+<ol><li><strong>날짜부터 본다</strong>: 출발 2일 전 이전이면 예약대기를 먼저 겁니다. SRT는 신청할 때 알림 수신 동의와 특실 취소표 배정 여부를 직접 고르게 돼 있어요(공지 원문). 열차당 전체 좌석의 10% 순번까지만 받으니 빨리 거는 게 낫습니다.</li><li><strong>전날부터는 직접 조회</strong>: 조회 간격의 하한을 코드에 박고, 차단되면 쉬게 했어요. 이 부분은 부모 글 내용 그대로입니다.</li><li><strong>예약 조건을 넓힌다</strong>: &#x27;예약가능&#x27;뿐 아니라 &#x27;입석&#x27;이 들어간 상태도 예약을 시도하게 바꿨습니다. 아래는 실제 코드가 아니라 조건 구조만 옮긴 예시예요.</li></ol>
+<pre><code># 상태 문자열에 &#x27;예약가능&#x27; 또는 &#x27;입석&#x27;이 있으면 예약 시도
+if &quot;예약가능&quot; in status or &quot;입석&quot; in status:
+    try_reserve(train)</code></pre>
+<ol start="4"><li><strong>알림을 두 층으로 나눈다</strong>: 진행 상황은 디스코드 메시지 1개를 15초마다 고쳐 쓰는 현황판으로 두고, 예약 성공 같은 사건만 새 메시지로 보냈어요. 메시지 수정은 휴대폰 푸시가 안 오고 새 메시지만 울리니, 울리면 곧 사건입니다. 성공 시엔 MS To-Do에 중요 표시 + 1분 뒤 미리 알림까지 걸었어요.</li><li><strong>결제는 사람이 한다</strong>: 카드 정보를 파일에 두기 싫어서 자동 결제는 안 붙였습니다. 대신 10분 안에 결제할 수 있게 알림을 휴대폰으로 받았고요.</li></ol>
+<img src="img/03_.png" alt="감시 4단계 — 조회(간격 하한) → 예약(입석 포함) → 알림(현황=메시지 1개 수정 / 사건=새 메시지·푸시) → 결제(사람, 10분, 빨간 테두리)" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>공식 예약대기</th><th>직접 감시</th></tr></thead><tbody><tr><td>쓸 수 있는 때</td><td>SRT 출발 2일 전까지(매진 열차)</td><td>언제든, 특히 전날·당일</td></tr><tr><td>배정 방식</td><td>신청 순번대로, 다음날 오전 9시 알림</td><td>먼저 예약 요청한 사람이 가져감</td></tr><tr><td>결제 기한</td><td>배정 당일 자정(코레일: 배정 당일 24시)</td><td>앱 예약 후 10분(SRT)</td></tr><tr><td>서버 부담</td><td>없음</td><td>조회 간격 관리 필요</td></tr></tbody></table></div>
+<h2>4. 감시가 제대로 도는지 확인하는 법</h2>
+<p>저는 진짜 감시를 걸기 전에 자리가 남아 있던 다른 열차 하나를 실제로 예약하고 바로 취소해 봤어요. 그 한 번으로 예약, 휴대폰 알림, 디스코드 수신까지 끝까지 이어지는지 확인했습니다.</p>
+<p>돌아가는 동안엔 두 가지만 봤어요.</p>
+<pre><code>현황판 메시지: 15초마다 갱신되는가
+감시 로그 파일: 3분 넘게 멈춰 있지 않은가</code></pre>
+<p>현황판이 멈추면 감시가 죽었거나 멈춘 거예요. 로그가 멈췄을 때 자동으로 되살리는 구조는 부모 글 3절에 있습니다.</p>
+<img src="img/04_.png" alt="알림 두 층 — 위 &#x27;현황판: 메시지 1개를 15초마다 수정(푸시 없음)&#x27;, 아래 &#x27;사건: 예약 성공 → 새 메시지 + To-Do 중요 + 1분 미리 알림(푸시)&#x27;, 아래쪽에 빨간 펜 &#x27;울리면 결제 10분&#x27;" loading="lazy">
+<h2>같은 증상, 다른 경우</h2>
+<ul><li>조회 간격·실패 직후 30초 몰아치기·감시자 되살리기 → <a href="https://blog.naver.com/makefield_ai/224381734266" target="_blank" rel="noopener">SRT 취소표 자동 예약, 1초마다 조회했더니 IP가 차단됐습니다</a></li><li>알림이 너무 많아서 정작 중요한 걸 못 볼 때 → <a href="https://blog.naver.com/makefield_ai/224379988818" target="_blank" rel="noopener">AI 알림 자동화</a></li><li>감시를 예약 실행으로 걸었는데 안 돌 때 → <a href="https://blog.naver.com/makefield_ai/224388849556" target="_blank" rel="noopener">작업 스케줄러 실행 안 됨</a></li></ul>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. KTX도 SRT랑 똑같이 감시하면 되나요?</strong><br>
+KTX는 제가 직접 감시를 돌려 본 적이 없어요. 제가 쓴 라이브러리도 SRT 전용이었고요. 공식 예약대기는 코레일에도 있습니다. 코레일 안내 원문은 &quot;열차 출발 2일전의 매진 좌석에 대해 고객의 예약대기 신청순서에 따라 취소된 좌석을 배정&quot;이고, 배정되면 당일 24시까지 결제해야 해요.</p>
+<p><strong>Q. 예약대기를 걸어 두고 직접 감시도 같이 하면 안 되나요?</strong><br>
+둘은 따로 돕니다. 다만 SRT 예약대기는 출발 1일 전부터 접수 자체를 안 받으니, 전날 이후엔 직접 감시만 남아요.</p>
+<p><strong>Q. 감시를 돌릴 때 제일 많이 놓치는 단계는요?</strong><br>
+제 경우는 결제였어요. 281번 만에 잡은 표도 10분 안에 결제하지 않으면 그대로 다음 사람 몫이 되거든요. 그래서 성공 알림만큼은 꼭 휴대폰이 울리게 해 두세요.</p>
+<p>표를 잡은 건 조회 횟수가 아니라, 감시 프로그램이 알림과 결제까지 한 줄로 이어져 있었기 때문이었습니다. 지금 걸어 둔 취소표 감시가 있다면, 성공했을 때 휴대폰이 진짜 울리는지부터 한 번 시험해 보세요.</p>
+<hr>
+<p>기차표처럼 생활 속 반복을 코드로 바꿔 본 기록은 makefield.ai에서 이어집니다.</p>
+<h2>출처</h2>
+<ul><li>SRT 승차권 예약대기 제도 운영 알림(2020-03-10 등록, 2026-10-29 확인) → <a href="https://etk.srail.kr/cms/article/view.do?pageId=TK0502000000" target="_blank" rel="noopener">https://etk.srail.kr/cms/article/view.do?pageId=TK0502000000</a>&amp;postNo=273</li><li>12일부터 SRT 승차권 결제기한 단축(2023-05-03 등록, 2026-10-29 확인) → <a href="https://etk.srail.kr/cms/article/view.do?postNo=957" target="_blank" rel="noopener">https://etk.srail.kr/cms/article/view.do?postNo=957</a>&amp;pageId=KR0502000000</li><li>코레일톡 이용안내 &#x27;예약대기&#x27;(2026-10-29 확인) → <a href="https://smart.letskorail.com/ebizmw/mwQna.do" target="_blank" rel="noopener">https://smart.letskorail.com/ebizmw/mwQna.do</a></li></ul>
+<p>태그: #KTX취소표 #SRT취소표 #취소표감시 #KTXSRT취소표감시 #SRT예약대기 #코레일예약대기 #취소표알림 #기차표취소표 #취소표잡는법 #파이썬자동화 #자동화알림 #디스코드알림 #무인자동화 #자동화만들기 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224457258973" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261029-ai-assistant-rules-not-my-words/"><div class="d">← 이전 노트</div><div class="t">AI 비서가 제안을 못 할 때, 규칙 414줄 중 165줄은 제 말이 아니었어요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
