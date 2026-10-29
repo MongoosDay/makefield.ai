@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 메모리가 틀렸을 때, AI는 원본 문서를 안 열고 저한테 확인을 넘겼어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="AI 비서 메모리에 저장된 내용, 마지막으로 직접 열어 본 게 언제세요? 저는 열어 볼 생각도 안 하고 4개월을 지냈어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261029-ai-memory-wrong-source-doc-check/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 메모리가 틀렸을 때, AI는 원본 문서를 안 열고 저한테 확인을 넘겼어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="AI 비서 메모리에 저장된 내용, 마지막으로 직접 열어 본 게 언제세요? 저는 열어 볼 생각도 안 하고 4개월을 지냈어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261029-ai-memory-wrong-source-doc-check/">
+<meta property="og:image" content="https://makefield.ai/blog/20261029-ai-memory-wrong-source-doc-check/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 메모리가 틀렸을 때, AI는 원본 문서를 안 열고 저한테 확인을 넘겼어요", "datePublished": "2026-10-29", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261029-ai-memory-wrong-source-doc-check/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-10-29</span></div>
+<h1>AI 메모리가 틀렸을 때, AI는 원본 문서를 안 열고 저한테 확인을 넘겼어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;AI 메모리가 틀렸을 때 / AI는 원본 문서를 안 열고 저한테 확인을 넘겼어요&quot;" loading="lazy">
+<p>AI 비서 메모리에 저장된 내용, 마지막으로 직접 열어 본 게 언제세요?<br>
+저는 열어 볼 생각도 안 하고 4개월을 지냈어요.</p>
+<p>결론부터 적습니다. <strong>AI 메모리가 틀렸을 때 제일 먼저 할 일은 &#x27;지금 한 말&#x27;과 &#x27;메모리&#x27; 중 하나를 고르는 게 아니라, 둘 다 아닌 원본 문서를 여는 것입니다.</strong> 제 경우 매달 넣는 적립 금액이 메모리에 자릿수 하나 적게 들어가 있었고, 원본 문서에는 처음부터 맞는 금액이 적혀 있었어요. 틀린 건 원본이 아니라 AI가 만든 요약이었습니다.</p>
+<p>현장에서 15년 일하면서 몸에 밴 습관이 하나 있어요. 현장 메모랑 도면이 다르면, 메모를 믿지 말고 도면을 펴 보는 거요. 이번 글은 그 당연한 순서를 AI가 건너뛰었다가, 결국 제가 판정까지 떠안을 뻔한 이야기예요.</p>
+<h2>1. 메모리엔 &quot;매달 [소액]&quot;이라고만 남아 있었어요</h2>
+<p>6월 8일, AI가 제 투자 습관을 메모리에 정리했어요. 메모리는 대화가 시작될 때마다 AI가 자동으로 읽는 요약 노트입니다.</p>
+<p>그날 정리된 문장은 대략 이랬어요(금액만 바꿔 적었습니다).</p>
+<pre><code>절약으로 만든 진짜 여유분 [소액](약 1주)은
+매달 빠지지 않고 넣는다.</code></pre>
+<p>빠진 게 있었어요. 정작 매달 꼬박꼬박 넣는 <strong>정기 적립</strong>이 통째로 없었습니다.<br>
+그리고 이 메모리는 &quot;투자 철학&quot;이라는 이름으로 그날부터 10월 28일까지, 4개월 넘게 매 대화 시작 때마다 읽혔어요.</p>
+<img src="img/02_.png" alt="원본 문서(정기 적립 + 소액 문장) → AI 요약 → 메모리(소액 문장만, 정기 적립 칸에 빨간 X) → 매 대화 시작 때 자동 로드(반복 화살표 4개월)" loading="lazy">
+<p>AI가 이 문장을 어디서 가져왔는지는 지금도 몰라요. 6월 대화 원문을 대화 기록과 작업 이력에서 찾아봤는데 끝내 못 찾았습니다. 그래서 이 부분은 <strong>미확인</strong>으로 남겨 둡니다.</p>
+<h2>2. AI가 차이를 발견하고 한 일, &quot;사실 차이&quot;라는 보고 한 줄</h2>
+<p>10월 28일, AI와 제 목표·원칙을 다시 정리하다가 제가 이렇게 말했어요.<br>
+&quot;돈이 모자라도 [정기 적립액]은 무조건 꾸준히 넣는다.&quot;</p>
+<p>AI는 메모리와 제 말이 다르다는 걸 알아챘어요. 거기까지는 좋았는데, 보고가 이랬습니다.</p>
+<pre><code>⚠ 사실 차이: 투자 메모리(6월) &quot;월 [소액]&quot; vs 오늘 발언 &quot;[정기 적립액]&quot;
+→ 최신 우선 기록, 이전 보존</code></pre>
+<p>원본 문서는 열지 않았어요.<br>
+차이를 적어 두고, 최신 발언을 우선으로 하고, 판단은 저한테 넘긴 거죠.</p>
+<h2>3. &quot;이런 오류도 하는데 내가 믿고 쓰겠나?&quot;</h2>
+<p>그 보고를 받고 제가 보낸 답장이에요. 원문 그대로입니다(금액·상품명은 가리고, 금액을 다시 적은 마지막 한 줄은 뺐어요).</p>
+<pre><code>그리고 [적립 상품] 적립은 매달 [정기 적립액]이다.
+[소액]은 도대체 무슨 오타인가? 시스템 오류인거 같은데?
+이런 오류도 하는게? 그럼 신뢰성이 부족한데 내가 믿고 쓰겠나?
+.... 안타깝네 진짜</code></pre>
+<p>그제야 AI가 원인을 추적했어요. 투자 규칙을 적어 둔 원본 문서의 납입 계획 표를 열어 보니, 9월까지도, 10월 이후도 정기 적립액이 맞게 적혀 있었습니다.<br>
+원본은 처음부터 맞았어요. 메모리만 틀렸던 거죠.</p>
+<p>AI 작업 기록에도 이렇게 남았어요(이름만 바꿨어요).</p>
+<pre><code>잘못: 직전 보고에서 정본을 대조하지 않고
+      &quot;사실 차이&quot;로 [사용자]에게 넘김</code></pre>
+<p>실수는 두 개였어요.<br>
+하나는 요약하면서 정기 적립을 <strong>빠뜨린 것</strong>.<br>
+또 하나는 차이를 발견하고도 원본을 안 열고 <strong class="u">확인을 떠넘긴</strong> 것.<br>
+저는 두 번째가 더 아팠어요. 첫 번째는 요약하다 보면 생길 수 있는 일인데, 두 번째는 순서를 몰라서 생긴 일이거든요.</p>
+<h2>4. AI 메모리가 틀렸을 때, 어떻게 고쳤나</h2>
+<p>틀린 줄은 지우지 않았어요. 지우면 나중에 &quot;왜 이 숫자가 바뀌었지?&quot;를 아무도 설명 못 하니까요.</p>
+<div class="table-wrap"><table><thead><tr><th>했어야 할 순서</th><th>AI가 실제로 한 것</th><th>고친 뒤</th></tr></thead><tbody><tr><td>① 메모리와 새 말이 다르다 발견</td><td>발견함</td><td>동일</td></tr><tr><td>② 원본 문서를 연다</td><td>건너뜀</td><td>원본 먼저 대조</td></tr><tr><td>③ 원본 기준으로 판정</td><td>&quot;최신 우선&quot;으로 사람에게 넘김</td><td>원본 수치로 판정</td></tr><tr><td>④ 틀린 기록 처리</td><td>이전 문장 그대로 보존</td><td>지우지 않고 &quot;인용 금지&quot; 표시</td></tr><tr><td>⑤ 재발 방지</td><td>없음</td><td>메모리 맨 위에 정본 수치 + 정본 위치</td></tr></tbody></table></div>
+<img src="img/03_.png" alt="고친 구조 — 메모리 맨 위 칸 &#x27;정본은 여기(원본 문서 위치)&#x27;(초록) / 아래 6월 문장에 빨간 펜 줄 + &#x27;인용 금지&#x27; 도장 / 화살표: 숫자 질문 → 원본 문서(초록 체크)" loading="lazy">
+<p>실제로 메모리 안의 틀린 문장 앞에는 이런 표시가 붙었어요(금액·파일명만 바꿨어요).</p>
+<pre><code>⛔[10-28 [사용자] 부정 — &quot;[소액]은 도대체 무슨 오타인가&quot;.
+  대화 원문 미확인, 근거로 인용 금지.
+  실제 정기 적립=월 [정기 적립액](정본 [규칙 문서] 납입 로드맵)]</code></pre>
+<p>그리고 메모리 맨 위에는 정기 적립액과 &quot;정본은 어느 문서&quot;를 적었습니다. 이제 숫자를 물으면 AI는 메모리가 아니라 그 문서를 가리키게 돼 있어요.</p>
+<h2>5. 메모리는 원본이 아니라 &#x27;내가 안 쓴 요약&#x27;이에요</h2>
+<p>Claude Code 공식 문서에도 이런 문장이 있어요. <strong>&quot;Auto memory lets Claude accumulate knowledge across sessions without you writing anything.&quot;</strong> 내가 아무것도 안 써도 AI가 세션을 넘나들며 지식을 쌓는다는 뜻입니다. (code.claude.com/docs/en/memory, 2026-10-29 확인)</p>
+<p>편한 기능인데, 뒤집어 말하면 <strong>내가 쓰지 않은 요약이 매번 읽힌다</strong>는 얘기예요. 요약은 틀리기보다 빠뜨리기가 쉽고, 빠진 건 눈에 잘 안 띕니다. 저도 4개월 동안 몰랐으니까요.</p>
+<img src="img/04_.png" alt="현장 비유 — 왼쪽 &#x27;도면(원본)&#x27; vs 오른쪽 &#x27;현장 메모(사본)&#x27;, 둘이 다르면 → 도면을 편다(초록) / 메모를 믿고 진행(빨강 X). 아래에 같은 구조로 &#x27;원본 문서&#x27; vs &#x27;AI 메모리&#x27;" loading="lazy">
+<p>제가 바꾼 건 세 가지예요.</p>
+<ul><li>중요한 숫자(금액·날짜·횟수)는 메모리가 아니라 원본 문서 한 곳에만 둔다</li><li>메모리에는 숫자 대신 &quot;정본은 어디&quot;만 적게 한다</li><li>메모리와 내 말이 다르면, AI에게 &quot;원본 문서부터 열어 보고 판정해&quot;라고 먼저 시킨다</li></ul>
+<p>같은 날 올린 <a href="https://blog.naver.com/makefield_ai/224457211463" target="_blank" rel="noopener">AI 비서가 제안을 못 할 때, 규칙 414줄 중 165줄은 제 말이 아니었어요</a>도 같은 정리 작업에서 나온 일이에요. 그 글은 출처 모를 규칙이 쌓인 문제였고, 이번 글은 출처가 있는데 안 열어 본 문제입니다.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. AI 메모리가 틀렸을 때, 그냥 지우고 새로 쓰면 되지 않나요?</strong><br>
+그래도 되지만 저는 안 지웠어요. 틀린 문장을 지우면 &quot;예전엔 왜 이렇게 판단했지?&quot;를 나중에 추적할 수 없거든요. 지우는 대신 &quot;인용 금지&quot; 표시를 붙이고, 맞는 값은 맨 위에 따로 적었어요.</p>
+<p><strong>Q. AI가 &quot;차이가 있네요&quot;라고 보고하면 뭐라고 답해야 하나요?</strong><br>
+&quot;내 말이 맞아&quot;보다 &quot;원본 문서부터 열어 봐&quot;가 낫습니다. 제 말도 결국 기억에서 나온 거라 틀릴 수 있으니까요. 판정은 사람 기억도 AI 기억도 아닌 원본이 해야 합니다.</p>
+<p><strong>Q. 챗GPT 메모리에도 같은 일이 생기나요?</strong><br>
+챗GPT 메모리를 이번처럼 전수로 열어 본 적은 없어서 단정은 못 해요. 다만 대화를 요약해서 저장하는 방식이면 &#x27;빠뜨림&#x27;은 구조상 생길 수 있어요. 메모리 목록을 한 번 쭉 읽으면서, 중요한 숫자가 원본과 같은지만 대조해 보세요.</p>
+<p>메모리가 틀리는 건 고치면 그만인데, 틀린 걸 봤을 때 어디부터 여느냐는 결국 습관이더라고요. 여러분 AI 메모리에 적힌 숫자들, 원본이 어디 있는지 바로 대답하실 수 있나요?</p>
+<hr>
+<p>AI와 일하다 틀어진 장면을 고친 기록은 makefield.ai에도 차례로 옮겨 두고 있어요.</p>
+<p>태그: #AI메모리가틀렸을때 #AI메모리수정 #AI기억오류 #챗GPT메모리 #챗GPT메모리삭제 #클로드메모리 #AI메모리관리 #AI비서 #AI개인비서 #AI팩트체크 #원본대조 #AI사용법 #직장인AI #AI오답노트 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224458365970" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261029-ai-assistant-rules-not-my-words/"><div class="d">← 이전 노트</div><div class="t">AI 비서가 제안을 못 할 때, 규칙 414줄 중 165줄은 제 말이 아니었어요</div></a><a class="next" href="/blog/20261029-datacenter-grid-impact-assessment/"><div class="d">다음 노트 →</div><div class="t">데이터센터 전력계통영향평가란? 수도권 신청 522건 중 10건만 통과한 이유</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
