@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가상 시운전이란? 기계를 만들기 전에 컴퓨터 속 쌍둥이로 PLC를 먼저 시험하는 이유와 돈의 흐름 | Field Notes · MakeField AI</title>
+<meta name="description" content="한 줄 요약: 가상 시운전은 기계·생산라인을 실제로 짓기 전에 컴퓨터 속 &#x27;쌍둥이 설비(디지털 트윈)&#x27;에 진짜 PLC 프로그램을 연결해 미리 돌려 보는 방법이에요. 시장조사업체 인텔 마켓 리서치는 이 시장을 2025년 9억 7천만 달러에서 2034년 36억 7천만 달러로, 연평">
+<link rel="canonical" href="https://makefield.ai/blog/20261031-virtual-commissioning/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="가상 시운전이란? 기계를 만들기 전에 컴퓨터 속 쌍둥이로 PLC를 먼저 시험하는 이유와 돈의 흐름 | Field Notes · MakeField AI">
+<meta property="og:description" content="한 줄 요약: 가상 시운전은 기계·생산라인을 실제로 짓기 전에 컴퓨터 속 &#x27;쌍둥이 설비(디지털 트윈)&#x27;에 진짜 PLC 프로그램을 연결해 미리 돌려 보는 방법이에요. 시장조사업체 인텔 마켓 리서치는 이 시장을 2025년 9억 7천만 달러에서 2034년 36억 7천만 달러로, 연평">
+<meta property="og:url" content="https://makefield.ai/blog/20261031-virtual-commissioning/">
+<meta property="og:image" content="https://makefield.ai/blog/20261031-virtual-commissioning/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "가상 시운전이란? 기계를 만들기 전에 컴퓨터 속 쌍둥이로 PLC를 먼저 시험하는 이유와 돈의 흐름", "datePublished": "2026-10-31", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261031-virtual-commissioning/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-10-31</span></div>
+<h1>가상 시운전이란? 기계를 만들기 전에 컴퓨터 속 쌍둥이로 PLC를 먼저 시험하는 이유와 돈의 흐름</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;가상 시운전이란? / 기계를 만들기 전에 컴퓨터 속 쌍둥이로 PLC를 먼저 시험한다&quot;" loading="lazy">
+<p><strong>한 줄 요약: 가상 시운전은 기계·생산라인을 실제로 짓기 전에 컴퓨터 속 &#x27;쌍둥이 설비(디지털 트윈)&#x27;에 진짜 PLC 프로그램을 연결해 미리 돌려 보는 방법이에요.</strong> 시장조사업체 인텔 마켓 리서치는 이 시장을 2025년 9억 7천만 달러에서 2034년 36억 7천만 달러로, 연평균 16%씩 커질 것으로 추정했습니다(Intel Market Research, 2026-07, 추정).</p>
+<p>&quot;공장 설비는 다 만든 다음에 켜 보는 것 아니었어?&quot; 궁금했던 분, 그리고 이 &#x27;미리 돌려 보기&#x27;에 누가 돈을 내고 누가 버는지 알고 싶은 분을 위한 글입니다. 2026년 10월 기준 공개 자료로 풀어볼게요.</p>
+<h2>1. 가상 시운전이란 무엇인가요</h2>
+<p><strong>가상 시운전(Virtual Commissioning)이란 실제 설비 대신 컴퓨터 속 설비 모델에 실제 제어 프로그램을 물려, 현장에 가기 전에 동작을 시험하는 일이다.</strong> 비행기 조종사가 진짜 비행기 대신 시뮬레이터에서 먼저 연습하는 것과 같은 원리예요. 다른 점은 시험 대상이 사람이 아니라 &#x27;설비를 움직이는 프로그램&#x27;이라는 것입니다.</p>
+<blockquote>💡 시운전(커미셔닝) — 새로 만든 설비를 처음 켜서, 설계대로 움직이는지 하나씩 확인하고 넘겨받는 과정. 새 차를 출고 전에 시동 걸어 보는 점검의 공장판이다.</blockquote>
+<blockquote>💡 PLC(프로그래머블 로직 컨트롤러) — 컨베이어·모터·밸브를 정해진 순서대로 켜고 끄는 산업용 소형 컴퓨터. 기계의 &#x27;반사신경&#x27;이다.</blockquote>
+<blockquote>💡 디지털 트윈 — 실제 설비와 똑같이 움직이도록 만든 컴퓨터 속 쌍둥이 모델. 센서 신호를 주고받으며 진짜 기계인 척한다.</blockquote>
+<p>지멘스는 시뮬레이션 도구 SIMIT를 소개하며 &quot;기계나 시스템의 시뮬레이션 모델을 만들어 디지털 트윈의 기반을 만들고&quot;, 실제 제어 프로그램으로 자동화 기능을 시운전 전에 시험할 수 있다고 설명해요(지멘스 SIMIT 제품 페이지). 연결 방식은 두 가지입니다.</p>
+<div class="table-wrap"><table><thead><tr><th>방식</th><th>무엇을 연결하나</th><th>쉽게 말하면</th></tr></thead><tbody><tr><td>소프트웨어 연결(SIL)</td><td>가상 PLC 프로그램 ↔ 설비 모델</td><td>PLC까지 컴퓨터 속에 있음. 책상 위 노트북 한 대로 시험</td></tr><tr><td>하드웨어 연결(HIL)</td><td>실제 PLC 장비 ↔ 설비 모델</td><td>진짜 PLC 상자를 컴퓨터 속 가짜 설비에 연결</td></tr></tbody></table></div>
+<p>(출처: 지멘스 SIMIT 제품 페이지, Kunz 외 2023)</p>
+<blockquote>💡 SIL·HIL — SIL(Software-in-the-Loop)은 제어기도 소프트웨어로 흉내 내는 시험, HIL(Hardware-in-the-Loop)은 실제 제어기 장비를 가짜 설비에 꽂는 시험이다.</blockquote>
+<h2>2. 왜 지금 뜨나요 — 현장에서 늦게 발견하는 비용</h2>
+<p><strong>이 방식의 핵심 가치는 프로그램 오류를 &#x27;현장 설치 후&#x27;가 아니라 &#x27;설계 단계&#x27;에서 찾는 데 있다.</strong> 기존 방식에서는 기계가 다 만들어진 뒤에야 PLC 프로그램을 처음 실물에 물려 볼 수 있어요. 그때 오류가 나오면 설비 앞에서 고치는 시간만큼 가동이 늦어집니다.</p>
+<img src="img/02_.png" alt="BEFORE(빨강) — 설계 → 기계 제작 → &#x27;현장에서 처음 PLC 시험&#x27; → 오류 발견·수정(빨간 박스, 손글씨 &#x27;여기서 늦게 터진다&#x27;) / AFTER(잉크·초록) — 설계 → &#x27;디지털 트윈 + 진짜 PLC 프로그램으로 미리 시험&#x27; → 기계 제작 → 현장 시운전 짧게(초록 체크)" loading="lazy">
+<p>그림을 글로 옮기면 이렇습니다. 위 줄은 오류가 제작이 끝난 현장에서야 드러나는 기존 순서, 아래 줄은 설계와 제작 사이에 &#x27;컴퓨터 속 시험&#x27; 칸을 하나 끼워 넣은 순서예요.</p>
+<p>효과를 보여 주는 공개 사례로는 지멘스가 소개한 엔지니어링 기업 위프로 파리(Wipro PARI)가 있어요. 엔진 조립라인 증설 프로젝트에서 지멘스 Process Simulate로 컴퓨터 속 시험을 먼저 해 <strong>현장 시운전 시간을 70% 줄였고</strong>, 보통 6~8개월 걸릴 일을 설계부터 현장 시운전까지 3개월에 끝냈다고 밝혔습니다. 다른 가공 라인에서는 재작업을 최대 50%, 납기를 최대 10% 줄였다고 해요(지멘스 Tecnomatix 블로그, 2022-08-25). 다만 이 숫자는 <strong>도구를 파는 회사가 직접 소개한 사례</strong>이고, 독립 기관이 검증한 수치는 찾지 못했습니다.</p>
+<p>또 하나의 흐름도 있어요. 2026년 들어 AI가 PLC 코드를 직접 쓰는 도구가 나오면서(이전 글 &#x27;PLC AI 에이전트란?&#x27; 참고), 코드를 &#x27;빨리 쓰는 것&#x27;보다 &#x27;현장에 넣기 전에 맞는지 확인하는 것&#x27;이 더 중요해질 수 있다는 해석이 가능합니다(추정 — 공개 자료를 바탕으로 한 해석).</p>
+<h2>3. 돈의 흐름 — 누가 사고, 누가 파나요</h2>
+<p><strong>이 시험의 비용은 기계 제작사·자동화 시스템 통합사·공장 운영사가 내고, 시뮬레이션 소프트웨어 회사와 모델 제작 서비스가 나눠 가진다.</strong> 인텔 마켓 리서치는 시장을 2025년 9억 7천만 달러, 2026년 11억 3천만 달러, 2034년 36억 7천만 달러로 추정했어요(Intel Market Research, 2026-07, 추정). 시장조사 추정치는 기관마다 차이가 크니 방향을 보는 숫자로만 쓰는 게 안전합니다.</p>
+<blockquote>💡 연평균 성장률(CAGR) — 해마다 평균 몇 %씩 커지는지 나타내는 숫자. 16%면 대략 5년 안에 두 배가 되는 속도다.</blockquote>
+<blockquote>💡 시스템 통합사(SI) — 여러 회사 장비를 사서 묶고 프로그램을 짜서, 하나의 생산라인으로 완성해 넘겨주는 회사.</blockquote>
+<img src="img/03_.png" alt="왼쪽 &#x27;사는 쪽&#x27; 박스 3개(기계 제작사 / 시스템 통합사 / 공장 운영사) → 가운데 화살표 &#x27;라이선스·용역비&#x27; → 오른쪽 &#x27;파는 쪽&#x27; 박스 3개(시뮬레이션 SW 회사 / 가상 PLC·제어기 회사 / 모델 제작 서비스). 아래 막대 2개: 2025년 9.7억 달러 → 2034년 36.7억 달러(초록, &#x27;추정&#x27;). 손글씨 &#x27;소프트웨어보다 모델 만드는 손이 비싸다&#x27;" loading="lazy">
+<p>아래 기업명은 산업 구조를 설명하기 위한 예시이며 투자 판단과 무관합니다.</p>
+<div class="table-wrap"><table><thead><tr><th>파는 쪽</th><th>무엇을 파나</th><th>예시(공개 자료 기준)</th></tr></thead><tbody><tr><td>시뮬레이션·디지털 트윈 소프트웨어</td><td>설비 모델링·3D 시뮬레이션 라이선스</td><td>지멘스, 다쏘시스템, 로크웰 오토메이션, ABB 등(Intel Market Research 주요 기업 목록)</td></tr><tr><td>가상 제어기·연결 도구</td><td>PLC를 컴퓨터 속에서 흉내 내는 소프트웨어</td><td>지멘스 S7-PLCSIM Advanced(SIMIT와 SIL 연결)</td></tr><tr><td>모델 제작·검증 서비스</td><td>설비 모델을 만들고 시험 시나리오를 돌려 주는 용역</td><td>엔지니어링 서비스 회사(설문 응답 기업의 17%가 이 유형)</td></tr></tbody></table></div>
+<p>(출처: Intel Market Research 2026, 지멘스 SIMIT 제품 페이지, Kunz 외 2023)</p>
+<p>한국은 이 시장의 &#x27;수입국&#x27;에 가까워요. 2024년 과학기술정보통신부 공모 사업 &#x27;글로벌 해외 진출을 위한 제조 데이터 상호연동 가상 시운전 기술개발&#x27;에 한국전자통신연구원(ETRI)과 경북·경남 컨소시엄이 선정됐고, <strong>총사업비 493억 원(국비 300억 원)으로 2028년까지</strong> 가상 시운전 기술 국산화를 추진합니다. 보도는 그 배경으로 다쏘·지멘스 같은 해외 기업이 시장을 장악해 비싼 라이선스와 폐쇄적인 데이터 환경 때문에 국내 중견·중소기업이 도입하기 어렵다는 점을 들었어요(경북매일, 2024-04-18).</p>
+<h2>4. 누가 하고 있나요 — 큰 회사, 그리고 AI·로봇 쪽 신규 진입</h2>
+<p><strong>지금 이 방법을 실제로 쓰는 곳은 주로 대기업이다.</strong> 독일 에어랑겐-뉘른베르크대(FAU) 연구팀이 2023년 1~2월 산업계 전문가 30명을 설문한 결과, 55%가 이를 쓰고 17%가 도입을 계획 중이었어요. 응답 기업의 77%가 대기업이었고, 기업 규모와 사용 여부 사이에 중간 정도의 상관이 나타났습니다(Kunz 외, 2023). 사용하는 곳도 대부분 &#x27;드물게(47%)&#x27; 또는 &#x27;가끔(24%)&#x27; 쓴다고 답했어요.</p>
+<p>국내에서는 PLC 쪽에서 접근하는 회사도 보입니다. 뉴시스 보도에 따르면 국내 기업 유디엠텍은 기존 PLC 제어 프로그램을 디지털 환경에서 그대로 재현·분석하는 기술로 컴퓨터 속 시운전을 구현하고, 이를 엔비디아의 로봇 시뮬레이터 아이작 심(Isaac Sim)과 결합해 협동로봇 동작 검증·충돌 회피·공정 시뮬레이션에 쓰겠다고 밝혔어요(뉴시스, 2026-05-12).</p>
+<blockquote>💡 Sim2Real — 시뮬레이션(Sim)에서 검증한 동작을 실제(Real) 로봇·설비로 그대로 옮기는 것. 가상과 현실의 차이를 줄이는 게 관건이다.</blockquote>
+<h2>5. 언제 오나요, 한계는 무엇인가요</h2>
+<p><strong>가상 시운전의 가장 큰 벽은 기술이 아니라 &#x27;모델을 만드는 수고&#x27;다.</strong> 같은 FAU 설문에서 도입 장벽으로 꼽힌 것은 아래 세 가지였어요(복수 응답).</p>
+<img src="img/04_.png" alt="가로 막대 3개 — &#x27;모델 만드는 노력이 크다 89%&#x27;(빨강), &#x27;인력·자원 부족 61%&#x27;(잉크), &#x27;표준화 부족 50%&#x27;(잉크). 아래 작은 글씨 &#x27;FAU 설문 2023, 산업계 전문가 30명&#x27;. 손글씨 &#x27;기술보다 손이 모자란다&#x27;" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>도입 장벽</th><th>응답 비율</th></tr></thead><tbody><tr><td>모델 제작에 드는 노력이 크다</td><td>89%</td></tr><tr><td>자원·인력 부족</td><td>61%</td></tr><tr><td>표준화 부족</td><td>50%</td></tr></tbody></table></div>
+<p>(출처: Kunz 외, 2023 — 응답자 30명이라 산업 전체를 대표하는 숫자로 보기는 어렵다)</p>
+<p>논문 저자들은 &quot;도입 장벽은 기술적인 것이 아니라 자원 제약&quot;이라고 정리했어요. 시장조사 쪽도 비슷합니다. 인텔 마켓 리서치는 성장을 막는 요인으로 높은 초기 라이선스·교육 비용, 제조사마다 다른 파일 형식, 최신 연결 기능이 없는 오래된 PLC·감시 시스템, 클라우드로 시뮬레이션 데이터를 옮길 때의 보안 위험을 꼽았습니다(Intel Market Research, 2026-07).</p>
+<p>정리하면 &#x27;언제 오나&#x27;의 답은 &quot;대기업·복잡한 라인에는 이미 왔고, 중소 현장은 모델 만드는 비용이 내려가야 온다&quot;에 가깝습니다(추정 — 설문·보고서 기반 해석). 한국 국산화 사업이 2028년까지로 잡혀 있다는 점도 하나의 시간표예요.</p>
+<h2>자주 묻는 질문(FAQ)</h2>
+<p><strong>Q. 가상 시운전과 디지털 트윈은 같은 말인가요?</strong><br>
+A. 아니에요. 디지털 트윈은 &#x27;컴퓨터 속 쌍둥이 설비&#x27;라는 모델 자체이고, 시운전 시험은 그 모델에 진짜 제어 프로그램을 연결해 시험하는 &#x27;활용법&#x27; 중 하나입니다. 지멘스도 SIMIT를 디지털 트윈의 &#x27;기반&#x27;을 만드는 도구로 설명해요.</p>
+<p><strong>Q. 컴퓨터로 미리 시험하면 현장 시운전이 필요 없나요?</strong><br>
+A. 그렇지 않아요. 공개 사례도 현장 시운전 &#x27;시간을 줄였다&#x27;고 말하지, 없앴다고 하지 않습니다. 모델이 실제 설비와 다르면 현장에서 다시 맞춰야 해요.</p>
+<p><strong>Q. 작은 회사도 할 수 있나요?</strong><br>
+A. 설문에서는 기업 규모가 클수록 많이 썼고, 가장 큰 장벽이 모델 제작 노력(89%)이었어요. 정부가 국산화 사업을 하는 이유도 해외 라이선스 비용 부담 때문이라고 보도됐습니다.</p>
+<h2>오늘의 용어 정리</h2>
+<ul><li><strong>가상 시운전(Virtual Commissioning)</strong> — 실제 설비 대신 컴퓨터 속 모델에 진짜 제어 프로그램을 연결해 미리 시험하는 일.</li><li><strong>시운전(커미셔닝)</strong> — 새 설비를 처음 켜서 설계대로 움직이는지 확인하고 넘겨받는 과정.</li><li><strong>PLC</strong> — 기계를 정해진 순서대로 움직이는 산업용 소형 컴퓨터.</li><li><strong>디지털 트윈</strong> — 실제 설비처럼 움직이는 컴퓨터 속 쌍둥이 모델.</li><li><strong>SIL·HIL</strong> — 제어기까지 소프트웨어로 흉내 내는 시험 / 실제 제어기 장비를 가짜 설비에 꽂는 시험.</li><li><strong>연평균 성장률(CAGR)</strong> — 해마다 평균 몇 %씩 커지는지 나타내는 숫자.</li><li><strong>시스템 통합사(SI)</strong> — 여러 장비를 묶어 하나의 생산라인으로 완성해 주는 회사.</li><li><strong>Sim2Real</strong> — 시뮬레이션에서 검증한 동작을 실제 설비로 옮기는 것.</li></ul>
+<p>설비를 짓기 전에 컴퓨터 속에서 먼저 틀려 보는 것, 그게 이 기술이 파는 가치예요. 다만 그 &#x27;컴퓨터 속 설비&#x27;를 만드는 손이 아직 비싸다는 게 이 시장의 현재 위치입니다. 다음 Next Field에서도 또 다른 &#x27;다음 현장&#x27;을 가 볼게요. 여러분 주변의 설비라면, 컴퓨터 속에서 먼저 시험해 보고 싶은 동작은 무엇인가요?</p>
+<h2>출처</h2>
+<p><strong>[1] 인텔 마켓 리서치 Intel Market Research(2026-07)</strong> — 가상 시운전 시장 2025년 9억 7천만 달러·2026년 11억 3천만 달러·2034년 36억 7천만 달러, 연평균 16%(추정), 주요 기업(지멘스·로크웰·다쏘·ABB 등), 성장 제약 요인(초기 비용·형식 표준 분산·노후 제어 시스템·데이터 보안)<br>
+→ <a href="https://www.intelmarketresearch.com/virtual-commissioning-market-138" target="_blank" rel="noopener">https://www.intelmarketresearch.com/virtual-commissioning-market-138</a></p>
+<p><strong>[2] 지멘스 SIMIT 제품 페이지(2026)</strong> — 시뮬레이션 모델로 디지털 트윈 기반 구축, 실제 제어 프로그램으로 시운전 전 시험, 운전원 교육, 하드웨어 연결(HIL)·S7-PLCSIM Advanced로 소프트웨어 연결(SIL)<br>
+→ <a href="https://www.siemens.com/en-us/products/simit/" target="_blank" rel="noopener">https://www.siemens.com/en-us/products/simit/</a></p>
+<p><strong>[3] 지멘스 Tecnomatix 블로그(2022-08-25)</strong> — 위프로 파리 엔진 조립라인 가상 시운전으로 현장 시운전 시간 70% 단축, 6~8개월 걸릴 일을 3개월에, 가공 라인 재작업 최대 50%·납기 최대 10% 감소(회사 소개 사례)<br>
+→ <a href="https://blogs.sw.siemens.com/tecnomatix/wipro-pari-reduces-commissioning-time-by-70/" target="_blank" rel="noopener">https://blogs.sw.siemens.com/tecnomatix/wipro-pari-reduces-commissioning-time-by-70/</a></p>
+<p><strong>[4] Kunz 외, FAU(2023)</strong> — 산업계 전문가 30명 설문(2023년 1~2월): 55% 사용·17% 계획, 응답 기업 77% 대기업, 장벽=모델 제작 노력 89%·자원·인력 부족 61%·표준화 부족 50%, 장벽은 기술이 아닌 자원 제약<br>
+→ <a href="https://www.db-thueringen.de/servlets/MCRFileNodeServlet/dbt_derivate_00061299/ilm1-2023100033_241-250.pdf" target="_blank" rel="noopener">https://www.db-thueringen.de/servlets/MCRFileNodeServlet/dbt_derivate_00061299/ilm1-2023100033_241-250.pdf</a></p>
+<p><strong>[5] 경북매일(2024-04-18)</strong> — 과기정통부 &#x27;제조 데이터 상호연동 가상 시운전 기술개발&#x27; 사업, ETRI 주관·경북·경남 컨소시엄, 총 493억 원(국비 300억 원)·2028년까지, 해외 기업 장악·비싼 라이선스로 국내 중소기업 도입 어려움<br>
+→ <a href="https://kbmaeil.com/article/202404180391226" target="_blank" rel="noopener">https://kbmaeil.com/article/202404180391226</a></p>
+<p><strong>[6] 뉴시스(2026-05-12)</strong> — 유디엠텍, PLC 제어 프로그램을 디지털 환경에서 재현하는 기술로 가상 시운전 구현, 엔비디아 Isaac Sim과 결합해 협동로봇 동작 검증·충돌 회피·공정 시뮬레이션 추진<br>
+→ <a href="https://mobile.newsis.com/view/NISX20260512_0003625470" target="_blank" rel="noopener">https://mobile.newsis.com/view/NISX20260512_0003625470</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224459699533" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261031-ai-deck-wording-blog-tone/"><div class="d">← 이전 노트</div><div class="t">AI 발표자료 문구가 블로그 같을 때, 감정어 빼고 표지부터 다시 본 이유</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
