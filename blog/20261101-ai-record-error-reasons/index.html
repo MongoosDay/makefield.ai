@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ai 기록 오류 생기는 이유, 기록이 마지막 단계라 제일 먼저 잘립니다 | Field Notes · MakeField AI</title>
+<meta name="description" content="ai 기록 오류가 생기는 이유는, AI가 내용을 틀리게 적어서보다 기록 단계까지 아예 도달하지 못해서인 경우가 더 많습니다. 기록은 보통 자동화의 맨 마지막 단계에 붙어 있어요. 그래서 시간 제한에 걸리든 PC가 꺼져 있든, 제일 먼저 잘려 나가는 게 기록입니다. 그리고 하나 ">
+<link rel="canonical" href="https://makefield.ai/blog/20261101-ai-record-error-reasons/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ai 기록 오류 생기는 이유, 기록이 마지막 단계라 제일 먼저 잘립니다 | Field Notes · MakeField AI">
+<meta property="og:description" content="ai 기록 오류가 생기는 이유는, AI가 내용을 틀리게 적어서보다 기록 단계까지 아예 도달하지 못해서인 경우가 더 많습니다. 기록은 보통 자동화의 맨 마지막 단계에 붙어 있어요. 그래서 시간 제한에 걸리든 PC가 꺼져 있든, 제일 먼저 잘려 나가는 게 기록입니다. 그리고 하나 ">
+<meta property="og:url" content="https://makefield.ai/blog/20261101-ai-record-error-reasons/">
+<meta property="og:image" content="https://makefield.ai/blog/20261101-ai-record-error-reasons/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ai 기록 오류 생기는 이유, 기록이 마지막 단계라 제일 먼저 잘립니다", "datePublished": "2026-11-01", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261101-ai-record-error-reasons/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-11-01</span></div>
+<h1>ai 기록 오류 생기는 이유, 기록이 마지막 단계라 제일 먼저 잘립니다</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="01_.png 타이틀카드 — &quot;ai 기록 오류 생기는 이유 / 기록이 마지막 단계라 제일 먼저 잘립니다&quot;" loading="lazy">
+<p><strong>ai 기록 오류가 생기는 이유는, AI가 내용을 틀리게 적어서보다 기록 단계까지 아예 도달하지 못해서인 경우가 더 많습니다.</strong><br>
+기록은 보통 자동화의 맨 마지막 단계에 붙어 있어요. 그래서 시간 제한에 걸리든 PC가 꺼져 있든, 제일 먼저 잘려 나가는 게 기록입니다.<br>
+그리고 하나 더. AI가 &quot;기록 완료&quot;라고 보고해도 그 말이 파일에 적혔다는 증거는 아니었어요.</p>
+<p>현장에서 15년째 장비를 다루는 엔지니어입니다. 장비가 멈추면 제일 먼저 보는 게 &quot;몇 시 몇 분에 멈췄나&quot;인데요. 이번에도 결국 답은 그 시각에 있었습니다.</p>
+<p>2026년 8월, 제 PC에서 새벽마다 혼자 도는 개인 학습용 자동화 얘기예요. 특정 AI 제품이 아니라 <strong>AI를 스크립트로 불러 여러 단계를 돌리는 구조면 다 해당됩니다.</strong></p>
+<h2>1. 기록 순서가 꼬인 얘기를 올린 바로 다음 날이었어요</h2>
+<p>8월 25일, AI가 누적 기록 파일 중간에 항목을 끼워 넣은 사고를 블로그에 올렸어요. 원인은 지시문에 &quot;어디에&quot;가 빠진 거였고, 자세한 건 <a href="https://blog.naver.com/makefield_ai/224390033273" target="_blank" rel="noopener">AI 파일 이어쓰기 안 될 때, 기록 12일치가 조용히 사라진 이유</a>에 정리해 뒀습니다.</p>
+<p>그런데 다음 날인 8월 26일, 같은 파일에 이번엔 이런 공지가 붙었어요.</p>
+<pre><code>★소급 기록 공지 (2026-08-26 작성)★
+아래 8/21~8/25 5일치는 당일에 기록되지 못하고 8/26에 소급 기록한 것입니다.
+원인: 자동 실행의 제한 시간이 900초(15분)였는데 작업이 매일 이를 초과했습니다.
+문서 저장까지는 도달했으나 그 다음 단계인 이 학습 로그 기록에는
+도달하지 못한 날이 반복됐습니다.</code></pre>
+<p>5일 중 사흘은 문서가 나왔는데 기록만 없었고, 이틀은 문서조차 없는 결번이었어요.<br>
+이번엔 위치 문제가 아니었습니다. <strong>기록 단계 자체가 실행되지 못한 거예요.</strong></p>
+<h2>2. 첫 번째 이유: 시간 제한은 맨 끝 단계부터 자릅니다</h2>
+<p>이 자동화는 여러 단계를 차례로 밟고, 기록은 문서 저장 다음, 맨 마지막에 있어요. 전체에 15분 제한이 걸려 있었고요.<br>
+작업이 길어진 날은 문서 저장까지만 가고 시간이 끝났습니다. <strong>결과물은 멀쩡하니 겉으로는 성공한 날과 구분이 안 돼요.</strong></p>
+<img src="img/02_.png" alt="02_.png 단계 띠 — 앞 단계들 → 문서 저장 → 기록(마지막 칸). 15분 지점에 빨간 세로선이 그어져 &#x27;기록&#x27; 칸만 선 바깥으로 밀려남. 손글씨 메모 &quot;결과물은 있는데 기록만 없음&quot;" loading="lazy">
+<p>8월 23일 결번 기록에 남은 시각만 옮기면 더 노골적이에요.</p>
+<pre><code>04:00:01  작업 스케줄러 실행 시작
+04:15:01  15분 제한 초과로 강제 종료 (문서 저장 직전)</code></pre>
+<p>시작에서 끝까지 정확히 15분 00초예요. 끝난 시각이 &quot;시작 + 제한 시간&quot;과 딱 맞으면, 그건 일이 끝난 게 아니라 잘린 겁니다.<br>
+파이썬에서 자식 프로세스를 <code>subprocess.run</code>으로 돌리면서 <code>timeout</code>을 주면 시간이 지났을 때 자식 프로세스는 강제 종료되고 <code>TimeoutExpired</code> 예외가 올라와요(→ <a href="https://docs.python.org/3/library/subprocess.html)." target="_blank" rel="noopener">https://docs.python.org/3/library/subprocess.html).</a> 이 예외를 아무도 받아서 적지 않으면, 실패는 어디에도 안 남습니다.</p>
+<h2>3. 두 번째 이유: &quot;완료&quot;라는 보고와 파일은 다른 물건이었어요</h2>
+<p>제일 아팠던 건 이 줄이었어요.</p>
+<pre><code>8/25자 문서에 &quot;소급 보완 완료&quot;라고 적었으나
+실제 파일에는 반영되지 않았음을 8/26에 확인했습니다.</code></pre>
+<p>AI가 채워 넣었다고 보고했는데, 파일을 열어 보니 없었던 거예요.<br>
+진단도 한 번 틀렸습니다. 8월 25일 문서에는 23일 결번 원인이 &quot;스케줄러 미실행&quot;이라고 적혀 있었는데, 로그를 열어 보니 04:00:01에 시작 기록이 버젓이 있었어요. 8월 26일에 &quot;오진&quot;으로 정정했습니다.</p>
+<p>정리하면 <strong>AI가 하는 &quot;했다&quot;는 말은 보고일 뿐이고, 증거는 파일과 로그 시각뿐</strong>이었어요.</p>
+<h2>4. 원인 따라 확인하는 순서 (윈도우 기준)</h2>
+<p>PowerShell 5.1 이상 기준이에요(2026년 11월 확인).</p>
+<p><strong>① 기록 파일의 마지막 날짜부터 봅니다.</strong> 날짜 헤더만 골라 끝의 3개를 봐요.</p>
+<pre><code>Select-String -Path .\learning_log.md -Pattern &#x27;^### \d{4}-\d{2}-\d{2}&#x27; |
+    Select-Object -Last 3</code></pre>
+<p><code>Select-String</code>은 줄 단위로 정규식을 찾아 파일명·줄번호와 함께 보여 줍니다(→ <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-string)." target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-string).</a> 파일 끝 몇 줄만 보고 싶으면 <code>Get-Content -Tail 5</code>도 돼요(→ <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-content)." target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-content).</a></p>
+<p><strong>② 비는 날의 실행 로그에서 시작·종료 시각을 뺍니다.</strong> 차이가 제한 시간과 정확히 같으면 시간 초과예요.</p>
+<p><strong>③ 시작 기록조차 없으면 그 시각에 PC가 켜져 있었는지 봅니다.</strong></p>
+<pre><code>Get-WinEvent -FilterHashtable @{ LogName=&#x27;System&#x27;; Id=1074; StartTime=(Get-Date).AddDays(-7) }</code></pre>
+<p><code>FilterHashtable</code>에 <code>LogName</code>·<code>ID</code>·<code>StartTime</code>을 넣어 걸러요. 관리자 권한이 아니면 일부 로그를 못 읽는다는 오류가 날 수 있습니다(→ <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.diagnostics/get-winevent)." target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.diagnostics/get-winevent).</a><br>
+제 경우 8월 24일 결번이 이걸로 풀렸어요. 1074 이벤트에 &quot;2026-08-23 20:56:33 전원 끄기 시작&quot;이 있었고, 다음 부팅은 24일 07:12:16였습니다. 새벽 4시엔 PC가 꺼져 있었던 거죠.</p>
+<img src="img/03_.png" alt="03_.png 결번 이틀 타임라인 — 8/23: 04:00:01 시작 → 04:15:01 빨간 X &#x27;강제 종료&#x27;. 8/24: 전날 20:56:33 전원 끄기 → 04:00 회색 점선 &#x27;실행 기록 없음&#x27; → 07:12:16 부팅. 같은 &#x27;결번&#x27;인데 원인이 다름" loading="lazy">
+<p><strong>④ 실패도 기록하게 바꿉니다.</strong> 제가 실제로 한 건 제한 시간을 900초에서 1800초로 올린 것까지예요. 여기에 시간 초과를 받아 적는 몇 줄을 붙이면, 다음엔 빈칸 대신 실패 한 줄이 남습니다. 아래는 공식 문서 동작에 맞춘 예시예요.</p>
+<pre><code>import subprocess, datetime
+
+try:
+    subprocess.run(cmd, timeout=1800, check=True)
+except subprocess.TimeoutExpired:
+    with open(RUN_LOG, &quot;a&quot;, encoding=&quot;utf-8&quot;) as f:
+        f.write(f&quot;{datetime.date.today()} 기록 단계 미도달 — 시간 초과(1800초)\n&quot;)</code></pre>
+<p><strong>확인 결과는 이 표 한 장으로 가려냅니다.</strong></p>
+<div class="table-wrap"><table><thead><tr><th>보이는 증상</th><th>확인할 곳</th><th>원인</th></tr></thead><tbody><tr><td>결과물은 있고 기록만 없음</td><td>실행 로그 종료 시각 = 시작 + 제한 시간</td><td>시간 제한에 잘림</td></tr><tr><td>결과물·기록 모두 없음, 시작 기록도 없음</td><td>시스템 이벤트 1074(전원 끄기)</td><td>PC 꺼짐</td></tr><tr><td>AI는 &quot;완료&quot;, 파일엔 없음</td><td>기록 파일 마지막 날짜</td><td>보고만 믿음</td></tr><tr><td>기록은 있는데 날짜 순서가 뒤집힘</td><td>날짜 헤더 줄번호</td><td>붙일 위치 미지정</td></tr></tbody></table></div>
+<img src="img/04_.png" alt="04_.png 판별 흐름 — &#x27;기록이 이상하다&#x27; → 결과물 있나? → 있음: 로그 종료 시각이 제한 시간과 같나 → 시간 초과 / 없음: 시작 기록 있나 → 없음: 1074 확인 → PC 꺼짐. 옆 가지: &quot;AI 보고 &#x27;완료&#x27;&quot; 상자에 빨간 펜 &quot;파일로 확인&quot;" loading="lazy">
+<h2>5. 같은 증상, 다른 경우</h2>
+<ul><li>기록이 <strong>엉뚱한 줄에 끼어드는</strong> 경우: <a href="https://blog.naver.com/makefield_ai/224390033273" target="_blank" rel="noopener">AI 파일 이어쓰기 안 될 때, 기록 12일치가 조용히 사라진 이유</a>. 붙이는 일을 스크립트로 넘기는 법을 적었어요.</li><li>작업 스케줄러가 <strong>놓친 회차를 다시 안 돌리는</strong> 경우: 블로그의 &quot;작업 스케줄러 실행 안 됨, 하룻밤에 13개가 조용히 사라졌어요&quot; 글에서 기본 설정 세 개를 다뤘습니다.</li><li>로그 날짜는 오늘인데 실제론 멈춰 있던 경우: &quot;자동화 돌고 있는지 확인, 로그 날짜만 보면 7일을 놓칩니다&quot; 글.</li></ul>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 제한 시간을 아예 없애면 되지 않나요?</strong><br>
+그러면 멈춘 작업이 다음 날 실행까지 붙잡고 있을 수 있어요. 저는 1800초로 늘리는 쪽을 골랐고, 넘었을 때 실패 한 줄이 남게 하는 게 핵심이라고 봐요.</p>
+<p><strong>Q. 기록을 맨 앞 단계로 옮기면요?</strong><br>
+이 자동화의 기록은 그날 만든 문서의 요약이라, 문서보다 앞에 둘 수가 없는 구조예요. 그래서 순서보다는 &quot;잘리면 잘렸다고 남기는&quot; 장치가 먼저라고 봤습니다.</p>
+<p><strong>Q. 8월 3일~14일 12일 공백도 시간 초과였나요?</strong><br>
+모릅니다. 그 구간은 기록 파일에 &quot;원인 미상, 미검증&quot;으로 남아 있어요. 8월 23일처럼 로그 시각으로 확인된 날만 시간 초과라고 적었습니다.</p>
+<p>정리하면, ai 기록 오류의 상당수는 &quot;잘못 적힘&quot;이 아니라 &quot;안 적힘&quot;이고, 안 적힌 이유는 대개 시각에 찍혀 있어요. 혹시 지금 맡겨 둔 자동화가 있다면, 마지막으로 기록된 날짜와 실행 로그의 종료 시각을 한 번 나란히 놓아 보세요.</p>
+<hr>
+<p>새벽 자동화를 굴리다 깨진 기록들은 makefield.ai에 원인별로 모아 두고 있어요.</p>
+<h2>출처</h2>
+<ul><li>파이썬 subprocess.run의 timeout 동작 → <a href="https://docs.python.org/3/library/subprocess.html" target="_blank" rel="noopener">https://docs.python.org/3/library/subprocess.html</a></li><li>Get-WinEvent(FilterHashtable·관리자 권한 안내) → <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.diagnostics/get-winevent" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.diagnostics/get-winevent</a></li><li>Select-String → <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-string" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-string</a></li><li>Get-Content -Tail → <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-content" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-content</a></li></ul>
+<p>태그: #AI기록오류 #AI기록누락 #AI자동화기록 #기록단계누락 #시간초과강제종료 #AI완료보고 #AI오답노트 #자동화로그확인 #작업스케줄러 #이벤트로그1074 #PowerShell #파이썬자동화 #무인자동화 #개인AI에이전트 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224460661376" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261031-virtual-commissioning/"><div class="d">← 이전 노트</div><div class="t">가상 시운전이란? 기계를 만들기 전에 컴퓨터 속 쌍둥이로 PLC를 먼저 시험하는 이유와 돈의 흐름</div></a><a class="next" href="/blog/20261101-ai-rule-number-becomes-gate/"><div class="d">다음 노트 →</div><div class="t">AI 지침에 숫자 넣을 때, 목표값이 불합격 기준선으로 바뀐 두 번의 장면</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
