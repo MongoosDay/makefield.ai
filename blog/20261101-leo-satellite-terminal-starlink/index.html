@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>저궤도 위성통신이란? 스타링크가 한국에서 배부터 파는 이유와 단말·지상국 돈의 흐름 | Field Notes · MakeField AI</title>
+<meta name="description" content="한 줄 요약: 저궤도 위성통신은 낮은 하늘에 위성 수천~수만 대를 띄워 지구 어디서나 인터넷을 잇는 방식이고, 한국에서는 망이 촘촘한 육지보다 망이 없는 바다(선박)에서 먼저 팔리고 있어요. 스타링크는 2025년 12월 한국 상용 서비스를 시작했는데, 첫 계약은 해운사·선박관리">
+<link rel="canonical" href="https://makefield.ai/blog/20261101-leo-satellite-terminal-starlink/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="저궤도 위성통신이란? 스타링크가 한국에서 배부터 파는 이유와 단말·지상국 돈의 흐름 | Field Notes · MakeField AI">
+<meta property="og:description" content="한 줄 요약: 저궤도 위성통신은 낮은 하늘에 위성 수천~수만 대를 띄워 지구 어디서나 인터넷을 잇는 방식이고, 한국에서는 망이 촘촘한 육지보다 망이 없는 바다(선박)에서 먼저 팔리고 있어요. 스타링크는 2025년 12월 한국 상용 서비스를 시작했는데, 첫 계약은 해운사·선박관리">
+<meta property="og:url" content="https://makefield.ai/blog/20261101-leo-satellite-terminal-starlink/">
+<meta property="og:image" content="https://makefield.ai/blog/20261101-leo-satellite-terminal-starlink/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "저궤도 위성통신이란? 스타링크가 한국에서 배부터 파는 이유와 단말·지상국 돈의 흐름", "datePublished": "2026-11-01", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261101-leo-satellite-terminal-starlink/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-11-01</span></div>
+<h1>저궤도 위성통신이란? 스타링크가 한국에서 배부터 파는 이유와 단말·지상국 돈의 흐름</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;저궤도 위성통신이란? / 스타링크가 한국에서 배부터 파는 이유와 돈의 흐름&quot;" loading="lazy">
+<p><strong>한 줄 요약: 저궤도 위성통신은 낮은 하늘에 위성 수천~수만 대를 띄워 지구 어디서나 인터넷을 잇는 방식이고, 한국에서는 망이 촘촘한 육지보다 망이 없는 바다(선박)에서 먼저 팔리고 있어요.</strong> 스타링크는 2025년 12월 한국 상용 서비스를 시작했는데, 첫 계약은 해운사·선박관리사 같은 기업 고객이었습니다(파이낸셜뉴스, 2025-12-07).</p>
+<p>&quot;스타링크가 한국에 들어왔다는데, 집 인터넷을 바꿀 만한가?&quot; 궁금했던 분, 그리고 하늘 위 위성보다 <strong>땅 위 장비에서 누가 돈을 버는지</strong> 알고 싶은 분을 위한 글입니다. 2026년 11월 기준 공개 기사와 발표 자료로 정리했어요.</p>
+<h2>1. 저궤도 위성통신이란 무엇인가요</h2>
+<p><strong>저궤도 위성통신이란 지상에서 비교적 가까운 낮은 궤도에 많은 위성을 띄워, 위성끼리 이어 달리며 인터넷을 전달하는 통신 방식이다.</strong> 위성이 가까우니 신호가 빨리 오가지만, 위성 한 대가 비추는 땅이 좁아 수천 대를 띄워야 빈틈이 없어요.</p>
+<blockquote>💡 저궤도(LEO) 위성 — 높은 하늘에 멈춘 듯 떠 있는 기존 방송·통신 위성보다 훨씬 낮게, 빠르게 지구를 도는 위성. 릴레이 주자처럼 여러 대가 번갈아 신호를 넘겨준다.</blockquote>
+<p>이 통신은 세 덩어리로 이루어져요. 하늘의 <strong>위성</strong>, 집·배에 붙는 <strong>사용자 단말</strong>, 그리고 위성과 땅의 인터넷망을 잇는 <strong>게이트웨이(지상국)</strong>입니다.</p>
+<blockquote>💡 사용자 단말 — 위성과 전파를 주고받는 안테나+모뎀 한 세트. 스타링크에서는 &#x27;접시&#x27;라고 부르는 납작한 안테나와 공유기다.</blockquote>
+<blockquote>💡 게이트웨이(지상국) — 위성과 땅의 인터넷망을 연결하는 대형 안테나 기지. 단말이 &#x27;집 전화기&#x27;라면 게이트웨이는 &#x27;전화국&#x27;이다.</blockquote>
+<img src="img/02_.png" alt="위쪽 &#x27;저궤도 위성&#x27; 박스 여러 개(잉크) → 왼쪽 아래 &#x27;사용자 단말(배·집·차)&#x27; 박스, 오른쪽 아래 &#x27;게이트웨이(지상국)&#x27; 박스 → 그 오른쪽 &#x27;인터넷망&#x27;. 각 박스 아래 작은 칩: 단말=&#x27;평판 안테나·전력반도체&#x27;, 게이트웨이=&#x27;대형 안테나&#x27;. 손글씨 &#x27;돈은 땅 위에서도 돈다&#x27;" loading="lazy">
+<p>그림을 글로 옮기면, 사용자 단말 → 위성 → 게이트웨이 → 인터넷 순서로 신호가 흘러요. 이 글이 주목하는 건 아래 두 칸, 즉 단말과 게이트웨이입니다.</p>
+<p>단말 안테나도 크게 바뀌었어요. 통신업계 관계자는 기존 정지궤도 위성용 안테나가 지름 1m 이상, 무게 100kg 이상인 반면 스타링크 안테나는 소형 선박에도 달 수 있을 만큼 작고 가볍다고 설명했습니다(파이낸셜뉴스, 2025-12-07).</p>
+<blockquote>💡 평판 안테나(위상배열 안테나) — 접시를 기계로 돌리지 않고, 수백 개 작은 안테나 소자의 신호 타이밍을 전자적으로 조절해 빔 방향을 바꾸는 납작한 안테나. 빨리 지나가는 저궤도 위성을 따라가는 데 쓴다.</blockquote>
+<h2>2. 왜 지금 뜨나요 — 하늘엔 수만 대, 한국 위성은 0기</h2>
+<p><strong>세계는 이미 수만 대 경쟁에 들어갔고, 한국은 통신서비스용 저궤도 위성이 아직 한 대도 없다.</strong> 파이낸셜뉴스가 보도한 해외 위성망 규모는 아래와 같아요(파이낸셜뉴스, 2026-10-05).</p>
+<div class="table-wrap"><table><thead><tr><th>사업자·국가</th><th>현재</th><th>계획</th></tr></thead><tbody><tr><td>스페이스X(스타링크)</td><td>약 1만 1,000기</td><td>4만 2,000기</td></tr><tr><td>원웹</td><td>약 650기</td><td>6,300기</td></tr><tr><td>아마존</td><td>약 390기</td><td>3,200기</td></tr><tr><td>중국 궈왕</td><td>—</td><td>1만 2,992기 추진</td></tr><tr><td>EU IRIS²</td><td>—</td><td>290기·106억 유로</td></tr><tr><td>한국</td><td>0기</td><td>2030년 2기 발사(R&amp;D)</td></tr></tbody></table></div>
+<p>(출처: 파이낸셜뉴스, 2026-10-05)</p>
+<blockquote>💡 IRIS²(아이리스 스퀘어) — EU가 미국·중국에 기대지 않으려고 만드는 자체 보안 위성통신망. &#x27;통신 주권&#x27; 사업이다.</blockquote>
+<p>한국 정부의 저궤도 위성통신 연구개발 총사업비는 3,224억 원(국비 3,004억 원·민간 220억 원)이고, 2030년 위성 2기를 쏘는 계획이에요. 한국형 위성망은 128~512기 시나리오가 거론되며, 256기 운용에 약 7조 4,000억 원이 들 것으로 추정됐습니다(파이낸셜뉴스, 2026-10-05). 뉴시스는 최대 512기 안의 사업비를 14조 2,586억 원(제작·발사·5년 운용 포함), 2035년 완성 방침으로 보도했는데, 이는 세 가지 안을 <strong>검토하는 단계</strong>예요(뉴시스, 2026-07-21).</p>
+<h2>3. 한국에서는 왜 배부터 팔리나요</h2>
+<p><strong>육지에서는 스타링크가 LTE보다 느리고, 바다에는 그 LTE조차 없기 때문이다.</strong> 한국 스타링크 가정용 요금은 월 8만 7,000원에 장비비 55만 원이 따로 들고, 다운로드 속도는 135Mbps로 국내 LTE 평균(178Mbps)보다 느리며 5G 평균(1,025Mbps)과는 차이가 커요(파이낸셜뉴스, 2025-12-07).</p>
+<img src="img/03_.png" alt="가로 막대 3개 — &#x27;스타링크 135Mbps&#x27;(잉크), &#x27;LTE 평균 178Mbps&#x27;(잉크), &#x27;5G 평균 1,025Mbps&#x27;(잉크, 가장 김). 오른쪽에 &#x27;육지=망이 촘촘하다&#x27;(빨강 칩) / &#x27;바다=망이 없다&#x27;(초록 칩). 아래 작은 글씨 &#x27;파이낸셜뉴스 2025-12-07&#x27;. 손글씨 &#x27;그래서 첫 손님은 배&#x27;" loading="lazy">
+<p>그림 내용을 글로 옮기면, 속도만 놓고 보면 육지 가정에는 매력이 크지 않다는 거예요. 기사도 업계의 시각을 &quot;가정집이 매력을 느끼지 못할 것&quot;이라고 전했고, 낚싯배·요트·캠핑카 같은 특수 수요를 가능성으로 꼽았습니다(파이낸셜뉴스, 2025-12-07).</p>
+<p>그래서 첫 계약은 기업용이었어요. 기업용은 국내 통신사업자가 재판매하는데, SK텔링크가 해운사 팬오션과 해상용 공급 계약을, KT샛이 선박관리사 KLCSM·롯데물산과 계약했습니다. 용도는 선박 운항 관리, 자율운항 실증 통신망, 롯데월드타워 방재 통신망 등이에요(파이낸셜뉴스, 2025-12-07). 기업명은 공개 보도에 나온 예시입니다.</p>
+<blockquote>💡 리셀러(재판매 사업자) — 본사 서비스를 받아 자기 이름으로 파는 판매사. 한국 기업용 스타링크는 SK텔링크·KT샛이 이 역할을 맡았다.</blockquote>
+<h2>4. 돈의 흐름 — 위성 말고 땅 위 장비에서 누가 버나요</h2>
+<p><strong>위성은 소수의 거대 사업자가 쏘지만, 단말 부품과 게이트웨이 안테나는 여러 나라 공급사가 나눠 판다.</strong> 사는 쪽은 위성 사업자(게이트웨이·단말 대량 구매)와 그 서비스를 쓰는 선박·기업·가정이고, 파는 쪽은 안테나·부품 제조사예요. 아래 기업명은 산업 구조를 설명하기 위한 예시이며 투자 판단과 무관합니다.</p>
+<img src="img/04_.png" alt="왼쪽 &#x27;사는 쪽&#x27; 박스 2개(위성 사업자 / 선박·기업·가정) → 가운데 화살표 &#x27;장비 대금·월 요금&#x27; → 오른쪽 &#x27;파는 쪽&#x27; 박스 3개(게이트웨이 안테나 제조사 / 단말 부품·전력반도체 / 재판매 통신사업자). 아래 막대 2개: 게이트웨이 매출 2024년 약 300억 원 → 2025년 1,108억 원(초록). 손글씨 &#x27;위성을 안 쏴도 판다&#x27;" loading="lazy">
+<p>그림을 글로 풀면, 위성 사업자는 게이트웨이와 단말을 대량으로 사고, 선박·기업·가정은 월 요금을 냅니다. 그 돈이 안테나 제조사·부품사·재판매 사업자로 나뉘어 흘러가요.</p>
+<div class="table-wrap"><table><thead><tr><th>칸</th><th>누가 사나</th><th>누가 파나(공개 보도 예시)</th><th>확인된 규모</th></tr></thead><tbody><tr><td>게이트웨이 안테나</td><td>위성통신 사업자</td><td>인텔리안테크(한국 위성 안테나 제조사)</td><td>게이트웨이 매출 2024년 약 300억 원 → 2025년 1,108억 원(IB토마토, 2026-04)</td></tr><tr><td>단말 전력반도체</td><td>위성 사업자의 단말 생산</td><td>파워큐브세미(DB하이텍 공정 활용)</td><td>스페이스X에 첫 양산품 공급, 물량·금액 비공개(유니콘팩토리, 2026-07-06)</td></tr><tr><td>서비스 판매</td><td>선박·기업·가정</td><td>국내 재판매 통신사업자</td><td>가정용 월 8만 7,000원·장비 55만 원(파이낸셜뉴스, 2025-12-07)</td></tr></tbody></table></div>
+<p>인텔리안테크의 2025년 연결 매출은 3,196억 원(전년 대비 24.0% 증가), 영업이익은 120억 원으로 흑자 전환했다고 보도됐어요. 다만 게이트웨이는 단가가 높고 물건을 넘긴 뒤 대금을 받기까지 기간이 긴 B2B 구조라, 같은 기사는 현금은 빠지고 빚은 늘었다는 그늘도 함께 짚었습니다(IB토마토, 2026-04-07). 파워큐브세미의 전력반도체는 스타링크 지상 단말에서 <strong>전력 변환과 보호</strong>를 맡는다고 밝혔어요(유니콘팩토리, 2026-07-06).</p>
+<blockquote>💡 전력반도체 — 전기를 켜고 끄거나 전압을 바꿔 장비에 알맞게 넣어 주는 반도체. 단말 안의 &#x27;전기 관리인&#x27;이다.</blockquote>
+<blockquote>💡 파운드리 — 다른 회사가 설계한 반도체를 대신 만들어 주는 위탁 생산 공장. DB하이텍이 한국의 대표 예시다.</blockquote>
+<p>평판 안테나 쪽 병목은 &#x27;교정&#x27;이에요. 계측 장비 회사 키사이트는 복잡한 위상배열 안테나 교정을 몇 시간~며칠에서 실험실 기준 몇 분으로 줄이는 솔루션을 내놨다고 발표했습니다(키사이트, 2023-10-03, 회사 주장).</p>
+<blockquote>💡 교정(calibration) — 수백 개 안테나 소자가 정확히 같은 박자로 움직이도록 하나하나 맞추는 작업. 오래 걸리면 생산 속도가 묶인다.</blockquote>
+<h2>5. 언제 오나요, 한계는 무엇인가요</h2>
+<p><strong>해외 서비스는 이미 왔지만, 한국 독자 위성망은 2030년 시험 위성 2기 이후에야 윤곽이 잡힌다.</strong> 한국형 위성망의 연도별 구축 일정은 아직 정해지지 않았고, 최대 14조 원대 안은 검토 단계예요(파이낸셜뉴스 2026-10-05, 뉴시스 2026-07-21).</p>
+<p>반대 근거도 분명합니다. 한 회사 망에 기대면 그 회사가 멈출 때 같이 멈춰요. 2025년 7월 24일 스타링크는 약 2시간 30분 동안 세계적으로 장애를 겪었는데, 원인은 위성이 아니라 핵심 네트워크를 운영하는 내부 소프트웨어 실패였습니다. 정점 때 접속은 평소의 약 16% 수준(NetBlocks 측정)으로 떨어졌고, 우크라이나 군 통신과 해운·광업·비상 대응 운영에도 차질이 보고됐어요(Telecoms Tech News, 2025-07-28). 한국이 &#x27;통신 주권&#x27;을 이유로 자체 위성망을 검토하는 배경도 여기에 있습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>이미 온 것</th><th>아직 안 온 것</th></tr></thead><tbody><tr><td>서비스</td><td>스타링크 한국 상용화(2025-12)</td><td>한국 독자 위성망 서비스</td></tr><tr><td>수요</td><td>선박·방재·특수 수요</td><td>일반 가정 대체(속도·가격 불리)</td></tr><tr><td>공급</td><td>한국 기업의 게이트웨이 안테나·단말 부품 수출</td><td>국내 위성용 단말 대량 수요(2030년 2기 이후)</td></tr></tbody></table></div>
+<h2>자주 묻는 질문(FAQ)</h2>
+<p><strong>Q. 스타링크로 집 인터넷을 바꾸면 더 빠른가요?</strong><br>
+A. 한국에서는 아니에요. 보도된 다운로드 속도 135Mbps는 국내 LTE 평균 178Mbps보다 느리고, 월 8만 7,000원에 장비비 55만 원이 별도입니다(파이낸셜뉴스, 2025-12-07).</p>
+<p><strong>Q. 한국에는 저궤도 통신위성이 있나요?</strong><br>
+A. 통신서비스용은 0기예요. 연구개발 사업으로 2030년 2기 발사를 계획하고 있습니다(파이낸셜뉴스, 2026-10-05).</p>
+<p><strong>Q. 위성을 안 쏘는 한국 기업도 이 시장에서 돈을 버나요?</strong><br>
+A. 땅 위 장비에서 벌어요. 게이트웨이 안테나 매출이 1년 새 약 300억 원에서 1,108억 원으로 늘어난 사례(IB토마토, 2026-04-07), 스타링크 단말에 전력반도체를 공급한 사례(유니콘팩토리, 2026-07-06)가 공개됐습니다.</p>
+<h2>오늘의 용어 정리</h2>
+<ul><li><strong>저궤도(LEO) 위성</strong> — 낮은 궤도를 빠르게 도는 위성. 여러 대가 번갈아 신호를 넘긴다.</li><li><strong>사용자 단말</strong> — 위성과 전파를 주고받는 안테나+모뎀 한 세트.</li><li><strong>게이트웨이(지상국)</strong> — 위성과 땅의 인터넷망을 잇는 대형 안테나 기지.</li><li><strong>평판 안테나(위상배열 안테나)</strong> — 전자적으로 빔 방향을 바꾸는 납작한 안테나.</li><li><strong>IRIS²</strong> — EU의 자체 보안 위성통신망 사업.</li><li><strong>리셀러(재판매 사업자)</strong> — 본사 서비스를 자기 이름으로 파는 판매사.</li><li><strong>전력반도체</strong> — 전기를 켜고 끄고 전압을 바꿔 주는 반도체.</li><li><strong>파운드리</strong> — 남이 설계한 반도체를 대신 만들어 주는 위탁 생산 공장.</li><li><strong>교정(calibration)</strong> — 안테나 소자 수백 개의 박자를 맞추는 작업.</li></ul>
+<p>하늘의 위성 경쟁은 몇몇 거대 사업자의 판이지만, 그 위성이 땅에 닿는 지점, 안테나와 부품에서는 다른 나라 공급사에도 자리가 생기고 있어요. 다음 Next Field에서도 또 다른 &#x27;다음 현장&#x27;을 가 볼게요. 여러분이라면 망이 끊기는 어떤 곳에 위성 인터넷을 가장 먼저 놓고 싶으신가요?</p>
+<h2>출처</h2>
+<p><strong>[1] 파이낸셜뉴스(2026-10-05)</strong> — 한국 통신서비스용 저궤도 위성 0기, 연구개발 총사업비 3,224억 원(국비 3,004억·민간 220억), 2030년 2기 발사, 128~512기 시나리오·256기 약 7조 4,000억 원, 해외 위성망 규모(스페이스X·원웹·아마존·궈왕·IRIS²)<br>
+→ <a href="https://www.fnnews.com/news/202610051145171025" target="_blank" rel="noopener">https://www.fnnews.com/news/202610051145171025</a></p>
+<p><strong>[2] 뉴시스(2026-07-21)</strong> — 한국형 저궤도 위성통신망 최대 512기 안 14조 2,586억 원(제작·발사·5년 운용), 2035년 완성 방침, 세 가지 안 검토 단계<br>
+→ <a href="https://www.newsis.com/view/NISX20260721_0003717232" target="_blank" rel="noopener">https://www.newsis.com/view/NISX20260721_0003717232</a></p>
+<p><strong>[3] 파이낸셜뉴스(2025-12-07)</strong> — 스타링크 한국 상용화, SK텔링크–팬오션·KT샛–KLCSM·롯데물산 계약, 가정용 월 8만 7,000원·장비 55만 원, 다운로드 135Mbps(LTE 178·5G 1,025Mbps), 기존 정지궤도 안테나 1m·100kg 이상<br>
+→ <a href="https://www.fnnews.com/news/202512070905360350" target="_blank" rel="noopener">https://www.fnnews.com/news/202512070905360350</a></p>
+<p><strong>[4] IB토마토(2026-04-07)</strong> — 인텔리안테크 게이트웨이 안테나 매출 2024년 약 300억 원 → 2025년 1,108억 원, 연결 매출 3,196억 원·영업이익 120억 원, 긴 대금 회수 구조로 현금 감소·차입 증가<br>
+→ <a href="https://newstomato.com/ReadNews.aspx?no=1296699" target="_blank" rel="noopener">https://newstomato.com/ReadNews.aspx?no=1296699</a></p>
+<p><strong>[5] 유니콘팩토리(2026-07-06)</strong> — 파워큐브세미 첫 양산 전력반도체 스페이스X 공급, 스타링크 지상 단말의 전력 변환·보호, DB하이텍 멀티 에피택시 공정, 물량·금액 비공개<br>
+→ <a href="https://www.unicornfactory.co.kr/article/2026070609193241613" target="_blank" rel="noopener">https://www.unicornfactory.co.kr/article/2026070609193241613</a></p>
+<p><strong>[6] 키사이트(2023-10-03)</strong> — 위상배열 안테나 교정 시간을 몇 시간~며칠에서 실험실 기준 몇 분으로 단축하는 솔루션 출시(회사 발표)<br>
+→ <a href="https://www.businesswire.com/news/home/20231003729706/en" target="_blank" rel="noopener">https://www.businesswire.com/news/home/20231003729706/en</a></p>
+<p><strong>[7] Telecoms Tech News(2025-07-28)</strong> — 2025년 7월 24일 스타링크 세계 장애 약 2시간 30분, 원인=핵심 네트워크 내부 소프트웨어 실패, 접속 평소 약 16%(NetBlocks), 우크라이나 군 통신·해운 등 차질<br>
+→ <a href="https://www.telecomstechnews.com/news/starlink-global-outage-software-failure-2025/" target="_blank" rel="noopener">https://www.telecomstechnews.com/news/starlink-global-outage-software-failure-2025/</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224460700983" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261101-ai-rule-number-becomes-gate/"><div class="d">← 이전 노트</div><div class="t">AI 지침에 숫자 넣을 때, 목표값이 불합격 기준선으로 바뀐 두 번의 장면</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
