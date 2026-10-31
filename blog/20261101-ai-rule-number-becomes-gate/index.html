@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 지침에 숫자 넣을 때, 목표값이 불합격 기준선으로 바뀐 두 번의 장면 | Field Notes · MakeField AI</title>
+<meta name="description" content="AI한테 제 목표를 알려 주면 판단을 더 잘 도와줄 줄 알았어요. 그런데 제가 적어 준 숫자 하나가, 그 뒤로 모든 일을 채점하는 합격선이 돼 있더라고요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261101-ai-rule-number-becomes-gate/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 지침에 숫자 넣을 때, 목표값이 불합격 기준선으로 바뀐 두 번의 장면 | Field Notes · MakeField AI">
+<meta property="og:description" content="AI한테 제 목표를 알려 주면 판단을 더 잘 도와줄 줄 알았어요. 그런데 제가 적어 준 숫자 하나가, 그 뒤로 모든 일을 채점하는 합격선이 돼 있더라고요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261101-ai-rule-number-becomes-gate/">
+<meta property="og:image" content="https://makefield.ai/blog/20261101-ai-rule-number-becomes-gate/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 지침에 숫자 넣을 때, 목표값이 불합격 기준선으로 바뀐 두 번의 장면", "datePublished": "2026-11-01", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261101-ai-rule-number-becomes-gate/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-11-01</span></div>
+<h1>AI 지침에 숫자 넣을 때, 목표값이 불합격 기준선으로 바뀐 두 번의 장면</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;AI 지침에 숫자 넣을 때 / 목표값이 불합격 기준선으로 바뀐 두 번의 장면&quot;" loading="lazy">
+<p>AI한테 제 목표를 알려 주면 판단을 더 잘 도와줄 줄 알았어요.<br>
+그런데 제가 적어 준 숫자 하나가, 그 뒤로 모든 일을 채점하는 <strong>합격선</strong>이 돼 있더라고요.</p>
+<p>결론부터 적을게요. <strong>AI 지침에 숫자를 넣을 때는 숫자만 적지 말고, 그 숫자의 역할(목표인지, 환산 단위인지)과 &#x27;무엇이 아닌지&#x27;(합격선 아님, 마감선 아님)를 같은 문장에 붙여야 합니다.</strong> 그렇게 안 하면 AI는 그 숫자를 넘느냐 못 넘느냐로 판정해 버려요. 저는 이걸 3주 간격으로 두 번 겪었습니다. (2026년 10월 4일, 10월 28일)</p>
+<p>제 본업은 장비를 돌리는 쪽이에요. 현장에선 &quot;운전 목표값&quot;과 &quot;넘으면 설비를 세우는 정지값&quot;을 따로 적는 게 기본이죠. 같은 숫자라도 어느 칸에 들어가느냐에 따라 의미가 정반대니까요.<br>
+퇴근 뒤엔 AI 비서 하나를 몇 달째 길들이고 있는데, 정작 거기에 숫자를 넣을 땐 그 구분을 안 했던 거예요..</p>
+<h2>1. 첫 책 홍보가 &quot;구조적 불합격&quot;이 된 날</h2>
+<p>첫 책을 내고 홍보 전략을 AI랑 짜던 10월 4일이었어요.<br>
+저는 예전에 AI에게 &quot;시간당 이 정도는 벌어야 한다&quot;는 기준선을 하나 알려 둔 상태였습니다. 여러 권의 책, 강의까지 합쳐서 몇 년 뒤에 닿고 싶은 장기 목표였어요.</p>
+<p>AI의 진단은 이랬어요.</p>
+<pre><code>홍보 1시간에 1권이면 기준선 1/10, 구조적 불합격
+→ 책 = 명함</code></pre>
+<p>계산은 맞았어요. 홍보에 들인 1시간을 책 1권 인세로 나누면 기준선에 한참 못 미치죠.<br>
+문제는 그 기준선이 <strong>활동 하나하나를 거르는 문턱</strong>으로 쓰였다는 거예요. 저는 그렇게 쓰라고 한 적이 없거든요.</p>
+<p>그래서 이렇게 받아쳤습니다. 원문 그대로예요.</p>
+<blockquote>&quot;티끌모아 태산이다. 책은 써놓으면 그냥 자동으로 팔린다… 2권 3권, 강의 수입까지 미래를 고려했을 때 시간당 [기준선]을 위해 이것저것 미리 준비하고 시행착오를 겪어봐야 하지 않겠는가?&quot;</blockquote>
+<p>AI는 바로 정정했어요. 기준선은 책 여러 권과 강의를 합친 <strong>연 단위 전체 합</strong>으로만 보고, 지금 홍보는 판매 엔진을 깔아 보는 수업료로 본다고요.<br>
+그리고 지침에 한 줄이 붙었습니다. &quot;개별 활동의 시간당 합격선으로 쓰지 말 것.&quot;</p>
+<img src="img/02_number_to_gate.png" alt="02_number_to_gate.png 숫자가 관문으로 바뀌는 경로 — 왼쪽 &#x27;내가 준 숫자: 장기 목표(몇 년 뒤 전체 합)&#x27; 잉크 상자 → AI가 읽은 방식 → 오른쪽 &#x27;활동마다 대보는 문턱&#x27; 빨강 상자, 그 앞에 &#x27;책 홍보 1건 → 1/10 → 불합격&#x27; 빨강 X. 아래 줄에 고친 뒤 &#x27;장기 목표 → 연 단위 전체 합으로만 비교&#x27; 초록 체크" loading="lazy">
+<h2>2. 3주 뒤, 이번엔 AI가 틀리기 전에 막았어요</h2>
+<p>10월 28일엔 AI 비서의 큰 규칙을 다시 정하는 자리가 있었어요. &quot;무엇을 위해 돈을 버는가, 언제까지 볼 건가&quot; 같은 얘기였죠.</p>
+<p>여기서도 한 번 부딪혔어요. AI가 내놓은 수정안은 &quot;지속성 우선, 결과 목표 금지&quot;였거든요. 여러 변수를 한 방향으로 접어 버린 거예요. 제 답은 이랬습니다.</p>
+<blockquote>&quot;가중치를 둬야 한다는 것임. 단일 방향으로 무조건적으로 밀어붙이는건 현대사회에 통용이 안되는 것임. 변수가 많다는 것임&quot;</blockquote>
+<p>그렇게 정리해 가다가, &quot;목적 = 60세 이후 여유 있는 삶&quot;이라는 문장으로 확정하려던 순간이었어요. 이번엔 제가 먼저 막았습니다.</p>
+<blockquote>&quot;이걸 규칙으로 넣어버리면 넌 또 60세까지만 생각할 것이다. 뒤에 수식어를 더 붙여야한다. 다만 60세까지 안된다면 80세까지 고려는 해야하므로 가변적으로 생각해야한다는 말을 덧붙여놔야 문제가 없지않을까?&quot;</blockquote>
+<p>솔직히 적으면, 이 장면에선 AI가 실제로 틀린 게 아니에요. 틀릴 게 뻔해 보여서 제가 미리 손을 쓴 거죠. 3주 전에 기준선이 문턱이 되는 걸 이미 한 번 봤으니까요.</p>
+<p>문장은 이렇게 바뀌었어요.</p>
+<pre><code>[전] 목적 = 60세 이후 여유 삶
+
+[후] 돈에 쫓기지 않는 여유 삶 (시점 가변: 이르면 60세 무렵,
+     안 되면 80세까지 고려 — 60세를 마감선·계산 기준으로
+     박지 말 것)</code></pre>
+<p>같은 문장이 들어 있던 규칙·메모리 <strong>9곳</strong>을 같이 고쳤어요. 한 군데만 고치면 나머지 8곳의 옛 문장이 계속 읽히니까요.<br>
+이 규칙 재정비가 어떻게 시작됐는지, 규칙이 <strong>누구 말인지</strong>부터 따졌던 얘기는 <a href="https://blog.naver.com/makefield_ai/224457211463" target="_blank" rel="noopener">AI 비서가 제안을 못 할 때, 규칙 414줄 중 165줄은 제 말이 아니었어요</a>에 적어 뒀어요.</p>
+<p>여러분 AI의 커스텀 지침에도 &quot;월 얼마&quot;, &quot;몇 살까지&quot;, &quot;하루 몇 시간&quot; 같은 숫자가 하나쯤 들어 있지 않나요?</p>
+<img src="img/03_two_scenes_timeline.png" alt="03_two_scenes_timeline.png 두 장면 타임라인 — 10-04 &#x27;기준선 → 책 홍보 불합격 판정&#x27;(빨강, AI가 실제로 틀림) → &#x27;합격선 아님&#x27; 한 줄 추가(초록) / 3주 간격 화살표 / 10-28 &#x27;60세 문장 확정 직전&#x27;(잉크) → 사람이 선제 차단 → &#x27;시점 가변 + 마감선 아님&#x27; 문구, 9곳 동시 수정(초록 체크)" loading="lazy">
+<h2>3. 왜 AI는 숫자를 문턱으로 읽을까요?</h2>
+<p>이날 정리한 진단은 한 줄이었어요. <strong>정할 수 없는 것을 한 점으로 박아 둔 거짓 정밀도.</strong> &quot;언제까지&quot;, &quot;시간당 얼마&quot;는 원래 범위로만 말할 수 있는데, 규칙엔 숫자 하나로 들어가 있었던 거죠.</p>
+<p>제 추측이지만, 역할이 안 적힌 숫자는 AI가 판단에 쓰기 제일 쉬운 방식, 그러니까 &quot;넘느냐 못 넘느냐&quot;로 쓰는 것 같아요.</p>
+<p>공식 문서도 비슷한 얘기를 해요. Claude 프롬프트 작성 가이드에 <strong>&quot;Providing context or motivation behind your instructions, such as explaining to Claude why such behavior is important, can give Claude more information about your goals and help it deliver more targeted responses.&quot;</strong> 라는 문장이 있어요. 지시만 주지 말고 왜 그런지까지 주라는 거죠. 그리고 이유를 붙인 예시 뒤에 <strong>&quot;Claude can generalize from the explanation.&quot;</strong>, 설명을 주면 Claude가 그걸 일반화한다고 적혀 있습니다. (platform.claude.com 프롬프트 작성 모범 사례, 2026-11-01 확인)</p>
+<p>거꾸로 보면, 이유 없이 숫자만 줬을 때 AI가 일반화할 수 있는 건 숫자 그 자체뿐이에요. 제가 겪은 게 딱 그거였고요.</p>
+<h2>4. 숫자를 빼는 대신, 숫자의 &#x27;역할&#x27;을 적었어요</h2>
+<p>떠올릴 수 있는 방법을 나란히 놓으면 이랬어요.</p>
+<div class="table-wrap"><table><thead><tr><th>방법</th><th>이번에 본 결과</th></tr></thead><tbody><tr><td>숫자를 지침에서 아예 뺀다</td><td>안 했어요. 시간을 들일지 말지 손익을 따질 땐 환산 단위가 필요하거든요</td></tr><tr><td>숫자를 그대로 둔다</td><td>10월 4일처럼 활동 하나하나가 그 숫자로 채점됨</td></tr><tr><td>금지 규칙을 한 줄 얹는다</td><td>10월 4일에 한 방법. 그런데 같은 숫자가 다른 메모리엔 &#x27;목적 후보&#x27;로 그대로 남아 있었고, 10월 28일에야 그 지위를 내렸어요</td></tr><tr><td><strong>숫자 + 역할 + 아닌 것 + 범위를 한 문장에</strong></td><td>채택. 지금은 기준선이 &#x27;손익 계산할 때 쓰는 환산 단위, 합격 기준 아님&#x27;으로 적혀 있어요</td></tr></tbody></table></div>
+<p>AI 지침에 숫자 넣을 때 제가 이제 확인하는 것들이에요.</p>
+<ul><li>[ ] 이 숫자는 목표값인가, 환산 단위인가, 넘으면 멈추는 한계값인가 — 셋 중 하나를 적었다</li><li>[ ] &quot;합격선 아님&quot;, &quot;마감선 아님&quot;처럼 이 숫자가 <strong>아닌 것</strong>을 한 줄 붙였다</li><li>[ ] 한 점 대신 범위나 시나리오로 쓸 수 있는 숫자인지 따져 봤다</li><li>[ ] 같은 숫자가 들어 있는 다른 지침·메모리를 찾아 같이 고쳤다</li></ul>
+<img src="img/04_four_slots.png" alt="04_four_slots.png 숫자 규칙 한 문장의 4칸 — &#x27;숫자&#x27;(잉크) + &#x27;역할: 목표/환산/한계&#x27;(잉크) + &#x27;아닌 것: 합격선·마감선 아님&#x27;(빨강 펜 밑줄) + &#x27;범위: 60~80세처럼 시나리오&#x27;(초록). 아래에 전(숫자만, 빨강 X) / 후(4칸, 초록 체크) 비교" loading="lazy">
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 챗GPT나 클로드 커스텀 지침에 목표 금액을 적어도 되나요?</strong><br>
+적어도 돼요. 다만 &quot;이 금액은 몇 년 뒤 전체 합 기준이고, 개별 일을 거르는 기준이 아니다&quot;처럼 역할을 같이 적는 걸 권해요. 저는 그 한 줄이 없어서 첫 책 홍보가 불합격 판정을 받았어요.</p>
+<p><strong>Q. 이미 숫자가 문턱처럼 쓰이고 있는지 어떻게 알아채나요?</strong><br>
+AI 답에 &quot;기준선의 몇 분의 1&quot;, &quot;미달&quot;, &quot;불합격&quot; 같은 말이 내가 묻지 않은 자리에서 나오면 의심해 보세요. 저는 &quot;1/10, 구조적 불합격&quot;이라는 말을 보고 반박했고, 그 자리에서 지침에 한 줄이 붙었어요.</p>
+<p><strong>Q. 범위로 적으면 AI가 오히려 판단을 못 하지 않나요?</strong><br>
+고친 지 며칠 안 돼서 효과를 숫자로 말하긴 아직 일러요. 대신 규칙 원문에 &quot;여러 시점 시나리오로 본다&quot;를 같이 적어서, AI가 한 시점 하나로만 계산하지 않게 했어요. 범위가 판단을 흐리는지는 지켜보는 중입니다.</p>
+<p>AI는 제가 준 숫자를 성실하게 지켰을 뿐이에요. 그 숫자가 목표인지 정지값인지 적어 주는 일은 결국 사람 몫이었습니다.</p>
+<hr>
+<p>AI에게 일을 맡기며 지침을 고쳐 온 과정은 makefield.ai에 한 묶음으로 정리해 가는 중입니다.</p>
+<p>태그: #AI지침에숫자넣을때 #AI커스텀지침 #커스텀지침작성법 #AI규칙파일 #AI지침작성 #챗GPT커스텀지침 #클로드지침 #프롬프트작성법 #AI프롬프트 #AI판단오류 #AI비서 #AI에이전트 #직장인AI #AI오답노트 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224460601833" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261031-virtual-commissioning/"><div class="d">← 이전 노트</div><div class="t">가상 시운전이란? 기계를 만들기 전에 컴퓨터 속 쌍둥이로 PLC를 먼저 시험하는 이유와 돈의 흐름</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
