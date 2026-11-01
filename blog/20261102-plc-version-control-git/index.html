@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLC 버전 관리란? 공장 코드에 Git이 필요해진 이유와 2,600만 달러가 몰린 돈의 흐름 | Field Notes · MakeField AI</title>
+<meta name="description" content="한 줄 요약: PLC 버전 관리는 공장 기계를 움직이는 PLC 프로그램이 언제, 누구에 의해, 어떻게 바뀌었는지 전부 기록하고, 문제가 생기면 바로 이전 상태로 되돌릴 수 있게 하는 일이에요. 이 칸을 노리는 미국 스타트업 코피아(Copia)는 2026년 6월 2,600만 달러">
+<link rel="canonical" href="https://makefield.ai/blog/20261102-plc-version-control-git/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PLC 버전 관리란? 공장 코드에 Git이 필요해진 이유와 2,600만 달러가 몰린 돈의 흐름 | Field Notes · MakeField AI">
+<meta property="og:description" content="한 줄 요약: PLC 버전 관리는 공장 기계를 움직이는 PLC 프로그램이 언제, 누구에 의해, 어떻게 바뀌었는지 전부 기록하고, 문제가 생기면 바로 이전 상태로 되돌릴 수 있게 하는 일이에요. 이 칸을 노리는 미국 스타트업 코피아(Copia)는 2026년 6월 2,600만 달러">
+<meta property="og:url" content="https://makefield.ai/blog/20261102-plc-version-control-git/">
+<meta property="og:image" content="https://makefield.ai/blog/20261102-plc-version-control-git/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "PLC 버전 관리란? 공장 코드에 Git이 필요해진 이유와 2,600만 달러가 몰린 돈의 흐름", "datePublished": "2026-11-02", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261102-plc-version-control-git/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-11-02</span></div>
+<h1>PLC 버전 관리란? 공장 코드에 Git이 필요해진 이유와 2,600만 달러가 몰린 돈의 흐름</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;PLC 버전 관리란? / 공장 코드에 Git이 필요해진 이유와 돈의 흐름&quot;" loading="lazy">
+<p><strong>한 줄 요약: PLC 버전 관리는 공장 기계를 움직이는 PLC 프로그램이 언제, 누구에 의해, 어떻게 바뀌었는지 전부 기록하고, 문제가 생기면 바로 이전 상태로 되돌릴 수 있게 하는 일이에요.</strong> 이 칸을 노리는 미국 스타트업 코피아(Copia)는 2026년 6월 2,600만 달러(약 364억 원, 1,400원/달러 단순 환산)를 투자받아 누적 투자액이 5,500만 달러가 됐습니다(TheNextWeb, 2026-06-19).</p>
+<p>&quot;공장 프로그램은 한 번 짜 넣으면 끝 아닌가?&quot; 싶은 분, 그리고 &#x27;코드 이력 관리&#x27;라는 조용한 칸에 왜 벤처 돈이 붙는지 궁금한 분을 위한 글입니다. 2026년 11월 기준 공개 자료로 풀어볼게요.</p>
+<h2>1. PLC 버전 관리란 무엇인가요</h2>
+<p><strong>PLC 버전 관리란 PLC 프로그램을 고칠 때마다 그 시점의 상태를 저장해, 바뀐 곳을 비교하고 언제든 되돌릴 수 있게 하는 관리 방식이다.</strong> 문서 작업으로 치면 &#x27;보고서_최종_진짜최종.hwp&#x27; 파일을 수십 개 쌓는 대신, 문서 하나에 모든 수정 이력이 자동으로 남는 것과 같아요.</p>
+<blockquote>💡 PLC(프로그래머블 로직 컨트롤러) — 컨베이어·모터·밸브를 정해진 순서대로 켜고 끄는 산업용 소형 컴퓨터. 기계의 &#x27;반사신경&#x27; 역할을 한다.</blockquote>
+<blockquote>💡 Git(깃) — 코드가 언제, 누가, 무엇을 바꿨는지 전부 기록하고 언제든 되돌릴 수 있게 하는 도구. 사무실 소프트웨어 개발에서는 사실상 표준이다.</blockquote>
+<p>사무실 소프트웨어 개발자에게 Git은 당연한 도구예요. 그런데 공장은 사정이 다릅니다. 기술 매체 TheNextWeb은 공장 현장의 PLC 코드 관리를 이렇게 묘사했어요. 백업이 &quot;누군가의 노트북 안, &#x27;final_backup_2&#x27;라는 이름의 폴더&quot;에 있는 식이고, 소프트웨어 팀이 쓰는 버전 이력·검증된 백업·감사 기록은 &quot;공장 현장에는 대부분 존재하지 않는다&quot;는 것이죠(TheNextWeb, 2026-06-19).</p>
+<img src="img/02_.png" alt="BEFORE(빨강) — 노트북 아이콘 박스 &#x27;final_backup_2 폴더&#x27; / USB 박스 &#x27;누가 언제 고쳤는지 모름&#x27; / 손글씨 &#x27;어느 게 진짜?&#x27; · AFTER(잉크·초록) — 저장소 박스 &#x27;변경 이력 1·2·3…&#x27; → &#x27;비교(무엇이 바뀌었나)&#x27; → &#x27;이전 버전으로 되돌리기&#x27;(초록 체크)" loading="lazy">
+<p>그림을 글로 옮기면, 위 줄은 백업 파일이 사람 손과 노트북에 흩어진 상태, 아래 줄은 모든 변경이 한 저장소에 순서대로 쌓여 비교·복구가 되는 상태예요.</p>
+<h2>2. 왜 지금 뜨나요 — 멈춤 비용, 해킹, 그리고 AI</h2>
+<p><strong>공장 코드의 버전 관리가 주목받는 이유는 세 가지다: 공장이 멈추는 비용이 크고, 제어기를 노리는 공격이 늘었고, AI가 PLC 코드를 직접 고치기 시작했다.</strong></p>
+<p>첫째, <strong>멈춤 비용</strong>입니다. 코피아가 후원한 &#x27;제1회 산업 DevOps 현황 보고서&#x27;에 따르면 응답 기업이 추정한 공장 가동 중단 비용은 시간당 평균 420만 달러였고, 가동 중단의 50%가 산업용 코드 문제와 관련돼 있었어요. 사업장이 75곳 이상인 조직에서는 이 비율이 60%를 넘었습니다. 응답 기업의 4분의 3 이상은 임시방편식 수리가 흔하다고 답했고, 코드를 검토하는 데는 한 달 평균 4시간, 디버깅에는 45시간을 쓴다고 했어요(DEVCLASS, 2024-07-09). 다만 <strong>이 조사는 버전 관리 도구를 파는 회사가 후원했고, 기사에 표본 수가 나오지 않는다</strong>는 점은 감안해야 합니다.</p>
+<blockquote>💡 산업 DevOps — 소프트웨어 업계의 개발·배포 방식(버전 관리, 자동 시험, 자동 배포)을 공장 제어 코드에 옮겨 오자는 흐름.</blockquote>
+<blockquote>💡 디버깅 — 프로그램의 오류(버그)를 찾아 고치는 일.</blockquote>
+<p>둘째, <strong>해킹</strong>입니다. TheNextWeb은 한 보고서를 인용해 제조업이 2025년 가장 많이 공격받은 산업이었다고 전하며, 공격자들이 점점 제어기 자체를 노린다고 썼어요. 그리고 &quot;탐지만으로는 공장이 복구되지 않는다&quot;고 덧붙였습니다(TheNextWeb, 2026-06-19). 공격을 알아챈 뒤 &#x27;깨끗했던 마지막 프로그램&#x27;으로 되돌리려면, 그 프로그램이 어디에 어떤 상태로 남아 있는지부터 알아야 한다는 뜻이에요.</p>
+<p>셋째, <strong>AI가 코드를 고치기 시작했다</strong>는 점입니다(이전 글 &#x27;PLC AI 에이전트란?&#x27; 참고). PLC 개발 도구 회사 CODESYS는 AI가 PLC 프로젝트를 직접 다루게 하는 MCP 서버의 공식 도움말에 &quot;CODESYS V3는 변경을 되돌리는 방법이 제한적&quot;이라며 &quot;파일 기반 프로젝트 저장과 Git 같은 버전 관리 시스템을 함께 쓸 것을 권한다&quot;고 적었어요(CODESYS 온라인 도움말, 2026). AI가 빠르게 여러 군데를 고칠수록, 무엇이 바뀌었는지 추적하고 되돌리는 장치가 먼저 있어야 한다는 얘기입니다.</p>
+<blockquote>💡 MCP(모델 컨텍스트 프로토콜) — AI가 다른 프로그램을 직접 조작하도록 잇는 표준 &#x27;플러그&#x27;. MCP 서버를 꽂으면 AI가 그 프로그램의 기능을 직접 쓸 수 있다.</blockquote>
+<h2>3. 돈의 흐름 — 누가 사고, 누가 파나요</h2>
+<p><strong>이 관리의 비용은 공장 운영사·기계 제작사·자동화 시스템 통합사가 내고, 돈은 PLC 개발 도구 회사의 유료 묶음과 여러 제조사를 아우르는 독립 플랫폼으로 나뉘어 흐른다.</strong> 이 시장만 따로 떼어 낸 독립 기관의 규모 추정치는 이번 조사에서 찾지 못했어요. 대신 투자 흐름이 방향을 보여 줍니다.</p>
+<blockquote>💡 시스템 통합사(SI) — 여러 회사 장비를 사서 묶고 프로그램을 짜서, 하나의 생산라인으로 완성해 넘겨주는 회사.</blockquote>
+<img src="img/03_.png" alt="왼쪽 &#x27;사는 쪽&#x27; 박스 3개(공장 운영사 / 기계 제작사 / 시스템 통합사) → 가운데 화살표 &#x27;구독료&#x27; → 오른쪽 &#x27;파는 쪽&#x27; 박스 2개(① PLC 개발 도구 회사의 유료 묶음 — 예: CODESYS Git / ② 여러 제조사를 아우르는 독립 플랫폼 — 예: 코피아). 아래 막대: 코피아 2026년 투자 2,600만 달러 · 누적 5,500만 달러(초록). 손글씨 &#x27;제조사마다 도구가 다르다&#x27;" loading="lazy">
+<p>판매 방식은 크게 두 갈래(개발 도구 회사·독립 플랫폼)이고, 개발 도구 회사는 다시 &#x27;기능 내장형&#x27;과 &#x27;통로형&#x27;으로 나뉘어요. 아래 기업명은 산업 구조를 설명하기 위한 예시이며 투자 판단과 무관합니다.</p>
+<div class="table-wrap"><table><thead><tr><th>파는 쪽</th><th>무엇을 파나</th><th>예시(공개 자료 기준)</th></tr></thead><tbody><tr><td>PLC 개발 도구 회사</td><td>자기 개발 도구 안에 Git 기능을 넣어 유료 묶음으로 판매</td><td>CODESYS Git — 유료 묶음 &#x27;Professional Developer Edition&#x27;의 일부, 별도 Git 설치 불필요</td></tr><tr><td>PLC 개발 도구 회사(통로형)</td><td>프로그램 일부를 파일로 내보내는 &#x27;통로&#x27;만 제공, 실제 이력 관리는 외부 도구에 맡김</td><td>지멘스 TIA Portal의 버전 관리 인터페이스(VCI)</td></tr><tr><td>독립 플랫폼</td><td>여러 제조사 프로젝트를 한 저장소에서 비교·백업·복구</td><td>코피아 — 지멘스 TIA Portal v14 SP1~v21 지원 등</td></tr></tbody></table></div>
+<p>(출처: CODESYS 스토어, DMC 블로그 2022, 코피아 기술 문서)</p>
+<blockquote>💡 TIA Portal — 지멘스 PLC·화면·드라이브를 한곳에서 프로그래밍하는 지멘스 전용 개발 도구.</blockquote>
+<p>독립 플랫폼이 투자를 받는 이유는 &#x27;제조사 쪼개짐&#x27;에 있어요. TheNextWeb은 &quot;로크웰·지멘스·슈나이더 등 제조사마다 자기만의 전용 도구를 쓴다&quot;며, 그래서 일반 IT 백업 소프트웨어로는 PLC를 보호할 수 없다고 설명했습니다. 한 공장 안에 여러 제조사 PLC와 수십 년 묵은 코드, 기록되지 않은 긴급 수정이 섞여 있다는 것이죠. 코피아의 2026년 투자는 AE 벤처스와 스쿼드라 벤처스가 공동 주도했고 지분 투자와 벤처 대출이 섞여 있으며, 투자자들은 코피아가 이 층의 &#x27;기록 시스템&#x27;이 되기를 노린다고 전했어요(TheNextWeb, 2026-06-19).</p>
+<h2>4. 누가 하고 있나요 — 제조사 안쪽과 바깥쪽</h2>
+<p><strong>지금 이 시장은 &#x27;PLC 제조사 도구 안에 넣는 쪽&#x27;과 &#x27;여러 제조사를 가로지르는 쪽&#x27;이 동시에 움직이는 구조다.</strong></p>
+<ul><li><strong>CODESYS(독일)</strong>: 수많은 PLC 제조사가 공통으로 쓰는 개발 도구예요. CODESYS Git은 개발 도구 안에서 바로 Git을 쓰게 해 주고, 여러 개발 갈래(브랜치)를 동시에 진행할 수 있으며, 팀 협업에는 Git 서버를 권합니다. 요구 사양은 CODESYS Development System V3.5.19.30 이상이에요(CODESYS 스토어).</li><li><strong>지멘스(독일)</strong>: TIA Portal V16부터 버전 관리 인터페이스(VCI)를 넣었습니다. 다만 DMC 블로그 설명에 따르면 이 기능은 프로그램 블록·PLC 태그 표·PLC 데이터 형식만 XML 파일로 내보낼 뿐 &quot;실제 버전 관리 작업은 하지 않는다&quot;고 해요. 내보낸 폴더를 Git 같은 저장소로 관리하는 건 별도 몫입니다(DMC 블로그, 2022-11-10).</li><li><strong>코피아(미국)</strong>: Git 기반 이력 관리·백업·복구에 더해, TheNextWeb 표현으로 &quot;산업 코드판 GitHub Actions&quot; 같은 자동 배포 기능까지 제공한다고 소개됐어요(TheNextWeb, 2026-06-19).</li></ul>
+<blockquote>💡 브랜치 — 원본은 그대로 두고 복사본 갈래를 만들어 따로 고치는 방법. 시험이 끝나면 원본에 합친다(머지).</blockquote>
+<blockquote>💡 GitHub Actions — 코드가 저장소에 올라가면 시험·배포 같은 작업을 자동으로 돌려 주는 서비스.</blockquote>
+<h2>5. 언제 오나요, 한계는 무엇인가요</h2>
+<p><strong>현재 버전 관리 도구의 가장 큰 한계는 &#x27;프로젝트 전체&#x27;를 깔끔하게 비교·합치기가 아직 어렵다는 점이다.</strong> 소프트웨어 코드는 글자 파일이라 한 줄씩 비교가 쉽지만, PLC 프로젝트에는 하드웨어 설정·화면(HMI)·보호된 블록처럼 글자로 깔끔하게 풀리지 않는 부분이 섞여 있어요.</p>
+<img src="img/04_.png" alt="&#x27;PLC 프로젝트&#x27; 큰 박스 안 5칸 — &#x27;프로그램 블록&#x27;·&#x27;PLC 태그 표&#x27;·&#x27;PLC 데이터 형식&#x27;(초록 체크) / &#x27;하드웨어 설정&#x27;·&#x27;화면(HMI)&#x27;(빨강 X, 손글씨 &#x27;여긴 프로젝트째 따로 백업&#x27;). 위 제목 &#x27;지멘스 VCI가 내보내는 범위&#x27;. 아래 작은 글씨 &#x27;DMC 블로그 2022 기준&#x27;" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>한계</th><th>구체적으로</th><th>출처</th></tr></thead><tbody><tr><td>내보내기 범위가 일부</td><td>지멘스 VCI는 하드웨어 설정·화면을 다루지 않아 프로젝트 전체 보관·백업이 여전히 필요</td><td>DMC 블로그(2022-11-10)</td></tr><tr><td>도구 밖 수정 금지</td><td>CODESYS는 프로젝트 일관성을 위해 저장된 파일을 CODESYS Git 밖에서 고치지 말라고 권고</td><td>CODESYS 스토어</td></tr><tr><td>보호 블록·일부 화면</td><td>코피아도 노하우 보호 블록은 표시·병합이 안 되고, WinCC Unified 화면은 상세 비교를 지원하지 않음</td><td>코피아 기술 문서</td></tr><tr><td>숫자의 출처</td><td>가동 중단 비용·원인 통계는 도구 판매사 후원 조사</td><td>DEVCLASS(2024)</td></tr></tbody></table></div>
+<blockquote>💡 HMI(사람-기계 인터페이스) — 작업자가 설비 상태를 보고 버튼을 누르는 터치 화면.</blockquote>
+<p>반대 근거도 짚어 둘게요. 지멘스·CODESYS처럼 제조사가 자기 도구 안에 버전 관리를 계속 강화하면, 여러 제조사를 묶는 독립 플랫폼의 몫은 줄어들 수 있습니다(추정 — 공개 자료를 바탕으로 한 해석). 반대로 한 공장에 여러 제조사 장비가 섞여 있는 한 &#x27;한곳에서 다 보는 도구&#x27; 수요는 남는다는 것이 투자자들의 논리예요. &#x27;언제 오나&#x27;에 대한 답은 &quot;AI 코딩 도구가 공식 문서에서 Git을 권하기 시작한 2026년부터, 버전 관리는 선택이 아니라 AI 도입의 선행 조건이 되어 가는 중&quot;에 가깝습니다(추정).</p>
+<h2>자주 묻는 질문(FAQ)</h2>
+<p><strong>Q. PLC 백업과 PLC 버전 관리는 같은 건가요?</strong><br>
+A. 다릅니다. 백업은 &#x27;어느 시점의 사본&#x27;을 보관하는 것이고, 버전 관리는 모든 변경의 순서·작성자·차이를 기록해 비교하고 골라서 되돌리는 것이에요. 버전 관리 도구는 보통 백업 기능을 포함합니다.</p>
+<p><strong>Q. 사무실에서 쓰는 Git을 그대로 PLC 프로젝트에 쓰면 안 되나요?</strong><br>
+A. PLC 프로젝트 파일은 제조사 전용 형식이 많아 일반 Git으로는 무엇이 바뀌었는지 읽기 어려워요. 그래서 CODESYS Git처럼 개발 도구에 내장된 기능이나, 지멘스 VCI처럼 일부를 글자 파일(XML)로 내보내는 통로가 따로 존재합니다.</p>
+<p><strong>Q. AI로 PLC 코드를 짜려면 버전 관리가 꼭 필요한가요?</strong><br>
+A. CODESYS는 AI 연결 기능(MCP 서버) 공식 도움말에서, 되돌리기 기능이 제한적이므로 Git 같은 버전 관리를 함께 쓰라고 권합니다. 법적 의무는 아니지만 제조사 스스로 권하는 전제 조건이에요.</p>
+<h2>오늘의 용어 정리</h2>
+<ul><li><strong>PLC 버전 관리</strong> — PLC 프로그램의 모든 변경을 기록해 비교하고 되돌릴 수 있게 하는 관리 방식.</li><li><strong>PLC</strong> — 기계를 정해진 순서대로 움직이는 산업용 소형 컴퓨터.</li><li><strong>Git</strong> — 코드 변경 이력을 기록하고 되돌리는 도구.</li><li><strong>산업 DevOps</strong> — 소프트웨어 개발 방식(버전 관리·자동 시험·자동 배포)을 공장 코드에 옮기는 흐름.</li><li><strong>디버깅</strong> — 프로그램 오류를 찾아 고치는 일.</li><li><strong>MCP</strong> — AI가 다른 프로그램을 직접 조작하도록 잇는 표준 플러그.</li><li><strong>시스템 통합사(SI)</strong> — 여러 장비를 묶어 하나의 생산라인으로 완성해 주는 회사.</li><li><strong>TIA Portal</strong> — 지멘스 전용 PLC 개발 도구.</li><li><strong>브랜치·머지</strong> — 복사본 갈래를 만들어 따로 고치기 / 다시 원본에 합치기.</li><li><strong>GitHub Actions</strong> — 저장소에 코드가 올라가면 시험·배포를 자동으로 돌리는 서비스.</li><li><strong>HMI</strong> — 작업자가 설비를 보고 조작하는 터치 화면.</li></ul>
+<p>공장 코드는 오래 살아남고, 여러 사람이 손을 대고, 이제는 AI까지 손을 댑니다. 그래서 &#x27;무엇이 바뀌었나&#x27;를 기록하는 칸에 돈이 붙기 시작한 거예요. 다음 Next Field에서는 또 다른 &#x27;다음 현장&#x27;으로 가 보겠습니다. 여러분이 다루는 파일 중, 가장 최근 버전이 어디 있는지 바로 답하기 어려운 건 무엇인가요?</p>
+<h2>출처</h2>
+<p><strong>[1] TheNextWeb(2026-06-19)</strong> — 코피아 2,600만 달러 투자 유치(AE 벤처스·스쿼드라 벤처스 공동 주도, 지분+벤처 대출), 누적 5,500만 달러, 공장 PLC 백업 실태(&#x27;final_backup_2&#x27; 폴더), 제조사별 전용 도구 문제, 제조업이 2025년 최다 피공격 산업(한 보고서 인용), &quot;탐지만으로는 공장이 복구되지 않는다&quot;, 산업 코드판 자동 배포 기능<br>
+→ <a href="https://thenextweb.com/news/copia-automation-26m-industrial-ot-code-resilience" target="_blank" rel="noopener">https://thenextweb.com/news/copia-automation-26m-industrial-ot-code-resilience</a></p>
+<p><strong>[2] DEVCLASS(2024-07-09)</strong> — 코피아 후원 &#x27;제1회 산업 DevOps 현황 보고서&#x27;: 가동 중단 비용 시간당 평균 420만 달러, 가동 중단의 50%가 산업 코드 관련(사업장 75곳 이상 60% 초과), 4분의 3 이상이 임시방편 수리 흔함, 월 코드 검토 4시간·디버깅 45시간<br>
+→ <a href="https://www.devclass.com/ci-cd/2024/07/09/daunting-downtime-stats-help-put-industrial-devops-under-spotlight/1627670" target="_blank" rel="noopener">https://www.devclass.com/ci-cd/2024/07/09/daunting-downtime-stats-help-put-industrial-devops-under-spotlight/1627670</a></p>
+<p><strong>[3] CODESYS 온라인 도움말 — MCP 서버(2026)</strong> — CODESYS V3는 변경 되돌리기가 제한적, 파일 기반 프로젝트 저장과 Git 같은 버전 관리 시스템 병행 권장<br>
+→ <a href="https://content.helpme-codesys.com/en/CODESYS%20Development%20System%20MCP%20Server/_idemcp_start_page.html" target="_blank" rel="noopener">https://content.helpme-codesys.com/en/CODESYS%20Development%20System%20MCP%20Server/_idemcp_start_page.html</a></p>
+<p><strong>[4] CODESYS 스토어 — CODESYS Git(2026)</strong> — Professional Developer Edition 묶음의 일부, 로컬 Git 설치 불필요, 여러 개발 갈래 동시 진행, 협업 시 Git 서버 권장, CODESYS Git 밖에서 파일 수정 자제, V3.5.19.30 이상 필요<br>
+→ <a href="https://store.codesys.com/de/codesys-git.html" target="_blank" rel="noopener">https://store.codesys.com/de/codesys-git.html</a></p>
+<p><strong>[5] DMC 블로그(2022-11-10)</strong> — 지멘스 TIA Portal V16에 버전 관리 인터페이스(VCI) 도입, 프로그램 블록·PLC 태그 표·PLC 데이터 형식만 XML로 내보냄, 실제 버전 관리 작업은 하지 않음, 하드웨어 설정·화면은 범위 밖이라 프로젝트 전체 백업 필요<br>
+→ <a href="https://www.dmcinfo.com/blog/18105/using-the-version-control-interface-vci-in-tia-portal-v16/" target="_blank" rel="noopener">https://www.dmcinfo.com/blog/18105/using-the-version-control-interface-vci-in-tia-portal-v16/</a></p>
+<p><strong>[6] 코피아 기술 문서 — 지멘스 TIA Portal 지원(2026)</strong> — TIA Portal v14 SP1~v21 지원, 노하우 보호 블록 표시·병합 불가, WinCC Unified 화면 상세 비교 미지원<br>
+→ <a href="https://docs.copia.io/docs/git-based-source-control/supported-vendors/siemens/s7tiaportal" target="_blank" rel="noopener">https://docs.copia.io/docs/git-based-source-control/supported-vendors/siemens/s7tiaportal</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224461718267" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261102-claude-memory-move-own-file/"><div class="d">← 이전 노트</div><div class="t">클로드 메모리 옮기는법, 챗GPT에 열심히 알려준 걸 가져갈 데가 없을 때</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
