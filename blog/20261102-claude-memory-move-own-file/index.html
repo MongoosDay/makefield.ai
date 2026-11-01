@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>클로드 메모리 옮기는법, 챗GPT에 열심히 알려준 걸 가져갈 데가 없을 때 | Field Notes · MakeField AI</title>
+<meta name="description" content="챗GPT 메모리에 제 말투, 보고서 형식, 자주 하는 실수까지 몇 달을 알려줬는데요. 막상 클로드로 옮겨 보려니 손에 쥘 게 하나도 없더라고요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261102-claude-memory-move-own-file/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="클로드 메모리 옮기는법, 챗GPT에 열심히 알려준 걸 가져갈 데가 없을 때 | Field Notes · MakeField AI">
+<meta property="og:description" content="챗GPT 메모리에 제 말투, 보고서 형식, 자주 하는 실수까지 몇 달을 알려줬는데요. 막상 클로드로 옮겨 보려니 손에 쥘 게 하나도 없더라고요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261102-claude-memory-move-own-file/">
+<meta property="og:image" content="https://makefield.ai/blog/20261102-claude-memory-move-own-file/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "클로드 메모리 옮기는법, 챗GPT에 열심히 알려준 걸 가져갈 데가 없을 때", "datePublished": "2026-11-02", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261102-claude-memory-move-own-file/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-11-02</span></div>
+<h1>클로드 메모리 옮기는법, 챗GPT에 열심히 알려준 걸 가져갈 데가 없을 때</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="01_.png 타이틀카드 — &quot;클로드 메모리 옮기는법 / 챗GPT에 열심히 알려준 걸 가져갈 데가 없을 때&quot;" loading="lazy">
+<p>챗GPT 메모리에 제 말투, 보고서 형식, 자주 하는 실수까지 몇 달을 알려줬는데요.<br>
+막상 클로드로 옮겨 보려니 손에 쥘 게 하나도 없더라고요.</p>
+<p>결론부터 말씀드릴게요. <strong>서비스 안의 메모리는 그 서비스 안에서만 살아요. 다른 AI로 가져가려면 원본을 내 PC의 글자 파일 하나로 두고, 각 서비스에는 그 파일의 사본을 넣어야 합니다.</strong> 클로드 메모리 옮기는법을 찾고 계셨다면, 옮기는 요령보다 이 순서를 바꾸는 게 먼저예요.</p>
+<p>지난 편에서는 잘 먹힌 요청문을 파일 하나에 모았어요. 이번 편에서는 그 파일을 &#x27;내 것&#x27;과 &#x27;남의 것&#x27;으로 갈라 보고, 서비스 안에 갇힌 메모리를 밖으로 꺼냅니다.</p>
+<p>저는 15년째 제조 현장에서 설비를 만지는 엔지니어고, 요즘은 그 일의 꽤 많은 부분을 AI 에이전트랑 같이 해요. 이번 얘기는 회사 일이 아니라 집 PC에서 굴리는 개인 AI 이야기입니다.</p>
+<h2>1. 쓰던 AI가 막힌 날, 왜 일이 안 멈췄나</h2>
+<p>올해 6월, 돈 내고 쓰던 AI 서비스의 최상위 모델 두 개가 정책 발표 하나로 제가 있는 지역에서 막혔어요. 그 얘기는 <a href="https://blog.naver.com/makefield_ai/224352395262" target="_blank" rel="noopener">예전 글</a>에 자세히 적었으니, 여기선 그날 손에 남은 것만 다시 세어 볼게요.</p>
+<img src="img/02_.png" alt="04_.png — 쓰던 모델이 막힌 날 손에 남은 것. 최상위 모델은 접속 차단(빨강), 작업 이력 수백 건·지식 문서 500개 넘게·판단 기준·규칙 파일은 전부 내 PC(초록)" loading="lazy">
+<pre><code>[쓰던 모델이 막힌 날, 내 손에 남은 것]
+쓰던 최상위 모델      : 접속 차단       (내 통제 밖)
+작업 이력             : 수백 건         (내 PC)
+지식 문서             : 500개 넘게      (내 PC)
+판단 기준·규칙 파일   : 그대로          (내 PC)
+→ 한 단계 아래 모델로 갈아끼우고, 다음 날 정상 업무</code></pre>
+<p>모델만 남의 것이었고 나머지는 전부 제 컴퓨터에 파일로 있었어요. 그래서 다른 모델을 꽂고 그 위에 파일을 올리니 일이 이어졌습니다. 그때 정리된 문장이 이거예요.</p>
+<blockquote>모델은 빌리는 것, 데이터와 판단은 소유하는 것.</blockquote>
+<p>그런데 한 번으로 끝나지 않더라고요.<br>
+지난 10월엔 대화 도중 답변이 서비스 쪽 안전 필터에 중간에 잘렸어요.<br>
+&quot;제약이 쓸데없이 많다&quot;는 생각이 들어서, 11월부터는 다른 회사 AI의 최고 요금제를 같이 써 보고 어느 쪽을 주력으로 할지 정하기로 했습니다.<br>
+이렇게 갈아탈지 말지 고민이라도 할 수 있는 건, 제 쪽에 쌓아 둔 게 서비스 안이 아니라 파일로 있어서예요.</p>
+<h2>2. 내 AI 자산, 세 칸으로 갈라 보기</h2>
+<p>이 장에서 만들 건 <strong>내 AI 사용을 &#x27;남의 것 / 걸쳐 있는 것 / 내 것&#x27; 세 칸으로 가른 구분표 한 장</strong>이에요. 기준은 질문 하나입니다. &quot;이 서비스가 내일 막히면, 이걸 다른 AI에서 그대로 쓸 수 있나?&quot;</p>
+<img src="img/03_.png" alt="02_.png — 3칸 구분표. 남의 것(모델·구독·서비스 안 대화 기록) / 걸쳐 있는 것(서비스 안 메모리·맞춤 지침, 빨강) / 내 것(지침 파일·요청문 파일·규칙·실수 메모, 초록). 가운데 칸에서 오른쪽 칸으로 &#x27;오늘 옮길 칸&#x27; 화살표" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>기준</th><th>예시</th></tr></thead><tbody><tr><td>남의 것(빌림)</td><td>서비스가 막히면 같이 사라지거나 못 씀</td><td>모델, 유료 구독, 서비스 안 대화 기록</td></tr><tr><td>걸쳐 있는 것</td><td>내가 만들었지만 서비스 안에 갇혀 있음</td><td>서비스 안 메모리, 맞춤 지침</td></tr><tr><td>내 것(소유)</td><td>내 PC 파일이라 어디서든 씀</td><td>지침 파일, 요청문 파일, 규칙·실수 메모</td></tr></tbody></table></div>
+<p>제일 위험한 건 가운데 칸이에요. 공은 내가 들였는데 열쇠는 남이 쥐고 있거든요.<br>
+그리고 여기서 말하는 &#x27;내 것&#x27;은 회사 보고서나 거래처 자료가 아니에요. 그건 내 PC에 있어도 회사 거죠. 제가 말하는 건 일하는 방식, 판단 기준, 같은 걸 다시 만드는 절차, 이 세 가지입니다.</p>
+<h2>3. 따라하기: 메모리를 파일로 옮기는 4단계</h2>
+<p><strong>1단계. 지금 쓰는 서비스의 메모리·맞춤 지침을 전부 복사해요.</strong><br>
+서비스 설정 화면에서 &#x27;메모리&#x27;나 &#x27;맞춤 지침(사용자 지침)&#x27; 항목을 찾아 내용을 통째로 복사합니다. 메뉴 이름과 위치는 서비스마다 다르고 자주 바뀌니, 설정 안에서 그 두 단어를 찾으시면 돼요.</p>
+<p><strong>2단계. 메모장에 붙여 넣고 <code>내_AI지침.txt</code>로 저장해요.</strong><br>
+저장 위치는 딱 한 곳으로 정합니다. 저는 AI 작업용 폴더 하나를 따로 두고 거기에만 모아요.</p>
+<pre><code>내AI/
+├─ 내_AI지침.txt      ← 서비스 메모리에서 꺼낸 내용 (원본)
+├─ 요청문_모음.md      ← 지난 편에서 만든 파일
+└─ 실수_기록.md        ← AI가 반복해서 틀린 것</code></pre>
+<p><strong>3단계. 새 AI에 그 파일을 읽혀요.</strong><br>
+Claude Code라면 폴더에서 이렇게 시작합니다.</p>
+<pre><code>cd 내AI
+claude
+&gt; 내_AI지침.txt를 읽고, 같은 내용으로 이 폴더에 CLAUDE.md를 만들어줘.
+  앞으로 이 폴더에서는 이 지침대로 일하고, 지침에 없는 건 추측하지 말고 물어봐.</code></pre>
+<p>CLAUDE.md는 Claude Code가 그 폴더에서 시작할 때마다 알아서 읽는 파일이에요(Claude Code 공식 문서 memory 항목, code.claude.com/docs/en/memory). GPT 쪽 Codex CLI는 AGENTS.md, Gemini CLI는 GEMINI.md라는 이름으로 같은 역할을 해서, 같은 내용을 파일 이름만 바꿔 두면 셋 다 똑같이 됩니다.</p>
+<p><strong>확인 방법</strong>: 창을 닫고 새로 연 다음 &quot;내 보고서 형식 규칙이 뭐야?&quot;라고 물어보세요. 파일에 적은 대로 답하면 성공이에요.</p>
+<p><strong>4단계. 구분표를 채워요.</strong></p>
+<pre><code>[내 AI 자산 구분표 — 2026-11-(  )]
+남의 것 : 쓰는 서비스 (      )  막히면 대체할 곳 (      )
+걸쳐 있는 것 → 오늘 옮김 : 서비스 메모리 → 내_AI지침.txt
+내 것 : 지침 파일 (  )개 / 요청문 (  )개 / 저장 위치 (      )</code></pre>
+<p>&#x27;막히면 대체할 곳&#x27;은 비워 두지 마세요. 다른 AI 이름 하나면 충분하고, 안 써 봤다면 무료 버전으로 한 번만 열어 보시면 됩니다.</p>
+<img src="img/04_.png" alt="03_.png — BEFORE: 서비스 A 메모리(원본) → 서비스 B로 이사, &#x27;가져갈 게 없다&#x27;(빨강) / AFTER: 내_AI지침.txt(내 PC, 원본, 초록) → Claude Code·Codex CLI·Gemini CLI에 각각 사본" loading="lazy">
+<h2>4. 여기서 이렇게 틀립니다: 서비스 안에 쌓으면 쌓인 줄 알아요</h2>
+<p><strong>증상</strong>은 이거예요. 메모리 기능에 내 정보를 열심히 알려줬는데, 다른 AI로 옮기려니 가져갈 게 없습니다.<br>
+<strong>원인</strong>은 서비스 안의 메모리가 밖으로 들고 나오기 어렵게 생겼다는 거고요.<br>
+<strong>이렇게 합니다.</strong> 중요한 건 내 PC 파일에 먼저 적고, 서비스에는 그 파일을 넣어 줍니다. 원본은 내 쪽, 서비스엔 사본이에요.</p>
+<p>저도 이걸 알면서 한 번 더 걸렸어요..<br>
+같은 Claude Code인데 컴퓨터만 윈도우에서 맥북으로 바꿨더니, 윈도우에서 몇 번이나 &quot;그건 내 환경에 없는 기능&quot;이라고 설명해 둔 걸 맥 쪽 AI가 또 권하더라고요. 그날 제가 친 말이 &quot;몇 번을 더 설명해야 하나&quot;였습니다.<br>
+원인은 AI가 스스로 적는 메모리가 컴퓨터마다 따로 저장된다는 거였어요. 지금 윈도우 쪽에만 메모리 파일이 268개 쌓여 있는데, 이건 맥으로 안 넘어갑니다. 그래서 두 대가 다 알아야 하는 규칙은 동기화 폴더 안의 CLAUDE.md로 옮겼어요. 자세한 과정은 10월 말에 쓴 &#x27;Claude Code 맥 윈도우 같이 쓸 때&#x27; 글에 적어 뒀습니다.</p>
+<p>서비스를 바꾸든 컴퓨터를 바꾸든 결론은 같았어요. <strong>원본이 어디 있느냐</strong>가 이사 가능 여부를 정합니다.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 클로드 메모리 옮기는법, 서비스끼리 바로 옮겨 주는 기능은 없나요?</strong><br>
+서비스마다 가져오기 기능이 생기기도 하고 바뀌기도 해요. 그런 기능이 있어도 원본을 내 파일로 하나 들고 있으면, 그 기능이 사라지거나 세 번째 서비스로 갈 때도 그대로 씁니다.</p>
+<p><strong>Q. 끊기는 게 무서운데, 아예 AI를 내 PC에 설치해야 하나요?</strong><br>
+저도 맥북에 오픈모델을 올려 돌려 봤는데, 가장 좋은 성능은 여전히 빌려 쓰는 쪽에 있어요. 모델은 마음 편히 빌리고, 기록과 판단 기준만 내 쪽에 두면 어떤 모델이 막혀도 다른 데 꽂아 계속 일할 수 있습니다.</p>
+<p><strong>Q. 챗GPT 메모리는 그럼 꺼야 하나요?</strong><br>
+안 꺼도 돼요. 편하게 쓰되 거기 쌓인 내용을 가끔 내 파일로 옮겨 적으면 됩니다. 원본과 사본의 순서만 지키면 돼요.</p>
+<p>지금 쓰는 AI가 내일 아침 막히면, 여러분 일은 며칠 버틸 수 있나요?<br>
+다음 편에선 이렇게 모은 파일을 매번 붙여 넣지 않고 AI가 직접 읽게 하는 첫걸음, 터미널을 딱 필요한 만큼만 다룰게요.</p>
+<p>이 글은 『직장인의 AI 오답 노트』 0-4장을 블로그용으로 다시 쓴 것입니다. 같은 증상의 원인과 점검표 전체는 책에 있어요. 종이책 예스24 <a href="https://www.yes24.com/product/goods/198006547" target="_blank" rel="noopener">https://www.yes24.com/product/goods/198006547</a> · 종이책 알라딘 <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=404397482" target="_blank" rel="noopener">https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=404397482</a> · 전자책 예스24 <a href="https://www.yes24.com/product/goods/197975471" target="_blank" rel="noopener">https://www.yes24.com/product/goods/197975471</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224461688025" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261102-automations-stopped-together-oauth-expired/"><div class="d">← 이전 노트</div><div class="t">자동화 여러 개가 한꺼번에 멈출 때, 실패 다섯 건의 원인은 로그인 만료 하나였어요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
