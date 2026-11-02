@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEMI E187이란? TSMC가 장비 납품 조건으로 건 반도체 장비 보안 표준과 돈의 흐름 | Field Notes · MakeField AI</title>
+<meta name="description" content="한 줄 요약: SEMI E187은 반도체 공장에 들어가는 장비의 컴퓨터가 갖춰야 할 최소 보안 조건을 정한 국제 업계 표준이에요. 세계 최대 파운드리 TSMC는 2023년부터 이 표준을 장비 구매 계약 요건으로 걸었고(TXOne, 2024-02), 대만 정부는 2026년 9월 ">
+<link rel="canonical" href="https://makefield.ai/blog/20261103-semi-e187-fab-equipment-cybersecurity/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SEMI E187이란? TSMC가 장비 납품 조건으로 건 반도체 장비 보안 표준과 돈의 흐름 | Field Notes · MakeField AI">
+<meta property="og:description" content="한 줄 요약: SEMI E187은 반도체 공장에 들어가는 장비의 컴퓨터가 갖춰야 할 최소 보안 조건을 정한 국제 업계 표준이에요. 세계 최대 파운드리 TSMC는 2023년부터 이 표준을 장비 구매 계약 요건으로 걸었고(TXOne, 2024-02), 대만 정부는 2026년 9월 ">
+<meta property="og:url" content="https://makefield.ai/blog/20261103-semi-e187-fab-equipment-cybersecurity/">
+<meta property="og:image" content="https://makefield.ai/blog/20261103-semi-e187-fab-equipment-cybersecurity/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "SEMI E187이란? TSMC가 장비 납품 조건으로 건 반도체 장비 보안 표준과 돈의 흐름", "datePublished": "2026-11-03", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261103-semi-e187-fab-equipment-cybersecurity/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-11-03</span></div>
+<h1>SEMI E187이란? TSMC가 장비 납품 조건으로 건 반도체 장비 보안 표준과 돈의 흐름</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;SEMI E187이란? / TSMC가 장비 납품 조건으로 건 보안 표준과 돈의 흐름&quot;" loading="lazy">
+<p><strong>한 줄 요약: SEMI E187은 반도체 공장에 들어가는 장비의 컴퓨터가 갖춰야 할 최소 보안 조건을 정한 국제 업계 표준이에요.</strong> 세계 최대 파운드리 TSMC는 2023년부터 이 표준을 장비 구매 계약 요건으로 걸었고(TXOne, 2024-02), 대만 정부는 2026년 9월 이 표준의 인증 마크까지 공개했습니다(디지털투데이, 2026-09).</p>
+<p>&quot;반도체 장비에 왜 따로 보안 표준이 필요하지?&quot; 싶은 분, 그리고 장비 한 대를 팔 때 이제 &#x27;보안 증명서&#x27;가 같이 따라가야 하는 이유와 그 사이에서 누가 돈을 버는지 궁금한 분을 위한 글입니다. 2026년 11월 기준 공개 자료로 풀어볼게요.</p>
+<h2>1. SEMI E187이란 무엇인가요</h2>
+<p><strong>SEMI E187이란 반도체 제조 장비에 들어 있는 Windows·Linux 컴퓨터가 공장 네트워크에 붙기 전에 갖춰야 할 공통 최소 보안 요건을 정한 사양이다.</strong> 업계 단체 SEMI가 2022년 초 첫 사이버보안 표준으로 E188과 함께 발행했어요(SEMI, 2022-03).</p>
+<blockquote>💡 SEMI — 전 세계 반도체 장비·소재 회사들이 모인 업계 협회. 장비끼리 말이 통하도록 규격(표준)도 만든다.</blockquote>
+<blockquote>💡 파운드리 — 다른 회사가 설계한 반도체를 대신 만들어 주는 위탁생산 공장. TSMC가 세계 1위다.</blockquote>
+<p>반도체 장비는 겉으로는 거대한 기계지만, 안에는 장비를 조종하는 일반 컴퓨터가 들어 있어요. 이 컴퓨터가 공장 네트워크에 연결되는 순간, 장비 한 대의 허술함이 공장 전체의 구멍이 됩니다. E187은 그 컴퓨터에 대해 <strong>운영체제 보안, 네트워크 보안, 엔드포인트 보호, 보안 모니터링</strong> 네 영역을 요구해요(SEMI, 2022-03). 인증기관 뷰로베리타스는 이 네 영역 아래 보안 요건이 모두 12개라고 설명합니다(Bureau Veritas, 2023-10).</p>
+<blockquote>💡 엔드포인트 보호 — 장비에 붙은 컴퓨터 한 대 한 대마다 백신·실행 통제를 거는 것. 아파트 공동현관과 별개로 집집마다 문을 잠그는 일과 같다.</blockquote>
+<blockquote>💡 보안 모니터링 — 이상한 접속이나 동작이 생기면 기록하고 알려 주는 감시 기능.</blockquote>
+<p>짝꿍 표준 E188은 &#x27;들여올 때&#x27;를 다뤄요. 장비 공급사가 출하 전에 장비와 정비용 기기를 악성코드 검사하도록 최소 검사 요건을 정하고, 취약점 판단에는 미국 국립표준기술연구소(NIST)의 공개 기준을 참고하게 했습니다(SEMI, 2022-03). 보안업체 TXOne은 E188이 신규·기존 장비의 컴퓨터, 컨트롤러, <strong>PLC</strong>까지 모든 연산 장치를 대상으로 한다고 해설해요(TXOne, 2024-02).</p>
+<blockquote>💡 PLC — 모터·밸브·로봇팔을 정해진 순서대로 움직이는 산업용 소형 컴퓨터.</blockquote>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>SEMI E187</th><th>SEMI E188</th></tr></thead><tbody><tr><td>한 줄 정의</td><td>장비 컴퓨터의 &#x27;기본 체력&#x27; 기준</td><td>장비를 들여올 때의 &#x27;검역&#x27; 기준</td></tr><tr><td>언제</td><td>장비 개발·출하 단계</td><td>납품·설치·정비 단계</td></tr><tr><td>대상</td><td>Windows·Linux가 깔린 장비 컴퓨터</td><td>컴퓨터·컨트롤러·PLC 등 연산 장치 전반</td></tr><tr><td>핵심 요구</td><td>운영체제·네트워크·엔드포인트·모니터링 4영역</td><td>출하 전 악성코드 검사·취약점 점검·네트워크 설정 문서</td></tr></tbody></table></div>
+<p>(출처: SEMI 2022-03, TXOne 2024-02)</p>
+<img src="img/02_e187_e188.png" alt="가운데 잉크 박스 &#x27;반도체 장비 속 컴퓨터(Windows·Linux)&#x27; — 위쪽 4칸 박스(①운영체제 보안 ②네트워크 보안 ③엔드포인트 보호 ④보안 모니터링, 머리표 &#x27;E187 = 출하 전 기본 체력&#x27;) / 아래 흐름 박스 3개 &#x27;출하 전 검사 → 설치 → 정비&#x27; (머리표 &#x27;E188 = 들여올 때 검역&#x27;, 초록 체크) / 손글씨 &#x27;4영역 12개 요건&#x27;" loading="lazy">
+<p>그림을 글로 옮기면, 위쪽은 장비 컴퓨터가 출하 전에 갖춰야 할 네 가지 보안(E187), 아래쪽은 장비가 공장에 들어오고 정비받을 때마다 거치는 악성코드 검사 흐름(E188)이에요.</p>
+<h2>2. 왜 생겼나요 — 장비 한 대가 공장을 멈춘 2018년</h2>
+<p><strong>E187이 생긴 직접 계기는 2018년 8월 TSMC 공장 장비가 랜섬웨어에 감염돼 생산이 멈춘 사건이다.</strong> 대만 일간지 타이베이타임스에 따르면 워너크라이(WannaCry) 웜이 TSMC 팹 장비 일부를 감염시켰고, 회사는 이 사건으로 NT$26억(약 8,429만 달러)의 손실을 장부에 반영했어요(Taipei Times, 2018-11-16). 원화로는 약 1,180억 원입니다(1,400원/달러 단순 환산).</p>
+<blockquote>💡 랜섬웨어 — 컴퓨터를 잠그거나 파일을 암호화하고 &#x27;몸값&#x27;을 요구하는 악성 프로그램.</blockquote>
+<blockquote>💡 워너크라이(WannaCry) — 2017년 전 세계로 퍼진 랜섬웨어. 패치 안 된 Windows를 타고 스스로 번지는 &#x27;웜&#x27; 방식이다.</blockquote>
+<p>미국 제조 전문 매체 매뉴팩처링다이브는 당시 감염 장비의 약 80%가 3일 안에 복구됐다고 전하면서, 첨단 칩용 12인치 웨이퍼 한 장의 가치가 최대 2만 달러(약 2,800만 원, 단순 환산)에 이른다고 설명했어요. 당시 TSMC 최고경영자는 이 사건을 두고 &quot;전적으로 우리의 과실&quot;이라고 말했습니다(Manufacturing Dive, 2025-07-24). 멈춘 시간만큼 수천만 원짜리 웨이퍼가 줄줄이 손실이 되는 구조라, 장비 보안이 곧 생산성 문제가 된 거예요.</p>
+<p>SEMI도 E187 발표문에서 &quot;2018년 한 대형 파운드리가 랜섬웨어에 감염된 기계를 조사하느라 생산을 멈춰야 했다&quot;며 이 표준을 공장 장비 공격을 막기 위한 장치로 소개했어요. E187은 TSMC와 대만 공업기술연구원(ITRI)이 이끈 태스크포스가, E188은 인텔과 장비 소프트웨어 회사 시메트릭스가 이끈 태스크포스가 만들었습니다(SEMI, 2022-03).</p>
+<img src="img/03_before_after.png" alt="BEFORE(빨강) — &#x27;새 장비 반입&#x27; → &#x27;검사 없이 공장망 연결&#x27;(빨간 테두리) → &#x27;장비 감염·생산 중단&#x27; → &#x27;NT$26억 손실&#x27;(손글씨 &#x27;2018&#x27;) · AFTER(잉크·초록) — &#x27;E187 출하 전 보안&#x27; → &#x27;E188 반입 전 악성코드 검사&#x27; → &#x27;공장망 연결&#x27;(초록 체크)" loading="lazy">
+<p>그림을 글로 옮기면, 위 줄은 검사 없이 연결된 장비가 공장 전체를 멈추게 한 2018년의 순서, 아래 줄은 출하 전 보안(E187)과 반입 전 검사(E188)를 먼저 거치게 바꾼 지금의 순서예요.</p>
+<h2>3. 돈의 흐름 — 누가 사고, 누가 파나요</h2>
+<p><strong>E187의 비용은 장비 공급사가 내고, 그 돈은 교육·컨설팅, 검증 도구, 제3자 인증·시험 세 갈래로 흘러간다.</strong> 칩 공장이 구매 계약에 E187을 넣으면, 장비를 팔고 싶은 회사는 그 요건을 맞추고 증명할 비용을 스스로 치러야 하기 때문이에요.</p>
+<p>판의 크기는 장비 시장이 보여 줍니다. SEMI는 2025년 세계 반도체 제조 장비 매출을 사상 최대인 1,330억 달러(전년 대비 13.7% 증가)로 내다봤고, 2026년 1,450억 달러, 2027년 1,560억 달러를 예측했어요. 장비 투자 상위 3개 지역으로는 중국·대만·한국을 꼽았습니다(SEMI, 2025-12-16). 다만 <strong>E187 대응 시장만 따로 떼어 낸 규모 추정치나 인증 비용 공개 가격은 이번 조사에서 찾지 못했어요.</strong></p>
+<img src="img/04_money_flow.png" alt="왼쪽 &#x27;사는 쪽&#x27; 박스 &#x27;칩 공장(예: TSMC) — 구매 계약에 E187&#x27; → 화살표 &#x27;납품 조건&#x27; → 가운데 박스 &#x27;장비 공급사(비용 부담)&#x27; → 오른쪽 &#x27;파는 쪽&#x27; 박스 3개(① 교육·컨설팅 ② 검증·스캔 도구 ③ 제3자 인증·시험소). 아래 막대 &#x27;세계 장비 매출 2025 1,330억 → 2026 1,450억 → 2027 1,560억 달러(예측)&#x27; / 손글씨 &#x27;보안 증명서가 장비와 같이 간다&#x27;" loading="lazy">
+<p>아래 기업명은 산업 구조를 설명하기 위한 예시이며 투자 판단과 무관합니다.</p>
+<div class="table-wrap"><table><thead><tr><th>파는 쪽</th><th>무엇을 파나</th><th>예시(공개 자료 기준)</th></tr></thead><tbody><tr><td>교육·컨설팅</td><td>장비사 개발팀에 요건을 풀어 주고 위험을 평가</td><td>뷰로베리타스 — 교육·컨설팅, 장비 위험 평가 제공</td></tr><tr><td>검증 도구</td><td>장비 컴퓨터의 보안 상태·악성코드를 점검하는 소프트웨어·기기</td><td>TXOne 등 OT 보안 회사</td></tr><tr><td>제3자 인증·시험</td><td>장비가 E187을 충족하는지 심사하고 증명서 발급</td><td>뷰로베리타스·인터텍(평가 서비스), 대만 인증기관 후보 TCA·UL·SGS·TÜV SÜD</td></tr></tbody></table></div>
+<p>(출처: Bureau Veritas 2023-10, Manufacturing Dive 2025-07-24, 대만 디지털발전부 공지 2026-02 게시)</p>
+<blockquote>💡 OT(운영 기술) — 공장·발전소처럼 물리 설비를 직접 움직이는 기술. 사무용 IT와 구분해 부른다.</blockquote>
+<blockquote>💡 제3자 인증 — 파는 회사도 사는 회사도 아닌 독립 기관이 &#x27;기준을 지켰다&#x27;고 확인해 주는 것. 중고차 성능점검표와 비슷하다.</blockquote>
+<h2>4. 누가 하고 있나요 — 대만이 국가 단위로 판을 깐다</h2>
+<p><strong>E187은 대만에서 칩 공장·정부·인증기관이 한 줄로 묶여 &#x27;국가 인증 제도&#x27;로 커지는 중이다.</strong></p>
+<ul><li><strong>TSMC</strong>: 2022년 E187 대응 가이드를 만들고 2023년 구매 계약 요건으로 공식 편입했어요(TXOne, 2024-02). 매뉴팩처링다이브는 E187이 핵심 구매 요건이 돼 공급망 전반에 적용되고 있다고 전했습니다(Manufacturing Dive, 2025-07-24).</li><li><strong>첫 인증 장비사</strong>: 2023년 10월 뷰로베리타스는 대만 장비사 2곳(Gallant Precision Machining, Control Technology)에 세계 첫 E187 적합 인증을 줬다고 발표했어요(Bureau Veritas, 2023-10).</li><li><strong>대만 정부</strong>: 대만 디지털발전부 장관은 이 표준이 &quot;장비 공급사에 사이버보안 인증 취득을 요구&quot;한다며, 앞으로 해외 반도체 공급망의 기본 보안 요건이 될 수 있다고 말했어요. 시험소 후보로는 대만 사이버보안기술연구소(CSTI)·ITRI 계측표준센터·AAA Security가 거론됐습니다(대만 디지털발전부, 2026-02 게시).</li><li><strong>인증 마크</strong>: 2026년 9월 4일 세미콘 타이완 보안 포럼에서 디지털발전부와 SEMI가 E187 인증 마크를 공개했어요. 한 달 앞서 8월에는 E187 시험소가 문을 열었고, 인증기관 TCA는 이르면 10월 인정을 받을 것으로 예상되며, 첫 인증 제품은 연내 나올 수 있다는 전망입니다. 델타전자 등의 장비가 이미 시험을 의뢰했다고 해요(디지털투데이, 2026-09-08).</li></ul>
+<blockquote>💡 시험소 / 인증기관 — 시험소는 실제로 장비를 검사해 결과를 내는 곳, 인증기관은 그 결과를 보고 증명서를 내주는 곳이다. 둘 다 정부가 인정한 곳이어야 한다.</blockquote>
+<h2>5. 언제 오나요, 한계는 없나요</h2>
+<p><strong>대만과 TSMC 공급망에서는 이미 &#x27;지금의 조건&#x27;이고, 그 밖에서는 아직 &#x27;번져 가는 중&#x27;이다.</strong> 반대 근거도 함께 봐야 해요.</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>확인된 것</th><th>아직 불확실한 것</th></tr></thead><tbody><tr><td>의무화</td><td>TSMC 구매 계약 요건(2023~)</td><td>다른 칩 공장의 계약 조건 공개 여부</td></tr><tr><td>인증 제도</td><td>대만 인증 마크 공개(2026-09), 시험소 개소(2026-08)</td><td>첫 인증 제품 실제 출하 시점(연내 &#x27;가능&#x27; 전망)</td></tr><tr><td>한국</td><td>장비 투자 상위 3개 지역(SEMI 2025-12)</td><td>국내 칩 대기업이 협력사에 E187을 요구하는지 — 이번 조사에서 공개 자료를 찾지 못함</td></tr><tr><td>비용</td><td>인증·평가 서비스 존재</td><td>인증 1건당 가격·소요 기간 공개 자료 없음</td></tr></tbody></table></div>
+<p>정리하면, E187은 법이 아니라 업계 표준이에요. 강제력은 &#x27;사는 쪽&#x27;의 계약서에서 나옵니다. 그래서 대만 밖으로 얼마나 빨리 퍼질지는 각국 칩 공장이 구매 조건에 넣느냐에 달려 있고, 이 부분은 아직 공개 자료로 확인되지 않았어요. 디지털 제품 전반에 보안 의무를 지우는 EU 사이버복원력법(CRA)이 &#x27;법&#x27;으로 시장 문을 잠그는 방식이라면(이전 글 &#x27;EU 사이버복원력법(CRA)이란?&#x27; 참고), E187은 &#x27;고객 계약&#x27;으로 잠그는 방식인 셈입니다.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q1. SEMI E187은 법인가요?</strong><br>
+아니요. 업계 단체 SEMI가 만든 자율 표준이에요. 다만 TSMC처럼 구매 계약에 넣으면 그 고객에게 장비를 팔려는 회사에는 사실상 필수 조건이 됩니다.</p>
+<p><strong>Q2. E187과 E188은 무엇이 다른가요?</strong><br>
+E187은 장비 컴퓨터가 출하될 때 갖춰야 할 보안 &#x27;기본 체력&#x27;(4영역 12개 요건), E188은 장비를 납품·설치·정비할 때 악성코드를 들이지 않는 &#x27;검역&#x27; 절차예요. 둘은 2022년 함께 발행됐습니다.</p>
+<p><strong>Q3. 왜 대만이 이렇게 앞서 있나요?</strong><br>
+2018년 TSMC 공장 장비 감염(NT$26억 손실)을 직접 겪었고, TSMC가 표준 제정을 이끌었기 때문이에요. 이후 정부(디지털발전부)가 인증 마크·시험소·인증기관까지 국가 제도로 묶고 있습니다.</p>
+<h2>오늘의 용어 정리</h2>
+<div class="table-wrap"><table><thead><tr><th>용어</th><th>쉬운 말</th></tr></thead><tbody><tr><td>SEMI E187</td><td>반도체 장비 컴퓨터의 최소 보안 기준(운영체제·네트워크·엔드포인트·모니터링)</td></tr><tr><td>SEMI E188</td><td>장비를 들여오고 정비할 때 악성코드를 막는 검사 기준</td></tr><tr><td>SEMI</td><td>반도체 장비·소재 업계 협회이자 표준 단체</td></tr><tr><td>파운드리</td><td>남의 설계로 반도체를 대신 만들어 주는 위탁생산 공장</td></tr><tr><td>랜섬웨어 / 워너크라이</td><td>컴퓨터를 잠그고 몸값을 요구하는 악성코드 / 2017년 퍼진 대표적 랜섬웨어</td></tr><tr><td>엔드포인트 보호</td><td>장비 컴퓨터마다 거는 백신·실행 통제</td></tr><tr><td>보안 모니터링</td><td>이상 접속·동작을 기록하고 알려 주는 감시 기능</td></tr><tr><td>PLC</td><td>기계를 순서대로 움직이는 산업용 소형 컴퓨터</td></tr><tr><td>OT(운영 기술)</td><td>물리 설비를 직접 움직이는 기술</td></tr><tr><td>제3자 인증</td><td>독립 기관이 기준 충족을 확인해 주는 것</td></tr><tr><td>시험소 / 인증기관</td><td>실제로 검사하는 곳 / 결과를 보고 증명서를 내주는 곳</td></tr></tbody></table></div>
+<p>장비 하나가 공장을 멈출 수 있다는 걸 알게 된 산업은, 결국 &#x27;장비와 함께 보안 증명서를 사는&#x27; 쪽으로 움직이고 있어요. 다음 Next Field에서는 이런 보안 요건이 칩 공장 밖, 일반 공장 기계 쪽에서는 어떤 모양으로 번지고 있는지 이어서 살펴볼게요.</p>
+<p>여러분 주변의 장비 납품 계약서에도 &#x27;보안 요건&#x27; 항목이 들어오기 시작했나요?</p>
+<p>MakeField AI는 어렵고 낯선 산업 기술을 쉬운 말로 풀어 정리합니다 → <a href="https://makefield.ai" target="_blank" rel="noopener">https://makefield.ai</a></p>
+<h2>출처</h2>
+<p><strong>[1] SEMI Standards Watch(2022-03)</strong> — E187·E188 첫 발행, E187 4대 영역, TSMC·ITRI 주도 개발, E188 출하 전 악성코드 검사 요건, 2018년 대형 파운드리 랜섬웨어 생산 중단 언급<br>
+→ <a href="https://semi.org/en/standards-watch-2022-March/SEMI-publishes-first-cybersecurity-standards" target="_blank" rel="noopener">https://semi.org/en/standards-watch-2022-March/SEMI-publishes-first-cybersecurity-standards</a></p>
+<p><strong>[2] Taipei Times(2018-11-16)</strong> — TSMC가 2018년 8월 바이러스 감염으로 NT$26억(8,429만 달러) 손실 반영, 워너크라이가 팹 장비 일부 감염<br>
+→ <a href="https://www.taipeitimes.com/News/biz/archives/2018/11/16/2003704292" target="_blank" rel="noopener">https://www.taipeitimes.com/News/biz/archives/2018/11/16/2003704292</a></p>
+<p><strong>[3] Manufacturing Dive(2025-07-24)</strong> — 감염 장비 약 80% 3일 내 복구, 첨단 칩 12인치 웨이퍼 최대 2만 달러, TSMC 계약의 E187 의무화, 뷰로베리타스·인터텍 평가 서비스<br>
+→ <a href="https://www.manufacturingdive.com/news/semiconductor-cybersecurity-tsmc-semi-consortium/753133/" target="_blank" rel="noopener">https://www.manufacturingdive.com/news/semiconductor-cybersecurity-tsmc-semi-consortium/753133/</a></p>
+<p><strong>[4] TXOne(2024-02)</strong> — TSMC 2022년 E187 가이드 작성·2023년 구매 계약 요건 편입, E188 대상(컴퓨터·컨트롤러·PLC, 신규·기존 장비)<br>
+→ <a href="https://www.txone.com/blog/how-semi-e187-and-e188-standards-elevate-cybersecurity-in-semiconductor-industry/" target="_blank" rel="noopener">https://www.txone.com/blog/how-semi-e187-and-e188-standards-elevate-cybersecurity-in-semiconductor-industry/</a></p>
+<p><strong>[5] Bureau Veritas(2023-10)</strong> — E187 4영역 12개 요건, 세계 첫 E187 적합 인증 대만 장비사 2곳, 교육·위험평가·외부 심사 서비스<br>
+→ <a href="https://www.cps.bureauveritas.com/newsroom/bv-provides-semi-e187-services" target="_blank" rel="noopener">https://www.cps.bureauveritas.com/newsroom/bv-provides-semi-e187-services</a></p>
+<p><strong>[6] 대만 디지털발전부(2026-02 게시)</strong> — 장비 공급사 인증 취득 요구, 해외 공급망 기본 요건 가능성, 인증기관·시험소 후보<br>
+→ <a href="https://moda.gov.tw/en/ADI/news/latest-news/18266" target="_blank" rel="noopener">https://moda.gov.tw/en/ADI/news/latest-news/18266</a></p>
+<p><strong>[7] 디지털투데이(2026-09-08)</strong> — 2026-09-04 E187 인증 마크 공개, 8월 시험소 개소, TCA 인정 예상 시점, 연내 첫 인증 제품 전망<br>
+→ <a href="https://www.digitaltoday.co.kr/en/view/101150/taiwan-led-semiconductor-security-standard-semi-e187-launches-first-certified-products-due-this-year" target="_blank" rel="noopener">https://www.digitaltoday.co.kr/en/view/101150/taiwan-led-semiconductor-security-standard-semi-e187-launches-first-certified-products-due-this-year</a></p>
+<p><strong>[8] SEMI(2025-12-16)</strong> — 세계 반도체 장비 매출 2025년 1,330억 달러(+13.7%), 2026년 1,450억·2027년 1,560억 달러 예측, 투자 상위 지역 중국·대만·한국<br>
+→ <a href="https://www.aap.com.au/aapreleases/cision20251216ae45080" target="_blank" rel="noopener">https://www.aap.com.au/aapreleases/cision20251216ae45080</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224462942132" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261102-plc-version-control-git/"><div class="d">← 이전 노트</div><div class="t">PLC 버전 관리란? 공장 코드에 Git이 필요해진 이유와 2,600만 달러가 몰린 돈의 흐름</div></a><a class="next" href="/blog/20261103-task-scheduler-hide-cmd-window/"><div class="d">다음 노트 →</div><div class="t">작업 스케줄러 cmd 창 숨기기, 실패가 성공으로 찍히는 함정 하나</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
