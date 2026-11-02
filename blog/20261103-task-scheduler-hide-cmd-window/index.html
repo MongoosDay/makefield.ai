@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>작업 스케줄러 cmd 창 숨기기, 실패가 성공으로 찍히는 함정 하나 | Field Notes · MakeField AI</title>
+<meta name="description" content="10월 10일 저녁 8시, 모니터에 검은 cmd 창 두 개가 떠 있었어요. 제가 띄운 게 아니라, 예약해 둔 자동 작업들이 알아서 띄운 창이었습니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261103-task-scheduler-hide-cmd-window/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="작업 스케줄러 cmd 창 숨기기, 실패가 성공으로 찍히는 함정 하나 | Field Notes · MakeField AI">
+<meta property="og:description" content="10월 10일 저녁 8시, 모니터에 검은 cmd 창 두 개가 떠 있었어요. 제가 띄운 게 아니라, 예약해 둔 자동 작업들이 알아서 띄운 창이었습니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261103-task-scheduler-hide-cmd-window/">
+<meta property="og:image" content="https://makefield.ai/blog/20261103-task-scheduler-hide-cmd-window/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "작업 스케줄러 cmd 창 숨기기, 실패가 성공으로 찍히는 함정 하나", "datePublished": "2026-11-03", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261103-task-scheduler-hide-cmd-window/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">막힐 때 해결</span><span>2026-11-03</span></div>
+<h1>작업 스케줄러 cmd 창 숨기기, 실패가 성공으로 찍히는 함정 하나</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;작업 스케줄러 cmd 창 숨기기 / 실패가 성공으로 찍히는 함정 하나&quot;" loading="lazy">
+<p>10월 10일 저녁 8시, 모니터에 검은 cmd 창 두 개가 떠 있었어요.<br>
+제가 띄운 게 아니라, 예약해 둔 자동 작업들이 알아서 띄운 창이었습니다.</p>
+<p>그래서 AI한테 이렇게 물었어요.</p>
+<blockquote>&quot;콘솔창은 왜 두개나 떠있는가? cmd창인거 같은데 좀 안뜨게 못하는가?&quot;</blockquote>
+<p>결론부터 말씀드릴게요. <strong>작업 스케줄러 cmd 창 숨기기는 vbs 파일 한 장이면 되는데, <code>Run(명령, 0, True)</code>처럼 마지막 값을 꼭 True로 둬야 합니다. False로 두면 창은 똑같이 숨지만, 작업이 실패해도 스케줄러에는 0(성공)이 찍혀요.</strong> 오늘(11월 3일) 다시 재 보니, 실패 코드 7을 내는 배치 파일이 True에선 7, False에선 0으로 나왔습니다.</p>
+<p>제 본업은 공장 자동화 쪽이에요. 기계가 &quot;돌았다&quot;는 신호보다 &quot;정상 종료&quot;라는 기록을 더 믿는 직업병이 있는 15년차고요. 이번 얘기는 회사가 아니라 집 PC에서 돌리는 개인 자동화 이야기입니다.</p>
+<h2>1. 작업 스케줄러에서 cmd 창은 왜 뜨나요?</h2>
+<p><strong>예약 작업이 &#x27;사용자가 로그온할 때만 실행&#x27; 방식으로 .bat이나 python.exe를 직접 부르면, 그 콘솔 창이 내 화면에 그대로 뜹니다.</strong> 고장이 아니라 원래 그렇게 동작하는 거예요.</p>
+<p>AI가 원인을 찾아보니 그날 떠 있던 두 개는 저녁 7시 40분, 8시에 도는 작업이었어요.<br>
+그런데 문제는 두 개가 아니었습니다. 같은 방식으로 등록된 작업이 <strong>20개</strong>였어요. 그날 저녁엔 두 개가 눈에 띄었을 뿐, 다들 자기 시간에 창을 띄웠다 닫고 있었던 거죠..</p>
+<p>백업해 둔 등록 정보를 열어 보면 이렇게 생겼어요. (경로는 일반화)</p>
+<pre><code>&lt;Principal id=&quot;Author&quot;&gt;
+  &lt;LogonType&gt;InteractiveToken&lt;/LogonType&gt;
+&lt;/Principal&gt;
+&lt;Exec&gt;
+  &lt;Command&gt;C:\scripts\run_daily_job.bat&lt;/Command&gt;
+&lt;/Exec&gt;</code></pre>
+<p><code>InteractiveToken</code>은 &quot;로그온한 사용자 화면에서 실행한다&quot;는 뜻이에요. 그 화면에서 .bat을 직접 실행하니 창이 뜨는 겁니다.</p>
+<img src="img/02_why_window.png" alt="02_why_window.png cmd 창이 뜨는 구조 — 왼쪽 &#x27;작업 스케줄러(로그온할 때만 실행)&#x27; → 가운데 &#x27;.bat / python.exe 직접 실행&#x27; → 오른쪽 &#x27;내 화면에 검은 창&#x27;(빨강), 아래 줄 AFTER: &#x27;작업 스케줄러&#x27; → &#x27;wscript + run_hidden.vbs&#x27; → &#x27;.bat (창 0)&#x27;(초록), 빨강 펜 &#x27;같은 방식 20개&#x27;" loading="lazy">
+<h2>2. 작업 스케줄러 cmd 창 숨기기 방법 4가지, 뭘 골랐나</h2>
+<p>방법은 여러 개 있어요. 그날 실제로 따져 본 것만 표로 정리하면 이렇습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>방법</th><th>창</th><th>.bat도 되나</th><th>실패 코드</th><th>그날 판단</th></tr></thead><tbody><tr><td>pythonw.exe로 실행</td><td>안 뜸</td><td>파이썬만</td><td>전달됨</td><td>이미 이 방식인 작업은 그대로 둠</td></tr><tr><td>&#x27;로그온 여부와 관계없이 실행&#x27;으로 변경</td><td>안 뜸</td><td>됨</td><td>전달됨</td><td>실행 방식 자체가 바뀜 → 보류</td></tr><tr><td>vbs로 감싸기 <code>Run(…, 0, False)</code></td><td>안 뜸</td><td>됨</td><td><strong>항상 0</strong></td><td>탈락</td></tr><tr><td>vbs로 감싸기 <code>Run(…, 0, True)</code></td><td>안 뜸</td><td>됨</td><td>전달됨</td><td><strong>채택</strong></td></tr></tbody></table></div>
+<p>두 번째 방법은 실제로 제 작업 하나가 이미 쓰고 있었어요. 그래서 그 작업은 원래부터 창이 안 떴고요. 이것까지 손대 보려다가 <strong>권한 거부</strong>로 막혔는데, 어차피 창이 안 뜨는 작업이라 그대로 뒀습니다.</p>
+<p>나머지를 vbs로 간 이유는 단순해요. 작업 20개가 부르는 .bat과 파이썬 코드는 <strong>한 줄도 안 건드리고</strong> 창만 숨기고 싶었거든요.</p>
+<h2>3. 숨기다가 &#x27;가짜 성공&#x27;을 만들 뻔한 지점</h2>
+<p>여기가 이 글의 핵심이에요.<br>
+vbs의 <code>Run</code> 함수는 세 번째 값 하나로 성격이 완전히 바뀝니다. 마이크로소프트 공식 문서(WSH Run 메서드)에 이렇게 적혀 있어요.</p>
+<blockquote>True면 프로그램이 끝날 때까지 기다렸다가 그 프로그램의 오류 코드를 돌려주고, False(기본값)면 프로그램을 시작하자마자 바로 돌아오며 자동으로 0을 돌려준다. (원문 요지 번역)</blockquote>
+<p>기본값이 False라는 게 함정이에요. 흔히 보는 &quot;cmd 창 숨기는 vbs&quot; 예시처럼 세 번째 값을 빼고 쓰면, 창은 사라지는데 작업 스케줄러의 &#x27;마지막 실행 결과&#x27;는 무조건 0이 됩니다. 작업이 터져도 초록불이요.</p>
+<p>오늘 직접 다시 재 봤습니다. <code>exit /b 7</code>로 일부러 실패하는 배치 파일 하나를 세 가지 방식으로 돌렸어요.</p>
+<pre><code>[실패 코드 7을 내는 테스트 배치, 2026-11-03 실측]
+배치 파일 직접 실행           → exit=7
+vbs Run(…, 0, True)  경유    → exit=7
+vbs Run(…, 0, False) 경유    → exit=0</code></pre>
+<p>사실 제 PC엔 False 버전 vbs가 이미 하나 있었어요. 채팅 봇을 창 없이 띄우는 용도로요. 그건 <strong>계속 떠 있어야 하는 프로그램</strong>이라 기다리면 안 되니까 False가 맞는 자리예요.<br>
+반대로 예약 작업은 <strong>끝나는 프로그램</strong>이고, 끝난 결과가 스케줄러에 남아야 합니다. 같은 &quot;창 숨기기&quot;인데 정답이 반대예요.</p>
+<p>저는 예전에 <a href="https://blog.naver.com/makefield_ai/224344665354" target="_blank" rel="noopener">성공 로그만 믿다가 실패를 한참 못 본 적</a>이 있어서, 결과 코드가 0으로 뭉개지는 건 창이 뜨는 것보다 훨씬 무섭습니다. 창은 귀찮을 뿐이지만, 가짜 0은 고장을 숨기거든요.</p>
+<img src="img/03_true_false.png" alt="03_true_false.png Run 세 번째 값 비교 — 왼쪽 칸 &#x27;Run(…, 0, False)&#x27;: 창 숨김 ✓ / 바로 리턴 / 결과 항상 0 → 스케줄러 &#x27;성공&#x27;(빨강 펜 &#x27;가짜 초록불&#x27;), 오른쪽 칸 &#x27;Run(…, 0, True)&#x27;: 창 숨김 ✓ / 끝날 때까지 대기 / 실패 7 그대로 → 스케줄러 &#x27;7&#x27;(초록 체크), 아래 &#x27;상주 프로그램=False / 끝나는 작업=True&#x27;" loading="lazy">
+<h2>4. 그대로 따라 하는 순서 (윈도우 10 기준)</h2>
+<p>제가 한 순서 그대로예요. 경로와 작업 이름만 일반화했습니다.</p>
+<p><strong>① 바꾸기 전에 작업을 XML로 백업</strong></p>
+<pre><code>Export-ScheduledTask -TaskName &quot;MyJob&quot; | Out-File C:\scripts\backup\MyJob.xml
+# 되돌릴 때
+Register-ScheduledTask -TaskName &quot;MyJob&quot; -Xml (Get-Content C:\scripts\backup\MyJob.xml -Raw) -Force</code></pre>
+<p>저는 20개를 전부 이렇게 따로 떠 놓고 시작했어요.</p>
+<p><strong>② run_hidden.vbs 저장</strong> — 실제로 쓰고 있는 파일이에요.</p>
+<pre><code>&#x27; 창 없이 실행하고, 끝날 때까지 기다렸다가 종료 코드를 그대로 돌려준다
+Dim sh, i, a, cmd
+Set sh = CreateObject(&quot;WScript.Shell&quot;)
+cmd = &quot;&quot;
+For i = 0 To WScript.Arguments.Count - 1
+  a = WScript.Arguments(i)
+  If InStr(a, &quot; &quot;) &gt; 0 Or a = &quot;&quot; Then a = &quot;&quot;&quot;&quot; &amp; a &amp; &quot;&quot;&quot;&quot;
+  cmd = cmd &amp; a &amp; &quot; &quot;
+Next
+If LCase(Right(WScript.Arguments(0), 4)) = &quot;.bat&quot; Or LCase(Right(WScript.Arguments(0), 4)) = &quot;.cmd&quot; Then
+  cmd = &quot;cmd.exe /c &quot;&quot;&quot; &amp; Trim(cmd) &amp; &quot;&quot;&quot;&quot;
+End If
+WScript.Quit sh.Run(Trim(cmd), 0, True)</code></pre>
+<p>가운데 반복문은 공백이 들어간 경로를 따옴표로 다시 감싸는 부분이고, .bat이면 <code>cmd.exe /c</code>로 한 번 더 감쌉니다.</p>
+<p><strong>③ 작업의 실행 프로그램을 wscript로 교체</strong></p>
+<pre><code>$a = New-ScheduledTaskAction -Execute &quot;wscript.exe&quot; `
+  -Argument &#x27;//B //Nologo &quot;C:\scripts\run_hidden.vbs&quot; &quot;C:\scripts\run_daily_job.bat&quot;&#x27;
+Set-ScheduledTask -TaskName &quot;MyJob&quot; -Action $a</code></pre>
+<p><code>//B</code>는 스크립트 오류 창까지 띄우지 말라는 옵션이에요. 원래 쓰던 작업 폴더(시작 위치)는 그대로 두세요.</p>
+<p><strong>④ 확인</strong> — 바꿨으면 바로 이 두 가지를 봅니다.</p>
+<ol><li>작업을 수동으로 한 번 돌려서 창이 안 뜨고, 마지막 실행 결과가 0인지</li><li>일부러 실패하는 배치로 결과 코드가 0이 아니게 찍히는지</li></ol>
+<p>그날 AI는 종료 코드 7·4·5가 그대로 넘어오는지, 공백 들어간 인자와 한글 경로가 깨지지 않는지까지 확인했어요. 실제 작업 하나를 바로 돌려 보니 마지막 결과 0, 로그 정상, 새 창 없음이었습니다.</p>
+<p>이 글을 쓰면서 시험용 작업 하나로 ①~④를 처음부터 다시 돌려 봤어요. 실패 배치를 걸었더니 스케줄러의 마지막 실행 결과에 <strong>7</strong>이 그대로 찍혔고, ①의 백업 XML로 원래 실행 파일까지 되돌아오는 것도 확인했습니다. 시험 작업은 지웠고요.</p>
+<h2>5. 3주 지나 보니 어떻게 됐나</h2>
+<p>10월 10일에 20개로 시작했는데, 11월 3일 오늘 세어 보니 이 vbs를 거쳐 도는 예약 작업이 <strong>51개</strong>예요. 새 작업은 처음부터 이 방식으로 등록한다는 규칙을 그날 같이 적어 뒀거든요.</p>
+<pre><code>[2026-11-03 실측] run_hidden.vbs 경유 작업 51개
+마지막 실행 결과 0      : 49개
+마지막 실행 결과 267009 : 2개 (지금 실행 중이라는 뜻, 오류 아님)</code></pre>
+<p>창이 사라진 대신 이제 화면으로는 아무것도 안 보이니까, 멈췄는지는 <strong>결과 코드와 로그로만</strong> 알 수 있습니다. 그래서 더더욱 True여야 했던 거고요.</p>
+<img src="img/04_after_3weeks.png" alt="04_after_3weeks.png 3주 뒤 — 왼쪽 &#x27;10/10 20개 전환&#x27;(잉크) → 오른쪽 &#x27;11/3 51개&#x27;(초록), 아래 막대 &#x27;결과 0: 49 / 267009(실행 중): 2&#x27;, 빨강 펜 &#x27;창은 안 보여도 코드는 보인다&#x27;" loading="lazy">
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. cmd 창이 아주 잠깐 깜빡이는 것도 이걸로 사라지나요?</strong><br>
+네, 창 스타일 0이 &quot;창을 숨긴다&quot;는 뜻이라 깜빡임 없이 실행됩니다. 단 wscript 자체가 실행 파일이라 작업 관리자에는 잠깐 보여요.</p>
+<p><strong>Q. 파이썬 스크립트만 돌리면 pythonw가 더 간단하지 않나요?</strong><br>
+맞아요, 파이썬만이면 pythonw.exe가 제일 간단하고 결과 코드도 그대로 남아요. 저는 .bat으로 감싼 작업이 대부분이라 하나로 통일하려고 vbs를 썼습니다.</p>
+<p><strong>Q. 이미 False 버전으로 바꿔 둔 작업이 있으면 어떻게 확인하나요?</strong><br>
+그 작업이 최근 몇 주간 마지막 실행 결과 0만 찍었다면 의심해 보세요. 일부러 실패하는 배치를 걸어 돌려 보면 바로 드러납니다. 0이 나오면 False예요.</p>
+<p>여러분 PC의 예약 작업 중에, 마지막 실행 결과가 늘 0인데 정작 결과물은 확인 안 해 본 작업이 몇 개나 있나요?</p>
+<hr>
+<p>창 없이 도는 제 PC 자동화들이 실제로 어떤 일을 하고 어떻게 넘어지는지는 makefield.ai에 정리해 두고 있어요.</p>
+<h2>출처</h2>
+<ul><li>Microsoft, Run Method (Windows Script Host) — intWindowStyle 0, bWaitOnReturn → <a href="https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/windows-scripting/d5fk67ky(v=vs.84)" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/windows-scripting/d5fk67ky(v=vs.84)</a></li></ul>
+<p>태그: #작업스케줄러cmd창숨기기 #작업스케줄러 #콘솔창안뜨게 #cmd창숨기기 #vbs숨김실행 #wscript #종료코드 #LastTaskResult #배치파일자동실행 #윈도우자동화 #예약작업 #파이썬자동실행 #PowerShell #자동화실패 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224462867365" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261102-plc-version-control-git/"><div class="d">← 이전 노트</div><div class="t">PLC 버전 관리란? 공장 코드에 Git이 필요해진 이유와 2,600만 달러가 몰린 돈의 흐름</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
