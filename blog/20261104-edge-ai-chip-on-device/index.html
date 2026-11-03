@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>엣지 AI 칩이란? 기기 안에서 AI를 돌리는 반도체, 유니콘 Hailo가 팔려 간 이유와 돈의 흐름 | Field Notes · MakeField AI</title>
+<meta name="description" content="한 줄 요약: 엣지 AI 칩은 데이터를 먼 데이터센터로 보내지 않고 카메라·로봇·기계 안에서 바로 AI 계산을 하는 저전력 반도체예요. 시장은 2025년 약 273억 달러로 추정되고(Grand View Research, 2026-06), 한국 정부는 2026~2030년 8,00">
+<link rel="canonical" href="https://makefield.ai/blog/20261104-edge-ai-chip-on-device/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="엣지 AI 칩이란? 기기 안에서 AI를 돌리는 반도체, 유니콘 Hailo가 팔려 간 이유와 돈의 흐름 | Field Notes · MakeField AI">
+<meta property="og:description" content="한 줄 요약: 엣지 AI 칩은 데이터를 먼 데이터센터로 보내지 않고 카메라·로봇·기계 안에서 바로 AI 계산을 하는 저전력 반도체예요. 시장은 2025년 약 273억 달러로 추정되고(Grand View Research, 2026-06), 한국 정부는 2026~2030년 8,00">
+<meta property="og:url" content="https://makefield.ai/blog/20261104-edge-ai-chip-on-device/">
+<meta property="og:image" content="https://makefield.ai/blog/20261104-edge-ai-chip-on-device/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "엣지 AI 칩이란? 기기 안에서 AI를 돌리는 반도체, 유니콘 Hailo가 팔려 간 이유와 돈의 흐름", "datePublished": "2026-11-04", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261104-edge-ai-chip-on-device/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-11-04</span></div>
+<h1>엣지 AI 칩이란? 기기 안에서 AI를 돌리는 반도체, 유니콘 Hailo가 팔려 간 이유와 돈의 흐름</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="타이틀카드 — &quot;엣지 AI 칩이란? / 기기 안에서 AI를 돌리는 반도체와 돈의 흐름&quot;" loading="lazy">
+<p><strong>한 줄 요약: 엣지 AI 칩은 데이터를 먼 데이터센터로 보내지 않고 카메라·로봇·기계 안에서 바로 AI 계산을 하는 저전력 반도체예요.</strong> 시장은 2025년 약 273억 달러로 추정되고(Grand View Research, 2026-06), 한국 정부는 2026~2030년 8,002.3억 원을 이 분야에 넣기로 확정했습니다(산업통상부, 2026-06-02). 그런데 같은 해, 한때 기업가치 12억 달러로 평가받던 대표 스타트업 Hailo는 직원 절반을 내보낸 뒤 미국 반도체 회사에 &#x27;실적에 영향 없는 규모&#x27;로 팔렸어요.</p>
+<p>&quot;온디바이스 AI라는 말은 많이 듣는데 그게 칩 얘기야?&quot; 싶은 분, 그리고 시장이 커진다는데 왜 칩 회사는 팔려 가는지 궁금한 분을 위한 글입니다. 2026년 11월 기준 공개 자료로 풀어볼게요.</p>
+<h2>1. 엣지 AI 칩이란 무엇인가요</h2>
+<p><strong>엣지 AI 칩이란 기기 자체(현장, edge)에 붙어 AI 추론 계산을 하는 작은 전용 반도체다.</strong> 클라우드 AI가 &#x27;먼 본사에 전화로 물어보는 방식&#x27;이라면, 엣지 AI는 &#x27;현장 직원이 그 자리에서 판단하는 방식&#x27;이에요.</p>
+<blockquote>💡 엣지(edge) — 네트워크의 &#x27;가장자리&#x27;, 즉 데이터가 처음 생기는 현장 기기 쪽을 말한다. 반대말은 중앙의 클라우드 데이터센터.</blockquote>
+<blockquote>💡 온디바이스 AI — 기기(device) 안(on)에서 도는 AI. 엣지 AI와 거의 같은 말로 쓰인다.</blockquote>
+<p>이 칩의 핵심 부품은 <strong>NPU</strong>예요. 그래픽카드(GPU)가 무엇이든 하는 만능 일꾼이라면, NPU는 AI 계산 하나만 빠르고 적은 전기로 하도록 만든 전문 일꾼입니다.</p>
+<blockquote>💡 NPU(신경망 처리 장치) — AI 계산(대량의 곱셈·덧셈)만 전문으로 하는 칩 블록. 같은 일을 GPU보다 훨씬 적은 전력으로 한다.</blockquote>
+<blockquote>💡 TOPS — 1초에 AI 계산을 몇 조(兆) 번 하는지 나타내는 성능 단위. 숫자가 클수록 빠르다.</blockquote>
+<p>감을 잡을 수 있는 실물이 있어요. 한국 팹리스 딥엑스의 DX-M1 모듈은 노트북 SSD처럼 꽂는 손가락 크기 카드인데, 1~5W 전력으로 25 TOPS를 내고 미국 부품 유통사 디지키에서 개당 180달러에 팔립니다(DigiKey 판매 목록, 2026-11 조회). 전구 하나보다 적은 전기로 카메라 영상을 실시간 분석할 수 있는 수준이에요.</p>
+<blockquote>💡 팹리스 — 공장 없이 반도체 설계만 하고 생산은 삼성·TSMC 같은 위탁생산 회사에 맡기는 회사.</blockquote>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>클라우드 AI</th><th>엣지 AI</th></tr></thead><tbody><tr><td>계산 위치</td><td>먼 데이터센터</td><td>카메라·로봇·기계 안</td></tr><tr><td>칩</td><td>대형 GPU(수백 W 이상)</td><td>NPU 내장 소형 칩(수 W)</td></tr><tr><td>강점</td><td>큰 모델, 학습</td><td>빠른 반응, 데이터가 밖으로 안 나감, 통신비 없음</td></tr><tr><td>약점</td><td>지연·통신 끊김·보안 우려</td><td>작은 모델만 들어감, 칩마다 도구가 다름</td></tr></tbody></table></div>
+<img src="img/02_cloud_vs_edge.png" alt="위 줄(빨강 테두리) &#x27;카메라·로봇&#x27; → 화살표 &#x27;영상 전송(지연·통신비)&#x27; → &#x27;먼 데이터센터 GPU&#x27; → &#x27;판단 결과 회신&#x27; / 아래 줄(잉크·초록 체크) &#x27;카메라·로봇 + 엣지 AI 칩(NPU)&#x27; → &#x27;그 자리에서 판단&#x27; / 손글씨 &#x27;데이터가 밖으로 안 나간다&#x27;" loading="lazy">
+<p>그림을 글로 옮기면, 위 줄은 영상을 데이터센터까지 보냈다가 답을 받아오는 클라우드 방식, 아래 줄은 기기 안 NPU가 그 자리에서 판단하는 엣지 방식이에요.</p>
+<h2>2. 왜 지금 뜨나요 — 로봇·카메라와 &#x27;비싸진 메모리&#x27;</h2>
+<p><strong>이 칩이 지금 주목받는 이유는 로봇·자동차·카메라처럼 &#x27;그 자리에서 판단해야 하는 기기&#x27;가 늘고, 큰 AI 장비 값은 오르고 있기 때문이다.</strong></p>
+<p>수요 쪽부터 볼게요. 시장조사사 SNS Insider는 엣지 AI 반도체 시장이 2025년 253.6억 달러에서 2035년 1,513억 달러로 연 19.6%씩 자란다고 봤고, 가장 빨리 크는 분야로 자동차를 꼽았어요(SNS Insider, 2026-07). Grand View Research는 2025년 273억 달러에서 2033년 2,918억 달러, 연 34.7% 성장을 내놨습니다(Grand View Research, 2026-06). <strong>두 전망은 성장률이 15%p, 2030년대 규모가 2배 가까이 차이 나요.</strong> 휴대폰·PC를 어디까지 포함하느냐에 따라 숫자가 크게 달라지는 &#x27;추정&#x27; 영역이라는 뜻입니다.</p>
+<p>공급 쪽에서는 가격 신호가 분명해요. 엔비디아는 책상 위 AI 컴퓨터 DGX Spark 값을 3,999달러에서 4,699달러로 올리며 &quot;업계 전반의 메모리 공급 제약을 반영했다&quot;고 밝혔습니다(엔비디아 개발자 포럼, 2026-02). 2026년 7월에는 로봇·엣지용 Jetson 보드 값을 품목별로 33~101% 올렸어요. 휴머노이드 로봇의 &#x27;두뇌&#x27;로 파는 Jetson AGX Thor 개발 키트는 3,499달러에서 5,499달러가 됐습니다(CNX Software, 2026-07-22).</p>
+<blockquote>💡 Jetson(젯슨) — 엔비디아의 로봇·엣지용 AI 컴퓨터 보드 제품군.</blockquote>
+<blockquote>💡 DGX Spark — 엔비디아의 책상 위 소형 AI 컴퓨터. 큰 메모리로 대형 언어 모델을 사무실에서 돌린다.</blockquote>
+<p>비싼 범용 장비 값이 뛸수록, 꼭 필요한 AI만 싸고 작은 전용 칩에 넣으려는 수요가 커지는 구조예요.</p>
+<h2>3. 돈의 흐름 — 누가 사고, 누가 파나요</h2>
+<p><strong>엣지 반도체 시장의 돈은 &#x27;칩을 사서 자기 제품에 넣는 완제품 회사&#x27;가 쥐고, 정부 지원금도 그 완제품 회사가 주관하는 컨소시엄으로 흐른다.</strong> 칩 회사 혼자 칩을 잘 만든다고 돈이 오지 않는 구조예요.</p>
+<p>한국 정부의 &#x27;K-온디바이스 AI반도체 기술개발&#x27; 사업이 이 구조를 잘 보여 줍니다. 2026~2030년 총 8,002.3억 원으로 자동차, IoT·가전, 기계·로봇, 방산 4대 업종을 대상으로 하고, 칩·모듈·구동 소프트웨어 개발부터 실증·양산까지 지원해요(산업통상부, 2026-06-02). 실제 선정 사례로 농기계 회사 대동이 &#x27;무인 농작업 로봇&#x27; 분야 주관기관이 됐는데, 2026년 7월부터 2030년 12월까지 총 431억 원 규모에 산학연 14개 기관이 참여합니다(MTN, 2026-09-10).</p>
+<blockquote>💡 컨소시엄 — 여러 기업·기관이 한 과제를 같이 따내려고 묶은 연합.</blockquote>
+<blockquote>💡 IoT(사물인터넷) — 센서·가전·기계가 인터넷에 연결된 것.</blockquote>
+<p>과학기술정보통신부도 국산 AI 반도체를 넣은 제품·서비스 실증에 600억 원 이상을 새로 투입해요. 과제당 15억~30억 원, 기간 1~2년 규모이고, 예시 분야는 보안·네트워크·생활·도시 안전입니다(이투데이, 2026-08).</p>
+<img src="img/03_money_flow.png" alt="맨 위 박스 &#x27;정부 지원금(산업부 8,002.3억·과기정통부 600억+)&#x27; → 아래 가운데 큰 박스 &#x27;수요기업 주관 컨소시엄(예: 대동 431억·14개 기관)&#x27; → 그 안에서 화살표가 &#x27;칩 팹리스(NPU 설계)&#x27; · &#x27;모듈·소프트웨어&#x27; · &#x27;완제품(로봇·자동차·카메라)&#x27;로 / 오른쪽 별도 박스 &#x27;대형 반도체사 유통망&#x27; ← &#x27;칩 스타트업 흡수&#x27;(빨강) / 손글씨 &#x27;칩만으로는 못 산다&#x27;" loading="lazy">
+<p>그림을 글로 옮기면, 정부 돈은 칩 회사에 바로 가지 않고 완제품 회사가 주관하는 컨소시엄을 거쳐 칩·모듈·완제품으로 나뉘어 흐르고, 판로를 못 찾은 칩 스타트업은 유통망을 가진 대형 반도체사로 흡수되는 그림이에요.</p>
+<p>아래 기업명은 산업 구조를 설명하기 위한 예시이며 투자 판단과 무관합니다.</p>
+<div class="table-wrap"><table><thead><tr><th>자리</th><th>하는 일</th><th>예시(공개 자료 기준)</th></tr></thead><tbody><tr><td>사는 쪽(완제품)</td><td>칩을 자기 기기에 넣고 실증</td><td>대동(무인 농작업 로봇 주관), 현대차그룹 로보틱스랩(배송 로봇)</td></tr><tr><td>칩 설계(팹리스)</td><td>NPU 설계, 위탁생산</td><td>딥엑스(한국), Hailo(이스라엘 → 미국 Microchip 인수)</td></tr><tr><td>대형 반도체사</td><td>기존 고객망에 AI 칩을 끼워 판매</td><td>Microchip, 텍사스 인스트루먼트(TI)</td></tr><tr><td>플랫폼·도구</td><td>모델을 칩에 옮기는 공통 도구</td><td>구글 Coral NPU(오픈소스)</td></tr></tbody></table></div>
+<p>(출처: MTN 2026-09-10, 이투데이 2026-04-14, Microchip 2026-07-24, TI, Google Research 2025-10-15)</p>
+<h2>4. 누가 하고 있나요 — 팔려 간 Hailo, 증명 중인 딥엑스</h2>
+<p><strong>대표 기업 두 곳의 2026년은 &#x27;칩 성능보다 판로와 실매출이 생존을 가른다&#x27;는 점을 보여 준다.</strong></p>
+<ul><li><strong>Hailo(이스라엘)</strong>: 2024년 4월 1.2억 달러를 추가 유치하며 기업가치 12억 달러로 평가받았어요. 그러나 2026년 6월 직원 220명 중 110명을 내보냈고, 추진하던 SPAC 상장 합병도 무산됐다는 보도가 나왔습니다(Merca2, 2026-06-09). 이어 7월 24일 미국 반도체 회사 Microchip이 인수 계약을 맺었어요. 가격은 비공개이고, Microchip은 &quot;재무 실적에 중대한 영향이 없을 것&quot;이라고 밝혔습니다. Hailo는 고객 100곳 이상, 개발자 1만 명 이상을 가져가요(Microchip, 2026-07-24). 인수는 9월 21일 마무리됐습니다(Vermögenszentrum 전재 보도, 2026-09-21).</li><li><strong>딥엑스(한국)</strong>: 1세대 칩 DX-M1을 양산 중이고, 로봇·스마트팩토리·지능형 카메라를 적용처로 내세워요. 현대차그룹 로보틱스랩과 함께 만든 AI 컴퓨팅 솔루션이 배송 로봇 등에 들어가며, 다음 칩 DX-M2는 삼성 2나노 공정으로 2027년 양산이 목표입니다(이투데이, 2026-04-14). 2026년 내부 목표는 총매출 4,000만 달러, 제품 매출 2,500만 달러 이상이고, 회사가 밝힌 누적 구매 주문은 약 660만 달러예요(데일리안, 2026-04-14). 단순 계산하면 누적 주문은 제품 매출 목표의 약 26%입니다. 실제 확정 매출은 아직 공개되지 않았어요.</li></ul>
+<blockquote>💡 SPAC(기업인수목적회사) — 상장만 해 둔 &#x27;빈 회사&#x27;와 합병해 짧은 절차로 증시에 들어가는 방법.</blockquote>
+<blockquote>💡 Microchip — 공장·자동차용 소형 제어 칩(마이크로컨트롤러)을 많이 파는 미국 반도체 회사.</blockquote>
+<img src="img/04_hailo_timeline.png" alt="왼쪽에서 오른쪽 타임라인 — &#x27;2024-04 기업가치 12억 달러&#x27;(잉크) → &#x27;2026-06 220명 중 110명 감원&#x27;(빨강) → &#x27;2026-07-24 Microchip 인수 계약·가격 비공개&#x27;(빨강) → &#x27;2026-09-21 인수 완료&#x27;(잉크) / 아래 손글씨 &#x27;고객 100곳·개발자 1만 명은 대형 유통망 안으로&#x27;" loading="lazy">
+<p>그림을 글로 옮기면, 기업가치 12억 달러였던 Hailo가 2년 남짓 만에 감원을 거쳐 대형 반도체사에 흡수되기까지의 순서예요.</p>
+<h2>5. 언제 오나요, 한계는 없나요</h2>
+<p><strong>로봇·카메라처럼 이미 칩이 들어가는 분야에서는 &#x27;지금&#x27;이고, 공장 설비 전반으로 퍼지는 데는 &#x27;모델 옮기기&#x27;라는 병목이 남아 있다.</strong></p>
+<p>가장 큰 한계는 칩마다 개발 도구가 다르다는 점이에요. 구글은 이 문제를 &quot;파편화 세금(fragmentation tax)&quot;이라고 부르며, 여러 독자 프로세서에 맞춰 모델을 컴파일·최적화하는 일이 &quot;어렵고 비싸다&quot;고 썼습니다. 그래서 2025년 10월 오픈소스 Coral NPU 플랫폼을 내놓고 Synaptics를 첫 칩 파트너로 삼았어요(Google Research, 2025-10-15).</p>
+<blockquote>💡 컴파일러·SDK — 사람이 만든 AI 모델을 특정 칩이 알아듣는 형태로 바꿔 주는 번역기와 도구 모음. 칩 회사마다 다르다.</blockquote>
+<blockquote>💡 모델 경량화(양자화) — 큰 AI 모델을 작은 칩에 넣으려고 숫자 정밀도를 낮추는 작업. 고화질 사진을 용량 작은 사진으로 줄이는 것과 비슷하다.</blockquote>
+<p>또 하나는 칩 회사들이 &#x27;공짜 AI&#x27;를 깔고 있다는 점입니다. TI는 전기차 탑재 충전기를 제어하는 바로 그 칩에서 합성곱 신경망(CNN) 모델로 전력망 고장을 감지하는 예제를 공개하며 &quot;최대 95% 정확도&quot;, &quot;추가 비용 없음&quot;을 내세워요(TI 공식 페이지). 범용 AI 기능은 칩 값에 묶여 무료가 되고, 값은 <strong>실제 현장 데이터와 그 칩에 맞춘 이식·검증 작업</strong> 쪽으로 옮겨 가는 흐름이라는 해석이 가능합니다(추정 — 공개 자료를 종합한 판단).</p>
+<blockquote>💡 CNN(합성곱 신경망) — 이미지·파형에서 패턴을 찾는 데 강한 AI 모델 구조.</blockquote>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>확인된 것</th><th>아직 불확실한 것</th></tr></thead><tbody><tr><td>시장 규모</td><td>2025년 250억~270억 달러대(조사사 2곳)</td><td>2030년대 규모, 공장 설비용만 뗀 수치</td></tr><tr><td>정부 지원</td><td>산업부 8,002.3억 원(2026~2030), 과기정통부 600억 원+</td><td>선정 과제 전체 목록·성과</td></tr><tr><td>기업</td><td>Hailo 감원 후 Microchip 인수 완료, 딥엑스 양산·목표 공개</td><td>인수 가격, 딥엑스 2026 실제 매출</td></tr><tr><td>병목</td><td>칩마다 다른 도구(구글 &#x27;파편화 세금&#x27;)</td><td>모델 이식에 고객이 실제 쓰는 비용</td></tr></tbody></table></div>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q1. 엣지 AI 칩과 온디바이스 AI 반도체는 같은 말인가요?</strong><br>
+거의 같은 말이에요. 둘 다 클라우드가 아니라 기기 안에서 AI를 계산하는 반도체를 가리키고, 정부 사업 이름에는 &#x27;온디바이스 AI반도체&#x27;가 쓰입니다.</p>
+<p><strong>Q2. 시장이 크는데 왜 Hailo 같은 회사가 팔렸나요?</strong><br>
+칩 성능만으로는 판로가 열리지 않기 때문이에요. 돈을 쥔 쪽은 칩을 자기 제품에 넣는 완제품 회사이고, 고객 100곳을 가진 스타트업도 수많은 고객망을 가진 대형 반도체사의 유통망 안에 들어가는 길을 택했습니다.</p>
+<p><strong>Q3. 엣지 칩이 클라우드 AI를 대체하나요?</strong><br>
+아니요. 큰 모델 학습과 복잡한 질문은 여전히 데이터센터 몫이고, 엣지 칩은 &#x27;그 자리에서 빨리, 데이터를 밖으로 내보내지 않고&#x27; 해야 하는 판단을 나눠 맡는 역할이에요.</p>
+<h2>오늘의 용어 정리</h2>
+<div class="table-wrap"><table><thead><tr><th>용어</th><th>쉬운 말</th></tr></thead><tbody><tr><td>엣지 AI 칩</td><td>기기 안에서 AI 계산을 하는 저전력 반도체</td></tr><tr><td>온디바이스 AI</td><td>기기 자체에서 도는 AI(엣지 AI와 거의 같은 말)</td></tr><tr><td>NPU</td><td>AI 계산 전용 칩 블록</td></tr><tr><td>TOPS</td><td>1초에 AI 계산을 몇 조 번 하는지 나타내는 단위</td></tr><tr><td>팹리스</td><td>공장 없이 설계만 하는 반도체 회사</td></tr><tr><td>Jetson / DGX Spark</td><td>엔비디아의 로봇·엣지용 AI 보드 / 책상 위 AI 컴퓨터</td></tr><tr><td>컨소시엄</td><td>한 과제를 같이 따내려고 묶은 기업·기관 연합</td></tr><tr><td>IoT</td><td>인터넷에 연결된 센서·가전·기계</td></tr><tr><td>SPAC</td><td>상장된 빈 회사와 합병해 증시에 들어가는 방법</td></tr><tr><td>컴파일러·SDK</td><td>AI 모델을 특정 칩용으로 바꾸는 번역기와 도구 모음</td></tr><tr><td>모델 경량화(양자화)</td><td>큰 모델을 작은 칩에 넣으려고 정밀도를 낮추는 작업</td></tr><tr><td>CNN</td><td>이미지·파형 패턴 인식에 강한 AI 모델 구조</td></tr></tbody></table></div>
+<p>AI는 거대한 데이터센터에서만 크는 게 아니라, 손톱만 한 칩으로 쪼개져 기계 안으로도 들어가고 있어요. 다만 그 칩 시장에서 돈을 버는 자리는 &#x27;칩을 잘 만드는 곳&#x27;보다 &#x27;칩을 실제 제품에 넣고 증명하는 곳&#x27;에 가까워 보입니다. 다음 Next Field에서는 이렇게 비싸진 AI 장비 값이 회사 안에서 AI를 직접 돌리려는 조직에 어떤 영향을 주는지 이어서 살펴볼게요.</p>
+<p>여러분 주변의 카메라나 기계에도 &#x27;AI 내장&#x27;이라는 문구가 붙기 시작했나요?</p>
+<p>MakeField AI는 어렵고 낯선 산업 기술을 쉬운 말로 풀어 정리합니다 → <a href="https://makefield.ai" target="_blank" rel="noopener">https://makefield.ai</a></p>
+<h2>출처</h2>
+<p><strong>[1] 산업통상부 보도자료(2026-06-02, KDI 경제정보센터 수록)</strong> — K-온디바이스 AI반도체 기술개발 사업 2026~2030년 8,002.3억 원 확정, 4대 업종, 풀스택 개발·실증·양산 지원<br>
+→ <a href="https://eiec.kdi.re.kr/policy/materialView.do?num=282161" target="_blank" rel="noopener">https://eiec.kdi.re.kr/policy/materialView.do?num=282161</a></p>
+<p><strong>[2] MTN(2026-09-10)</strong> — 대동 무인 농작업 로봇 분야 주관, 2026-07~2030-12, 총 431억 원, 산학연 14개 기관<br>
+→ <a href="https://news.mtn.co.kr/news-detail/2026090912363366734" target="_blank" rel="noopener">https://news.mtn.co.kr/news-detail/2026090912363366734</a></p>
+<p><strong>[3] 이투데이(2026-08)</strong> — 과기정통부 국산 AI 반도체 실증 신규 과제 600억 원 이상, 과제당 금액·기간, 보안·네트워크·생활 분야<br>
+→ <a href="https://www.etoday.co.kr/news/view/2611476" target="_blank" rel="noopener">https://www.etoday.co.kr/news/view/2611476</a></p>
+<p><strong>[4] Microchip 보도자료(2026-07-24)</strong> — Hailo 인수 확정 계약, 가격 비공개, 실적에 중대한 영향 없음, 고객 100곳·개발자 1만 명 이상<br>
+→ <a href="https://ir.microchip.com/news-events/press-releases/detail/1406/microchip-technology-signs-definitive-agreement-to-acquire-hailo" target="_blank" rel="noopener">https://ir.microchip.com/news-events/press-releases/detail/1406/microchip-technology-signs-definitive-agreement-to-acquire-hailo</a></p>
+<p><strong>[5] Vermögenszentrum 전재 보도(2026-09-21)</strong> — Microchip의 Hailo 인수 완료<br>
+→ <a href="https://www.vermoegenszentrum.ch/en/stock-exchange-and-markets/news/microchip-technology-completes-acquisition-hailo" target="_blank" rel="noopener">https://www.vermoegenszentrum.ch/en/stock-exchange-and-markets/news/microchip-technology-completes-acquisition-hailo</a></p>
+<p><strong>[6] Merca2(2026-06-09)</strong> — Hailo 직원 220명 중 110명 감원, SPAC 합병 무산, 2024년 4월 기업가치 12억 달러<br>
+→ <a href="https://www.merca2.es/2026/06/09/hailo-despidos-estrategia-startup-2393094/" target="_blank" rel="noopener">https://www.merca2.es/2026/06/09/hailo-despidos-estrategia-startup-2393094/</a></p>
+<p><strong>[7] 이투데이(2026-04-14)</strong> — 딥엑스 DX-M1 양산, 로봇·스마트팩토리 적용처, 현대차그룹 로보틱스랩 협업, DX-M2 삼성 2나노·2027 양산 목표<br>
+→ <a href="https://www.etoday.co.kr/news/view/2575625" target="_blank" rel="noopener">https://www.etoday.co.kr/news/view/2575625</a></p>
+<p><strong>[8] 데일리안(2026-04-14)</strong> — 딥엑스 2026 총매출 4,000만 달러·제품 매출 2,500만 달러 이상 목표, 누적 구매 주문 약 660만 달러<br>
+→ <a href="https://www.dailian.co.kr/news/view/1633409/" target="_blank" rel="noopener">https://www.dailian.co.kr/news/view/1633409/</a></p>
+<p><strong>[9] DigiKey 판매 목록(2026-11 조회)</strong> — DX-M1 M.2 모듈 25 TOPS·1~5W, 개당 180달러<br>
+→ <a href="https://www.digikey.com/en/product-highlight/d/deepx/dx-m1-m2-ai-acceleration-module" target="_blank" rel="noopener">https://www.digikey.com/en/product-highlight/d/deepx/dx-m1-m2-ai-acceleration-module</a></p>
+<p><strong>[10] Grand View Research 보도자료(2026-06)</strong> — 엣지 AI 칩 시장 2025년 273억 달러 → 2033년 2,918억 달러, 연 34.7%<br>
+→ <a href="https://tools.prnewswire.com/en-us/live/20813/release/20260618EN86211" target="_blank" rel="noopener">https://tools.prnewswire.com/en-us/live/20813/release/20260618EN86211</a></p>
+<p><strong>[11] SNS Insider 보도자료(2026-07)</strong> — 엣지 AI 반도체 시장 2025년 253.6억 달러 → 2035년 1,513억 달러, 연 19.6%, 자동차 최고 성장<br>
+→ <a href="https://iconnect007.com/article/150738/edge-ai-semiconductor-market-size-to-hit-15130-billion-by-2035/150735/aep" target="_blank" rel="noopener">https://iconnect007.com/article/150738/edge-ai-semiconductor-market-size-to-hit-15130-billion-by-2035/150735/aep</a></p>
+<p><strong>[12] 엔비디아 개발자 포럼(2026-02)</strong> — DGX Spark 3,999 → 4,699달러, 메모리 공급 제약 반영<br>
+→ <a href="https://forums.developer.nvidia.com/t/2-23-2026-price-change-announcement/361713" target="_blank" rel="noopener">https://forums.developer.nvidia.com/t/2-23-2026-price-change-announcement/361713</a></p>
+<p><strong>[13] CNX Software(2026-07-22)</strong> — Jetson 제품군 33~101% 인상, AGX Thor 개발 키트 3,499 → 5,499달러<br>
+→ <a href="https://www.cnx-software.com/2026/07/22/nvidia-increases-the-price-of-jetson-modules-and-devkits-by-up-to-101/" target="_blank" rel="noopener">https://www.cnx-software.com/2026/07/22/nvidia-increases-the-price-of-jetson-modules-and-devkits-by-up-to-101/</a></p>
+<p><strong>[14] Google Research(2025-10-15)</strong> — Coral NPU 오픈소스 플랫폼, &#x27;파편화 세금&#x27; 문제 제기, 첫 칩 파트너 Synaptics<br>
+→ <a href="https://research.google/blog/coral-npu-a-full-stack-platform-for-edge-ai/" target="_blank" rel="noopener">https://research.google/blog/coral-npu-a-full-stack-platform-for-edge-ai/</a></p>
+<p><strong>[15] TI 공식 페이지(엣지 AI 활용 사례)</strong> — 전기차 탑재 충전기 제어 칩에서 CNN으로 전력망 고장 감지, 최대 95% 정확도, 추가 비용 없음<br>
+→ <a href="https://www.ti.com/technologies/edge-ai/use-cases/ac-grid-fault-detection.html" target="_blank" rel="noopener">https://www.ti.com/technologies/edge-ai/use-cases/ac-grid-fault-detection.html</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224464170193" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261104-blog-image-s2-tone-style-file/"><div class="d">← 이전 노트</div><div class="t">블로그 이미지 톤 맞추기, 색 7개를 파일 하나에 정해 두니 생긴 변화</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
