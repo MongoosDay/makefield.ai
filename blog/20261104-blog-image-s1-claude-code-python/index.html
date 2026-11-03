@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>블로그 이미지 만들기, 그림 툴 대신 Claude Code에 코드로 그리게 한 이유 | Field Notes · MakeField AI</title>
+<meta name="description" content="얼마 전에 이런 문의를 받았어요. &quot;블로그 이미지들, 어떤 툴로 작업하세요?&quot;">
+<link rel="canonical" href="https://makefield.ai/blog/20261104-blog-image-s1-claude-code-python/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="블로그 이미지 만들기, 그림 툴 대신 Claude Code에 코드로 그리게 한 이유 | Field Notes · MakeField AI">
+<meta property="og:description" content="얼마 전에 이런 문의를 받았어요. &quot;블로그 이미지들, 어떤 툴로 작업하세요?&quot;">
+<meta property="og:url" content="https://makefield.ai/blog/20261104-blog-image-s1-claude-code-python/">
+<meta property="og:image" content="https://makefield.ai/blog/20261104-blog-image-s1-claude-code-python/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "블로그 이미지 만들기, 그림 툴 대신 Claude Code에 코드로 그리게 한 이유", "datePublished": "2026-11-04", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261104-blog-image-s1-claude-code-python/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">자동화 만들기</span><span>2026-11-04</span></div>
+<h1>블로그 이미지 만들기, 그림 툴 대신 Claude Code에 코드로 그리게 한 이유</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;블로그 이미지 만들기, 그림 툴 대신 코드로 / Claude Code + 파이썬 Pillow, 연재 1편&quot;" loading="lazy">
+<p>얼마 전에 이런 문의를 받았어요.<br>
+&quot;블로그 이미지들, 어떤 툴로 작업하세요?&quot;</p>
+<p>답부터 드리면 <strong>그림 툴은 안 씁니다. Claude Code한테 말로 설명하면, Claude Code가 파이썬 코드를 짜고 그 코드가 그림 파일(PNG)을 만들어요.</strong> 그림을 그리는 도구는 파이썬의 이미지 라이브러리 Pillow고요.</p>
+<p>포토샵, 캔바, 이미지 생성 AI.. 셋 다 이 블로그 그림에는 안 들어갔습니다.<br>
+지금 제 폴더엔 글마다 하나씩 만든 그림 스크립트가 141개 쌓여 있어요.</p>
+<p>질문 주신 분처럼 궁금해하실 분이 더 있을 것 같아서, 아예 3편짜리 연재로 풀어 보려고 합니다.</p>
+<ul><li>1편(이 글): 왜 코드로 그리나, 첫 그림 한 장 뽑기</li><li>2편: 그림마다 톤이 따로 노는 문제, 색 정해 두는 파일 하나</li><li>3편: 제목만 넣으면 나오는 대표 이미지(썸네일)</li></ul>
+<p>저는 제조 현장에서 자동화·제어 일을 15년째 하는 엔지니어예요. 디자인은 배운 적이 없습니다. 그래서 더 이 방식이 맞았어요.</p>
+<h2>1. 블로그 이미지를 왜 코드로 만드나요?</h2>
+<p><strong>고칠 때 편하고, 매번 같은 톤으로 나오고, 언제든 다시 만들 수 있어서예요.</strong> 그림 툴로 그린 건 그림이 원본이지만, 코드로 그린 건 코드가 원본입니다.</p>
+<p>차이는 수정할 때 드러나요.</p>
+<ul><li>상자 안 글자 하나 바꾸기: 그림 툴은 열어서 지우고 다시 쓰기 / 코드는 글자 한 줄 수정 후 다시 실행</li><li>색을 전부 바꾸기: 그림 툴은 한 장씩 / 코드는 색 정의 한 곳</li><li>반년 뒤 같은 모양 다시: 그림 툴은 기억에 의존 / 코드는 그 파일 다시 실행</li></ul>
+<p>세 번째가 생각보다 커요.<br>
+저는 10월 초에 블로그 그림 테마를 남색 설계도 느낌에서 크림색 종이 느낌으로 통째로 바꿨는데, 코드가 남아 있었기 때문에 가능한 일이었습니다. 이 얘기는 2편에서 자세히 할게요.</p>
+<img src="img/02_flow.png" alt="02_flow.png 말로 설명 → Claude Code가 .py 작성 → 실행=PNG → 내 눈으로 열어 보기(빨강), 아래 되돌림 화살표 &quot;글자 키워&quot; &quot;빨강은 한 곳만&quot;, 빨간 펜 &quot;마음에 들 때까지 돈다&quot;" loading="lazy">
+<h2>2. 실제로는 어떻게 시키나요?</h2>
+<p><strong>그림을 말로 설명하고, 결과 파일을 열어 보고, 고칠 점을 다시 말로 해요.</strong> 저는 코드를 직접 쓰지 않습니다. 읽을 줄만 대충 알면 충분해요.</p>
+<p>예를 들면 이렇게 말해요. (이 글을 위해 만든 예시예요)</p>
+<pre><code>가로 900 세로 300짜리 PNG를 파이썬 Pillow로 만들어 줘.
+종이색 바탕에 둥근 상자 3개를 왼쪽에서 오른쪽으로:
+&quot;자료 모으기&quot; → &quot;AI에게 초안&quot; → &quot;원문과 대조&quot;.
+마지막 상자만 빨간색으로 강조하고, 한글 글꼴은 맑은 고딕 굵게.
+코드는 .py 파일로 저장하고 실행해서 demo.png를 만들어 줘.</code></pre>
+<p>그러면 Claude Code가 아래 같은 파일을 만들고, 직접 실행까지 합니다.<br>
+오늘 이 예시를 그대로 시켜서 나온 코드예요.</p>
+<pre><code>from PIL import Image, ImageDraw, ImageFont
+
+W, H = 900, 300
+img = Image.new(&quot;RGB&quot;, (W, H), (245, 241, 232))          # 종이색 바탕
+d = ImageDraw.Draw(img)
+font = ImageFont.truetype(r&quot;C:\Windows\Fonts\malgunbd.ttf&quot;, 26)  # 한글 글꼴 &#x27;파일&#x27;을 직접 지정
+
+steps = [&quot;자료 모으기&quot;, &quot;AI에게 초안&quot;, &quot;원문과 대조&quot;]
+for i, s in enumerate(steps):
+    x = 60 + i * 290
+    color = (200, 40, 40) if i == 2 else (30, 30, 30)     # 강조는 한 칸만 빨강
+    d.rounded_rectangle([x, 110, x + 220, 190], radius=12, outline=color, width=4, fill=(255, 255, 255))
+    tw = d.textlength(s, font=font)
+    d.text((x + (220 - tw) / 2, 135), s, font=font, fill=color)
+    if i &lt; 2:
+        d.line([(x + 230, 150), (x + 280, 150)], fill=(30, 30, 30), width=4)
+
+img.save(&quot;demo.png&quot;)</code></pre>
+<p>실행 결과가 이거예요.</p>
+<img src="img/03_demo_result.png" alt="03_demo_result.png 위 코드 실행 결과 — 종이색 바탕에 상자 3개, 마지막 &quot;원문과 대조&quot;만 빨강" loading="lazy">
+<p>보시면 화살표 머리가 없죠. 처음엔 이렇게 2% 부족하게 나와요.<br>
+그럼 &quot;연결선 끝에 화살표 머리 붙여 줘&quot; 한 줄을 더 말하면 됩니다. 이 왕복이 이 방식의 전부예요.</p>
+<p>Claude Code 말고 Codex CLI나 Gemini CLI처럼 내 PC 파일을 직접 만들고 실행할 수 있는 AI면 같은 방식으로 됩니다. 채팅창에서도 코드는 받을 수 있지만, 그땐 복사해서 내가 실행해야 하니 왕복이 한 단계 늘어요.</p>
+<h2>3. 처음에 거의 다 겪는 실패, 한글이 네모로 나와요</h2>
+<p><strong>한글 글꼴 파일을 지정하지 않으면 한글이 전부 네모로 찍힙니다.</strong> 위 코드에서 <code>truetype(...)</code> 줄이 그걸 막는 줄이에요.</p>
+<p>오늘 일부러 글꼴 지정을 빼고 돌려 봤어요. Pillow 12.1.1 기준입니다.</p>
+<pre><code>d.text((30, 35), &quot;Hello 블로그 이미지&quot;, fill=(0, 0, 0), font_size=44)   # 글꼴 파일 없이 크기만</code></pre>
+<img src="img/04_font_fail.png" alt="04_font_fail.png 실제 결과 — &quot;Hello&quot;는 나오고 한글 자리는 전부 네모, 빨간 펜 &quot;영어만 나오고 한글은 네모&quot;" loading="lazy">
+<p>영어는 멀쩡한데 한글만 네모예요. 기본 글꼴에 한글 글자가 없어서 그렇습니다.</p>
+<p>그런데 이 실수, 저도 이 글 그림 만들면서 또 했어요..<br>
+그림 위에 &quot;실제 결과&quot;라는 작은 빨간 표식을 붙였는데, 그 표식 글꼴이 영문 전용이라 거기만 네모가 떴습니다. 본문 글꼴은 신경 썼는데 작은 표식 글꼴까지는 안 본 거죠. 결과 파일을 열어 보고서야 알았고, &quot;그 표식만 한글 글꼴로 바꿔 줘&quot;로 고쳤어요.</p>
+<p>그래서 제가 지키는 규칙은 하나예요. <strong>AI가 &quot;만들었습니다&quot;라고 해도 PNG는 반드시 내 눈으로 열어 본다.</strong> 코드가 에러 없이 끝나도 그림이 맞다는 보장은 없거든요.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 블로그 이미지 만들기, 디자인 감각이 없어도 되나요?</strong><br>
+저도 없어요. 대신 &quot;빨강은 한 곳만&quot;, &quot;글씨는 두 종류만&quot; 같은 규칙을 정해 두고 매번 그 규칙대로 그리게 합니다. 감각 대신 규칙이에요. 그 규칙 파일을 2편에서 보여 드릴게요.</p>
+<p><strong>Q. 맥에서도 되나요?</strong><br>
+돼요. 글꼴 파일 위치만 달라요. 맥에선 &quot;이 컴퓨터에 있는 한글 글꼴 파일 찾아서 써 줘&quot;라고 시키면 Claude Code가 찾아서 경로를 넣습니다.</p>
+<p><strong>Q. 캔바보다 나은가요?</strong><br>
+용도가 달라요. 사진 보정이나 일러스트는 그림 툴이 훨씬 낫습니다. 코드는 상자·화살표·표·흐름도처럼 &quot;구조를 보여 주는 그림&quot;에 강해요. 제 블로그 그림이 거의 다 그런 종류라 코드로 갔습니다.</p>
+<p>다음 편에선 지난 글 125편의 그림을 새 톤으로 바꾸다가, 결과물을 보고 제가 &quot;색을 너무 아무거나 쓴 거 아니냐&quot;고 한 이야기와 그 뒤로 만든 색 규칙 파일을 보여 드릴게요.</p>
+<p>이 연재는 makefield.ai 블로그에도 같이 올라가요.</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224464091925" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261103-task-scheduler-hide-cmd-window/"><div class="d">← 이전 노트</div><div class="t">작업 스케줄러 cmd 창 숨기기, 실패가 성공으로 찍히는 함정 하나</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
