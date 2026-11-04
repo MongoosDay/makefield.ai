@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>국가망보안체계(N2SF)란? 망분리가 풀리면 공공기관은 생성형 AI를 어디까지 쓰나, 45억 원 돈의 흐름 | Field Notes · MakeField AI</title>
+<meta name="description" content="한 줄 요약: 국가망보안체계(N2SF)는 공공기관 업무망을 인터넷과 통째로 끊던 &#x27;망분리&#x27;를 버리고, 정보를 기밀(C)·민감(S)·공개(O) 세 등급으로 나눠 등급마다 보안을 다르게 거는 새 규칙이에요. 공개 등급(O) 정보는 생성형 AI와 클라우드를 쓸 수 있게 되고, 202">
+<link rel="canonical" href="https://makefield.ai/blog/20261105-n2sf-national-network-security-framework/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="국가망보안체계(N2SF)란? 망분리가 풀리면 공공기관은 생성형 AI를 어디까지 쓰나, 45억 원 돈의 흐름 | Field Notes · MakeField AI">
+<meta property="og:description" content="한 줄 요약: 국가망보안체계(N2SF)는 공공기관 업무망을 인터넷과 통째로 끊던 &#x27;망분리&#x27;를 버리고, 정보를 기밀(C)·민감(S)·공개(O) 세 등급으로 나눠 등급마다 보안을 다르게 거는 새 규칙이에요. 공개 등급(O) 정보는 생성형 AI와 클라우드를 쓸 수 있게 되고, 202">
+<meta property="og:url" content="https://makefield.ai/blog/20261105-n2sf-national-network-security-framework/">
+<meta property="og:image" content="https://makefield.ai/blog/20261105-n2sf-national-network-security-framework/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "국가망보안체계(N2SF)란? 망분리가 풀리면 공공기관은 생성형 AI를 어디까지 쓰나, 45억 원 돈의 흐름", "datePublished": "2026-11-05", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261105-n2sf-national-network-security-framework/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-11-05</span></div>
+<h1>국가망보안체계(N2SF)란? 망분리가 풀리면 공공기관은 생성형 AI를 어디까지 쓰나, 45억 원 돈의 흐름</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="타이틀카드 — &quot;국가망보안체계(N2SF)란? / 망분리가 풀리면 공공기관은 생성형 AI를 어디까지 쓰나&quot;" loading="lazy">
+<p><strong>한 줄 요약: 국가망보안체계(N2SF)는 공공기관 업무망을 인터넷과 통째로 끊던 &#x27;망분리&#x27;를 버리고, 정보를 기밀(C)·민감(S)·공개(O) 세 등급으로 나눠 등급마다 보안을 다르게 거는 새 규칙이에요.</strong> 공개 등급(O) 정보는 생성형 AI와 클라우드를 쓸 수 있게 되고, 2026년 한국인터넷진흥원(KISA)은 45억 원을 들여 공공기관 6개 수요처의 도입을 돕고 있습니다(뉴시스·바이라인네트워크, 2026).</p>
+<p>&quot;공무원도 이제 챗GPT를 쓴다는데, 보안은 어떻게 하지?&quot; 싶은 분, 그리고 규제가 바뀔 때 어느 회사에 일감이 생기는지 궁금한 분을 위한 글이에요. 2026년 11월 기준 공개 보도로 정리했습니다.</p>
+<h2>1. 국가망보안체계(N2SF)란 무엇인가요</h2>
+<p><strong>국가망보안체계란 국가정보원이 만든 공공 보안 규칙으로, 모든 업무 정보를 똑같이 격리하던 방식을 정보의 중요도에 따라 다르게 지키는 방식으로 바꾼 것이다.</strong> 지디넷코리아는 이 전환을 &quot;18년 만에 바뀐 국가망보안체계&quot;라고 표현했어요(지디넷코리아, 2025-01).</p>
+<blockquote>💡 망분리 — 업무용 컴퓨터망을 인터넷과 물리적으로 끊어 두는 한국식 보안 규제. 업무 PC에서는 인터넷이 안 되고, 인터넷용 PC를 따로 쓰는 식이다.</blockquote>
+<blockquote>💡 N2SF(National Network Security Framework) — &#x27;국가망보안체계&#x27;의 영문 약자. 기사에서는 N²SF로도 쓴다.</blockquote>
+<p>비유하면 기존 망분리는 <strong>도시 전체를 성벽으로 두르는 방식</strong>이었어요. 성벽 안에 들어온 사람은 아군으로 보고 넓은 권한을 줬습니다(바이라인네트워크, 2026-01). N2SF는 성벽 대신 건물마다 다른 잠금장치를 다는 쪽에 가깝습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>등급</th><th>어떤 정보</th><th>다루는 방식</th></tr></thead><tbody><tr><td>C(기밀, Classified)</td><td>안보·국방·외교·수사 등 기밀 정보</td><td>기존처럼 엄격하게 격리</td></tr><tr><td>S(민감, Sensitive)</td><td>법령에 따른 비공개 정보, 유출 시 개인·국가에 피해</td><td>보안 통제 속에서 활용</td></tr><tr><td>O(공개, Open)</td><td>기밀·민감을 뺀, 공개 가능한 정보</td><td>생성형 AI·클라우드 활용 가능</td></tr></tbody></table></div>
+<p>(출처: 디지털데일리 2025-01-23, 뉴시스 2026-03-15)</p>
+<img src="img/02_.png" alt="위 줄 BEFORE(빨강) &#x27;업무망 전체(모든 정보)&#x27; ✕ &#x27;인터넷·생성형 AI·클라우드&#x27; 손글씨 &#x27;통째로 차단&#x27; / 아래 줄 AFTER — &#x27;C 기밀 → 기존처럼 격리&#x27;(빨강) · &#x27;S 민감 → 보안 통제 속 활용&#x27;(잉크) · &#x27;O 공개 → 생성형 AI·클라우드&#x27;(초록 체크)" loading="lazy">
+<p>그림을 글로 옮기면, 예전에는 업무망 전체가 인터넷과 끊겨 있었고, 이제는 같은 기관 안에서도 C는 격리·S는 통제·O는 생성형 AI 허용으로 나뉜다는 뜻이에요.</p>
+<p>적용은 ▲준비 ▲C·S·O 등급분류 ▲위협식별 ▲보안대책 수립 ▲적절성 평가·조정의 5단계로 진행되고, <strong>등급 분류는 각 기관의 장이 맡습니다</strong>(지디넷코리아, 2025-01).</p>
+<h2>2. 왜 지금 바뀌나요 — 생성형 AI 수요와 경영평가</h2>
+<p><strong>규칙이 바뀌는 직접적 이유는 공공기관도 생성형 AI를 쓰고 싶어 하는데, 망분리 아래서는 쓸 길이 없었기 때문이다.</strong></p>
+<p>KISA가 2025년에 신규 정부시스템 2개와 기존 국가·공공 시스템 4개를 대상으로 시범 적용(실증)을 해 보니 &quot;생성형 AI 활용 모델에 대한 수요가 특히 많았다&quot;고 해요. 이 모델에는 외부 AI 서비스 접근 통제와 AI 데이터유출방지(AI-DLP) 기술을 붙였습니다(바이라인네트워크, 2026-03-16).</p>
+<blockquote>💡 AI-DLP(데이터유출방지) — 직원이 AI 서비스에 입력하는 내용을 검사해, 개인정보·비공개 자료가 밖으로 나가는 것을 막는 보안 기술.</blockquote>
+<blockquote>💡 실증 — 실제 현장에 시범으로 적용해 효과와 문제를 확인하는 단계.</blockquote>
+<p>일정도 빨라졌어요. 국정원은 2025년 1월 각급 기관에 가이드라인 초안을 배포했고(디지털데일리, 2025-01-23), 2025년 9월 &#x27;N²SF 가이드라인 1.0&#x27;을 정식 발표했습니다. 압박 수단도 붙었어요. 공공기관 경영평가의 보안 배점이 <strong>0.25점에서 0.6점으로</strong> 올라갔고, N2SF가 주요 평가 지표로 활용될 예정이라는 보도가 나왔습니다(바이라인네트워크, 2026-01).</p>
+<blockquote>💡 경영평가 — 정부가 공공기관의 한 해 운영을 점수로 매기는 제도. 점수가 기관 성과급과 연결돼 기관들이 민감하게 반응한다.</blockquote>
+<img src="img/03_.png" alt="왼쪽에서 오른쪽 타임라인 — &#x27;2025-01 국정원 초안 배포&#x27; → &#x27;2025-09 가이드라인 1.0 정식&#x27; → &#x27;2026-03 KISA 45억 공모&#x27; → &#x27;2026-06 6개 연합체 선정 / 금융 1차 10곳&#x27; → &#x27;2026-07 금융위 전면 해제 추진&#x27; → &#x27;2026-12 공공 지원 종료&#x27;(초록) / 손글씨 &#x27;남는 숙제: 어떤 정보를 C로 볼지는 기관장이 정한다&#x27;" loading="lazy">
+<p>그림을 글로 옮기면, 초안(2025-01)에서 정식 가이드라인(2025-09), 예산 공모(2026-03), 공공·금융 시범(2026-06), 금융권 전면 해제 추진(2026-07)까지 2년이 채 안 걸렸다는 흐름이에요.</p>
+<h2>3. 돈의 흐름 — 누가 내고, 누가 받나요</h2>
+<p><strong>국가망보안체계의 첫 돈은 정부(KISA)가 내고, 보안기업 연합체가 받아 공공기관에 인증·접근통제·AI 유출 방지 체계를 깔아 주는 구조다.</strong></p>
+<ul><li><strong>얼마</strong>: 2026년 도입 지원 공모는 과제당 7억 5,000만 원, 총 45억 원 규모예요. 아직 시험해 보지 않은 모델 검증에도 약 9억 9,000만 원을 따로 씁니다(바이라인네트워크, 2026-03-16).</li><li><strong>누구에게</strong>: KISA는 6개 연합체를 뽑았고, 선정된 보안기업들은 12월까지 약 7개월 동안 수요기관의 도입을 지원해요(바이라인네트워크, 2026-06-17).</li><li><strong>무엇을</strong>: 한 참여 기업은 통합계정관리(ICAM) 기반 사용자 인증·단말 관리와 SSO 연계 접근통제를 구현한다고 밝혔습니다(디지털데일리, 2026-07-13).</li></ul>
+<blockquote>💡 ICAM(통합계정관리) — 누가, 어떤 기기로, 어떤 자료에 접근하는지를 한곳에서 관리하는 체계.</blockquote>
+<blockquote>💡 SSO(통합 로그인) — 한 번 로그인하면 여러 시스템을 다시 로그인 없이 쓰게 하는 방식.</blockquote>
+<blockquote>💡 컨소시엄(연합체) — 여러 회사가 한 과제를 같이 따내려고 묶은 팀.</blockquote>
+<p>아래 기업명은 산업 구조를 설명하기 위한 예시이며 투자 판단과 무관합니다.</p>
+<div class="table-wrap"><table><thead><tr><th>수요기관</th><th>주관 보안기업(예시)</th></tr></thead><tbody><tr><td>기후에너지환경부·한전KDN</td><td>프라이빗테크놀로지</td></tr><tr><td>성평등가족부</td><td>윈스테크넷</td></tr><tr><td>우정사업본부</td><td>이노티움</td></tr><tr><td>한국도로공사</td><td>이니텍</td></tr><tr><td>한국부동산원</td><td>휴네시온</td></tr><tr><td>한국연구재단</td><td>안랩</td></tr></tbody></table></div>
+<p>(출처: 바이라인네트워크, 2026-06-17)</p>
+<p>금융권에서도 같은 방향의 돈길이 열립니다. 금융위원회는 2026년 6월 17일 보안 목적으로 생성형 AI를 쓰려는 1차 대상 10개 금융사를 뽑아 비조치의견서를 주기로 했고, 명단은 보안상 공개하지 않았어요(MTN, 2026-06-18). 이어 7월 15일 하반기 업무보고에서 <strong>망분리 규제를 전면 해제하고 디지털금융안전법 제정을 추진</strong>하겠다고 밝혔습니다. 이 법은 해킹 사고 때 금융회사와 외부 IT업체의 책임을 나누는 내용이에요(디지털데일리, 2026-07-15).</p>
+<blockquote>💡 비조치의견서 — &quot;이렇게 해도 제재하지 않겠다&quot;고 금융당국이 미리 써 주는 확인서. 규제를 고치기 전 시범 허용에 쓴다.</blockquote>
+<img src="img/04_.png" alt="위에서 아래로 &#x27;국정원 가이드라인 1.0(2025-09)&#x27; → &#x27;KISA 도입 지원 공모 45억 원·과제당 7억 5,000만 원&#x27; → &#x27;보안기업 6개 연합체(초록)·인증·접근통제·AI 유출 방지&#x27; → &#x27;수요 공공기관 6개 수요처(12월까지)&#x27; / 왼쪽 별도 박스 &#x27;금융위 망분리 규제 전면 해제 추진·1차 10개 금융사 비조치의견서&#x27; / 오른쪽 빨강 박스 &#x27;온프레미스 AI(예: 코난테크) 상반기 80억 원&#x27; 손글씨 &#x27;규제가 풀리면 수요가 줄 수도&#x27;" loading="lazy">
+<p>그림을 글로 옮기면, 정부 예산이 보안기업 연합체를 거쳐 공공기관으로 흐르고, 옆에서는 금융권 규제가 풀리며, 반대편에서는 &#x27;밖으로 못 보내니 사내에 AI를 설치하던&#x27; 시장이 영향을 받는 구도예요.</p>
+<h2>4. 누가 손해를 볼 수 있나요 — 온프레미스 AI의 고민</h2>
+<p><strong>망분리 완화는 보안기업에는 일감이지만, &#x27;자료를 밖으로 못 보내니 사내 서버에 AI를 설치한다&#x27;는 수요에는 역풍이 될 수 있다.</strong></p>
+<blockquote>💡 온프레미스 — 클라우드가 아니라 기관·회사 건물 안 서버에 직접 설치해 쓰는 방식.</blockquote>
+<p>국내 대표 온프레미스 AI 업체 코난테크놀로지는 2026년 1분기 별도 매출 38억 7,578만 원 가운데 자체 LLM 매출이 16억 원(41.3%)이었고, 서버 일체형 LLM 서비스를 본격화한다고 밝혔어요(디지털데일리, 2026-05-17). 상반기 매출은 80억 4,739만 원으로 7.9% 늘었지만 영업손실 68억 원을 냈습니다(바이라인네트워크, 2026-08-18).</p>
+<blockquote>💡 LLM(대형 언어 모델) — 챗GPT처럼 사람 말을 알아듣고 글을 쓰는 AI의 본체.</blockquote>
+<p>O등급 정보를 외부 생성형 AI로 처리할 수 있게 되면, 사내 설치형 AI가 꼭 필요한 영역은 C등급처럼 끝까지 격리가 남는 쪽으로 좁아질 수 있어요. 다만 이는 공개 자료를 종합한 <strong>추정</strong>이고, 실제 수요 변화를 보여 주는 통계는 아직 나오지 않았습니다.</p>
+<h2>5. 언제 오나요, 한계는 없나요</h2>
+<p><strong>공공 지원사업은 2026년 12월까지 6개 연합체·수요처에서 진행되고, 금융권은 단계적으로 대상을 늘리는 중이라 &#x27;전 기관 적용&#x27;은 아직 먼 이야기다.</strong></p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>확인된 것</th><th>아직 불확실한 것</th></tr></thead><tbody><tr><td>규칙</td><td>가이드라인 1.0(2025-09), C·S·O 3등급, 5단계 적용</td><td>기관마다 무엇을 C·S로 볼지</td></tr><tr><td>공공 예산</td><td>2026년 45억 원, 6개 연합체, 12월까지</td><td>2027년 이후 예산·확산 속도</td></tr><tr><td>금융</td><td>1차 10개사 비조치(2026-06), 전면 해제 추진(2026-07)</td><td>디지털금융안전법 확정 시점</td></tr><tr><td>시장</td><td>보안기업 연합체 일감, 온프레미스 업체 실적 공개</td><td>망분리 완화가 온프레미스 수요를 얼마나 줄일지</td></tr></tbody></table></div>
+<p>가장 큰 한계는 <strong>등급 분류가 기관장 몫</strong>이라는 점이에요. 같은 문서를 어느 기관은 S로, 어느 기관은 O로 볼 수 있습니다. 기존 망분리용 보안 제품도 검증 유효기간까지는 효력이 인정돼(지디넷코리아, 2025-01) 현장의 장비가 한 번에 바뀌지는 않아요. 금융권도 1차 10곳을 &#x27;실험대&#x27;로 삼아 보안 위협을 먼저 검증한 뒤 2차 대상을 받는 단계적 방식입니다(MTN, 2026-06-18).</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q1. N2SF가 시행되면 공무원이 업무 PC에서 챗GPT를 바로 쓸 수 있나요?</strong><br>
+공개(O) 등급 정보를 다루는 업무에 한해 생성형 AI·클라우드 활용 길이 열려요. 기밀(C) 정보는 기존처럼 격리되고, 실제 허용 범위는 기관이 등급을 나누고 보안대책을 세운 뒤에 정해집니다.</p>
+<p><strong>Q2. 망분리가 완전히 없어지는 건가요?</strong><br>
+아니요. 기밀(C) 등급에는 격리가 그대로 남아요. 바뀌는 것은 &#x27;모든 정보를 똑같이 끊던 방식&#x27;이고, 끊는 범위가 정보 등급에 따라 달라집니다.</p>
+<p><strong>Q3. 금융권 망분리 완화와 N2SF는 같은 제도인가요?</strong><br>
+다른 제도예요. N2SF는 국정원이 만든 공공기관용 체계이고, 금융권 완화는 금융위원회가 비조치의견서와 디지털금융안전법 추진으로 따로 진행합니다. 방향은 둘 다 &#x27;AI·클라우드 활용 문턱을 낮추되 사고 책임은 엄격히&#x27;로 같아요.</p>
+<h2>오늘의 용어 정리</h2>
+<div class="table-wrap"><table><thead><tr><th>용어</th><th>쉬운 말</th></tr></thead><tbody><tr><td>국가망보안체계(N2SF)</td><td>정보를 C·S·O 등급으로 나눠 보안을 다르게 거는 국정원의 공공 보안 체계</td></tr><tr><td>망분리</td><td>업무망을 인터넷과 물리적으로 끊는 한국식 보안 규제</td></tr><tr><td>C·S·O</td><td>기밀·민감·공개 세 정보 등급</td></tr><tr><td>실증</td><td>실제 현장에 시범 적용해 확인하는 단계</td></tr><tr><td>AI-DLP</td><td>AI에 입력하는 자료의 유출을 막는 기술</td></tr><tr><td>경영평가</td><td>정부가 공공기관 운영을 점수로 매기는 제도</td></tr><tr><td>ICAM</td><td>누가 어떤 기기로 어디에 접근하는지 한곳에서 관리하는 체계</td></tr><tr><td>SSO</td><td>한 번 로그인으로 여러 시스템을 쓰는 방식</td></tr><tr><td>컨소시엄</td><td>한 과제를 같이 따내려고 묶은 회사 연합</td></tr><tr><td>비조치의견서</td><td>금융당국이 &quot;제재하지 않겠다&quot;고 미리 써 주는 확인서</td></tr><tr><td>온프레미스</td><td>건물 안 서버에 직접 설치해 쓰는 방식</td></tr><tr><td>LLM</td><td>사람 말을 알아듣고 글을 쓰는 대형 AI 모델</td></tr></tbody></table></div>
+<p>지난 Next Field 엣지 AI 칩 글에서 비싸진 AI 장비 값을 짚었다면, 오늘은 그런 장비를 &#x27;사내에 꼭 둬야 하는 이유&#x27;였던 규제가 풀리는 이야기였어요. 성벽이 낮아질수록 돈은 성벽을 쌓던 쪽에서 &#x27;누가 무엇을 볼 수 있는지 관리하는&#x27; 쪽으로 옮겨 가는 모습입니다. 다음 Next Field에서는 또 다른 미래 현장의 돈 흐름을 쉬운 말로 풀어 볼게요.</p>
+<p>여러분이 일하는 곳에서는 업무 PC로 생성형 AI를 쓸 수 있나요?</p>
+<p>MakeField AI는 어렵고 낯선 산업 기술을 쉬운 말로 풀어 정리합니다 → <a href="https://makefield.ai" target="_blank" rel="noopener">https://makefield.ai</a></p>
+<h2>출처</h2>
+<p><strong>[1] 뉴시스(2026-03-15)</strong> — KISA 45억 원 N2SF 도입 지원 공모, C·S·O 등급별 처리 방식, 공공기관 업무망 생성형 AI·클라우드 활용<br>
+→ <a href="https://mobile.newsis.com/view/NISX20260313_0003547805" target="_blank" rel="noopener">https://mobile.newsis.com/view/NISX20260313_0003547805</a></p>
+<p><strong>[2] 바이라인네트워크(2026-03-16)</strong> — 2025년 실증(신규 정부시스템 2개·기존 시스템 4개), 생성형 AI 활용 모델 수요, AI-DLP 적용, 과제당 7억 5,000만 원·총 45억 원, 미실증 모델 검증 약 9억 9,000만 원<br>
+→ <a href="https://byline.network/2026/03/16-630/" target="_blank" rel="noopener">https://byline.network/2026/03/16-630/</a></p>
+<p><strong>[3] 바이라인네트워크(2026-06-17)</strong> — KISA 6개 연합체 선정, 수요기관별 주관·참여 보안기업, 12월까지 약 7개월 지원<br>
+→ <a href="https://byline.network/2026/06/17-575/" target="_blank" rel="noopener">https://byline.network/2026/06/17-575/</a></p>
+<p><strong>[4] 바이라인네트워크(2026-01)</strong> — 가이드라인 1.0 정식 발표(2025-09), 기존 망분리를 성벽에 빗댄 설명, 경영평가 보안 배점 0.25점→0.6점<br>
+→ <a href="https://byline.network/2026/01/12-522/" target="_blank" rel="noopener">https://byline.network/2026/01/12-522/</a></p>
+<p><strong>[5] 디지털데일리(2025-01-23)</strong> — 국정원 가이드라인 초안 각급 기관 배포, C·S·O 정의<br>
+→ <a href="https://www.ddaily.co.kr/page/view/2025012316455942967" target="_blank" rel="noopener">https://www.ddaily.co.kr/page/view/2025012316455942967</a></p>
+<p><strong>[6] 지디넷코리아(2025-01)</strong> — &#x27;18년 만에 바뀐 국가망보안체계&#x27;, 5단계 적용 절차, 등급 분류는 기관장 몫, 기존 검증 제품 유효기간까지 효력<br>
+→ <a href="https://zdnet.co.kr/view/?no=20250124164856" target="_blank" rel="noopener">https://zdnet.co.kr/view/?no=20250124164856</a></p>
+<p><strong>[7] 디지털데일리(2026-07-13)</strong> — 참여 보안기업의 ICAM 기반 인증·단말 관리, SSO 연계 접근통제 구현<br>
+→ <a href="https://www.ddaily.co.kr/page/view/2026071314532255205" target="_blank" rel="noopener">https://www.ddaily.co.kr/page/view/2026071314532255205</a></p>
+<p><strong>[8] MTN(2026-06-18)</strong> — 금융위 보안 목적 생성형 AI 1차 10개 금융사 선정·비조치의견서, 명단 비공개, 8월 2차 신청 계획, &#x27;실험대&#x27; 취지<br>
+→ <a href="https://news.mtn.co.kr/news-detail/2026061813415179539" target="_blank" rel="noopener">https://news.mtn.co.kr/news-detail/2026061813415179539</a></p>
+<p><strong>[9] 디지털데일리(2026-07-15)</strong> — 금융위 하반기 업무보고, 망분리 규제 전면 해제·디지털금융안전법 제정 추진, 사고 책임 구분<br>
+→ <a href="https://www.ddaily.co.kr/page/view/2026071517443276094" target="_blank" rel="noopener">https://www.ddaily.co.kr/page/view/2026071517443276094</a></p>
+<p><strong>[10] 디지털데일리(2026-05-17)</strong> — 코난테크놀로지 1분기 별도 매출 38억 7,578만 원, 자체 LLM 매출 16억 원(41.3%), 서버 일체형 LLM 본격화<br>
+→ <a href="https://www.ddaily.co.kr/page/view/2026051523423016377" target="_blank" rel="noopener">https://www.ddaily.co.kr/page/view/2026051523423016377</a></p>
+<p><strong>[11] 바이라인네트워크(2026-08-18)</strong> — 코난테크놀로지 상반기 매출 80억 4,739만 원(+7.9%), 영업손실 68억 원<br>
+→ <a href="https://byline.network/2026/08/18-610/" target="_blank" rel="noopener">https://byline.network/2026/08/18-610/</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224465400509" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261104-blog-image-s3-title-card/"><div class="d">← 이전 노트</div><div class="t">블로그 썸네일 만들기, 제목만 넣으면 나오는 코드 한 장과 세 번의 실패</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
