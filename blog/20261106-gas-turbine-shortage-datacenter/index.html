@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가스터빈 품귀란? AI 데이터센터가 발전소를 직접 지으면서 3년 줄이 생긴 이유 | Field Notes · MakeField AI</title>
+<meta name="description" content="AI 데이터센터가 전기를 못 구하자, 아예 부지 안에 발전소를 짓기 시작했어요. 그러자 이번엔 발전소의 심장인 가스터빈이 모자라졌습니다. 요즘 &#x27;가스터빈 품귀&#x27;라는 말이 나오는 이유예요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261106-gas-turbine-shortage-datacenter/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="가스터빈 품귀란? AI 데이터센터가 발전소를 직접 지으면서 3년 줄이 생긴 이유 | Field Notes · MakeField AI">
+<meta property="og:description" content="AI 데이터센터가 전기를 못 구하자, 아예 부지 안에 발전소를 짓기 시작했어요. 그러자 이번엔 발전소의 심장인 가스터빈이 모자라졌습니다. 요즘 &#x27;가스터빈 품귀&#x27;라는 말이 나오는 이유예요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261106-gas-turbine-shortage-datacenter/">
+<meta property="og:image" content="https://makefield.ai/blog/20261106-gas-turbine-shortage-datacenter/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "가스터빈 품귀란? AI 데이터센터가 발전소를 직접 지으면서 3년 줄이 생긴 이유", "datePublished": "2026-11-06", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261106-gas-turbine-shortage-datacenter/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-11-06</span></div>
+<h1>가스터빈 품귀란? AI 데이터센터가 발전소를 직접 지으면서 3년 줄이 생긴 이유</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="타이틀카드 — &quot;가스터빈 품귀란? / AI 데이터센터가 발전소를 직접 지으면서 3년 줄이 생긴 이유&quot;" loading="lazy">
+<p>AI 데이터센터가 전기를 못 구하자, 아예 부지 안에 발전소를 짓기 시작했어요. 그러자 이번엔 발전소의 심장인 가스터빈이 모자라졌습니다. 요즘 &#x27;가스터빈 품귀&#x27;라는 말이 나오는 이유예요.</p>
+<p><strong>한 줄 요약: 미국 가스터빈 제조사 GE 버노바의 수주잔고와 생산 예약은 2026년 2분기 말 116GW로 석 달 만에 16GW 늘었고, 새 대형 가스터빈을 주문하면 받기까지 약 3년이 걸린다(터보머시너리 매거진 2026-07, 파워 엔지니어링 2026-04).</strong> 경쟁사 지멘스 에너지도 납기가 &quot;3년 이상&quot;이라고 밝혔어요(유틸리티 다이브 2026-08).</p>
+<p>이 글은 2026년 11월 기준 공개 자료로 가스터빈이 무엇인지, 왜 데이터센터가 줄을 서는지, 그 돈이 누구에게 흘러가는지 차례로 풀어 봅니다.</p>
+<h2>1. 가스터빈이란 무엇인가요</h2>
+<p><strong>가스터빈이란 천연가스를 태운 뜨거운 가스로 날개를 돌려 발전기를 회전시키는 기계다.</strong> 비행기 제트엔진과 원리가 같고, 이걸 땅 위에 고정해 전기를 만드는 쪽이 발전용 가스터빈이에요.</p>
+<blockquote>💡 가스터빈 — 연료를 태운 고온·고압 가스가 수많은 날개를 밀어 축을 돌리는 회전 기계. &#x27;땅에 묶어 둔 제트엔진&#x27;이라고 생각하면 쉽다.</blockquote>
+<p>데이터센터가 가스터빈을 찾는 이유는 단순해요. 전력망에 연결되기를 몇 년씩 기다리는 대신, 자기 땅에 발전소를 세워 바로 전기를 쓰려는 거예요. 이런 방식을 &#x27;비하인드 더 미터&#x27;라고 부릅니다.</p>
+<blockquote>💡 비하인드 더 미터(BTM, Behind-The-Meter) — 전력망(한전 같은 전력회사)의 계량기를 거치지 않고, 쓰는 곳 안에서 직접 만들어 쓰는 전기. 집 옥상 태양광이 작은 예, 데이터센터 옆 가스발전소가 큰 예다.</blockquote>
+<blockquote>💡 GW(기가와트) — 전력 크기 단위. 1GW는 1,000MW이고, 대형 원전 1기가 대략 1GW다.</blockquote>
+<h2>2. 왜 지금 가스터빈 품귀가 생겼나요</h2>
+<p><strong>데이터센터의 전기 수요가 전력망 확충 속도를 앞질렀고, 그 빈자리를 메울 현장 발전 수요가 소수 제조사의 생산 능력으로 한꺼번에 몰렸기 때문이다.</strong></p>
+<p>수요 쪽부터 보면, 글로벌이코노믹이 전한 모건스탠리 전망은 미국 데이터센터 개발사들이 자가발전·연료전지까지 넣고도 2028년까지 필요한 전력의 34%, 약 32GW를 확보하지 못할 것으로 봤어요(글로벌이코노믹 2026-10, 모건스탠리 보고서 인용). 32GW는 원전 30여 기분 출력입니다(단순 계산).</p>
+<p>공급 쪽은 좁아요. 대형 발전용 가스터빈은 몇 안 되는 제조사가 만드는데, 두 회사의 숫자만 봐도 줄이 보입니다.</p>
+<div class="table-wrap"><table><thead><tr><th>제조사</th><th>확인된 숫자</th><th>출처</th></tr></thead><tbody><tr><td>GE 버노바(미국)</td><td>수주잔고+생산 예약 116GW(직전 분기 100GW), 2026년 3분기 연 20GW 생산 체제 목표</td><td>터보머시너리 매거진 2026-07</td></tr><tr><td>GE 버노바</td><td>새 대형 터빈 납기 약 3년, 2029~2030년 남은 생산 여유 약 10GW</td><td>파워 엔지니어링 2026-04</td></tr><tr><td>지멘스 에너지(독일)</td><td>가스 부문 수주잔고 69GW, 한 분기 신규 수주 15GW, 올해 인도 가능량 15~16GW, 납기 3년 이상</td><td>유틸리티 다이브 2026-08</td></tr></tbody></table></div>
+<blockquote>💡 수주잔고 — 이미 주문을 받았지만 아직 만들어 넘기지 않은 물량. 식당으로 치면 &#x27;들어왔는데 아직 안 나간 주문서 더미&#x27;다.</blockquote>
+<blockquote>💡 슬롯 예약(생산 예약) — 정식 주문 전에 &quot;몇 년도 생산 칸을 내 몫으로 잡아 달라&quot;고 미리 맡겨 두는 약속. GE 버노바의 116GW는 수주잔고 53GW와 슬롯 예약 63GW를 합친 숫자다(터보머시너리 매거진 2026-07).</blockquote>
+<img src="img/02_.png" alt="왼쪽 잉크 박스 &#x27;주문·예약 116GW(GE 버노바, 2026-2분기)&#x27;, 가운데 긴 빨간 화살표 &#x27;납기 약 3년&#x27;, 오른쪽 잉크 박스 &#x27;연 생산 약 20GW(2026-3분기 목표)&#x27;. 아래 빨간 손글씨 &#x27;단순 계산 약 6년치 줄&#x27;. 하단 캡션 &#x27;출처: 터보머시너리 매거진 2026-07, 파워 엔지니어링 2026-04&#x27;" loading="lazy">
+<p>그림을 글로 정리하면, GE 버노바 한 회사에 걸린 주문·예약(116GW)이 연 생산 목표(약 20GW)의 약 6배예요(단순 계산, 예약분이 모두 주문으로 바뀐다는 가정). 그래서 지금 주문하면 몇 년 뒤 생산 칸을 받는 구조가 됐습니다.</p>
+<h2>3. 돈의 흐름 — 누가 사고 누가 파나요</h2>
+<p><strong>사는 쪽은 전력망을 기다릴 수 없는 데이터센터 개발사와 빅테크이고, 파는 쪽은 소수의 가스터빈 제조사이며, 줄이 길어지자 가격도 올랐다.</strong></p>
+<img src="img/03_.png" alt="왼쪽 잉크 박스 &#x27;데이터센터 개발사·빅테크(사는 쪽)&#x27;. 가운데 잉크 화살표 &#x27;주문·선금·슬롯 예약&#x27;. 오른쪽 잉크 박스 3개 세로 &#x27;가스터빈 제조사(예: GE 버노바·지멘스 에너지·두산에너빌리티)&#x27;. 위쪽 빨간 박스 &#x27;가격 kW당 10~20포인트 상승&#x27;. 아래 잉크 박스 &#x27;연료=천연가스 공급망, 허가=지역 대기·배관 인허가&#x27;. 하단 빨간 손글씨 &#x27;줄이 길면 값이 오른다&#x27;" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>흐름</th><th>내는 쪽</th><th>받는 쪽(예시)</th><th>확인된 숫자</th></tr></thead><tbody><tr><td>터빈 주문</td><td>데이터센터·전력회사</td><td>가스터빈 제조사</td><td>GE 버노바 계약 물량 100GW 중 약 20%가 데이터센터 직결(파워 엔지니어링 2026-04)</td></tr><tr><td>가격 상승</td><td>신규 주문 고객</td><td>제조사</td><td>2026년 상반기 신규 주문 가격이 2025년 4분기보다 kW당 10~20포인트 높음(파워 엔지니어링 2026-04)</td></tr><tr><td>장기 가격</td><td>발전소 건설 비용</td><td>제조사·공급망</td><td>우드매켄지는 가스터빈 가격이 2027년 말 kW당 600달러, 2019년의 약 3배에 이를 것으로 전망(파워 엔지니어링 2026-04 인용)</td></tr><tr><td>전력 부문 매출</td><td>전력·데이터센터 고객</td><td>GE 버노바</td><td>2026년 2분기 전력 부문 수주 167억 달러, 전년 대비 134% 증가(터보머시너리 매거진 2026-07)</td></tr></tbody></table></div>
+<blockquote>💡 kW당 가격 — 발전 설비 값을 &#x27;출력 1kW를 만드는 데 드는 돈&#x27;으로 나눈 값. 크기가 다른 설비끼리 값을 비교하는 기준이다.</blockquote>
+<p>한국 기업도 이 흐름에 들어갔어요. 두산에너빌리티는 2025년 10월 미국 빅테크와 380MW급 가스터빈 2기 공급 계약을 맺었고(세계일보 2025-10), 2026년 3월에는 미국 기업과 380MW급 7기 계약을 맺어 데이터센터에 2029년 5월부터 매달 1기씩 공급하기로 했어요. 이 계약으로 미국 누적 공급은 12기가 됐습니다(딜사이트 2026-03).</p>
+<blockquote>※ 위 기업명과 수치는 산업 구조를 설명하기 위한 예시입니다. 특정 종목의 매수·매도를 권하는 글이 아닙니다.</blockquote>
+<h2>4. 데이터센터 자가발전은 실제로 얼마나 지어지나요</h2>
+<p><strong>계획은 크지만 실제로 돌아가는 양은 아직 작다.</strong> 미국 전력 데이터 분석 뉴스레터 클린뷰는 위성사진으로 현장을 확인한 결과를 이렇게 정리했어요(클린뷰 2026-06).</p>
+<div class="table-wrap"><table><thead><tr><th>시점</th><th>비하인드 더 미터 데이터센터 용량</th><th>조건</th></tr></thead><tbody><tr><td>최근 18개월 완공</td><td>4곳, 합계 2GW</td><td>이미 지어짐</td></tr><tr><td>2026년 말</td><td>약 3GW</td><td>거의 완공된 6곳 추가</td></tr><tr><td>2027년 말</td><td>13GW / 지연 시 5GW</td><td>임차인이 정해진 사업이 일정대로 가면 13GW, 지연이 겹치면 5GW까지 낮아짐</td></tr></tbody></table></div>
+<img src="img/04_.png" alt="가로 막대 3개. 1번 잉크 &#x27;2026년 말 약 3GW&#x27;, 2번 초록 &#x27;2027년 말 일정대로 13GW&#x27;, 3번 빨간 &#x27;2027년 말 지연 시 5GW&#x27;. 오른쪽 빨간 손글씨 &#x27;같은 해, 차이 8GW&#x27;. 하단 캡션 &#x27;출처: 클린뷰 2026-06&#x27;" loading="lazy">
+<p>그림을 글로 옮기면, 같은 2027년 말이라도 일정대로 가면 13GW, 지연되면 5GW로 두 배 넘게 차이가 나요. 이 차이를 가르는 건 터빈만이 아닙니다.</p>
+<h2>5. 언제 풀리나요, 한계는 무엇인가요</h2>
+<p><strong>제조사들이 생산을 늘리고 있지만 납기 3년이 단기간에 줄긴 어렵고, 터빈을 구해도 인허가·연료 배관이 또 다른 병목이다.</strong></p>
+<ul><li><strong>생산은 늘어난다</strong>: GE 버노바는 연 생산을 2028년 24GW, 2030년 30GW로 늘릴 계획이에요(터보머시너리 매거진 2026-07). 두산에너빌리티도 2029년부터 매달 1기씩 미국에 보내는 일정을 잡았습니다(딜사이트 2026-03).</li><li><strong>허가가 발목을 잡는다</strong>: 클린뷰는 지연의 주된 원인으로 터빈이 아니라 &#x27;허가 문제&#x27;를 꼽았어요. 미국 뉴멕시코주에서는 2.45GW 규모 스타게이트 발전소에 가스를 댈 배관이 막혔고, 뉴저지주에서는 400MW 가스발전소의 대기 배출 허가가 늦어지고 있다고 전했습니다(클린뷰 2026-06).</li><li><strong>가스는 탄소를 낸다</strong>: 가스터빈은 석탄보다 덜하지만 이산화탄소를 배출해요. 그래서 지역 대기 허가 심사가 길어지는 구조입니다(추정).</li><li><strong>수요 전망이 틀릴 수 있다</strong>: 34%·32GW 부족 전망은 증권사 추정치이고(글로벌이코노믹 2026-10, 모건스탠리 보고서 인용), AI 투자 속도가 꺾이면 슬롯 예약 일부가 취소될 수 있어요(추정).</li><li><strong>예약은 주문이 아니다</strong>: GE 버노바 116GW 가운데 63GW는 슬롯 예약이라 아직 확정 주문이 아닙니다(터보머시너리 매거진 2026-07).</li></ul>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 가스터빈 품귀는 언제까지 이어지나요?</strong><br>
+공식 종료 시점은 없어요. 다만 GE 버노바는 2029~2030년 생산 여유가 약 10GW만 남았다고 밝혔고(파워 엔지니어링 2026-04), 지멘스 에너지도 납기를 3년 이상으로 봐서(유틸리티 다이브 2026-08) 2020년대 후반까지 빡빡할 가능성이 큽니다(추정).</p>
+<p><strong>Q. 데이터센터는 왜 전력망 대신 자가발전을 하나요?</strong><br>
+전력망 연결을 기다리는 시간이 너무 길기 때문이에요. 모건스탠리는 미국 데이터센터가 2028년까지 필요한 전력의 34%를 확보하지 못할 것으로 봤습니다(글로벌이코노믹 2026-10, 모건스탠리 보고서 인용).</p>
+<p><strong>Q. 한국 기업도 가스터빈을 파나요?</strong><br>
+네. 두산에너빌리티가 2025년 10월 미국 빅테크와 380MW급 2기 계약으로 첫 수출을 했고(세계일보 2025-10), 2026년 3월 7기를 추가로 계약해 미국 누적 12기가 됐어요(딜사이트 2026-03).</p>
+<h2>오늘의 용어 정리</h2>
+<ul><li><strong>가스터빈</strong> — 천연가스를 태워 날개를 돌리고 그 힘으로 발전기를 회전시키는 기계</li><li><strong>가스터빈 품귀</strong> — 주문이 생산 능력을 크게 넘어 새 터빈을 받기까지 수년을 기다려야 하는 상태</li><li><strong>비하인드 더 미터(BTM)</strong> — 전력망을 거치지 않고 쓰는 곳 안에서 직접 만들어 쓰는 전기</li><li><strong>GW / MW</strong> — 전력 크기 단위(1GW=1,000MW, 대형 원전 1기 약 1GW)</li><li><strong>수주잔고</strong> — 주문받았지만 아직 넘기지 않은 물량</li><li><strong>슬롯 예약</strong> — 정식 주문 전에 미래 생산 칸을 미리 잡아 두는 약속</li><li><strong>kW당 가격</strong> — 출력 1kW를 만드는 데 드는 설비 값</li></ul>
+<p>지난 Next Field에서 전력망에 연결해도 되는지 심사하는 &#x27;전력계통영향평가&#x27;의 좁은 문을 봤다면, 오늘은 그 문을 피해 직접 발전소를 짓는 쪽의 병목을 따라가 봤어요. 터빈 생산 증설과 인허가 속도 중 어느 쪽이 먼저 이 줄을 줄일까요?</p>
+<h2>출처</h2>
+<p><strong>[1] 터보머시너리 매거진(2026-07)</strong> — GE 버노바 2026년 2분기: 수주잔고+슬롯 예약 116GW(직전 분기 100GW, 슬롯 예약 63GW·잔고 53GW), 전력 부문 수주 167억 달러·134% 증가, 2026년 3분기 연 20GW 생산, 2028년 24GW·2030년 30GW 목표<br>
+→ <a href="https://www.turbomachinerymag.com/view/ge-vernova-gas-turbine-backlog-hits-116-gw-as-power-orders-more-than-double" target="_blank" rel="noopener">https://www.turbomachinerymag.com/view/ge-vernova-gas-turbine-backlog-hits-116-gw-as-power-orders-more-than-double</a></p>
+<p><strong>[2] 파워 엔지니어링(2026-04)</strong> — GE 버노바 2026년 1분기: 계약 물량 83→100GW 중 약 20% 데이터센터 직결, 신규 주문 가격 kW당 10~20포인트 상승, 대형 터빈 납기 약 3년, 2029~2030년 남은 여유 약 10GW, 우드매켄지 2027년 말 kW당 600달러 전망<br>
+→ <a href="https://www.power-eng.com/gas/turbines/data-centers-drive-record-surge-in-ge-vernova-power-equipment-orders-as-turbine-slots-tighten-through-2030/" target="_blank" rel="noopener">https://www.power-eng.com/gas/turbines/data-centers-drive-record-surge-in-ge-vernova-power-equipment-orders-as-turbine-slots-tighten-through-2030/</a></p>
+<p><strong>[3] 유틸리티 다이브(2026-08)</strong> — 지멘스 에너지 가스 부문 수주잔고 69GW, 분기 신규 수주 15GW, 올해 인도 가능 15~16GW, 납기 3년 이상<br>
+→ <a href="https://www.utilitydive.com/news/siemens-gas-turbine-backlog-nears-70-gw-as-company-expands-manufacturing/827390/" target="_blank" rel="noopener">https://www.utilitydive.com/news/siemens-gas-turbine-backlog-nears-70-gw-as-company-expands-manufacturing/827390/</a></p>
+<p><strong>[4] 글로벌이코노믹(2026-10)</strong> — 모건스탠리 전망 인용: 미국 데이터센터가 자가발전·연료전지를 반영하고도 2028년까지 필요 전력의 34%, 약 32GW 부족<br>
+→ <a href="https://www.g-enews.com/article/ICT/2026/10/2026100609490663653d7a510102_1" target="_blank" rel="noopener">https://www.g-enews.com/article/ICT/2026/10/2026100609490663653d7a510102_1</a></p>
+<p><strong>[5] 클린뷰(2026-06)</strong> — 미국 비하인드 더 미터 데이터센터: 최근 18개월 4곳 2GW 완공, 2026년 말 약 3GW, 2027년 말 13GW(지연 시 5GW), 뉴멕시코 배관·뉴저지 대기 허가 지연 사례<br>
+→ <a href="https://newsletter.cleanview.co/p/data-center-developers-want-to-build" target="_blank" rel="noopener">https://newsletter.cleanview.co/p/data-center-developers-want-to-build</a></p>
+<p><strong>[6] 세계일보(2025-10)</strong> — 두산에너빌리티, 미국 빅테크와 380MW급 가스터빈 2기 공급 계약(2026년 말까지 공급)<br>
+→ <a href="https://www.segye.com/newsView/20251013514636" target="_blank" rel="noopener">https://www.segye.com/newsView/20251013514636</a></p>
+<p><strong>[7] 딜사이트(2026-03)</strong> — 두산에너빌리티, 미국 기업과 380MW급 가스터빈 7기 계약, 2029년 5월부터 매달 1기 데이터센터 공급, 미국 누적 12기<br>
+→ <a href="https://dealsite.co.kr/articles/158014" target="_blank" rel="noopener">https://dealsite.co.kr/articles/158014</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224466668853" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261105-n2sf-national-network-security-framework/"><div class="d">← 이전 노트</div><div class="t">국가망보안체계(N2SF)란? 망분리가 풀리면 공공기관은 생성형 AI를 어디까지 쓰나, 45억 원 돈의 흐름</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
