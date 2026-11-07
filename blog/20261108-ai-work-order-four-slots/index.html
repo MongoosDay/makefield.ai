@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 일시키기, 할 일만 적지 말고 &#x27;어디에·누가 확인&#x27;까지 적는 4칸 | Field Notes · MakeField AI</title>
+<meta name="description" content="AI 일시키기는 할 일 한 줄로 끝내면 안 됩니다. ①무엇을 ②무슨 재료로 ③어떤 모양으로 어디에 ④누가 어떤 기준으로 확인할지, 이 4칸을 적어야 시킨 대로 돌아와요. 마이크로소프트의 Copilot 공식 안내도 프롬프트를 목표·맥락·출처·기대 4부분으로 나누고, 그중 목표만 ">
+<link rel="canonical" href="https://makefield.ai/blog/20261108-ai-work-order-four-slots/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 일시키기, 할 일만 적지 말고 &#x27;어디에·누가 확인&#x27;까지 적는 4칸 | Field Notes · MakeField AI">
+<meta property="og:description" content="AI 일시키기는 할 일 한 줄로 끝내면 안 됩니다. ①무엇을 ②무슨 재료로 ③어떤 모양으로 어디에 ④누가 어떤 기준으로 확인할지, 이 4칸을 적어야 시킨 대로 돌아와요. 마이크로소프트의 Copilot 공식 안내도 프롬프트를 목표·맥락·출처·기대 4부분으로 나누고, 그중 목표만 ">
+<meta property="og:url" content="https://makefield.ai/blog/20261108-ai-work-order-four-slots/">
+<meta property="og:image" content="https://makefield.ai/blog/20261108-ai-work-order-four-slots/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 일시키기, 할 일만 적지 말고 '어디에·누가 확인'까지 적는 4칸", "datePublished": "2026-11-08", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261108-ai-work-order-four-slots/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-11-08</span></div>
+<h1>AI 일시키기, 할 일만 적지 말고 &#x27;어디에·누가 확인&#x27;까지 적는 4칸</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="01_.png 타이틀카드 — &quot;AI 일시키기, 할 일 말고 4칸 / 어디에 넣을지, 누가 확인할지까지&quot;" loading="lazy">
+<p>AI 일시키기는 <strong>할 일 한 줄</strong>로 끝내면 안 됩니다. ①무엇을 ②무슨 재료로 ③어떤 모양으로 어디에 ④누가 어떤 기준으로 확인할지, 이 4칸을 적어야 시킨 대로 돌아와요.<br>
+마이크로소프트의 Copilot 공식 안내도 프롬프트를 <strong>목표·맥락·출처·기대</strong> 4부분으로 나누고, 그중 목표만 필수라고 적어 둡니다(→ <a href="https://support.microsoft.com/en-us/topic/learn-about-copilot-prompts-f6c3b467-f07c-4db1-ae54-ffac96184dd5)." target="_blank" rel="noopener">https://support.microsoft.com/en-us/topic/learn-about-copilot-prompts-f6c3b467-f07c-4db1-ae54-ffac96184dd5).</a> 필수가 하나뿐이니 다들 목표만 적고 끝내는 거죠.</p>
+<p>저도 그랬어요. 그러다 AI가 멀쩡한 기록 12일치를 &quot;사라졌다&quot;고 보고하는 걸 받았습니다.<br>
+자동화·제어 일을 15년 해 온 현장 엔지니어고, 개인 일상 루틴 몇 개를 AI한테 매일 새벽 맡겨 두고 있어요. 이 글은 그 루틴에서 배운 &#x27;AI한테 일 시키는 법&#x27;만 정리합니다.</p>
+<h2>1. 할 일만 적어서 시키면 이런 화면을 받습니다</h2>
+<p><strong>작업은 &quot;성공&quot;으로 끝났는데, 결과물을 열면 AI가 스스로 남긴 경고문이 있는 상태예요.</strong></p>
+<p>그날 새벽 실행 로그 마지막 줄은 정상이었어요.</p>
+<pre><code>[2026-08-15 04:12:14] 종료코드: 0
+[2026-08-15 04:12:14] 데일리 브리핑 완료</code></pre>
+<p>그런데 누적 기록 파일 한가운데엔 이 문장이 박혀 있었습니다.</p>
+<pre><code>&gt; ⚠️ [로그 공백] 08-02 항목이 중간에서 끊겨 있고 08-03~08-14 항목이 이 파일에 없음</code></pre>
+<p>사건 자체는 이전 글(아래 &#x27;같은 증상, 다른 경우&#x27; 첫 번째 글)에 자세히 적었어요. 짧게만 줄이면, 12일치는 855줄 파일에 다 있었고, AI가 8월 15일치를 파일 끝이 아니라 8월 2일 본문 사이에 끼워 넣은 뒤 그 파일을 자기가 다시 읽고 &quot;누락&quot;으로 판정한 일이었습니다.<br>
+이번 글은 원인을 거꾸로 봅니다. <strong>저는 이 일을 어떻게 시켰길래 이렇게 됐나</strong>요.</p>
+<h2>2. 원인: 4칸 중 2칸이 비어 있었어요</h2>
+<p><strong>&#x27;어디에 어떤 순서로&#x27;와 &#x27;누가 확인하나&#x27;, 이 두 칸이 어디에도 정해져 있지 않았습니다.</strong></p>
+<div class="table-wrap"><table><thead><tr><th>칸</th><th>그때 정해져 있었나</th><th>비어서 생긴 일</th></tr></thead><tbody><tr><td>① 할 일</td><td>있음 — 그날치 정리를 누적 파일에 남긴다</td><td>—</td></tr><tr><td>② 재료</td><td>있음 — 그날 만든 요약 문서</td><td>—</td></tr><tr><td>③ 모양·위치</td><td><strong>없음</strong> — 날짜순으로 쌓인다는 약속이 어디에도 안 적혀 있었음</td><td>15일치가 2일치 본문 사이에 들어감</td></tr><tr><td>④ 확인</td><td><strong>없음</strong> — 쓴 AI가 그대로 검사</td><td>자기 사고를 &quot;자동화 누락&quot;으로 오진</td></tr></tbody></table></div>
+<p>넉 달 동안 날짜순으로 쌓여 왔으니 저는 당연한 줄 알았어요. 그런데 <strong class="u">말 안 한 약속</strong>은 AI 입장에선 없는 약속입니다.<br>
+Anthropic 공식 프롬프트 가이드는 AI를 &quot;아주 똑똑하지만 우리 방식은 모르는 신입 직원&quot;처럼 보라고 해요. 그리고 시험 하나를 권합니다. 맥락 없는 동료에게 그 지시를 보여 주고 따라 하게 했을 때 헷갈려하면, AI도 헷갈린다고요(→ <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)." target="_blank" rel="noopener">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices).</a><br>
+신입한테 &quot;이거 장부에 적어 둬&quot;라고만 하면, 몇 번째 줄에 적을지는 신입 마음이죠..</p>
+<img src="img/02_.png" alt="02_.png 지시 칸 비교 — 왼쪽 BEFORE 빨간 테두리 &quot;할 일 1칸만&quot; → 결과 &quot;어디에 넣을지 AI 마음 / 확인도 AI 자기 채점&quot;, 오른쪽 AFTER 잉크 테두리 4칸 &quot;① 할 일 ② 재료 ③ 모양·위치 ④ 확인 기준·확인자&quot; → 결과 &quot;시킨 자리에, 다른 눈으로 확인&quot;" loading="lazy">
+<h2>3. 해결: AI한테 일 시킬 때 적는 4칸</h2>
+<p><strong>순서가 중요한 일은 번호를 붙여 단계로 적고, 마지막 칸에 &#x27;확인 기준&#x27;을 문장으로 박습니다.</strong> Anthropic 가이드도 순서나 빠짐없음이 중요하면 번호 목록으로 지시하라고 적어 둬요.</p>
+<p>아래는 그 사건을 지금 다시 시킨다면 이렇게 적겠다는 <strong>재구성 예시</strong>입니다(당시 실제 지시문이 아니에요).</p>
+<pre><code>1. 할 일: 오늘 날짜 항목 하나를 누적 기록 파일에 추가한다.
+2. 재료: 오늘 만든 요약 문서만 쓴다.
+3. 모양·위치: 파일 맨 끝에 붙인다. 파일은 날짜 오름차순이다.
+   기존 항목은 한 글자도 고치지 않는다.
+4. 확인: 끝내기 전에 날짜 제목 줄만 전부 뽑아 순서대로인지 보고,
+   그 목록을 그대로 보고에 붙인다. 판정은 내가 한다.</code></pre>
+<p>핵심은 4번이에요. &quot;확인해 봐&quot;가 아니라 <strong>무엇을 뽑아서 어떤 기준으로 볼지</strong>를 정해 줍니다.<br>
+Anthropic 가이드도 끝내기 전에 &quot;정해 둔 기준으로 답을 확인하라&quot;고 덧붙이라고 권해요. 다만 제 사건이 보여 준 건, 기준 없이 같은 AI에게 맡긴 확인은 자기 채점이 된다는 점이었습니다. 그래서 저는 <strong>기준은 사람이 정하고, 판정도 사람이 한 번 본다</strong>로 갑니다.</p>
+<img src="img/03_.png" alt="03_.png 만든 손과 확인한 손 분리 — 위 줄(빨강) &quot;AI가 쓴다 → 같은 AI가 읽는다 → 같은 AI가 판정&quot; 끝에 &quot;사고 흔적이 증거로 안 읽힘&quot; 펜 메모, 아래 줄(잉크) &quot;AI가 쓴다 → 사람이 정한 기준으로 목록 출력 → 사람이 판정&quot; 끝에 체크 표시" loading="lazy">
+<h2>4. 확인 방법: 결과를 30초 안에 눈으로 보는 명령 한 줄</h2>
+<p><strong>윈도우라면 PowerShell의 <code>Select-String</code>으로 날짜 제목 줄만 뽑으면 순서가 한눈에 보여요.</strong></p>
+<p><code>Select-String</code>은 정규식으로 파일 안 텍스트를 찾고, 찾은 줄마다 파일 이름·줄 번호·줄 내용을 보여 주는 명령이에요. 유닉스의 grep과 비슷하다고 공식 문서에 적혀 있습니다(→ <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-string)." target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-string).</a></p>
+<pre><code>Select-String -Path .\누적기록.md -Pattern &#x27;^### 2026-&#x27;</code></pre>
+<p>줄 번호가 같이 나오니까, 날짜는 커지는데 줄 번호 순서가 뒤집힌 곳이 바로 끼어든 자리예요.</p>
+<p>판정 체크리스트는 세 줄이면 충분해요.</p>
+<ul><li>목록 개수가 기대한 날짜 수와 같은가</li><li>날짜가 위에서 아래로 커지는가</li><li>오늘 항목이 맨 마지막 줄인가</li></ul>
+<h2>5. 같은 증상, 다른 경우</h2>
+<ul><li>AI가 &quot;자료가 없다&quot;고 보고했을 때 의심할 3가지 → <a href="https://blog.naver.com/makefield_ai/224379696511" target="_blank" rel="noopener">AI가 자료 없다고 할 때 의심할 3가지</a></li><li>확인을 시켰더니 33일 동안 오류 0건이 나왔는데, 알고 보니 자기 답을 자기가 채점하고 있던 경우 → <a href="https://blog.naver.com/makefield_ai/224415585368" target="_blank" rel="noopener">AI 자기 검증 함정</a></li><li>일을 시킬 때 결과 칸을 미리 정해 줘서 답의 모양을 고친 경우 → <a href="https://blog.naver.com/makefield_ai/224377768799" target="_blank" rel="noopener">AI 리서치 시키는 법</a></li></ul>
+<h2>자주 받는 질문</h2>
+<p><strong>Q. 4칸을 다 적으면 지시문이 너무 길지 않나요?</strong><br>
+매일 도는 일이면 3번(위치·순서)과 4번(확인)은 고정 문구예요. 처음 한 번만 공들이고 다음부턴 그대로 씁니다.</p>
+<p><strong>Q. 프롬프트 4요소랑 이 4칸은 같은 건가요?</strong><br>
+겹치지만 같진 않아요. 마이크로소프트 안내의 목표·맥락·출처·기대는 &#x27;답을 잘 받는 법&#x27;이고, 제가 4번 칸에 따로 떼어 둔 &#x27;확인 기준·확인자&#x27;는 &#x27;받은 답을 믿어도 되는지 보는 법&#x27;입니다. 매일 무인으로 도는 일엔 이 마지막 칸이 제일 중요했어요.</p>
+<p>AI 일시키기에서 빠지기 쉬운 건 할 일이 아니라 <strong>위치·순서와 확인</strong>이었어요. 제 경우엔 그 두 칸이 비어서, 없어지지도 않은 12일치를 복구할 뻔했습니다.<br>
+오늘 AI한테 맡긴 일 중에 &quot;확인은 누가, 무슨 기준으로?&quot;에 바로 답이 안 나오는 게 있으면, 그 지시문 끝에 한 줄만 붙여 보세요.</p>
+<hr>
+<p>AI한테 맡긴 일이 어디서 어긋났는지, 지시문을 고쳐 가는 기록은 makefield.ai에 모아 두고 있습니다.</p>
+<h2>출처</h2>
+<ul><li>Microsoft 지원, Learn about Copilot prompts — 프롬프트 4부분(Goal·Context·Source·Expectations), 목표만 필수 → <a href="https://support.microsoft.com/en-us/topic/learn-about-copilot-prompts-f6c3b467-f07c-4db1-ae54-ffac96184dd5" target="_blank" rel="noopener">https://support.microsoft.com/en-us/topic/learn-about-copilot-prompts-f6c3b467-f07c-4db1-ae54-ffac96184dd5</a></li><li>Anthropic, Prompting best practices — Be clear and direct(&quot;new employee&quot;, 동료 테스트, 순서가 중요하면 번호 목록), Ask Claude to self-check → <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" target="_blank" rel="noopener">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices</a></li><li>Microsoft Learn, Select-String (PowerShell 7.6) — 정규식 검색, 파일 이름·줄 번호·줄 내용 출력, grep과 유사 → <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-string" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-string</a></li></ul>
+<p>태그: #AI일시키기 #AI에게일시키기 #AI작업지시 #AI프롬프트작성법 #프롬프트4요소 #AI업무자동화 #AI결과검증 #AI자기검증 #AI오진 #작업지시서 #SelectString #파워셸 #개인AI자동화 #AI로일하기 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224468750978" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261107-fusion-supply-chain-power-bottleneck/"><div class="d">← 이전 노트</div><div class="t">핵융합 공급망이란? 투자 45억 달러가 몰린 인공태양, 병목 1위가 전원 장치인 이유</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
