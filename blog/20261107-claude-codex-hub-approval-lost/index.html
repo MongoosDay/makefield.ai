@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>클로드 코덱스 협업 웹 만들기, 내가 누른 승인 2건이 재시작 한 번에 날아간 이유 | Field Notes · MakeField AI</title>
+<meta name="description" content="화면에서 [실행 승인] 버튼을 두 번 눌렀어요. 그리고 조금 뒤 이런 메시지가 떴습니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261107-claude-codex-hub-approval-lost/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="클로드 코덱스 협업 웹 만들기, 내가 누른 승인 2건이 재시작 한 번에 날아간 이유 | Field Notes · MakeField AI">
+<meta property="og:description" content="화면에서 [실행 승인] 버튼을 두 번 눌렀어요. 그리고 조금 뒤 이런 메시지가 떴습니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261107-claude-codex-hub-approval-lost/">
+<meta property="og:image" content="https://makefield.ai/blog/20261107-claude-codex-hub-approval-lost/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "클로드 코덱스 협업 웹 만들기, 내가 누른 승인 2건이 재시작 한 번에 날아간 이유", "datePublished": "2026-11-07", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261107-claude-codex-hub-approval-lost/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">자동화 만들기</span><span>2026-11-07</span></div>
+<h1>클로드 코덱스 협업 웹 만들기, 내가 누른 승인 2건이 재시작 한 번에 날아간 이유</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;클로드 코덱스 협업 웹 만들기 / 내가 누른 승인 2건이 재시작에 날아갔어요&quot;" loading="lazy">
+<p>화면에서 [실행 승인] 버튼을 두 번 눌렀어요.<br>
+그리고 조금 뒤 이런 메시지가 떴습니다.</p>
+<pre><code>결론 #25의 실행 승인은 실행되지 못했습니다
+(… 윈도우 Claude가 서버를 재시작하며 대기열 유실 — 윈도우 Claude 잘못).
+이 계획(…)은 아래 v2 직접 수정으로 대체되어 무효 처리합니다.
+다시 원하시면 새로 요청해 주세요.</code></pre>
+<p>결론 #15도 똑같은 문장으로 무효가 됐어요.<br>
+클로드 코덱스 협업을 한 화면에서 하려고 만든 웹이었는데, 제가 누른 승인 2건을 만든 AI가 스스로 날린 거예요.</p>
+<p>먼저 결론부터 적을게요. <strong>AI 둘이 합의한 것은 실행 허가가 아니고, 사람이 누른 승인은 대화가 아니라 지워지면 안 되는 기록</strong>이에요. 그리고 그 기록에 번호를 붙이는 손은 하나여야 합니다.</p>
+<p>저는 설비 제어를 오래 해 온 현장 엔지니어고, 요즘은 일을 AI 두 개에 나눠 맡겨요. Claude가 만들고, Codex가 검토하는 식으로요.</p>
+<h2>1. 클로드 코덱스 협업, 왜 웹을 따로 만들었나요?</h2>
+<p>콘솔 창 두 개를 오가며 말을 옮기는 게 한계였어요.<br>
+Claude 창에 묻고, 답을 복사해서 Codex 창에 붙이고, Codex 답을 다시 Claude 창에 붙이고..<br>
+그날 제가 남긴 지시 원문이 이래요.</p>
+<blockquote>&quot;이렇게 둘다 콘솔로 하지말고.. 너무 각각 얘기하고있으니 눈에 안들어온다. 둘이서 잘 논의해서 둘이 공통으로 움직일 수 있는 통합웹 하나 로컬에 만들어.&quot;</blockquote>
+<p>채팅창 하나, 발화자마다 색 구분, 결론은 별도 색 카드, 제 결정이 필요하면 공통 질문, 캡처와 파일 첨부까지 넣어 달라고 했어요.</p>
+<p>Claude가 내놓은 첫 설계는 이랬어요. 제 메시지를 두 AI가 같이 받고(<code>claude -p</code>, <code>codex exec</code>로 각각 호출), 최대 2왕복 협의해서 합의되면 결론을 내고, <strong>결론의 분담대로 바로 작업을 시작</strong>한다.</p>
+<h2>2. &quot;합의 자체는 실행 허가가 아님&quot; — 반대한 건 다른 AI였어요</h2>
+<p>그 설계안을 Codex에 보냈더니 항목별 회신이 왔어요. 그중 한 줄이 이거였습니다.</p>
+<pre><code>| 합의 후 자동 실행 | 반대 | 합의 자체는 실행 허가가 아님.
+  승인 범위·선행 완료 근거·전제 확인이 기준 |</code></pre>
+<p>이 줄 보고 좀 뜨끔했어요. 처음 제 지시부터 &quot;둘이 최종 협의해서 진행하도록&quot;이었거든요.<br>
+현장에선 당연한 얘기인데 말이죠. 작업자 둘이 회의에서 &quot;이렇게 하자&quot; 했다고 작업허가서 없이 차단기를 올리진 않잖아요.</p>
+<p>Claude는 반대를 전부 받아들였고, 협의는 1회 왕복으로 끝났어요. 바뀐 구조는 아래 표와 같아요.</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>처음 설계</th><th>바뀐 설계</th></tr></thead><tbody><tr><td>합의 후</td><td>분담대로 바로 실행</td><td>결론 카드 + <strong>[실행 승인] 버튼</strong>, 사람이 눌러야 실행</td></tr><tr><td>계획이 바뀌면</td><td>언급 없음</td><td>계획 버전이 새로 붙고, <strong>옛 승인은 다시 못 씀</strong></td></tr><tr><td>무응답·형식 오류</td><td>언급 없음</td><td>동의로 치지 않고 제게 질문으로 넘김</td></tr><tr><td>누가 말했나</td><td>모델 출력의 이름</td><td>실행기가 호출 대상에 따라 붙임(모델이 쓴 이름은 안 믿음)</td></tr><tr><td>재시작 시</td><td>언급 없음</td><td>하던 요청은 &#x27;중단됨&#x27; 표시, 자동 재실행 안 함</td></tr></tbody></table></div>
+<img src="img/02_design.png" alt="처음 설계(합의 → 바로 실행, 빨간 테두리) vs 바뀐 설계(합의 → 결론 카드·계획 v1 → 사람의 [실행 승인] → 실행, 잉크 테두리+체크). 계획이 v2로 바뀌면 v1 승인 칸에 빨간 X" loading="lazy">
+<h2>3. 써 보니 &quot;답을 안 해주네?&quot;부터 나왔어요</h2>
+<p>웹을 띄우고 메시지를 보냈는데 한참 조용했어요. 제가 친 말은 딱 이거였습니다.</p>
+<blockquote>&quot;답을 안해주네?&quot;</blockquote>
+<blockquote>&quot;뭐 요청 이력이나 대기상태나 지금 읽고잇거나 ui적으로 보여줘야할거같은데 아무것도 안되니 답답하다.&quot;</blockquote>
+<p>돌고 있는 건지 멈춘 건지, 화면만 봐선 알 수가 없었거든요.<br>
+그래서 v2를 만들었어요. 바로 대답하는 걸 먼저 띄우고, 지금 읽는 파일과 돌리는 명령을 실시간으로 보여주고, 대기열과 배지, 대화 목록, 전체 취소 버튼을 넣었습니다.</p>
+<h2>4. v2를 고치다 서버를 재시작했고, 번호까지 꼬였어요</h2>
+<p>문제는 v2로 고치는 그 사이에 터졌어요.<br>
+제가 결론 두 개에 [실행 승인]을 누른 뒤, Claude가 <strong>제가 쓰고 있던 서버를 확인 없이 재시작</strong>했어요.</p>
+<p>웃긴 건 버튼 클릭은 기록에 남아 있었다는 거예요. 원장(지우지 않고 덧붙이기만 하는 기록 파일)엔 이렇게 찍혀 있었어요.</p>
+<pre><code>## [#23]
+[기록자 주석, 원문 아님] 사용자가 협업웹에서 결론 #25 … [실행 승인] 버튼을 누름
+## [#24]
+[기록자 주석, 원문 아님] 사용자가 협업웹에서 결론 #15 … [실행 승인] 버튼을 누름</code></pre>
+<p>눌렀다는 사실은 남았는데, 실행 대기열이 날아가서 실행은 안 된 거예요. 합의문에 &#x27;재시작하면 중단됨 표시&#x27; 조항까지 있었는데도요.<br>
+결국 맨 위의 &#x27;승인 무효&#x27; 메시지와 사과가 남았고, 두 계획은 v2 직접 수정으로 대체됐어요.</p>
+<img src="img/03_incident.png" alt="승인 사고 흐름 — ①[실행 승인] 2번 클릭(원장 #23·#24 기록됨, 초록) → ②사용 중 서버 재시작(빨간 테두리, &quot;확인 없이&quot;) → ③실행 대기열 유실(빨간색) → ④&#x27;승인 무효&#x27; 기록+사과. 아래 줄에 &quot;클릭 기록은 남음 / 실행은 안 됨&quot; 대비" loading="lazy">
+<p>같은 날 하나 더 있어요. Claude가 콘솔에서 제 말을 원장에 옮기면서 번호를 손으로 붙였는데, 웹이 이미 #18~#24를 써 놓은 뒤였어요. 그래서 #18이 두 개가 됐습니다.</p>
+<p>이건 지우지 않았어요. 줄은 그대로 두고 아래에 &quot;실제 순번은 #25&quot; 정정 주석을 달았고, 그 뒤로는 번호를 붙이는 기록 도구로만 기록하게 바꿨어요.</p>
+<p>그 뒤엔 반대 방향 사고도 있었어요. 그날 Codex가 같은 주소에 자기가 만든 새 앱을 올렸는데(기존 웹이 쉬는 중인지 두 번 확인하고, 기존 기록은 해시까지 맞춰 복사했어요), 다음 날 Claude는 여전히 &quot;옛 실행 파일로 켜세요&quot;라고 안내했거든요. 둘 다 켜면 주소가 충돌하는 상황이라 오안내로 정정했습니다.</p>
+<h2>5. AI 두 개 같이 쓸 때 정한 4가지</h2>
+<div class="table-wrap"><table><thead><tr><th>자리</th><th>규칙</th></tr></thead><tbody><tr><td>실행</td><td>합의는 제안일 뿐, <strong>사람 승인 + 계획 버전</strong>이 붙어야 실행</td></tr><tr><td>재시작</td><td>쓰는 중인지 먼저 확인하고 끈다 (Codex가 앱을 갈아끼울 때 보여준 순서)</td></tr><tr><td>번호</td><td>기록에 번호를 붙이는 건 <strong>기록기 하나</strong>만</td></tr><tr><td>안내</td><td>&quot;이걸로 켜세요&quot; 전에 지금 누가 마지막으로 바꿨는지 확인</td></tr></tbody></table></div>
+<img src="img/04_one_writer.png" alt="기록기는 하나 — Claude·Codex·사람(승인 버튼) 세 화살표가 가운데 &#x27;기록기 1개(덧붙이기만)&#x27; 상자로 모이고, Claude가 콘솔에서 원장에 직접 번호 붙이는 화살표는 빨간 X" loading="lazy">
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 클로드 코덱스 협업, 꼭 웹까지 만들어야 하나요?</strong><br>
+아니요. 두 AI가 파일로 협의문을 주고받아도 돼요. 저도 웹 전엔 그렇게 했어요. 다만 왔다 갔다가 많아지면 한 화면에 모으는 게 눈이 편했고, 대신 위 4가지를 같이 챙겨야 했습니다.</p>
+<p><strong>Q. AI끼리 합의하면 그냥 자동 실행시키면 안 되나요?</strong><br>
+되돌리기 쉬운 일이면 괜찮을 수도 있어요. 그런데 합의는 &quot;이렇게 하자&quot;까지고, 무엇을 어디까지 해도 되는지는 아무도 안 정한 상태예요. 그래서 저는 승인 버튼에 계획 버전을 묶었어요. 계획이 바뀌면 다시 눌러야 합니다.</p>
+<p><strong>Q. 승인 기록이 남았는데 왜 실행이 안 됐나요?</strong><br>
+기록과 실행 대기열이 따로 있었기 때문이에요. 클릭은 원장에 남았지만, 재시작으로 실행 대기열이 사라졌어요. &quot;눌렀다&quot;와 &quot;실행됐다&quot;는 다른 기록이라는 걸 그날 배웠습니다.</p>
+<p>여러분은 AI 둘한테 일을 맡길 때 &quot;이제 실행해도 된다&quot;를 누가 정하고 계세요?<br>
+현장 작업허가서가 굳이 종이에 사인을 받는 이유도 같아요. 말로 한 합의는 남지 않고, 사인한 것만 남으니까요.</p>
+<hr>
+<p>두 AI를 붙여 쓰는 웹을 어떻게 고쳐 가는지는 makefield.ai에 계속 적어 두고 있습니다.</p>
+<p>태그: #클로드코덱스협업 #클로드코덱스 #ClaudeCode #Codex #클로드코드 #AI두개협업 #멀티에이전트 #AI에이전트 #AI협업웹 #승인버튼 #실행승인 #appendonly #작업기록 #개인자동화 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224468675147" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261106-word-square-dots-title-clipped/"><div class="d">← 이전 노트</div><div class="t">워드 문단 앞 작은 네모 점, 제목 윗부분 잘림 — AI가 만든 문서에 숨은 서식 3개</div></a><a class="next" href="/blog/20261107-fusion-supply-chain-power-bottleneck/"><div class="d">다음 노트 →</div><div class="t">핵융합 공급망이란? 투자 45억 달러가 몰린 인공태양, 병목 1위가 전원 장치인 이유</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
