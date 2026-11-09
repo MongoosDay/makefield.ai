@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ezdxf 라이브러리, 캐드 없이 파이썬으로 DXF 도면 뽑는 법 | Field Notes · MakeField AI</title>
+<meta name="description" content="ezdxf 라이브러리는 AutoCAD 없이 파이썬으로 DXF 도면을 읽고, 만들고, 고치는 MIT 라이선스 오픈소스예요. 설치는 pip install ezdxf 한 줄이고, 공식 문서 기준 Python 3.11 이상이 필요해요(2026년 11월 확인). 대신 DWG 파일은 직접">
+<link rel="canonical" href="https://makefield.ai/blog/20261110-ezdxf-library-python-dxf/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ezdxf 라이브러리, 캐드 없이 파이썬으로 DXF 도면 뽑는 법 | Field Notes · MakeField AI">
+<meta property="og:description" content="ezdxf 라이브러리는 AutoCAD 없이 파이썬으로 DXF 도면을 읽고, 만들고, 고치는 MIT 라이선스 오픈소스예요. 설치는 pip install ezdxf 한 줄이고, 공식 문서 기준 Python 3.11 이상이 필요해요(2026년 11월 확인). 대신 DWG 파일은 직접">
+<meta property="og:url" content="https://makefield.ai/blog/20261110-ezdxf-library-python-dxf/">
+<meta property="og:image" content="https://makefield.ai/blog/20261110-ezdxf-library-python-dxf/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ezdxf 라이브러리, 캐드 없이 파이썬으로 DXF 도면 뽑는 법", "datePublished": "2026-11-10", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261110-ezdxf-library-python-dxf/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">자동화 만들기</span><span>2026-11-10</span></div>
+<h1>ezdxf 라이브러리, 캐드 없이 파이썬으로 DXF 도면 뽑는 법</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="타이틀카드 — &quot;ezdxf 라이브러리, 캐드 없이 파이썬으로 DXF 도면 뽑는 법 / 설치 한 줄, 단 DWG는 못 열어요&quot;" loading="lazy">
+<p><strong class="u">ezdxf 라이브러리</strong>는 AutoCAD 없이 파이썬으로 DXF 도면을 읽고, 만들고, 고치는 MIT 라이선스 오픈소스예요.<br>
+설치는 <code>pip install ezdxf</code> 한 줄이고, 공식 문서 기준 Python 3.11 이상이 필요해요(2026년 11월 확인).<br>
+대신 <strong>DWG 파일은 직접 못 다뤄요.</strong> 이건 처음에 알고 시작해야 덜 헤매요.</p>
+<p>저는 이 라이브러리를 첫 유료 강의 준비에서 썼어요.<br>
+라이브 시연에서 AI한테 말로 시켜 감지기 외형도 DXF를 그 자리에서 뽑았거든요.<br>
+그 준비 과정은 <a href="https://blog.naver.com/makefield_ai/224346619576" target="_blank" rel="noopener">AI 강의 발표자료 글</a>에 따로 적었고, 이 글은 그때 쓴 도구 자체만 정리할게요.<br>
+제조 현장에서 자동화 설비를 다뤄 온 엔지니어 입장에서, 처음 쓰는 분이 걸릴 자리 위주로요.</p>
+<h2>1. 처음 쓰면 이런 화면부터 봐요</h2>
+<p>ezdxf를 처음 만지면 이런 화면을 만나기 쉬워요.</p>
+<pre><code>ModuleNotFoundError: No module named &#x27;ezdxf&#x27;   ← 설치 전에 import
+Not a DXF file or a generic I/O error.         ← DWG를 readfile에 넣음(공식 튜토리얼 예제의 IOError 메시지)
+정면도 표제란 : □□□ □□□                         ← 한글 텍스트가 네모</code></pre>
+<p>첫 줄은 파이썬이 모듈을 못 찾을 때 내는 표준 예외예요(→ <a href="https://docs.python.org/3/library/exceptions.html#ModuleNotFoundError)." target="_blank" rel="noopener">https://docs.python.org/3/library/exceptions.html#ModuleNotFoundError).</a><br>
+세 번째 네모는 제가 리허설에서 직접 본 화면이에요. 텍스트 43개가 전부 네모였어요.</p>
+<h2>2. ezdxf는 &#x27;DXF 전용&#x27; 라이브러리라서 그래요</h2>
+<p>공식 문서는 ezdxf를 &quot;Autodesk가 만든 DXF 포맷의 파이썬 인터페이스&quot;라고 정의해요.<br>
+지원 범위는 R12부터 R2018 포맷까지이고, 문서에 이렇게 못박혀 있어요.</p>
+<pre><code>ezdxf is not a CAD file format converter:
+ezdxf can not convert DXF files to other CAD formats such as DWG.</code></pre>
+<p>(→ <a href="https://ezdxf.readthedocs.io/en/stable/introduction.html)" target="_blank" rel="noopener">https://ezdxf.readthedocs.io/en/stable/introduction.html)</a></p>
+<p>그래서 DWG를 넣으면 막히는 거고, 한글 네모는 DXF 기본 폰트에 한글 글자가 없어서 생겨요.</p>
+<img src="img/02_.png" alt="ezdxf가 하는 일 / 못 하는 일 — 왼쪽 &#x27;DXF 읽기·만들기·고치기(R12~R2018) 체크&#x27;, 오른쪽 &#x27;DWG 직접 읽기·저장 X → odafc 애드온 + ODA File Converter 별도 설치&#x27;. 빨간색은 DWG 칸에만" loading="lazy">
+<p>정리하면 ezdxf가 하는 일과 못 하는 일은 이래요.</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>ezdxf 혼자</th><th>필요한 것</th></tr></thead><tbody><tr><td>DXF 읽기·만들기·고치기</td><td>가능</td><td><code>pip install ezdxf</code></td></tr><tr><td>PNG·SVG로 그려보기</td><td>가능</td><td><code>ezdxf[draw]</code> 추가 패키지</td></tr><tr><td>DWG 열기·저장</td><td>불가</td><td>odafc 애드온 + ODA File Converter(사용자가 따로 설치)</td></tr></tbody></table></div>
+<h2>3. 설치부터 도면 한 장까지 4단계</h2>
+<p><strong>① 설치와 버전 확인</strong></p>
+<pre><code>pip install ezdxf
+pip install ezdxf[draw]     # 그림으로 확인하려면 (Matplotlib·PySide6 등)
+python -m ezdxf -V          # 버전·설치 위치·파이썬 버전 출력</code></pre>
+<p><strong>② 최소 도면 코드</strong> — 공식 문서 예제를 이어 붙여 줄인 거예요.</p>
+<pre><code>import ezdxf
+from ezdxf import units
+
+doc = ezdxf.new(&quot;R2010&quot;, setup=True)   # 포맷 지정 + 기본 스타일
+doc.units = units.MM                   # 도면 단위 mm
+doc.layers.add(&quot;OUTLINE&quot;)
+doc.styles.add(&quot;HANGUL&quot;, font=&quot;malgun.ttf&quot;)
+
+msp = doc.modelspace()
+msp.add_line((0, 0), (100, 0), dxfattribs={&quot;layer&quot;: &quot;OUTLINE&quot;})
+msp.add_text(&quot;정면도&quot;, height=5,
+             dxfattribs={&quot;style&quot;: &quot;HANGUL&quot;}).set_placement((0, 10))
+doc.saveas(&quot;sample.dxf&quot;)</code></pre>
+<p><strong>③ 그림으로 뽑아 눈으로 보기</strong> — CAD가 없어도 돼요.</p>
+<pre><code>from ezdxf.addons.drawing import matplotlib
+matplotlib.qsave(doc.modelspace(), &quot;sample.png&quot;)</code></pre>
+<p><strong>④ DWG가 꼭 필요하면</strong> ODA File Converter를 먼저 설치하고 ezdxf의 odafc 애드온으로 변환해요. ezdxf 혼자선 안 돼요.</p>
+<img src="img/03_.png" alt="도면 한 장 흐름 — ezdxf.new(R2010) → 단위 mm·레이어 → 선·텍스트 추가 → saveas(.dxf) → qsave(.png) 눈검증. 마지막 칸에 체크" loading="lazy">
+<h2>4. 제 시연 도면은 이렇게 확인했어요</h2>
+<p>리허설 때 AI가 짠 스크립트로 나온 도면은 R2010 포맷, mm 단위, 11개 레이어에 81개 엔티티였어요.<br>
+정면도, 측면도, 감지범위 평면도, 치수, 표제란까지 들어갔고요.</p>
+<p>근데 첫 출력에서 한글이 전부 네모였어요.<br>
+위 ②번 코드의 <code>doc.styles.add(&quot;HANGUL&quot;, font=&quot;malgun.ttf&quot;)</code> 한 줄이 그때 넣은 처방이에요.<br>
+모든 텍스트와 치수에 그 스타일을 물리고,<br>
+다시 뽑고,<br>
+PNG로 렌더해서 텍스트 43개를 눈으로 확인했어요.</p>
+<p><strong>코드가 돌았다는 것과 도면이 맞다는 건 다른 얘기더라고요.</strong> 그래서 확인 기준을 세 개로 정해뒀어요.</p>
+<ul><li><code>python -m ezdxf -V</code>가 버전을 찍는다</li><li>저장한 DXF를 <code>ezdxf.readfile()</code>로 다시 열어도 에러가 없다</li><li>PNG로 뽑은 그림에서 한글·치수를 직접 눈으로 본다</li></ul>
+<img src="img/04_.png" alt="시연 도면 실측 카드 — R2010 / mm / 레이어 11 / 엔티티 81 / 텍스트 43 — &#x27;첫 출력 □□□(빨강) → HANGUL 스타일(malgun.ttf) 적용 → 43개 눈검증 정상&#x27;" loading="lazy">
+<h2>5. 같은 증상, 다른 경우</h2>
+<ul><li>한글 네모가 스타일을 넣어도 안 잡히면 → <a href="https://blog.naver.com/makefield_ai/224362393985" target="_blank" rel="noopener">파이썬으로 만든 DXF 도면 한글 깨짐, 인코딩 아니라 폰트 문제였어요</a>에 원인 판별법과 영어 폴백까지 있어요.</li><li>도면 말고 PPT를 파이썬으로 뽑다 표가 잘린다면 → <a href="https://blog.naver.com/makefield_ai/224415277543" target="_blank" rel="noopener">python-pptx 표 잘림 글</a>이 같은 &#x27;뽑고 눈으로 보기&#x27; 계열이에요.</li><li>이 도면을 시연에 쓴 맥락은 → <a href="https://blog.naver.com/makefield_ai/224346619576" target="_blank" rel="noopener">AI 강의 발표자료, 41장을 63장으로 갈아엎은 이유</a></li></ul>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. ezdxf 라이브러리, 회사 업무에 무료로 써도 되나요?</strong><br>
+공식 문서 표현으로 &quot;매우 관대한 MIT 라이선스&quot;예요. 다만 회사 반입 기준은 사내 규정을 따로 확인하세요.</p>
+<p><strong>Q. ezdxf로 DWG 파일을 열 수 있나요?</strong><br>
+혼자서는 못 열어요. ODA File Converter를 직접 설치한 뒤 odafc 애드온의 <code>readfile</code>을 쓰면, DWG를 임시 DXF로 바꿔서 불러와요.</p>
+<p><strong>Q. 오토캐드 없이 결과를 어떻게 보나요?</strong><br>
+<code>ezdxf[draw]</code>를 깔면 <code>ezdxf view 파일.dxf</code>로 바로 보거나, 위 <code>qsave</code>로 PNG를 뽑을 수 있어요. 저는 PNG로 뽑아 텍스트를 하나씩 세는 쪽을 택했어요.</p>
+<p>AI한테 도면을 맡겨보고 싶다면 ezdxf가 제일 가벼운 출발점이에요. 단, 뽑은 다음 한 번은 꼭 그림으로 열어보세요.<br>
+도면·코드를 AI와 같이 굴리는 현장 기록은 <a href="https://makefield.ai" target="_blank" rel="noopener">makefield.ai</a>에도 모아두고 있습니다.</p>
+<h2>출처</h2>
+<ul><li>ezdxf 공식 문서 Introduction — DXF 파이썬 인터페이스, R12~R2018, MIT, Python 3.11 이상, DWG 변환 불가 → <a href="https://ezdxf.readthedocs.io/en/stable/introduction.html" target="_blank" rel="noopener">https://ezdxf.readthedocs.io/en/stable/introduction.html</a></li><li>ezdxf Setup — pip install, [draw] 추가 패키지, <code>python -m ezdxf -V</code> → <a href="https://ezdxf.readthedocs.io/en/stable/setup.html" target="_blank" rel="noopener">https://ezdxf.readthedocs.io/en/stable/setup.html</a></li><li>ezdxf Usage for Beginners — new(), layers.add, add_line, saveas, readfile → <a href="https://ezdxf.readthedocs.io/en/stable/usage_for_beginners.html" target="_blank" rel="noopener">https://ezdxf.readthedocs.io/en/stable/usage_for_beginners.html</a></li><li>ezdxf Units — doc.units, units.MM($INSUNITS 4) → <a href="https://ezdxf.readthedocs.io/en/stable/concepts/units.html" target="_blank" rel="noopener">https://ezdxf.readthedocs.io/en/stable/concepts/units.html</a></li><li>ezdxf Text 튜토리얼 / Style 테이블 — add_text·set_placement, styles.add(font=) → <a href="https://ezdxf.readthedocs.io/en/stable/tutorials/text.html" target="_blank" rel="noopener">https://ezdxf.readthedocs.io/en/stable/tutorials/text.html</a> , <a href="https://ezdxf.readthedocs.io/en/stable/tables/style_table_entry.html" target="_blank" rel="noopener">https://ezdxf.readthedocs.io/en/stable/tables/style_table_entry.html</a></li><li>ezdxf Getting Data 튜토리얼 — readfile 예외 처리 예제(IOError 메시지) → <a href="https://ezdxf.readthedocs.io/en/stable/tutorials/getting_data.html" target="_blank" rel="noopener">https://ezdxf.readthedocs.io/en/stable/tutorials/getting_data.html</a></li><li>ezdxf Drawing 애드온 / Launcher — qsave, ezdxf view·draw → <a href="https://ezdxf.readthedocs.io/en/stable/addons/drawing.html" target="_blank" rel="noopener">https://ezdxf.readthedocs.io/en/stable/addons/drawing.html</a> , <a href="https://ezdxf.readthedocs.io/en/stable/launcher.html" target="_blank" rel="noopener">https://ezdxf.readthedocs.io/en/stable/launcher.html</a></li><li>ezdxf ODA File Converter 애드온 — DWG readfile·export_dwg, 별도 설치 → <a href="https://ezdxf.readthedocs.io/en/stable/addons/odafc.html" target="_blank" rel="noopener">https://ezdxf.readthedocs.io/en/stable/addons/odafc.html</a></li><li>Python 공식 문서 — ModuleNotFoundError → <a href="https://docs.python.org/3/library/exceptions.html#ModuleNotFoundError" target="_blank" rel="noopener">https://docs.python.org/3/library/exceptions.html#ModuleNotFoundError</a></li></ul>
+<hr>
+<p>태그: #ezdxf라이브러리 #ezdxf #ezdxf설치 #파이썬DXF #DXF만들기 #파이썬도면 #도면자동화 #CAD자동화 #DXF파일 #DWG변환 #ODAFileConverter #오토캐드없이 #AI도면생성 #파이썬자동화 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224471019554" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261109-powershell-commands-six/"><div class="d">← 이전 노트</div><div class="t">파워쉘 명령어 처음이면 딱 6개, 검은 화면이 무서울 때 외울 것</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
