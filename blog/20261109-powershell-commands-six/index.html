@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>파워쉘 명령어 처음이면 딱 6개, 검은 화면이 무서울 때 외울 것 | Field Notes · MakeField AI</title>
+<meta name="description" content="검은 창을 열어 놓고 커서만 깜빡이는 걸 한참 본 적 있으세요? 뭘 잘못 치면 컴퓨터가 망가질 것 같아서 그냥 닫게 되죠.">
+<link rel="canonical" href="https://makefield.ai/blog/20261109-powershell-commands-six/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="파워쉘 명령어 처음이면 딱 6개, 검은 화면이 무서울 때 외울 것 | Field Notes · MakeField AI">
+<meta property="og:description" content="검은 창을 열어 놓고 커서만 깜빡이는 걸 한참 본 적 있으세요? 뭘 잘못 치면 컴퓨터가 망가질 것 같아서 그냥 닫게 되죠.">
+<meta property="og:url" content="https://makefield.ai/blog/20261109-powershell-commands-six/">
+<meta property="og:image" content="https://makefield.ai/blog/20261109-powershell-commands-six/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "파워쉘 명령어 처음이면 딱 6개, 검은 화면이 무서울 때 외울 것", "datePublished": "2026-11-10", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261109-powershell-commands-six/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-11-10</span></div>
+<h1>파워쉘 명령어 처음이면 딱 6개, 검은 화면이 무서울 때 외울 것</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="01_.png 타이틀카드 — &quot;파워쉘 명령어, 처음이면 딱 6개 / 검은 화면이 무서울 때 외울 것&quot;" loading="lazy">
+<p>검은 창을 열어 놓고 커서만 깜빡이는 걸 한참 본 적 있으세요?<br>
+뭘 잘못 치면 컴퓨터가 망가질 것 같아서 그냥 닫게 되죠.</p>
+<p>결론부터 적을게요. <strong>AI 에이전트를 쓰려고 외울 파워쉘 명령어는 <code>pwd</code>·<code>ls</code>·<code>cd</code>·<code>mkdir</code>·<code>explorer .</code>·<code>Ctrl+C</code> 여섯 개면 충분합니다. 이 여섯 개엔 지우거나 덮어쓰는 명령이 하나도 없고, 복사·삭제 같은 나머지 일은 AI에게 한국어로 시키면 돼요.</strong> (2026년 11월, 윈도우 기본 Windows PowerShell 5.1 기준)</p>
+<p>지난 편에서는 서비스 안에 갇힌 메모리를 내 PC의 파일로 꺼냈어요. 이번 편에서는 그 파일이 있는 폴더로 AI를 데려가는 길, 검은 화면을 딱 필요한 만큼만 엽니다.</p>
+<p>저는 개발로 시작해 15년 넘게 설비 자동화·제어 일을 해 왔는데, 정작 이 창은 필요할 때만 겨우 열던 사람이에요. 그래서 여섯 개로 줄였습니다.</p>
+<h2>1. 검은 화면, 정말 잘못 누르면 망가지나요?</h2>
+<p><strong>창을 열고 닫거나 Ctrl+C를 누르는 것만으로는 컴퓨터가 망가지지 않아요.</strong> 사고가 나는 건 지우기·옮기기·덮어쓰기 명령인데, 이번에 외울 여섯 개는 전부 &quot;보기·이동·만들기&quot;뿐입니다.</p>
+<p>터미널에서 여러분이 할 일은 <strong>AI를 올바른 폴더에 데려다 놓는 것</strong>까지예요. 그다음은 AI가 하고, 저는 결과만 눈으로 확인합니다.</p>
+<h2>2. 파워쉘 명령어 카드 6장</h2>
+<img src="img/02_.png" alt="02_.png — 명령어 카드 6장. 2×3 격자 카드에 ①pwd 지금 어디 ②ls 뭐가 있나 ③cd 폴더 이동(cd .. 한 칸 위) ④mkdir 폴더 만들기 ⑤explorer . 탐색기로 열기 ⑥Ctrl+C 멈추기. 하단 빨간 펜 메모 &quot;지우는 명령은 없다&quot;" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>번호</th><th>이럴 때</th><th>윈도우 PowerShell</th><th>맥 터미널</th></tr></thead><tbody><tr><td>1</td><td>지금 내가 어느 폴더에 있지?</td><td><code>pwd</code></td><td><code>pwd</code></td></tr><tr><td>2</td><td>이 폴더에 뭐가 있지?</td><td><code>ls</code></td><td><code>ls</code></td></tr><tr><td>3</td><td>다른 폴더로 가고 싶다</td><td><code>cd 폴더이름</code> / 한 칸 위 <code>cd ..</code></td><td>같음</td></tr><tr><td>4</td><td>새 폴더가 필요하다</td><td><code>mkdir 폴더이름</code></td><td>같음</td></tr><tr><td>5</td><td>지금 폴더를 눈으로 보고 싶다</td><td><code>explorer .</code></td><td><code>open .</code></td></tr><tr><td>6</td><td>뭔가 안 끝난다, 멈춰야 한다</td><td><code>Ctrl + C</code></td><td><code>Ctrl + C</code></td></tr></tbody></table></div>
+<p>여기 없는 건 필요할 때 AI한테 물어보면 돼요.</p>
+<h2>3. 따라하기: 연습 폴더 하나 만들고 오가기</h2>
+<p><strong>1단계. 창을 엽니다.</strong><br>
+윈도우 키를 누르고 <code>powershell</code>을 쳐서 &quot;Windows PowerShell&quot;을 열어요. 관리자 권한은 필요 없습니다. 맨 앞줄이 이렇게 보이면 돼요.</p>
+<pre><code>PS C:\Users\사용자이름&gt;</code></pre>
+<p><code>PS</code>는 &quot;여기는 PowerShell&quot;이라는 표시, 그 뒤가 <strong>지금 서 있는 폴더</strong>예요.</p>
+<p><strong>2단계. 연습 폴더를 만들고 들어갑니다.</strong></p>
+<pre><code>mkdir C:\ai-work
+cd C:\ai-work
+pwd</code></pre>
+<p>오늘 제 PC에서 <code>pwd</code>와 <code>ls</code>를 쳐 본 결과는 이런 모양이에요(임시 폴더에서 친 걸 경로만 연습 폴더로 바꿔 옮겼어요).</p>
+<pre><code>PS C:\ai-work&gt; pwd
+
+Path
+----
+C:\ai-work
+
+PS C:\ai-work&gt; ls
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        2026-11-09   오전 1:26                notes
+-a----        2026-11-09   오전 1:26              7 memo.txt</code></pre>
+<p><code>Mode</code> 칸이 <code>d</code>로 시작하면 폴더, <code>-a</code>면 파일이에요.</p>
+<p><strong>3단계. 탐색기와 오가는 길을 뚫어 둡니다.</strong><br>
+<code>explorer .</code>의 점 하나는 &quot;지금 이 폴더&quot;예요. 제가 제일 많이 쓰는 명령인데, AI가 &quot;파일을 만들었습니다&quot;라고 할 때마다 이걸로 열어 <strong>진짜 있는지 눈으로</strong> 봐요. 말과 실제 파일이 다를 때가 있거든요.</p>
+<p>반대로 탐색기에서 보던 폴더로 가고 싶으면, 탐색기 주소창을 복사해서 <code>cd </code> 뒤에 붙여 넣으면 돼요. PowerShell 창에선 마우스 오른쪽 클릭이 붙여넣기입니다.</p>
+<img src="img/03_.png" alt="03_.png — 탐색기와 PowerShell 왕복. 왼쪽 PowerShell 창 박스 → &#x27;explorer .&#x27; 화살표 → 오른쪽 탐색기 박스 / 아래 방향 탐색기 주소창 복사 → &#x27;cd &quot;붙여넣기&quot;&#x27; 화살표 → PowerShell. 가운데 초록 체크 &quot;AI가 만든 파일은 여기서 눈으로 확인&quot;" loading="lazy">
+<p><strong>4단계. 멈추는 법과 Tab 키.</strong><br>
+안 끝나거나 멈춘 것 같으면 <code>Ctrl + C</code>, 그래도 모르겠으면 창을 닫아요. 폴더 이름은 앞 두세 글자만 치고 <strong>Tab 키</strong>를 누르면 나머지를 채워 줍니다.</p>
+<p>이제 AI를 부르면 됩니다.</p>
+<pre><code>cd C:\ai-work
+claude</code></pre>
+<p>GPT 쪽 Codex CLI는 <code>codex</code>, Gemini CLI는 <code>gemini</code>로 부르고, 폴더로 먼저 이동한 다음 부르는 방식은 셋 다 같습니다.</p>
+<h2>4. 여기서 이렇게 틀립니다: 띄어쓰기 있는 폴더로 cd가 안 돼요</h2>
+<p><strong>띄어쓰기가 있는 폴더 이름은 따옴표로 감싸야 이동돼요.</strong> 따옴표가 없으면 PowerShell은 공백을 &quot;여기서 다음 말이 시작된다&quot;로 읽어서 경로를 두 조각으로 자릅니다. 오늘 임시 폴더 <code>My Work</code>로 다시 재현해 봤어요.</p>
+<pre><code>PS&gt; cd C:\ai-work\My Work
+A positional parameter cannot be found that accepts argument &#x27;Work&#x27;.</code></pre>
+<p><code>Work</code>를 따로 떨어진 말로 받아서 &quot;이걸 어디에 쓰냐&quot;고 거절한 거예요. 마이크로소프트 공식 문서에도 &quot;경로처럼 공백이 들어간 인자는 반드시 따옴표로 감싸야 한다&quot;고 적혀 있습니다(Microsoft Learn, about_Quoting_Rules).</p>
+<p>고치는 법은 두 가지예요.</p>
+<ul><li>경로 전체를 큰따옴표로: <code>cd &quot;C:\ai-work\My Work&quot;</code></li><li>손으로 치지 말고 <strong>Tab으로 채우기</strong>: <code>cd .\My</code>까지 치고 Tab을 누르면 PowerShell이 <code>&#x27;.\My Work&#x27;</code>처럼 따옴표까지 붙여 줘요(오늘 PowerShell 5.1에서 확인).</li></ul>
+<p>그런데 저는 따옴표보다 이름 짓기에서 더 크게 데였어요.<br>
+제 작업 폴더 중 하나가 <code>2026_AI Agent</code>처럼 밑줄과 공백이 섞인 이름이거든요. 지난 6월 5일, 제가 자리를 비운 사이 혼자 돌던 AI 작업이 이 경로를 잘못 적어서 <code>2026 AI Agent</code>라는 <strong>밑줄 하나만 다른 쌍둥이 폴더</strong>를 새로 만들고 파일 2개를 거기 저장했어요.<br>
+닷새 뒤 전수 점검에서 처음 발견했고, 10월에 맥북을 새로 세팅할 때 또 &quot;두 개가 공존한다&quot;고 걸렸고, 오늘 확인해 보니 그 폴더는 아직 그대로 있습니다. 다섯 달째예요..<br>
+월별 폴더가 <code>2026년_5월</code>과 <code>2026년 5월</code> 두 벌로 갈라져 파일을 합치느라 고생한 얘기는 <a href="https://blog.naver.com/makefield_ai/224421515690" target="_blank" rel="noopener">클로드 코드 설치 편</a>에 적었는데, 같은 종류의 사고였죠.</p>
+<p>그래서 지금 원칙은 하나예요. <strong>AI를 세워 둘 작업 폴더만큼은 처음부터 영문·소문자·공백 없이 짓습니다.</strong> 이 경로는 설정 파일, 자동 실행, AI 지시문에서 계속 다시 쓰여서 공백 하나가 몇 달 뒤 엉뚱한 데서 터지거든요. 문서 파일 이름은 한글이어도 괜찮아요.</p>
+<img src="img/04_.png" alt="04_.png — 같은 이름 두 폴더. 위 초록 박스 &#x27;2026_AI Agent (원래 폴더)&#x27; / 아래 빨강 박스 &#x27;2026 AI Agent (6월 5일, 혼자 돌던 AI가 생성)&#x27; 파일 2개. 오른쪽 빨간 펜 &quot;밑줄 하나 차이, 다섯 달째&quot;. 하단 초록 박스 &#x27;C:\ai-work — 영문·소문자·공백 없음&#x27;" loading="lazy">
+<p>한글 파일이 외계어로 보이거나 AI가 짜 준 스크립트가 멀쩡한 줄에서 죽는 증상은 <a href="https://blog.naver.com/makefield_ai/224414114233" target="_blank" rel="noopener">PowerShell 한글 깨짐 글</a>에 따로 정리해 뒀어요.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 파워쉘 대신 cmd(명령 프롬프트)를 써도 되나요?</strong><br>
+<code>cd</code>·<code>mkdir</code>·<code>explorer .</code>는 cmd에서도 똑같이 돼요. 다만 cmd에선 <code>ls</code> 대신 <code>dir</code>을 쓰고, 지금 위치는 <code>cd</code>만 치면 나옵니다. 저는 AI 도구 설치 안내가 대부분 PowerShell 기준이라 하나로 통일했어요.</p>
+<p><strong>Q. PowerShell 7을 따로 깔아야 하나요?</strong><br>
+처음엔 안 깔아도 돼요. 윈도우 기본 5.1로 여섯 개 다 되고, 위 실측도 전부 5.1에서 했어요.</p>
+<p><strong>Q. 맥이면 뭐가 달라요?</strong><br>
+&#x27;터미널&#x27; 앱을 열면 되고, <code>pwd</code>·<code>ls</code>·<code>cd</code>·<code>mkdir</code>는 그대로예요. 탐색기 열기만 <code>explorer .</code> 대신 <code>open .</code>입니다.</p>
+<p>다음 편에선 이 창에서 부를 AI를 고릅니다. GPT·Claude·Gemini 셋 중 무엇으로 시작할지요.</p>
+<p>이 글은 『직장인의 AI 오답 노트』 1-1장을 블로그용으로 다시 쓴 것입니다. 같은 증상의 원인과 점검표 전체는 책에 있어요. 종이책 예스24 <a href="https://www.yes24.com/product/goods/198006547" target="_blank" rel="noopener">https://www.yes24.com/product/goods/198006547</a> · 종이책 알라딘 <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=404397482" target="_blank" rel="noopener">https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=404397482</a> · 전자책 예스24 <a href="https://www.yes24.com/product/goods/197975471" target="_blank" rel="noopener">https://www.yes24.com/product/goods/197975471</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224470961771" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261109-intraday-close-verdict-flipped/"><div class="d">← 이전 노트</div><div class="t">장중 가격과 종가 차이, AI 경보 판정이 하루 만에 뒤집혔어요 (24.57→25.64)</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
