@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI로 회식 장소 PPT 만들 때, 메뉴 사진보다 룸 사진이 먼저였어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="AI로 회식 장소 PPT를 만들면 정보는 금방 모아 줘요. 문제는 사진을 어떤 비중으로 넣느냐였습니다. 제 경우엔 지시서에 &quot;격식이 필요한 자리&quot;라고 분명히 적었는데도, 첫 판은 대표 메뉴가 확대 컷으로 들어가고 내부 사진은 한 장뿐이었어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261110-ai-dinner-place-ppt-room-photos/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI로 회식 장소 PPT 만들 때, 메뉴 사진보다 룸 사진이 먼저였어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="AI로 회식 장소 PPT를 만들면 정보는 금방 모아 줘요. 문제는 사진을 어떤 비중으로 넣느냐였습니다. 제 경우엔 지시서에 &quot;격식이 필요한 자리&quot;라고 분명히 적었는데도, 첫 판은 대표 메뉴가 확대 컷으로 들어가고 내부 사진은 한 장뿐이었어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261110-ai-dinner-place-ppt-room-photos/">
+<meta property="og:image" content="https://makefield.ai/blog/20261110-ai-dinner-place-ppt-room-photos/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI로 회식 장소 PPT 만들 때, 메뉴 사진보다 룸 사진이 먼저였어요", "datePublished": "2026-11-10", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261110-ai-dinner-place-ppt-room-photos/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-11-10</span></div>
+<h1>AI로 회식 장소 PPT 만들 때, 메뉴 사진보다 룸 사진이 먼저였어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;AI로 회식 장소 PPT 만들 때 / 메뉴 사진보다 룸 사진이 먼저였어요&quot;" loading="lazy">
+<p>AI로 회식 장소 PPT를 만들면 정보는 금방 모아 줘요. 문제는 <strong>사진을 어떤 비중으로 넣느냐</strong>였습니다.<br>
+제 경우엔 지시서에 &quot;격식이 필요한 자리&quot;라고 분명히 적었는데도, 첫 판은 대표 메뉴가 확대 컷으로 들어가고 내부 사진은 한 장뿐이었어요.</p>
+<p><strong>핵심만 먼저: AI에게 장소 비교 자료를 시킬 땐 &quot;보는 사람이 무엇으로 고르는지&quot;를 글로 주는 데서 끝내지 말고, 그 기준을 사진 몇 장·어느 크기로 보여 줄지까지 적어야 한다.</strong></p>
+<p>저는 제조 현장에서 15년째 자동화·제어 일을 하는 엔지니어예요.<br>
+그런데 회사 생활이 기술 일만 있는 건 아니잖아요. 이번엔 그 &#x27;기술 아닌 일&#x27;에 AI를 붙여 본 얘기입니다.</p>
+<h2>1. 어떤 자리였고, 뭘 시켰나요?</h2>
+<p>윗분 두 분과 외부 손님이 함께하는 <strong>첫 저녁 자리</strong>였어요. 장소 섭외가 저한테 떨어졌죠.<br>
+후보는 제가 미리 4곳 골라 뒀어요. 회집, 장어집, 고깃집 두 곳. 그리고 지시서를 텍스트 파일 하나로 써서 AI한테 넘겼습니다. 핵심 줄만 줄여 옮기면 이래요.</p>
+<pre><code>- 첫 저녁자리라서 조금 격식이 필요할 수 있음
+- 총 4페이지, 1장에 1곳씩. 직접 보실 수 있게 URL 꼭 명시
+- 내부 인테리어 대표사진과 메뉴, 리뷰 등 보는 사람이 쉽게 선택할 수 있도록
+- 주소는 무조건 (지도 스크린샷으로 인근 인프라도 대충)</code></pre>
+<p>식당마다 한 줄 메모도 붙였어요. &quot;내부가 깔끔&quot;, &quot;격식에 알맞음&quot;, &quot;별도 룸 없고 격식에는 부족하지만 맛집&quot;.<br>
+AI는 브라우저로 지도 서비스의 사진·메뉴·리뷰를 모아서 <strong>7분 만에</strong> 4장짜리 PPT를 냈어요. 4장 모두 이미지로 렌더링해 글자 잘림까지 확인하고요.<br>
+정보만 놓고 보면 빠진 칸이 없었어요.</p>
+<h2>2. 첫 판은 왜 아쉬웠을까요?</h2>
+<p><strong>지시서의 &#x27;격식&#x27;이 글 칸에는 들어갔는데, 사진 배치로는 안 옮겨졌기 때문이에요.</strong></p>
+<p>첫 판은 각 장 위쪽에 사진 3장을 나란히 놨어요. 내부 사진 1장, 대표 메뉴 사진 1장, 지도 캡처 1장.<br>
+&#x27;좌석·룸&#x27; 정보 칸과 &#x27;선택 포인트&#x27; 한 줄에는 격식 얘기가 잘 들어가 있었어요. 그런데 눈에 먼저 들어오는 건 확대된 메뉴 사진이었죠.<br>
+제가 바로 보낸 말이 이거예요(식당 이름만 지웠어요).</p>
+<pre><code>개별 룸이나 깔끔한 분위기의 테이블 공간 등(즉 격식있게 룸식사처럼 먹을 수 있는 분위기)을
+어필해야 할 건데 저렇게만 두면 어쩌나..? 안되면 사진 좀 여러 개 해놓던지..
+그리고 대표메뉴도 너무 확대해서 해놓으면 느낌이 없잖아.. 사진 어필이 너무 아쉽다</code></pre>
+<p>돌아보면 AI는 지시서를 글자 그대로 따랐어요. 저는 &quot;내부 인테리어 <strong>대표사진</strong>&quot;이라고 썼고, AI는 대표사진 1장을 넣었죠.<br>
+&#x27;격식&#x27;이라는 판단 기준과 &#x27;대표사진 1장&#x27;이라는 형식 지시가 같이 있으면, AI는 기준은 글로, 형식은 그대로 처리하더라고요.<br>
+<strong class="u">사진의 비중</strong>까지 기준에 맞춰 달라는 말은 제가 안 했던 거예요.</p>
+<img src="img/02_.png" alt="02_.png 첫 판 vs 고친 판 슬라이드 배치 — 왼쪽 BEFORE 빨간 테두리: 위쪽 칸 3개 나란히 &#x27;내부 1장 / 메뉴 확대 / 지도&#x27;, 아래 &#x27;정보·리뷰 글&#x27;. 빨간 손글씨 &#x27;격식은 글 칸에만&#x27;. 오른쪽 AFTER 잉크 테두리: 위쪽 전체 폭 &#x27;내부 전경(크게) / 룸·테이블 2장 / 한 상 차림&#x27;, 아래 &#x27;지도·정보&#x27;. 초록 체크" loading="lazy">
+<h2>3. 8분 뒤 나온 고친 판은 뭐가 달랐나요?</h2>
+<p><strong>위쪽 전체 폭을 사진 4장으로 채우고, 지도와 정보는 아래로 내렸어요.</strong> 반려 후 8분 걸렸습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>첫 판</th><th>고친 판</th></tr></thead><tbody><tr><td>사진 구성</td><td>내부 1·메뉴 1·지도 1 (나란히)</td><td>내부 전경 크게 + 룸·테이블 2장 + 한 상 차림 1장</td></tr><tr><td>음식 사진</td><td>대표 메뉴 확대 컷</td><td>한 상·모둠 판 전체가 보이는 사진</td></tr><tr><td>룸 없는 곳</td><td>글로 &quot;룸 없음&quot;</td><td>홀 사진을 넣어 룸이 없다는 게 사진으로 보이게</td></tr><tr><td>지도·정보</td><td>위쪽 사진 줄에 지도</td><td>아래쪽으로</td></tr></tbody></table></div>
+<img src="img/03_.png" alt="03_.png 지시서 한 줄이 어디까지 반영됐나 — 왼쪽 잉크 박스 &#x27;지시서: 격식 필요한 첫 자리&#x27;. 오른쪽으로 화살표 3개. 위 &#x27;좌석·룸 정보 칸&#x27; 초록 체크, 가운데 &#x27;선택 포인트 한 줄&#x27; 초록 체크, 아래 &#x27;사진 개수·크기&#x27; 빨간 X. 빨간 손글씨 &#x27;여기는 말 안 했다&#x27;" loading="lazy">
+<h2>4. 사진만 문제였을까요? 정보 칸에도 틀린 게 있었어요</h2>
+<p>고친 판을 만들면서 AI가 스스로 정정한 게 두 개 있어요.</p>
+<ul><li><strong>주차</strong>: 첫 판엔 &quot;가능&quot;이라고 적었는데 틀렸어요. 한 곳은 건물 뒤에 3~4대만 댈 수 있고, 한 곳은 전용 주차장이 없어 근처 공영주차장을 써야 했죠.</li><li><strong>룸 여부</strong>: 한 고깃집은 &quot;룸 미확인&quot;이었는데, 다른 지도 서비스의 시설 정보에 프라이빗룸이 있다고 나와서 고쳤어요. 다만 룸 내부 사진은 끝내 못 찾아서 칸막이 좌석 사진으로 대신했고요.</li></ul>
+<p>사진을 더 모으다 보안 확인 창(캡차)이 뜬 장면도 있었어요. AI는 <strong>캡차를 풀지 않고</strong> 거기서 수집을 멈췄고, 다른 지도 서비스에서 같은 주소인지 확인한 뒤 그쪽 사진을 썼어요.</p>
+<p>결말이 좀 웃긴데요.. 최종으로 정해진 곳이 바로 <strong>룸 내부 사진을 못 찾은 그 고깃집</strong>이었어요. 게다가 오후 4시에 문을 여는 곳이라 예약 전화를 그 시간에 걸어야 했죠.<br>
+그래서 마지막엔 제가 맞춰 둔 할 일 앱 알림을 AI한테 확인시켰어요. 알림은 UTC 07:00으로 저장돼 있었는데, 한국 시간으로 16:00이라 맞게 걸려 있었습니다. 그리고 전화로 물어볼 3가지를 뽑아 줬어요. 5명이 쓸 룸이 있는지, 근처 주차는 어디인지, 마지막 주문은 몇 시인지.<br>
+<strong>사진으로 확인 못 한 건 결국 전화 한 통으로 메울 일이었죠.</strong> 여러분은 AI가 만든 자료에서 &quot;미확인&quot;이라고 적힌 칸, 어떻게 처리하고 계세요?</p>
+<h2>5. 회식 장소 PPT 지시서에 넣을 세 줄</h2>
+<p>Anthropic의 공식 프롬프트 가이드는 지시만 주지 말고 <strong>그 지시가 왜 중요한지 맥락을 함께 주면</strong> AI가 목표를 더 잘 알고 더 맞춤한 답을 낸다고 적어 둬요(→ <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices," target="_blank" rel="noopener">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices,</a> &quot;Add context to improve performance&quot;).<br>
+제 지시서엔 &#x27;격식&#x27;이라는 맥락은 있었는데, 그게 <strong>사진에서 어떻게 보여야 하는지</strong>가 빠져 있었던 거죠. 이번 일을 겪고 회식 장소 PPT 지시서용으로 정리한 세 줄이에요(<strong>재구성 예시</strong>이고, 당시 실제 지시문은 아니에요).</p>
+<pre><code>1. 고르는 기준: 맛보다 분위기(룸·조용한 테이블)가 먼저인 자리다.
+2. 사진 비중: 장마다 룸·테이블 사진을 가장 크게, 2장 이상. 메뉴는 한 상 전체 1장.
+3. 미확인 표시: 사진·정보로 확인 못 한 항목은 &quot;미확인&quot;으로 두고, 전화로 물을 질문 목록을 따로 뽑는다.</code></pre>
+<img src="img/04_.png" alt="04_.png 장소 비교 PPT 지시서 3칸 카드 — 잉크 카드 3개 세로: &#x27;① 고르는 기준(분위기가 먼저)&#x27; &#x27;② 사진 비중(룸·테이블 크게 2장+, 메뉴는 한 상 1장)&#x27; &#x27;③ 미확인 표시 → 전화 질문 목록&#x27;. ③ 옆 빨간 손글씨 &#x27;주차·룸·마지막 주문&#x27;. 각 카드 오른쪽 초록 체크" loading="lazy">
+<h2>자주 받는 질문</h2>
+<p><strong>Q. 처음부터 &quot;룸 사진 크게&quot;라고만 쓰면 되지 않나요?</strong><br>
+그것도 되는데, 기준(왜 룸이 중요한지)을 같이 주는 게 나았어요. 룸이 없는 곳을 홀 사진으로 보여 준 건 제가 시킨 게 아니라, 기준을 알고 나서 AI가 스스로 고른 배치였거든요.</p>
+<p><strong>Q. AI가 모은 식당 정보, 그대로 믿어도 되나요?</strong><br>
+제 경우엔 첫 판에서 주차 정보가 틀렸어요. 손님이 차로 오는 자리라면 주차·룸·영업시간 세 가지는 전화로 한 번 더 확인하는 걸 권해요.</p>
+<p>회식 장소 PPT에서 AI가 가장 크게 놓친 건 정보 한 줄보다 <strong>강조할 자리</strong>였어요. 같은 사진 3장이라도 무엇을 크게 보여 줄지는, 그 자리에 갈 사람만 알더라고요.</p>
+<hr>
+<p>팀에서 AI로 보고 자료를 만들 때, 지시서에 &#x27;보는 사람이 고르는 기준&#x27;을 넣는 법부터 같이 잡아 보고 싶다면 makefield.ai에 교육 안내가 있습니다.</p>
+<h2>출처</h2>
+<ul><li>Anthropic, Prompting best practices — &quot;Add context to improve performance&quot;(지시의 맥락·이유를 함께 주면 더 맞춤한 응답) → <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" target="_blank" rel="noopener">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices</a></li></ul>
+<p>태그: #회식장소PPT #AI로PPT만들기 #AIPPT #PPT사진배치 #식당비교 #회식장소추천 #접대장소 #AI업무활용 #AI지시하는법 #프롬프트작성법 #AI오답노트 #직장인AI #보고자료만들기 #AI로일하기 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224472267750" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261109-powershell-commands-six/"><div class="d">← 이전 노트</div><div class="t">파워쉘 명령어 처음이면 딱 6개, 검은 화면이 무서울 때 외울 것</div></a><a class="next" href="/blog/20261110-ezdxf-library-python-dxf/"><div class="d">다음 노트 →</div><div class="t">ezdxf 라이브러리, 캐드 없이 파이썬으로 DXF 도면 뽑는 법</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
