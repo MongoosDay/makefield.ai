@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>맥 원격 데스크톱 리눅스 로그인 실패, 윈도우는 되는데 맥만 안 될 때 | Field Notes · MakeField AI</title>
+<meta name="description" content="윈도우 PC에서는 리눅스 장비 원격 화면이 잘 떠요. 그런데 맥북에서 같은 계정, 같은 비밀번호를 넣으면 로그인이 안 됩니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261112-mac-rdp-linux-login-fail-swap-client/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="맥 원격 데스크톱 리눅스 로그인 실패, 윈도우는 되는데 맥만 안 될 때 | Field Notes · MakeField AI">
+<meta property="og:description" content="윈도우 PC에서는 리눅스 장비 원격 화면이 잘 떠요. 그런데 맥북에서 같은 계정, 같은 비밀번호를 넣으면 로그인이 안 됩니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261112-mac-rdp-linux-login-fail-swap-client/">
+<meta property="og:image" content="https://makefield.ai/blog/20261112-mac-rdp-linux-login-fail-swap-client/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "맥 원격 데스크톱 리눅스 로그인 실패, 윈도우는 되는데 맥만 안 될 때", "datePublished": "2026-11-12", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261112-mac-rdp-linux-login-fail-swap-client/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">막힐 때 해결</span><span>2026-11-12</span></div>
+<h1>맥 원격 데스크톱 리눅스 로그인 실패, 윈도우는 되는데 맥만 안 될 때</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;맥 원격 데스크톱 리눅스 로그인 실패 / 윈도우는 되는데 맥만 안 될 때&quot;" loading="lazy">
+<p>윈도우 PC에서는 리눅스 장비 원격 화면이 잘 떠요.<br>
+그런데 맥북에서 같은 계정, 같은 비밀번호를 넣으면 로그인이 안 됩니다.</p>
+<p>짧게 답부터 드릴게요. <strong>맥 원격 데스크톱이 리눅스(GNOME 원격 데스크톱)에 로그인 실패하는데 윈도우 기본 원격 데스크톱은 된다면, 서버와 계정은 이미 정상이라는 뜻이니 로그를 파기 전에 맥 쪽 클라이언트부터 다른 걸로 바꿔 보세요.</strong> 저는 마이크로소프트 Windows App을 Thincast Remote Desktop으로 바꾸자 바로 붙었어요. (2026년 11월, 제 맥북 기준)</p>
+<p>저는 15년 가까이 공장 설비 제어 일을 해 왔어요. 고장 나면 멀쩡한 채널과 고장 난 채널을 나란히 놓고 차이부터 보는 게 몸에 밴 사람인데요.<br>
+이번엔 그 습관을 AI 진단표 앞에서 잠깐 잊었습니다..</p>
+<h2>1. 윈도우는 되는데 맥만 로그인 실패, 상황은 이랬어요</h2>
+<p><strong>같은 장비에 같은 계정으로 붙는데, 클라이언트만 다르고 결과가 갈렸어요.</strong></p>
+<ul><li>서버: 리눅스 장비, GNOME 원격 데스크톱을 <strong>&#x27;원격 로그인&#x27;(시스템 모드)</strong>으로 켜 둠</li><li>윈도우 PC: 기본 원격 데스크톱(<code>mstsc</code>) → 정상 접속</li><li>맥북: 마이크로소프트 <strong>Windows App</strong> → 같은 계정·비번인데 로그인 실패</li></ul>
+<p>GNOME 원격 데스크톱에는 모드가 둘 있어요. &#x27;데스크톱 공유&#x27;는 이미 로그인해 있는 화면을 같이 보는 방식이고, &#x27;원격 로그인&#x27;은 로그인 화면부터 원격으로 받아서 내 계정으로 들어가는 방식입니다. 제 장비는 뒤쪽이었어요.</p>
+<img src="img/02_.png" alt="02_ 차이 비교 — 가운데 리눅스 장비(GNOME 원격 로그인). 왼쪽 윈도우 PC + mstsc → 초록 체크 &#x27;접속 정상&#x27;. 오른쪽 맥북 + Windows App → 빨간 X &#x27;로그인 실패&#x27;. 아래 빨간 펜 &#x27;서버·계정 같음 → 남은 차이는 클라이언트뿐&#x27;" loading="lazy">
+<h2>2. AI가 짠 진단 5단계, 틀린 말은 하나도 없었어요</h2>
+<p>AI한테 증상을 그대로 말했더니 먼저 외부 포럼을 뒤졌어요. 페도라·록키 리눅스·Devolutions 포럼 세 곳에서 비슷한 보고를 찾아왔습니다. 윈도우에선 되는데 맥 클라이언트에서만 검은 화면이 뜨거나 인증에서 막힌다는 글들이었어요.</p>
+<p>AI 결론은 &quot;맥 Windows App과 GNOME 원격 데스크톱의 호환 문제로 추정, 공식 원인은 확인 안 됨&quot;이었고, 진단 순서를 이렇게 짰어요.</p>
+<ol><li>맥 Windows App에 저장된 계정 지우고 &#x27;필요할 때 묻기&#x27;로 바꾸기</li><li>실패 직후 리눅스 쪽 로그 보기</li><li>&#x27;데스크톱 공유&#x27;는 끄고 &#x27;원격 로그인&#x27;만 켜기</li><li>그래도 안 되면 다른 클라이언트 (FreeRDP, Jump Desktop, Royal TSX)</li><li>화면이 꼭 필요 없으면 SSH로 대체</li></ol>
+<p>2번에 쓸 명령도 미리 적어 줬어요.</p>
+<pre><code>journalctl -b --since &quot;5 min ago&quot; | grep -i -E &quot;remote-desktop|credssp|nla|redirect&quot;</code></pre>
+<p>전부 맞는 말이었어요. 그런데 저는 그날 &quot;나중에 하자&quot; 하고 덮었고, 그대로 나흘이 갔습니다.</p>
+<h2>3. 나흘 뒤, 로그 한 줄 안 보고 해결했어요</h2>
+<p><strong>다른 클라이언트를 깔았더니 그냥 됐어요.</strong> 나흘 뒤 맥에 Thincast Remote Desktop을 깔아 같은 계정으로 붙어 보니 원격 화면이 정상으로 떴습니다. 그날 제가 AI한테 남긴 말이 이거예요.</p>
+<pre><code>thincast remote desktop으로 다 해결했다. 잘된다.
+맥의원격데스크탑이 리눅스와 뭐가 안맞았던것같다.</code></pre>
+<p>웃긴 건 Thincast가 AI 후보 목록에 없었다는 거예요. 4번 목록에 없던 걸 제가 따로 골랐죠. 나중에 찾아보니 Thincast 공식 사이트가 이 앱을 &quot;FreeRDP 기반의 무료 RDP 클라이언트&quot;라고 소개하더라고요. 4번 목록 맨 앞에 있던 FreeRDP와 뿌리가 같았던 셈입니다. 개인 용도는 무료라고 적혀 있어요.</p>
+<p>진단 1~5번은 하나도 실행하지 않고 안건을 닫았어요. 그래서 <strong>진짜 원인은 지금도 몰라요.</strong> 이 글에서도 원인은 &#x27;추정&#x27;으로만 남겨 둡니다.</p>
+<h2>4. AI는 &#x27;원인 순서&#x27;, 저는 &#x27;비용 순서&#x27;였어요</h2>
+<p>다시 보면 AI 표가 틀린 게 아니라 <strong>순서가 비쌌어요.</strong></p>
+<div class="table-wrap"><table><thead><tr><th>순서</th><th>AI 진단표 (원인 규명 순)</th><th>다시 짜면 (비용 순)</th></tr></thead><tbody><tr><td>1</td><td>맥 앱 저장 계정 정리</td><td><strong>다른 클라이언트 설치</strong> (깔고 붙어 보기만 하면 됨)</td></tr><tr><td>2</td><td>리눅스 로그 확인</td><td>맥 앱 저장 계정 정리</td></tr><tr><td>3</td><td>서버 모드 설정 변경</td><td>리눅스 로그 확인</td></tr><tr><td>4</td><td>다른 클라이언트</td><td>서버 설정 변경 (윈도우 접속까지 흔들 수 있음)</td></tr></tbody></table></div>
+<p>윈도우 클라이언트가 붙는 순간, 서버와 계정은 이미 정상으로 판명난 거예요. 남은 용의자는 맥 클라이언트 하나뿐이니 그걸 바꾸는 실험이 제일 쌌습니다. 반대로 3번 서버 설정은 잘 되던 윈도우 접속까지 건드릴 수 있는 제일 비싼 실험이었고요.</p>
+<p>AI는 원인을 알아내는 순서로 표를 짜요. 저는 일을 끝내는 순서가 필요했고요. 그래서 AI한테 진단표를 받으면 &quot;이걸 <strong>시간·위험 적은 순</strong>으로 다시 줄 세워 줘&quot;라고 한 번 더 물어볼 만해요. 여러분은 AI 진단표를 받으면 위에서부터 그대로 하시나요?</p>
+<img src="img/03_.png" alt="03_ 순서 비교 — 왼쪽 &#x27;AI: 원인 규명 순&#x27; 사다리 4칸(계정→로그→서버 설정→클라이언트, 맨 아래 칸에 초록 체크 &#x27;실제 해결&#x27;), 오른쪽 &#x27;비용 순&#x27; 사다리 4칸(클라이언트가 맨 위, 초록 체크). 서버 설정 칸에 빨간 펜 &#x27;되던 윈도우까지 흔들 수 있음&#x27;" loading="lazy">
+<h2>5. 그래도 원인이 궁금하다면, 원격 로그인은 두 번 로그인해요</h2>
+<p>나중에 윈도우 쪽 접속 파일을 정리하다가 알게 된 게 있어요. <strong>GNOME 원격 로그인은 로그인을 두 번 합니다.</strong></p>
+<ol><li>원격 로그인 전용 아이디·비밀번호 (리눅스 사용자 계정과 별개로, 서버에서 <code>grdctl --system rdp set-credentials</code>로 등록)</li><li>그다음 뜨는 리눅스 로그인 화면에서 내 리눅스 계정</li></ol>
+<p>SUSE 공식 문서에도 원격 사용자가 &quot;first authenticate with system-wide credentials to access the graphical login screen&quot;이라고, 먼저 시스템 공통 자격 증명으로 로그인 화면까지 간다고 적혀 있어요. 1단계 아이디가 안 맞으면 제 장비 서버 로그에는 이 줄이 찍혔습니다.</p>
+<pre><code>Could not find user in SAM database</code></pre>
+<p>Devolutions 포럼에서 같은 로그를 두고 GNOME 메인테이너가 &quot;The client sends wrong credentials&quot;, 즉 클라이언트가 다음 단계로 넘겨질 때(redirection) 엉뚱한 자격 증명을 보낸 클라이언트 쪽 오류라고 답한 기록이 있어요. 제 맥도 이 경우였을 수 있지만, 저는 맥 쪽 로그를 안 봤으니 <strong>확인은 안 된 추정</strong>입니다. 맥 OS와 앱 버전도 그때 적어 두지 않았어요.</p>
+<img src="img/04_.png" alt="04_ 원격 로그인 2단계 흐름 — 클라이언트 → ①원격 로그인 전용 ID/PW(리눅스 계정과 별개) → 리눅스 로그인 화면 → ②리눅스 계정 → 내 데스크톱. ①칸 옆 빨간 펜 &#x27;여기서 틀리면 SAM 로그&#x27;, 끝에 초록 체크" loading="lazy">
+<h2>남는 질문 세 가지</h2>
+<p><strong>Q. 맥 Windows App 설정만 바꿔서 해결할 수는 없나요?</strong><br>
+될 수도 있어요. AI 표 1번(저장 계정 지우고 &#x27;필요할 때 묻기&#x27;)이 그 방향이에요. 저는 해 보지 않아서 된다 안 된다 말씀은 못 드려요. 시간이 있다면 그것부터, 급하면 클라이언트 교체부터 해 보세요.</p>
+<p><strong>Q. 윈도우에서도 맥에서도 다 안 되면요?</strong><br>
+그땐 클라이언트 탓이 아니라 서버나 계정 쪽일 가능성이 커요. 위 2단계 로그인 중 1단계 아이디를 리눅스 계정으로 넣고 있지 않은지부터 보세요. 윈도우 쪽에서 계정이 계속 잠기는 경우는 <a href="https://blog.naver.com/makefield_ai/224410366627" target="_blank" rel="noopener">원격 데스크톱 연결 안됨, 계정이 하루 38번 잠기고 있었어요</a>에 따로 적었어요.</p>
+<p><strong>Q. 원인을 모르고 넘어가도 괜찮을까요?</strong><br>
+제 기준은 &quot;다시 터졌을 때 바로 쓸 우회로가 있나&quot;예요. 맥은 Thincast로 붙는다고 기록해 뒀고, 같은 진단은 다시 꺼내지 않기로 메모해 뒀습니다. 원인 규명은 그게 돈이나 시간을 아껴 줄 때 하면 돼요.</p>
+<p>되는 쪽과 안 되는 쪽이 동시에 있다면, 그 차이 하나가 가장 싼 실험 대상입니다.</p>
+<hr>
+<p>AI가 짜 준 진단표를 우리 현장 사정에 맞는 &#x27;싼 순서&#x27;로 다시 세우는 법이 궁금하시면, makefield.ai에서 사례를 나눠 드려요.</p>
+<h2>출처</h2>
+<ul><li>Fedora Discussion, &quot;Remote logins from Window, can&#x27;t login from MacOS (Gnome RDP)&quot; → <a href="https://discussion.fedoraproject.org/t/remote-logins-from-window-cant-login-from-macos-gnome-rdp/114842" target="_blank" rel="noopener">https://discussion.fedoraproject.org/t/remote-logins-from-window-cant-login-from-macos-gnome-rdp/114842</a></li><li>Rocky Linux Forum, &quot;RDP authentication failure Rocky 10&quot; → <a href="https://forums.rockylinux.org/t/rdp-authentication-failure-rocky-10/20096" target="_blank" rel="noopener">https://forums.rockylinux.org/t/rdp-authentication-failure-rocky-10/20096</a></li><li>Devolutions Forum, GNOME Remote Desktop 접속 실패 스레드(&quot;The client sends wrong credentials&quot;) → <a href="https://forum.devolutions.net/topics/42273/cant-connect-to-gnome-remote-desktop-session-on-windows-1011-client-se" target="_blank" rel="noopener">https://forum.devolutions.net/topics/42273/cant-connect-to-gnome-remote-desktop-session-on-windows-1011-client-se</a></li><li>SUSE, Configuring a Remote Desktop Server on SLES 16.0 → <a href="https://documentation.suse.com/sles/16.0/html/SLES-gnome-remote-desktop/" target="_blank" rel="noopener">https://documentation.suse.com/sles/16.0/html/SLES-gnome-remote-desktop/</a></li><li>Thincast Client 제품 페이지(&quot;a free multi-platform RDP Client based on FreeRDP&quot;) → <a href="https://www.thincast.com/en/products/client" target="_blank" rel="noopener">https://www.thincast.com/en/products/client</a></li><li>실측: 2026-11-06~11 개인 맥북·윈도우 PC → 리눅스 장비 원격 접속 기록(장비명·주소·계정 제외), 출처 확인 2026-11-12</li></ul>
+<p>태그: #맥원격데스크톱리눅스 #맥원격데스크톱 #WindowsApp로그인실패 #우분투원격데스크톱 #GNOME원격데스크톱 #리눅스원격접속 #RDP접속안됨 #원격로그인 #Thincast #FreeRDP #mstsc #맥북리눅스 #막힐때해결 #AI문제해결 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224474936719" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261111-claude-code-memory-share-one-way-mirror/"><div class="d">← 이전 노트</div><div class="t">Claude Code 메모리 공유, 다른 PC에서 쓰려고 양방향 대신 한 방향 복사를 고른 이유</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
