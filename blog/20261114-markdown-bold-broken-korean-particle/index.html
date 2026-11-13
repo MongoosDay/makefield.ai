@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마크다운 깨지는 이유, 굵게 뒤에 붙은 조사 한 글자 때문이었어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="굵게 처리한 글자가 안 굵어지고 기호가 화면에 그대로 찍혀요. 짝은 분명히 맞췄는데도요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261114-markdown-bold-broken-korean-particle/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="마크다운 깨지는 이유, 굵게 뒤에 붙은 조사 한 글자 때문이었어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="굵게 처리한 글자가 안 굵어지고 기호가 화면에 그대로 찍혀요. 짝은 분명히 맞췄는데도요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261114-markdown-bold-broken-korean-particle/">
+<meta property="og:image" content="https://makefield.ai/blog/20261114-markdown-bold-broken-korean-particle/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "마크다운 깨지는 이유, 굵게 뒤에 붙은 조사 한 글자 때문이었어요", "datePublished": "2026-11-14", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261114-markdown-bold-broken-korean-particle/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">막힐 때 해결</span><span>2026-11-14</span></div>
+<h1>마크다운 깨지는 이유, 굵게 뒤에 붙은 조사 한 글자 때문이었어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;마크다운 깨지는 이유 / 굵게 뒤에 붙은 조사 한 글자 때문이었어요&quot;" loading="lazy">
+<p>굵게 처리한 글자가 안 굵어지고 기호가 화면에 그대로 찍혀요. 짝은 분명히 맞췄는데도요.</p>
+<p>답부터 드리면, <strong>한국어 글에서 마크다운 깨지는 이유는 대부분 굵게 기호 바로 뒤에 붙은 조사예요.</strong> 밑줄 두 개(언더스코어 두 개)로 감싼 굵게 뒤에 &#x27;이·라·예요&#x27;가 띄어쓰기 없이 붙으면, 표준 마크다운(CommonMark) 규칙에서는 닫는 기호로 인정되지 않아 기호가 글자째 남습니다. 별표 두 개로 바꾸면 대부분 풀려요.</p>
+<p>핵심 사실 한 줄로 정리하면 이래요. <strong>CommonMark 0.31.2 기준으로 언더스코어는 단어 안쪽에서 강조를 열고 닫을 수 없고, 별표는 할 수 있습니다.</strong> (→ <a href="https://spec.commonmark.org/0.31.2/" target="_blank" rel="noopener">https://spec.commonmark.org/0.31.2/</a> §6.2)</p>
+<p>공장 설비 제어로 밥 벌어 온 지 15년 된 엔지니어예요.<br>
+이 블로그 원고는 전부 마크다운으로 쓰는데, 오늘(2026년 11월 14일) 7월에 올린 글 한 편을 표준 파서에 넣어 봤다가 굵게 15곳 중 9곳이 기호째 남는 걸 봤습니다.</p>
+<h2>1. 마크다운 굵게가 깨지면 화면엔 이렇게 보여요</h2>
+<p>같은 문서 안에서 어떤 굵게는 되고, 어떤 건 기호가 그대로 보여요.<br>
+제 원고에서 뽑은 두 줄을 표준 파서(markdown-it-py 4.2.0, commonmark 모드)에 넣은 결과입니다.</p>
+<pre><code>[입력]  이건 종목 이야기가 아니라 __절차 이야기__라, 매수 추천으로 읽지 말아주세요.
+[출력]  이건 종목 이야기가 아니라 __절차 이야기__라, 매수 추천으로 읽지 말아주세요.
+        → 기호가 그대로 남음 (굵게 실패)
+
+[입력]  __&quot;계획이 바뀐 이유가 뭐지?&quot;__
+[출력]  &lt;strong&gt;&quot;계획이 바뀐 이유가 뭐지?&quot;&lt;/strong&gt;
+        → 굵게 성공</code></pre>
+<p>차이는 딱 하나예요. 실패한 줄은 닫는 기호 바로 뒤에 &#x27;라&#x27;가 붙어 있고, 성공한 줄은 닫는 기호 뒤가 줄 끝이에요.</p>
+<h2>2. 마크다운 깨지는 이유, 조사가 &#x27;단어 안쪽&#x27;으로 읽혀서예요</h2>
+<p>CommonMark는 강조 기호가 여는 쪽인지 닫는 쪽인지를 <strong>기호 앞뒤에 뭐가 붙어 있는지</strong>로 판단해요.<br>
+한국어는 조사를 앞말에 붙여 쓰잖아요. 닫는 기호 뒤에 &#x27;라&#x27;가 붙는 순간, 파서 눈에는 그 기호가 단어 한가운데 끼어 있는 걸로 보여요.<br>
+스펙 원문은 이렇습니다.</p>
+<pre><code>&quot;Intraword emphasis is disallowed for _&quot;
+&quot;A double __ can close strong emphasis iff it is part of a right-flanking
+ delimiter run and either (a) not part of a left-flanking delimiter run or
+ (b) part of a left-flanking delimiter run followed by a Unicode punctuation character.&quot;
+&quot;A double ** can close strong emphasis iff it is part of a right-flanking delimiter run.&quot;
+                                   — CommonMark Spec 0.31.2, §6.2</code></pre>
+<p>쉽게 말하면 이래요.</p>
+<ul><li>별표 두 개: 앞에 글자만 붙어 있으면 닫힘 → 뒤에 조사가 붙어도 굵게 됨</li><li>언더스코어 두 개: 뒤에도 글자가 붙어 있으면 닫힘 실패 → 조사가 붙으면 깨짐</li><li>별표라도 닫는 기호 바로 앞이 따옴표·괄호이고 뒤에 글자가 붙으면 역시 실패</li></ul>
+<p>영어는 강조 뒤에 띄어쓰기가 오니까 이 규칙에 걸릴 일이 드물어요. 조사를 붙여 쓰는 한국어에서 유독 자주 깨지는 이유가 이거예요.</p>
+<img src="img/02_.png" alt="02_ 같은 문장 두 버전 비교. 위(빨강): 언더스코어 두 개 + &#x27;라&#x27; → 닫는 기호 앞뒤가 모두 글자 → &#x27;단어 안쪽&#x27; 판정 → 기호째 출력. 아래(잉크+체크): 별표 두 개 + &#x27;라&#x27; → 앞에만 글자 → 닫힘 인정 → 굵게 출력" loading="lazy">
+<h2>3. 제 원고로 돌려 보니 15곳 중 9곳이 깨졌어요</h2>
+<p>검사한 원고는 AI한테 매달 소액 적립식 투자를 맡겼다가, 계획에 없던 종목이 매수 지시서에 끼어든 걸 질문 하나로 잡아낸 이야기예요.<br>
+그 이야기는 아래 &#x27;같은 증상, 다른 경우&#x27; 절에 링크해 뒀고, 여기선 원고의 굵게 표기만 봤습니다.</p>
+<p>굵게가 들어간 15줄을 하나씩 파서에 넣었어요.</p>
+<pre><code>[원고 그대로 — 대부분 언더스코어 두 개]
+ 굵게 15줄  →  성공 6  /  실패 9
+ 실패 9줄 공통점: 닫는 기호 바로 뒤에 조사·어미가 붙음 (라 · 였어요 · 이거든요 · 예요 · 하는 …)
+ 성공 6줄 공통점: 닫는 기호 뒤가 띄어쓰기이거나 줄 끝
+
+[기호만 별표 두 개로 일괄 치환]
+ 굵게 15줄  →  성공 14  /  실패 1
+ 남은 1곳: ... 아니라 &#x27;절차 감사&#x27;(닫는 기호)더라고요
+          → 닫는 기호 앞이 작은따옴표, 뒤가 글자 → 별표여도 실패</code></pre>
+<p>재밌는 건, 이 원고가 블로그에 올라갈 땐 멀쩡했을 가능성이 높다는 거예요.<br>
+제 원고 변환 스크립트는 &quot;기호 두 개 사이에 글자가 있으면 굵게&quot;라는 단순한 정규식으로 짝만 찾고, 앞뒤는 안 보거든요.<br>
+<strong>같은 원고도 변환기에 따라 굵게가 되기도, 깨지기도 합니다.</strong> &quot;어디선 되고 어디선 깨지는&quot; 진짜 이유가 이 렌더러 차이예요.</p>
+<img src="img/03_.png" alt="03_ 같은 원고, 두 변환기. 원고(굵게 15곳)에서 두 갈래 화살표. 왼쪽 &#x27;단순 정규식 변환기: 짝만 맞으면 굵게&#x27; → 15곳 모두 굵게(잉크). 오른쪽 &#x27;표준 파서(CommonMark)&#x27; → 언더스코어 그대로 9곳 깨짐(빨강) → 별표로 치환 후 1곳만 남음" loading="lazy">
+<h2>4. 깨진 굵게 고치는 순서</h2>
+<ol><li>언더스코어 두 개로 쓴 굵게를 전부 별표 두 개로 바꿔요. 편집기 &#x27;모두 바꾸기&#x27;면 되는데, 코드블록 안 변수명까지 바뀌지 않게 조심하세요.</li></ol>
+<ol start="2"><li>닫는 기호 바로 앞이 따옴표·괄호이고 뒤에 조사가 붙어 있으면, 문장 부호를 굵게 밖으로 빼거나 지워요.</li></ol>
+<pre><code>깨짐 :  ... 아니라 **&#x27;절차 감사&#x27;**더라고요
+고침 :  ... 아니라 **절차 감사**더라고요</code></pre>
+<ol start="3"><li>문장을 바꾸기 싫으면 HTML 태그를 써요. 강조 기호 규칙을 아예 안 타기 때문에 조사가 붙어도 안전합니다.</li></ol>
+<pre><code>&lt;b&gt;절차 감사&lt;/b&gt;더라고요</code></pre>
+<ol start="4"><li>굵게가 아니라 <strong>줄바꿈이 사라지는</strong> 경우라면 원인이 달라요. 마크다운은 줄만 바꾼 걸 &#x27;부드러운 줄바꿈&#x27;으로 보고, 화면에선 띄어쓰기 하나로 합칠 수 있어요(CommonMark §6.8 &quot;A soft line break may be rendered in HTML either as a line ending or as a space&quot;). 실제 줄을 바꾸려면 줄 끝에 공백 두 개, 백슬래시, 또는 br 태그를 넣으면 됩니다(GitHub Docs 기본 서식 문법). 문단을 나누려면 빈 줄 하나를 두고요.</li></ol>
+<pre><code>[입력]  첫째 줄(줄바꿈만)        →  &lt;p&gt;첫째 줄⏎둘째 줄&lt;/p&gt;   → 브라우저에선 한 줄로 붙어 보임
+[입력]  첫째 줄(끝에 공백 두 개)  →  &lt;p&gt;첫째 줄&lt;br /&gt;⏎둘째 줄&lt;/p&gt; → 실제로 줄이 바뀜</code></pre>
+<h2>5. 고쳤는지 확인하는 방법</h2>
+<p>미리보기는 내 편집기 기준일 뿐이에요. 표준 규칙으로 보려면 파이썬 파서에 넣어 기호가 남는 줄만 뽑으면 됩니다.</p>
+<pre><code>pip install markdown-it-py</code></pre>
+<pre><code>import sys
+from markdown_it import MarkdownIt
+
+md = MarkdownIt(&quot;commonmark&quot;)
+text = open(sys.argv[1], encoding=&quot;utf-8&quot;).read()
+for no, line in enumerate(text.splitlines(), 1):
+    html = md.renderInline(line)
+    if &quot;**&quot; in html or &quot;__&quot; in html:   # 렌더링 뒤에도 기호가 남았다 = 굵게 실패
+        print(no, line[:60])</code></pre>
+<p>출력이 한 줄도 없으면 통과예요. 단, 코드블록 안의 기호도 잡히니 그 줄은 무시하면 됩니다.<br>
+제 원고는 이 검사로 9줄 → 별표 치환 후 1줄이 나왔고, 남은 1줄이 위 2번(따옴표) 경우였어요.</p>
+<img src="img/04_.png" alt="04_ 굵게 점검 3단계 흐름. ①언더스코어→별표 치환 ②닫는 기호 앞 문장부호 확인 ③표준 파서로 기호 남은 줄 검사(9 → 1 → 따옴표 정리 시 0) — 마지막 칸에 체크" loading="lazy">
+<h2>같은 증상, 다른 경우</h2>
+<ul><li>기호가 아니라 <strong>PDF로 바꿨더니 코드블록·문단이 흩어진다</strong>면 마크다운 문법이 아니라 변환 단계 문제예요 → <a href="https://blog.naver.com/makefield_ai/224419709995" target="_blank" rel="noopener">마크다운 PDF 변환 깨짐, 스크립트는 세 번 다 성공했어요</a></li><li>기호가 아니라 <strong>한글 글자 자체가 외계어로 보인다</strong>면 문법이 아니라 인코딩 문제예요 → <a href="https://blog.naver.com/makefield_ai/224414114233" target="_blank" rel="noopener">PowerShell 한글 깨짐</a></li><li>이 글에서 검사한 원고의 원래 이야기(AI가 계획에 없던 종목을 끼워넣은 건) → <a href="https://blog.naver.com/makefield_ai/224347760675" target="_blank" rel="noopener">AI 투자 자동화, 맡겨두면 안 되는 이유</a></li></ul>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 깃허브에선 되던 굵게가 다른 데 붙여넣으니 깨져요. 왜 그런가요?</strong><br>
+렌더러마다 강조 규칙이 달라서예요. 짝만 맞으면 굵게 처리하는 변환기도 있고, CommonMark처럼 기호 앞뒤까지 따지는 파서도 있어요. 조사 앞 굵게는 별표 두 개로, 닫는 기호 앞엔 따옴표 없이 쓰는 게 가장 안전합니다.</p>
+<p><strong>Q. 굵게 뒤에 띄어쓰기를 넣으면 되지 않나요?</strong><br>
+기술적으로는 돼요. 언더스코어여도 닫는 기호 뒤가 띄어쓰기면 굵게가 됩니다(제 검사에서도 확인). 다만 &#x27;절차 이야기 라&#x27;처럼 한국어 띄어쓰기가 틀어지니, 별표로 바꾸는 쪽을 권해요.</p>
+<p><strong>Q. 별표로 바꿨는데도 기호가 그대로 보이면요?</strong><br>
+닫는 기호 바로 앞이 따옴표·괄호인지 먼저 보세요. 아니라면 붙여넣은 곳이 마크다운을 해석하지 않는 편집기일 수 있어요. 그땐 편집기의 굵게 버튼을 써야 합니다.</p>
+<h2>정리</h2>
+<p>마크다운 깨지는 이유를 한국어 기준으로 줄이면 &quot;조사를 붙여 쓰는 습관 × 기호 앞뒤를 따지는 표준 규칙&quot;이에요.<br>
+굵게는 별표 두 개로, 닫는 기호 앞엔 문장 부호 없이, 확인은 미리보기 말고 표준 파서로.<br>
+저는 다음 원고부터 이 검사 스크립트를 발행 전에 한 번씩 돌려 볼 생각입니다.</p>
+<p>여러분은 어디에 붙여넣다가 굵게가 깨지셨나요?</p>
+<p>AI랑 일하면서 막혔다 풀린 기록은 <a href="https://makefield.ai" target="_blank" rel="noopener">makefield.ai</a> 에도 모아 두고 있어요.</p>
+<h2>출처</h2>
+<ul><li>CommonMark Spec 0.31.2, §6.2 Emphasis and strong emphasis(&quot;Intraword emphasis is disallowed for _&quot;, 이중 언더스코어·별표 닫힘 규칙), §6.8 Soft line breaks → <a href="https://spec.commonmark.org/0.31.2/" target="_blank" rel="noopener">https://spec.commonmark.org/0.31.2/</a> (2026-11-14 확인)</li><li>GitHub Docs, Basic writing and formatting syntax(굵게 표기, .md 파일 줄바꿈: 공백 두 개·백슬래시·br 태그) → <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" target="_blank" rel="noopener">https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax</a> (2026-11-14 확인)</li><li>실측: 2026-11-14 본 블로그 원고 1편(굵게 15줄)을 markdown-it-py 4.2.0 commonmark 모드로 렌더링(경로·계정 제외)</li></ul>
+<p>태그: #마크다운깨지는이유 #마크다운굵게안됨 #마크다운볼드깨짐 #마크다운조사 #마크다운줄바꿈 #CommonMark #마크다운문법 #마크다운한글 #별표두개 #언더스코어 #markdownit #마크다운미리보기 #마크다운오류 #막힐때해결 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224476369186" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261114-flexcil-google-drive-sync-file-not-showing/"><div class="d">← 이전 노트</div><div class="t">플렉실 구글 드라이브 동기화, 클라우드 폴더에 PDF 넣어도 앱에 안 뜨는 이유</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
