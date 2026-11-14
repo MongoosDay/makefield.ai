@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D2Coding 설치방법, 터미널 한글이 삐뚤빼뚤하고 0과 O가 헷갈릴 때 | Field Notes · MakeField AI</title>
+<meta name="description" content="터미널을 처음 열면 검은 바탕에 작은 회색 글씨가 깜빡여요. 한글은 삐뚤빼뚤하고, 줄은 다닥다닥 붙어 있고, 0인지 O인지 한참 들여다보게 됩니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261115-d2coding-install-terminal-korean-font/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="D2Coding 설치방법, 터미널 한글이 삐뚤빼뚤하고 0과 O가 헷갈릴 때 | Field Notes · MakeField AI">
+<meta property="og:description" content="터미널을 처음 열면 검은 바탕에 작은 회색 글씨가 깜빡여요. 한글은 삐뚤빼뚤하고, 줄은 다닥다닥 붙어 있고, 0인지 O인지 한참 들여다보게 됩니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261115-d2coding-install-terminal-korean-font/">
+<meta property="og:image" content="https://makefield.ai/blog/20261115-d2coding-install-terminal-korean-font/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "D2Coding 설치방법, 터미널 한글이 삐뚤빼뚤하고 0과 O가 헷갈릴 때", "datePublished": "2026-11-15", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261115-d2coding-install-terminal-korean-font/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-11-15</span></div>
+<h1>D2Coding 설치방법, 터미널 한글이 삐뚤빼뚤하고 0과 O가 헷갈릴 때</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="01_.png 타이틀카드 — &quot;D2Coding 설치방법 / 터미널 한글이 삐뚤빼뚤하고 0과 O가 헷갈릴 때&quot;" loading="lazy">
+<p>터미널을 처음 열면 검은 바탕에 작은 회색 글씨가 깜빡여요.<br>
+한글은 삐뚤빼뚤하고, 줄은 다닥다닥 붙어 있고,<br>
+<code>0</code>인지 <code>O</code>인지 한참 들여다보게 됩니다.</p>
+<p>답부터 적을게요. <strong>터미널 화면은 기본 그대로 써도 결과물에는 아무 영향이 없어요. 글씨가 불편할 때만 네이버가 무료로 공개한 한글 고정폭 글꼴 D2Coding을 설치하고, 터미널 글꼴을 D2Coding·크기 13 전후로 바꾸면 됩니다.</strong> 단, 글꼴 이름을 한 글자만 틀려도 터미널이 다른 글꼴로 대신 그려서 바뀐 줄 착각하기 쉬워요. 그래서 바꾼 뒤엔 창을 닫았다 열고 0과 O부터 확인합니다.</p>
+<p>지난 편에서 GPT·Claude·Gemini 셋 중 쓸 AI를 골랐어요. 이번 편은 그 AI를 띄울 검은 화면을, 딱 불편한 만큼만 손봅니다.</p>
+<p>제조 현장에서 자동화 일을 15년 하고, 퇴근 뒤엔 제 PC에서 AI 도구를 굴리는 사람이에요. 이번 편은 그 PC에서 실제로 쓰는 터미널 기준이에요.</p>
+<h2>1. 터미널 화면, 꾸며야 쓸 수 있나요?</h2>
+<p><strong>아니요, 꾸미지 않아도 됩니다.</strong> 많은 분이 명령어가 어려워서가 아니라 화면이 안 읽혀서 그만두는데, 그건 글꼴 하나로 풀리는 문제예요. 꾸미기는 불편이 생겼을 때 그 하나만 고치면 됩니다.</p>
+<p>그래서 이번 편에서 만드는 건 거창한 설정이 아니라 이 짧은 목록 하나예요.</p>
+<div class="table-wrap"><table><thead><tr><th>불편</th><th>기본 그대로라면</th><th>고치고 싶으면</th></tr></thead><tbody><tr><td>글씨가 작고 한글이 삐뚤빼뚤, 0과 O가 헷갈림</td><td>그냥 써도 결과물엔 영향 없음</td><td>한글 고정폭 글꼴 D2Coding + 크기 13 전후</td></tr><tr><td>열 때마다 낯선 폴더에서 시작</td><td>첫 줄에 <code>cd C:\ai-work</code></td><td>시작 폴더를 작업 폴더로 지정</td></tr><tr><td>대화하면서 파일 목록도 보고 싶음</td><td>탐색기 창을 옆에 띄움</td><td>터미널 화면 나누기</td></tr></tbody></table></div>
+<img src="img/02_.png" alt="02_ 불편 3줄 목록 — 왼쪽 &#x27;불편&#x27;(글씨·한글/낯선 폴더/파일 목록) 잉크 카드 3개 → 가운데 &#x27;기본 그대로&#x27; 회색 메모 → 오른쪽 &#x27;고치면&#x27; 초록 카드(D2Coding 13 / 시작 폴더 지정 / 화면 나누기). 하단 빨간 펜 &#x27;불편한 것 하나만&#x27;" loading="lazy">
+<p>순서가 중요해요. 저는 꾸미기 전에 일단 기본 화면으로 AI와 첫 대화부터 해 보라고 권합니다. 써 보면 거슬리는 게 하나쯤 생기고, 그게 고칠 대상이에요. 미리 다 꾸며 두면 안 쓰는 설정만 쌓이거든요. 여러분은 지금 그 화면에서 뭐가 제일 거슬리세요? 그 하나가 오늘 고칠 대상이에요.</p>
+<p>이건 제가 겪은 일이기도 해요. 터미널을 열 때마다 최근 작업 목록이 뜨게 꾸며 놨더니, 창이 뜨는 데 <strong>11.1초</strong>가 걸렸습니다. 정작 그 목록은 보지도 않았고요. 빼고 나니 1.3초가 됐어요(이 얘기는 <a href="https://blog.naver.com/makefield_ai/224474987731" target="_blank" rel="noopener">클로드 코드 이어하기 편</a>에 자세히 적었어요).</p>
+<h2>2. D2Coding 설치방법 — 3단계</h2>
+<p><strong>D2Coding은 네이버가 깃허브에 무료로 공개한 한글 고정폭 글꼴이에요(SIL 오픈 폰트 라이선스).</strong> 글자마다 같은 폭을 쓰는 코딩용 글꼴이라 한글·영문·숫자 줄이 반듯하게 맞아요. 0과 O가 구분되는지는 아래 3단계에서 직접 확인합니다.</p>
+<p><strong>1단계. 내려받아 설치합니다</strong></p>
+<ol><li>깃허브 <code>naver/d2codingfont</code> 페이지에서 릴리스(Releases) 압축 파일이나 <code>fonts/ttf</code> 폴더의 TTF를 내려받아요.</li><li>압축을 풀고 <code>.ttf</code> 파일을 더블클릭 → 창 위쪽 <strong>설치</strong> 버튼.</li><li>이미 옛 버전이 깔려 있으면 먼저 지우고 설치하라고 공식 안내에 적혀 있어요(2026-11-15 README 확인).</li></ol>
+<p><strong>2단계. 메뉴를 뒤지지 말고 AI에게 물어봅니다</strong></p>
+<p>터미널 설정 메뉴 이름은 버전마다 조금씩 달라요. 외울 필요 없이, 쓰고 있는 터미널 이름을 넣어서 이렇게 물어보면 됩니다.</p>
+<pre><code>나는 윈도우 기본 터미널(Windows Terminal)을 써.
+한글이 잘 읽히게 글꼴을 D2Coding으로, 크기를 13으로 바꾸는 법을
+메뉴 순서대로 알려줘.</code></pre>
+<p>시작 폴더도 같은 방식이에요.</p>
+<pre><code>터미널을 열면 C:\ai-work 폴더에서 바로 시작하게 하고 싶어.
+방법을 알려줘.</code></pre>
+<p>이 질문은 클로드 코드에 해도 되고, GPT의 Codex CLI나 구글 Gemini CLI(지금 이름은 Antigravity CLI)에 해도 똑같이 답해 줍니다. 도구가 달라도 &quot;내 환경을 말하고, 순서대로 알려 달라&quot;는 방식은 그대로예요.</p>
+<p><strong>3단계. 창을 전부 닫고 다시 열어 눈으로 확인합니다</strong></p>
+<p>&quot;바꿨다&quot;와 &quot;적용됐다&quot;는 달라요. 터미널 창을 전부 닫았다 다시 연 다음, 아래 한 줄을 쳐 보세요.</p>
+<pre><code>echo &quot;0O 1lI 가나다 ㄱㄴㄷ&quot;</code></pre>
+<div class="table-wrap"><table><thead><tr><th>확인</th><th>적용 안 됨</th><th>적용됨</th></tr></thead><tbody><tr><td>0과 O</td><td>거의 같은 동그라미</td><td>모양이 확실히 다름</td></tr><tr><td>1, l, I</td><td>셋이 비슷</td><td>하나씩 구분</td></tr><tr><td>한글 줄</td><td>들쭉날쭉</td><td>칸이 반듯</td></tr></tbody></table></div>
+<img src="img/03_.png" alt="03_ 적용 전후 비교 — 위 칸 &#x27;적용 전&#x27;(빨간 X: 0O 구분 안 됨, 한글 들쭉날쭉), 아래 칸 &#x27;적용 후&#x27;(초록 체크: 0O 구분, 한글 칸 반듯). 테스트 줄 echo &quot;0O 1lI 가나다&quot; 표시, 빨간 펜 &#x27;창을 닫았다 다시 열고 본다&#x27;" loading="lazy">
+<h2>3. 여기서 이렇게 틀립니다 — 글꼴 이름이 틀렸는데 화면은 멀쩡해 보인다</h2>
+<p><strong>터미널은 설정한 글꼴을 못 찾아도 대개 멈추지 않고, 다른 예비 글꼴로 대신 그려요.</strong> 한글도 그럭저럭 나오니까 &quot;바뀌었네&quot; 하고 넘어가기 딱 좋습니다.</p>
+<p>예를 들어 설정 파일에 이름을 이렇게 적었다고 해 볼게요.</p>
+<pre><code>&quot;font&quot;: { &quot;face&quot;: &quot;D2 Coding&quot; }    ← 띄어쓰기 하나 때문에 못 찾음
+&quot;font&quot;: { &quot;face&quot;: &quot;D2Coding&quot; }     ← 설치된 이름 그대로</code></pre>
+<p>윈도우 터미널 개발 저장소에도, 설정한 글꼴이 없을 때 다른 글꼴로 조용히 대신 그려져서 경고라도 있었으면 좋겠다는 사용자 보고가 올라와 있어요(microsoft/terminal 이슈 #7690). 버전에 따라 경고창이 뜨기도 하지만, 그걸 믿고 넘어가면 안 된다는 얘기죠.</p>
+<img src="img/04_.png" alt="04_ 글꼴 이름 오타의 흐름 — 왼쪽 빨간 카드 &#x27;&quot;D2 Coding&quot; (띄어쓰기 오타)&#x27; → &#x27;터미널: 못 찾음&#x27; → &#x27;예비 글꼴로 대신 그림&#x27; → &#x27;한글은 나옴 = 착각&#x27;(빨간 펜). 아래 줄 초록 경로 &#x27;글꼴 목록에서 골라짐&#x27; → &#x27;창 다시 열기&#x27; → &#x27;0과 O 구분 확인&#x27; 초록 체크" loading="lazy">
+<p>그래서 확인 기준을 바꿨어요.</p>
+<ol><li>글꼴 이름은 직접 타이핑하지 않고, 설정 화면의 <strong>글꼴 목록에서 골라지는지</strong>로 확인한다.</li><li>목록에 안 보이면 설치가 안 된 거다. 1단계부터 다시.</li><li>마지막 판정은 화면이 아니라 위 <code>echo</code> 줄의 <strong>0과 O</strong>로 한다.</li></ol>
+<p>AI한테 설정을 바꿔 달라고 했을 때도 같아요. AI가 &quot;바꿨습니다&quot;라고 답해도, 이름 오타가 있으면 화면은 예비 글꼴로 멀쩡해 보입니다. 바꾼 건 AI여도 확인은 제 눈으로 해요.</p>
+<p>하나 더, 단축키도 비슷한 함정이 있어요. 저는 화면 나누기를 Alt+V에 걸어 뒀다가, 쓰던 AI 도구의 이미지 붙여넣기도 Alt+V라서 캡처를 붙일 때마다 화면이 나뉘었습니다. 키는 터미널이 먼저 받거든요(이 건은 예전 글에서 따로 다뤘어요). 단축키를 새로 걸기 전엔 AI 도구 단축키와 겹치는지 먼저 물어보세요.</p>
+<h2>4. 자주 묻는 질문</h2>
+<p><strong>Q. 여러 줄을 붙여 넣었더니 경고창이 떠요. 고장인가요?</strong><br>
+고장 아니에요. 윈도우 기본 터미널은 여러 줄을 붙여 넣을 때 한 번 물어봐요. AI 입력창에 붙여 넣는 거면 계속하면 됩니다. 끄지는 마세요. 명령줄에 잘못 붙여 넣었을 때 한 번 막아 주는 장치예요.</p>
+<p><strong>Q. 글꼴 크기는 몇이 좋아요?</strong><br>
+13 전후로 시작해서 눈에 맞게 조정하면 돼요. 너무 키우면 AI 답변이 한 화면에 덜 들어와서 스크롤이 늘어납니다.</p>
+<p><strong>Q. D2Coding 말고 다른 글꼴은 안 되나요?</strong><br>
+돼요. 조건은 두 가지예요. 한글을 지원하는 고정폭 글꼴일 것, 그리고 0과 O가 확실히 구분될 것. 확인 방법은 위 <code>echo</code> 한 줄로 똑같습니다.</p>
+<p>화면은 도구일 뿐이에요. 거슬리는 것 하나만 고치고 바로 AI와 첫 대화로 넘어가세요. 다음 편은 그 첫 대화, AI에게 내 폴더를 읽히는 얘기입니다.</p>
+<p>이 글은 『직장인의 AI 오답 노트』 1-4장을 블로그용으로 다시 쓴 것입니다. 같은 증상의 원인과 점검표 전체는 책에 있어요. 종이책 예스24 <a href="https://www.yes24.com/product/goods/198006547" target="_blank" rel="noopener">https://www.yes24.com/product/goods/198006547</a> · 종이책 알라딘 <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=404397482" target="_blank" rel="noopener">https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=404397482</a> · 전자책 예스24 <a href="https://www.yes24.com/product/goods/197975471" target="_blank" rel="noopener">https://www.yes24.com/product/goods/197975471</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224477407839" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261114-markdown-bold-broken-korean-particle/"><div class="d">← 이전 노트</div><div class="t">마크다운 깨지는 이유, 굵게 뒤에 붙은 조사 한 글자 때문이었어요</div></a><a class="next" href="/blog/20261115-econnrefused-9222-chrome-cdp-retry/"><div class="d">다음 노트 →</div><div class="t">ECONNREFUSED 9222 에러, 크롬 자동화가 직접 띄운 날만 끊긴 이유</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
