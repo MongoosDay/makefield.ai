@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECONNREFUSED 9222 에러, 크롬 자동화가 직접 띄운 날만 끊긴 이유 | Field Notes · MakeField AI</title>
+<meta name="description" content="9월 28일 아침, 제 개인 자동화 로그에 찍힌 줄이에요. 10초 전엔 &quot;포트 정상&quot;이었는데, 13분 뒤 붙으려니까 연결 거부.">
+<link rel="canonical" href="https://makefield.ai/blog/20261115-econnrefused-9222-chrome-cdp-retry/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECONNREFUSED 9222 에러, 크롬 자동화가 직접 띄운 날만 끊긴 이유 | Field Notes · MakeField AI">
+<meta property="og:description" content="9월 28일 아침, 제 개인 자동화 로그에 찍힌 줄이에요. 10초 전엔 &quot;포트 정상&quot;이었는데, 13분 뒤 붙으려니까 연결 거부.">
+<meta property="og:url" content="https://makefield.ai/blog/20261115-econnrefused-9222-chrome-cdp-retry/">
+<meta property="og:image" content="https://makefield.ai/blog/20261115-econnrefused-9222-chrome-cdp-retry/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ECONNREFUSED 9222 에러, 크롬 자동화가 직접 띄운 날만 끊긴 이유", "datePublished": "2026-11-15", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261115-econnrefused-9222-chrome-cdp-retry/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">막힐 때 해결</span><span>2026-11-15</span></div>
+<h1>ECONNREFUSED 9222 에러, 크롬 자동화가 직접 띄운 날만 끊긴 이유</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;ECONNREFUSED 9222 에러 / 크롬 자동화가 직접 띄운 날만 끊긴 이유&quot;" loading="lazy">
+<pre><code>07:48:39 크롬 미가동 → 기동 1
+07:48:49 크롬 포트 정상
+07:48:57   | (로그인 상태 검사 통과)
+08:02:02   | ERROR: browserType.connectOverCDP: connect ECONNREFUSED 127.0.0.1:9222
+08:02:02   | Call log:
+08:02:02   |   - &lt;ws preparing&gt; retrieving websocket url from http://127.0.0.1:9222</code></pre>
+<p>9월 28일 아침, 제 개인 자동화 로그에 찍힌 줄이에요.<br>
+10초 전엔 &quot;포트 정상&quot;이었는데, 13분 뒤 붙으려니까 연결 거부.</p>
+<p>결론부터 적으면, <strong>ECONNREFUSED 9222는 그 순간 9222번 포트에 크롬이 없다는 뜻이에요. 시작할 때 확인했다고 안심하면 안 되고, 크롬에 붙기 바로 직전에 다시 확인하고 거부되면 한 번만 다시 띄워 재시도하는 게 제가 찾은 처방이었습니다.</strong> 제 경우 7월 말부터 두 달 동안 같은 에러가 16번 났고, 그중 13번이 스크립트가 크롬을 <strong class="u">직접 띄운 날</strong>이었어요.</p>
+<p>제조 현장에서 자동화·제어 일을 15년째 하고 있어요. 집에서도 그 버릇대로 개인 자동화를 여럿 돌리는데, 이건 SNS에 하루 두 번 짧은 글을 올리던 스크립트에서 생긴 일입니다.</p>
+<h2>1. ECONNREFUSED 9222는 정확히 무슨 뜻일까</h2>
+<p>크롬을 <code>--remote-debugging-port=9222</code> 옵션으로 띄우면, 프로그램이 그 포트로 크롬을 조종할 수 있어요. 이걸 원격 디버깅 포트라고 부릅니다. 파이썬·노드에서 많이 쓰는 플레이라이트(Playwright)의 <code>connectOverCDP</code>가 이 포트로 이미 떠 있는 크롬에 붙는 함수고요.</p>
+<p>ECONNREFUSED는 &quot;그 주소로 문을 두드렸는데 받는 프로그램이 없다&quot;는 운영체제 에러예요. 그러니까 크롬이 꺼졌거나, 9222 포트 없이 떠 있다는 얘기죠.</p>
+<p>제 스크립트 순서는 이랬어요.</p>
+<ol><li>9222 포트에 크롬이 있는지 확인(<code>/json/version</code> 주소 호출), 없으면 직접 띄움</li><li>로그인 상태 검사</li><li>무작위로 0~15분 대기 (매번 같은 시각에 올라가지 않게)</li><li>글 준비</li><li><code>connectOverCDP</code>로 크롬에 붙어서 게시</li></ol>
+<p>문제는 1번과 5번 사이였어요. 확인은 맨 앞에서 한 번 했고, 실제로 쓰는 건 최대 15분 뒤였거든요.</p>
+<img src="img/02_.png" alt="02_ 확인 시점과 사용 시점 사이의 틈 — 가로 시간축. 왼쪽 07:48 &#x27;포트 확인 OK&#x27;(초록 체크) → 가운데 &#x27;무작위 대기 0~15분&#x27; 회색 구간 위에 빨간 X &#x27;이 사이에 크롬이 꺼짐&#x27; → 오른쪽 08:02 &#x27;connectOverCDP → ECONNREFUSED&#x27;(빨강). 아래쪽 수정 후 줄: 같은 시간축에서 08:02 직전에 &#x27;다시 확인&#x27; 초록 체크가 추가되어 틈이 사라짐. 하단 메모 &#x27;확인은 쓰기 직전에&#x27;" loading="lazy">
+<h2>2. 로그를 세어 보니 &#x27;직접 띄운 날&#x27;에 몰려 있었어요</h2>
+<p>처음엔 대기 시간이 길면 끊기는 줄 알았어요. 15분이면 길잖아요.<br>
+그날 장애를 보던 AI가 7월 말부터 쌓인 로그를 회차별로 다 세었어요. 아래는 오늘(11월 15일) 같은 기간을 다시 세어 본 결과예요.</p>
+<div class="table-wrap"><table><thead><tr><th>회차 조건</th><th>회차 수</th><th>연결 거부</th><th>비율</th></tr></thead><tbody><tr><td>스크립트가 크롬을 직접 띄운 회차</td><td>46</td><td>13</td><td>약 28%</td></tr><tr><td>이미 떠 있던 크롬을 쓴 회차</td><td>73</td><td>3</td><td>약 4%</td></tr></tbody></table></div>
+<p>(7월 27일~9월 28일 로그 전수. 당시 AI가 8~9월 위주로 처음 센 값은 26% 대 3%였고, 범위를 넓혀도 경향은 같았어요.)</p>
+<p>대기 시간과는 상관이 없었어요. 0.6분 기다린 날도 끊겼고, 13분 넘게 기다리고 멀쩡한 날도 많았습니다. 대신 16건 중 12건이 집 PC가 비어 있는 오전 11시 회차였어요.</p>
+<p>그런데 크롬이 <strong>왜</strong> 꺼지는지는 그날 끝내 못 찾았어요. 로그엔 흔적이 없었고, 같은 크롬을 쓰는 다른 스크립트에서 크롬을 닫는 코드도 그때는 안 보였거든요.<br>
+여러분도 이렇게 원인은 못 찾았는데 고치긴 해야 하는 상황, 겪어 보셨죠?</p>
+<img src="img/03_.png" alt="03_ 연결 거부 비율 비교 막대 — 위 막대 &#x27;직접 띄운 회차 46번&#x27; 중 빨간 구간 13(약 28%), 아래 막대 &#x27;이미 떠 있던 크롬 73번&#x27; 중 빨간 구간 3(약 4%), 나머지 회차는 잉크 테두리 빈칸. 오른쪽 손글씨 메모 &#x27;대기 시간과는 무관 (0.6분에도 끊김)&#x27; / &#x27;16건 중 12건 = 오전 11시&#x27;" loading="lazy">
+<h2>3. 원인을 몰라도 막을 수 있는 방법: 쓰기 직전 재확인 + 재시도 1회</h2>
+<p>고려한 방향은 세 가지였어요.</p>
+<div class="table-wrap"><table><thead><tr><th>방법</th><th>판단</th></tr></thead><tbody><tr><td>대기 시간 줄이기</td><td>버림. 0.6분에도 끊겨서 근거가 없음</td></tr><tr><td>크롬 끄는 범인부터 찾기</td><td>보류. 로그에 흔적이 없어 당장 못 찾음</td></tr><tr><td>쓰기 직전에 다시 확인하고, 거부되면 1번만 재시도</td><td>채택. 원인이 뭐든 확인과 사용 사이의 틈이 사라짐</td></tr></tbody></table></div>
+<p>실제로 넣은 코드는 이렇습니다(주석은 설명용으로 붙였어요).</p>
+<pre><code>for attempt in range(2):
+    if not ensure_chrome():          # 발행 직전에 9222를 다시 확인, 없으면 띄움
+        log(&quot;ERROR: 발행 직전 크롬 기동 실패&quot;); return 1
+    code, out = run(pub, timeout=300)
+    if &quot;ECONNREFUSED&quot; not in out:
+        break                        # 성공했거나 다른 종류 오류면 재시도 안 함
+    log(f&quot;RETRY: 발행 중 크롬 연결거부 → 재기동 후 재시도 {attempt + 1}/1&quot;)
+    time.sleep(5)</code></pre>
+<p><strong>재시도는 연결 거부일 때만, 딱 한 번</strong>으로 묶었어요. 아무 오류에나 재시도를 걸면 버튼을 못 찾는 문제 같은 걸 덮어 버리니까요.<br>
+실제 발행 없이 가짜로 돌린 시험 결과예요.</p>
+<pre><code>1회 거부→재시도 성공: rc=0
+정상 1회 성공:       rc=0
+2회 연속 거부:       rc=1  (실패로 남김)
+다른 오류는 재시도 안함: rc=1</code></pre>
+<img src="img/04_.png" alt="04_ 수정 후 흐름 — &#x27;발행 직전 9222 확인&#x27; → 없음이면 &#x27;크롬 띄우기&#x27; → &#x27;connectOverCDP 게시&#x27; → 갈림길 세 개: &#x27;성공&#x27;(초록 체크) / &#x27;ECONNREFUSED → 5초 후 1회 재시도&#x27;(빨강 화살표가 확인 단계로 되돌아감, 두 번째 거부면 &#x27;실패 기록&#x27;) / &#x27;다른 오류 → 재시도 안 함, 그대로 실패&#x27;(잉크). 하단 메모 &#x27;재시도는 원인이 확실한 오류에만&#x27;" loading="lazy">
+<h2>4. AI가 &quot;고쳐졌다&quot;고 하지 않은 게 오히려 좋았어요</h2>
+<p>다음 날 오전 11시 회차가 어제 실패한 것과 같은 조건(크롬 직접 띄움)이었는데, 정상으로 올라갔어요. 제가 &quot;별 문제 없나?&quot; 물었더니 AI 답이 이랬습니다.</p>
+<blockquote>&quot;오늘은 크롬이 도중에 꺼지지 않아서 새로 넣은 재시도 경로는 실제로 한 번도 쓰이지 않았습니다. 그래서 &#x27;고쳐진 게 증명됐다&#x27;보다는 &#x27;오늘은 문제가 안 났다&#x27;가 정확합니다.&quot;</blockquote>
+<p>맞는 말이었어요. 그 뒤 9월 29일부터 10월 10일까지 로그를 보면 연결 거부 0건, 재시도 0건, 게시 20건이에요. 재시도 코드가 일한 적은 한 번도 없었습니다. 이 자동화는 10월 10일에 다른 이유로 접었고요.</p>
+<p>범인 후보는 일주일쯤 뒤인 10월 6일에 나왔어요. 크롬 한 대를 쓰는 자동화가 늘면서, <strong>자기가 띄운 크롬을 끝날 때 닫는 작업</strong>이 있다는 걸 확인했거든요. 그 작업과 시간이 겹치면 남의 작업이 붙으려다 거부당하는 구조였어요. 그래서 크롬을 쓰기 직전에 잠금 파일을 잡고, 끝나면 푸는 규칙을 따로 달았습니다. 다만 9월까지의 16건이 전부 이 때문이었는지는 확인 못 했어요.</p>
+<p>예전 글 「자동화 점검 통과했는데 실패, 초록불이 거짓말한 이유」에서 실패 유형을 셀 때도 이 연결 거부가 제일 많았는데, 그때는 원인까지 못 들어갔었네요..</p>
+<h2>5. 자주 묻는 것</h2>
+<p><strong>Q. 크롬을 9222로 띄웠는데 처음부터 연결이 안 돼요.</strong><br>
+크롬 136부터는 기본 프로필에 <code>--remote-debugging-port</code>를 붙이면 무시돼요. 크롬 공식 블로그(2025년 3월 17일)에 <code>--user-data-dir</code>로 별도 폴더를 지정해야 한다고 나와 있습니다. 저도 자동화 전용 프로필 폴더를 따로 씁니다.</p>
+<p><strong>Q. 재시도를 3번, 5번 넣으면 더 안전하지 않나요?</strong><br>
+연결 거부가 두 번 연속이면 일시적인 틈이 아니라 크롬이 아예 못 뜨는 상황일 가능성이 커요. 그땐 실패로 남겨서 사람이 보게 하는 쪽이 낫다고 봤어요.</p>
+<p><strong>Q. connectOverCDP 말고 다른 방법은요?</strong><br>
+플레이라이트 공식 문서에도 이 연결은 플레이라이트 자체 프로토콜보다 기능 충실도가 상당히 낮다고 적혀 있어요. 저는 로그인 상태를 유지한 크롬을 재사용하려고 이 방식을 골랐습니다.</p>
+<p>정리하면, ECONNREFUSED 9222를 만나면 &quot;크롬이 언제 꺼졌나&quot;보다 &quot;<strong>마지막으로 확인한 게 언제였나</strong>&quot;부터 보세요. 다음엔 크롬 한 대를 여러 자동화가 나눠 쓸 때 건 잠금 파일 이야기를 해 볼게요.</p>
+<p>자동화가 &#x27;가끔만&#x27; 실패해서 원인을 못 잡고 계시면, 로그를 회차별로 세는 것부터 makefield.ai에서 같이 봐 드릴게요.</p>
+<h2>출처</h2>
+<ul><li>Playwright 공식 문서, BrowserType.connectOverCDP(&quot;attaches Playwright to an existing browser instance using the Chrome DevTools Protocol&quot;, 예시 <code><a href="http://localhost:9222/" target="_blank" rel="noopener">http://localhost:9222/</a></code>, &quot;significantly lower fidelity than the Playwright protocol connection&quot;, Chromium 계열만 지원) → <a href="https://playwright.dev/docs/api/class-browsertype" target="_blank" rel="noopener">https://playwright.dev/docs/api/class-browsertype</a> (2026-11-15 확인)</li><li>Chrome for Developers 블로그, Changes to remote debugging switches to improve security (2025-03-17, Chrome 136부터 기본 데이터 폴더에서는 원격 디버깅 스위치 무시, <code>--user-data-dir</code> 필요) → <a href="https://developer.chrome.com/blog/remote-debugging-port" target="_blank" rel="noopener">https://developer.chrome.com/blog/remote-debugging-port</a> (2026-11-15 확인)</li><li>실측: 개인 SNS 자동화 로그 2026-07-27~10-10 전수 집계(2026-11-15 재집계, 계정·경로 제외)</li></ul>
+<p>태그: #ECONNREFUSED9222 #connectOverCDP #ECONNREFUSED #크롬원격디버깅 #remotedebuggingport #플레이라이트 #Playwright #크롬자동화 #크롬연결거부 #웹자동화오류 #파이썬자동화 #간헐적오류 #재시도로직 #막힐때해결 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224477362620" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261114-markdown-bold-broken-korean-particle/"><div class="d">← 이전 노트</div><div class="t">마크다운 깨지는 이유, 굵게 뒤에 붙은 조사 한 글자 때문이었어요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
