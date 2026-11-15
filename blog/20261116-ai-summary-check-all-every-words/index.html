@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 요약 검증, &#x27;모두·매번&#x27;이 보이면 표부터 다시 세세요 | Field Notes · MakeField AI</title>
+<meta name="description" content="같은 글 안에 있던 두 줄이에요. 위는 AI가 쓴 핵심 요약, 아래는 같은 글 본문에 AI가 붙인 측정표. 표를 세어 보면 첫 1초에 세게 치고 나간 건 다섯 번 중 세 번이에요. 1차는 끝까지 거의 평평했고요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261116-ai-summary-check-all-every-words/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 요약 검증, &#x27;모두·매번&#x27;이 보이면 표부터 다시 세세요 | Field Notes · MakeField AI">
+<meta property="og:description" content="같은 글 안에 있던 두 줄이에요. 위는 AI가 쓴 핵심 요약, 아래는 같은 글 본문에 AI가 붙인 측정표. 표를 세어 보면 첫 1초에 세게 치고 나간 건 다섯 번 중 세 번이에요. 1차는 끝까지 거의 평평했고요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261116-ai-summary-check-all-every-words/">
+<meta property="og:image" content="https://makefield.ai/blog/20261116-ai-summary-check-all-every-words/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 요약 검증, '모두·매번'이 보이면 표부터 다시 세세요", "datePublished": "2026-11-16", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261116-ai-summary-check-all-every-words/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-11-16</span></div>
+<h1>AI 요약 검증, &#x27;모두·매번&#x27;이 보이면 표부터 다시 세세요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;AI 요약 검증 / &#x27;모두·매번&#x27;이 보이면 표부터 다시 세세요&quot;" loading="lazy">
+<pre><code>요약: 다섯 번 모두 첫 1초에 숨을 쏟은 뒤 내리막을 탔어요
+표:   1차 첫 1초 -0.5dB · 3차 첫 1초 -0.5dB · 1차 마지막 2초 -0.1dB</code></pre>
+<p>같은 글 안에 있던 두 줄이에요.<br>
+위는 AI가 쓴 핵심 요약, 아래는 같은 글 본문에 AI가 붙인 측정표.<br>
+표를 세어 보면 첫 1초에 세게 치고 나간 건 다섯 번 중 <strong>세 번</strong>이에요. 1차는 끝까지 거의 평평했고요.</p>
+<p>답부터 드릴게요. <strong>AI 요약 검증에서 제일 먼저 볼 건 &#x27;모두·매번·연속·항상&#x27; 같은 낱말이에요.</strong> 이 낱말이 나오면 요약 문장 말고 원자료 표의 행을 처음부터 끝까지 다시 셉니다. 제 기록에서 걸린 AI 요약 오류는 없는 걸 지어낸 게 아니라, 있는 사실을 이런 낱말 하나로 세게 만든 경우였어요.</p>
+<p>제조 현장에서 자동화를 만지는 엔지니어고, 집에선 취미 기록부터 PC 점검까지 정리를 거의 AI한테 맡겨요. 대신 AI 하나가 쓰면 다른 AI가 원자료와 한 줄씩 대조하게 해 뒀는데, 이번 글은 그 대조에서 걸린 장면들이에요.</p>
+<h2>1. AI 요약이 틀렸는데, 지어낸 숫자는 하나도 없었어요</h2>
+<p>맨 위 두 줄은 10월에 제가 휴대폰으로 &quot;스~&quot; 소리를 다섯 번 녹음해서 숨 길이를 잰 기록이에요.<br>
+숫자는 전부 진짜였어요. 8.9초, 12.7초, +2.1dB.. 다 측정값 그대로예요.</p>
+<div class="table-wrap"><table><thead><tr><th>시도</th><th>첫 1초</th><th>마지막 2초</th><th>요약대로 &#x27;쏟고 내리막&#x27;?</th></tr></thead><tbody><tr><td>1차</td><td>-0.5dB</td><td>-0.1dB</td><td>아니요 (거의 평평)</td></tr><tr><td>2차</td><td>+1.3dB</td><td>-1.2dB</td><td>예</td></tr><tr><td>3차</td><td>-0.5dB</td><td>-1.6dB</td><td>시작은 아니요</td></tr><tr><td>4차</td><td>+2.1dB</td><td>-4.5dB</td><td>예</td></tr><tr><td>5차</td><td>+2.1dB</td><td>-2.8dB</td><td>예</td></tr></tbody></table></div>
+<p>틀린 건 숫자가 아니라 <strong>&#x27;모두&#x27;라는 한 단어</strong>였어요.<br>
+다섯 행 중 세 행에서 보인 버릇을 다섯 행 전부로 넓혀 버린 거죠.<br>
+더 곤란한 건 그 요약이 &#x27;핵심 사실 한 줄&#x27;이라는 자리, 그러니까 독자가 표는 안 보고 그것만 읽고 가는 자리에 있었다는 거예요.</p>
+<img src="img/02_summary_vs_table.png" alt="왼쪽 &#x27;요약 한 줄&#x27; 카드(&quot;다섯 번 모두 쏟고 내리막&quot;) ↔ 오른쪽 &#x27;표 5행&#x27; 카드(1·3차 빨강 X, 2·4·5차 초록 체크), 가운데 빨간 펜 화살표 &quot;5 중 3을 5로&quot;" loading="lazy">
+<h2>2. 같은 낱말이 다른 기록에서도 먼저 나왔어요</h2>
+<p>처음이 아니었어요. 그보다 나흘 앞서, AI가 쓴 PC 자동화 점검 기록 정리 글에서도 비슷한 게 걸렸거든요.</p>
+<pre><code>요약: 점검 보고서 맨 윗줄에 … 여섯 장 연속
+실제: 맨 윗줄 위치는 한 장만 보고 일반화 (다른 날엔 다른 항목이 맨 위)
+      &#x27;연속&#x27;도 틀림 (중간에 검사를 건너뛴 날 보고서가 끼어 있음)
+
+요약: 같은 날 9건 (종료 코드 동일)
+실제: 종료 코드는 두 종류, 그날 해당 건은 1건</code></pre>
+<p>여기도 패턴이 같아요. <strong>&#x27;연속&#x27;, &#x27;동일&#x27;, &#x27;같은 날&#x27;</strong>. 원자료 한 장을 보고 나머지 장도 그럴 거라고 넓힌 낱말들이에요.<br>
+대조하던 AI는 이걸 &quot;여러 장짜리 원자료에서 위치·빈도 낱말을 쓸 땐 모든 장을 열어 본다&quot;는 규칙으로 적어 뒀어요.</p>
+<h2>3. 그 오류를 고발하던 AI가 같은 실수를 할 뻔했어요</h2>
+<p>여기서 웃긴 장면이 하나 나와요.<br>
+&#x27;다섯 번 모두&#x27; 오류를 소재로 다른 AI가 정정 글을 쓰기 시작했는데, 첫 초안 첫 줄이 이거였어요.</p>
+<pre><code>v0: 끝에서 숨이 모자랐습니다</code></pre>
+<p>원자료를 열어 보니 &#x27;숨이 모자라다&#x27;는 측정이 아니라 AI 진단이었고, 옆에 이런 꼬리표가 붙어 있었어요.</p>
+<pre><code>진단(소리 미청취, 설명 기반 추정)</code></pre>
+<p>측정으로 확인된 건 &quot;끝에서 세기가 꺼진다&quot;까지였죠.<br>
+게다가 그 문장엔 범위가 없어서 읽으면 &#x27;매번 그랬다&#x27;로 들려요. 고발하려던 오류를 첫 줄에서 그대로 저지를 뻔한 거예요..<br>
+다행히 채점 전 대조에서 잡혀서, 추정 진단은 측정 동사(&quot;세기가 꺼졌다&quot;)로 바꾸고 단정문 바로 다음 문장에 &quot;다섯 번 중 몇 번&quot;을 붙이는 걸로 고쳤어요.</p>
+<h2>4. 두 번째 갈래: 조건절을 빼면 판단이 단정이 돼요</h2>
+<p>다음 날 또 다른 모양이 나왔어요. 필기 앱에 문서를 자동으로 넣을 수 있는지 AI가 판단한 기록을 옮기는 장면이었어요.</p>
+<pre><code>원자료: 기술적으론 가능하나 라이브러리 손상 위험
+초안:   목록에 직접 써 넣으면 된다고 봤습니다</code></pre>
+<p>없는 말을 더한 게 아니에요. <strong>&#x27;~하나&#x27; 뒤를 잘라낸 것</strong>뿐이에요.<br>
+그런데 그 한 토막이 빠지니까 &quot;위험하니 백업하고 시험 한 건만&quot;이던 판단이 &quot;그냥 하면 된다&quot;로 바뀌어 버렸어요. 이것도 대조에서 잡혀서 &quot;위험도 같이 적어 뒀다&quot;로 복원했고요.<br>
+AI는 이 갈래에 <strong class="u">단서 빼기</strong>라는 이름을 붙였어요.</p>
+<img src="img/03_two_types.png" alt="AI 요약이 과장되는 두 갈래 — 왼쪽 &#x27;전칭 붙이기&#x27;(3/5 → 모두, 1장 → 연속), 오른쪽 &#x27;단서 빼기&#x27;(가능하나 위험 → 가능, 추정 → 단정), 아래 공통 빨간 줄 &quot;숫자는 진짜, 범위·조건이 사라짐&quot;" loading="lazy">
+<h2>5. AI 요약 검증 체크리스트: 낱말 세 종류만 찾으세요</h2>
+<p>결국 제가 AI 요약 검증할 때 보는 건 세 종류 낱말이에요. 다 읽을 시간이 없을 때도 이것만은 찾아요.</p>
+<div class="table-wrap"><table><thead><tr><th>요약에 이런 말이 보이면</th><th>원자료에서 볼 곳</th><th>고치는 법</th></tr></thead><tbody><tr><td>모두·매번·연속·항상·전부</td><td>표의 <strong>모든 행</strong>, 여러 장이면 모든 장</td><td>&quot;다섯 번 중 세 번&quot;처럼 분자·분모로</td></tr><tr><td>~했다·~였다 (진단·원인)</td><td>그 문장 옆 &#x27;추정·미확인&#x27; 꼬리표</td><td>측정한 동사로 낮추기</td></tr><tr><td>된다·가능하다 (판단)</td><td>원문의 &#x27;~하나·~지만·단&#x27; 뒷부분</td><td>조건절을 요약에 다시 붙이기</td></tr></tbody></table></div>
+<img src="img/04_check_flow.png" alt="검증 순서 흐름 — 요약 문장 → &#x27;전칭어·단정 동사·가능 판단&#x27;에 빨간 동그라미 → 원자료 해당 행 전부 대조 → 일치(초록 체크) 통과 / 불일치(빨강) 범위·조건 복원" loading="lazy">
+<p>이 방법은 AI 회사 공식 문서와도 방향이 같아요. 앤트로픽의 환각 줄이기 가이드는 주장마다 근거 인용을 찾게 하고 &quot;If it can&#x27;t find a quote, it must retract the claim&quot;(인용을 못 찾으면 그 주장을 거둬라)이라고 적어 둬요. 저는 거기에 한 겹을 더 얹은 셈이에요. 인용이 있어도, <strong>그 인용이 몇 행짜리인지와 &#x27;하지만&#x27; 뒤가 살아 있는지</strong>까지 봅니다.</p>
+<p>솔직히 아직 줄지는 않았어요. 이번 주 대조에서 걸린 지어냄·과장이 9건, 글 한 편당 1.4건에서 1.5건으로 오히려 조금 늘었어요. 다만 이번 주 대조를 거친 글에선 내보내기 전에 전부 잡혔어요. 체크리스트가 AI를 고치는 게 아니라 제 검토 시간을 줄여 주는 쪽이에요.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. AI한테 &quot;과장하지 마&quot;라고 시키면 되지 않나요?</strong><br>
+제 기록에선 하나를 막으면 다음 날 다른 갈래가 나왔어요. &#x27;모두&#x27;를 잡은 다음 날 &#x27;단서 빼기&#x27;가 나온 것처럼요. 그래서 낱말을 금지하기보다 대조할 자리를 정해 두는 쪽으로 갔어요.</p>
+<p><strong>Q. 표를 다 다시 세려면 결국 다 읽는 거 아닌가요?</strong><br>
+전칭어가 붙은 문장의 표만 세면 돼요. 이 글의 노래 기록도 표는 다섯 행이었어요.</p>
+<p><strong>Q. 이미 내보낸 요약에서 틀린 걸 찾으면요?</strong><br>
+정정이 먼저예요. &#x27;모두&#x27;가 틀린 그 노래 기록도 이 대조에서 걸렸고, 고쳐야 할 글로 적어 뒀어요.</p>
+<p>시험 성적이나 점검 결과를 AI로 요약해 보고하신다면, 다음 보고서에서 &#x27;모두&#x27;라는 낱말 하나만 먼저 찾아보세요.</p>
+<p>AI가 써 준 보고서를 원자료와 맞춰 보는 방식이 궁금하시면 makefield.ai에 같은 실험을 계속 남기고 있어요.</p>
+<h2>출처</h2>
+<ul><li>Anthropic, Reduce hallucinations(&quot;Verify with citations: Make Claude&#x27;s response auditable by having it cite quotes and sources for each of its claims … If it can&#x27;t find a quote, it must retract the claim.&quot;) → <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations" target="_blank" rel="noopener">https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations</a> (2026-11-16 확인)</li><li>실측: 2026-10 개인 취미 녹음 &quot;스~&quot; 5회 측정표, 2026-11-10~15 AI 글 대조 기록(경로·계정 제외)</li></ul>
+<p>태그: #AI요약검증 #AI요약틀림 #AI요약과장 #AI보고서검증 #AI가쓴글검토 #AI팩트체크 #AI거짓말 #AI할루시네이션 #원자료대조 #요약검토체크리스트 #생성형AI #직장인AI #AI글쓰기 #AI오답노트 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224478410888" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261115-econnrefused-9222-chrome-cdp-retry/"><div class="d">← 이전 노트</div><div class="t">ECONNREFUSED 9222 에러, 크롬 자동화가 직접 띄운 날만 끊긴 이유</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
