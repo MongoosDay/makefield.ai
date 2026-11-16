@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>늦게 도착한 데이터, 지난 판정을 다시 셀까요? 해제 직전 4/5가 0이 된 날 | Field Notes · MakeField AI</title>
+<meta name="description" content="74일째 켜져 있던 경고등이 꺼지기까지, 딱 하루 남은 토요일이었어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261117-late-data-recount-alarm-reset/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="늦게 도착한 데이터, 지난 판정을 다시 셀까요? 해제 직전 4/5가 0이 된 날 | Field Notes · MakeField AI">
+<meta property="og:description" content="74일째 켜져 있던 경고등이 꺼지기까지, 딱 하루 남은 토요일이었어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261117-late-data-recount-alarm-reset/">
+<meta property="og:image" content="https://makefield.ai/blog/20261117-late-data-recount-alarm-reset/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "늦게 도착한 데이터, 지난 판정을 다시 셀까요? 해제 직전 4/5가 0이 된 날", "datePublished": "2026-11-17", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261117-late-data-recount-alarm-reset/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-11-17</span></div>
+<h1>늦게 도착한 데이터, 지난 판정을 다시 셀까요? 해제 직전 4/5가 0이 된 날</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;늦게 도착한 데이터, 지난 판정을 다시 셀까요? / 해제 직전 4/5가 0이 된 날&quot;" loading="lazy">
+<p>74일째 켜져 있던 경고등이 꺼지기까지, 딱 하루 남은 토요일이었어요.</p>
+<pre><code>🔴 RED 74일째 — 11/12 종가: 전건 미발생 → 카운트 4/5</code></pre>
+<p>5칸 중 4칸이 찼으니 하루만 더 조용하면 끝이었죠.<br>
+그런데 일요일 새벽에 온 리포트는 첫 줄부터 달랐습니다.</p>
+<pre><code>🔴 RED 75일째 — 11/12 재판정 → 발생, 카운트 4/5 → 0
+11/13 미발생 → 1/5</code></pre>
+<p><strong>늦게 도착한 데이터가 이미 센 날의 판정을 바꾸면, 연속 카운트는 그날부터 다시 셉니다.</strong> 이번엔 사흘 전 밤 사건이 뒤늦게 확인되면서, 해제 직전이던 4/5가 0으로 돌아갔어요. 사람이 마음을 바꾼 게 아니라 규칙대로 센 결과였습니다.</p>
+<p>낮엔 공장 설비 자동화를 만지고, 밤엔 AI가 써 준 투자 공부 리포트를 읽는 15년차 엔지니어예요. 지난번 <a href="https://blog.naver.com/makefield_ai/224469736340" target="_blank" rel="noopener">장중 가격과 종가 차이로 판정이 뒤집힌 글</a> 끝에 &quot;카운트가 4까지 차 있던 날 같은 일이 났다면&quot;이라고 적었는데요, 일주일 만에 진짜 4에서 터졌어요. 다만 원인은 숫자가 아니라 &#x27;늦게 온 사실&#x27;이었습니다.</p>
+<h2>1. 제 경보는 어떻게 꺼지게 돼 있었나</h2>
+<p>빨간불(RED)을 켜는 조건은 5개예요. 무력 충돌 확인, 유가, 공포지수 같은 것들이고요. 끄는 규칙은 하나입니다.</p>
+<pre><code>조건 5개가 모두 &#x27;미발생&#x27;인 종가가 5거래일 연속이면 해제</code></pre>
+<p>이 규칙은 9월 4일 새벽에 발효됐고, 그때 한 줄을 같이 박아 뒀어요. <strong>&quot;소급 적용 금지.&quot;</strong> 결과를 보고 규칙을 바꾸면 규칙이 죽는다는 이유였습니다.</p>
+<p>참고로 이건 매매 지시가 아니라 경고등이에요. 이번 일로 바뀐 매수·매도 행동은 0건입니다.</p>
+<h2>2. 4/5에서 0까지, 날짜로 보면 이래요</h2>
+<div class="table-wrap"><table><thead><tr><th>리포트</th><th>판정한 날</th><th>결과</th><th>카운트</th></tr></thead><tbody><tr><td>11/13(금)</td><td>11/10·11/11 종가</td><td>미발생</td><td>3/5</td></tr><tr><td>11/14(토)</td><td>11/12 종가</td><td>전건 미발생</td><td>4/5</td></tr><tr><td>11/15(일)</td><td>11/12 재판정</td><td>발생(보수적 판정)</td><td>0</td></tr><tr><td>11/15(일)</td><td>11/13 종가</td><td>미발생</td><td>1/5</td></tr></tbody></table></div>
+<p>11월 15일 리포트에서 &#x27;11월 12일 밤에 공격이 있었다&#x27;는 한쪽 국영매체 보도가 확인됐어요. 상대 측은 무응답이었고요. AI는 이미 &#x27;미발생&#x27;으로 센 11월 12일 칸을 다시 열어서 &#x27;발생&#x27;으로 고쳤습니다.</p>
+<img src="img/02_count_reset.png" alt="카운트 칸 5개 타임라인 — 11/10·11/11·11/12 칸에 잉크 체크, 카운트 &#x27;4/5&#x27; 표시. 11/15에 빨간 화살표가 11/12 칸으로 거꾸로 꽂히며 빨간 X로 덮어씀, 카운트가 &#x27;0&#x27;으로 떨어짐. 그 뒤 11/13 칸에 다시 잉크 체크 &#x27;1/5&#x27;. 아래 메모 &quot;규칙은 그대로, 사실만 다시 셈&quot;" loading="lazy">
+<p>솔직히 말하면 &#x27;늦게 온&#x27; 것만도 아니었어요. 전날 리포트도 다른 공격 주장 기사를 읽긴 했거든요. 그 기사 안에 &quot;~에 대한 보복으로&quot;라는 이유 문장이 있었고, 그 이유가 바로 11월 12일 밤 사건이었는데 그걸 그냥 지나쳤던 거예요. 리포트 학습 기록엔 이렇게 남았습니다.</p>
+<pre><code>주장 기사의 보복 «사유» 문장은 선행 사건의 고백 — 11/14 판정 누락 원인</code></pre>
+<p>정보가 늦게 온 것 반, 우리가 늦게 읽은 것 반이었던 셈이죠..</p>
+<h2>3. 규칙은 소급 금지인데, 판정은 소급해도 되나요?</h2>
+<p><strong>결론부터 말하면 둘은 다른 문제예요. &#x27;소급 금지&#x27;는 규칙 문구를 나중에 바꾸지 말라는 뜻이지, 사실이 바뀌었는데 지난 칸을 그대로 두라는 뜻이 아니었어요.</strong> 그래서 이날 기록엔 규칙 변경 0건, 신규 규칙 0건이 찍혔고 재판정은 &quot;사실 재계수&quot;로만 남았습니다.</p>
+<p>문제는 그 재계수를 어디까지 해도 되는지 제 규칙 어디에도 안 적혀 있었다는 거예요.<br>
+사흘 전 칸은 다시 열었는데, 그럼 열흘 전 칸도 열어야 할까요?<br>
+상대가 부인하거나 침묵하는 &#x27;주장&#x27;은 발생으로 셀까요, 미발생으로 셀까요?<br>
+이번엔 AI가 그 빈칸을 &#x27;보수적으로&#x27;, 즉 경보가 덜 꺼지는 쪽으로 메웠어요. 방향은 맞았지만, 정해 둔 규칙이 아니라 그때의 판단이었습니다.</p>
+<img src="img/03_rule_vs_fact.png" alt="2단 비교 — 왼쪽 상자 &#x27;규칙 문구&#x27; 잉크 자물쇠 + &quot;소급 금지(9/4)&quot;, 오른쪽 상자 &#x27;지난 칸의 사실&#x27; 빨간 펜 물음표 + &quot;다시 열 수 있다 / 어디까지? 정해진 것 없음&quot;. 가운데 세로 점선 &quot;다른 문제&quot;. 오른쪽 아래 빨간 메모 &quot;빈칸은 AI가 그때그때 &#x27;보수적&#x27;으로 메움&quot;" loading="lazy">
+<p>여러분 자동화에도 &quot;N번 연속 정상이면 해제&quot; 같은 조건이 있다면, 늦게 들어온 값이 지난 칸을 바꿀 수 있는지 한번 떠올려 보세요.</p>
+<h2>4. 데이터 쪽에선 이미 이름이 붙어 있는 문제예요</h2>
+<p>공장에서도 익숙한 장면이에요. 알람 래치를 풀 때 &#x27;N사이클 정상&#x27;을 조건으로 거는데, 통신이 밀려서 몇 사이클 전 이상값이 나중에 올라오면 그 사이클을 정상으로 센 게 틀린 게 되죠.</p>
+<p>데이터 처리 쪽에선 이걸 아예 &#x27;늦게 도착한 데이터(late data)&#x27;라고 부르고 다룹니다. 아파치 빔(Apache Beam) 공식 가이드는 &quot;데이터가 항상 시간 순서대로 도착한다는 보장은 없다&quot;고 전제하고, 기본 설정은 늦게 온 데이터를 받지 않는다고 적어요. 받고 싶으면 <code>withAllowedLateness</code>로 &quot;구간이 끝난 뒤 며칠까지는 받는다&quot;를 숫자로 따로 지정하게 돼 있고요. 가이드 예시가 2일이에요.</p>
+<p><strong>제 규칙엔 그 숫자가 없었던 거예요.</strong> 그래서 이번 재계수는 맞는 판단이었는데도, 매번 다른 판단이 나올 수 있는 자리로 남아 있습니다.</p>
+<h2>5. 연속 카운트 해제 규칙에 미리 적어 둘 3가지</h2>
+<img src="img/04_checklist.png" alt="체크리스트 카드 3줄 — ① &#x27;재계수 허용 범위: 며칠 전 칸까지 다시 여나&#x27; ② &#x27;미확정 사건(주장 vs 부인): 어떻게 세나&#x27; ③ &#x27;문언 구멍 발견 시: 보류 기한&#x27;. ①②③ 옆에 빨간 펜으로 &quot;아직 숫자 없음&quot;, ③ 옆에 &quot;62일째&quot;. 맨 아래 잉크 메모 &quot;안 정하면 AI가 그때그때 메운다&quot;" loading="lazy">
+<ol><li><strong>재계수 허용 범위</strong> — 늦게 확인된 사실로 며칠 전 칸까지 다시 열지. 이번엔 사흘 전이었어요.</li><li><strong>미확정 사건 처리</strong> — 한쪽 주장에 상대가 부인하거나 무응답이면 어떻게 셀지. 이번 주에 둘 다 나왔어요. &#x27;주장 vs 부인&#x27;은 &quot;다음 종가 시점의 사실로 판정한다&quot;며 미뤘고, &#x27;주장 + 무응답&#x27;은 보수적으로 &#x27;발생&#x27;을 줬습니다. 둘을 가르는 문장은 규칙에 없어요.</li><li><strong>문언 구멍의 보류 기한</strong> — 이번에 하나가 더 드러났어요. 조건 1번은 &#x27;제3국에 있는 기지 공격&#x27;을 어떻게 셀지 문장이 비어 있어서 플래그만 남겼고요. 조건 5번은 문장 결함 때문에 이미 62일째 &#x27;보류&#x27; 상태입니다. 구멍을 알고도 두 달 넘게 그대로 돌리고 있는 거죠.</li></ol>
+<p>세 번째가 제일 아파요. 플래그를 다는 건 쉬운데, 언제까지 고칠지를 안 정하니 보류가 그냥 상태가 돼 버렸어요.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 그냥 늦게 온 데이터는 무시하면 깔끔하지 않나요?</strong><br>
+경보를 &#x27;켜는&#x27; 쪽이면 그럴 수도 있어요. 그런데 &#x27;끄는&#x27; 쪽이면 무시한 만큼 위험한 날이 정상으로 세지고, 그 정상이 쌓여 경보가 꺼집니다. 그래서 이번엔 다시 세는 쪽이 맞았다고 봐요.</p>
+<p><strong>Q. 다시 세면 결과를 보고 규칙을 바꾸는 거랑 뭐가 다른가요?</strong><br>
+바꾼 건 규칙 문구가 아니라 지난 칸에 들어갈 사실이에요. 다만 그 경계가 흐려지지 않으려면 위 1·2번을 숫자와 문장으로 먼저 박아 둬야 합니다. 안 박혀 있으면 다음번엔 &#x27;불리하니까 안 센다&#x27;도 똑같이 그럴듯해지니까요.</p>
+<p>이 글은 개인 공부용 리포트의 규칙 설계 이야기이고, 특정 매매를 권하는 내용이 아닙니다.</p>
+<p>다음 판정은 화요일 새벽 리포트예요. 1/5에서 다시 시작한 카운트가 어떻게 가는지, 그리고 위 3가지 중 몇 개를 실제로 숫자로 박았는지 이어서 적어 볼게요.</p>
+<hr>
+<p>규칙이 스스로 판정을 되돌리는 장면들은 makefield.ai에도 차곡차곡 모으고 있습니다.</p>
+<h2>출처</h2>
+<ul><li>Apache Beam Programming Guide, 8.4 Watermarks and late data / 8.4.1 Managing late data → <a href="https://beam.apache.org/documentation/programming-guide/#watermarks-and-late-data" target="_blank" rel="noopener">https://beam.apache.org/documentation/programming-guide/#watermarks-and-late-data</a></li></ul>
+<p>태그: #늦게도착한데이터 #지연데이터 #지난판정재계산 #경보해제 #연속카운트 #알람리셋 #인터록리셋 #소급적용 #자동판정규칙 #AI판정오류 #AI투자리포트 #AI자동화 #워터마크 #AI오답노트 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224479824962" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261116-ai-summary-check-all-every-words/"><div class="d">← 이전 노트</div><div class="t">AI 요약 검증, &#x27;모두·매번&#x27;이 보이면 표부터 다시 세세요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
