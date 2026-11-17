@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>폴더 이동 후 자동화 중복 처리, 기록 파일이 옛 경로를 기억해서예요 | Field Notes · MakeField AI</title>
+<meta name="description" content="&quot;전수체크해서 해줘야 하는 거 아닌가?&quot;">
+<link rel="canonical" href="https://makefield.ai/blog/20261118-folder-move-automation-reprocess-path-key/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="폴더 이동 후 자동화 중복 처리, 기록 파일이 옛 경로를 기억해서예요 | Field Notes · MakeField AI">
+<meta property="og:description" content="&quot;전수체크해서 해줘야 하는 거 아닌가?&quot;">
+<meta property="og:url" content="https://makefield.ai/blog/20261118-folder-move-automation-reprocess-path-key/">
+<meta property="og:image" content="https://makefield.ai/blog/20261118-folder-move-automation-reprocess-path-key/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "폴더 이동 후 자동화 중복 처리, 기록 파일이 옛 경로를 기억해서예요", "datePublished": "2026-11-18", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261118-folder-move-automation-reprocess-path-key/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">자동화 만들기</span><span>2026-11-18</span></div>
+<h1>폴더 이동 후 자동화 중복 처리, 기록 파일이 옛 경로를 기억해서예요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;폴더 이동 후 자동화 중복 처리 / 기록 파일이 옛 경로를 기억해서예요&quot;" loading="lazy">
+<p>&quot;전수체크해서 해줘야 하는 거 아닌가?&quot;</p>
+<p>폴더 정리가 끝났다는 AI 보고를 받고 제가 던진 한 줄이에요.<br>
+그 한 줄이 없었으면 다음 날 새벽, 자동화가 이미 처리한 필기 <strong>21건</strong>을 처음 보는 필기로 착각하고 전부 다시 처리할 뻔했습니다.</p>
+<p>먼저 답부터요. <strong>폴더 이동 후 자동화가 같은 파일을 또 처리한다면, &#x27;처리 완료&#x27; 기록 파일이 파일의 전체 경로를 이름표로 쓰고 있는지부터 보세요.</strong> 폴더를 옮기면 파일 내용은 그대로여도 경로가 바뀌고, 경로로 기억하던 기록 파일은 그 파일을 &quot;처음 보는 파일&quot;로 판정합니다. 이번에 제 기록 파일 2개에서 이런 이름표 33개가 한꺼번에 낡았어요.</p>
+<p>설비 자동화로 15년 밥 벌어 온 엔지니어고, 퇴근 뒤엔 공부 자료를 AI가 매일 아침 태블릿 폴더로 보내 주게 해 두고 씁니다. 태블릿에서 그 자료에 펜으로 질문을 적어 두면, 새벽에 다른 스크립트가 필기를 읽고 답을 달아 줘요. 이번 글은 그 폴더를 정리하다 생긴 일이에요.</p>
+<h2>1. 폴더 27개를 5개로 묶었을 뿐인데</h2>
+<p>자료가 쌓이다 보니 태블릿 읽기 폴더 맨 위에 하위 폴더가 <strong>27개</strong>가 됐어요.<br>
+그래서 AI한테 &quot;상위 카테고리 만들어서 정리해 줘&quot;라고 했죠.</p>
+<p>AI는 27개를 5개 상위 폴더(공부 둘, 업무, 연구·글쓰기, 기타) 아래로 옮겼어요.<br>
+여기까진 꽤 잘했습니다. 함정 하나를 미리 잡았거든요.</p>
+<ul><li>폴더만 옮기면 다음 날 05:30 배급 스크립트가 옛 이름 폴더를 맨 위에 <strong>다시 만든다</strong></li><li>그래서 &quot;어떤 자료는 어느 상위 폴더로&quot; 매핑을 배급 스크립트 <strong>한 곳에만</strong> 두고, 그걸 부르는 쪽 4곳은 안 건드림</li><li>매핑에 없는 새 자료는 기본값 &#x27;기타&#x27;로 가게 해서 맨 위가 다시 어질러지지 않게</li></ul>
+<p>경로를 직접 적어 둔 다른 스크립트 2곳도 같이 고쳤고요.<br>
+&quot;다 옮겼습니다&quot; 보고가 왔고, 저도 거의 넘어갈 뻔했어요..</p>
+<img src="img/02_path_holders.png" alt="폴더 이동 때 경로를 기억하는 네 군데 — 가운데 &#x27;폴더 이동&#x27; 상자에서 화살표 4개: ①배급 매핑(잉크, 처리함) ②경로를 직접 적은 스크립트 2곳(잉크, 처리함) ③처리 완료 기록 파일의 키(빨강, 놓침) ④알림 문구·문서 속 경로(잉크) — ③에만 빨간 펜 &quot;1차 보고에서 빠진 곳&quot;" loading="lazy">
+<h2>2. 기록 파일은 경로를 이름표로 쓰고 있었어요</h2>
+<p>전수 점검을 다시 시키자 나온 게 이거예요.<br>
+필기 판독 스크립트에는 &quot;이 파일은 이미 읽었다&quot;를 적어 두는 기록 파일이 2개 있었는데, 둘 다 <strong>옛 전체 경로를 키</strong>로 쓰고 있었습니다. 하나는 22개, 하나는 13개.</p>
+<p>판독 스크립트가 새 필기를 고르는 조건은 이랬어요(실제 코드에서 두 줄만 옮김).</p>
+<pre><code>key = str(p)                          # 파일의 전체 경로가 곧 이름표
+if force or state.get(key) != mt:     # 기록에 없거나 수정시각이 다르면 &#x27;새 필기&#x27;
+    targets.append((p, mt))</code></pre>
+<p>구조를 단순하게 보면 기록 파일 안은 이런 모양이에요(경로·파일명은 바꿔 적었어요).</p>
+<pre><code>{
+  &quot;D:\\태블릿읽기\\논문\\2026-09-19_해설.pdf&quot;: 1790081481
+}</code></pre>
+<p>폴더를 옮기면 같은 파일이 이렇게 불려요.</p>
+<pre><code>D:\태블릿읽기\2_공부B\논문\2026-09-19_해설.pdf</code></pre>
+<p>파일도 같고 수정시각도 같은데, 이름표가 달라서 <code>state.get(key)</code>가 빈손으로 돌아옵니다. 그러면 새벽 06:10에 판독기가 필기 21건을 전부 새 필기로 보고 다시 읽어요. 답변이 두 번씩 달리고, 제 질문을 모아 두는 입력 파일에도 같은 내용이 또 붙었겠죠.</p>
+<img src="img/03_same_file_new_key.png" alt="같은 파일, 다른 이름표 — 왼쪽 기록 파일 카드에 옛 경로 키(잉크), 오른쪽 실제 폴더 카드에 새 경로(잉크), 가운데 비교 화살표 위에 빨간 X &quot;일치 없음 → 처음 보는 파일&quot;, 아래 빨간 펜 &quot;필기 21건 재판독 · 답변 중복&quot;" loading="lazy">
+<h2>3. 고친 순서: 백업 → 키 변환 → 드라이런</h2>
+<p>고친 건 이 순서였어요.</p>
+<ol><li>기록 파일 2개를 날짜 붙여 백업</li><li>키 33개(22+13)를 새 경로로 변환</li><li>알림 문구와 문서 속 옛 경로도 새 경로로 갱신</li><li>실제로 돌리지 않고 결과만 보는 드라이런으로 확인</li></ol>
+<p>판독기 드라이런 결과는 이 한 줄이었어요.</p>
+<pre><code>[없음] 새 필기 없음 (감지 21건, 판독완료 22건)</code></pre>
+<p>재판독 대상 0건. 필기가 있는 파일 21개를 다 찾았고, 그중 다시 읽을 건 없다는 뜻이에요.</p>
+<p>여기서 하나 더 확인할 게 있었어요. 판독기는 경로 말고 <strong>수정시각</strong>도 보거든요. 그런데 폴더를 같은 디스크 안에서 옮기거나 이름만 바꾸면 수정시각은 그대로 남아요. 실제로 필기 감지 21건이 옮긴 뒤에도 그대로 잡혔고요. 만약 옮기는 과정에서 수정시각이 새로 찍혔다면, 키를 고쳐도 21건이 다시 &#x27;새 필기&#x27;가 됐을 거예요.</p>
+<h2>4. 왜 기록 파일만 1차 점검에서 빠졌을까</h2>
+<p>배급 매핑이나 경로를 적은 스크립트는 &quot;폴더 경로&quot;를 <strong>설정</strong>으로 들고 있어요. 찾기 쉽죠.<br>
+기록 파일은 경로를 <strong>데이터</strong>로 들고 있습니다. 코드에서 폴더 이름을 검색해도 안 걸리고, 깨져도 에러 없이 &quot;새 파일이 생겼네&quot; 하고 조용히 일을 더 해요.</p>
+<p>여러분 자동화에도 &quot;이미 보냈음·이미 처리함&quot;을 적어 두는 파일이 있으신가요? 그 파일의 키가 전체 경로라면, 폴더 정리 한 번에 전부 &#x27;처음 보는 파일&#x27;이 됩니다.</p>
+<p>결과만 놓고 보면 선택지는 셋이었어요.</p>
+<div class="table-wrap"><table><thead><tr><th>방법</th><th>장점</th><th>단점</th></tr></thead><tbody><tr><td>기록 파일 키를 새 경로로 변환 (이번 선택)</td><td>지금 바로, 재처리 0건</td><td>다음 정리 때 또 해야 함</td></tr><tr><td>기록 파일 초기화</td><td>제일 간단</td><td>21건 재판독·답변 중복을 그대로 맞음</td></tr><tr><td>키를 상대 경로로 바꾸기</td><td>폴더를 옮겨도 덜 깨짐</td><td>코드 수정 + 기존 기록 이관 필요</td></tr></tbody></table></div>
+<p>세 번째가 근본책이에요. 파이썬 공식 문서도 <code>os.path.relpath</code>를 &quot;Return a relative filepath to path either from the current directory or from an optional start directory.&quot;(기준 폴더에서 본 상대 경로를 돌려준다)라고 설명하는데, 키를 읽기 폴더 기준 상대 경로로 두면 맨 위 폴더 위치가 바뀌어도 키가 안 변해요. 다만 이번처럼 하위 폴더를 한 단계 아래로 넣는 정리면 상대 경로도 바뀝니다. 그래서 저는 아직 안 바꿨어요. 지금은 <strong>폴더를 옮길 땐 기록 파일부터 본다</strong>를 순서로 박아 두는 쪽입니다.</p>
+<h2>5. 폴더 이동 후 자동화가 안 깨지게, 옮기기 전 체크리스트</h2>
+<img src="img/04_check_flow.png" alt="폴더 이동 전 점검 흐름 — &#x27;폴더 옮기기 전&#x27; → ①경로 설정 찾기 ②기록 파일 키 찾기(빨간 동그라미) ③백업 ④키 변환 ⑤드라이런 &#x27;재처리 0건&#x27;(초록 체크) → &#x27;옮기기&#x27; 순서도" loading="lazy">
+<ul><li>[ ] 폴더 경로를 <strong>설정</strong>으로 가진 스크립트 목록 (매핑·하드코딩 경로)</li><li>[ ] 경로를 <strong>키</strong>로 쓰는 기록 파일 목록 (처리 완료·발송 완료·읽음 표시)</li><li>[ ] 기록 파일 백업 후 키 변환</li><li>[ ] 알림 문구·문서 속 옛 경로</li><li>[ ] 드라이런에서 &quot;재처리 0건&quot; 확인</li><li>[ ] 옮기는 방식이 수정시각을 보존하는지 (같은 디스크 이동·이름 변경)</li></ul>
+<p>기록 파일 찾을 땐 코드 말고 <strong>데이터 파일 안</strong>을 옛 폴더 이름으로 검색해 보세요. 예를 들면 이렇게요.</p>
+<pre><code>Select-String -Path .\*.json -Pattern &quot;태블릿읽기\\\\논문&quot; -List</code></pre>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 폴더 이름만 바꿔도 같은 문제가 생기나요?</strong><br>
+네. 이름 변경도 경로가 바뀌는 거라 전체 경로를 키로 쓰는 기록 파일은 똑같이 깨져요. 대신 수정시각은 보존돼서, 키만 고치면 됩니다.</p>
+<p><strong>Q. AI한테 처음부터 &quot;전수 체크해&quot;라고 시키면 되지 않나요?</strong><br>
+그게 맞는 순서예요. 이번엔 1차 보고 뒤에 다시 시켜서야 나왔어요. 처음 요청에 &quot;경로를 기억하는 파일까지&quot;를 넣었으면 한 번에 끝났을 일입니다.</p>
+<p><strong>Q. 이미 중복 처리가 돼 버렸으면요?</strong><br>
+백업해 둔 옛 기록 파일과 새 기록 파일을 비교하면 중복으로 처리된 파일 목록이 나와요. 이번엔 다행히 그 전에 막아서 해 보진 않았습니다.</p>
+<p>정리는 파일을 옮기는 일이 아니라, 경로를 기억하는 모든 것을 찾는 일이었어요. 1차에서 놓친 곳은 결국 에러를 내지 않는 쪽이었습니다.</p>
+<p>태블릿으로 공부 자료를 받고 필기에 답을 달게 만든 과정은 makefield.ai에서 이어서 보실 수 있어요.</p>
+<h2>출처</h2>
+<ul><li>Python 공식 문서, os.path.relpath(&quot;Return a relative filepath to path either from the current directory or from an optional start directory.&quot;) → <a href="https://docs.python.org/3/library/os.path.html" target="_blank" rel="noopener">https://docs.python.org/3/library/os.path.html</a> (2026-11-18 확인)</li><li>실측: 2026-11-16 개인 공부 자동화 폴더 정리·기록 파일 점검 기록(경로·계정·파일명 제외)</li></ul>
+<p>태그: #폴더이동후자동화 #폴더정리 #자동화중복처리 #처리완료기록 #상태파일 #파일경로 #상대경로 #파이썬자동화 #스크립트오류 #폴더이름변경 #수정시각 #드라이런 #자동화만들기 #AI자동화 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224481248979" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261117-late-data-recount-alarm-reset/"><div class="d">← 이전 노트</div><div class="t">늦게 도착한 데이터, 지난 판정을 다시 셀까요? 해제 직전 4/5가 0이 된 날</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
