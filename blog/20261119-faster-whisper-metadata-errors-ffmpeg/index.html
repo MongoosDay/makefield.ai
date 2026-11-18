@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>faster-whisper metadata_errors 오류, PyAV 19에서 빠진 인자 탓이었어요 — ffmpeg로 우회해 54분 녹음 15분 전사 | Field Notes · MakeField AI</title>
+<meta name="description" content="54분짜리 회의 녹음을 제 PC에서 받아 적으려고 faster-whisper를 돌렸는데, 모델이 뜨기도 전에 이 한 줄로 죽었어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261119-faster-whisper-metadata-errors-ffmpeg/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="faster-whisper metadata_errors 오류, PyAV 19에서 빠진 인자 탓이었어요 — ffmpeg로 우회해 54분 녹음 15분 전사 | Field Notes · MakeField AI">
+<meta property="og:description" content="54분짜리 회의 녹음을 제 PC에서 받아 적으려고 faster-whisper를 돌렸는데, 모델이 뜨기도 전에 이 한 줄로 죽었어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261119-faster-whisper-metadata-errors-ffmpeg/">
+<meta property="og:image" content="https://makefield.ai/blog/20261119-faster-whisper-metadata-errors-ffmpeg/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "faster-whisper metadata_errors 오류, PyAV 19에서 빠진 인자 탓이었어요 — ffmpeg로 우회해 54분 녹음 15분 전사", "datePublished": "2026-11-19", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261119-faster-whisper-metadata-errors-ffmpeg/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">막힐 때 해결</span><span>2026-11-19</span></div>
+<h1>faster-whisper metadata_errors 오류, PyAV 19에서 빠진 인자 탓이었어요 — ffmpeg로 우회해 54분 녹음 15분 전사</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;faster-whisper metadata_errors 오류 / PyAV 19에서 빠진 인자 탓이었어요&quot;" loading="lazy">
+<p>54분짜리 회의 녹음을 제 PC에서 받아 적으려고 faster-whisper를 돌렸는데, 모델이 뜨기도 전에 이 한 줄로 죽었어요.</p>
+<pre><code>TypeError: open() got an unexpected keyword argument &#x27;metadata_errors&#x27;</code></pre>
+<p>결론부터요. <strong>faster-whisper metadata_errors 오류는 모델 문제가 아니라, faster-whisper가 오디오를 읽을 때 쓰는 PyAV가 19.0.0부터 <code>metadata_errors</code> 인자를 없애서 나는 버전 충돌이에요.</strong> 파일 경로를 넘기지 말고 ffmpeg로 소리를 직접 풀어 배열로 넘기면 바로 돌아갑니다. 저는 이렇게 우회해서 3,221초짜리 녹음을 911초, 약 15분 만에 380줄로 받아 적었어요.</p>
+<p>공장 제어 일을 15년째 하면서, 회의록이나 자료 정리는 AI랑 나눠서 하는 엔지니어예요. 녹음 파일은 되도록 밖으로 안 내보내고 PC 안에서 끝내는 편이라 로컬 전사를 자주 씁니다.</p>
+<h2>1. 어디서 터졌나: 트레이스백 세 줄만 보면 돼요</h2>
+<p>조건은 이랬어요.</p>
+<ul><li>녹음: m4a 한 개, 52MB, 53.7분</li><li>모델: large-v3-turbo (예전에 받아 둔 게 캐시에 있었음)</li><li>장치: GPU 없이 CPU 8스레드, int8</li></ul>
+<p>처음엔 흔한 예제대로 <code>model.transcribe(&quot;녹음.m4a&quot;, ...)</code> 처럼 파일 경로를 그대로 넘겼어요.<br>
+백그라운드로 걸어 두고 다른 일 하다 돌아오니 이렇게 죽어 있더라고요. (경로는 줄였어요)</p>
+<pre><code>  File &quot;.../faster_whisper/transcribe.py&quot;, line 876, in transcribe
+    audio = decode_audio(audio, sampling_rate=sampling_rate)
+  File &quot;.../faster_whisper/audio.py&quot;, line 46, in decode_audio
+    with av.open(input_file, mode=&quot;r&quot;, metadata_errors=&quot;ignore&quot;) as container:
+  File &quot;av/container/core.py&quot;, line 479, in av.container.core.open
+TypeError: open() got an unexpected keyword argument &#x27;metadata_errors&#x27;</code></pre>
+<p>읽는 순서는 이래요.<br>
+faster-whisper가 파일을 받으면 <code>decode_audio()</code>로 소리를 풀고,<br>
+그 안에서 PyAV의 <code>av.open()</code>을 <code>metadata_errors=&quot;ignore&quot;</code>를 붙여 부르는데,<br>
+PyAV 쪽에선 &quot;그런 인자 모르는데요?&quot; 하고 튕겨낸 거죠.</p>
+<img src="img/02_error_path.png" alt="오류 경로 — transcribe(파일 경로) → decode_audio() → av.open(metadata_errors=) → PyAV 19: 인자 없음 → TypeError. 빨간 펜 &quot;여기서 튕김&quot;" loading="lazy">
+<h2>2. faster-whisper metadata_errors, 왜 생기나요?</h2>
+<p>PyAV 공식 변경 이력의 v19.0.0 항목에 이렇게 적혀 있어요.<br>
+&quot;Remove the <code>metadata_encoding</code> and <code>metadata_errors</code> arguments to av.open&quot;<br>
+메타데이터는 이제 항상 UTF-8로 읽는다고요.</p>
+<p>그런데 제 PC의 faster-whisper 1.2.1 설치 정보를 열어 보면 PyAV 조건이 <code>av&gt;=11</code> 하나뿐이에요.<br>
+위쪽 상한이 없으니, 새로 깔면 최신 PyAV 19가 같이 따라옵니다.<br>
+2026년 11월 19일에 다시 확인한 제 조합도 <strong>faster-whisper 1.2.1 + av 19.0.2</strong>였어요.<br>
+라이브러리는 옛 인자를 부르고, 부품은 그 인자를 이미 뺀 상태.. 서로 탓할 데도 없는 사고죠.</p>
+<p>여러분 PC에서도 아래 한 줄이면 같은 조합인지 바로 보여요.</p>
+<pre><code>pip show faster-whisper av</code></pre>
+<h2>3. 해결: 디코딩을 밖으로 빼서 배열로 넘기기</h2>
+<p>AI가 고른 우회로는 단순했어요. PyAV를 아예 안 거치게 하는 거예요.<br>
+ffmpeg로 16kHz 모노 PCM을 뽑아서, numpy 배열로 바꿔 <code>transcribe()</code>에 넘깁니다.<br>
+faster-whisper 코드 설명(독스트링)에도 <code>audio</code> 인자는 파일 경로뿐 아니라 &quot;the audio waveform&quot;, 즉 배열을 받는다고 돼 있어요.</p>
+<pre><code>raw = subprocess.run([&quot;ffmpeg&quot;, &quot;-v&quot;, &quot;error&quot;, &quot;-i&quot;, src,
+                      &quot;-f&quot;, &quot;s16le&quot;, &quot;-ac&quot;, &quot;1&quot;, &quot;-ar&quot;, &quot;16000&quot;, &quot;-&quot;],
+                     capture_output=True, check=True).stdout
+audio = np.frombuffer(raw, np.int16).astype(np.float32) / 32768.0
+segs, info = model.transcribe(audio, language=&quot;ko&quot;, vad_filter=True, beam_size=5,
+                              condition_on_previous_text=False,
+                              initial_prompt=&quot;(회의에 나올 고유명사 10개 남짓)&quot;)</code></pre>
+<p>재밌는 건, faster-whisper <code>audio.py</code> 안에도 &quot;그게 신경 쓰이면 ffmpeg를 직접 쓰라&quot;는 주석이 원래 달려 있다는 거예요. 원래는 메모리 문제 때문에 남긴 말인데, 이번 오류의 탈출구도 거기였어요.</p>
+<p>다시 돌린 결과는 이 한 줄이었어요.</p>
+<pre><code>done 911s, duration 3221s</code></pre>
+<p><strong>CPU만으로 녹음 길이의 약 3.5분의 1 시간</strong>이에요. 줄마다 <code>[0:12:34]</code>식 타임스탬프가 붙은 380줄이 나왔습니다.</p>
+<img src="img/03_before_after.png" alt="전후 비교 — BEFORE 파일 경로 → PyAV(av.open) → TypeError(빨강) / AFTER 파일 → ffmpeg(16kHz·모노·s16le) → numpy 배열 → transcribe() → 380줄(초록 체크)" loading="lazy">
+<h2>4. 다른 방법도 있는데, 왜 이걸 골랐냐면요</h2>
+<div class="table-wrap"><table><thead><tr><th>방법</th><th>장점</th><th>걸리는 점</th></tr></thead><tbody><tr><td>PyAV를 19 아래로 내리기</td><td>코드 수정 0</td><td>같은 파이썬을 쓰는 다른 도구까지 버전이 묶임 (저는 안 해 봄)</td></tr><tr><td>faster-whisper 새 버전 기다리기</td><td>근본 해결</td><td>언제 나올지 모름, 회의록은 오늘 필요</td></tr><tr><td><strong>ffmpeg로 풀어서 배열 넘기기</strong></td><td>버전 안 건드림, 몇 줄 수정</td><td>ffmpeg가 PC에 깔려 있어야 함</td></tr></tbody></table></div>
+<p>저는 이미 ffmpeg를 쓰고 있어서 세 번째가 제일 가벼웠어요.<br>
+버전을 내리는 쪽도 변경 이력상 맞는 방법이긴 한데, 제 생각엔 한 PC에 자동화가 여러 개 도는 입장에선 패키지 하나 내리는 게 생각보다 겁나는 일이거든요.</p>
+<h2>5. 다 받아 적은 뒤엔, 틀린 글자를 일부러 안 고쳤어요</h2>
+<p>380줄을 열어 보니 고유명사랑 숫자가 꽤 틀려 있었어요.<br>
+화자 구분도 없고, 마이크에서 먼 사람 목소리는 군데군데 빠졌고요.</p>
+<p>AI한테 &quot;다듬어 줘&quot; 하면 금방 매끈해지죠. 근데 그러면 <strong>실제로 들린 말과 AI가 추정한 말이 한 문서에 섞여요.</strong> 나중에 &quot;그 숫자 진짜 저렇게 말했나?&quot; 싶을 때 돌아갈 원본이 사라지는 거예요.</p>
+<p>그래서 녹취록 맨 위에 &quot;자동 음성인식 결과를 수정 없이 수록 — 고유명사·수치 오인식 다수&quot;라고 적고,</p>
+<ul><li>본문 380줄은 틀린 그대로</li><li>구간 제목만 찾기 편하게 12개 추가</li><li>해석·정리는 별도 요약 문서로</li></ul>
+<p>이렇게 세 겹으로 나눴어요. 중요한 숫자는 원음을 다시 듣고 확인한다는 문구도 같이요.</p>
+<img src="img/04_raw_vs_summary.png" alt="원문과 해석 분리 — 녹음 → 녹취 원문(수정 없음, 380줄) ‖ 요약 문서(해석). 가운데 빨간 선 &quot;섞지 않는다&quot;" loading="lazy">
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. faster-whisper를 다시 깔면 해결되나요?</strong><br>
+그냥 다시 깔면 최신 PyAV가 또 따라와서 같은 오류가 날 수 있어요. 설치 후 <code>pip show av</code>로 버전부터 보세요.</p>
+<p><strong>Q. CPU로 돌려도 쓸 만한가요?</strong><br>
+제 경우 8스레드 int8, large-v3-turbo로 54분 녹음이 15분이었어요. 회의 끝나고 커피 한 잔 하는 사이에 끝나는 정도예요.</p>
+<p>녹취록을 AI로 만드실 때, 원문이랑 정리본을 한 파일에 같이 두시나요, 따로 두시나요?</p>
+<p>로컬 전사처럼 데이터를 밖에 안 내보내고 AI를 굴리는 방법들은 makefield.ai에 실습 위주로 정리해 두고 있어요.</p>
+<h2>출처</h2>
+<ul><li>PyAV CHANGELOG v19.0.0 (&quot;Remove the metadata_encoding and metadata_errors arguments to av.open, and the matching attributes.&quot;) → <a href="https://github.com/PyAV-Org/PyAV/blob/main/CHANGELOG.rst" target="_blank" rel="noopener">https://github.com/PyAV-Org/PyAV/blob/main/CHANGELOG.rst</a> (2026-11-19 확인)</li><li>faster-whisper 1.2.1 패키지 메타데이터 <code>Requires-Dist: av&gt;=11</code>, <code>transcribe()</code> 독스트링 &quot;Path to the input file (or a file-like object), or the audio waveform.&quot;, <code>audio.py</code> 주석 → <a href="https://github.com/SYSTRAN/faster-whisper" target="_blank" rel="noopener">https://github.com/SYSTRAN/faster-whisper</a> (설치본 2026-11-19 확인)</li><li>실측: 개인 PC 로컬 전사 1회(2026-11-17), 녹음 3,221초·전사 911초·380줄 — 녹음 내용·파일명·경로 제외</li></ul>
+<p>태그: #fasterwhisper #metadata_errors #PyAV #음성전사 #로컬전사 #회의녹음 #녹취록 #whisper오류 #ffmpeg #파이썬오류 #TypeError #음성인식 #AI녹취록 #막힐때해결 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224482712482" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261118-folder-move-automation-reprocess-path-key/"><div class="d">← 이전 노트</div><div class="t">폴더 이동 후 자동화 중복 처리, 기록 파일이 옛 경로를 기억해서예요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
