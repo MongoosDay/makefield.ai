@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>윈도우 터미널 갑자기 꺼짐, 새벽 3시 41분 스토어 자동 업데이트가 범인이었어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="아침에 PC 앞에 앉았더니 전날 띄워 둔 AI 작업창 두 개가 없어져 있었어요. 재부팅도 안 했고, 정전도 없었는데요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261120-windows-terminal-closed-store-auto-update/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="윈도우 터미널 갑자기 꺼짐, 새벽 3시 41분 스토어 자동 업데이트가 범인이었어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="아침에 PC 앞에 앉았더니 전날 띄워 둔 AI 작업창 두 개가 없어져 있었어요. 재부팅도 안 했고, 정전도 없었는데요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261120-windows-terminal-closed-store-auto-update/">
+<meta property="og:image" content="https://makefield.ai/blog/20261120-windows-terminal-closed-store-auto-update/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "윈도우 터미널 갑자기 꺼짐, 새벽 3시 41분 스토어 자동 업데이트가 범인이었어요", "datePublished": "2026-11-20", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261120-windows-terminal-closed-store-auto-update/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">막힐 때 해결</span><span>2026-11-20</span></div>
+<h1>윈도우 터미널 갑자기 꺼짐, 새벽 3시 41분 스토어 자동 업데이트가 범인이었어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;윈도우 터미널 갑자기 꺼짐 / 새벽 3시 41분, 스토어 자동 업데이트가 범인이었어요&quot;" loading="lazy">
+<p>아침에 PC 앞에 앉았더니 전날 띄워 둔 AI 작업창 두 개가 없어져 있었어요.<br>
+재부팅도 안 했고, 정전도 없었는데요.</p>
+<p>AI한테 처음 던진 말은 이거였습니다.</p>
+<pre><code>세션이 다 튕겨져있는데 무슨일이 있었는가?</code></pre>
+<p>답부터 적을게요. <strong>윈도우 터미널이 갑자기 꺼졌는데 재부팅 기록이 없다면, 마이크로소프트 스토어가 Windows Terminal 앱을 자동 업데이트하면서 열린 창을 닫았을 가능성을 먼저 보세요.</strong> 제 경우 새벽 03:41:53에 업데이트 설치가 시작됐고, 1초 뒤인 03:41:54에 터미널 안의 작업 두 개가 같은 초에 끊겼어요.</p>
+<p>현장 제어 쪽에서 15년 일한 엔지니어입니다. 요즘은 터미널에 Claude Code 같은 AI 작업창을 여러 개 띄워 두고, 하다 만 일을 다음 날 이어 가는 식으로 써요. 그래서 창이 말없이 사라지면 꽤 당황스럽습니다.</p>
+<h2>1. 처음엔 재부팅부터 의심했어요</h2>
+<p>창이 한꺼번에 사라지면 보통 &quot;밤사이 윈도우 업데이트로 재부팅됐나?&quot;부터 떠올리잖아요.<br>
+예전에 그걸로 한 번 당해서 <a href="https://blog.naver.com/makefield_ai/224417933292" target="_blank" rel="noopener">활성 시간 설정 글</a>까지 쓴 적이 있거든요.</p>
+<p>그런데 확인해 보니 아니었어요.</p>
+<pre><code>LastBoot: 11/12/2026 01:33:08
+Now: 11/17/2026 07:49:10</code></pre>
+<p>마지막 부팅이 5일 전이었어요.<br>
+게다가 WSL 안에 띄워 둔 tmux 세션은 멀쩡히 살아 있었습니다(<code>up 4 days</code>).<br>
+PC 전체가 꺼졌다면 이것도 같이 죽었어야 하니, 꺼진 건 OS가 아니라 <strong>터미널 앱 하나</strong>라는 뜻이었죠.</p>
+<h2>2. 오류 로그만 봐서는 안 보였어요</h2>
+<p>다음으로 지난 12시간 시스템 로그에서 &#x27;오류·경고&#x27;만 걸러 봤어요.<br>
+나온 건 DCOM 권한 경고(10016), 프로세서 속도 제한 알림(37) 같은 평소에도 뜨는 줄뿐이었습니다.</p>
+<p>전환점은 거꾸로 접근한 데서 나왔어요.<br>
+AI가 대화 기록 파일들을 뒤져서, 꺼진 두 작업창의 마지막 기록이 <strong>둘 다 03:41:54, 같은 초</strong>라는 걸 먼저 찾았거든요.<br>
+그래서 레벨 구분 없이 03:30~03:55 사이 로그를 통째로 열었더니 이렇게 나왔어요. (사용자 경로 줄은 뺐어요)</p>
+<pre><code>03:41:51  44  WindowsUpdateClient  Windows Update started downloading an update.
+03:41:53  43  WindowsUpdateClient  Installation Started: ... 9N0DX20HK701-Microsoft.WindowsTerminal
+03:41:57  19  WindowsUpdateClient  Installation Successful: ... 9N0DX20HK701-Microsoft.WindowsTerminal
+03:41:58  43  WindowsUpdateClient  Installation Started: ... MICROSOFT.WINDOWSALARMS
+03:42:00  43  WindowsUpdateClient  Installation Started: ... Microsoft.Todos</code></pre>
+<p>범인이 &#x27;오류&#x27;가 아니라 <strong>정보 레벨의 정상 설치 기록</strong>이었던 거예요.<br>
+오류만 걸러 보는 습관으로는 영영 못 찾았을 겁니다..</p>
+<img src="img/02_timeline.png" alt="1초 타임라인 — 03:41:51 다운로드 시작(잉크) → 03:41:53 터미널 설치 시작(빨강) → 03:41:54 작업창 2개 동시 종료(빨강) → 03:41:57 설치 완료(잉크) → 03:41:58~ 알람·To Do 앱 업데이트(잉크). 아래 따로 &#x27;WSL tmux = 생존&#x27;(초록)" loading="lazy">
+<p>마이크로소프트 지원 문서도 이 동작을 숨기지 않아요. &quot;Microsoft Store on Windows can automatically install app updates.&quot; 설정 위치는 스토어 → 프로필 → Store Settings → App updates예요.</p>
+<p>직접 찾아보실 분은 PowerShell에서 시간 창만 바꿔 쓰시면 됩니다.</p>
+<pre><code>$s=[datetime]&#x27;2026-11-17 03:30&#x27;; $e=[datetime]&#x27;2026-11-17 03:55&#x27;
+Get-WinEvent -FilterHashtable @{LogName=&#x27;System&#x27;; StartTime=$s; EndTime=$e} |
+  Select-Object TimeCreated, Id, ProviderName, Message | Format-List</code></pre>
+<h2>3. 날아간 게 있었나: 손실은 0, 문제는 &#x27;어디로 돌아가나&#x27;</h2>
+<p>다행히 잃은 건 없었어요.<br>
+Claude Code는 대화를 세션마다 기록 파일로 계속 써 두는데, 두 창 모두 마지막 메시지까지 남아 있었습니다. 둘 다 할 일을 끝내고 대기하던 상태였고, 하나는 10시간째 대기 중이었어요.</p>
+<p>11-15 이후 열었던 대화형 세션 11개를 전수로 보니 이랬습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>개수</th><th>흔적</th></tr></thead><tbody><tr><td>정상 종료</td><td>9개</td><td><code>/exit</code> 기록 있음</td></tr><tr><td>강제 종료</td><td>2개</td><td>03:41:54 같은 초, <code>/exit</code> 없음</td></tr></tbody></table></div>
+<p>그런데 여기서 진짜 불편이 보였어요.<br>
+끊긴 두 개를 찾으려고 AI가 최근 기록 파일을 하나하나 열어 봐야 했다는 거죠.<br>
+그래서 제가 물었습니다. &quot;앞으로 대화 기록은 중간중간 자동으로 저장되게 할수없겠는가?&quot;</p>
+<p>AI 답은 이랬어요. 원문 저장은 이미 되고 있었다(보존 기간 3650일 설정). 자동이 아니었던 건 <strong>&quot;어떤 세션이 열려 있었고 뭘 하던 중이었는지&quot; 한눈에 보는 목록</strong>이었다고요.<br>
+<strong class="u">손실 방지</strong>와 <strong class="u">빠른 복귀</strong>는 다른 문제였던 겁니다.</p>
+<img src="img/03_two_problems.png" alt="두 문제 나란히 — 왼쪽 &#x27;손실 방지: 대화 원문 자동 저장(이미 됨)&#x27;(초록 체크) / 오른쪽 &#x27;빠른 복귀: 어느 세션을 열어야 하나(없었음)&#x27;(빨강), 오른쪽 아래 빨간 펜 &quot;여기가 빈칸&quot;" loading="lazy">
+<h2>4. 그래서 만든 것: 응답마다 갱신되는 세션 대장</h2>
+<p>Claude Code에는 &#x27;훅&#x27;이라는 기능이 있어요. 특정 시점에 내 스크립트를 자동으로 실행해 주는 장치예요. 그중 Stop 훅은 공식 문서 표현으로 &quot;When Claude finishes responding&quot;, AI가 답을 마칠 때마다 돕니다.</p>
+<p>여기에 작은 스크립트를 걸었어요. 답이 끝날 때마다 한 파일에 이렇게 한 줄씩 갱신됩니다.</p>
+<pre><code>| 마지막 응답 | 시작 | 폴더 | 마지막 질문 | 이어가기 |
+|------------|------|------|------------|----------|
+| (시각)     | (시각) | (작업 폴더) | (내가 마지막에 한 말) | claude --resume (세션 ID) |</code></pre>
+<img src="img/04_ledger_flow.png" alt="세션 대장 흐름 — AI 응답 끝 → Stop 훅 → 대장 스크립트(세션 ID·폴더·마지막 질문 읽기) → 세션별 파일 1개씩 저장 → 최근 7일 목록 1장. 아래 메모: &#x27;예약 작업 세션은 제외·한 번 약 0.09초&#x27;, 끝에 &#x27;꺼지면 이 줄 복사 → 복귀&#x27;(초록)" loading="lazy">
+<p>만들면서 정한 것들이에요.</p>
+<ul><li><strong>세션마다 파일 1개</strong>: 여러 창이 동시에 답을 끝내도 서로 덮어쓰지 않게</li><li><strong>대화형만</strong>: 밤에 도는 예약 작업 세션은 목록에서 뺐어요(빠지는 것 확인)</li><li><strong>최근 7일만</strong>: 목록이 길어지면 결국 또 뒤져야 하니까요</li><li><strong>속도</strong>: 한 번 도는 데 약 0.09초라 답 속도엔 티가 안 났어요</li></ul>
+<p>삽질도 하나 있었어요. 수동 시험이 두 번 연달아 <code>Exit code 1</code>로 실패했는데, 스크립트가 아니라 <strong>시험용으로 넣은 입력 JSON의 따옴표 이스케이프</strong>가 틀린 거였어요. 입력을 파이썬으로 만들어 넣으니 세 번째에 통과했습니다.</p>
+<p>그날 AI는 &quot;훅으로 자동 실행되는 것은 아직 확인하지 않았습니다&quot;라고 선을 그었어요. 그래서 오늘(11-20) 다시 열어 봤습니다. 대장은 <code>갱신: 2026-11-20 00:04:47</code>로 바뀌어 있었고, 세션별 기록 파일이 15개 쌓여 있었어요. 이제야 &#x27;돌고 있다&#x27;고 쓸 수 있네요.</p>
+<h2>5. 스토어 자동 업데이트, 끌까 말까</h2>
+<p>솔직히 아직 안 정했어요.<br>
+그날 AI가 내놓은 선택지는 둘이었습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>방법</th><th>장점</th><th>단점</th></tr></thead><tbody><tr><td>스토어 앱 자동 업데이트 끄기</td><td>같은 사고가 안 남</td><td>업데이트를 직접 챙겨야 함</td></tr><tr><td>오래 둘 작업은 WSL tmux 안에서 실행</td><td>이번에 실제로 살아남은 경로</td><td>창 관리 방식이 바뀜</td></tr></tbody></table></div>
+<p>하나 덧붙이면, 최근엔 스토어에서 자동 업데이트를 완전히 끄지 못하고 <strong>최대 5주 일시 중지만</strong> 된다는 보도도 있어요(Windows Central). 제 PC 설정 화면은 아직 확인 전이라, 끄기를 고르실 분은 화면부터 보세요.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 윈도우 터미널이 꺼진 게 업데이트 때문인지 어떻게 확인하나요?</strong><br>
+꺼진 시각 앞뒤 몇 분의 시스템 로그를 레벨 구분 없이 보세요. <code>WindowsUpdateClient</code>의 &quot;Installation Started … Microsoft.WindowsTerminal&quot; 줄과 꺼진 시각이 몇 초 안에 붙어 있으면 거의 확정이에요.</p>
+<p><strong>Q. 터미널 안에서 돌던 AI 대화는 날아가나요?</strong><br>
+Claude Code는 대화를 기록 파일에 계속 써 두기 때문에 <code>claude --resume &lt;세션ID&gt;</code>로 이어 갈 수 있었어요. 다만 답을 쓰는 도중에 끊기면 그 답은 중간에서 멈춥니다. 저는 둘 다 대기 중이라 잘린 게 없었어요.</p>
+<p>꺼진 원인을 찾는 데는 1초짜리 겹침 하나면 충분했는데, 돌아갈 곳을 찾는 장치는 따로 만들어야 했어요.</p>
+<p>PC 앞에 없는 시간에도 AI 작업을 굴리면서 생긴 사고와 수습 기록은 makefield.ai에 차곡차곡 모으는 중입니다.</p>
+<h2>출처</h2>
+<ul><li>Microsoft Support, &quot;Turn on automatic app updates&quot; — &quot;Microsoft Store on Windows can automatically install app updates.&quot;, Profile &gt; Store Settings &gt; App updates → <a href="https://support.microsoft.com/en-US/Windows/Apps/turn-on-automatic-app-updates" target="_blank" rel="noopener">https://support.microsoft.com/en-US/Windows/Apps/turn-on-automatic-app-updates</a> (2026-11-20 확인)</li><li>Windows Central, &quot;Microsoft limits control over app updates in Windows 11 — users can only pause for 5 weeks&quot;(기사 제목) → <a href="https://www.windowscentral.com/microsoft/windows-11/microsoft-quietly-removes-ability-to-permanently-stop-apps-from-automatically-updating-on-windows-11-just-like-system-updates" target="_blank" rel="noopener">https://www.windowscentral.com/microsoft/windows-11/microsoft-quietly-removes-ability-to-permanently-stop-apps-from-automatically-updating-on-windows-11-just-like-system-updates</a> (2026-11-20 확인, 내 PC 설정 미확인)</li><li>Claude Code Hooks 문서 — Stop &quot;When Claude finishes responding&quot;, 입력 필드 session_id·transcript_path·cwd → <a href="https://code.claude.com/docs/en/hooks" target="_blank" rel="noopener">https://code.claude.com/docs/en/hooks</a> (2026-11-20 확인)</li><li>실측: 개인 윈도우 PC 2026-11-17 이벤트 로그·세션 기록 진단, 2026-11-20 세션 대장 갱신 확인(계정·경로·세션 ID·작업 내용 제외)</li></ul>
+<p>태그: #윈도우터미널꺼짐 #WindowsTerminal #윈도우터미널 #마이크로소프트스토어 #앱자동업데이트 #스토어업데이트 #이벤트뷰어 #GetWinEvent #클로드코드 #ClaudeCode #세션끊김 #훅 #tmux #막힐때해결 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224484084041" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261119-faster-whisper-metadata-errors-ffmpeg/"><div class="d">← 이전 노트</div><div class="t">faster-whisper metadata_errors 오류, PyAV 19에서 빠진 인자 탓이었어요 — ffmpeg로 우회해 54분 녹음 15분 전사</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
