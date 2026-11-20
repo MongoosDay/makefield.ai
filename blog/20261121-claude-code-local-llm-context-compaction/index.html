@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code 로컬 LLM 연결 실측 — 32k 서버를 200k로 착각하고, 자동 압축은 4번 만에 무너졌다 (DGX Spark 구축기 #1) | Field Notes · MakeField AI</title>
+<meta name="description" content="Claude Code는 환경변수 몇 개로 로컬 llama.cpp 서버에 그대로 붙는다. 문제는 그다음이다. 32k로 띄운 서버를 Claude Code는 200k로 알고 달리다가 도구 호출 25회 만에 400으로 죽었다. 창 크기를 알려 주자 자동 압축이 2분 18초 동안 4번 ">
+<link rel="canonical" href="https://makefield.ai/blog/20261121-claude-code-local-llm-context-compaction/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code 로컬 LLM 연결 실측 — 32k 서버를 200k로 착각하고, 자동 압축은 4번 만에 무너졌다 (DGX Spark 구축기 #1) | Field Notes · MakeField AI">
+<meta property="og:description" content="Claude Code는 환경변수 몇 개로 로컬 llama.cpp 서버에 그대로 붙는다. 문제는 그다음이다. 32k로 띄운 서버를 Claude Code는 200k로 알고 달리다가 도구 호출 25회 만에 400으로 죽었다. 창 크기를 알려 주자 자동 압축이 2분 18초 동안 4번 ">
+<meta property="og:url" content="https://makefield.ai/blog/20261121-claude-code-local-llm-context-compaction/">
+<meta property="og:image" content="https://makefield.ai/blog/20261121-claude-code-local-llm-context-compaction/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Claude Code 로컬 LLM 연결 실측 — 32k 서버를 200k로 착각하고, 자동 압축은 4번 만에 무너졌다 (DGX Spark 구축기 #1)", "datePublished": "2026-11-21", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261121-claude-code-local-llm-context-compaction/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">로컬 AI 실험실</span><span>2026-11-21</span></div>
+<h1>Claude Code 로컬 LLM 연결 실측 — 32k 서버를 200k로 착각하고, 자동 압축은 4번 만에 무너졌다 (DGX Spark 구축기 #1)</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;Claude Code 로컬 LLM 연결 실측 / 32k를 200k로 착각, 자동 압축은 4번 만에 붕괴&quot;" loading="lazy">
+<p><strong>Claude Code는 환경변수 몇 개로 로컬 llama.cpp 서버에 그대로 붙는다. 문제는 그다음이다.</strong> 32k로 띄운 서버를 Claude Code는 200k로 알고 달리다가 도구 호출 25회 만에 400으로 죽었다. 창 크기를 알려 주자 자동 압축이 2분 18초 동안 4번 돌았고, 4번의 요약 중 2번은 요약이 아니라 &quot;직전 발화 한 줄&quot;이었다. 64k에서는 두 번째 압축 요약이 링크 한 줄로 끝나면서 원래 질문이 사라졌다. 131k에서야 6건이 모두 끝까지 돌았는데, 독립 채점에서는 6건 모두 완료 기준 미달이었다.</p>
+<p>이 연재는 DGX Spark 2대에 로컬 LLM을 올리며 겪은 일을 <strong>빌드 커밋·플래그·환경변수·로그 원문·실측 수치</strong> 단위로 남기는 기록이다. 입문 설명은 뺐다. 수치는 문장마다 실측 / 추정 / 미측정을 구분했고, 1회 측정이면 1회라고 적었다.</p>
+<h2>1. 환경</h2>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>값</th></tr></thead><tbody><tr><td>장비</td><td>NVIDIA DGX Spark ×2 (GB10, compute capability 12.1, 통합메모리 128GB — llama.cpp 인식 124,608MiB, ARM64 20코어)</td></tr><tr><td>OS·드라이버</td><td>Ubuntu 24.04.5, 드라이버 580.178.04, CUDA 13.0</td></tr><tr><td>추론 엔진</td><td>llama.cpp <code>0.8.0-dev</code> commit <code>162e2bb</code>(2026-11-04), 소스 빌드</td></tr><tr><td>모델</td><td><code>unsloth/Qwen3.6-35B-A3B-MTP-GGUF</code> / <code>Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf</code> (22.85GB, 5.15 BPW, MoE 256 experts / 활성 8)</td></tr><tr><td>하네스</td><td>Claude Code 2.1.322 (실행 파일 무수정)</td></tr><tr><td>연결</td><td>같은 장비 루프백, 또는 2호기 서버를 QSFP 직결 SSH 터널로 1호기에 노출</td></tr></tbody></table></div>
+<p>빌드:</p>
+<pre><code>cmake -B build -DGGML_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=121a-real -DGGML_NATIVE=ON -DGGML_CURL=OFF
+cmake --build build -j</code></pre>
+<p><code>121a-real</code>은 GB10(sm_121)용이다. NVIDIA의 DGX Spark playbook 방식과 같고 <code>GGML_CURL=OFF</code>만 다르다.</p>
+<p>서버 (첫 실험 기준):</p>
+<pre><code>llama-server \
+  --model ~/models/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf \
+  --alias qwen3.6 --host 127.0.0.1 --port 30000 \
+  --ctx-size 32768 --parallel 1 \
+  --n-gpu-layers 99 --flash-attn on --jinja --metrics</code></pre>
+<p><code>--jinja</code>로 GGUF에 내장된 채팅 템플릿(도구 호출 포맷 포함)을 쓰게 했다. 에이전트 하네스를 물릴 때 도구 호출 포맷이 어긋나면 그 뒤 실험은 전부 의미가 없어서, 템플릿 경로를 명시적으로 고정했다.</p>
+<h2>2. 왜 Claude Code를 그대로 붙였나</h2>
+<p>처음엔 로컬 모델용 실행기(에이전트 루프)를 직접 짰다. 도구 정의, 재시도, 검증 단계를 덧붙일수록 시험 장치만 커지고 정작 쓸 만한 결과물은 안 나왔다.</p>
+<p>방향을 바꾼 건 이 판단이었다. Claude Code의 에이전트 루프(입력 → 컨텍스트 조립 → 모델 호출 → 도구 실행 → 결과 재투입 → 압축)는 공개 분석이 많이 나와 있는 검증된 구조다. <strong>구조를 새로 발명하지 말고, 검증된 루프에 로컬 모델을 그대로 끼워서 모델의 한계가 어디인지부터 재자.</strong> 하네스 차이와 모델 차이를 섞지 않으려면 하네스를 고정하는 게 맞다.</p>
+<h2>3. 연결 — 환경변수만으로 붙는다</h2>
+<p>llama.cpp <code>llama-server</code>는 Anthropic 호환 엔드포인트(<code>/v1/messages</code>)를 제공한다. tool_use 왕복도 된다.</p>
+<pre><code>export ANTHROPIC_BASE_URL=http://127.0.0.1:30000
+export ANTHROPIC_AUTH_TOKEN=local
+export ANTHROPIC_API_KEY=
+export ANTHROPIC_MODEL=qwen3.6
+export ANTHROPIC_SMALL_FAST_MODEL=qwen3.6
+export ANTHROPIC_DEFAULT_OPUS_MODEL=qwen3.6
+export ANTHROPIC_DEFAULT_SONNET_MODEL=qwen3.6
+export ANTHROPIC_DEFAULT_HAIKU_MODEL=qwen3.6
+export CLAUDE_CODE_SUBAGENT_MODEL=qwen3.6
+export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+claude</code></pre>
+<p>포인트 두 가지.</p>
+<ul><li><strong>모델 별칭을 전부 덮어야 한다.</strong> 메인 모델만 바꾸면 Claude Code가 내부적으로 쓰는 소형 모델·서브에이전트 호출이 원래 모델 이름으로 나가서 로컬 서버가 모르는 이름을 받는다. <code>--alias</code>와 환경변수 이름을 하나로 맞췄다.</li><li><code>ANTHROPIC_API_KEY</code>는 비워 두고 <code>ANTHROPIC_AUTH_TOKEN</code>에 아무 값이나 넣었다. 로컬 서버에 키를 걸었다면 그 키를 넣으면 된다.</li></ul>
+<h3>스모크 테스트</h3>
+<p>과제: &quot;log.csv에서 temp가 최저인 행의 ch 값은?&quot; (작은 CSV, 정답 <code>b</code>)</p>
+<p>결과(1회): <strong>6턴, 15.5초, 정답.</strong> 처음에 경로를 잘못 짚어 Read가 실패하자, 스스로 <code>find</code>·<code>ls</code>로 파일 위치를 찾고 다시 Read해서 답을 냈다. 루프의 자기 수정 동작이 로컬 모델에서도 그대로 돈다.</p>
+<p>다만 프롬프트에 &quot;python으로 계산하라&quot;고 적었는데 따르지 않고 눈으로 읽어 답했다. 이 습관이 뒤에서 큰 문제가 된다.</p>
+<p>그리고 이상한 점 하나. <strong>Claude Code가 이 모델의 컨텍스트 창을 200,000 토큰으로 잡고 있었다.</strong> 서버는 32,768이다.</p>
+<h2>4. 실전 과제 — 창 크기별로 무너지는 방식</h2>
+<p>스모크 테스트 대신 실제 규모의 과제를 줬다.</p>
+<blockquote>장비 시계열 로그(parquet, 파일 170여 개, 수백만 행)에서 전 기간 중 온도가 가장 낮았던 시각과 센서를 찾아라.</blockquote>
+<p>함정이 하나 있었다. <strong>로그 열 이름이 기간마다 바뀐다.</strong> 같은 센서가 어떤 파일에선 <code>a_circ_temp</code>, 다른 파일에선 <code>ak_circ_temp</code> 식으로 나온다(예시는 가공). 파일 전체의 열 합집합이 2천 개를 넘는다. DuckDB로 한 번에 읽으려면 <code>union_by_name=true</code>가 필요하다.</p>
+<p>아래 로그는 전부 Claude Code가 남긴 세션 기록(<code>~/.claude/projects/&lt;프로젝트&gt;/&lt;세션ID&gt;.jsonl</code>)에서 그대로 뽑았다. 압축 수치는 <code>compact_boundary</code> 레코드의 <code>compactMetadata</code>(<code>preTokens</code>·<code>postTokens</code>·<code>durationMs</code>) 값이다.</p>
+<h3>4-1. 32k 서버, 설정 그대로 → 도구 호출 25회 뒤 컨텍스트 초과</h3>
+<p>Claude Code는 창이 200k라고 믿으니 압축을 걸지 않는다. 분석은 정상적으로 진행됐다. 파일을 훑고, 열을 찾고, 쿼리를 돌렸다. 시작 2분 50초 뒤, 도구 호출 25회째에 서버가 요청을 거부했다.</p>
+<pre><code>API Error: 400 request (40118 tokens) exceeds the available context size (32768 tokens), try increasing it</code></pre>
+<p>원인(확정): <strong>클라이언트가 아는 창(200k)과 서버의 실제 창(32k)이 다르면 압축 기준선이 오지 않는다.</strong> 대화가 쌓여 32k를 넘는 순간 그냥 죽는다. 마지막 요청이 32,768을 7천 토큰 넘게 초과한 건 쿼리 결과 같은 큰 도구 출력이 한 턴에 통째로 들어갔기 때문으로 본다(추정).</p>
+<h3>4-2. 32k 서버, 창 크기 알려 줌 → 2분 18초 동안 압축 4번, 그리고 빈 응답</h3>
+<pre><code>export CLAUDE_CODE_MAX_CONTEXT_TOKENS=32768</code></pre>
+<p>이번엔 자동 압축이 발동했다. 세션 기록에 남은 4번의 압축은 이렇다(1회 실행).</p>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>경과</th><th>압축 전 토큰</th><th>압축 후</th><th>압축 소요</th><th>압축 후 요약 본문</th></tr></thead><tbody><tr><td>1</td><td>+0:35</td><td>11,983</td><td>3,735</td><td>20.2초</td><td>3,204자, 정상 구조 요약</td></tr><tr><td>2</td><td>+0:57</td><td>12,217</td><td>2,677</td><td>12.2초</td><td><strong>50자 — 직전 발화 한 줄</strong></td></tr><tr><td>3</td><td>+1:31</td><td>12,248</td><td>4,057</td><td>23.9초</td><td>4,440자, 구조는 갖췄지만 대화에 없던 사실이 섞임</td></tr><tr><td>4</td><td>+2:01</td><td>19,117</td><td>3,092</td><td>14.3초</td><td><strong>92자 — 직전 발화 한 줄</strong></td></tr><tr><td>5</td><td>+2:18</td><td>—</td><td>—</td><td>—</td><td>실패</td></tr></tbody></table></div>
+<p>2번째와 4번째 압축 뒤 &quot;요약&quot;으로 남은 본문 전체가 이것이다.</p>
+<pre><code># 2번째 압축 후 요약 본문 전체 (50자)
+Found the data. Now let me analyze it with DuckDB.
+
+# 4번째 압축 후 요약 본문 전체 (92자)
+Good - the actual path is through `log_pool` symlink. Let me explore the parquet schema now.</code></pre>
+<p>그리고 다섯 번째 압축 시도에서 세션이 끝났다.</p>
+<pre><code>Prompt is too long · automatic compaction failed: summarization produced empty response</code></pre>
+<img src="img/02_compaction.png" alt="02_compaction.png — 32k·64k 각 4번의 압축 전 토큰(테두리)과 압축 후 토큰(채움) 막대, 막대 아래 경과 시각·요약 글자수·판정. 직전 발화 1줄·없던 사실·링크 한 줄·질문 바뀜은 빨간 글씨" loading="lazy">
+<p>읽을 수 있는 것(확정, 세션 기록 기준):</p>
+<ul><li><strong>압축 호출이 &quot;요약하라&quot;는 지시를 따르지 않았다.</strong> 2번과 4번의 결과는 요약이 아니라 모델이 대화를 그냥 이어 간 다음 발화다. Claude Code는 그걸 요약 자리에 그대로 넣었다.</li><li>3번은 형식은 요약인데, 파일 형식을 parquet이 아니라 CSV라고 적는 등 <strong>대화에 없던 사실이 들어갔다.</strong> 압축은 손실 압축이고, 손실의 방향을 모델이 정한다.</li><li>요약이 비거나 엉뚱하면 압축 뒤의 모델은 &quot;지금까지 뭘 했는지&quot;를 모른다. 그래서 다시 탐색하고, 탐색 결과가 쌓여 30초 안팎 만에 다시 압축 기준선에 닿는다. 압축 간격이 22~34초였다.</li></ul>
+<p>추정(미측정 — 다음 편에서 확인):</p>
+<ul><li>32k에서 압축은 대화 토큰 약 12k에서 걸렸다. 64k에서는 43k~51k였다. 두 경우 모두 <strong>창 크기에서 약 2만 토큰을 뺀 지점 근처</strong>다(32,768 − 20,000 ≈ 12.8k, 65,536 − 20,000 ≈ 45.5k). Claude Code가 출력·압축용으로 고정 분량을 예약하고 나머지를 대화에 쓰는 구조라면, 창이 작을수록 대화에 쓸 몫이 비율로 급격히 줄어든다. 32k에서는 창의 약 37%만 대화에 쓴 셈이다.</li><li>여기에 매 요청마다 시스템 프롬프트와 도구 정의(JSON 스키마) 묶음이 붙는다. 이 고정 비용은 <code>/tokenize</code>로 다음 편에서 잰다.</li></ul>
+<p><strong>교훈: 32k는 Claude Code급 하네스를 돌리기엔 창이 아니라 우물이다.</strong> 압축이 작동하려면 압축 호출이 들어갈 여유와, 그 호출을 제대로 수행할 모델의 지시 준수가 둘 다 있어야 한다.</p>
+<h3>4-3. 64k 서버 → 문제는 풀었는데, 두 번째 압축에서 질문이 사라짐</h3>
+<p>2호기에 같은 모델을 <code>--ctx-size 65536</code>으로 띄우고 QSFP 직결 SSH 터널로 1호기에 붙였다. 서버 명령은 포트와 <code>--ctx-size</code> 두 개만 달랐고, 창 크기도 서버 값으로 알렸다.</p>
+<p>여기서 처음으로 모델다운 장면이 나왔다.</p>
+<ul><li><strong>열 이름이 바뀌는 함정을 스스로 풀었다.</strong> 파일별 스키마가 다르다는 걸 알아채고 <code>union_by_name</code>으로 읽어 전체 행 수(800만 행대)를 정확히 맞췄다.</li><li>첫 압축(+3:32) 전에 답까지 도달했다. 최저 온도 날짜는 맞았다. 다만 같은 최저값을 가진 다른 센서들, 그리고 여러 채널이 같은 초에 동시에 0이 된 사건은 빠뜨렸다.</li></ul>
+<p>그다음 4번의 압축이 이렇게 흘렀다(1회 실행).</p>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>경과</th><th>압축 전 토큰</th><th>압축 후</th><th>압축 소요</th><th>압축 후 요약 본문</th></tr></thead><tbody><tr><td>1</td><td>+3:32</td><td>43,858</td><td>4,764</td><td>26.4초</td><td>1,356자 — 요약 대신 최종 답변 표를 그대로 붙임</td></tr><tr><td>2</td><td>+9:12</td><td>49,391</td><td>4,210</td><td>26.7초</td><td><strong>132자 — 대화 원본 링크 한 줄</strong></td></tr><tr><td>3</td><td>+12:05</td><td>42,827</td><td>6,640</td><td>43.0초</td><td>6,806자, 구조 요약. 그런데 &quot;원래 요청&quot;이 바뀜</td></tr><tr><td>4</td><td>+15:05</td><td>51,108</td><td>11,754</td><td>72.8초</td><td>7,755자, 특정 날짜의 극단값 조사로 더 좁혀짐</td></tr></tbody></table></div>
+<p>2번째 압축 뒤 요약 자리에 남은 것 전체:</p>
+<pre><code>&lt;a href=&quot;file:///home/&lt;user&gt;/.claude/projects/-tmp-cc-probe4/e6993f6f-....jsonl&quot;&gt;Full conversation&lt;/a&gt;</code></pre>
+<p>(사용자 이름과 세션 ID 뒷부분만 가렸다.)</p>
+<p>3번째 압축 요약의 첫 항목이 결정적이다.</p>
+<pre><code>1. **Primary Request and Intent:**
+   - Analyze temperature sensor data quality across multiple [...] sensor channels [...]
+   - Identify anomalies, missing data patterns, and unusual readings
+   - Understand system behavior during high temperature events</code></pre>
+<p>(채널·장치 이름은 <code>[...]</code>로 가렸다.)</p>
+<p>원래 질문은 <strong>&quot;전 기간 최저 온도의 시각과 센서&quot;</strong>였다. 3번째 요약에서는 그게 &quot;온도 센서 데이터 품질 분석, <strong>고온</strong> 이벤트 조사&quot;로 바뀌어 있다. 메커니즘(확정, 기록 기준): 2번째 요약이 링크 한 줄이라 원래 질문이 다음 컨텍스트에서 사라졌고, 3번째 압축은 그 직후 하고 있던 탐색(데이터 품질 점검)을 &quot;원래 요청&quot;으로 재구성했다. 4번째 요약은 거기서 특정 날짜 조사로 더 좁혀졌다. 결국 원래 질문과 상관없는 분석을 하다 16분 시간 제한에 걸려 끝났다.</p>
+<p>이 단계에서 프로세스가 <code>exit 137</code>(SIGKILL — 메모리 부족 추정)로 두 번 죽기도 했다. 이건 실험 기록에만 남아 있고 프로세스 출력은 보존하지 않아 원문이 없다.</p>
+<p>64k에서 배운 것: <strong>압축 요약 하나가 망가지면 그다음 요약은 망가진 상태를 &quot;사실&quot;로 굳힌다.</strong> 64k는 압축 간격이 3~6분으로 32k(22~34초)보다 6~10배 길었지만, 압축 품질이 모델 몫이라는 점은 그대로였다.</p>
+<h3>4-4. 131k 서버 + 얇은 하네스 → 6건 모두 끝까지 돌았다. 그리고 6건 모두 틀렸다</h3>
+<pre><code># 서버: --ctx-size 131072 --parallel 1 (+ 비전용 --mmproj)
+export CLAUDE_CODE_MAX_CONTEXT_TOKENS=131072
+export CLAUDE_CODE_AUTO_COMPACT_WINDOW=131072
+export CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=80
+export CLAUDE_CODE_MAX_OUTPUT_TOKENS=16000</code></pre>
+<p>창만 키운 게 아니라 작업 공간도 손봤다. 전부 Claude Code의 기본 기능이다.</p>
+<ul><li><code>CLAUDE.md</code>를 <strong>짧게</strong>: 데이터가 어디 있는지, 열 이름 규칙, 쓸 도구, 답변 규칙만</li><li><strong>열 카탈로그 CSV</strong>: 2천여 개 열의 이름·의미·단위·옛 이름↔새 이름 대응을 미리 만들어 둠 (모델이 매번 스키마를 탐색하지 않게)</li><li><strong>집계 CLI 하나</strong>: <code>cols / extreme / zeros / series / sql</code> 하위 명령. 파일 전체를 DuckDB로 한 번에 훑어 7초 안에 끝나게</li><li><code>settings.json</code>은 데이터 폴더 쓰기·sudo·<code>rm -rf</code> 금지만</li></ul>
+<p>결과: 실전 질문 6건, <strong>22분, 6건 전부 정상 종료.</strong> 32k·64k에서 보던 압축 붕괴는 한 번도 없었다.</p>
+<p>그런데 다른 AI에게 답을 가리고 독립 채점을 맡겼더니 <strong>6건 모두 완료 기준 미달</strong>이었다. 내가 1차로 &quot;통과&quot;라고 본 3건도 철회했다. 내 채점이 후했다.</p>
+<p>틀린 방식이 공통적이었다.</p>
+<div class="table-wrap"><table><thead><tr><th>실패 유형</th><th>실제 사례</th></tr></thead><tbody><tr><td>머릿속 계산</td><td>지식형 질문 3건에서 도구 호출 <strong>0회</strong>. 수두(압력) 계산을 눈대중으로 하다 10배 작게 냄(113 Pa vs 1,111 Pa)</td></tr><tr><td>고정값을 신호로 오인</td><td>센서가 고장으로 특정 값에 붙어 있는 구간(고착값)을 &quot;최댓값&quot;으로 보고</td></tr><tr><td>미확정 원인 단정</td><td>근거가 둘 이상인 원인을 하나로 단정, 안전 관련 판단을 확인 없이 단정</td></tr><tr><td>의심값 미보고</td><td>0이 여러 채널에서 같은 초에 찍힌 &quot;이상한 0&quot;을 그냥 넘어감</td></tr></tbody></table></div>
+<img src="img/03_window_results.png" alt="03_window_results.png — 창 크기별 결과 카드 4장: 32k 창 미통지(400 초과) / 32k 창 통지(압축 4회 후 빈 응답) / 64k(질문 소실·표류) / 131k+얇은 하네스(6건 정상 종료, 독립 채점 0/6). 빨간 펜 &#x27;안정성 문제와 정확도 문제는 다른 문제&#x27;" loading="lazy">
+<h2>5. 정리 — 로컬 모델에 Claude Code급 하네스를 물릴 때</h2>
+<div class="table-wrap"><table><thead><tr><th>점검 항목</th><th>왜</th><th>우리 값</th></tr></thead><tbody><tr><td>클라이언트에 실제 창 크기 알리기</td><td>안 알리면 압축 기준선이 안 와서 그냥 죽음</td><td><code>CLAUDE_CODE_MAX_CONTEXT_TOKENS</code> = 서버 <code>--ctx-size</code> ÷ <code>--parallel</code></td></tr><tr><td>창 64k 미만이면 Claude Code급 하네스 쓰지 말 것</td><td>고정 예약분을 빼면 대화 몫이 거의 안 남음</td><td>32k: 2분 18초에 압축 4회, 요약 2회가 직전 발화 1줄</td></tr><tr><td>압축 요약을 믿지 말고 확인할 것</td><td>요약 하나가 망가지면 다음 요약이 그걸 굳힘</td><td>64k: 2번째 요약 = 링크 한 줄 → 질문 소실</td></tr><tr><td>압축 기준을 일찍</td><td>압축 호출이 들어갈 자리 확보</td><td>80%</td></tr><tr><td><code>--parallel</code>이 창을 나눈다</td><td><code>--ctx-size 262144 --parallel 2</code>면 1인 131k</td><td>5편에서 실측</td></tr><tr><td>모델 별칭 전부 덮기</td><td>서브에이전트·소형 모델 호출이 엉뚱한 이름으로 나감</td><td><code>ANTHROPIC_DEFAULT_*_MODEL</code>, <code>CLAUDE_CODE_SUBAGENT_MODEL</code></td></tr><tr><td>스키마 탐색을 모델에 맡기지 말 것</td><td>탐색 턴이 창을 먹고, 압축 때 잃음</td><td>열 카탈로그 CSV + 집계 CLI</td></tr><tr><td>창을 키워도 정답률은 안 오른다</td><td>창은 &quot;끝까지 도는 것&quot;만 해결</td><td>131k: 6/6 종료, 0/6 완료 기준 충족</td></tr></tbody></table></div>
+<p>마지막 줄이 이번 실험의 결론이다. <strong>32k → 131k로 바꾼 건 프로세스 안정성 문제였고, 정확도 문제는 그대로 남았다.</strong> 남은 실패는 전부 &quot;계산을 도구로 하지 않는다&quot;, &quot;모르는 걸 단정한다&quot; 쪽이다. 이건 컨텍스트가 아니라 지시 준수와 판단의 문제고, 다음 실험(검산 강제·단정 금지 규칙·고착값 검출 명령 추가)에서 다룬다.</p>
+<p>세션 기록을 직접 뜯어 보고 싶다면 이 한 줄이면 된다. 압축이 일어날 때마다 <code>compact_boundary</code> 레코드가 남는다.</p>
+<pre><code>grep -h &#x27;&quot;compact_boundary&quot;&#x27; ~/.claude/projects/*/*.jsonl | python3 -c &quot;import sys,json;[print(json.loads(l).get(&#x27;compactMetadata&#x27;)) for l in sys.stdin]&quot;</code></pre>
+<h2>6. 다음 편</h2>
+<ul><li>2편: GB10의 273GB/s를 산수로 풀면 dense 70B는 왜 안 되고 MoE는 왜 되는가 — Qwen3.6-35B-A3B 67.7 tok/s(MTP 켜면 97.9), gpt-oss-120b 58.3 tok/s 실측과, 투기적 디코딩이 오히려 31% 느려진 경우</li><li>이번 편에서 못 잰 것: Claude Code 요청당 고정 토큰 비용(<code>/tokenize</code> 실측), 압축 기준선이 &quot;창 − 약 2만&quot;이라는 추정의 검증, 64k에서 압축 기준 %를 낮췄을 때 2번째 압축 생존 여부</li></ul>
+<p>로컬 LLM을 실제 업무 하네스에 물리는 작업을 하고 있다면, 어디서 막혔는지 댓글로 남겨 주면 다음 편 실험에 넣어 보겠다.</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224485408176" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261120-windows-terminal-closed-store-auto-update/"><div class="d">← 이전 노트</div><div class="t">윈도우 터미널 갑자기 꺼짐, 새벽 3시 41분 스토어 자동 업데이트가 범인이었어요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
