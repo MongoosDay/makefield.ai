@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>파워쉘 오류 메시지, 첫 줄만 읽으면 경로·권한·한글 셋 중 하나예요 | Field Notes · MakeField AI</title>
+<meta name="description" content="명령 하나 쳤을 뿐인데 빨간 글씨가 화면 반을 채웁니다. 영어 반, 한글 반, 중간엔 물결표(~~~~)까지. 대부분 이 장면에서 창을 닫아요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261122-powershell-error-message-first-line/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="파워쉘 오류 메시지, 첫 줄만 읽으면 경로·권한·한글 셋 중 하나예요 | Field Notes · MakeField AI">
+<meta property="og:description" content="명령 하나 쳤을 뿐인데 빨간 글씨가 화면 반을 채웁니다. 영어 반, 한글 반, 중간엔 물결표(~~~~)까지. 대부분 이 장면에서 창을 닫아요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261122-powershell-error-message-first-line/">
+<meta property="og:image" content="https://makefield.ai/blog/20261122-powershell-error-message-first-line/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "파워쉘 오류 메시지, 첫 줄만 읽으면 경로·권한·한글 셋 중 하나예요", "datePublished": "2026-11-22", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261122-powershell-error-message-first-line/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-11-22</span></div>
+<h1>파워쉘 오류 메시지, 첫 줄만 읽으면 경로·권한·한글 셋 중 하나예요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="01_.png 타이틀카드 — &quot;파워쉘 오류 메시지 / 첫 줄만 읽으면 경로·권한·한글 셋 중 하나&quot;" loading="lazy">
+<p>명령 하나 쳤을 뿐인데 빨간 글씨가 화면 반을 채웁니다.<br>
+영어 반, 한글 반, 중간엔 물결표(~~~~)까지.<br>
+대부분 이 장면에서 창을 닫아요.</p>
+<p>결론부터 드릴게요. <strong>파워쉘 오류 메시지는 첫 줄의 콜론(:) 뒤만 읽으면 되고, 이 연재에서 하는 일로 만나는 에러는 대부분 &#x27;경로·권한·한글&#x27; 셋 중 하나입니다.</strong> 컴퓨터가 망가진 게 아니라 터미널이 &quot;이건 못 하겠다&quot;고 이유를 적어 준 거예요. 셋 다 아니면 그때 AI에게 묻는데, 묻는 순서를 틀리면 AI 진단이 엉뚱한 데로 갑니다.</p>
+<p>지난 편에서 AI에게 내 폴더를 처음 읽혔어요. 이번 편은 그 과정에서 뭔가 막혔을 때 위에서부터 보는 순서표 하나를 만듭니다.</p>
+<p>저는 산업 설비 제어 시스템을 15년 넘게 만져 온 엔지니어예요. 현장에서도 계기판 숫자보다 &quot;아까 제가 이거 눌러봤는데요&quot; 한마디가 원인에 더 빨리 데려다주곤 했어요.</p>
+<h2>1. 파워쉘 오류 메시지, 어디부터 읽어야 하나요?</h2>
+<p><strong>첫 줄, 그것도 콜론 뒤만 읽으면 됩니다.</strong> 거기가 &#x27;무슨 일이 났는지&#x27;예요. 아래쪽 영어는 해석할 필요가 없고, 나중에 AI에게 그대로 붙여 넣을 재료입니다.</p>
+<p>없는 파일을 열라고 시키면 이렇게 나와요. (2026년 9월, 한국어 윈도우 10 기본 파워셸 5.1에서 실제로 띄운 문구예요. 판이 달라도 핵심 단어는 같습니다)</p>
+<pre><code>Get-Content : &#x27;C:\work\nofile.txt&#x27; 경로는 존재하지 않으므로 찾을 수 없습니다.
+위치 줄:1 문자:1
++ Get-Content C:\work\nofile.txt
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: ...</code></pre>
+<img src="img/02_.png" alt="02_ 오류 메시지 해부 — 위 코드블록 5줄을 잉크 카드로. 첫 줄 콜론 뒤에만 빨간 박스 + 빨간 펜 &#x27;여기만 읽는다&#x27;. 물결표 줄 옆 잉크 메모 &#x27;문제된 부분에 밑줄&#x27;, CategoryInfo 줄 옆 초록 메모 &#x27;AI에게 줄 재료&#x27;" loading="lazy">
+<h2>2. 오늘 만들 것 — 모니터 옆에 붙일 자가진단 순서표</h2>
+<p>에러가 나면 위에서부터 한 줄씩 봅니다. 첫 줄에 이런 말이 있으면 그 줄이에요.</p>
+<div class="table-wrap"><table><thead><tr><th>순서</th><th>의심할 것</th><th>첫 줄에 이런 말이 있으면</th><th>이렇게 푼다</th></tr></thead><tbody><tr><td>1</td><td>경로</td><td>찾을 수 없습니다 / 인식되지 않습니다 / 위치 매개 변수를 찾을 수 없습니다</td><td>폴더로 먼저 들어가기, 띄어쓰기 있는 경로는 큰따옴표</td></tr><tr><td>2</td><td>권한</td><td>액세스가 거부되었습니다 / 다른 프로세스에서 사용 중 / 스크립트를 실행할 수 없으므로</td><td>파일 닫기, 내 폴더에서 작업, 실행 정책 한 줄</td></tr><tr><td>3</td><td>한글</td><td>에러는 없는데 글자가 깨져 나온다</td><td>메모장으로 열어 파일 문제인지 가르기</td></tr><tr><td>4</td><td>그래도 모르겠다</td><td>—</td><td>세 줄 메모 + 에러 전문을 AI에게</td></tr></tbody></table></div>
+<img src="img/03_.png" alt="03_ 자가진단 순서표 — 위에서 아래로 잉크 카드 4개 &#x27;1 경로&#x27; → &#x27;2 권한&#x27; → &#x27;3 한글&#x27; → &#x27;4 AI에게 묻기&#x27;. 각 카드 오른쪽에 핵심 단어 칩(&#x27;찾을 수 없습니다&#x27; / &#x27;거부·사용 중&#x27; / &#x27;깨짐&#x27;). 4번 카드만 초록 테두리. 빨간 펜 &#x27;위에서부터 하나씩&#x27;" loading="lazy">
+<h2>3. 따라하기 — 셋 중 어디인지 가르는 법</h2>
+<p><strong>경로일 때.</strong> 제일 흔해요. 먼저 지금 어느 폴더에 있는지부터 봅니다.</p>
+<pre><code>pwd</code></pre>
+<p>그다음 경로는 직접 다 치지 말고 앞 몇 글자만 친 뒤 Tab을 누르세요. <strong>자동 완성이 안 되면 그 이름은 거기 없는 겁니다.</strong> 이게 제일 빠른 판별법이에요.</p>
+<p>&quot;&#x27;ace&#x27; 인수를 허용하는 위치 매개 변수를 찾을 수 없습니다&quot;처럼 낯선 단어가 튀어나오면 띄어쓰기에서 경로가 두 조각으로 끊긴 거예요. 경로 전체를 큰따옴표로 감싸면 됩니다.</p>
+<pre><code>cd &quot;C:\내 문서\2026 가계부&quot;</code></pre>
+<p>&quot;… 인식되지 않습니다&quot;는 철자 오타거나 설치 직후 창을 새로 안 연 경우라, 터미널을 다시 여는 것부터 합니다.</p>
+<p><strong>권한일 때.</strong> &quot;다른 프로세스에서 사용 중&quot;이면 범인은 거의 항상 내가 열어 둔 엑셀이나 워드예요. 그 파일을 닫고 다시 시키면 됩니다.</p>
+<p>&quot;액세스가 거부되었습니다&quot;에서 관리자 권한부터 찾는 분이 많은데, 그 전에 <strong>AI가 지금 내 작업 폴더 밖, 예를 들어 C:\Windows 같은 곳에 쓰려고 하는 건 아닌지</strong>부터 보세요. 대부분 AI가 엉뚱한 폴더로 간 경우라, 경로가 왜 거기로 갔는지 AI에게 묻는 게 먼저입니다.</p>
+<p>&quot;스크립트를 실행할 수 없으므로&quot;는 윈도우가 기본값으로 .ps1 실행을 막아 둔 거예요. 마이크로소프트 공식 문서 방식대로 내 계정에만 풀어 줍니다.</p>
+<pre><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
+<p>관리자 창과 실행 정책의 차이는 <a href="https://blog.naver.com/makefield_ai/224485463429" target="_blank" rel="noopener">파워쉘 실행 편</a>에 정리했어요. 이 한 줄도 막히면 전산팀이 정책으로 잠근 거라 우회하지 말고 물어보세요.</p>
+<p><strong>한글일 때.</strong> 에러는 없는데 결과가 <code>寃ъ쟻???</code>처럼 깨지면 파일을 메모장으로 열어 보세요. 메모장에선 멀쩡하면 파일은 정상이고 보여 주는 쪽 문제, 메모장에서도 깨지면 AI에게 &quot;UTF-8로 다시 저장해줘&quot;라고 하면 됩니다. 스크립트 실행까지 실패했던 사례는 <a href="https://blog.naver.com/makefield_ai/224414114233" target="_blank" rel="noopener">PowerShell 한글 깨짐 편</a>에 있어요.</p>
+<h2>4. 그래도 모르겠으면 AI에게 — 에러보다 세 줄을 먼저</h2>
+<p>AI는 에러 해석을 정말 잘해요. 다만 <strong>묻는 방법에 따라 진단이 정반대로 나옵니다.</strong> 그래서 저는 아래 양식을 그대로 붙여 넣어요.</p>
+<pre><code>[상황 세 줄]
+① 방금 내가 직접 한 조작   : (예: 가계부 엑셀을 열어 둔 채 AI에게 수정을 시켰다)
+② 지금 열려 있는 것       : (예: 엑셀 2개, 동기화 프로그램 1개)
+③ 같이 쓰는 사람·다른 PC  : (예: 같은 파일을 노트북에서도 연다)
+
+[내가 친 명령]  (그대로 복사)
+[지금 폴더]     (pwd 결과 그대로)
+[에러 전문]     (첫 줄부터 끝 줄까지 전부. 캡처보다 글자로)
+
+위 정보로 원인 후보를 가능성 높은 순서로 3개 적어줘.
+각 후보마다 내가 확인할 방법을 하나씩 붙여줘. 아직 아무것도 고치지 마.</code></pre>
+<p>에러 전문은 <strong>났을 때 바로, 글자로</strong> 복사하세요. 캡처는 잘리기 쉽고 창을 닫으면 다시 못 찾아요. 마지막 줄 &quot;아직 아무것도 고치지 마&quot;는 AI가 곧장 손대기 전에 가설부터 내놓게 하는 장치입니다.</p>
+<p>클로드 코드로 설명했지만 GPT의 Codex CLI, 구글 Gemini CLI에 붙여 넣어도 똑같이 통해요. 양식은 도구가 아니라 사람이 채우는 칸이라서요.</p>
+<h2>5. 여기서 이렇게 틀립니다 — AI가 &quot;제가 방금 바꾼 것 때문입니다&quot;라고 할 때</h2>
+<p>작업 중에 무언가 끊기면 AI가 자백 모드로 들어갈 때가 있어요. &quot;제가 방금 한 설정 때문입니다, 되돌리겠습니다.&quot; 그 말대로 되돌리고, 또 이것저것 바꿔도 안 풀립니다.</p>
+<p>제가 그랬어요. 집에 켜 둔 노트북을 밖에서 원격으로 쓰다가 AI와 공유기 설정을 정리하던 중 연결이 끊겼고, AI는 자기 작업을 범인으로 찍었습니다. 그런데 연결 상태를 재 보니 끊기기 전엔 같은 공유기로 왕복 1ms, 끊긴 뒤엔 바깥 망으로 8ms였어요. 그 노트북을 제가 들고 집 밖으로 나간 거였습니다.. 같은 점검에서 AI가 &quot;하드웨어 고장&quot;이라던 비정상 종료 2건도, 사실은 화면이 안 들어와 제가 전원 버튼을 길게 눌러 끈 기록이었고요. 이 세 번 뒤집힌 얘기는 <a href="https://blog.naver.com/makefield_ai/224413237973" target="_blank" rel="noopener">AI 원인 분석 오류 편</a>에 자세히 적었어요.</p>
+<p><strong>AI가 틀린 게 아니라 정보가 없었던 거예요.</strong> 에러와 기록은 &#x27;무슨 일&#x27;은 남겨도 &#x27;왜&#x27;는 안 남깁니다.</p>
+<div class="table-wrap"><table><thead><tr><th>에러·기록이 아는 것</th><th>모르는 것</th><th>안 적어 주면 생기는 일</th></tr></thead><tbody><tr><td>언제 무슨 일이 있었나</td><td>내가 왜 그랬나</td><td>내가 한 조작을 고장으로 읽는다</td></tr><tr><td>어떤 파일·장치가 문제인가</td><td>지금 뭐가 열려 있고 꽂혀 있나</td><td>쓰지도 않는 것을 의심한다</td></tr><tr><td>무엇이 끊겼나</td><td>다른 사람·다른 PC가 어디서 뭘 하나</td><td>직전 작업을 범인으로 찍는다</td></tr></tbody></table></div>
+<img src="img/04_.png" alt="04_ 에러가 아는 것 vs 모르는 것 — 왼쪽 잉크 카드 &#x27;에러·기록이 아는 것&#x27;(언제·무엇이·어디서 끊김), 오른쪽 빨간 테두리 카드 &#x27;사람만 아는 것&#x27;(내가 한 조작·열려 있는 것·다른 PC 위치). 오른쪽 카드에서 아래 초록 카드 &#x27;세 줄 메모 ①②③&#x27;로 화살표. 빨간 펜 &#x27;이걸 안 주면 엉뚱한 범인&#x27;" loading="lazy">
+<p>그래서 순서를 바꿨어요. AI의 첫 결론은 <strong>가설로만</strong> 받고, 내가 아는 사실과 부딪히는지만 봅니다. 세 번 다 그 부딪히는 자리에서 원인이 잡혔어요.</p>
+<h2>6. 자주 묻는 질문</h2>
+<p><strong>Q. 관리자 권한으로 열면 다 해결되지 않나요?</strong><br>
+&quot;액세스가 거부되었습니다&quot;의 대부분은 AI가 내 작업 폴더 밖으로 나간 경우예요. 관리자 권한은 그 실수를 막지 않고 더 넓게 허락해 버립니다. 경로부터 확인하세요.</p>
+<p><strong>Q. 같은 에러가 또 나면요?</strong><br>
+메모장 한 파일에 &quot;날짜 / 에러 첫 줄 / 원인 / 푼 방법&quot; 네 칸으로 한 줄씩 적어 두세요. 두 번째부터는 이 한 줄이 검색보다 빠릅니다.</p>
+<p>빨간 글씨를 보고 창을 닫는 대신 첫 줄 하나만 읽으셨다면 1부는 여기까지 끝이에요. 다만 이렇게 하다 보면 AI에게 매번 &quot;읽기만 해&quot;, &quot;작업 폴더 안에서만 해&quot;를 다시 말하게 되는데, 그 반복을 없애는 지침 파일을 다음 편부터 다룹니다.</p>
+<p>이 글은 『직장인의 AI 오답 노트』 1-6장을 블로그용으로 다시 쓴 것입니다. 같은 증상의 원인과 점검표 전체는 책에 있어요. 종이책 예스24 <a href="https://www.yes24.com/product/goods/198006547" target="_blank" rel="noopener">https://www.yes24.com/product/goods/198006547</a> · 종이책 알라딘 <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=404397482" target="_blank" rel="noopener">https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=404397482</a> · 전자책 예스24 <a href="https://www.yes24.com/product/goods/197975471" target="_blank" rel="noopener">https://www.yes24.com/product/goods/197975471</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224486545280" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261122-err-blocked-by-client-headless-chrome-https-upgrade/"><div class="d">← 이전 노트</div><div class="t">ERR_BLOCKED_BY_CLIENT 헤드리스 크롬 빈 화면, 범인은 https 자동 전환이었어요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
