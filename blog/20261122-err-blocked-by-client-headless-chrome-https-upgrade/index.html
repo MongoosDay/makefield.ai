@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERR_BLOCKED_BY_CLIENT 헤드리스 크롬 빈 화면, 범인은 https 자동 전환이었어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="광고 차단 확장도 없는 헤드리스 크롬이 이 에러를 내고 빈 화면만 돌려줬어요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261122-err-blocked-by-client-headless-chrome-https-upgrade/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ERR_BLOCKED_BY_CLIENT 헤드리스 크롬 빈 화면, 범인은 https 자동 전환이었어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="광고 차단 확장도 없는 헤드리스 크롬이 이 에러를 내고 빈 화면만 돌려줬어요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261122-err-blocked-by-client-headless-chrome-https-upgrade/">
+<meta property="og:image" content="https://makefield.ai/blog/20261122-err-blocked-by-client-headless-chrome-https-upgrade/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ERR_BLOCKED_BY_CLIENT 헤드리스 크롬 빈 화면, 범인은 https 자동 전환이었어요", "datePublished": "2026-11-22", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261122-err-blocked-by-client-headless-chrome-https-upgrade/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">막힐 때 해결</span><span>2026-11-22</span></div>
+<h1>ERR_BLOCKED_BY_CLIENT 헤드리스 크롬 빈 화면, 범인은 https 자동 전환이었어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;ERR_BLOCKED_BY_CLIENT 헤드리스 크롬 빈 화면 / 범인은 크롬의 https 자동 전환&quot;" loading="lazy">
+<pre><code>net::ERR_BLOCKED_BY_CLIENT</code></pre>
+<p>광고 차단 확장도 없는 헤드리스 크롬이 이 에러를 내고 빈 화면만 돌려줬어요.</p>
+<p><strong>결론부터 말하면, 크롬 157이 <code>http://</code> 주소를 스스로 <code>https://</code>로 바꿔 열었고, 그 사이트의 https 쪽 인증서가 자체서명이라 막힌 것이었습니다.</strong> 실행 옵션에 https 자동 전환을 끄는 플래그를 넣자 같은 주소 25개가 전부 정상으로 열렸어요. (2026년 11월, 윈도우 크롬 157.0.8103.79 기준)</p>
+<p>이 에러를 검색하면 대부분 광고 차단기 얘기가 나와요. 그런데 매번 빈 임시 프로필로 띄우는 헤드리스 크롬엔 확장이 하나도 없습니다. 그래서 더 헤맸어요.</p>
+<h2>1. 석 달 전엔 멀쩡하던 검수가 왜 FAIL이 났을까?</h2>
+<p>제 본업은 제조 현장 엔지니어예요. 퇴근 뒤엔 작은 외주를 받아 스크립트로 처리하는데, 그중 하나가 QR 코드 제작이에요. 제품마다 정보 페이지 주소를 QR로 만들어 드리는 일입니다.</p>
+<p>지난 8월에 검수까지 한 번에 도는 스크립트를 만들어 뒀어요(과정은 <a href="https://blog.naver.com/makefield_ai/224369549142" target="_blank" rel="noopener">QR 코드 대량 생성 글</a>에 있습니다).</p>
+<p>순서는 이래요.</p>
+<ol><li>QR 이미지 생성</li><li>만든 이미지를 다시 읽어서 주소 대조</li><li>주소가 살아 있는지(HTTP 200) 확인</li><li>헤드리스 크롬으로 페이지를 실제로 그려서, 화면 속 제품 표가 QR과 맞는지 대조</li><li>의뢰인이 준 자료의 수량과 만든 QR 개수 대조</li></ol>
+<p>11월 19일, 네 번째 주문 25개가 들어왔어요. AI한테 &quot;지난 이력 보고 결과 내줘&quot; 한 줄을 던졌는데, 나머지 단계는 25/25 통과, <strong>4단계만 전부 FAIL</strong>이 떴습니다. 크롬이 그려 준 페이지 내용(DOM)이 텅 비어 있었거든요.</p>
+<p>게다가 스크립트는 크롬의 에러 출력을 버리게 짜여 있었어요. 처음 눈에 보인 건 &quot;빈 DOM&quot; 한 줄뿐이었습니다..</p>
+<h2>2. 사이트 문제일까, 브라우저 문제일까?</h2>
+<p>QR이 틀렸으면 앞 단계에서 걸렸을 거예요. 그래서 범위를 좁혔습니다.</p>
+<ul><li>8월에 PASS했던 <strong>옛 주소</strong>를 다시 넣어 봄 → 똑같이 빈 DOM</li><li>아무 상관 없는 example.com → 정상</li><li>크롬 동작을 묶는 관리 정책 레지스트리 → 없음</li></ul>
+<img src="img/02_elimination.png" alt="소거법 — 옛 주소도 FAIL·example.com 정상·정책 없음 → &quot;사이트가 아니라 브라우저가 바뀌었다&quot;" loading="lazy">
+<p>석 달여 전 통과한 주소가 지금 실패하면, 바뀐 건 사이트가 아니라 내 쪽이에요. 원인을 실측해 보니 크롬은 이미 157 버전이었고, 빈 DOM 뒤에는 ERR_BLOCKED_BY_CLIENT가 숨어 있었습니다.</p>
+<h2>3. 크롬 https 자동 전환은 어떻게 막히게 만들었나?</h2>
+<p>크롬에는 <code>HTTPS-Upgrades</code>라는 기능이 있어요. 크롬 개발 메일링(blink-dev)의 &quot;Intent to Ship: HTTPS Upgrades&quot; 공지에 따르면, 주소창 이동이 <code>http://</code>면 먼저 <code>https://</code>로 바꿔 시도하고, 안 되면 http로 빠르게 되돌아오는 구조입니다.</p>
+<p>제 경우는 이렇게 흘렀어요.</p>
+<img src="img/03_before_after.png" alt="BEFORE http 주소 → 크롬이 https로 바꿔 시도 → 자체서명 인증서 → 차단 에러 → 빈 DOM → FAIL 오판 / AFTER 자동 전환 끄기 → http 그대로 → 제품 표 렌더 → 25/25 PASS" loading="lazy">
+<p>공지대로라면 http로 되돌아왔어야 하는데, 헤드리스 실행에선 그러지 않고 막힌 채 끝났어요. <strong>왜 되돌아오지 않았는지는 끝까지 확인하지 못했습니다.</strong> 확인된 건 &quot;자동 전환을 끄면 열린다&quot;까지예요.</p>
+<h2>4. 해결: 크롬 https 자동 전환 끄는 플래그</h2>
+<p>검수 스크립트의 크롬 실행 줄 두 곳(DOM 뽑기, 증거 스크린샷)에 아래 옵션을 붙였어요.</p>
+<pre><code>--disable-features=HttpsUpgrades,HttpsFirstBalancedModeAutoEnable,HttpsFirstModeV2ForEngagedSites
+--ignore-certificate-errors</code></pre>
+<p>DOM 뽑는 쪽 전체 모양은 이렇습니다(경로는 줄였어요).</p>
+<pre><code>chrome.exe --headless --disable-gpu --virtual-time-budget=9000 ^
+  --disable-features=HttpsUpgrades,... --ignore-certificate-errors ^
+  --user-data-dir=&quot;&lt;임시 폴더&gt;&quot; --dump-dom &quot;http://...&quot; &gt; dom.html</code></pre>
+<p>다시 돌리니 5단계 전부 PASS, 종료코드 0. QR 이미지와 생성 코드는 한 글자도 안 바꿨어요.</p>
+<p>솔직히 적으면, 두 옵션을 <strong>같이</strong> 넣어서 어느 쪽이 결정타였는지는 따로 쪼개 보지 않았어요. 그리고 <code>--ignore-certificate-errors</code>는 인증서 경고를 통째로 무시하는 옵션이라 <strong>검수용 임시 프로필에만</strong> 씁니다. 평소 쓰는 크롬엔 절대 넣지 마세요.</p>
+<div class="table-wrap"><table><thead><tr><th>방법</th><th>고르지 않은/고른 이유</th></tr></thead><tbody><tr><td>QR 주소를 https로 바꾸기</td><td>주소는 의뢰인 것이고 이미 쓰이는 중이라 건드릴 수 없음</td></tr><tr><td>크롬 버전 묶어 두기</td><td>업데이트가 계속 오니 매번 버전과 싸워야 함</td></tr><tr><td>실행 옵션으로 자동 전환 끄기</td><td>검수 스크립트 안에서만 바뀜 → 선택</td></tr></tbody></table></div>
+<h2>5. 헤드리스 크롬이 빈 결과를 줄 때 확인 순서</h2>
+<img src="img/04_checklist.png" alt="빈 DOM 나올 때 확인 순서 — ①에러 출력 살리기 ②예전에 통과한 입력 재실행 ③크롬 버전 확인 ④http 주소면 자동 전환 끄고 재시도" loading="lazy">
+<ol><li><strong>에러 출력부터 살린다.</strong> 저처럼 버리게 짜 두면 원인 메시지가 안 보여요.</li><li>예전에 통과한 입력을 다시 넣는다. 그것도 실패하면 입력이 아니라 도구 쪽이에요.</li><li>크롬 버전을 본다. 자동 업데이트가 조용히 올라가 있어요.</li><li>주소가 <code>http://</code>면 자동 전환을 끄고 다시 돌린다.</li></ol>
+<p><strong>Q. ERR_BLOCKED_BY_CLIENT면 무조건 광고 차단기 아닌가요?</strong><br>
+일반 크롬에선 그 경우가 많아요. 다만 확장 없는 헤드리스 크롬이 http 주소에서 이 에러를 내면 자동 전환부터 의심해 보세요.</p>
+<p><strong>Q. 크롬 설정 화면에서 끄면 안 되나요?</strong><br>
+제 스크립트는 매번 새 임시 프로필로 크롬을 띄워서 설정이 남지 않아요. 그래서 실행 옵션으로 넣었습니다.</p>
+<p>이번 일로 메모 한 줄을 남겼어요. &quot;검수 4단계가 FAIL이면 QR부터 의심하지 말고 크롬 버전과 에러 출력부터 본다.&quot; 다음 주문 때 AI가 이 줄을 먼저 읽게 해 두었습니다.</p>
+<p>스크립트가 어느 날 빈손으로 돌아오면, 코드보다 브라우저가 먼저 바뀌어 있을 때가 있어요. 이런 막힘과 고친 기록은 makefield.ai에서 더 볼 수 있습니다.</p>
+<h2>출처</h2>
+<ul><li>Chromium blink-dev, &quot;Intent to Ship: HTTPS Upgrades&quot; — http 이동을 https로 먼저 시도하고 실패 시 http로 되돌아오는 구조 → <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/cAS525en8XE" target="_blank" rel="noopener">https://groups.google.com/a/chromium.org/g/blink-dev/c/cAS525en8XE</a> (2026-11-22 확인)</li><li>실측: 개인 윈도우 PC, 크롬 157.0.8103.79, 2026-11-19 QR 검수 스크립트 재실행 기록(의뢰인·주소·제품 정보 제외)</li></ul>
+<p>태그: #ERR_BLOCKED_BY_CLIENT #헤드리스크롬 #크롬헤드리스 #dumpdom #크롬https자동전환 #HttpsUpgrades #크롬157 #자체서명인증서 #웹검수자동화 #QR코드검수 #파이썬자동화 #크롬자동화 #부업자동화 #막힐때해결 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224486479970" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261121-powershell-run-admin-policy/"><div class="d">← 이전 노트</div><div class="t">파워쉘 실행, 관리자 권한과 실행 정책 두 군데서 막혀요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
