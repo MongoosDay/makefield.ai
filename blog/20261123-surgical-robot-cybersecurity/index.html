@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수술 로봇 사이버보안이란? 보안 부팅을 안 켜고 출하돼 리콜된 사례와 FDA 새 가이던스 | Field Notes · MakeField AI</title>
+<meta name="description" content="수술 로봇의 보안 사고라고 하면 해커가 로봇 팔을 조종하는 장면부터 떠올리기 쉬워요. 그런데 2026년 미국 식품의약국(FDA) 리콜 장부에 오른 실제 사례는 훨씬 평범했습니다. 공장에서 보안 기능 하나를 켜지 않고 내보낸 거예요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261123-surgical-robot-cybersecurity/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="수술 로봇 사이버보안이란? 보안 부팅을 안 켜고 출하돼 리콜된 사례와 FDA 새 가이던스 | Field Notes · MakeField AI">
+<meta property="og:description" content="수술 로봇의 보안 사고라고 하면 해커가 로봇 팔을 조종하는 장면부터 떠올리기 쉬워요. 그런데 2026년 미국 식품의약국(FDA) 리콜 장부에 오른 실제 사례는 훨씬 평범했습니다. 공장에서 보안 기능 하나를 켜지 않고 내보낸 거예요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261123-surgical-robot-cybersecurity/">
+<meta property="og:image" content="https://makefield.ai/blog/20261123-surgical-robot-cybersecurity/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "수술 로봇 사이버보안이란? 보안 부팅을 안 켜고 출하돼 리콜된 사례와 FDA 새 가이던스", "datePublished": "2026-11-23", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261123-surgical-robot-cybersecurity/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-11-23</span></div>
+<h1>수술 로봇 사이버보안이란? 보안 부팅을 안 켜고 출하돼 리콜된 사례와 FDA 새 가이던스</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="타이틀카드 — &quot;수술 로봇 사이버보안이란? / 보안 부팅을 안 켜고 출하돼 리콜된 로봇&quot;" loading="lazy">
+<p>수술 로봇의 보안 사고라고 하면 해커가 로봇 팔을 조종하는 장면부터 떠올리기 쉬워요. 그런데 2026년 미국 식품의약국(FDA) 리콜 장부에 오른 실제 사례는 훨씬 평범했습니다. 공장에서 보안 기능 하나를 켜지 않고 내보낸 거예요.</p>
+<p><strong>한 줄 요약: 영국 CMR Surgical의 수술 로봇 &#x27;Versius&#x27; 외과의 콘솔 2대가 &quot;제조 시점에 Secure Boot가 실수로 활성화되지 않아&quot; Class 2 리콜이 됐고(FDA 리콜 DB 2026-07), 같은 해 9월 FDA는 수술 로봇 허가 신청 때 로봇과 통신하는 모든 네트워크 요소까지 침투시험을 하라는 가이던스 초안을 냈다(RAPS 2026-09).</strong></p>
+<p>이 글은 2026년 11월 기준 공개 자료로 수술 로봇 사이버보안이 무엇인지, 왜 지금 규제가 조여지는지, 그 비용은 누가 내고 누가 받는지, 그리고 이 흐름의 한계는 무엇인지 차례로 풀어 봅니다.</p>
+<h2>1. 수술 로봇 사이버보안이란 무엇인가요</h2>
+<p><strong>수술 로봇 사이버보안이란 수술 로봇의 소프트웨어와 통신 연결이 조작·침입당하지 않게 막고, 막혀 있는 상태가 출하된 한 대 한 대에서 실제로 유지되게 하는 일이다.</strong> 로봇 팔의 정밀도만큼, 그 팔을 움직이는 소프트웨어가 &#x27;진짜&#x27;인지가 중요해졌어요.</p>
+<blockquote>💡 수술 로봇 — 의사가 콘솔에 앉아 로봇 팔을 원격으로 조종해 수술하는 장비. 대표 제품은 미국 인튜이티브 서지컬의 &#x27;다빈치&#x27;다.</blockquote>
+<p>FDA가 리콜 장부에 적은 Versius 사례의 사유 원문은 이렇습니다.</p>
+<pre><code>Secure Boot was mistakenly not enabled at manufacturing time,
+which presents a potential cybersecurity risk.</code></pre>
+<p>FDA는 원인을 &#x27;소프트웨어 설계(제조 공정)&#x27;로 분류했어요. 대상은 외과의 콘솔(모델 V-SS-1020, 소프트웨어 62.1) 2대이고, 회사가 2026년 6월 9일 리콜을 시작해 FDA가 7월 9일 게시했습니다. 11월 기준 상태는 &#x27;진행 중&#x27;이에요(FDA 리콜 DB 2026-07).</p>
+<blockquote>💡 Secure Boot(보안 부팅) — 장비가 켜질 때 제조사가 서명한 &#x27;정품&#x27; 소프트웨어만 실행되게 막는 기능. 꺼져 있으면 누군가 바꿔 넣은 소프트웨어도 그냥 돌아갈 수 있다.<br>
+<br>
+💡 Class 2 리콜 — FDA 리콜 세 등급 중 가운데. 일시적이거나 회복 가능한 건강 위험이 생길 수 있는 경우다. 가장 심각한 것은 Class 1.</blockquote>
+<img src="img/02_.png" alt="제목 &#x27;보안 부팅이 켜졌을 때와 꺼졌을 때&#x27;. 위 줄(AFTER, 잉크) — 잉크 박스 &#x27;전원 켬&#x27; → 잉크 박스 &#x27;서명 확인&#x27; → 잉크 박스 &#x27;정품만 실행&#x27; + 초록 체크. 아래 줄(BEFORE, 빨강) — 빨간 박스 &#x27;전원 켬&#x27; → 빨간 박스 &#x27;확인 생략&#x27; → 빨간 박스 &#x27;바꿔 넣은 SW도 실행&#x27;. 빨간 손글씨 &#x27;설계는 있었는데 공장에서 안 켰다&#x27;. 하단 캡션 &#x27;출처: FDA 리콜 DB 2026-07&#x27;" loading="lazy">
+<p>그림을 글로 옮기면, 보안 부팅이 켜진 장비는 전원을 켤 때 소프트웨어의 서명을 먼저 확인하고 정품만 실행해요. 꺼진 장비는 이 확인을 건너뛰어 바꿔 넣은 소프트웨어도 실행될 수 있습니다. Versius 사례는 기능이 없던 게 아니라 출하 과정에서 켜지지 않은 경우였어요.</p>
+<p>회사가 내놓은 조치도 눈여겨볼 만해요. 회사나 현지 대리점이 해당 콘솔의 보안 부팅 설정을 직접 해 주고, 그때까지는 장비를 접근이 제한된 곳에 두고, 쓰기 전마다 훼손 방지 라벨을 살펴 손댄 흔적이 있으면 쓰지 말라고 안내했습니다(FDA 리콜 DB 2026-07). 소프트웨어 설정 하나가 빠지자 &#x27;눈으로 보는 봉인 점검&#x27;이 임시 방패가 된 셈이에요.</p>
+<h2>2. 왜 지금 수술 로봇 보안 규제가 조여지나요</h2>
+<p><strong>수술 로봇이 많이 깔리고 병원 네트워크·클라우드와 연결되면서, FDA가 로봇 한 대가 아니라 로봇이 연결된 환경 전체를 허가 심사 대상으로 보기 시작했기 때문이다.</strong></p>
+<p>먼저 깔린 양이 커요. 인튜이티브 서지컬은 2026년 6월 30일 기준 다빈치 설치 대수가 11,710대로 1년 전 10,488대보다 12% 늘었고, 2분기 다빈치·Ion 수술 건수는 전년보다 약 16% 늘었다고 밝혔습니다(인튜이티브 서지컬 2026-07).</p>
+<p>다음은 규제예요. FDA는 2026년 9월 수술 로봇 허가 신청 가이던스 초안 &#x27;Robotically-Assisted Surgical Devices: Premarket Submissions&#x27;를 냈고, 의견 접수는 2026년 11월 24일까지예요(FDA 2026-09). 초안이라 아직 구속력은 없습니다.</p>
+<blockquote>💡 FDA 가이던스(초안) — &quot;허가 신청서에 이런 시험·자료를 넣어라&quot;라고 안내하는 문서. 초안 단계에서 의견을 받고, 확정되면 사실상 심사 기준이 된다.</blockquote>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>내용</th><th>출처</th></tr></thead><tbody><tr><td>대상</td><td>원격 조종되는 소프트웨어 제어 수술 로봇</td><td>RAPS 2026-09</td></tr><tr><td>사이버보안</td><td>&quot;침투시험을 포함한 사이버보안 평가는 수술 로봇과 통신하는 모든 네트워크 요소를 고려해야 한다&quot;</td><td>RAPS 2026-09</td></tr><tr><td>시험 범위</td><td>로봇 움직임, 소프트웨어 설계, 신뢰성·정확도, 사이버보안, 안전·멸균, 영상 표시, 수술팀과의 상호작용</td><td>메드시티뉴스 2026-10</td></tr><tr><td>위험 서술</td><td>&quot;사이버보안 유지 실패는 기기 기능 손상 같은 위험으로 이어질 수 있고, 이는 환자 상해로 이어질 가능성이 있다&quot;</td><td>메드시티뉴스 2026-10</td></tr><tr><td>일정</td><td>의견 마감 2026-11-24, 초안·구속력 없음</td><td>FDA 2026-09</td></tr></tbody></table></div>
+<blockquote>💡 침투시험 — 보안 전문가가 공격자처럼 실제로 뚫어 보며 약한 곳을 찾는 시험. &#x27;모의 해킹&#x27;이라고도 한다.</blockquote>
+<p>이 가이던스 위에는 이미 법이 있어요. 미국은 2022년 12월 29일 제정된 법으로 식품의약품화장품법에 524B조를 넣어, 인터넷에 연결될 수 있는 소프트웨어가 든 &#x27;사이버 기기&#x27;의 허가 신청서에 사이버보안 자료와 소프트웨어 부품 목록(SBOM)을 내게 했습니다(FDA 사이버보안 FAQ).</p>
+<blockquote>💡 SBOM(소프트웨어 부품 목록) — 제품 안에 든 소프트웨어 부품의 명세서. 어떤 부품에 취약점이 나오면 어느 제품이 영향을 받는지 바로 찾을 수 있게 해 준다.</blockquote>
+<p>한국도 같은 방향이에요. 디지털의료제품법은 2024년 1월 23일 제정돼 2025년 1월 24일 시행됐고, 식약처가 정한 보안지침을 디지털의료기기 제조업자가 지켜야 하며 전자적 침해행위에 대한 취약점을 계속 보완해야 한다고 정했습니다(법무법인 세종 2025-01).</p>
+<blockquote>💡 디지털의료제품법 — 소프트웨어·AI·연결 기능이 든 의료기기를 따로 관리하는 한국 법. 해킹 같은 &#x27;전자적 침해행위&#x27; 대비를 제조사 의무로 넣었다.</blockquote>
+<img src="img/03_.png" alt="제목 &#x27;심사의 눈이 넓어진다&#x27;. 잉크 동심 박스 3겹 — 안쪽 &#x27;로봇 본체 (팔·소프트웨어)&#x27;, 가운데 &#x27;연결된 네트워크 (병원망·클라우드)&#x27;, 바깥 &#x27;출하된 그 한 대 (설정이 켜져 있나)&#x27;. 바깥 박스 옆 빨간 손글씨 &#x27;Versius는 여기서 걸렸다&#x27;. 하단 캡션 &#x27;출처: RAPS 2026-09, FDA 리콜 DB 2026-07&#x27;" loading="lazy">
+<p>그림을 글로 정리하면, 심사의 질문은 세 겹으로 넓어지고 있어요. ① 로봇 자체가 안전하게 설계됐나, ② 로봇과 통신하는 병원망·클라우드까지 포함해 뚫리지 않나, ③ 실제로 출하된 그 한 대에서 보안 설정이 설계대로 켜져 있나입니다. Versius 리콜은 세 번째 겹에서 생긴 일이에요.</p>
+<h2>3. 돈의 흐름 — 누가 사고 누가 팔며 얼마인가요</h2>
+<p><strong>수술 로봇을 사는 쪽은 병원이고, 파는 쪽은 로봇 제조사다. 보안 규제가 늘어나면 그 비용은 제조사가 허가 준비 단계에서 먼저 낸다.</strong> 보안 시험·부품 목록 관리·출하 검사가 제조 원가 안으로 들어오는 구조예요.</p>
+<p>시장 자체는 커지고 있다는 전망이 많아요. 시장조사사 마켓앤드마켓은 세계 수술 로봇 시장이 2024년 111억 달러에서 2029년 237억 달러로 연 16.5% 커진다고 전망했습니다(마켓앤드마켓, 추정). 같은 회사의 최신판은 2025년 136.9억 달러에서 2030년 271.4억 달러로 기간과 성장률을 바꿔 잡았어요(마켓앤드마켓, 추정). 판마다 숫자가 달라 방향만 참고하는 게 안전합니다.</p>
+<div class="table-wrap"><table><thead><tr><th>역할</th><th>누가(예시)</th><th>무엇을 사고파나</th></tr></thead><tbody><tr><td>사는 쪽</td><td>병원</td><td>수술 로봇 본체·수술 도구</td></tr><tr><td>파는 쪽</td><td>인튜이티브 서지컬, CMR Surgical, 국내 미래컴퍼니 등</td><td>로봇 + 허가에 필요한 시험·문서</td></tr><tr><td>보안 비용을 대는 쪽</td><td>로봇 제조사</td><td>침투시험, SBOM 작성·관리, 출하 검사</td></tr><tr><td>기준을 정하는 쪽</td><td>FDA, 식약처</td><td>허가 요건·가이던스·리콜</td></tr></tbody></table></div>
+<blockquote>※ 위 기업명은 산업 구조를 설명하기 위한 예시입니다. 특정 종목의 매수·매도를 권하는 글이 아닙니다.</blockquote>
+<p>국산 수술 로봇 회사에게 이 규제는 &#x27;수출 관문&#x27;이에요. 복강경 수술 로봇 &#x27;레보아이&#x27;를 만드는 미래컴퍼니는 2026년 1분기 매출 212억 원, 영업이익 13억 원으로 9분기 연속 적자를 끊었고, 매출 중 수출이 155억 원으로 73.4%였다고 보도됐습니다. 2025년 연간 수출 비중은 33.0%였어요(데일리팜 2026-06). 해외에서 팔수록 그 나라의 허가 문턱, 특히 사이버보안 요건을 넘는 일이 사업의 일부가 됩니다.</p>
+<img src="img/04_.png" alt="제목 &#x27;보안 비용은 어디로 흐르나&#x27;. 왼쪽 잉크 박스 &#x27;병원 (로봇 구매)&#x27;, 화살표 &#x27;구매 대금&#x27;, 가운데 잉크 박스 &#x27;로봇 제조사&#x27;. 가운데 아래로 잉크 박스 3개 &#x27;침투시험&#x27;, &#x27;SBOM 관리&#x27;, &#x27;출하 검사&#x27;. 오른쪽 잉크 박스 &#x27;규제기관 (FDA·식약처)&#x27; 에서 가운데로 화살표 &#x27;허가 요건&#x27;. &#x27;출하 검사&#x27; 박스 옆 빨간 손글씨 &#x27;빠지면 리콜&#x27;. 하단 캡션 &#x27;출처: RAPS 2026-09, FDA 사이버보안 FAQ, FDA 리콜 DB 2026-07&#x27;" loading="lazy">
+<p>그림을 글로 옮기면, 병원이 낸 구매 대금은 제조사로 가고, 제조사는 규제기관이 정한 허가 요건을 맞추느라 침투시험·SBOM 관리·출하 검사에 돈을 씁니다. 이 중 하나라도 빠지면 Versius처럼 출하 뒤 리콜로 되돌아와요. 다만 수술 로봇 보안 시험만 따로 떼어 낸 시장 규모 공개 수치는 찾지 못했습니다.</p>
+<h2>4. 언제 오나요, 한계는 무엇인가요</h2>
+<p><strong>FDA 수술 로봇 가이던스는 2026년 11월 현재 초안이라, 확정되고 실제 심사에 쓰이기까지는 시간이 더 걸린다.</strong> 방향은 분명하지만 속도와 범위는 아직 정해지지 않았어요.</p>
+<ul><li><strong>아직 초안이다</strong>: 의견 마감이 2026년 11월 24일이고, 초안은 구속력이 없어요(FDA 2026-09). 의견을 반영해 내용이 바뀔 수 있습니다.</li><li><strong>사례는 1건·2대다</strong>: Versius 리콜 대상은 콘솔 2대뿐이고(FDA 리콜 DB 2026-07), 환자 피해 보고는 검색으로 찾지 못했어요. 이 1건만으로 &#x27;출하 보안 사고가 흔하다&#x27;고 말하기는 이릅니다.</li><li><strong>병원 쪽 준비가 변수다</strong>: 메드시티뉴스는 FDA 가이던스가 로봇을 &quot;훨씬 더 넓은 임상 시스템의 일부&quot;로 본다는 업계 발언을 전하며, 수술실이 이 기술을 받아들일 준비가 됐는지 물었어요(메드시티뉴스 2026-10). 로봇 회사만 잘해서 끝나는 일이 아니라는 뜻입니다.</li><li><strong>숫자가 흔들린다</strong>: 시장 전망은 같은 조사사 안에서도 판마다 달라요(마켓앤드마켓, 추정).</li></ul>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 수술 로봇이 실제로 해킹당한 사례가 있나요?</strong><br>
+이 글에서 확인한 FDA 리콜 사례는 해킹이 아니라 &quot;제조 시점에 Secure Boot가 실수로 활성화되지 않은&quot; 경우였어요. 리콜 장부에도 &#x27;잠재적 사이버보안 위험&#x27;으로 적혀 있습니다(FDA 리콜 DB 2026-07).</p>
+<p><strong>Q. FDA 수술 로봇 가이던스는 언제부터 지켜야 하나요?</strong><br>
+2026년 11월 현재 의견 접수 중인 초안이라 구속력이 없어요. 의견 마감은 2026년 11월 24일입니다(FDA 2026-09). 다만 사이버 기기에 사이버보안 자료와 SBOM을 내게 하는 524B조는 이미 법으로 시행 중이에요(FDA 사이버보안 FAQ).</p>
+<p><strong>Q. 한국 수술 로봇에도 같은 규제가 있나요?</strong><br>
+한국은 2025년 1월 24일 시행된 디지털의료제품법으로 디지털의료기기 제조업자에게 보안지침 준수와 취약점 보완 의무를 지웠어요(법무법인 세종 2025-01).</p>
+<h2>오늘의 용어 정리</h2>
+<ul><li><strong>수술 로봇</strong> — 의사가 콘솔에서 로봇 팔을 원격 조종해 수술하는 장비</li><li><strong>Secure Boot(보안 부팅)</strong> — 켤 때 정품 서명 소프트웨어만 실행되게 하는 기능</li><li><strong>Class 2 리콜</strong> — FDA 리콜 중간 등급(일시적·회복 가능한 위험)</li><li><strong>FDA 가이던스(초안)</strong> — 허가 신청서에 넣을 시험·자료를 안내하는 문서, 초안은 구속력 없음</li><li><strong>침투시험</strong> — 공격자처럼 실제로 뚫어 보며 약점을 찾는 시험</li><li><strong>사이버 기기</strong> — 인터넷에 연결될 수 있는 소프트웨어가 든 의료기기(미국 524B조 기준)</li><li><strong>SBOM</strong> — 제품 속 소프트웨어 부품 명세서</li><li><strong>디지털의료제품법</strong> — 소프트웨어·연결형 의료기기를 관리하는 한국 법(2025-01-24 시행)</li></ul>
+<p>지난 Next Field에서 바다 밑 전기 고속도로를 따라갔다면, 오늘은 수술실 안 로봇의 &#x27;켜는 순간&#x27;을 들여다봤어요. 출하된 장비 한 대의 보안 설정이 설계대로인지, 앞으로 누가 어떻게 확인하게 될까요?</p>
+<h2>출처</h2>
+<p><strong>[1] FDA 리콜 DB(2026-07)</strong> — CMR Surgical Versius 외과의 콘솔(V-SS-1020, SW 62.1) 2대 Class 2 리콜, 사유 &quot;제조 시점 Secure Boot 미활성화&quot;, 원인 분류 소프트웨어 설계(제조 공정), 2026-06-09 개시·07-09 게시, 진행 중, 보안 부팅 재설정·훼손 방지 라벨 점검 안내<br>
+→ <a href="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfRES/res.cfm?id=221187" target="_blank" rel="noopener">https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfRES/res.cfm?id=221187</a></p>
+<p><strong>[2] FDA(2026-09)</strong> — 수술 로봇 허가 신청 가이던스 초안 &#x27;Robotically-Assisted Surgical Devices: Premarket Submissions&#x27;, 의견 마감 2026-11-24, 초안·구속력 없음<br>
+→ <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/robotically-assisted-surgical-devices-premarket-submissions" target="_blank" rel="noopener">https://www.fda.gov/regulatory-information/search-fda-guidance-documents/robotically-assisted-surgical-devices-premarket-submissions</a></p>
+<p><strong>[3] RAPS(2026-09)</strong> — 가이던스 대상(원격 조종 소프트웨어 제어 수술 로봇), 침투시험 포함 사이버보안 평가가 로봇과 통신하는 모든 네트워크 요소를 고려해야 한다는 원문<br>
+→ <a href="https://www.raps.org/resource/fda-draft-guidance-addresses-considerations-for-robotically-assisted-surgical-devices.html" target="_blank" rel="noopener">https://www.raps.org/resource/fda-draft-guidance-addresses-considerations-for-robotically-assisted-surgical-devices.html</a></p>
+<p><strong>[4] 메드시티뉴스(2026-10)</strong> — 가이던스 시험 범위(움직임·소프트웨어·신뢰성·정확도·사이버보안·안전·영상·수술팀 상호작용), 사이버보안 실패가 기기 기능 손상·환자 상해로 이어질 수 있다는 인용, 수술실 준비 문제 제기<br>
+→ <a href="https://medcitynews.com/2026/10/are-hospital-operating-rooms-ready-for-fdas-expectations-for-surgical-robots/" target="_blank" rel="noopener">https://medcitynews.com/2026/10/are-hospital-operating-rooms-ready-for-fdas-expectations-for-surgical-robots/</a></p>
+<p><strong>[5] FDA 사이버보안 FAQ</strong> — 2022-12-29 제정 법으로 신설된 524B조, 사이버 기기 정의, 허가 신청 시 사이버보안 자료·SBOM 제출 요건<br>
+→ <a href="https://www.fda.gov/medical-devices/digital-health-center-excellence/cybersecurity-medical-devices-frequently-asked-questions-faqs" target="_blank" rel="noopener">https://www.fda.gov/medical-devices/digital-health-center-excellence/cybersecurity-medical-devices-frequently-asked-questions-faqs</a></p>
+<p><strong>[6] 인튜이티브 서지컬(2026-07)</strong> — 2026-06-30 기준 다빈치 설치 11,710대(전년 10,488대 대비 +12%), 2분기 다빈치·Ion 수술 건수 약 +16%<br>
+→ <a href="https://investor.intuitivesurgical.com/news-releases/news-release-details/intuitive-announces-second-quarter-earnings-6" target="_blank" rel="noopener">https://investor.intuitivesurgical.com/news-releases/news-release-details/intuitive-announces-second-quarter-earnings-6</a></p>
+<p><strong>[7] 마켓앤드마켓</strong> — 세계 수술 로봇 시장 111억 달러(2024)→237억 달러(2029), 연 16.5% 전망 및 최신판 136.9억 달러(2025)→271.4억 달러(2030) 전망(상업 보고서)<br>
+→ <a href="https://marketsandmarkets.com/PressReleases/surgical-robots.asp" target="_blank" rel="noopener">https://marketsandmarkets.com/PressReleases/surgical-robots.asp</a></p>
+<p><strong>[8] 데일리팜(2026-06)</strong> — 미래컴퍼니 2026년 1분기 매출 212억 원·영업이익 13억 원, 9분기 연속 적자 종료, 수출 155억 원(73.4%), 2025년 수출 비중 33.0%<br>
+→ <a href="https://dailypharm.com/user/news/339325" target="_blank" rel="noopener">https://dailypharm.com/user/news/339325</a></p>
+<p><strong>[9] 법무법인 세종(2025-01)</strong> — 디지털의료제품법 2024-01-23 제정·2025-01-24 시행, 보안지침 준수 의무와 전자적 침해행위 취약점 지속 보완 의무<br>
+→ <a href="https://shinkim.com/kor/media/newsletter/2704" target="_blank" rel="noopener">https://shinkim.com/kor/media/newsletter/2704</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224487707084" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261123-ai-market-research-number-kind-test-click/"><div class="d">← 이전 노트</div><div class="t">AI 시장조사 숫자 검증, 실제 수입 0.21달러가 시험 클릭 1번이었어요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
