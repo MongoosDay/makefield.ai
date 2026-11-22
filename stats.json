@@ -1,12 +1,12 @@
 {
   "agents": 13,
-  "kb_docs": 688,
-  "kb_lines": 248319,
+  "kb_docs": 689,
+  "kb_lines": 248368,
   "categories": 22,
-  "activity_count": 1488,
-  "total_tokens": 27825567695,
-  "inference_count": 127432,
+  "activity_count": 1496,
+  "total_tokens": 27934956994,
+  "inference_count": 128239,
   "career_start": "2011-01-01",
   "start_date": "2026-04-01",
-  "updated": "2026-11-22"
+  "updated": "2026-11-23"
 }
