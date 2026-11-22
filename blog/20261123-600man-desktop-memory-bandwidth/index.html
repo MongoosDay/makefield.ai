@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>600만원 데스크탑, AI용이면 128GB보다 273GB/s를 먼저 보세요 | Field Notes · MakeField AI</title>
+<meta name="description" content="600만원 데스크탑을 AI 돌리려고 알아보는 중이라면, 사양표에서 메모리 용량 줄 말고 메모리 대역폭 줄부터 찾으세요. 용량은 &quot;모델이 들어가나&quot;를 정하고, 대역폭은 &quot;답이 얼마나 빨리 나오나&quot;를 정합니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261123-600man-desktop-memory-bandwidth/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="600만원 데스크탑, AI용이면 128GB보다 273GB/s를 먼저 보세요 | Field Notes · MakeField AI">
+<meta property="og:description" content="600만원 데스크탑을 AI 돌리려고 알아보는 중이라면, 사양표에서 메모리 용량 줄 말고 메모리 대역폭 줄부터 찾으세요. 용량은 &quot;모델이 들어가나&quot;를 정하고, 대역폭은 &quot;답이 얼마나 빨리 나오나&quot;를 정합니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261123-600man-desktop-memory-bandwidth/">
+<meta property="og:image" content="https://makefield.ai/blog/20261123-600man-desktop-memory-bandwidth/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "600만원 데스크탑, AI용이면 128GB보다 273GB/s를 먼저 보세요", "datePublished": "2026-11-23", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261123-600man-desktop-memory-bandwidth/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-11-23</span></div>
+<h1>600만원 데스크탑, AI용이면 128GB보다 273GB/s를 먼저 보세요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="01_.png 타이틀카드 — &quot;600만원 데스크탑, AI용이면 / 128GB보다 273GB/s를 먼저 보세요&quot;" loading="lazy">
+<p>600만원 데스크탑을 AI 돌리려고 알아보는 중이라면, 사양표에서 <strong>메모리 용량 줄 말고 메모리 대역폭 줄</strong>부터 찾으세요.<br>
+용량은 &quot;모델이 들어가나&quot;를 정하고, 대역폭은 &quot;답이 얼마나 빨리 나오나&quot;를 정합니다.</p>
+<p><strong>핵심만 적으면 이래요. AI 데스크탑 DGX Spark의 메모리는 128GB지만 대역폭은 273GB/s이고, NVIDIA 공식 측정에서 1,170억 파라미터 MoE 모델(gpt-oss-120b)은 초당 55.37토큰, 그보다 훨씬 작은 140억 파라미터 일반 모델(Qwen3 14B)은 초당 22.71토큰을 냈습니다.</strong> 큰 모델이 더 빨랐어요. (2026년 11월 23일 확인 기준)</p>
+<p>저는 제조 현장 자동화 일을 15년 해 온 엔지니어예요. 남의 장비를 고를 땐 카탈로그 첫 줄보다 병목 한 줄을 먼저 찾는 게 습관인데, 제 돈 600만 원 앞에서는 그 습관이 꺼져 있었습니다..</p>
+<h2>1. 600만원 데스크탑, 제가 본 문구는 이거였어요</h2>
+<p>예산 600만 원을 잡고 두 달 동안 장바구니에 담아뒀던 건 AI 전용으로 나온 손바닥만 한 데스크탑이었어요.<br>
+마음을 움직인 건 딱 두 줄이었어요. 제조사 사양 페이지 문구로 옮기면 이렇습니다(→ <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/)." target="_blank" rel="noopener">https://www.nvidia.com/en-us/products/workstations/dgx-spark/).</a></p>
+<pre><code>128GB coherent unified system memory
+AI models up to 200 billion parameters</code></pre>
+<p>128GB 통합 메모리, 2,000억 파라미터 모델까지.<br>
+이 두 줄을 보고 &quot;내 책상에서 큰 모델이 막힘없이 돈다&quot;고 읽었어요.</p>
+<p>장바구니를 비운 이유(돌릴 작업 없음·서랍 속 대체품·틀린 가격 기억)는 <a href="https://blog.naver.com/makefield_ai/224375490435" target="_blank" rel="noopener">이전 글</a>에 적었어요. 이 글은 그 뒤 사양표를 다시 뜯어보다 발견한 <strong>&quot;그 두 줄은 속도를 말하지 않는다&quot;</strong>는 부분입니다.</p>
+<h2>2. 원인: 용량은 창고 크기, 대역폭은 창고 문 폭이에요</h2>
+<p>9월 말에 같은 장비 사양표를 처음부터 다시 읽었어요. 이번엔 맨 윗줄 말고 아래쪽 줄까지요.<br>
+NVIDIA 공식 사양표에는 이렇게 적혀 있습니다(→ <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/)." target="_blank" rel="noopener">https://www.nvidia.com/en-us/products/workstations/dgx-spark/).</a></p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>공식 사양</th></tr></thead><tbody><tr><td>System Memory</td><td>64GB 또는 128GB 통합 메모리 (64GB는 OEM 제조사 경유)</td></tr><tr><td>Memory Interface</td><td>256-bit</td></tr><tr><td>Memory Bandwidth</td><td>273 GB/s</td></tr></tbody></table></div>
+<p>로컬 AI가 답을 쓸 때는 글자(토큰) 하나 만들 때마다 모델 가중치를 메모리에서 읽어 와야 해요.<br>
+그래서 <strong>답 쓰는 속도의 이론 상한은 대략 &quot;대역폭 ÷ 한 토큰에 읽는 양&quot;</strong>으로 잡힙니다.</p>
+<p>그날 제가 직접 계산해 본 게 이거예요. 70B급 일반(dense) 모델을 4비트로 줄이면 약 40GB인데,</p>
+<pre><code>273 GB/s ÷ 40 GB ≈ 6.8 토큰/초   (이론 상한, 추정)</code></pre>
+<p><strong>모델은 128GB 안에 넉넉히 들어가는데, 답은 초당 7토큰도 안 나온다는 계산이었어요.</strong> 상한이라 실제는 더 느리고요.<br>
+&quot;2,000억 파라미터까지&quot;는 메모리에 올라간다는 뜻이었지, 쓸 만한 속도가 난다는 뜻이 아니었습니다.</p>
+<img src="img/02_.png" alt="02_.png 창고와 문 — 왼쪽 큰 상자 &quot;128GB = 모델이 들어가나(창고 크기)&quot;, 오른쪽 좁은 문 &quot;273GB/s = 얼마나 빨리 나오나(문 폭)&quot;. 아래 계산식 &quot;273 ÷ 40GB ≈ 6.8 토큰/초&quot; 빨간 펜 표시" loading="lazy">
+<h2>3. 해결: 600만원 결제 전에 사양표로 해보는 4단계</h2>
+<p>이 장비만이 아니라 AI용 데스크탑이면 어디에나 쓸 수 있는 순서예요.</p>
+<ol><li><strong>사양표에서 Memory Bandwidth 줄을 찾는다.</strong> 없으면 판매처에 묻습니다. 이 숫자 없이는 속도를 가늠할 수 없어요.</li><li><strong>돌릴 모델의 파일 크기(GB)를 확인한다.</strong> 파라미터 수가 아니라 내려받을 파일 크기예요.</li><li><strong>그 모델이 MoE인지 확인한다.</strong> MoE(Mixture of Experts)란 전체 중 일부 전문가만 골라 쓰는 구조로, 한 토큰에 활성 부분만 읽어서 같은 대역폭에서 훨씬 빠릅니다.</li><li><strong>대역폭 ÷ 한 토큰에 읽는 양으로 상한을 계산한다.</strong></li></ol>
+<pre><code>일반(dense) 모델 : 대역폭 ÷ 모델 파일 크기        = 상한
+MoE 모델        : 대역폭 ÷ 활성 파라미터 분량     = 상한 (훨씬 큼)</code></pre>
+<p>예를 들어 gpt-oss-120b는 공식 발표 기준 총 1,170억 파라미터인데 한 토큰마다 쓰는 건 51억 개예요. 80GB 메모리 안에서 돌아가도록 설계됐고요(→ <a href="https://openai.com/index/introducing-gpt-oss/)." target="_blank" rel="noopener">https://openai.com/index/introducing-gpt-oss/).</a><br>
+그래서 그 뒤로 제 모델 고르는 첫 질문이 &quot;이거 몇 B야?&quot;에서 <strong class="u">&quot;MoE야?&quot;</strong>로 바뀌었습니다.</p>
+<img src="img/03_.png" alt="03_.png 결제 전 4단계 — &quot;① 대역폭 줄 찾기&quot; → &quot;② 모델 파일 크기&quot; → &quot;③ MoE인가&quot; → &quot;④ 대역폭÷읽는 양 = 상한&quot; 가로 흐름. ③에서 &#x27;아니오&#x27; 화살표가 &quot;속도 각오하기&quot; 박스로, ④ 끝에 체크 표시" loading="lazy">
+<h2>4. 확인 방법: 내 계산을 공식 실측과 맞춰보기</h2>
+<p>계산이 맞는 방향인지는 NVIDIA가 공개한 같은 장비 측정값에 대 보면 됩니다. 조건은 입력 2,048토큰, 출력 128토큰, 한 번에 1건이에요(→ <a href="https://developer.nvidia.com/blog/how-nvidia-dgx-sparks-performance-enables-intensive-ai-tasks/)." target="_blank" rel="noopener">https://developer.nvidia.com/blog/how-nvidia-dgx-sparks-performance-enables-intensive-ai-tasks/).</a></p>
+<div class="table-wrap"><table><thead><tr><th>모델</th><th>구조</th><th>답 쓰는 속도(토큰/초)</th></tr></thead><tbody><tr><td>Qwen3 14B</td><td>일반(dense)</td><td>22.71</td></tr><tr><td>gpt-oss-20b</td><td>MoE</td><td>82.74</td></tr><tr><td>gpt-oss-120b</td><td>MoE</td><td>55.37</td></tr><tr><td>Qwen3 235B (2대 연결)</td><td>MoE</td><td>11.73</td></tr></tbody></table></div>
+<p>140억짜리 일반 모델보다 1,170억짜리 MoE가 두 배 넘게 빨라요. 압축 방식이 모델마다 조금 달라 1:1 비교는 어렵지만, &quot;크기가 아니라 읽는 양&quot;이라는 방향은 제 계산과 같습니다.</p>
+<img src="img/04_.png" alt="04_.png 공식 실측 막대그래프 — Qwen3 14B(dense) 22.71 / gpt-oss-20b(MoE) 82.74 / gpt-oss-120b(MoE) 55.37 / Qwen3 235B 2대 11.73 가로 막대. 14B 막대만 빨간 테두리, &quot;작은데 느리다&quot; 펜 메모" loading="lazy">
+<p>여러분이 보고 계신 600만원 데스크탑 사양표에도 대역폭 줄이 있나요? 없다면 그게 첫 번째 질문이에요.</p>
+<h2>5. 같은 증상, 다른 경우</h2>
+<ul><li><strong>살지 말지부터 고민이라면</strong> → <a href="https://blog.naver.com/makefield_ai/224375490435" target="_blank" rel="noopener">로컬 AI 컴퓨터, 600만 원 결제 직전에 멈춘 이유 3가지</a></li><li><strong>가진 맥북·PC 속도가 기대보다 느리다면</strong> → <a href="https://blog.naver.com/makefield_ai/224454757928" target="_blank" rel="noopener">MLX GGUF 속도 비교</a>: 같은 모델도 실행 방식에 따라 속도가 갈렸어요.</li><li><strong>속도는 나는데 답이 미덥지 않다면</strong> → <a href="https://blog.naver.com/makefield_ai/224439611217" target="_blank" rel="noopener">로컬 LLM 할루시네이션 실험</a></li></ul>
+<h2>이런 것도 궁금하실 것 같아요</h2>
+<p><strong>Q. 600만원 데스크탑 두 대를 연결하면 두 배 빨라지나요?</strong><br>
+메모리는 합쳐지지만 대역폭은 안 합쳐진다고 보는 게 맞아요. 공식 사양상 두 대 연결 회선은 200Gbps(→ <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/)," target="_blank" rel="noopener">https://www.nvidia.com/en-us/products/workstations/dgx-spark/),</a> 초당 약 25GB라 장비 안쪽 273GB/s의 10분의 1 수준입니다. 공식 측정에서도 2대로 돌린 2,350억 모델은 초당 11.73토큰이었어요. 이득은 속도보다 &quot;더 큰 모델이 올라간다&quot; 쪽입니다.</p>
+<p><strong>Q. 그럼 128GB 용량은 의미가 없나요?</strong><br>
+아니에요. 용량은 입장권입니다. 안 들어가면 속도 계산 자체를 못 하니까요. 용량으로 &quot;들어가나&quot;를 먼저 거르고, 대역폭으로 &quot;쓸 만한가&quot;를 따로 보는 거죠.</p>
+<p><strong>Q. 가격은 지금 얼마예요?</strong><br>
+제가 8월 11일에 확인한 제조사 가격은 4,699달러였어요. 10월에는 64GB 구성이 제조사 파트너 경유로 추가됐고, 지금 공식 판매처 가격은 제가 직접 확인하지 못했습니다. 이런 숫자는 몇 달 만에 바뀌니 결제 당일 공식 판매처에서 다시 보세요.</p>
+<p>정리하면, 600만원 데스크탑 사양표에서 제가 놓친 건 맨 윗줄이 아니라 그 아래 한 줄이었어요.<br>
+다음엔 서랍 속 소형 보드에서 같은 계산이 맞아떨어지는지 직접 재 보려고 합니다.</p>
+<hr>
+<p>장비를 사기 전에 계산해 본 숫자들은 makefield.ai에도 모아두고 있어요.</p>
+<h2>출처</h2>
+<ul><li>NVIDIA DGX Spark 공식 제품 페이지(사양표: Memory Bandwidth 273 GB/s, 256-bit, 64GB/128GB, 모델 크기표) → <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank" rel="noopener">https://www.nvidia.com/en-us/products/workstations/dgx-spark/</a></li><li>NVIDIA 개발자 블로그, DGX Spark 성능 측정 Table 4(ISL|OSL 2048|128, BS=1) → <a href="https://developer.nvidia.com/blog/how-nvidia-dgx-sparks-performance-enables-intensive-ai-tasks/" target="_blank" rel="noopener">https://developer.nvidia.com/blog/how-nvidia-dgx-sparks-performance-enables-intensive-ai-tasks/</a></li><li>OpenAI, Introducing gpt-oss(117B 총·5.1B 활성, MoE, 80GB) → <a href="https://openai.com/index/introducing-gpt-oss/" target="_blank" rel="noopener">https://openai.com/index/introducing-gpt-oss/</a></li></ul>
+<p>태그: #600만원데스크탑 #AI데스크탑 #로컬AI컴퓨터 #메모리대역폭 #DGXSpark #로컬LLM #토큰속도 #MoE #gptoss #통합메모리 #AI장비구매 #개인AI서버 #AI하드웨어 #AI오답노트 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224487674984" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261122-powershell-error-message-first-line/"><div class="d">← 이전 노트</div><div class="t">파워쉘 오류 메시지, 첫 줄만 읽으면 경로·권한·한글 셋 중 하나예요</div></a><a class="next" href="/blog/20261123-ai-market-research-number-kind-test-click/"><div class="d">다음 노트 →</div><div class="t">AI 시장조사 숫자 검증, 실제 수입 0.21달러가 시험 클릭 1번이었어요</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
