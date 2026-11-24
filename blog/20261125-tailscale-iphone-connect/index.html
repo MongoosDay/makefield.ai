@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tailscale 아이폰 접속, 연결됐는데 PC 화면이 안 뜰 때 확인 순서 | Field Notes · MakeField AI</title>
+<meta name="description" content="tailscale 아이폰 연결은 앱 설치 → VPN 구성 허용 → PC와 같은 계정 로그인, 이 세 단계면 끝나요. 막히는 건 대부분 그다음이에요. 아이폰 앱엔 연결됐다고 뜨는데 사파리에서 PC 주소를 치면 화면이 안 열리는 경우요. 원인은 거의 항상 PC 쪽(서비스 포트·방화">
+<link rel="canonical" href="https://makefield.ai/blog/20261125-tailscale-iphone-connect/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tailscale 아이폰 접속, 연결됐는데 PC 화면이 안 뜰 때 확인 순서 | Field Notes · MakeField AI">
+<meta property="og:description" content="tailscale 아이폰 연결은 앱 설치 → VPN 구성 허용 → PC와 같은 계정 로그인, 이 세 단계면 끝나요. 막히는 건 대부분 그다음이에요. 아이폰 앱엔 연결됐다고 뜨는데 사파리에서 PC 주소를 치면 화면이 안 열리는 경우요. 원인은 거의 항상 PC 쪽(서비스 포트·방화">
+<meta property="og:url" content="https://makefield.ai/blog/20261125-tailscale-iphone-connect/">
+<meta property="og:image" content="https://makefield.ai/blog/20261125-tailscale-iphone-connect/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "tailscale 아이폰 접속, 연결됐는데 PC 화면이 안 뜰 때 확인 순서", "datePublished": "2026-11-25", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261125-tailscale-iphone-connect/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">막힐 때 해결</span><span>2026-11-25</span></div>
+<h1>tailscale 아이폰 접속, 연결됐는데 PC 화면이 안 뜰 때 확인 순서</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="타이틀카드 — &quot;tailscale 아이폰 접속 / 연결은 쉬웠고, 막힌 건 PC 쪽이었어요&quot;" loading="lazy">
+<p><strong>tailscale 아이폰 연결은 앱 설치 → VPN 구성 허용 → PC와 같은 계정 로그인, 이 세 단계면 끝나요.</strong><br>
+막히는 건 대부분 그다음이에요. 아이폰 앱엔 연결됐다고 뜨는데 사파리에서 PC 주소를 치면 화면이 안 열리는 경우요.<br>
+원인은 거의 항상 PC 쪽(서비스 포트·방화벽)이나 서비스 자체에 있고, Tailscale 문제가 아닌 경우가 많았어요.</p>
+<p>먼저 기억해둘 사실 하나요.<br>
+Tailscale은 기기마다 100.64.0.0~100.127.255.255 범위의 주소(100.x.y.z)를 하나씩 주고, 이 주소는 와이파이에서 LTE로 바꿔도 그대로예요(→ <a href="https://tailscale.com/docs/concepts/tailscale-ip-addresses)." target="_blank" rel="noopener">https://tailscale.com/docs/concepts/tailscale-ip-addresses).</a><br>
+그래서 아이폰에선 &quot;PC의 100.x 주소 + 포트&quot;만 알면 어디서든 같은 주소로 붙습니다.</p>
+<p>저는 공장 설비 옆에서 제어·자동화를 15년째 만지는 엔지니어예요.<br>
+퇴근 뒤엔 그 손버릇으로 제 PC를 자동화하는데, 그걸 밖에서 아이폰으로 쓰고 싶어서 Tailscale을 깔았어요.</p>
+<h2>1. 증상 — 앱은 연결됐는데 사파리가 안 열려요</h2>
+<p>제가 실제로 본 장면은 두 단계였어요.</p>
+<pre><code>① 아이폰 Tailscale 앱: 연결됨
+② 사파리 주소창: http://(PC의 100.x 주소):9000
+   → 직접 만든 채팅 페이지는 열림
+   → 같은 PC의 웹터미널(ttyd)은 &quot;press enter to reconnect&quot;만 반복</code></pre>
+<p>같은 PC, 같은 Tailscale 연결인데 한쪽은 열리고 한쪽은 안 열렸어요.<br>
+<strong>Tailscale은 길만 놓아주고, 그 끝에 있는 서비스는 내 몫이에요.</strong><br>
+공식 문서도 SSH·웹서버 같은 서비스는 대상 기기에서 직접 돌려야 한다고 적어뒀어요(→ <a href="https://tailscale.com/kb/1452/connect-to-devices)." target="_blank" rel="noopener">https://tailscale.com/kb/1452/connect-to-devices).</a></p>
+<img src="img/02_.png" alt="아이폰(100.x) ⇄ Tailscale 망 ⇄ PC(100.x):포트 → 서비스. 공유기 포트포워딩 상자는 회색으로 빗금 &quot;필요 없음&quot;. 서비스 상자에 빨간 표시 &quot;여기는 내 몫&quot;" loading="lazy">
+<h2>2. 원인 — 막히는 자리는 네 군데예요</h2>
+<div class="table-wrap"><table><thead><tr><th>자리</th><th>증상</th><th>누구 문제</th></tr></thead><tbody><tr><td>① 아이폰 VPN 꺼짐·다른 계정</td><td>어떤 주소도 안 열림</td><td>Tailscale 설정</td></tr><tr><td>② PC 주소를 잘못 앎</td><td>계속 로딩만 됨</td><td>입력 실수</td></tr><tr><td>③ PC 서비스 꺼짐·포트·방화벽</td><td>연결 거부·시간 초과</td><td>PC 쪽</td></tr><tr><td>④ 서비스가 iOS랑 안 맞음</td><td>열리긴 하는데 화면·입력이 깨짐</td><td>서비스 자체</td></tr></tbody></table></div>
+<p>제 경우 Tailscale 접속 자체는 깔끔했어요. 사흘을 태운 건 ④였어요.<br>
+웹터미널은 아이폰 사파리에서 웹소켓이 계속 끊겼고, 자체 인증서를 아이폰에 설치해 신뢰시킨 다음에도 &quot;press enter to reconnect&quot;가 남았어요.<br>
+이건 Tailscale을 아무리 만져도 안 풀리는 문제였어요. 이 부분은 <a href="https://blog.naver.com/makefield_ai/224367364259" target="_blank" rel="noopener">아이폰에서 클로드 터미널처럼 쓰기</a> 글에 따로 정리해뒀어요.</p>
+<h2>3. 해결 — 순서대로 하나씩</h2>
+<ol><li><strong>아이폰에 앱 설치(iOS 16 이상).</strong> App Store에서 Tailscale을 받고 Get Started를 누른 뒤, VPN 구성 설치를 허용하고 알림을 허용해요(→ <a href="https://tailscale.com/docs/install/ios)." target="_blank" rel="noopener">https://tailscale.com/docs/install/ios).</a></li><li><strong>PC와 같은 계정으로 로그인.</strong> PC에서 쓰는 그 로그인 수단으로 들어가야 두 기기가 한 망(tailnet)에 묶여요.</li><li><strong>PC의 Tailscale 주소 확인.</strong> PC 명령창에서 아래 한 줄이면 나와요. 관리 콘솔 Machines 페이지에도 기기별 주소가 있어요.</li></ol>
+<pre><code>tailscale ip -4
+tailscale status</code></pre>
+<p><code>tailscale status</code>에 아이폰 이름이 같이 보이면 같은 망에 들어온 거예요(→ <a href="https://tailscale.com/docs/reference/tailscale-cli)." target="_blank" rel="noopener">https://tailscale.com/docs/reference/tailscale-cli).</a></p>
+<ol start="4"><li><strong>PC 서비스와 방화벽 확인.</strong> 서비스가 그 포트로 실제로 떠 있어야 하고, 윈도우 방화벽이 막고 있으면 들어오는 규칙을 열어줘요. 저도 9000번 포트용 방화벽 규칙을 따로 넣었어요.</li></ol>
+<pre><code>New-NetFirewallRule -DisplayName &quot;My Web 9000&quot; -Direction Inbound -Protocol TCP -LocalPort 9000 -Action Allow</code></pre>
+<p>(관리자 PowerShell에서 실행 → <a href="https://learn.microsoft.com/en-us/powershell/module/netsecurity/new-netfirewallrule)" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/netsecurity/new-netfirewallrule)</a></p>
+<ol start="5"><li><strong>아이폰 사파리에서 접속.</strong> <code><a href="http://100.x.y.z:포트" target="_blank" rel="noopener">http://100.x.y.z:포트</a></code> 형식으로 쳐요. MagicDNS가 켜져 있으면 IP 대신 기기 이름도 돼요(기본 켜짐, → <a href="https://tailscale.com/kb/1452/connect-to-devices)." target="_blank" rel="noopener">https://tailscale.com/kb/1452/connect-to-devices).</a></li></ol>
+<img src="img/03_.png" alt="막히는 네 자리 점검 순서 — ①앱 연결·같은 계정 → ②tailscale ip -4 → ③서비스·포트·방화벽 → ④iOS 호환. ④ 옆 빨간 펜 &quot;Tailscale로는 못 고침&quot;" loading="lazy">
+<h2>4. 확인 방법 — 와이파이를 끄고 한 번 더</h2>
+<p>집 와이파이에서 열렸다고 끝내지 마세요. 같은 망 안이라 그냥 열렸을 수도 있거든요.<br>
+아이폰 와이파이를 끄고 LTE로만 같은 100.x 주소를 열어보세요. 그래도 열리면 Tailscale로 붙은 게 맞아요.</p>
+<img src="img/04_.png" alt="같은 주소 http://100.x.y.z:포트 — 왼쪽 &quot;와이파이&quot; 열림 체크, 오른쪽 &quot;LTE&quot; 열림 체크. 아래 &quot;주소가 안 바뀐다 = 어디서든 같은 길&quot;" loading="lazy">
+<p>저는 원래 공유기 포트포워딩으로 밖에서 붙으려 했어요.<br>
+그런데 새 규칙이 재부팅 전엔 반영이 안 됐고, 외부 포트 번호가 다른 기기와 겹쳐 있었어요. 원격으로 붙어 있어서 재부팅도 못 걸었고요..<br>
+Tailscale은 이 과정이 통째로 필요 없었어요. 그래서 다음 날엔 아이폰용 HTTPS 서버도 아예 PC의 Tailscale 주소 기준으로 올렸어요.</p>
+<h2>5. 같은 증상, 다른 경우</h2>
+<ul><li><strong>열리긴 하는데 화면·키보드가 깨질 때</strong> → <a href="https://blog.naver.com/makefield_ai/224367364259" target="_blank" rel="noopener">아이폰에서 클로드 터미널처럼 쓰기</a></li><li><strong>SSH로 붙었는데 세션이 자꾸 죽을 때</strong> → <a href="https://blog.naver.com/makefield_ai/224451766827" target="_blank" rel="noopener">윈도우 SSH 끊김</a></li><li><strong>포트포워딩 규칙을 지웠다가 원격이 끊겼을 때</strong> → <a href="https://blog.naver.com/makefield_ai/224411999114" target="_blank" rel="noopener">포트포워딩 삭제</a></li></ul>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. tailscale 아이폰 접속에 공유기 포트포워딩이 필요한가요?</strong><br>
+아니요. Tailscale 주소는 공용 인터넷에 노출되지 않고, 같은 망에 묶인 기기끼리 이 주소로 연결돼요(→ <a href="https://tailscale.com/docs/concepts/tailscale-ip-addresses)." target="_blank" rel="noopener">https://tailscale.com/docs/concepts/tailscale-ip-addresses).</a> 저도 포트포워딩은 끝내 못 살렸는데 Tailscale로는 바로 붙었어요.</p>
+<p><strong>Q. 매번 앱을 켜야 하나요?</strong><br>
+VPN On Demand를 쓰면 조건에 따라 자동으로 켜고 꺼요. 앱에서 오른쪽 위 프로필 사진을 누르고 VPN On Demand에 들어가면 Always·Only On·Except On 같은 규칙을 고를 수 있어요. 단, iOS에선 On Demand를 켤 수 있는 VPN 앱이 한 번에 하나뿐이에요(→ <a href="https://tailscale.com/docs/features/client/ios-vpn-on-demand)." target="_blank" rel="noopener">https://tailscale.com/docs/features/client/ios-vpn-on-demand).</a></p>
+<p><strong>Q. 연결은 되는데 특정 페이지만 안 열리면요?</strong><br>
+같은 PC의 다른 페이지가 열리는지 먼저 보세요. 저는 채팅 페이지는 열리고 웹터미널만 깨져서 원인을 서비스 쪽으로 좁혔어요.</p>
+<p>정리하면 tailscale 아이폰 연결 자체는 가장 쉬운 단계예요.<br>
+안 열리면 앱을 다시 깔기 전에 PC 주소·포트·방화벽, 그리고 서비스가 아이폰을 지원하는지부터 보세요.<br>
+여러분은 밖에서 PC에 붙을 때 어떤 길을 쓰세요?</p>
+<p>밖에서 내 PC를 다루다 막힌 기록은 makefield.ai에도 모아두고 있어요.</p>
+<hr>
+<p>출처</p>
+<ul><li>Tailscale 아이폰 설치 → <a href="https://tailscale.com/docs/install/ios" target="_blank" rel="noopener">https://tailscale.com/docs/install/ios</a></li><li>Tailscale 100.x 주소 → <a href="https://tailscale.com/docs/concepts/tailscale-ip-addresses" target="_blank" rel="noopener">https://tailscale.com/docs/concepts/tailscale-ip-addresses</a></li><li>기기에 접속하기 → <a href="https://tailscale.com/kb/1452/connect-to-devices" target="_blank" rel="noopener">https://tailscale.com/kb/1452/connect-to-devices</a></li><li>iOS VPN On Demand → <a href="https://tailscale.com/docs/features/client/ios-vpn-on-demand" target="_blank" rel="noopener">https://tailscale.com/docs/features/client/ios-vpn-on-demand</a></li><li>Tailscale CLI → <a href="https://tailscale.com/docs/reference/tailscale-cli" target="_blank" rel="noopener">https://tailscale.com/docs/reference/tailscale-cli</a></li><li>윈도우 방화벽 규칙(New-NetFirewallRule) → <a href="https://learn.microsoft.com/en-us/powershell/module/netsecurity/new-netfirewallrule" target="_blank" rel="noopener">https://learn.microsoft.com/en-us/powershell/module/netsecurity/new-netfirewallrule</a></li></ul>
+<p>태그: #tailscale아이폰 #테일스케일아이폰 #아이폰테일스케일설정 #tailscale설치 #테일스케일접속안됨 #100x주소 #tailscaleip #MagicDNS #VPNOnDemand #아이폰원격접속 #아이폰에서PC접속 #윈도우방화벽포트 #포트포워딩없이 #원격PC접속 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224490714579" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261124-web-right-click-block-chrome-save-page/"><div class="d">← 이전 노트</div><div class="t">웹페이지 우클릭 방지·F12 차단, 크롬 &#x27;페이지 저장&#x27; 한 번에 다 털렸어요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
