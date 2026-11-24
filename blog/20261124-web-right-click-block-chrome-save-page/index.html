@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>웹페이지 우클릭 방지·F12 차단, 크롬 &#x27;페이지 저장&#x27; 한 번에 다 털렸어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="우클릭 막고, F12 막고, Ctrl+S까지 막았어요. 그런데 크롬 오른쪽 위 점 세 개 메뉴에서 &#x27;페이지 저장&#x27; 한 번 누르니까, 화면을 움직이는 코드까지 통째로 내 PC에 저장되더라고요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261124-web-right-click-block-chrome-save-page/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="웹페이지 우클릭 방지·F12 차단, 크롬 &#x27;페이지 저장&#x27; 한 번에 다 털렸어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="우클릭 막고, F12 막고, Ctrl+S까지 막았어요. 그런데 크롬 오른쪽 위 점 세 개 메뉴에서 &#x27;페이지 저장&#x27; 한 번 누르니까, 화면을 움직이는 코드까지 통째로 내 PC에 저장되더라고요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261124-web-right-click-block-chrome-save-page/">
+<meta property="og:image" content="https://makefield.ai/blog/20261124-web-right-click-block-chrome-save-page/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "웹페이지 우클릭 방지·F12 차단, 크롬 '페이지 저장' 한 번에 다 털렸어요", "datePublished": "2026-11-24", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261124-web-right-click-block-chrome-save-page/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-11-24</span></div>
+<h1>웹페이지 우클릭 방지·F12 차단, 크롬 &#x27;페이지 저장&#x27; 한 번에 다 털렸어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_title.png 타이틀카드 — &quot;웹페이지 우클릭 방지·F12 차단 / 크롬 &#x27;페이지 저장&#x27; 한 번에 다 털렸어요&quot;" loading="lazy">
+<p>우클릭 막고, F12 막고, Ctrl+S까지 막았어요.<br>
+그런데 크롬 오른쪽 위 점 세 개 메뉴에서 <strong>&#x27;페이지 저장&#x27;</strong> 한 번 누르니까, 화면을 움직이는 코드까지 통째로 내 PC에 저장되더라고요.</p>
+<p><strong>먼저 답부터 드리면, 웹페이지 복사 방지 코드는 &#x27;억제&#x27;까지만 됩니다. 브라우저가 화면을 그리려면 파일을 받아야 하고, 받은 것은 결국 저장·캡처로 남아요. 막아야 할 내용이 있다면 차단 코드를 쌓기 전에 그 내용을 보내지 않는 쪽이 답이었습니다.</strong> 2026년 11월, AI랑 같이 며칠에 걸쳐 겪은 일이에요.</p>
+<p>저는 제조 현장에서 제어·자동화를 15년째 만지는 엔지니어예요. 웹 개발자는 아니고요.<br>
+그래서 &quot;퍼가기 막아 줘&quot;를 AI한테 그대로 맡겼고, AI는 시킨 대로 정말 성실하게 막았습니다..</p>
+<h2>1. &quot;퍼가기 막아 줘&quot;에 AI가 막은 것들</h2>
+<p>일은 단순했어요. 3D 화면이 있는 HTML 교육용 시뮬레이터 파일 하나를 내부망에서만 보이게 올려 달라는 부탁이었죠.<br>
+제가 AI한테 건 조건은 이 한 줄이었습니다.</p>
+<pre><code>내부망에서만, 우클릭·F12·크롬으로 퍼가기 차단</code></pre>
+<p>AI가 붙인 장치는 이랬어요.</p>
+<ul><li>내부망 밖에서 들어오면 403 거절</li><li>30초짜리 1회용 접속 토큰</li><li>우클릭·복사·드래그·선택·인쇄 차단</li><li>F12, Ctrl+Shift+I/J/C, Ctrl+U/S/P 차단</li><li>개발자도구가 열리면 화면을 지움</li><li>접속 IP와 시각을 화면에 워터마크로</li></ul>
+<p>목록만 보면 빈틈이 없어 보이죠.<br>
+그래서 제가 직접 털어 봤어요. 단축키 말고, 크롬 메뉴에서 &#x27;전송·저장·공유 &gt; 페이지 저장&#x27;.</p>
+<p>전부 저장됐습니다.</p>
+<h2>2. 웹페이지 복사 방지 코드, 왜 &#x27;페이지 저장&#x27;은 못 막나요</h2>
+<p><strong>브라우저 메뉴는 웹페이지 바깥에 있어서, 페이지 안의 자바스크립트가 가로챌 수 없어요.</strong> 단축키 Ctrl+S는 페이지가 먼저 받아서 막을 수 있지만, 크롬 메뉴는 브라우저가 직접 처리합니다.</p>
+<p>AI는 한 번 더 막았어요. 화면이 뜨자마자 페이지 안의 <code>&lt;script&gt;</code>를 전부 지워서, 코드는 메모리에서만 돌게 했죠. 저장해서 열어 보면 3D도 동작도 없는 빈 껍데기가 됐어요.</p>
+<p>그래도 제 판정은 &quot;다운로드 받아지고 로직도 다 확인된다&quot;였습니다. 글자·질문답변·사진은 저장본에 그대로 남았고, 화면을 그리는 계산은 어쨌든 제 PC 안에서 돌고 있었으니까요.</p>
+<p>사실 AI 작업 기록에는 처음부터 이렇게 적혀 있었어요.</p>
+<pre><code>한계: 브라우저로 전달된 자료는 기술적으로 완전 차단 불가
+(화면 캡처·브라우저 메뉴 개발자도구 등). 억제+추적 수준</code></pre>
+<p>저는 이 줄을 읽고도 &quot;그럼 더 세게 막자&quot;로 갔습니다.</p>
+<img src="img/02_reach.png" alt="02_ 차단 장치가 닿는 범위 — 왼쪽 큰 잉크 상자 &#x27;브라우저(크롬)&#x27;, 그 안에 작은 카드 &#x27;웹페이지&#x27; 와 초록 체크 &#x27;우클릭·F12·Ctrl+S 차단&#x27;. 웹페이지 카드 밖, 브라우저 상자 안쪽에 빨간 테두리 &#x27;크롬 메뉴: 페이지 저장&#x27;, &#x27;화면 캡처&#x27;. 빨간 펜 &#x27;페이지 코드는 여기까지 못 닿음&#x27;" loading="lazy">
+<h2>3. 로직을 서버로 옮기는 데 한 시간, 폐기는 같은 날</h2>
+<p>다음 수는 핵심 계산을 아예 브라우저에서 빼는 거였어요.<br>
+시뮬레이터의 핵심 모델 코드(약 35KB)를 서버에서 그대로 돌리고, 브라우저에는 계산 없이 결과만 주고받는 대리 객체를 보냈습니다. 화면 프레임 하나당 서버 왕복이 약 1.2번이었어요.</p>
+<p>검증도 꼼꼼했어요.</p>
+<div class="table-wrap"><table><thead><tr><th>검증 항목</th><th>규모</th><th>결과</th></tr></thead><tbody><tr><td>원본 계산 vs 서버 계산</td><td>7.4만 단계(무작위 시드 14개)</td><td>불일치 0</td></tr><tr><td>화면 비교</td><td>6개 화면·122개 조작·257단계</td><td>화면 글자·상태 차이 0</td></tr><tr><td>서버 부담</td><td>사용자 1명·프레임 1개</td><td>0.08ms, 응답 1.3KB</td></tr></tbody></table></div>
+<p>한 시간 남짓 걸려서 &quot;기능 100% 동일, 브라우저엔 로직 0줄&quot;까지 갔어요.</p>
+<p>그리고 그날 제가 폐기했습니다. 괜히 내 개발용 서버에 부담 주지 말자, 다른 데서 다르게 하겠다고요.<br>
+서비스·파일·설치한 도구 전부 지웠고, 포트와 프로세스가 0인 것까지 확인했어요. 만든 소스는 기록용으로만 남겼고요.</p>
+<h2>4. 진짜 해결은 &#x27;빼고 다시 만든 파일&#x27;이었어요</h2>
+<p>다음 날 자료를 만든 쪽에서 새 판을 보내왔어요. <strong>지켜야 할 핵심 계산을 뺀 교육용 모형</strong>으로 다시 만든 파일이었고, 안내문에는 이렇게 적혀 있었습니다.</p>
+<pre><code>Node·API 불필요, 교육용 JS 열람 가능</code></pre>
+<p>지킬 게 파일에서 빠지니 서버 분리가 필요 없어졌어요. 그냥 정적 파일로 올렸습니다.<br>
+대신 제가 &quot;로직은 패스하고 우클릭 방지라던가 퍼갈 수 없게 좀 할 수 있는 기본 장치만 이전처럼&quot;이라고 해서, 첫날 붙였던 장치(토큰·차단·<code>&lt;script&gt;</code> 지우기·워터마크)는 다시 얹었어요.</p>
+<p>정리하면 이렇습니다.</p>
+<div class="table-wrap"><table><thead><tr><th>방법</th><th>막는 것</th><th>못 막는 것</th><th>비용</th></tr></thead><tbody><tr><td>우클릭·F12·단축키 차단</td><td>가볍게 퍼가는 사람</td><td>브라우저 메뉴 저장·캡처</td><td>거의 없음</td></tr><tr><td><code>&lt;script&gt;</code> 지우기</td><td>저장본 속 코드</td><td>글자·사진, 실행 중 메모리</td><td>거의 없음</td></tr><tr><td>로직 서버 분리</td><td>계산 코드 노출</td><td>화면에 보이는 결과</td><td>서버 상시 부담</td></tr><tr><td>내용 빼고 다시 만들기</td><td>지킬 게 애초에 없음</td><td>—</td><td>작성자 손 한 번</td></tr></tbody></table></div>
+<img src="img/03_order.png" alt="03_ 막기 vs 빼기 — 위 줄 빨간 흐름 &#x27;보낸다 → 막는다 → 털린다 → 더 막는다&#x27;(빨간 X 반복), 아래 줄 초록 흐름 &#x27;꼭 보내야 하나? → 뺀다 → 남은 건 억제+추적(워터마크·접속 기록)&#x27;(초록 체크). 빨간 펜 &#x27;질문 순서를 바꿈&#x27;" loading="lazy">
+<h2>5. 이번 일로 바꾼 순서</h2>
+<p>AI는 틀린 걸 만든 게 아니었어요. 시킨 걸 완벽하게 만들었고, 한계도 처음부터 적어 뒀죠.<br>
+틀린 건 제 질문 순서였습니다. &quot;어떻게 막지?&quot;부터 물었으니, AI는 막는 방법을 계속 쌓았던 거예요. 공개 약점 분류에도 아예 &#x27;CWE-602, Client-Side Enforcement of Server-Side Security(서버가 지켜야 할 보안을 브라우저 쪽에서 지키려는 실수)&#x27;라는 항목이 있더라고요.</p>
+<p>그래서 지금은 순서를 이렇게 바꿨어요.</p>
+<ol><li><strong>이 내용을 꼭 브라우저로 보내야 하나</strong> — 아니면 빼고 만든다</li><li>보내야 한다면, 막을 대상은 &#x27;가볍게 퍼가는 사람&#x27;까지로 정한다</li><li>남길 장치는 억제(기본 차단)와 <strong class="u">추적(워터마크·기록)</strong> 두 개</li></ol>
+<p>후일담 하나만 덧붙이면, 나중에 담당자가 직접 새 파일을 올리는 기능을 붙일 때는 서버에 AI가 있어도 일부러 안 끼웠어요. 정해진 절차라 코드가 매번 똑같이 처리하는 게 맞았고, 올라온 파일을 AI가 읽으면 그 안의 글이 AI에게 내리는 지시로 둔갑하는 프롬프트 주입 위험이 있었거든요. 자동 시험 31개를 다 통과했고, 담당자 쪽에서 &quot;잘된다고 하네&quot;라는 답이 왔습니다.</p>
+<h2>이런 질문이 남을 수 있어요</h2>
+<p><strong>Q. 그럼 우클릭 방지는 쓸모없는 건가요?</strong><br>
+아니에요. 무심코 복사해 가는 사람은 확실히 줄어요. 다만 그게 전부라는 걸 알고 쓰는 거죠. 저도 결국 기본 장치는 다시 붙였습니다.</p>
+<p><strong>Q. 워터마크는 왜 남겼나요?</strong><br>
+캡처는 못 막으니, 캡처된 화면에 &#x27;누가 언제 봤는지&#x27;가 찍히게 한 거예요. 막는 장치가 아니라 남기는 장치입니다.</p>
+<p><strong>Q. AI한테 처음부터 어떻게 물었으면 됐을까요?</strong><br>
+&quot;막아 줘&quot; 전에 &quot;이걸 브라우저로 안 보내고 같은 교육 효과를 낼 수 있나?&quot;를 먼저 물었으면, 한 시간짜리 서버 작업은 안 했을 거예요.</p>
+<p>여러분은 웹에 올린 자료 중에 &#x27;막아 달라&#x27;는 요청을 받아 본 게 있으신가요? 그 자료에서 정말 지켜야 할 게 뭔지부터 한 줄로 적어 보세요. 그 줄이 비어 있으면, 차단 코드도 필요 없을 수 있어요.</p>
+<hr>
+<p>AI한테 일을 맡길 때 질문 순서를 어떻게 잡는지, 제가 겪고 고친 기록은 makefield.ai에서 이어 보실 수 있어요.</p>
+<h2>참고</h2>
+<ul><li>MITRE CWE-602: Client-Side Enforcement of Server-Side Security → <a href="https://cwe.mitre.org/data/definitions/602" target="_blank" rel="noopener">https://cwe.mitre.org/data/definitions/602</a></li><li>실측: 2026년 11월 개인 작업 기록(차단 장치 목록·검증 수치·폐기 결정, 제품·서버 정보 제외)</li></ul>
+<p>태그: #웹페이지복사방지 #우클릭방지 #F12차단 #크롬페이지저장 #소스코드보호 #자바스크립트보호 #HTML보호 #드래그방지 #워터마크 #내부망게시 #클라이언트보안 #CWE602 #AI코딩 #AI오답노트 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224490594426" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261124-surgical-robot-razor-blade-model/"><div class="d">← 이전 노트</div><div class="t">수술 로봇 시장은 어떻게 돈을 버나? 다빈치 매출 76%가 수술할 때마다 들어오는 이유</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
