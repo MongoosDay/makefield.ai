@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>실시간 투표 웹 만들기, 외부 CDN 하나 막히자 발표 화면 숫자가 0에서 멈췄어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="행사 전날, AI랑 만든 투표 웹을 시험 166개로 돌렸어요. 서버 규칙도, 60명 동시 접속도, 인터넷 끊김 사고도 다 통과했는데 정작 화면을 멈춘 건 축포 효과랑 QR을 그려 주는 외부 라이브러리였습니다.">
+<link rel="canonical" href="https://makefield.ai/blog/20261126-realtime-vote-web-cdn-blocked-screen-freeze/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="실시간 투표 웹 만들기, 외부 CDN 하나 막히자 발표 화면 숫자가 0에서 멈췄어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="행사 전날, AI랑 만든 투표 웹을 시험 166개로 돌렸어요. 서버 규칙도, 60명 동시 접속도, 인터넷 끊김 사고도 다 통과했는데 정작 화면을 멈춘 건 축포 효과랑 QR을 그려 주는 외부 라이브러리였습니다.">
+<meta property="og:url" content="https://makefield.ai/blog/20261126-realtime-vote-web-cdn-blocked-screen-freeze/">
+<meta property="og:image" content="https://makefield.ai/blog/20261126-realtime-vote-web-cdn-blocked-screen-freeze/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "실시간 투표 웹 만들기, 외부 CDN 하나 막히자 발표 화면 숫자가 0에서 멈췄어요", "datePublished": "2026-11-26", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261126-realtime-vote-web-cdn-blocked-screen-freeze/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">자동화 만들기</span><span>2026-11-26</span></div>
+<h1>실시간 투표 웹 만들기, 외부 CDN 하나 막히자 발표 화면 숫자가 0에서 멈췄어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_ 타이틀카드 — &quot;실시간 투표 웹 만들기 / 외부 CDN 하나 막히자 발표 화면이 멈췄어요&quot;" loading="lazy">
+<p>행사 전날, AI랑 만든 투표 웹을 시험 166개로 돌렸어요.<br>
+서버 규칙도, 60명 동시 접속도, 인터넷 끊김 사고도 다 통과했는데<br>
+정작 화면을 멈춘 건 <strong>축포 효과랑 QR을 그려 주는 외부 라이브러리</strong>였습니다.</p>
+<p><strong>실시간 투표 웹 만들기에서 외부 CDN(남의 서버에서 받아 오는 라이브러리)이 막히면, 표는 DB에 다 저장되는데 발표 화면의 투표 수만 0에서 안 움직일 수 있어요.</strong> 그래서 라이브러리를 앱 폴더 안으로 들여오고, 못 불러와도 투표 진행은 계속되게 고쳤습니다. 2026년 11월, 참가자 약 60명짜리 회사 행사 투표를 준비하며 실제로 재현하고 고친 일이에요.</p>
+<p>본업은 설비 시운전과 제어 쪽이에요.<br>
+웹은 비전문이라 코드는 AI가 짜고, 저는 &quot;어디서 터질까&quot;만 붙들고 있었습니다.</p>
+<h2>1. 만든 것: 공통 QR 하나로 폰 투표, 큰 화면엔 실시간 현황</h2>
+<p>요구는 단순했어요.</p>
+<ul><li>입구에 QR 하나 → 각자 폰으로 접속해서 이름 확인 후 투표</li><li>앞쪽 큰 화면엔 투표 수가 실시간으로 올라감</li><li>사회자가 클릭하면 결과 공개 + 축포</li></ul>
+<p>처음엔 회사 안 서버에 올리려 했는데, 폰에서 접속이 안 되는 걸 직접 확인하고 접었어요.<br>
+그래서 무료 클라우드 DB(Firebase 무료 플랜)로 옮겼습니다.<br>
+무료 플랜은 서버 함수를 못 써서, <strong>서버 코드 없이 DB 보안 규칙만으로</strong> 1인 1표·명단 대조·투표 단계 검사를 걸었어요.</p>
+<p>AI랑 며칠 고치면서 v1에서 v11까지 갔어요.<br>
+부문별 후보, 현장 재투표 허용, 동점이면 결선 투표까지..<br>
+기능이 늘수록 &quot;이거 당일에 안 터질까&quot;가 커지더라고요.</p>
+<h2>2. 실서버는 못 건드리니, 똑같은 서버를 하나 더 만들었어요</h2>
+<p>제가 AI에게 준 지시는 이거였어요.<br>
+&quot;절대 오류 없이, 전수점검 개념으로.&quot;</p>
+<p>문제는 실서버 주소를 이미 사람들에게 돌린 뒤였다는 거예요.<br>
+시험하겠다고 투표를 열었다 닫았다 하면, 미리 접속해 둔 폰들이 같이 흔들립니다.</p>
+<p>그래서 <strong>복제 서버</strong>를 띄웠어요.</p>
+<ul><li>내 PC에 Firebase 에뮬레이터(로컬 가짜 DB) 실행 — 자바(JDK 21) 휴대용 버전으로</li><li>실서버의 설정·명단을 그대로 복사해서 넣음</li><li>헤드리스 브라우저(화면 없이 도는 크롬)로 폰·발표 화면을 흉내 내서 시나리오 실행</li><li>실서버에는 읽기만 하는 확인 11개만</li></ul>
+<p>시운전할 때 실제 설비를 돌리기 전에 모의로 먼저 부숴 보는 것과 같은 감각이었어요.</p>
+<img src="img/02_clone_server.png" alt="02_ 왼쪽 상자 &#x27;실서버 — 주소 이미 공유됨&#x27;, 잉크 자물쇠 표시와 &#x27;읽기만 11개&#x27;. 오른쪽 상자 &#x27;복제 서버(내 PC 에뮬레이터) — 같은 설정·명단 복사&#x27;, 그 아래 작은 카드들 &#x27;폰 흉내 30대&#x27; &#x27;발표 화면&#x27; &#x27;사고 상황&#x27;. 가운데 잉크 화살표 &#x27;설정 복사&#x27;. 빨간 펜 메모 &#x27;여기서만 부순다&#x27;" loading="lazy">
+<h2>3. 시험 166개, 이렇게 나눴어요</h2>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>개수</th><th>대표 확인 내용</th></tr></thead><tbody><tr><td>DB 보안 규칙</td><td>41</td><td>중복 투표·명단 밖 이름 거부, 같은 사람 3기기 동시 제출 → 1건만 저장</td></tr><tr><td>정상 행사 흐름</td><td>41</td><td>미리 접속한 폰이 시작 순간 자동 전환, 새로고침해도 완료 유지</td></tr><tr><td>현장 사고</td><td>30</td><td>제출 순간 인터넷 끊김, 발표 화면 2대 동기, 마감과 동시 제출</td></tr><tr><td>동점·결선·0표</td><td>23</td><td>동점 → 결선 이름 자동 채움, 한 부문 0표 처리</td></tr><tr><td>동시 접속</td><td>8</td><td>폰 30대(느린 3G 2대·카톡 브라우저 2대) + 30명 동시</td></tr><tr><td>관리자 화면</td><td>9</td><td>실수로 저장 눌러도 명단·기록 불변</td></tr><tr><td>외부 CDN 차단</td><td>3</td><td>라이브러리 서버가 막힌 상태에서 투표·현황</td></tr><tr><td>실서버(읽기만)</td><td>11</td><td>배포 파일 응답, 대기 화면, DB 쓰기 0</td></tr></tbody></table></div>
+<p>숫자도 몇 개 남았어요.<br>
+60명 동시 제출은 0.65초 만에 전원 저장됐고, 폰 30대 + 30명 동시 시험에서 가장 늦은 저장이 6.9초였습니다.<br>
+여기까진 순조로웠죠.</p>
+<h2>4. 걸린 건 축포였어요 — CDN 차단 시험에서만 재현</h2>
+<p>발표 화면은 QR 그리기와 축포 효과를 외부 CDN 두 곳에서 받아 오고 있었어요.<br>
+&quot;행사장 인터넷이 그 주소만 막으면?&quot;을 흉내 내려고, 헤드리스 브라우저에서 그 두 주소 요청만 끊었습니다.</p>
+<pre><code>const BL = [&quot;cdn.jsdelivr.net&quot;, &quot;cdnjs.cloudflare.com&quot;];
+await p.setRequestInterception(true);
+p.on(&quot;request&quot;, (q) =&gt; (BL.some((h) =&gt; q.url().includes(h)) ? q.abort() : q.continue()));</code></pre>
+<p>결과는 이랬어요.</p>
+<ul><li>폰: &quot;투표 완료&quot; 정상</li><li>DB: 표 정상 저장</li><li>발표 화면: <strong>투표 수가 0에서 안 움직임</strong> (재현 확인)</li></ul>
+<p>표는 다 들어가는데 화면만 멈춰 있으면, 사회자 입장에선 &quot;투표가 안 되고 있다&quot;와 구별이 안 돼요.<br>
+보고서에 &#x27;치명&#x27;으로 올린 건 이 한 건이었습니다.</p>
+<p>고친 건 두 가지예요.</p>
+<pre><code>&lt;script src=&quot;vendor/qrcode.min.js?v=11&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;vendor/confetti.browser.min.js?v=11&quot;&gt;&lt;/script&gt;
+const fx = (o) =&gt; { try { if (window.confetti) window.confetti(o); } catch (e) {} }; // 축포 실패해도 진행 계속</code></pre>
+<p>라이브러리 파일을 앱 폴더(vendor/) 안으로 옮기고, 축포·QR 호출은 실패해도 넘어가게 감쌌어요.<br>
+같은 차단 상태로 다시 돌리니 3개 전부 통과했습니다.<br>
+여러분이 만든 화면에도 외부에서 받아 오는 &quot;장식품&quot;이 몇 개나 붙어 있나요?</p>
+<img src="img/03_cdn_before_after.png" alt="03_ 위쪽 &#x27;고치기 전&#x27; — 발표 화면 카드에 큰 숫자 &#x27;0&#x27;, 외부 CDN 상자에서 오는 잉크 선이 빨간 X로 끊김, 빨간 펜 &#x27;표는 DB에 저장됨, 화면만 정지&#x27;. 아래쪽 &#x27;고친 뒤&#x27; — 라이브러리 상자가 앱 폴더 안으로 들어옴(vendor/), 발표 화면 숫자 &#x27;1 → 2&#x27; 올라감, 초록 체크 &#x27;축포 실패해도 진행&#x27;" loading="lazy">
+<h2>5. 나머지 발견 3건과, 시험 못 한 2건</h2>
+<p>치명은 아니어도 당일이면 사고였을 것들이에요.</p>
+<ul><li>투표 순간 인터넷이 끊기면 &quot;전송 중…&quot;만 떠 있음 → 창 닫으면 표 유실 → 4초 뒤 &quot;연결 대기 중… 창을 닫지 마세요&quot; 안내 추가</li><li>발표 화면에서 Backspace = 이전 단계 → 실수 한 번에 결과 화면이 마감 화면으로 돌아감 → Backspace 기능 제거</li><li>일부 기기에서 한글이 자모로 쪼개져 입력됨 → 본인인데 &quot;명단에 없음&quot; → 이름을 NFC(유니코드 정규화)로 맞춰서 해결</li></ul>
+<p>그리고 <strong>시험 못 한 것도 못 했다고 적었어요.</strong></p>
+<ul><li>행사장 와이파이가 클라우드 접속을 막는지는 현장이라 시험 불가 → 공지에 &quot;LTE로 접속&quot; 권장, 행사 전 폰 1대로 대기 화면 먼저 확인</li><li>아이폰 사파리 실기기는 복제 서버 시험 범위 밖(크롬 계열만 흉내) → 당일 전에 아이폰 1대로 접속 확인</li></ul>
+<p>익명성도 하나 남겼어요. 화면엔 누가 누구를 찍었는지 안 보이지만, 관리자가 DB 콘솔에서 명단과 맞춰 보면 거꾸로 알 수 있는 구조예요. 그래서 안내 문구는 &quot;완전 익명&quot;이 아니라 <strong>&quot;화면에 표시 안 됨&quot;까지만</strong> 쓰기로 했습니다. 지난번 익명 설문 만들기 글에서 AI가 짚었던 &quot;실제로는 볼 수 있는데 못 본다고 적으면 기만&quot;이라는 선을 이번엔 처음부터 그었어요.</p>
+<p>이 글을 쓰는 시점은 행사 전날이라, 당일 결과는 아직 없어요.</p>
+<img src="img/04_checklist.png" alt="04_ 체크리스트 카드 &#x27;행사 전 끊어 볼 것&#x27; — 잉크 체크 4줄 &#x27;외부 CDN 끊기&#x27; &#x27;제출 순간 인터넷 끊기&#x27; &#x27;키보드 실수(Backspace)&#x27; &#x27;한글 자모 입력&#x27;, 그 아래 빨간 펜 상자 &#x27;시험 못 함 2건 → 당일 대응&#x27; &#x27;와이파이 차단 → LTE&#x27; &#x27;아이폰 사파리 → 실기기 1대 확인&#x27;" loading="lazy">
+<h2>6. 자주 묻는 질문</h2>
+<p><strong>Q. 실시간 투표 웹 만들기, 무료 플랜으로 60명 행사가 버티나요?</strong><br>
+제 경우엔 여유가 있었어요. Firebase 무료 한도는 하루 읽기 5만·쓰기 2만 건이고, 행사 예상은 수천 건 수준이었어요. 시험은 전부 복제 서버에서 해서 실서버 사용량은 0이었습니다.</p>
+<p><strong>Q. CDN을 쓰면 안 되는 건가요?</strong><br>
+그렇진 않아요. 다만 행사장·회사망처럼 내가 통제 못 하는 네트워크에서 돌 화면이라면, 꼭 필요한 라이브러리는 앱 안에 같이 두고 장식 기능은 실패해도 넘어가게 짜 두는 게 안전했어요. 무엇보다 &quot;그 주소를 끊어 보는 시험&quot;을 따로 두는 게 핵심이었습니다.</p>
+<p><strong>Q. AI한테 시험을 맡길 때 뭐라고 시켰나요?</strong><br>
+&quot;전수점검&quot;이라고 했더니 AI가 시나리오를 묶음별로 나눠 왔어요. 제가 한 일은 &quot;실서버는 건드리지 마&quot;, &quot;남의 서버가 막히면?&quot;처럼 범위를 정해 준 거였습니다. 외부 의존성 차단 묶음은 고작 3개였는데 치명타는 거기서 나왔어요.</p>
+<p>내가 짠 로직보다 남의 서버에서 받아 오던 축포가 더 위험했어요. 다음에 급하게 웹 도구를 만들면, 기능 시험보다 &quot;외부 주소 끊어 보기&quot;부터 돌릴 생각입니다.</p>
+<hr>
+<p>현장 엔지니어가 AI로 업무 도구를 급히 만들고 시험하는 과정은 makefield.ai에서도 이어서 정리하고 있어요.</p>
+<h2>참고</h2>
+<ul><li>Firebase 요금제·무료 한도(Firestore 일일 읽기 50,000·쓰기 20,000) → <a href="https://firebase.google.com/pricing" target="_blank" rel="noopener">https://firebase.google.com/pricing</a></li><li>실측: 2026년 11월 개인 작업 기록(행사 투표 웹 시험 보고서·점검 스크립트, 조직·행사명·인원 구성·주소 제외)</li></ul>
+<p>태그: #실시간투표웹만들기 #실시간투표만들기 #QR투표만들기 #투표웹 #행사투표 #CDN차단 #jsdelivr #외부라이브러리의존성 #Firebase #Firestore에뮬레이터 #puppeteer #헤드리스브라우저테스트 #웹서비스테스트 #AI코딩 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224493794091" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261126-cyber-insurance-physical-damage-gap/"><div class="d">← 이전 노트</div><div class="t">사이버보험이란? 해킹으로 공장 기계가 망가지면 어느 보험도 안 내줄 수 있는 이유</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
