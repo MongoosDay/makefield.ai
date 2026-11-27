@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>메일 회신 집계 AI로 했더니, &#x27;미회신 1팀&#x27;은 중복 저장 파일이었어요 | Field Notes · MakeField AI</title>
+<meta name="description" content="팀별로 돌아온 회신 메일을 AI한테 엑셀로 정리해 달라고 했어요. 결과표에 &quot;아직 회신 안 한 팀: 2팀&quot;이 찍혀 나왔고요. 그중 한 팀은 이미 답을 보냈더라고요. 회신이 없던 게 아니라, 제 폴더에 같은 메일 파일이 두 개 들어 있었던 거예요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261128-mail-reply-tally-ai-duplicate-file-not-missing/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="메일 회신 집계 AI로 했더니, &#x27;미회신 1팀&#x27;은 중복 저장 파일이었어요 | Field Notes · MakeField AI">
+<meta property="og:description" content="팀별로 돌아온 회신 메일을 AI한테 엑셀로 정리해 달라고 했어요. 결과표에 &quot;아직 회신 안 한 팀: 2팀&quot;이 찍혀 나왔고요. 그중 한 팀은 이미 답을 보냈더라고요. 회신이 없던 게 아니라, 제 폴더에 같은 메일 파일이 두 개 들어 있었던 거예요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261128-mail-reply-tally-ai-duplicate-file-not-missing/">
+<meta property="og:image" content="https://makefield.ai/blog/20261128-mail-reply-tally-ai-duplicate-file-not-missing/img/01_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "메일 회신 집계 AI로 했더니, '미회신 1팀'은 중복 저장 파일이었어요", "datePublished": "2026-11-28", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261128-mail-reply-tally-ai-duplicate-file-not-missing/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">AI 오답 노트</span><span>2026-11-28</span></div>
+<h1>메일 회신 집계 AI로 했더니, &#x27;미회신 1팀&#x27;은 중복 저장 파일이었어요</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_title.png" alt="01_ 타이틀카드 — &quot;메일 회신 집계 AI로 했더니 / &#x27;미회신 1팀&#x27;은 중복 저장 파일이었어요&quot;" loading="lazy">
+<p>팀별로 돌아온 회신 메일을 AI한테 엑셀로 정리해 달라고 했어요.<br>
+결과표에 &quot;아직 회신 안 한 팀: 2팀&quot;이 찍혀 나왔고요.<br>
+그중 한 팀은 이미 답을 보냈더라고요. <strong>회신이 없던 게 아니라, 제 폴더에 같은 메일 파일이 두 개 들어 있었던 거예요.</strong></p>
+<p><strong>AI로 메일 회신 집계를 하면 &quot;누가 빠졌다&quot;는 결론이 사람의 행동이 아니라 입력 파일 상태에서 나올 수 있습니다. 미회신을 재촉하기 전에 입력 파일에 중복·누락이 없는지부터 봐야 해요.</strong> 2026년 11월, 회신 메일 txt 파일로 집계표를 만들다 실제로 겪은 일입니다.</p>
+<p>더 얄궂은 건, AI가 그 중복을 <strong>처음부터 찾아 놓고 있었다</strong>는 거예요.</p>
+<h2>1. 메일 5통을 주고 &quot;엑셀로 집계해 줘&quot;</h2>
+<p>일은 단순했어요.</p>
+<p>팀마다 한 통씩 답을 받아야 하는 메일이 있었고,<br>
+도착한 회신을 txt 파일로 저장해서 1차, 2차, 3차.. 이렇게 번호를 붙였어요.<br>
+그렇게 모인 파일 5개를 AI한테 주고 &quot;팀별로 표 만들어 줘&quot; 한 게 시작입니다.</p>
+<p>첫 결과표 아래에 AI가 붙인 메모는 이랬어요.</p>
+<pre><code>[v1 특이사항 — AI 메모, 팀 이름 가림]
+- 2차 파일 = 4차 파일 (바이트 동일, 중복)
+- 1차 파일 상단 항목: 작성자 미기재
+- A팀 회신 파일 없음</code></pre>
+<p>명단이랑 맞춰 본 두 번째 판에서는 &quot;아직 회신 안 한 팀 2곳&quot;이 표에 들어갔어요.</p>
+<p>중복 메모는 표 아래 특이사항 칸에 조용히 남아 있었고,<br>
+저는 결과 칸의 &quot;미회신 2팀&quot;부터 봤어요.<br>
+둘이 같은 이야기라는 생각은 이때까지 아무도 안 했습니다. AI도, 저도요.</p>
+<p>현장 설비 일을 15년 하다 보니, 사람 손으로 하던 취합이 AI 한 줄로 끝나면 그게 그렇게 반가울 수가 없어요. 반가운 만큼 덜 의심하게 되더라고요.. 여러분도 메일 취합 같은 일, 요즘 AI한테 넘기고 계시죠?</p>
+<img src="img/02_duplicate_files.png" alt="02_ 파일 5개 카드가 가로로 놓임 &#x27;1차&#x27; &#x27;2차&#x27; &#x27;3차&#x27; &#x27;4차&#x27; &#x27;5차&#x27;. 2차와 4차 카드는 같은 내용 표시(잉크 &#x27;=&#x27; 기호로 연결)이고 빨간 펜 &#x27;바이트 동일&#x27;. 아래 표 칸 &#x27;미회신 2팀&#x27; 위에 빨간 펜 물음표. 하단 캡션 &#x27;중복 1건과 미회신 1건은 같은 사건이었다&#x27;" loading="lazy">
+<h2>2. &quot;그 팀 책임자 메일, 정말 없어?&quot;에서 뒤집혔어요</h2>
+<p>미회신으로 찍힌 팀 하나가 걸렸어요.<br>
+그 팀엔 책임자가 분명히 있는데, 회신이 하나도 없다는 게요.</p>
+<p>그래서 물었어요. &quot;그 팀 책임자 있잖아, 메일 없어?&quot;</p>
+<p>AI가 원문 5개를 전부 검색해서 돌려준 결과는 이랬습니다.</p>
+<pre><code>[원문 5개 검색 — 그 팀 책임자]
+- 요청 메일의 수신(To)에 있음
+- 다른 사람 회신의 참조(Cc)에 있음
+- 본인이 보낸 회신: 없음</code></pre>
+<p>여기까지는 &quot;역시 회신 안 했네&quot;로 끝날 수 있었어요.<br>
+그런데 AI가 이번엔 앞서 적어 둔 메모를 끌어왔습니다. <strong>&quot;2차와 4차가 똑같은데, 원래 그 자리 중 하나가 이분 회신이었을 수 있다.&quot;</strong></p>
+<p>메일함을 다시 열어 보니 맞았어요.<br>
+그 책임자의 회신은 와 있었어요. txt로 옮기다가 다른 사람 메일을 한 번 더 저장한 걸로 보이는데, 정확히 어느 단계에서 꼬였는지는 확인 못 했습니다. 2차 파일 자리를 진짜 회신으로 바꿔 넣으니 <strong>미회신은 2팀에서 1팀으로</strong> 줄었습니다.</p>
+<p>남은 1팀의 회신도 나중에 6번째 파일로 들어와서, 최종적으로는 전 팀 회신으로 닫혔어요.</p>
+<img src="img/03_question_connects.png" alt="03_ 왼쪽 카드 &#x27;사실 1: 2차=4차 중복&#x27; 오른쪽 카드 &#x27;사실 2: 미회신 2팀&#x27;. 처음엔 둘 사이에 빨간 점선 &#x27;연결 안 됨&#x27;. 아래쪽에 질문 말풍선 &#x27;그 사람 메일 없어?&#x27;에서 초록 화살표가 두 카드를 잇고 &#x27;미회신 1팀&#x27; 초록 체크. 캡션 &#x27;사실은 AI가 찾았고, 잇는 건 질문이었다&#x27;" loading="lazy">
+<h2>3. 같은 표에서 AI가 지어낸 칸도 하나 있었어요</h2>
+<p>회신 문제를 고치는 동안 표에 사람마다 직급을 채우는 작업도 같이 했어요.<br>
+여기서 두 번째 함정이 나왔습니다.</p>
+<p>세 번째 판까지 한 사람의 직급이 <strong>그럴듯한 값으로 채워져</strong> 있었어요.<br>
+나중에 업무 문서를 전수 검색해 보니 그 사람은 문서마다 맡은 자리(직책)만 나오고, 직급은 한 번도 적힌 적이 없었습니다. 근거 0건짜리 칸이었던 거죠. 그 칸은 비워 두고, 제가 확인해서 채웠어요.</p>
+<p>다른 한 사람은 반대로 근거가 둘이었어요.<br>
+인력표엔 A 직급, 메일 서명엔 B 직급.<br>
+AI는 업무 문서에서 등장 횟수를 셌고(B 30회, A 6회), 최종 확인은 제가 했어요. B가 맞았습니다.</p>
+<p>같은 작업 안에서 AI가 잘한 것도 있어요. 1차 파일 상단의 작성자 없는 항목은 제가 알려 줄 때까지 &quot;미기재&quot;로 비워 뒀고, 원문 오타로 보이는 단어도 고치지 않고 원문 그대로 뒀거든요. <strong>모를 때 비우는 칸과 모를 때 채우는 칸이 한 표 안에 섞여 있었던 셈이에요.</strong></p>
+<p>덤으로 하나 더. 두 번째 판 엑셀을 제가 열어 둔 채로 수정을 시켰더니 저장이 안 돼서 파일 이름을 하나 더 올려 새로 뽑았어요. 엑셀 자동화 해 보신 분들은 다 한 번씩 겪는 그거요.</p>
+<h2>4. 자주 묻는 질문</h2>
+<p><strong>Q. 메일 회신 집계에서 중복 파일은 어떻게 바로 찾나요?</strong><br>
+txt 같은 일반 파일이면 해시값을 비교하면 돼요. 내용이 한 글자라도 다르면 해시가 달라지고, 같으면 똑같이 나옵니다. 윈도우 PowerShell에선 아래 한 줄이면 폴더 안 파일 해시가 나란히 찍혀요.</p>
+<pre><code>Get-FileHash .\*.txt | Sort-Object Hash | Format-Table Hash, Path</code></pre>
+<p>마이크로소프트 공식 문서에도 &quot;두 파일의 해시값이 같으면 파일 내용도 같다(If the hash values of two files are identical, the contents of the files are also identical)&quot;고 적혀 있어요. 기본 알고리즘은 SHA256입니다. 같은 해시가 두 줄 붙어 나오면 그게 중복입니다. 단, 워드(docx)는 내용이 같아도 다시 저장만 하면 해시가 바뀔 수 있어서 얘기가 달라요. 그건 <a href="https://blog.naver.com/makefield_ai/224397671273" target="_blank" rel="noopener">예전 글</a>에 따로 정리했어요.</p>
+<p><strong>Q. AI가 &quot;중복 있음&quot;이라고 알려 줬는데 왜 놓쳤나요?</strong><br>
+메모와 결론이 따로 적혀 있었기 때문이에요. AI는 &quot;중복&quot;을 특이사항 칸에, &quot;미회신 2팀&quot;을 결과 칸에 각각 적었고, 둘을 잇는 문장은 없었어요. 저도 둘 다 읽고 잇지 않았고요. 잇게 만든 건 &quot;그 사람 메일 없어?&quot;라는 구체적인 질문이었습니다.</p>
+<p><strong>Q. 그럼 AI한테 처음부터 뭐라고 시키면 되나요?</strong><br>
+제가 지금 쓰는 순서는 이래요. ①&quot;입력 파일끼리 중복·빈 파일부터 확인해&quot; ②&quot;결론 중에 입력 상태 때문에 생길 수 있는 게 있으면 같이 적어&quot; ③&quot;근거 문서가 없는 칸은 빈칸으로 둬&quot;. 셋 다 이번에 실제로 막혔던 자리예요.</p>
+<h2>5. AI 집계 결과, 이 순서로 의심해요</h2>
+<div class="table-wrap"><table><thead><tr><th>AI가 낸 결론</th><th>먼저 볼 것</th><th>이번에 실제로 나온 것</th></tr></thead><tbody><tr><td>&quot;○팀 미회신&quot;</td><td>입력 파일 중복·누락</td><td>2차=4차 중복 → 미회신 2팀이 1팀</td></tr><tr><td>빈칸 없이 다 채운 표</td><td>칸마다 근거 문서 개수</td><td>직급 1칸 근거 0건</td></tr><tr><td>문서마다 다른 값</td><td>등장 횟수 + 사람 확인</td><td>30회 vs 6회, 사람이 확정</td></tr></tbody></table></div>
+<img src="img/04_checklist.png" alt="04_ 체크리스트 카드 &#x27;AI 집계표 받으면&#x27; — 잉크 체크 3줄 &#x27;입력 파일 중복·누락 먼저&#x27; &#x27;근거 0건 칸은 빈칸&#x27; &#x27;값 충돌은 횟수 보고 사람이 확정&#x27;. 아래 빨간 펜 &#x27;재촉 메일은 그다음&#x27;" loading="lazy">
+<p>하마터면 이미 답을 보낸 사람한테 &quot;회신 부탁드립니다&quot; 메일을 보낼 뻔했어요. 그 메일이 나갔으면 틀린 건 AI가 아니라 제 폴더였는데도, 상대는 저를 기억했겠죠.</p>
+<p>AI가 사실을 찾아 주는 속도는 확실히 빨라요. 다만 찾아 놓은 사실 두 개를 하나로 엮는 건, 아직은 제 질문 몫이더라고요.</p>
+<hr>
+<p>엑셀·메일처럼 매일 하는 일에 AI를 붙이다 걸린 장면들은 makefield.ai에 &#x27;실제로 걸린 곳&#x27; 위주로 추려 두고 있어요.</p>
+<h2>참고</h2>
+<ul><li>Microsoft 공식 문서 — Get-FileHash (PowerShell): 해시값으로 두 파일 내용이 같은지 확인 → <a href="https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash" target="_blank" rel="noopener">https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash</a></li><li>실측: 2026년 11월 개인 작업 기록(회신 메일 집계 v1~v5 과정, 조직·인물·목적·결과값 제외)</li></ul>
+<p>태그: #메일회신집계 #메일취합 #회신현황 #엑셀집계 #AI엑셀집계 #AI집계오류 #파일중복확인 #GetFileHash #해시비교 #데이터정리 #업무자동화 #AI검증 #빈칸규칙 #AI오답노트 #MakeFieldAI</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224495240052" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261127-professor-lecture-video-class-notes/"><div class="d">← 이전 노트</div><div class="t">교수님 영상, 수업 정리해주는 AI보다 받아 적은 텍스트가 먼저예요</div></a><span></span></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
