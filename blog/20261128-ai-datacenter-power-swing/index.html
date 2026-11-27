@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 데이터센터 전력 출렁임이란? GPU가 발전기와 전력망을 흔드는 이유와 돈의 흐름 | Field Notes · MakeField AI</title>
+<meta name="description" content="AI 데이터센터는 전기를 많이 쓰는 것으로만 알려져 있어요. 그런데 업계가 요즘 더 골치 아파하는 건 양이 아니라 &#x27;모양&#x27;, 이른바 데이터센터 전력 출렁임입니다. 전기 사용량이 짧은 주기로 크게 올랐다 내렸다를 반복하거든요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261128-ai-datacenter-power-swing/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 데이터센터 전력 출렁임이란? GPU가 발전기와 전력망을 흔드는 이유와 돈의 흐름 | Field Notes · MakeField AI">
+<meta property="og:description" content="AI 데이터센터는 전기를 많이 쓰는 것으로만 알려져 있어요. 그런데 업계가 요즘 더 골치 아파하는 건 양이 아니라 &#x27;모양&#x27;, 이른바 데이터센터 전력 출렁임입니다. 전기 사용량이 짧은 주기로 크게 올랐다 내렸다를 반복하거든요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261128-ai-datacenter-power-swing/">
+<meta property="og:image" content="https://makefield.ai/blog/20261128-ai-datacenter-power-swing/img/01_.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI 데이터센터 전력 출렁임이란? GPU가 발전기와 전력망을 흔드는 이유와 돈의 흐름", "datePublished": "2026-11-28", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261128-ai-datacenter-power-swing/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">Next Field</span><span>2026-11-28</span></div>
+<h1>AI 데이터센터 전력 출렁임이란? GPU가 발전기와 전력망을 흔드는 이유와 돈의 흐름</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/01_.png" alt="타이틀카드 — &quot;AI 데이터센터 전력 출렁임이란? / GPU가 발전기와 전력망을 흔드는 이유와 돈의 흐름&quot;" loading="lazy">
+<p>AI 데이터센터는 전기를 많이 쓰는 것으로만 알려져 있어요. 그런데 업계가 요즘 더 골치 아파하는 건 양이 아니라 &#x27;모양&#x27;, 이른바 데이터센터 전력 출렁임입니다. 전기 사용량이 짧은 주기로 크게 올랐다 내렸다를 반복하거든요.</p>
+<p><strong>한 줄 요약: AI 학습용 GPU 수만 개가 계산과 통신을 동시에 번갈아 하면서 데이터센터 전력이 짧은 주기로 크게 출렁이고(마이크로소프트·오픈AI·엔비디아 공동 논문 2025-08), 이 출렁임은 미국 xAI 데이터센터 가스터빈에 초당 여러 번 10~20MW의 흔들림을 줬다(세미애널리시스 2026-09).</strong> 미국 국립연구소는 공진 주파수에 맞으면 50MW 규모 출렁임만으로도 광역 전력 동요가 날 수 있다고 경고했어요(PNNL 2026).</p>
+<p>이 글은 2026년 11월 기준 공개 자료로 이 현상이 무엇인지, 왜 지금 문제가 됐는지, 이걸 잡는 데 누가 돈을 쓰고 누가 버는지 차례로 풀어 봅니다.</p>
+<h2>1. 데이터센터 전력 출렁임이란 무엇인가요</h2>
+<p><strong>데이터센터 전력 출렁임이란 AI 학습 중 수많은 GPU가 한꺼번에 전력을 많이 썼다가 한꺼번에 적게 쓰는 일이 반복돼, 시설 전체의 전력 사용량이 파도처럼 오르내리는 현상이다.</strong></p>
+<blockquote>💡 GPU — AI 계산을 하는 칩. AI 학습은 이 칩 수만 개를 한 팀처럼 묶어 돌린다.</blockquote>
+<p>AI 모델을 학습시킬 때 GPU들은 &#x27;각자 계산 → 서로 결과 주고받기(통신)&#x27;를 박자 맞춰 반복해요. 계산할 땐 전력을 많이 쓰고, 결과를 주고받으며 기다릴 땐 적게 씁니다. 마이크로소프트·오픈AI·엔비디아 연구진은 이 동기화된 박자 때문에 전력이 크게 흔들리고, 학습 작업이 커질수록 흔들림도 커진다고 밝혔어요(마이크로소프트·오픈AI·엔비디아 공동 논문 2025-08).</p>
+<p>비유하면 이래요. 아파트 한 동이 동시에 에어컨을 켰다 끄는 일을 짧은 간격으로 반복한다고 생각해 보세요. 한 집이면 아무 일 없지만, 수만 집이 박자를 맞추면 변압기와 발전소가 그 박자를 그대로 받아냅니다.</p>
+<img src="img/02_.png" alt="위쪽에 잉크 선으로 그린 톱니 모양 전력 그래프(높은 칸 &#x27;계산&#x27;, 낮은 칸 &#x27;통신·대기&#x27;), 오른쪽 위 빨간 손글씨 &#x27;수만 개가 같은 박자&#x27;. 아래쪽 잉크 박스 3개 가로 &#x27;GPU 수만 개&#x27; → &#x27;데이터센터 전력 계량점&#x27; → &#x27;발전기·전력망&#x27;, 마지막 박스만 빨간 테두리. 하단 캡션 &#x27;출처: 마이크로소프트·오픈AI·엔비디아 공동 논문 2025-08&#x27;" loading="lazy">
+<p>그림을 글로 옮기면, GPU 한 개의 작은 출렁임이 수만 개로 겹치면서 시설 전체가 큰 톱니 모양으로 오르내리고, 그 부담이 맨 끝의 발전기와 전력망에 쌓여요.</p>
+<h2>2. 왜 지금 문제가 됐나요</h2>
+<p><strong>데이터센터가 커지면서 출렁임의 크기가 발전기와 전력망이 버티도록 설계된 범위를 넘기 시작했고, 실제 고장 사례와 규제 경보가 2026년에 잇따랐기 때문이다.</strong></p>
+<div class="table-wrap"><table><thead><tr><th>어디서</th><th>무슨 일이</th><th>출처</th></tr></thead><tbody><tr><td>xAI &#x27;콜로서스 1&#x27;(미국 멤피스)</td><td>가스터빈이 초당 여러 번 10~20MW씩 흔들리는 부하를 받아 축의 비틀림 진동이 생기고 축 수명이 깎였다고 분석</td><td>세미애널리시스 2026-09</td></tr><tr><td>같은 곳</td><td>가스터빈에 균열이 생겼다는 보도(익명 관계자, 회사는 답하지 않음)</td><td>블룸버그 보도, 포춘 2026-08 게재</td></tr><tr><td>여러 데이터센터</td><td>출렁임을 받아내던 배터리를 몇 주~몇 달 만에 교체한 사례 보도</td><td>블룸버그 보도, 포춘 2026-08 게재</td></tr><tr><td>미국 전력망</td><td>230kV 송전선 고장 때 데이터센터형 부하 약 1,500MW가 한꺼번에 빠진 사례</td><td>유틸리티 다이브 2026-05</td></tr></tbody></table></div>
+<blockquote>💡 비틀림 진동 — 발전기 축이 앞뒤로 비틀리며 떠는 현상. 철사를 계속 비틀었다 풀면 끊어지듯, 반복되면 축이 피로로 상한다.</blockquote>
+<blockquote>💡 kV / MW — kV는 전압 단위(1kV=1,000V), MW는 전력 크기 단위(1MW=1,000kW). 1,500MW는 대형 원전 1기 반 정도다.</blockquote>
+<p>전력망 쪽도 움직였어요. 북미 전력망 신뢰도 기관 NERC는 2026년 5월 4일 데이터센터 같은 &#x27;연산 부하&#x27;를 대상으로 최고 단계인 레벨3 경보를 냈고, 모델링·시운전·보호·제어 등 7개 필수 조치에 대해 8월 3일까지 답하라고 요구했어요. 다만 이 조치는 벌칙이 붙는 의무 기준은 아닙니다(유틸리티 다이브 2026-05, 모건루이스 2026-05).</p>
+<blockquote>💡 NERC — 북미 전력망이 안 무너지도록 신뢰도 기준을 만드는 기관. 레벨3 경보는 &#x27;바로 조치하라&#x27;는 가장 높은 단계 경고다.</blockquote>
+<p>미국 퍼시픽노스웨스트 국립연구소(PNNL)는 AI 시설이 특정 주파수에 몰린 큰 출렁임을 오래 만든다는 점이 기존 부하와 다르다고 짚었어요. 그리고 <strong>공진 주파수에서 50MW의 강제 진동만으로도 광역 전력 동요와 &#x27;N-1&#x27; 안전 기준 위반이 생길 수 있다</strong>고 보고서에 적었습니다. 이 위험을 걸러 내는 공개 파이썬 도구 &#x27;RATLLE&#x27;도 함께 냈어요(PNNL 2026).</p>
+<blockquote>💡 강제 진동·공진 — 그네를 박자 맞춰 밀면 작은 힘으로도 크게 흔들리듯, 데이터센터가 전력망의 고유 박자에 맞춰 흔들면 작은 출렁임이 크게 번지는 현상.</blockquote>
+<blockquote>💡 N-1 — 설비 하나가 고장 나 빠져도 전력망이 버텨야 한다는 기본 안전 기준.</blockquote>
+<h2>3. 돈의 흐름 — 누가 사고 누가 파나요</h2>
+<p><strong>출렁임을 흡수하는 장치(배터리·커패시터·UPS)를 사는 쪽은 데이터센터 운영사와 자가발전 개발사이고, 파는 쪽은 칩 회사·배터리 회사·전원 장비 회사다.</strong> 흡수 장치를 어디에 두느냐에 따라 돈이 다른 곳으로 흘러요.</p>
+<img src="img/03_.png" alt="왼쪽 빨간 박스 &#x27;출렁이는 AI 학습 부하&#x27;. 오른쪽으로 잉크 화살표 3개가 층별로 갈라짐. 1층 잉크 박스 &#x27;랙 안 — 전원부 커패시터·전력 상한(칩 회사)&#x27;, 2층 잉크 박스 &#x27;건물 안 — UPS·배터리 제어(전원 장비 회사)&#x27;, 3층 잉크 박스 &#x27;부지 — 대형 배터리 저장장치(배터리 회사)&#x27;. 맨 오른쪽 초록 박스 &#x27;발전기·전력망이 보는 부하는 평평하게&#x27;. 하단 빨간 손글씨 &#x27;어디서 흡수하나 = 누가 버나&#x27;. 하단 캡션 &#x27;출처: 엔비디아 2025, 세미애널리시스 2026-09, 버티브&#x27;" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>흡수하는 곳</th><th>파는 쪽(예시)</th><th>확인된 숫자·내용</th></tr></thead><tbody><tr><td>서버 랙 안</td><td>엔비디아</td><td>GB300 NVL72 전원부에 GPU당 65J 커패시터, 전원 장치 부피의 약 절반이 커패시터. 전력망이 보는 최대 수요를 최대 30% 줄인다고 주장(엔비디아 개발자 블로그 2025)</td></tr><tr><td>건물 안 UPS</td><td>버티브·슈나이더 일렉트릭 등</td><td>UPS 안에서 급한 부하 변화를 처리해 배터리 반복 충·방전을 줄이는 제어 기능을 판매(버티브 백서, 회사 주장)</td></tr><tr><td>부지 배터리 저장장치</td><td>테슬라 등</td><td>xAI가 콜로서스 1 출렁임 문제로 테슬라 메가팩 150MW를 1단계로 설치(세미애널리시스 2026-09)</td></tr><tr><td>자가발전 개발사</td><td>배터리 공급망 전반</td><td>리버티 에너지 고객 데이터센터의 배터리 출력이 평균 가스발전 용량의 50%(세미애널리시스 2026-09, 회사 CFO 2026-07 발언 인용)</td></tr></tbody></table></div>
+<blockquote>💡 J(줄) — 에너지 단위. 65J는 100W 전구를 약 0.65초 켤 수 있는 양으로, 짧은 출렁임을 메우는 &#x27;작은 물탱크&#x27;다.</blockquote>
+<blockquote>💡 UPS(무정전 전원 장치) — 정전되는 순간 배터리로 전기를 이어 주는 장치. 데이터센터마다 기본으로 있다.</blockquote>
+<blockquote>💡 BESS(배터리 에너지 저장장치) — 컨테이너만 한 배터리 묶음. 남는 전기를 담았다가 모자랄 때 내보낸다. 테슬라 &#x27;메가팩&#x27;이 대표 제품이다.</blockquote>
+<p>마지막 줄을 보면 규모가 짐작돼요. 가스발전 1GW를 짓는 자가발전 데이터센터라면 배터리도 출력 기준 약 0.5GW를 함께 붙인다는 뜻입니다(단순 계산, 리버티 에너지 고객 평균 기준). 출렁임이 &#x27;발전소를 하나 더 사는 만큼의 배터리&#x27;를 부르는 셈이에요.</p>
+<p>엔비디아의 접근은 방향이 달라요. 작업 시작 때 전력 상한을 걸어 천천히 올리고, 작업이 끝날 땐 GPU를 일부러 더 돌려(&#x27;파워 번&#x27;) 전력이 뚝 떨어지지 않게 합니다. 엔비디아는 이렇게 하면 시설을 &#x27;최대치&#x27;가 아니라 &#x27;평균치&#x27;에 가깝게 설계할 수 있다고 설명했어요(엔비디아 개발자 블로그 2025).</p>
+<blockquote>※ 위 기업명과 수치는 산업 구조를 설명하기 위한 예시입니다. 특정 종목의 매수·매도를 권하는 글이 아닙니다.</blockquote>
+<h2>4. 누가 이 문제를 풀고 있나요</h2>
+<p><strong>칩 회사는 랙 안에서, 국립연구소와 전력 기관은 전력망 규칙으로, 데이터센터 운영사는 배터리로 각각 다른 층을 맡고 있다.</strong></p>
+<ul><li><strong>칩·클라우드 회사</strong>: 마이크로소프트는 엔비디아와 함께 GB200부터 전력 평활 기능을 개발했고, 구글·메타와 대규모 AI 학습 전력 안정화의 공통 기준을 만드는 업계 작업을 시작했다고 밝혔어요(마이크로소프트 애저 블로그 2025).</li><li><strong>국립연구소</strong>: PNNL이 데이터센터 진동 위험을 걸러 내는 공개 도구 RATLLE을 냈습니다(PNNL 2026).</li><li><strong>전력 기관</strong>: NERC는 2026년 12월 31일까지 등록 기준과 신뢰도 표준 개정안을 제출할 계획이라고 미국 연방에너지규제위원회(FERC)에 밝혔어요(유틸리티 다이브 2026-05).</li><li><strong>데이터센터 신뢰도 기관</strong>: 업타임 인스티튜트는 반복되는 출렁임의 주원인이 AI &#x27;학습&#x27;이고, &#x27;추론&#x27;은 비슷한 패턴을 만들지 않는다고 정리했어요(업타임 인스티튜트 2026-07).</li></ul>
+<blockquote>💡 학습 vs 추론 — 학습은 AI를 가르치는 단계(GPU 수만 개가 박자 맞춰 일함), 추론은 다 배운 AI가 질문에 답하는 단계(요청이 제각각 들어옴).</blockquote>
+<h2>5. 언제 풀리나요, 한계는 무엇인가요</h2>
+<p><strong>칩 쪽 평활 기능과 전력망 규칙이 2026~2027년에 함께 자리 잡는 중이지만, 둘 다 문제를 일부만 덜어 준다.</strong></p>
+<ul><li><strong>칩 평활은 짧은 출렁임용이다</strong>: GPU당 65J는 짧은 출렁임용이에요. 전력망과 떨어져 혼자 도는 데이터센터의 보호·재기동 문제까지 없애진 못합니다(추정).</li><li><strong>30%는 최대치다</strong>: 엔비디아 자료는 &#x27;최대 30%&#x27;라고 적었고, 회사 시험 결과예요(엔비디아 개발자 블로그 2025). 고온에서 전해 커패시터 신뢰성이 떨어질 수 있다는 지적도 있습니다(EE뉴스 유럽 2025).</li><li><strong>배터리만 늘리면 고장 전류가 약해진다</strong>: 엔진·터빈은 단락 사고 때 정격의 5~10배 전류를 흘려 차단기를 확실히 끊지만, 배터리·태양광 같은 인버터 기반 전원은 약 1.2~2배에 그쳐 기존 과전류 보호의 여유가 사라질 수 있어요(세미애널리시스 2026-09).</li><li><strong>피해 보도는 익명 출처가 섞여 있다</strong>: 콜로서스 터빈 균열과 배터리 조기 교체는 관계자 전언 보도라 회사 공식 확인은 아닙니다(블룸버그 보도, 포춘 2026-08 게재).</li><li><strong>NERC 경보는 의무가 아니다</strong>: 레벨3 필수 조치는 벌칙이 없는 권고이고, 의무 표준은 아직 만드는 중이에요(모건루이스 2026-05).</li></ul>
+<blockquote>💡 인버터 — 배터리의 직류 전기를 우리가 쓰는 교류로 바꾸는 전력전자 장치. 전자 회로가 전류를 제한해서 사고 때 큰 전류를 못 흘린다.</blockquote>
+<blockquote>💡 고장 전류 — 합선(단락) 사고 때 순간적으로 흐르는 큰 전류. 이게 커야 차단기가 &#x27;사고다&#x27;를 알아채고 끊는다.</blockquote>
+<img src="img/04_.png" alt="왼쪽 잉크 박스 &#x27;엔진·터빈 — 사고 때 정격 5~10배 전류&#x27;, 그 아래 초록 체크 &#x27;차단기 확실히 작동&#x27;. 오른쪽 빨간 박스 &#x27;배터리·인버터 — 약 1.2~2배&#x27;, 그 아래 빨간 손글씨 &#x27;차단기가 못 알아챌 수 있다&#x27;. 하단 캡션 &#x27;출처: 세미애널리시스 2026-09&#x27;" loading="lazy">
+<p>그림을 글로 정리하면, 출렁임을 잡으려고 배터리를 늘릴수록 사고 때 흐르는 전류가 작아져 보호 장치 설계를 다시 해야 한다는 숙제가 생겨요. 하나를 고치면 다른 칸이 움직이는 구조입니다.</p>
+<h2>자주 묻는 질문</h2>
+<p><strong>Q. 챗GPT에 질문할 때도 전력이 이렇게 출렁이나요?</strong><br>
+업타임 인스티튜트는 반복되는 큰 출렁임의 주원인을 AI 학습으로 봤고, 추론(질문에 답하는 단계)은 비슷한 패턴을 만들지 않는다고 했어요(업타임 인스티튜트 2026-07).</p>
+<p><strong>Q. 전력 출렁임이 정전으로 이어질 수 있나요?</strong><br>
+PNNL은 공진 주파수에서 50MW 강제 진동만으로도 광역 전력 동요와 N-1 기준 위반이 생길 수 있다고 분석했어요(PNNL 2026). 실제 정전 사례로 확인된 건 아니고, 위험 평가 단계입니다.</p>
+<p><strong>Q. 엔비디아 GB300이 나오면 문제가 끝나나요?</strong><br>
+일부만 줄어요. 엔비디아는 최대 수요를 최대 30% 줄인다고 주장하지만(엔비디아 개발자 블로그 2025), 짧은 출렁임을 메우는 완충이라 부지 배터리와 보호 설계 문제는 남습니다(추정).</p>
+<h2>오늘의 용어 정리</h2>
+<ul><li><strong>데이터센터 전력 출렁임</strong> — AI 학습 중 GPU들이 박자 맞춰 전력을 썼다 줄였다 하며 시설 전력이 크게 오르내리는 현상</li><li><strong>GPU</strong> — AI 계산용 칩</li><li><strong>비틀림 진동</strong> — 발전기 축이 비틀리며 떠는 현상, 반복되면 축이 상함</li><li><strong>NERC / 레벨3 경보</strong> — 북미 전력 신뢰도 기관 / 그 기관의 최고 단계 경고</li><li><strong>강제 진동·공진</strong> — 외부가 박자 맞춰 흔들어 작은 힘이 크게 번지는 현상</li><li><strong>N-1</strong> — 설비 하나가 빠져도 버텨야 하는 안전 기준</li><li><strong>J(줄)</strong> — 에너지 단위</li><li><strong>UPS</strong> — 정전 순간 배터리로 전기를 이어 주는 장치</li><li><strong>BESS</strong> — 대형 배터리 에너지 저장장치</li><li><strong>학습 / 추론</strong> — AI를 가르치는 단계 / 다 배운 AI가 답하는 단계</li><li><strong>인버터</strong> — 직류를 교류로 바꾸는 전력전자 장치</li><li><strong>고장 전류</strong> — 합선 사고 때 순간적으로 흐르는 큰 전류</li></ul>
+<p>지난 Next Field에서는 데이터센터가 직접 발전소를 지으면서 생긴 가스터빈 줄을 봤어요. 오늘은 그 발전소가 막상 돌아가기 시작하자 생긴 다음 숙제를 따라가 봤습니다. 출렁임은 칩 안에서 지우는 게 나을까요, 부지 배터리로 받는 게 나을까요?</p>
+<h2>출처</h2>
+<p><strong>[1] 마이크로소프트·오픈AI·엔비디아 공동 논문(2025-08)</strong> — AI 학습은 계산과 통신을 동기화해 번갈아 하며 GPU 전력이 크게 흔들리고, 작업이 커질수록 흔들림이 커진다는 분석과 소프트웨어·GPU·시설 단위 대책<br>
+→ <a href="https://arxiv.org/abs/2508.14318" target="_blank" rel="noopener">https://arxiv.org/abs/2508.14318</a></p>
+<p><strong>[2] 세미애널리시스(2026-09)</strong> — 콜로서스 1 가스터빈이 초당 여러 번 10~20MW 흔들림을 받아 비틀림 진동·축 수명 감소, 테슬라 메가팩 150MW 1단계 설치, 엔진·터빈 고장 전류 5~10배 대 인버터 기반 1.2~2배, 리버티 에너지 고객 배터리 출력 평균 가스 용량의 50%<br>
+→ <a href="https://newsletter.semianalysis.com/p/what-is-so-hard-about-behind-the" target="_blank" rel="noopener">https://newsletter.semianalysis.com/p/what-is-so-hard-about-behind-the</a></p>
+<p><strong>[3] 엔비디아 개발자 블로그(2025)</strong> — GB300 NVL72 전원부 GPU당 65J 커패시터, 시작 시 전력 상한·종료 시 파워 번, 최대 수요 최대 30% 감소 주장, 평균치 기준 설계 가능<br>
+→ <a href="https://developer.nvidia.com/blog/how-new-gb300-nvl72-features-provide-steady-power-for-ai/" target="_blank" rel="noopener">https://developer.nvidia.com/blog/how-new-gb300-nvl72-features-provide-steady-power-for-ai/</a></p>
+<p><strong>[4] PNNL(2026)</strong> — AI 시설은 특정 주파수에 몰린 큰 출렁임을 오래 만들고, 공진 주파수 50MW 강제 진동만으로 광역 전력 동요·N-1 위반 가능, 공개 도구 RATLLE<br>
+→ <a href="https://www.pnnl.gov/publications/methodology-evaluate-grid-reliability-impact-oscillations-induced-large-loads" target="_blank" rel="noopener">https://www.pnnl.gov/publications/methodology-evaluate-grid-reliability-impact-oscillations-induced-large-loads</a></p>
+<p><strong>[5] 유틸리티 다이브(2026-05)</strong> — NERC 2026년 5월 4일 레벨3 경보, 7개 필수 조치·8월 3일 답변 기한, 230kV 고장 때 데이터센터형 부하 약 1,500MW 이탈, 2026년 말까지 표준 개정안 제출 계획<br>
+→ <a href="https://www.utilitydive.com/news/nerc-issues-rare-level-3-alert-over-data-center-load-losses/819295/" target="_blank" rel="noopener">https://www.utilitydive.com/news/nerc-issues-rare-level-3-alert-over-data-center-load-losses/819295/</a></p>
+<p><strong>[6] 모건루이스(2026-05)</strong> — NERC 레벨3 필수 조치는 벌칙 없는 비의무 조치라는 법률 해설<br>
+→ <a href="https://www.morganlewis.com/blogs/powerandpipes/2026/05/nerc-alert-moves-data-centers-from-emerging-risks-to-planning-obligations" target="_blank" rel="noopener">https://www.morganlewis.com/blogs/powerandpipes/2026/05/nerc-alert-moves-data-centers-from-emerging-risks-to-planning-obligations</a></p>
+<p><strong>[7] 포춘(2026-08, 블룸버그 보도)</strong> — AI 출렁임으로 배터리·발전기·냉각 설비가 일찍 닳음, 배터리 몇 주~몇 달 내 교체 사례, 콜로서스 터빈 균열(익명 관계자)<br>
+→ <a href="https://fortune.com/2026/08/06/ais-volatile-power-demand-is-damaging-its-own-data-centers/" target="_blank" rel="noopener">https://fortune.com/2026/08/06/ais-volatile-power-demand-is-damaging-its-own-data-centers/</a></p>
+<p><strong>[8] 업타임 인스티튜트(2026-07)</strong> — 시설 단위 반복 출렁임의 주원인은 AI 학습, 추론은 비슷한 패턴을 만들지 않음<br>
+→ <a href="https://intelligence.uptimeinstitute.com/resource/handling-ai-power-fluctuations-root-cause" target="_blank" rel="noopener">https://intelligence.uptimeinstitute.com/resource/handling-ai-power-fluctuations-root-cause</a></p>
+<p><strong>[9] 마이크로소프트 애저 블로그(2025)</strong> — 엔비디아와 GB200 전력 평활 기능 공동 개발, 구글·메타와 AI 학습 전력 안정화 공통 기준 작업 시작<br>
+→ <a href="https://techcommunity.microsoft.com/blog/azurecompute/power-stabilization-for-ai-training-datacenters/4460937" target="_blank" rel="noopener">https://techcommunity.microsoft.com/blog/azurecompute/power-stabilization-for-ai-training-datacenters/4460937</a></p>
+<p><strong>[10] 버티브 백서</strong> — UPS 안에서 급한 부하 변화를 처리해 배터리 반복 충·방전을 줄이는 제어 기능(회사 주장)<br>
+→ <a href="https://www.vertiv.com/4aebc7/globalassets/content---assets-2025/documents/advanced-ups-controls-for-ai-workloads-wp-en-gl-sl-80384-web.pdf" target="_blank" rel="noopener">https://www.vertiv.com/4aebc7/globalassets/content---assets-2025/documents/advanced-ups-controls-for-ai-workloads-wp-en-gl-sl-80384-web.pdf</a></p>
+<p><strong>[11] EE뉴스 유럽(2025)</strong> — 엔비디아 전원부 소개와 함께 전해 커패시터가 고온 환경에서 신뢰성이 낮을 수 있다는 지적<br>
+→ <a href="https://www.eenewseurope.com/en/nvidia-details-ai-power-supply-adds-innoscience-gan" target="_blank" rel="noopener">https://www.eenewseurope.com/en/nvidia-details-ai-power-supply-adds-innoscience-gan</a></p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224495332259" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261127-professor-lecture-video-class-notes/"><div class="d">← 이전 노트</div><div class="t">교수님 영상, 수업 정리해주는 AI보다 받아 적은 텍스트가 먼저예요</div></a><a class="next" href="/blog/20261128-alkaline-reverse-current-nickel-cathode/"><div class="d">다음 노트 →</div><div class="t">알칼라인 수전해 역전류란? 껐다 켤 때 니켈 음극이 망가지는 이유</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
