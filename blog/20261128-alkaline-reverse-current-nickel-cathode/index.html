@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>알칼라인 수전해 역전류란? 껐다 켤 때 니켈 음극이 망가지는 이유 | Field Notes · MakeField AI</title>
+<meta name="description" content="전원을 내렸는데 전류가 흐른다면 믿어지시나요. 알칼라인 수전해 스택은 정지하는 순간, 셀 사이에 남은 전위차 때문에 평소와 반대 방향으로 전류가 흐릅니다. 이걸 역전류(reverse current)라고 불러요.">
+<link rel="canonical" href="https://makefield.ai/blog/20261128-alkaline-reverse-current-nickel-cathode/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="알칼라인 수전해 역전류란? 껐다 켤 때 니켈 음극이 망가지는 이유 | Field Notes · MakeField AI">
+<meta property="og:description" content="전원을 내렸는데 전류가 흐른다면 믿어지시나요. 알칼라인 수전해 스택은 정지하는 순간, 셀 사이에 남은 전위차 때문에 평소와 반대 방향으로 전류가 흐릅니다. 이걸 역전류(reverse current)라고 불러요.">
+<meta property="og:url" content="https://makefield.ai/blog/20261128-alkaline-reverse-current-nickel-cathode/">
+<meta property="og:image" content="https://makefield.ai/blog/20261128-alkaline-reverse-current-nickel-cathode/img/00_title.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="/assets/mf-analytics.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "알칼라인 수전해 역전류란? 껐다 켤 때 니켈 음극이 망가지는 이유", "datePublished": "2026-11-28", "inLanguage": "ko", "author": {"@type": "Organization", "name": "MakeField AI"}, "mainEntityOfPage": "https://makefield.ai/blog/20261128-alkaline-reverse-current-nickel-cathode/"}</script>
+<style>
+:root{--paper:#f2ede3;--paper-2:#e8e1d3;--card:#f9f6f0;--ink:#171512;--ink-2:#4b463f;--muted:#857e73;--red:#d4252b;--line:rgba(23,21,18,.14);--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.pen{font-family:'Nanum Pen Script',cursive;color:var(--red);font-weight:400}
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,237,227,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:-.025em;text-decoration:none;font-size:1.12rem;display:inline-flex;align-items:baseline;gap:.2em;color:var(--ink);line-height:1;padding-bottom:.3em}.logo u{text-decoration:none;position:relative}.logo u::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-.36em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2,6.5 Q48,13 98,2.5 Q48,8.6 2,6.5Z' fill='%23d4252b' stroke='%23d4252b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}.logo b{color:var(--red);font-weight:900;font-size:.6em;letter-spacing:0}
+.nav-links{display:flex;gap:24px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover,.nav-links a.on{color:var(--red)}
+.nav-cta{font-size:.85rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;white-space:nowrap}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.zone-id{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.74rem;color:#fff;background:var(--red);border-radius:5px;padding:2px 8px;letter-spacing:.04em}
+.post-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.post-head .in{max-width:760px;margin:0 auto;padding:64px 24px 48px}
+.crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:22px}
+.crumb a{text-decoration:none}.crumb a:hover{color:var(--red)}
+.post-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:14px}
+.badge{color:var(--red);font-weight:800}
+.post-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);font-weight:900;line-height:1.3;letter-spacing:-.035em}
+.post-head .tested{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-family:var(--mono);font-weight:700;font-size:.72rem;color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:3px 10px;letter-spacing:.04em;transform:rotate(-2deg)}
+main{max-width:760px;margin:0 auto;padding:52px 24px 40px}
+article{font-size:1.06rem}
+article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.025em;line-height:1.4;margin:56px 0 18px;padding-top:18px;border-top:2px solid var(--ink);position:relative}
+article h2::before{content:"§";position:absolute;right:0;top:14px;font-family:var(--mono);color:var(--red);font-size:1rem}
+article h3{font-size:1.14rem;font-weight:800;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--red)}
+article p{margin:0 0 22px;color:var(--ink)}
+article .table-wrap{overflow-x:auto;margin:0 0 26px;-webkit-overflow-scrolling:touch;border:1px solid #c9c1b2;border-radius:10px;background:#fff}
+article table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+article th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:10px 14px}
+article td{padding:10px 14px;border-top:1px solid #e3ddd1;vertical-align:top;color:var(--ink)}
+article tbody tr:nth-child(even) td{background:#faf8f3}
+article table.rowhead td:first-child{background:var(--paper);font-weight:700}
+article ul,article ol{margin:0 0 22px;padding-left:1.4em}
+article li{margin:0 0 8px}
+article li::marker{color:var(--red)}
+article blockquote{margin:0 0 22px;padding:14px 18px;border-left:4px solid var(--red);background:#faf8f3;color:var(--ink-2)}
+article hr{border:0;border-top:1px dashed #c9c1b2;margin:34px 0}
+@media (max-width:640px){article table{font-size:.84rem}article th,article td{padding:8px 10px}}
+article strong{font-weight:800}
+article strong.u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+article img{display:block;margin:10px 0 30px;border-radius:6px;background:#fff;padding:8px;box-shadow:0 18px 30px -18px rgba(70,48,16,.45),0 0 0 1px var(--line)}
+article pre{background:var(--ink);color:#efe9dd;border-radius:10px;padding:20px 22px;overflow-x:auto;margin:0 0 26px;font-size:.86rem;line-height:1.65}
+article code{font-family:var(--mono)}
+article p code,article li code{background:var(--paper-2);padding:2px 7px;border-radius:5px;font-size:.88em;color:var(--ink)}
+article a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.endcard{margin-top:56px;border:2px solid var(--ink);border-radius:18px;background:var(--card);padding:28px 28px 26px;position:relative}
+.endcard .k{font-size:.8rem;font-weight:800;color:var(--red)}
+.endcard .t{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.4}
+.endcard .s{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+.endcard .stamp{position:absolute;right:18px;top:-15px;background:var(--paper);font-family:var(--mono);font-weight:700;font-size:.7rem;color:var(--red);border:2px solid var(--red);border-radius:999px;padding:4px 10px;transform:rotate(6deg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-line{border:1.5px solid var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .2s,transform .2s}
+.pager a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.pager .d{font-size:.78rem;font-weight:800;color:var(--muted)}
+.pager .t{font-size:.95rem;font-weight:800;line-height:1.45;margin-top:4px}
+.pager .next{text-align:right}
+.list-head{border-bottom:1px solid var(--line);background-color:#f6f2e9;background-image:linear-gradient(rgba(23,21,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,18,.06) 1px,transparent 1px);background-size:28px 28px}
+.list-head .in{max-width:1160px;margin:0 auto;padding:72px 24px 52px}
+.list-head h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-top:16px}
+.list-head p{color:var(--ink-2);margin-top:14px;max-width:640px}
+.list-head .note{font-size:1.5rem;margin-top:10px;display:inline-block;border-bottom:2px solid var(--red);line-height:1.2}
+.list{max-width:1160px;margin:0 auto;padding:36px 24px 70px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font-family:inherit;cursor:pointer;font-size:.88rem;font-weight:700;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink)}
+.filters button b{color:var(--red);margin-left:4px}
+.filters button.on{background:var(--ink);color:var(--paper)}
+.filters button.on b{color:#ff6a6e}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .25s}
+.post-card:hover{border-color:var(--ink);transform:translateY(-3px) rotate(-.3deg)}
+.post-card .post-meta{margin-bottom:8px}
+.post-card h2{font-size:1.12rem;font-weight:800;line-height:1.5;letter-spacing:-.015em}
+.post-card p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+footer{border-top:1px solid var(--line);margin-top:20px}
+footer .in{max-width:1160px;margin:0 auto;padding:40px 24px 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+footer a{text-decoration:none;font-weight:600;color:var(--ink-2)}footer a:hover{color:var(--red)}
+@media (max-width:860px){.nav-links{display:none}.cards{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}
+@media (max-width:420px){.nav-in,.post-head .in,main,.list,.list-head .in,footer .in{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/" aria-label="MakeField AI 홈"><span>Make<u>Field</u></span><b>AI</b></a><div class="nav-links"><a class="on" href="/blog/">Field Notes</a><a href="/#fieldbook">Field Book</a><a href="/#session">Field Session</a><a href="/#author">만든 사람</a></div><a class="nav-cta" href="/#session">함께 만들기</a></div></nav>
+<div id="progress"></div>
+<header class="post-head"><div class="in">
+<div class="crumb"><span class="zone-id">N-01</span><a href="/blog/">Field Notes</a><span>·</span><span>매일의 현장 노트</span></div>
+<div class="post-meta"><span class="badge">현장 AI 실험실</span><span>2026-11-28</span></div>
+<h1>알칼라인 수전해 역전류란? 껐다 켤 때 니켈 음극이 망가지는 이유</h1>
+<span class="tested">✓ FIELD-TESTED</span>
+</div></header>
+<main>
+<article>
+<img src="img/00_title.png" alt="타이틀카드 — 00_title.png" loading="lazy">
+<p>전원을 내렸는데 전류가 흐른다면 믿어지시나요. 알칼라인 수전해 스택은 정지하는 순간, 셀 사이에 남은 전위차 때문에 <strong>평소와 반대 방향으로 전류가 흐릅니다.</strong> 이걸 역전류(reverse current)라고 불러요.</p>
+<p><strong>알칼라인 수전해 역전류는 정지 순간 바이폴라판 양쪽 전극이 하나의 전지처럼 스스로 방전하며 생기고, 기동·정지 4만 5천 번을 흉내 낸 시험에서 니켈 음극의 과전압이 2 A/cm² 기준 514 mV 늘어났어요</strong> [Wang 2025, 1장·Fig.4d].</p>
+<p>&#x27;논문 읽는 AI&#x27; 16편, 4부 &#x27;닳는 것&#x27;의 세 번째 글입니다. 지난 편이 &quot;변동 운전이 PEM을 얼마나 빨리 늙게 하나&quot;였다면, 이번엔 알칼라인 쪽에서 <strong>껐다 켜는 행위 자체가 전극을 어떻게 바꾸는지</strong> 봅니다.</p>
+<p>읽은 논문은 미국 로런스버클리 국립연구소(LBNL) Guanzhi Wang, Xiong Peng, Rangachary Mukundan 등 8명이 학술지 Advanced Energy Materials(2025, 15권 28호)에 낸 실험 논문이에요. CC BY 4.0으로 공개돼 있습니다 [Wang 2025].</p>
+<h2>1. 알칼라인 수전해는 왜 자주 꺼지나요</h2>
+<p><strong>저부하에서 수소가 산소 쪽으로 넘어오는 기체 혼입이 안전 한계에 닿으면 장치를 멈춰야 해서, 변동 전원에 붙인 알칼라인 수전해는 기동·정지가 잦아집니다</strong> [Wang 2025, 1장].</p>
+<p>논문 서론이 짚는 인과 사슬은 이렇습니다.</p>
+<ol><li>수소 단가를 낮추려면 값싼 전기가 있을 때 돌리는 <strong>동적 운전</strong>이 필요해요 [Wang 2025, 1장]</li><li>그런데 정격의 25~45% 정도 저부하에선 양극과 음극 사이 <strong>기체 혼입(crossover)</strong> 때문에 순도·안전 문제가 생겨요 [Wang 2025, 1장]</li><li>양극 산소 속 수소가 2 vol%를 넘으면(폭발 하한의 약 50%) 보통 <strong>안전 정지</strong>를 합니다 [Wang 2025, 1장]</li><li>그 결과 기동·정지가 잦아지고, 이게 전극에 추가 스트레스를 줘 수명을 깎을 수 있다는 거예요 [Wang 2025, 1장]</li></ol>
+<p>용어부터 풀어 둘게요.</p>
+<ul><li><strong>알칼라인 수전해(AWE)</strong>: 진한 수산화칼륨(KOH) 수용액 속에서 물을 수소와 산소로 나누는 방식</li><li><strong>음극(cathode)</strong>: 수소가 나오는 쪽 전극. 이 논문에선 양쪽 모두 니켈 펠트(니켈 섬유를 엉켜 만든 판)를 썼어요 [Wang 2025, 2.1절]</li><li><strong>과전압</strong>: 반응을 일으키는 데 이론값보다 더 들어가는 전압. 클수록 같은 수소에 전기가 더 들어요</li></ul>
+<h2>2. 끈 순간 전류가 거꾸로 흐르는 이유 — 1부 기생전류와 같은 통로</h2>
+<p><strong>알칼라인 수전해 역전류는, 바이폴라 스택에서 이웃한 셀의 양극과 음극이 금속판으로 전기적으로, 매니폴드의 전해액으로 이온적으로 동시에 이어져 있기 때문에 생겨요. 전원을 끊으면 그 둘이 하나의 전지가 되어 스스로 방전합니다</strong> [Wang 2025, 1장·Fig.1].</p>
+<img src="img/01_reverse_current_path.png" alt="정상 운전과 정지 때 바이폴라판 주변 전류 방향 — 01_reverse_current_path.png" loading="lazy">
+<p>대형 알칼라인 수전해는 대부분 얇은 셀 여러 장을 직렬로 쌓은 <strong>바이폴라형 스택</strong>이에요. 한 장의 바이폴라판 앞면은 이 셀의 음극, 뒷면은 다음 셀의 양극 역할을 합니다. 전해액은 매니폴드(공용 배관 통로)를 통해 각 셀로 공급되고요 [Wang 2025, 1장].</p>
+<ul><li><strong>운전 중</strong>: 음극은 환원(수소 발생), 양극은 산화(산소 발생)</li><li><strong>정지 직후</strong>: 바이폴라판 양쪽 전극 사이에 전위차가 남아 있어, 판 자체가 기전력을 가진 <strong>갈바닉 전지</strong>처럼 동작해요 [Wang 2025, 1장]</li><li><strong>역전류</strong>: 두 전극 전위가 같아질 때까지 평소와 반대 방향으로 흐르고, 음극은 산화·양극은 환원되는 <strong>반대 반응</strong>이 일어납니다 [Wang 2025, 1장]</li></ul>
+<p>여기서 1부와 이어집니다. 1부에서 본 기생전류는 셀 사이 <strong>전해액 통로</strong>로 새는 전류였죠. 역전류도 이 논문 설명상 <strong>매니폴드 전해액을 통한 이온 연결</strong>이 있어야 흐를 수 있어요 [Wang 2025, 1장]. 운전 중엔 &#x27;새는 전류&#x27;, 정지 땐 &#x27;거꾸로 흐르는 전류&#x27;로 같은 통로가 두 번 쓰이는 셈입니다. 다만 논문은 &#x27;shunt current(기생전류)&#x27;라는 단어를 쓰지 않았고, 이 연결은 <strong>해설자의 정리</strong>라는 점을 밝혀 둡니다.</p>
+<p>논문에 따르면 실제 장치에선 정지 중 작은 <strong>보호 전류</strong>를 흘리는 보조 전원으로 막는 경우가 많은데, 저자들은 이게 주변 설비(BOP) 부담·운영비를 늘리고 앞서 말한 기체 혼합 우려도 있다고 적었어요 [Wang 2025, 1장].</p>
+<h2>3. 어떻게 시험했나요 — 10초짜리 기동·정지를 4만 5천 번</h2>
+<p><strong>활성 면적 5 cm² 단일 셀에 기준전극을 붙여 양극과 음극 전위를 따로 재면서, 5초 운전·5초 정지를 4만 5천 번 반복했어요</strong> [Wang 2025, 2.2절·Fig.3a].</p>
+<p>기존 연구는 기준전극 없는 2전극 셀이라 &quot;양극이 나빠졌는지, 음극이 나빠졌는지&quot;를 가르기 어려웠다는 게 출발점이에요 [Wang 2025, 1장]. 그래서 연구진은 분리막 옆으로 음이온 교환막 띠를 빼내 외부의 Ag/AgCl 기준전극과 잇는 <strong>3전극 MEA 장치</strong>를 직접 만들었습니다 [Wang 2025, 2.1절·Fig.2a].</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>조건</th><th>출처</th></tr></thead><tbody><tr><td>셀</td><td>제로갭 단일 셀, 5 cm²</td><td>[Wang 2025, 2.2절·4장]</td></tr><tr><td>전극</td><td>양극·음극 모두 니켈 펠트</td><td>[Wang 2025, 2.1절]</td></tr><tr><td>분리막</td><td>Zirfon(UTP 500), 두께 0.15 cm</td><td>[Wang 2025, 2.1절]</td></tr><tr><td>전해액</td><td>7 m KOH, 80 °C, 20 mL/min</td><td>[Wang 2025, 2.1절]</td></tr><tr><td>운전 단계</td><td>1 A/cm² 정전류 5초</td><td>[Wang 2025, Fig.3a]</td></tr><tr><td>정지 단계</td><td>양 전극 사이 0 V 강제 5초</td><td>[Wang 2025, Fig.3a]</td></tr><tr><td>반복</td><td>총 45,000 사이클</td><td>[Wang 2025, 2.2절]</td></tr></tbody></table></div>
+<img src="img/02_ast_protocol.png" alt="역전류 가속열화시험 한 사이클과 측정 시점 — 02_ast_protocol.png" loading="lazy">
+<p>0 V를 거는 이유는 스택 정지 때 바이폴라판 양쪽 전극이 빠르게 같은 전위로 떨어지는 상황을 흉내 내기 위해서예요 [Wang 2025, 2.1절]. 가속시험에 앞서 5분 운전·5분 0 V로 돌린 확인 시험에서, 0 V를 걸자 <strong>순간 -2.4 A/cm²의 역방향 전류</strong>가 흐른 뒤 수 초 안에 0으로 줄었고, 두 전극 전위는 RHE 기준 약 0.9 V에서 만났습니다 [Wang 2025, 2.1절]. 0 V를 걸지 않고 그냥 두면 전위가 아주 천천히 풀리고 역전류도 잡히지 않았다고 해요 [Wang 2025, 2.1절].</p>
+<p>참고로 사이클 1회가 10초이니 45,000회는 약 125시간입니다. 이건 <strong>논문에 없는 환산</strong>이에요.</p>
+<h2>4. 무엇을 알아냈나요 — 양극은 좋아지고, 음극은 무너졌다</h2>
+<p><strong>같은 니켈인데 역전류에 대한 반응이 정반대였어요. 양극은 오히려 성능이 좋아졌고 음극은 계속 나빠졌으며, 음극의 손상이 양극의 개선을 압도해 전체 셀은 크게 열화했습니다</strong> [Wang 2025, 2.3절].</p>
+<img src="img/03_anode_vs_cathode.png" alt="45k 사이클 후 2 A/cm² 기준 전압 변화 — 03_anode_vs_cathode.png" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>대상 (2 A/cm² 기준)</th><th>시험 전</th><th>시험 후</th><th>변화</th><th>출처</th></tr></thead><tbody><tr><td>전체 셀 전압</td><td>2.32 V</td><td>2.64 V (45k)</td><td>약 +320 mV</td><td>[Wang 2025, Fig.3b]</td></tr><tr><td>양극 전위 (vs RHE)</td><td>2.045 V</td><td>1.800 V (7.5k, 이후 안정)</td><td>약 -250 mV</td><td>[Wang 2025, Fig.4a]</td></tr><tr><td>음극 전위 (vs RHE)</td><td>-0.280 V</td><td>-0.794 V (45k)</td><td>+514 mV 과전압</td><td>[Wang 2025, Fig.4d]</td></tr><tr><td>셀 저항(HFR) 몫</td><td>—</td><td>—</td><td>약 +185 mV</td><td>[Wang 2025, 2.2절·Fig.3c]</td></tr></tbody></table></div>
+<p>전체 셀만 보면 7.5k 사이클 뒤 +100 mV, 15k 뒤 +180 mV, 45k 뒤 300 mV 넘게 올랐어요 [Wang 2025, 2.2절]. 3전극 장치로 쪼개 보니 내막은 이렇습니다.</p>
+<ul><li><strong>양극</strong>: 처음 7.5k 사이클 동안 과전압이 약 250 mV 줄고, 이후 37.5k 사이클은 안정. 반응 속도(kinetic) 과전압이 420 → 220 mV로 줄었고 타펠 기울기도 102 → 66 mV/dec로 낮아졌어요 [Wang 2025, 2.3절]</li><li><strong>음극</strong>: 첫 7.5k 사이클에서 이미 344 mV 악화, 끝까지 계속 나빠져 514 mV. 반응 속도 과전압 약 350 mV 증가(0.311 → 0.660 V), 저항 과전압도 65 → 201 mV로 꾸준히 증가했어요 [Wang 2025, 2.3절]</li></ul>
+<h2>5. 음극 니켈은 왜 되돌아오지 못하나요</h2>
+<p><strong>정지 때 음극 니켈 표면이 β-수산화니켈(β-Ni(OH)₂)로 산화되는데, 다시 운전해도 금속 니켈로 완전히 환원되지 않아 사이클마다 쌓이기 때문이에요</strong> [Wang 2025, 2.4절·Fig.6k].</p>
+<img src="img/04_cathode_mechanism.png" alt="양극은 되돌아오고 음극은 쌓이는 이유 — 04_cathode_mechanism.png" loading="lazy">
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>양극</th><th>음극</th></tr></thead><tbody><tr><td>정지 때 전위</td><td>약 0.9 V vs RHE로 내려감</td><td>약 0.9 V vs RHE로 올라감</td></tr><tr><td>생기는 물질</td><td>Ni(OH)₂ ↔ NiOOH 오감</td><td>금속 Ni → β-Ni(OH)₂</td></tr><tr><td>되돌아오나</td><td>비교적 가역적</td><td>비가역, 계속 쌓임</td></tr><tr><td>결과</td><td>산소 발생에 유리한 활성층 → 성능 향상</td><td>용해·균열·저항 증가·활성 저하</td></tr></tbody></table></div>
+<p>출처: [Wang 2025, 2.4절·Fig.5g·Fig.6k]</p>
+<p>논문이 든 비가역성의 이유는 두 가지예요 [Wang 2025, 2.4절].</p>
+<ol><li><strong>열역학 장벽</strong>: 층상 구조의 β-Ni(OH)₂를 금속 니켈의 면심입방 구조로 바꾸려면 Ni-O 결합을 전부 끊고 구조를 통째로 재배열해야 해요</li><li><strong>속도 장벽</strong>: β-Ni(OH)₂ → Ni 환원은 전자 2개가 오가는 다전자 반응이라, 양극의 1전자 반응(NiOOH → Ni(OH)₂)보다 굼뜹니다</li></ol>
+<p>연구진은 이 가설을 직접 확인했어요. 시험 끝난 음극을 -0.2 V vs RHE에 3,600초 걸어도 조성이 그대로였고, -0.5 V로 3,600초를 걸어서야 β-Ni(OH)₂가 약 10%(76.9 → 70.2 at%) 줄었다고 해요 [Wang 2025, 2.4절]. 실제 스택에선 전력 장치 한계로 이렇게 깊은 환원 전위를 거는 것 자체가 어렵다고 덧붙였습니다 [Wang 2025, 2.4절].</p>
+<p>쌓인 β-Ni(OH)₂가 음극을 망가뜨리는 경로는 <strong>세 갈래</strong>로 정리돼요 [Wang 2025, 2.4절].</p>
+<ul><li><strong>재료 파손</strong>: 니켈(0.203 nm)과 β-Ni(OH)₂(0.233 nm)의 격자 간격 차이로 반복 팽창 스트레스가 생겨 균열·박리·용해/재석출이 나타났어요. 벌어진 틈엔 기포가 갇힐 수 있다고 합니다</li><li><strong>전도도 저하</strong>: β-Ni(OH)₂는 금속 니켈보다 전기가 잘 안 통해, 저항 과전압이 계속 늘어나는 원인이 돼요</li><li><strong>활성 저하</strong>: 수소 발생 촉매 활성이 금속 니켈보다 훨씬 낮아요. 비커 시험에서 시험 후 음극의 타펠 기울기는 516 mV/dec로, 새 음극 112 mV/dec의 4배를 넘었습니다 [Wang 2025, 2.3절]</li></ul>
+<p><strong>해법 방향</strong>은 결론에 한 줄로 나와요. 금속 ↔ 산화물·수산화물 사이를 <strong>잘 되돌아오는(산화환원 가역성이 높은) 음극 재료</strong>, 예컨대 백금 같은 소재가 동적 운전 내구성을 높일 수 있다는 것. 다만 저자 스스로 &quot;추정(speculated)&quot;이며 입증은 향후 과제라고 적었어요 [Wang 2025, 3장].</p>
+<p><strong>이 논문의 한계도 짚어 둘게요.</strong></p>
+<ul><li><strong>단일 셀 하나</strong>: 5 cm² 셀, 니켈 펠트 한 종류, 80 °C 조건의 결과예요 [Wang 2025, 4장]. 조건별 반복 시험 수는 본문에 없습니다.</li><li><strong>역전류 크기가 과장됐을 수 있다</strong>: 단일 셀은 분리막을 지나는 전해액 저항이 스택 매니폴드보다 훨씬 작아, 유도된 역전류가 실제 스택보다 클 가능성이 높다고 저자가 직접 밝혔어요 [Wang 2025, 2.1절].</li><li><strong>정지를 0 V 강제로 흉내 냈다</strong>: 실제 스택의 자연 방전이 아니라 전위를 강제로 맞춘 모사예요 [Wang 2025, 2.2절].</li><li><strong>해법은 미검증</strong>: 가역성 높은 음극이 효과가 있는지는 이 논문에서 시험하지 않았습니다 [Wang 2025, 3장].</li></ul>
+<h2>6. 이 논문을 AI로 읽으며 원문과 대조한 네 곳</h2>
+<p>이번 논문은 숫자보다 <strong>그림과 본문의 연결</strong>에서 함정이 나왔어요. PDF를 텍스트로 뽑아 AI에게 넘긴 뒤, 아래 네 곳을 원문 페이지와 맞췄습니다.</p>
+<img src="img/05_ai_crosscheck.png" alt="이 논문에서 AI 요약과 원문을 대조한 4곳 — 05_ai_crosscheck.png" loading="lazy">
+<p><strong>① 사이클 길이는 본문 텍스트에 없었다.</strong> &quot;운전 5분·정지 5분&quot;이라는 숫자가 2.1절에 나오는데, 이건 역전류를 처음 확인한 시험이에요. 4만 5천 번 돌린 가속시험의 5초·5초는 <strong>Fig.3a 그림의 가로축에만</strong> 있습니다. 텍스트만 넘기면 AI는 5분을 가속시험 조건으로 착각하기 딱 좋아요. 그래서 그 쪽을 이미지로 열어 축 눈금을 직접 읽었습니다.</p>
+<pre><code>[텍스트] 2.1절: constant current for 5 min ... 0 V ... for 5 min
+[그림]   Fig.3a: 1 A cm-2 (0~5 s) → 0 V (5~10 s) → cycle 2 ...</code></pre>
+<p><strong>② 같은 논문 안에서 그림 번호가 뒤바뀐다.</strong> 2.3절은 음극 반응 속도 과전압을 Fig.4e, 저항 과전압을 Fig.4f로 가리키는데, 2.4절은 저항 증가를 Fig.4e, 활성 저하를 Fig.4f로 적었어요. 그림 캡션(e=반응 속도, f=저항)과 맞는 건 2.3절입니다. AI에게 &quot;4e가 뭘 보여 줘?&quot;라고 물으면 어느 문단을 근거로 삼느냐에 따라 답이 갈릴 수 있어요.</p>
+<p><strong>③ 그림과 실험 절의 숫자가 다르다.</strong> 기준전극을 잇는 음이온 교환막 띠 두께가 Fig.2a엔 30 µm, 실험 절(4장)엔 40 µm예요. 결론과 무관해 이 글에선 뺐습니다.</p>
+<p><strong>④ 논문에 없는 연결은 표시한다.</strong> &quot;1부 기생전류와 같은 통로&quot;는 이 시리즈의 맥락이지 논문의 주장이 아니에요. AI에게 &quot;이 논문이 shunt current를 언급하나?&quot;를 따로 묻고, 추출 텍스트 전체를 검색해 0건임을 확인한 뒤, 본문에 &#x27;해설자의 정리&#x27;라고 적었습니다.</p>
+<p>자기 분야 실험 논문에 그대로 붙여 쓸 수 있는 지시문입니다.</p>
+<pre><code>1) 시험 조건(시간·전류·횟수)이 본문에만 있는지, 그림 축에만 있는지 출처 위치를 같이 적어.
+   본문에 없으면 &quot;그림에서만 확인 가능&quot;이라고 표시해.
+2) 같은 그림 번호(예: Fig.4e)를 가리키는 문장을 전부 모아, 캡션 설명과 일치하는지 대조해.
+3) 같은 물리량이 그림·본문·실험 절에서 다르게 적힌 곳을 목록으로 만들어.
+4) 내가 붙이려는 해석(다른 논문·다른 개념과의 연결)이 원문에 실제로 있는지 검색하고,
+   없으면 &quot;원문에 없음&quot;이라고 답해.
+5) 저자가 speculate/likely/possibly로 쓴 설명은 &#x27;추정&#x27;으로 따로 분류해.</code></pre>
+<h2>7. 자주 묻는 질문</h2>
+<p><strong>Q. 알칼라인 수전해 역전류는 왜 생기나요?</strong><br>
+바이폴라 스택에서 이웃 셀의 양극과 음극이 금속판과 매니폴드 전해액으로 동시에 연결돼 있어, 전원을 끊으면 그 사이 전위차로 스스로 방전하기 때문이에요 [Wang 2025, 1장]. 두 전극 전위가 같아질 때까지 평소와 반대 방향으로 흐릅니다.</p>
+<p><strong>Q. 역전류는 양극과 음극 중 어디를 더 망가뜨리나요?</strong><br>
+이 논문의 니켈 전극 시험에선 음극이에요. 45k 사이클 뒤 2 A/cm² 기준 음극 과전압은 514 mV 늘었고, 양극은 오히려 약 250 mV 좋아졌어요 [Wang 2025, 2.3절]. 음극 손상이 더 커서 전체 셀 전압은 2.32 → 2.64 V로 올랐습니다 [Wang 2025, Fig.3b].</p>
+<p><strong>Q. 다시 운전하면 음극이 회복되지 않나요?</strong><br>
+β-Ni(OH)₂는 금속 니켈로 잘 돌아오지 않아요. -0.2 V vs RHE에서 1시간을 걸어도 그대로였고, -0.5 V에서 1시간을 걸어야 약 10% 줄었다고 합니다 [Wang 2025, 2.4절].</p>
+<hr>
+<p>정리하면, 알칼라인 수전해에서 꺼지는 순간은 쉬는 시간이 아니었어요. <strong>역전류가 음극 니켈을 β-수산화니켈로 바꾸고, 그게 되돌아오지 않은 채 쌓이면서</strong> 저항과 반응 속도가 함께 나빠졌습니다. 자주 껐다 켜야 하는 재생에너지 연계에서 음극 재료가 왜 숙제인지가 여기서 드러나요.</p>
+<p>다음 편은 수만 시간짜리 수명을 짧게 평가하는 방법, 가속열화시험 절차의 뼈대를 읽습니다. 이번 편의 45k 사이클이 그 축소판이었던 셈이죠.</p>
+<p>여러분이 AI로 읽은 논문에서도, 본문과 그림이 서로 다른 말을 하던 곳이 있었나요?</p>
+<p>논문을 AI로 읽을 때 쓰는 그림·본문 대조 지시문은 makefield.ai에 정리해 두고 있어요.</p>
+<p>원문: <a href="https://doi.org/10.1002/aenm.202500886" target="_blank" rel="noopener">https://doi.org/10.1002/aenm.202500886</a> (CC BY 4.0)</p>
+</article>
+<div class="endcard">
+<span class="stamp">MakeField AI</span>
+<div class="k">S-01 · Field Session</div>
+<div class="t">이 글처럼, 당신의 업무에도 AI가 일할 자리를.</div>
+<div class="s">업무 하나를 가져오면 그 자리에서 같이 만들고 그대로 넘겨드립니다. 소규모 기업 방문 강의도 하니, 부담 없이 언제든 문의 주세요.</div>
+<div class="btns"><a class="btn btn-ink" data-track="blog_session_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카톡으로 방문 강의 문의</a><a class="btn btn-line" href="/#session">Field Session 보기</a><a class="btn btn-line" data-track="blog_session_inquiry" href="mailto:contact@makefield.ai?subject=%5BMakeField%20AI%5D%20%EB%B0%A9%EB%AC%B8%20%EA%B0%95%EC%9D%98%20%EB%AC%B8%EC%9D%98">메일 문의</a><a class="btn btn-line" href="/blog/">다른 노트 보기</a><a class="btn btn-line" href="https://blog.naver.com/makefield_ai/224495303423" target="_blank" rel="noopener">네이버 블로그에서 보기</a></div>
+</div>
+<div class="pager"><a class="prev" href="/blog/20261127-professor-lecture-video-class-notes/"><div class="d">← 이전 노트</div><div class="t">교수님 영상, 수업 정리해주는 AI보다 받아 적은 텍스트가 먼저예요</div></a><a class="next" href="/blog/20261128-mail-reply-tally-ai-duplicate-file-not-missing/"><div class="d">다음 노트 →</div><div class="t">메일 회신 집계 AI로 했더니, &#x27;미회신 1팀&#x27;은 중복 저장 파일이었어요</div></a></div>
+</main>
+<footer><div class="in"><div>&copy; 2026 MakeField AI &middot; AI가 일할 현장을 만든다</div><div><a href="/">홈</a> &nbsp;&middot;&nbsp; <a href="/blog/">Field Notes</a> &nbsp;&middot;&nbsp; <a href="https://blog.naver.com/makefield_ai" rel="noopener">네이버 블로그</a> &nbsp;&middot;&nbsp; <a href="/book_1st/">독자 부록</a> &nbsp;&middot;&nbsp; <a data-track="footer_kakao" href="https://pf.kakao.com/_NCpxiX/chat" target="_blank" rel="noopener">카카오톡 문의</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@makefield.ai">메일</a></div></div></footer>
+<script>(function(){var b=document.getElementById("progress");if(!b)return;function u(){var h=document.documentElement;var m=h.scrollHeight-innerHeight;b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")";}addEventListener("scroll",u,{passive:true});u();})();</script>
+</body>
+</html>
